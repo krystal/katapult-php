@@ -1,0 +1,43 @@
+{
+    "name": "krystal/katapult",
+    "description": "API library for Katapult cloud platform",
+    "keywords": [
+        "krystal",
+        "katapult"
+    ],
+    "homepage": "https://github.com/krystal/katapult",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Josh Bonfield",
+            "email": "josh@grizzlyware.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5.6",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Krystal\\Katapult\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Krystal\\Katapult\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "php vendor/bin/phpunit",
+        "test-coverage": "php vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
