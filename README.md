@@ -1,11 +1,11 @@
-# Katapult
+<p align="center"><img src="./katapult_logo.svg" alt="Katapult logo" width="40%" /></p>
+
+---
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
 [![Total Downloads](https://img.shields.io/packagist/dt/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
 
 PHP library for integrating with [Katapult](https://katapult.io/)
-
-<p align="center"><img src="./katapult_logo.svg" alt="Katapult logo" width="40%" /></p>
 
 ## Version constraints
 * V1.x supports PHP 5.6
