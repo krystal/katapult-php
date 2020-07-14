@@ -1,13 +1,11 @@
-# Very short description of the package
+# Katapult
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
-[![Build Status](https://img.shields.io/travis/krystal/katapult/master.svg?style=flat-square)](https://travis-ci.org/krystal/katapult)
-[![Quality Score](https://img.shields.io/scrutinizer/g/krystal/katapult.svg?style=flat-square)](https://scrutinizer-ci.com/g/krystal/katapult)
 [![Total Downloads](https://img.shields.io/packagist/dt/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
 
 PHP library for integrating with [Katapult](https://katapult.io/)
 
-<p align="center"><img src="./logo_white_strapline.svg" alt="Katapult logo" width="40%" /></p>
+<p align="center"><img src="./katapult_logo.svg.svg" alt="Katapult logo" width="40%" /></p>
 
 ## Version constraints
 * V1.x supports PHP 5.6
