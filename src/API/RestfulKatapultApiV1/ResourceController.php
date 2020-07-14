@@ -88,12 +88,14 @@ class ResourceController implements ResourceControllerInterface
 
     /**
      * @param null $resourceId
+     * @param null $contextualArguments
      * @return string
      */
-    public function createApiUrl($resourceId = null)
+    public function createApiUrl($resourceId = null, $contextualArguments = null)
     {
+        if(!$contextualArguments) $contextualArguments = [];
         $mappedResourceClass = $this->mappedResourceClass; // Due to lacking Uniform Variable Syntax in PHP < 7
-        return $mappedResourceClass::getUrl($resourceId, $this->arguments);
+        return $mappedResourceClass::getUrl($resourceId, array_merge($this->arguments, $contextualArguments));
     }
 
     /**

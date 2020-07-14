@@ -9,9 +9,9 @@ use Krystal\Katapult\Resources\Organization;
 use Krystal\Katapult\Resources\Resource;
 use Krystal\Katapult\Resources\Organization\VirtualMachine;
 use Krystal\Katapult\Resources\Task;
-use Krystal\Katapult\Resources\VirtualMachineBuild;
 use PHPUnit\Framework\TestCase;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\DataCenter;
+use Krystal\Katapult\Resources\Organization\VirtualMachine\VirtualMachineBuild;
 
 class RestApiTest extends TestCase
 {
@@ -44,7 +44,27 @@ class RestApiTest extends TestCase
             RestfulKatapultApiV1\Resources\DataCenter::class,
             RestfulKatapultApiV1\Resources\Organization::class,
         ];
+    }
 
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        $resources = $this->katapult->resource(VirtualMachine::class, $firstOrg)->all();
+
+        foreach($resources as $resource)
+        {
+            try
+            {
+                $resource->delete();
+            }
+            catch(\Exception $e)
+            {
+                //
+            }
+        }
     }
 
     /**
@@ -72,15 +92,16 @@ class RestApiTest extends TestCase
     /**
      * @param Organization $firstOrg
      * @param int $total
+     * @param int $waitPerVm
      * @param int $timeoutPerVm Timeout in seconds
      * @return VirtualMachine[]
      * @throws \Exception
      */
-    protected function createVmsAndWaitUntilReady(Organization $firstOrg, $total = 1, $timeoutPerVm = 10)
+    protected function createVmsAndWaitUntilReady(Organization $firstOrg, $total = 1, $waitPerVm = 5, $timeoutPerVm = 10)
     {
         $vmBuilds = [];
 
-        for($i = 0; $total < $i; $i++)
+        for($i = 0; $i < $total; $i++)
         {
             $response = $this->katapult->resource(Organization\VirtualMachine::class, $firstOrg)->build([
                 'package' => ['id' => 'vmpkg_B66yYQl0e3UNTCEa'],
@@ -100,17 +121,44 @@ class RestApiTest extends TestCase
             foreach($vmBuilds as $buildIndex => $vmBuild)
             {
                 // Check if the VM is built
+                $virtualMachineBuild = $this->katapult->resource(VirtualMachineBuild::class)->get($vmBuild->id);
 
                 // If built, add it to the VMs array and remove the build from the build array
-                if(true) // TODO, pending API method to GET VirtualMachineBuild
+                if($virtualMachineBuild->virtual_machine)
                 {
-                    //$vms[] =
+                    $vms[] = $this->katapult->resource(VirtualMachine::class)->get($virtualMachineBuild->virtual_machine->id);
                     unset($vmBuilds[$buildIndex]);
                 }
             }
         }
 
+        sleep($total * $waitPerVm);
+
         return $vms;
+    }
+
+    protected function executeVmPowerOperationAndWaitUntilCompleted(RestfulKatapultApiV1\Resources\Organization\VirtualMachine $virtualMachine, $powerOperation, $justWait = false)
+    {
+        if(!$justWait) $virtualMachine->{$powerOperation}();
+
+        switch($powerOperation)
+        {
+            case RestfulKatapultApiV1\Resources\Organization\VirtualMachine::ACTION_START:
+            case RestfulKatapultApiV1\Resources\Organization\VirtualMachine::ACTION_RESET:
+                $expectedState = 'started';
+                break;
+
+            case RestfulKatapultApiV1\Resources\Organization\VirtualMachine::ACTION_SHUTDOWN:
+            case RestfulKatapultApiV1\Resources\Organization\VirtualMachine::ACTION_STOP:
+                $expectedState = 'stopped';
+                break;
+        }
+
+        while(true)
+        {
+            if($this->katapult->resource(VirtualMachine::class)->get($virtualMachine->id)->state == $expectedState) return;
+            sleep(1);
+        }
     }
 
     /** @test */
@@ -242,7 +290,7 @@ class RestApiTest extends TestCase
         $firstOrg = self::getFirstOrganization($this->katapult);
 
         // Creates VMs to test this method with
-        $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
+        $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate, 0);
 
         $resources = $this->katapult->resource(VirtualMachine::class, $firstOrg)->all();
         $this->assertTrue(is_array($resources));
@@ -300,80 +348,61 @@ class RestApiTest extends TestCase
                 $success = 0;
                 $failed = 0;
 
-                try
+                foreach($powerTest->precedeWith as $powerOperation)
                 {
-                    foreach($powerTest->precedeWith as $powerOperation)
+                    try
                     {
-                        $vm->{$powerOperation}();
-                        $success++;
+                        try
+                        {
+                            $this->executeVmPowerOperationAndWaitUntilCompleted($vm, $powerOperation);
+                            $success++;
+                        }
+                        catch(RequestException $e)
+                        {
+                            // Account for the VM being unable to transition to a state because it's already there. These are pre-flight checks. And these are just preceding calls for the actual power function test
+                            if(strpos($e->getResponse()->getBody(), 'machine cannot transition') !== false)
+                            {
+                                $success++;
+                            }
+                            else
+                            {
+                                throw $e;
+                            }
+                        }
                     }
-                }
-                catch(\Exception $e)
-                {
-                    $failed++;
+                    catch(\Exception $e)
+                    {
+                        $failed++;
+                    }
                 }
 
                 $this->assertEquals(count($powerTest->precedeWith), $success);
                 $this->assertEquals(0, $failed);
 
                 // Let the operation happen
-                sleep(1);
+                sleep(5);
 
                 // Now test the actual operation we're here for
                 $success = 0;
                 $failed = 0;
 
-                try
+                foreach($powerTest->test as $powerOperation)
                 {
-                    foreach($powerTest->test as $powerOperation)
+                    try
                     {
                         $vm->{$powerOperation}();
                         $success++;
                     }
-                }
-                catch(\Exception $e)
-                {
-                    $failed++;
+                    catch(\Exception $e)
+                    {
+                        $failed++;
+                    }
                 }
 
                 $this->assertEquals(count($powerTest->test), $success);
                 $this->assertEquals(0, $failed);
             }
         }
-    }
-
-    /** @test */
-    public function can_delete_virtual_machines()
-    {
-        if(!self::TEST_COMPUTE) return;
-
-        $totalToCreate = 1;
-
-        // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($this->katapult);
-
-        // Create some VMs
-        $resources = $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
-        $this->assertCount($totalToCreate, $resources);
-
-        $deleted = 0;
-        $failed = 0;
-
-        foreach($resources as $resource)
-        {
-            try
-            {
-                $resource->delete();
-                $deleted++;
-            }
-            catch(\Exception $e)
-            {
-                $failed++;
-            }
-        }
-
-        $this->assertEquals(count($resources), $deleted);
-        $this->assertEquals(0, $failed);
     }
 
     /** @test */
@@ -397,6 +426,9 @@ class RestApiTest extends TestCase
         {
             try
             {
+                // Start the VM and wait for it to come online
+                if($resource->state != 'started') $this->executeVmPowerOperationAndWaitUntilCompleted($resource, RestfulKatapultApiV1\Resources\Organization\VirtualMachine::ACTION_START);
+
                 $consoleSession = $resource->createConsoleSession();
                 $this->assertInstanceOf(VirtualMachine\ConsoleSession::class, $consoleSession);
                 $this->assertTrue(strlen($consoleSession->url) > 15);
@@ -409,7 +441,7 @@ class RestApiTest extends TestCase
         }
 
         $this->assertEquals(count($resources), $success);
-        $this->assertEquals(0, $failed);
+        $this->assertLessThanOrEqual(0, $failed);
     }
 
     /** @test */
@@ -428,6 +460,40 @@ class RestApiTest extends TestCase
         }
 
         $this->assertTrue(count($resources) > 0);
+
+        $deleted = 0;
+        $failed = 0;
+
+        foreach($resources as $resource)
+        {
+            try
+            {
+                $resource->delete();
+                $deleted++;
+            }
+            catch(\Exception $e)
+            {
+                $failed++;
+            }
+        }
+
+        $this->assertEquals(count($resources), $deleted);
+        $this->assertEquals(0, $failed);
+    }
+
+    /** @test */
+    public function can_delete_virtual_machines()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        $totalToCreate = 1;
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        // Create some VMs
+        $resources = $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate, 0);
+        $this->assertCount($totalToCreate, $resources);
 
         $deleted = 0;
         $failed = 0;

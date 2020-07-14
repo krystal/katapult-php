@@ -9,7 +9,7 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\CanBeDeleted;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\HandlesApiActions;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SnakeCaseResourceName;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Task;
-use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\VirtualMachineBuild;
+use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMachine\VirtualMachineBuild;
 use Krystal\Katapult\Helper;
 use Krystal\Katapult\Katapult;
 
@@ -19,11 +19,40 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
     use HandlesApiActions;
     use CanBeDeleted;
 
+    const ACTION_START = 'start';
+    const ACTION_STOP = 'stop';
+    const ACTION_SHUTDOWN = 'shutdown';
+    const ACTION_RESET = 'reset';
+
     public static function getUrl($resourceId = null, $arguments = null)
     {
         if($resourceId)
         {
-            return "virtual_machines/{$resourceId}";
+            $url = "virtual_machines/{$resourceId}";
+
+            if(isset($arguments['action']) && $arguments['action'])
+            {
+                switch($arguments['action'])
+                {
+                    case self::ACTION_START:
+                        $url .= "/start";
+                        break;
+
+                    case self::ACTION_SHUTDOWN:
+                        $url .= "/shutdown";
+                        break;
+
+                    case self::ACTION_STOP:
+                        $url .= "/stop";
+                        break;
+
+                    case self::ACTION_RESET:
+                        $url .= "/reset";
+                        break;
+                }
+            }
+
+            return $url;
         }
         else
         {
@@ -64,5 +93,33 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
     public function createConsoleSession()
     {
         return Katapult::make($this->resourceController->api)->resource(\Krystal\Katapult\Resources\Organization\VirtualMachine\ConsoleSession::class, $this)->create();
+    }
+
+    public function start()
+    {
+        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+            'action' => self::ACTION_START
+        ]));
+    }
+
+    public function stop()
+    {
+        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+            'action' => self::ACTION_STOP
+        ]));
+    }
+
+    public function shutdown()
+    {
+        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+            'action' => self::ACTION_SHUTDOWN
+        ]));
+    }
+
+    public function reset()
+    {
+        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+            'action' => self::ACTION_RESET
+        ]));
     }
 }

@@ -88,6 +88,8 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
 
     public function post($url, array $body = [])
     {
+        $body['php_nonce'] = md5(microtime());
+
         return $this->getClient()->post($url, [
             'json' => $body
         ]);
