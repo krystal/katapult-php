@@ -5,7 +5,7 @@
 
 PHP library for integrating with [Katapult](https://katapult.io/)
 
-<p align="center"><img src="./katapult_logo.svg.svg" alt="Katapult logo" width="40%" /></p>
+<p align="center"><img src="./katapult_logo.svg" alt="Katapult logo" width="40%" /></p>
 
 ## Version constraints
 * V1.x supports PHP 5.6
