@@ -8,4 +8,5 @@ interface ResourceInterface
 {
     public static function getUrl($resourceId = null, $arguments = null);
     public static function callApiAction(ResourceController $resourceController, $action, $arguments);
+    public static function getResourceName($pluralize = false);
 }

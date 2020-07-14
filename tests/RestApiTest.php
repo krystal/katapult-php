@@ -121,6 +121,22 @@ class RestApiTest extends TestCase
     }
 
     /** @test */
+    public function can_create_managed_organization()
+    {
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        $orgKey = 'php-lib-test-' . time();
+
+        $managedOrg = $this->katapult->resource(Organization\ManagedOrganization::class, $firstOrg)->create([
+            'name' => $orgKey,
+            'sub_domain' => $orgKey
+        ]);
+
+        $this->assertInstanceOf(Organization\ManagedOrganization::class, $managedOrg);
+    }
+
+    /** @test */
     public function can_list_resources()
     {
         foreach($this->resourceClasses as $resourceClass)
@@ -131,7 +147,7 @@ class RestApiTest extends TestCase
 
             foreach($resources as $resource)
             {
-                $this->assertTrue(is_a($resource, $resourceClass));
+                $this->assertInstanceOf($resourceClass, $resource);
             }
         }
     }
@@ -145,7 +161,7 @@ class RestApiTest extends TestCase
 
             $firstResource = reset($resources);
             $fetchedResource = $this->katapult->resource($resourceClass)->get($firstResource->id);
-            $this->assertTrue(is_a($fetchedResource, $resourceClass));
+            $this->assertInstanceOf($resourceClass, $fetchedResource);
         }
     }
 
@@ -161,7 +177,7 @@ class RestApiTest extends TestCase
             'details' => ['name' => 'zone-' . time() . '.co.uk']
         ]);
 
-        $this->assertTrue(is_a($zone, Organization\DNS\DnsZone::class));
+        $this->assertInstanceOf(Organization\DNS\DnsZone::class, $zone);
 
     }
 
@@ -188,8 +204,8 @@ class RestApiTest extends TestCase
             'data_center' => ['id' => $this->getFirstDataCenter($this->katapult)->id]
         ]);
 
-        $this->assertTrue(is_a($response->task, Task::class));
-        $this->assertTrue(is_a($response->build, VirtualMachineBuild::class));
+        $this->assertInstanceOf(Task::class, $response->task);
+        $this->assertInstanceOf(VirtualMachineBuild::class, $response->build);
     }
 
     /** @test */
@@ -213,8 +229,8 @@ class RestApiTest extends TestCase
             'xml' => (string)$vmBuildSpec
         ]);
 
-        $this->assertTrue(is_a($response->task, Task::class));
-        $this->assertTrue(is_a($response->build, VirtualMachineBuild::class));
+        $this->assertInstanceOf(Task::class, $response->task);
+        $this->assertInstanceOf(VirtualMachineBuild::class, $response->build);
     }
 
     /** @test */
@@ -237,7 +253,7 @@ class RestApiTest extends TestCase
         if($firstVm)
         {
             $firstVmFetched = $this->katapult->resource(VirtualMachine::class)->get($firstVm->id);
-            $this->assertTrue(is_a($firstVmFetched, VirtualMachine::class));
+            $this->assertInstanceOf(VirtualMachine::class, $firstVmFetched);
         }
     }
 
@@ -333,29 +349,12 @@ class RestApiTest extends TestCase
 
         $totalToCreate = 1;
 
-        // Give KP a chance to create the VMs and tidy up
-        sleep(1);
-
         // First we need to fetch an org, so we can fetch it's resources
         $firstOrg = self::getFirstOrganization($this->katapult);
 
         // Create some VMs
-        $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
-    }
-
-    /** @test */
-    public function can_create_console_sessions_for_virtual_machines()
-    {
-        if(!self::TEST_COMPUTE) return;
-
-        $totalToCreate = 1;
-
-        // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($this->katapult);
-
-        // Create some VMs
-        $vms = $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
-        $this->assertCount($totalToCreate, $vms);
+        $resources = $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
+        $this->assertCount($totalToCreate, $resources);
 
         $deleted = 0;
         $failed = 0;
@@ -374,6 +373,43 @@ class RestApiTest extends TestCase
         }
 
         $this->assertEquals(count($resources), $deleted);
+        $this->assertEquals(0, $failed);
+    }
+
+    /** @test */
+    public function can_create_console_sessions_for_virtual_machines()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        $totalToCreate = 1;
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        // Create some VMs
+        $resources = $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
+        $this->assertCount($totalToCreate, $resources);
+
+        $success = 0;
+        $failed = 0;
+
+        foreach($resources as $resource)
+        {
+            try
+            {
+                $consoleSession = $resource->createConsoleSession();
+                $this->assertInstanceOf(VirtualMachine\ConsoleSession::class, $consoleSession);
+                $this->assertTrue(strlen($consoleSession->url) > 15);
+                $success++;
+            }
+            catch(\Exception $e)
+            {
+                $failed++;
+            }
+        }
+
+        $this->assertEquals(count($resources), $success);
+        $this->assertEquals(0, $failed);
     }
 
     /** @test */

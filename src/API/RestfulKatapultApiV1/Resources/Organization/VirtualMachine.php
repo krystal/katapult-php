@@ -3,6 +3,7 @@
 namespace Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization;
 
 use Krystal\Katapult\API\RestfulKatapultApiV1\ResourceController;
+use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMachine\ConsoleSession;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\ResourceInterface;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\CanBeDeleted;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\HandlesApiActions;
@@ -10,6 +11,7 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SnakeCaseResourceName;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Task;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\VirtualMachineBuild;
 use Krystal\Katapult\Helper;
+use Krystal\Katapult\Katapult;
 
 class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMachine implements ResourceInterface
 {
@@ -54,5 +56,13 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
         }
 
         throw new \Exception('Invalid action called');
+    }
+
+    /**
+     * @return ConsoleSession
+     */
+    public function createConsoleSession()
+    {
+        return Katapult::make($this->resourceController->api)->resource(\Krystal\Katapult\Resources\Organization\VirtualMachine\ConsoleSession::class, $this)->create();
     }
 }

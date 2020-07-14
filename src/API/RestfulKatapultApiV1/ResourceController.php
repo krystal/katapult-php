@@ -128,8 +128,9 @@ class ResourceController implements ResourceControllerInterface
      * @param array $specification
      * @return ResourceInterface
      */
-    public function create(array $specification)
+    public function create(array $specification = null)
     {
+        if(!$specification) $specification = [];
         $res = $this->api->post($this->createApiUrl(), $specification);
 
         return $this->createResourceFromSpec(\GuzzleHttp\json_decode($res->getBody())->{$this->resourceName});
