@@ -273,7 +273,7 @@ class RestApiTest extends TestCase
 
         $vms = $this->createVmsAndWaitUntilReady($firstOrg, count($powerFunctionsToTest));
 
-        $this->assertEquals(count($powerFunctionsToTest), count($vms));
+        $this->assertSameSize($powerFunctionsToTest, $vms);
 
         if(count($powerFunctionsToTest) === count($vms))
         {
@@ -331,16 +331,31 @@ class RestApiTest extends TestCase
     {
         if(!self::TEST_COMPUTE) return;
 
+        $totalToCreate = 1;
+
         // Give KP a chance to create the VMs and tidy up
         sleep(1);
 
         // First we need to fetch an org, so we can fetch it's resources
         $firstOrg = self::getFirstOrganization($this->katapult);
 
-        // And its resources
-        $resources = $this->katapult->resource(VirtualMachine::class, $firstOrg)->all();
+        // Create some VMs
+        $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
+    }
 
-        $this->assertTrue(count($resources) > 0);
+    /** @test */
+    public function can_create_console_sessions_for_virtual_machines()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        $totalToCreate = 1;
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        // Create some VMs
+        $vms = $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
+        $this->assertCount($totalToCreate, $vms);
 
         $deleted = 0;
         $failed = 0;
