@@ -35,8 +35,8 @@ $firstOrganization = $katapult->resource(Organization::class)->all()[0];
 
 // Make the request
 $response = $katapult->resource(Organization\VirtualMachine::class, $firstOrganization)->build([
-    'package' => ['id' => 'vmpkg_B66yYQl0e3UNTCEa'],
-    'data_center' => ['id' => 'loc_gTvEnqqnKohbFBJR']
+    'package' => ['id' => 'vmpkg_B66yYQl0e3UNTCEa'], // Change as suitable, or fetch from the API
+    'data_center' => ['id' => 'loc_gTvEnqqnKohbFBJR'] // As above
 ]);
 ```
 
