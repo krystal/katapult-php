@@ -27,7 +27,8 @@ use Krystal\Katapult\Resources\Organization;
 use Krystal\Katapult\API\RestfulKatapultApiV1;
 
 // Instantiate Katapult
-$katapultApi = (new RestfulKatapultApiV1())->setAuthenticationToken('your-api-token');
+$useProductionApi = true;
+$katapultApi = (new RestfulKatapultApiV1($useProductionApi))->setAuthenticationToken('your-api-token');
 $katapult = Katapult::make($katapultApi);
 
 // Fetch organizations, and grab the first one
