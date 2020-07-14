@@ -2,6 +2,7 @@
 
 namespace Krystal\Katapult\Tests;
 
+use GuzzleHttp\Exception\RequestException;
 use Krystal\Katapult\API\RestfulKatapultApiV1;
 use Krystal\Katapult\Katapult;
 use Krystal\Katapult\Resources\Organization;
@@ -19,10 +20,14 @@ class RestApiTest extends TestCase
      * @var void
      */
     private $katapultApi;
+
     /**
      * @var string[]
      */
     private $resourceClasses;
+
+    const TEST_DNS = true;
+    const TEST_COMPUTE = true;
 
     protected function setUp()
     {
@@ -32,7 +37,8 @@ class RestApiTest extends TestCase
 
         $this->resourceClasses = [
             RestfulKatapultApiV1\Resources\DataCenter::class,
-            //RestfulKatapultApiV1\Resources\Organization::class, // Removed tmp, pending the API bug being fixed
+            RestfulKatapultApiV1\Resources\Organization::class, // Removed tmp, pending the API bug being fixed
+            //RestfulKatapultApiV1\Resources\Organization\VirtualMachine::class
         ];
     }
 
@@ -56,6 +62,28 @@ class RestApiTest extends TestCase
         // First we need to fetch an org, so we can fetch it's resources
         $dataCenters = $katapult->resource(DataCenter::class)->all();
         return reset($dataCenters);
+    }
+
+    /**
+     * @param Katapult $katapult
+     * @param Organization $firstOrg
+     * @return VirtualMachine[]
+     */
+    protected function createVmsAndWaitUntilReady(Katapult $katapult, Organization $firstOrg, $total = 1)
+    {
+        $vmBuilds = [];
+
+        for($i = 0; $total < $i; $i++)
+        {
+            $response = $katapult->resource(Organization\VirtualMachine::class, $firstOrg)->build([
+                'package' => ['id' => 'vmpkg_B66yYQl0e3UNTCEa'],
+                'data_center' => ['id' => $this->getFirstDataCenter($katapult)->id]
+            ]);
+
+            $vmBuilds[] = $response->build;
+        }
+
+        // TODO
     }
 
     /** @test */
@@ -112,30 +140,28 @@ class RestApiTest extends TestCase
     /** @test */
     public function can_create_dns_zone()
     {
-        /*
-         * DNS zone bug in staging is preventing testing this
-         *
+        if(!self::TEST_DNS) return;
+
         $katapult = Katapult::make($this->katapultApi);
 
         // First we need to fetch an org, so we can fetch it's resources
         $firstOrg = self::getFirstOrganization($katapult);
 
         $zone = $katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->create([
-            'name' => 'zone-' . time() . '.co.uk'
+            'details' => ['name' => 'zone-' . time() . '.co.uk']
         ]);
 
         $this->assertTrue(is_a($zone, Organization\DNS\DnsZone::class));
-        */
+
     }
 
     /** @test */
-    public function cam_fetch_dns_zones()
+    public function can_fetch_dns_zones()
     {
         $katapult = Katapult::make($this->katapultApi);
 
         // First we need to fetch an org, so we can fetch it's resources
         $firstOrg = self::getFirstOrganization($katapult);
-
 
         $resources = $katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->all();
         $this->assertTrue(is_array($resources));
@@ -144,6 +170,8 @@ class RestApiTest extends TestCase
     /** @test */
     public function can_create_virtual_machine()
     {
+        if(!self::TEST_COMPUTE) return;
+
         $katapult = Katapult::make($this->katapultApi);
 
         // First we need to fetch an org, so we can fetch it's resources
@@ -156,6 +184,135 @@ class RestApiTest extends TestCase
 
         $this->assertTrue(is_a($response->task, Task::class));
         $this->assertTrue(is_a($response->build, VirtualMachineBuild::class));
+    }
+
+    /** @test */
+    public function can_create_virtual_machine_from_spec()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        $katapult = Katapult::make($this->katapultApi);
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($katapult);
+
+        $vmBuildSpec = VirtualMachine\DefaultVmBuildSpec::make()
+            ->setCpuCores(1)
+            ->setMemory(1)
+            ->setSystemDiskSize(15)
+            ->setSystemDiskSpeed('ssd')
+            ->setDatacenterId('loc_gTvEnqqnKohbFBJR')
+            ->setPrimaryNetworkId('netw_oNrXAwnkuHddRT6l')
+            ->setDiskTemplateId('dtpl_GVkEzWfpEeEvr0RW');
+
+        $response = $katapult->resource(Organization\VirtualMachine::class, $firstOrg)->buildFromSpec([
+            'xml' => (string)$vmBuildSpec
+        ]);
+
+        $this->assertTrue(is_a($response->task, Task::class));
+        $this->assertTrue(is_a($response->build, VirtualMachineBuild::class));
+    }
+
+    /** @test */
+    public function can_perform_power_operations_on_virtual_machines()
+    {
+        //if(!self::TEST_COMPUTE) return;
+
+        $katapult = Katapult::make($this->katapultApi);
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($katapult);
+
+        $vm = $this->createVmAndWaitUntilReady($katapult, $firstOrg);
+
+        // TODO
+
+        $resources = $katapult->resource(VirtualMachine::class, $firstOrg)->all();
+
+        if(count($resources) < 1) $this->throwException(new \Exception('There are no VMs to test functionality with'));
+    }
+
+    /** @test */
+    public function can_delete_virtual_machines()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        // Give KP a chance to create the VMs and tidy up
+        sleep(1);
+
+        $katapult = Katapult::make($this->katapultApi);
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($katapult);
+
+        $resources = $katapult->resource(VirtualMachine::class, $firstOrg)->all();
+
+        $this->assertTrue(count($resources) > 0);
+
+        $deleted = 0;
+        $failed = 0;
+
+        foreach($resources as $resource)
+        {
+            try
+            {
+                $resource->delete();
+                $deleted++;
+            }
+            catch(RequestException $e)
+            {
+                //echo $e->getResponse()->getBody();
+                $failed++;
+            }
+            catch(\Exception $e)
+            {
+                $failed++;
+            }
+        }
+
+        $this->assertEquals(count($resources), $deleted);
+    }
+
+    /** @test */
+    public function can_delete_dns_zones()
+    {
+        if(!self::TEST_DNS) return;
+
+        $katapult = Katapult::make($this->katapultApi);
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($katapult);
+
+        foreach($katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->all() as $resource)
+        {
+            if(!$resource->infrastructure_zone) $resources[] = $resource;
+        }
+
+        $this->assertTrue(count($resources) > 0);
+
+        $deleted = 0;
+        $failed = 0;
+
+        foreach($resources as $resource)
+        {
+            try
+            {
+                $resource->delete();
+                $deleted++;
+            }
+            catch(RequestException $e)
+            {
+                //echo $e->getResponse()->getBody();
+                $failed++;
+            }
+            catch(\Exception $e)
+            {
+                $failed++;
+            }
+        }
+
+        $this->assertEquals(count($resources), $deleted);
+        $this->assertEquals(0, $failed);
     }
 }
 

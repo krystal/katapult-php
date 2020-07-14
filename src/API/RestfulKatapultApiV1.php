@@ -92,6 +92,11 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
             'json' => $body
         ]);
     }
+
+    public function delete($url)
+    {
+        return $this->getClient()->delete($url);
+    }
 }
 
 

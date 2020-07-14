@@ -2,6 +2,8 @@
 
 namespace Krystal\Katapult\API;
 
+use Krystal\Katapult\Resources\ResourceInterface;
+
 interface ResourceControllerInterface
 {
     /**

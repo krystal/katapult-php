@@ -83,7 +83,7 @@ class ResourceController implements ResourceControllerInterface
     public function createResourceFromSpec($resourceSpec)
     {
         $resourceClass = $this->mappedResourceClass; // Due to lacking Uniform Variable Syntax in PHP < 7
-        return $resourceClass::instantiateFromSpec($resourceSpec);
+        return $resourceClass::instantiateFromSpec($resourceSpec, $this);
     }
 
     /**
@@ -104,11 +104,11 @@ class ResourceController implements ResourceControllerInterface
         $res = $this->api->get($this->createApiUrl());
 
         $resources = [];
-        $resourceClass = $this->resourceClass; // Due to lacking Uniform Variable Syntax in PHP < 7
+        $resourceClass = $this->mappedResourceClass; // Due to lacking Uniform Variable Syntax in PHP < 7
 
         foreach(\GuzzleHttp\json_decode($res->getBody())->{$this->resourceNamePlural} as $resourceSpec)
         {
-            $resources[] = $resourceClass::instantiateFromSpec($resourceSpec);
+            $resources[] = $resourceClass::instantiateFromSpec($resourceSpec, $this);
         }
 
         return $resources;
@@ -130,9 +130,7 @@ class ResourceController implements ResourceControllerInterface
      */
     public function create(array $specification)
     {
-        $res = $this->api->post($this->createApiUrl(), [
-            'details' => $specification
-        ]);
+        $res = $this->api->post($this->createApiUrl(), $specification);
 
         return $this->createResourceFromSpec(\GuzzleHttp\json_decode($res->getBody())->{$this->resourceName});
     }
@@ -149,10 +147,8 @@ class ResourceController implements ResourceControllerInterface
         switch($name)
         {
             case 'api':
-                return $this->api;
-
             case 'resourceName':
-                return $this->resourceName;
+                return $this->{$name};
         }
 
         return null;
