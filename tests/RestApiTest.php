@@ -11,7 +11,6 @@ use Krystal\Katapult\Resources\Organization\VirtualMachine;
 use Krystal\Katapult\Resources\Task;
 use Krystal\Katapult\Resources\VirtualMachineBuild;
 use PHPUnit\Framework\TestCase;
-
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\DataCenter;
 
 class RestApiTest extends TestCase
@@ -26,6 +25,11 @@ class RestApiTest extends TestCase
      */
     private $resourceClasses;
 
+    /**
+     * @var Katapult
+     */
+    private $katapult;
+
     const TEST_DNS = true;
     const TEST_COMPUTE = true;
 
@@ -34,12 +38,13 @@ class RestApiTest extends TestCase
         parent::setUp();
 
         $this->katapultApi = (new RestfulKatapultApiV1())->setAuthenticationToken(getenv('KATAPULT_API_TOKEN'));
+        $this->katapult = Katapult::make($this->katapultApi);
 
         $this->resourceClasses = [
             RestfulKatapultApiV1\Resources\DataCenter::class,
-            RestfulKatapultApiV1\Resources\Organization::class, // Removed tmp, pending the API bug being fixed
-            //RestfulKatapultApiV1\Resources\Organization\VirtualMachine::class
+            RestfulKatapultApiV1\Resources\Organization::class,
         ];
+
     }
 
     /**
@@ -65,32 +70,53 @@ class RestApiTest extends TestCase
     }
 
     /**
-     * @param Katapult $katapult
      * @param Organization $firstOrg
+     * @param int $total
+     * @param int $timeoutPerVm Timeout in seconds
      * @return VirtualMachine[]
+     * @throws \Exception
      */
-    protected function createVmsAndWaitUntilReady(Katapult $katapult, Organization $firstOrg, $total = 1)
+    protected function createVmsAndWaitUntilReady(Organization $firstOrg, $total = 1, $timeoutPerVm = 10)
     {
         $vmBuilds = [];
 
         for($i = 0; $total < $i; $i++)
         {
-            $response = $katapult->resource(Organization\VirtualMachine::class, $firstOrg)->build([
+            $response = $this->katapult->resource(Organization\VirtualMachine::class, $firstOrg)->build([
                 'package' => ['id' => 'vmpkg_B66yYQl0e3UNTCEa'],
-                'data_center' => ['id' => $this->getFirstDataCenter($katapult)->id]
+                'data_center' => ['id' => $this->getFirstDataCenter($this->katapult)->id]
             ]);
 
             $vmBuilds[] = $response->build;
         }
 
-        // TODO
+        $vms = [];
+        $startedAt = time();
+
+        while(count($vmBuilds) > 0)
+        {
+            if($startedAt < (time() - ($total * $timeoutPerVm))) throw new \Exception('Timeout exceeded for creating VMs');
+
+            foreach($vmBuilds as $buildIndex => $vmBuild)
+            {
+                // Check if the VM is built
+
+                // If built, add it to the VMs array and remove the build from the build array
+                if(true) // TODO, pending API method to GET VirtualMachineBuild
+                {
+                    //$vms[] =
+                    unset($vmBuilds[$buildIndex]);
+                }
+            }
+        }
+
+        return $vms;
     }
 
     /** @test */
     public function can_connect_to_api()
     {
-        $katapult = Katapult::make($this->katapultApi);
-        $dataCenters = $katapult->resource(DataCenter::class)->all();
+        $dataCenters = $this->katapult->resource(DataCenter::class)->all();
         $this->assertTrue(count($dataCenters) > 0);
     }
 
@@ -99,8 +125,7 @@ class RestApiTest extends TestCase
     {
         foreach($this->resourceClasses as $resourceClass)
         {
-            $katapult = Katapult::make($this->katapultApi);
-            $resources = $katapult->resource($resourceClass)->all();
+            $resources = $this->katapult->resource($resourceClass)->all();
             $this->assertTrue(is_array($resources));
             $this->assertTrue(count($resources) > 0);
 
@@ -116,25 +141,12 @@ class RestApiTest extends TestCase
     {
         foreach($this->resourceClasses as $resourceClass)
         {
-            $katapult = Katapult::make($this->katapultApi);
-            $resources = $katapult->resource($resourceClass)->all();
+            $resources = $this->katapult->resource($resourceClass)->all();
 
             $firstResource = reset($resources);
-            $fetchedResource = $katapult->resource($resourceClass)->get($firstResource->id);
+            $fetchedResource = $this->katapult->resource($resourceClass)->get($firstResource->id);
             $this->assertTrue(is_a($fetchedResource, $resourceClass));
         }
-    }
-
-    /** @test */
-    public function can_fetch_virtual_machines()
-    {
-        $katapult = Katapult::make($this->katapultApi);
-
-        // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
-
-        $resources = $katapult->resource(VirtualMachine::class, $firstOrg)->all();
-        $this->assertTrue(is_array($resources));
     }
 
     /** @test */
@@ -142,12 +154,10 @@ class RestApiTest extends TestCase
     {
         if(!self::TEST_DNS) return;
 
-        $katapult = Katapult::make($this->katapultApi);
-
         // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
+        $firstOrg = self::getFirstOrganization($this->katapult);
 
-        $zone = $katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->create([
+        $zone = $this->katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->create([
             'details' => ['name' => 'zone-' . time() . '.co.uk']
         ]);
 
@@ -158,12 +168,10 @@ class RestApiTest extends TestCase
     /** @test */
     public function can_fetch_dns_zones()
     {
-        $katapult = Katapult::make($this->katapultApi);
-
         // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
+        $firstOrg = self::getFirstOrganization($this->katapult);
 
-        $resources = $katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->all();
+        $resources = $this->katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->all();
         $this->assertTrue(is_array($resources));
     }
 
@@ -172,14 +180,12 @@ class RestApiTest extends TestCase
     {
         if(!self::TEST_COMPUTE) return;
 
-        $katapult = Katapult::make($this->katapultApi);
-
         // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
+        $firstOrg = self::getFirstOrganization($this->katapult);
 
-        $response = $katapult->resource(Organization\VirtualMachine::class, $firstOrg)->build([
+        $response = $this->katapult->resource(Organization\VirtualMachine::class, $firstOrg)->build([
             'package' => ['id' => 'vmpkg_B66yYQl0e3UNTCEa'],
-            'data_center' => ['id' => $this->getFirstDataCenter($katapult)->id]
+            'data_center' => ['id' => $this->getFirstDataCenter($this->katapult)->id]
         ]);
 
         $this->assertTrue(is_a($response->task, Task::class));
@@ -191,10 +197,8 @@ class RestApiTest extends TestCase
     {
         if(!self::TEST_COMPUTE) return;
 
-        $katapult = Katapult::make($this->katapultApi);
-
         // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
+        $firstOrg = self::getFirstOrganization($this->katapult);
 
         $vmBuildSpec = VirtualMachine\DefaultVmBuildSpec::make()
             ->setCpuCores(1)
@@ -205,7 +209,7 @@ class RestApiTest extends TestCase
             ->setPrimaryNetworkId('netw_oNrXAwnkuHddRT6l')
             ->setDiskTemplateId('dtpl_GVkEzWfpEeEvr0RW');
 
-        $response = $katapult->resource(Organization\VirtualMachine::class, $firstOrg)->buildFromSpec([
+        $response = $this->katapult->resource(Organization\VirtualMachine::class, $firstOrg)->buildFromSpec([
             'xml' => (string)$vmBuildSpec
         ]);
 
@@ -214,22 +218,112 @@ class RestApiTest extends TestCase
     }
 
     /** @test */
-    public function can_perform_power_operations_on_virtual_machines()
+    public function can_fetch_virtual_machines()
     {
-        //if(!self::TEST_COMPUTE) return;
-
-        $katapult = Katapult::make($this->katapultApi);
+        $totalToCreate = 2;
 
         // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
+        $firstOrg = self::getFirstOrganization($this->katapult);
 
-        $vm = $this->createVmAndWaitUntilReady($katapult, $firstOrg);
+        // Creates VMs to test this method with
+        $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
 
-        // TODO
+        $resources = $this->katapult->resource(VirtualMachine::class, $firstOrg)->all();
+        $this->assertTrue(is_array($resources));
+        $this->assertTrue(count($resources) >= $totalToCreate);
 
-        $resources = $katapult->resource(VirtualMachine::class, $firstOrg)->all();
+        // Test fetching a single VM
+        $firstVm = reset($resources);
+        if($firstVm)
+        {
+            $firstVmFetched = $this->katapult->resource(VirtualMachine::class)->get($firstVm->id);
+            $this->assertTrue(is_a($firstVmFetched, VirtualMachine::class));
+        }
+    }
 
-        if(count($resources) < 1) $this->throwException(new \Exception('There are no VMs to test functionality with'));
+    /** @test */
+    public function can_perform_power_operations_on_virtual_machines()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        $powerFunctionsToTest = [
+            (object)[
+                'test' => ['start'],
+                'precedeWith' => ['stop']
+            ],
+
+            (object)[
+                'test' => ['stop'],
+                'precedeWith' => ['start']
+            ],
+
+            (object)[
+                'test' => ['shutdown'],
+                'precedeWith' => ['start']
+            ],
+
+            (object)[
+                'test' => ['reset'],
+                'precedeWith' => ['start']
+            ],
+        ];
+
+        $vms = $this->createVmsAndWaitUntilReady($firstOrg, count($powerFunctionsToTest));
+
+        $this->assertEquals(count($powerFunctionsToTest), count($vms));
+
+        if(count($powerFunctionsToTest) === count($vms))
+        {
+            foreach($powerFunctionsToTest as $powerTestIndex => $powerTest)
+            {
+                $vm = $vms[$powerTestIndex];
+
+                $success = 0;
+                $failed = 0;
+
+                try
+                {
+                    foreach($powerTest->precedeWith as $powerOperation)
+                    {
+                        $vm->{$powerOperation}();
+                        $success++;
+                    }
+                }
+                catch(\Exception $e)
+                {
+                    $failed++;
+                }
+
+                $this->assertEquals(count($powerTest->precedeWith), $success);
+                $this->assertEquals(0, $failed);
+
+                // Let the operation happen
+                sleep(1);
+
+                // Now test the actual operation we're here for
+                $success = 0;
+                $failed = 0;
+
+                try
+                {
+                    foreach($powerTest->test as $powerOperation)
+                    {
+                        $vm->{$powerOperation}();
+                        $success++;
+                    }
+                }
+                catch(\Exception $e)
+                {
+                    $failed++;
+                }
+
+                $this->assertEquals(count($powerTest->test), $success);
+                $this->assertEquals(0, $failed);
+            }
+        }
     }
 
     /** @test */
@@ -240,12 +334,11 @@ class RestApiTest extends TestCase
         // Give KP a chance to create the VMs and tidy up
         sleep(1);
 
-        $katapult = Katapult::make($this->katapultApi);
-
         // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
+        $firstOrg = self::getFirstOrganization($this->katapult);
 
-        $resources = $katapult->resource(VirtualMachine::class, $firstOrg)->all();
+        // And its resources
+        $resources = $this->katapult->resource(VirtualMachine::class, $firstOrg)->all();
 
         $this->assertTrue(count($resources) > 0);
 
@@ -258,11 +351,6 @@ class RestApiTest extends TestCase
             {
                 $resource->delete();
                 $deleted++;
-            }
-            catch(RequestException $e)
-            {
-                //echo $e->getResponse()->getBody();
-                $failed++;
             }
             catch(\Exception $e)
             {
@@ -278,13 +366,13 @@ class RestApiTest extends TestCase
     {
         if(!self::TEST_DNS) return;
 
-        $katapult = Katapult::make($this->katapultApi);
-
         // First we need to fetch an org, so we can fetch it's resources
-        $firstOrg = self::getFirstOrganization($katapult);
+        $firstOrg = self::getFirstOrganization($this->katapult);
+        $resources = [];
 
-        foreach($katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->all() as $resource)
+        foreach($this->katapult->resource(Organization\DNS\DnsZone::class, $firstOrg)->all() as $resource)
         {
+            // We can't delete infrastructure zones, so filter them out
             if(!$resource->infrastructure_zone) $resources[] = $resource;
         }
 
@@ -299,11 +387,6 @@ class RestApiTest extends TestCase
             {
                 $resource->delete();
                 $deleted++;
-            }
-            catch(RequestException $e)
-            {
-                //echo $e->getResponse()->getBody();
-                $failed++;
             }
             catch(\Exception $e)
             {

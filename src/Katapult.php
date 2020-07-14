@@ -3,6 +3,7 @@
 namespace Krystal\Katapult;
 
 use Krystal\Katapult\API\KatapultApiInterface;
+use Krystal\Katapult\API\ResourceControllerInterface;
 use Krystal\Katapult\Resources\DataCenter;
 use Krystal\Katapult\Traits\Makeable;
 
@@ -26,6 +27,11 @@ class Katapult
         $this->api = $api;
     }
 
+    /**
+     * @param $resourceClass
+     * @param mixed ...$args
+     * @return ResourceControllerInterface
+     */
     public function resource($resourceClass, ...$args)
     {
         return $this->api->getResourceController($resourceClass, ...$args);
