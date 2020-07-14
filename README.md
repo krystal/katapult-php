@@ -7,7 +7,7 @@
 
 PHP library for integrating with [Katapult](https://katapult.io/)
 
-<p align="center"><img src="https://katapult.io/assets/img/logo.svg" alt="Katapult logo" width="40%" /></p>
+<p align="center"><img src="./logo_white_strapline.svg" alt="Katapult logo" width="40%" /></p>
 
 ## Version constraints
 * V1.x supports PHP 5.6
@@ -43,11 +43,10 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email josh@grizzlyware.com instead of using the issue tracker.
+If you discover any security related issues, please email contact@krystal.uk instead of using the issue tracker.
 
 ## Credits
 
-- [Josh Bonfield](https://github.com/mewejo)
 - [All Contributors](../../contributors)
 
 ## License
