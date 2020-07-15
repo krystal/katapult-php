@@ -103,14 +103,29 @@ class ResourceController implements ResourceControllerInterface
      */
     public function all()
     {
-        $res = $this->api->get($this->createApiUrl());
+        $lastFetchedPage = null;
+        $nextPage = 1;
+        $totalPages = null;
 
         $resources = [];
         $resourceClass = $this->mappedResourceClass; // Due to lacking Uniform Variable Syntax in PHP < 7
 
-        foreach(\GuzzleHttp\json_decode($res->getBody())->{$this->resourceNamePlural} as $resourceSpec)
+        while($lastFetchedPage === null || $lastFetchedPage < $totalPages)
         {
-            $resources[] = $resourceClass::instantiateFromSpec($resourceSpec, $this);
+            $res = $this->api->get($this->createApiUrl(null, ['query' => ['page' => $nextPage]]));
+            $responseBody = \GuzzleHttp\json_decode($res->getBody());
+
+            foreach($responseBody->{$this->resourceNamePlural} as $resourceSpec)
+            {
+                $resources[] = $resourceClass::instantiateFromSpec($resourceSpec, $this);
+            }
+
+            // If this route doesn't support pagination, break out
+            if(!isset($responseBody->pagination)) break;
+
+            $lastFetchedPage = $nextPage;
+            $totalPages = $responseBody->pagination->total_pages;
+            $nextPage++;
         }
 
         return $resources;

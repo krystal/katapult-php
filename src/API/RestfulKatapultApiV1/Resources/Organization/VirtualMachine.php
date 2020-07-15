@@ -51,14 +51,14 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
                         break;
                 }
             }
-
-            return $url;
         }
         else
         {
             if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
-            return 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/virtual_machines';
+            $url = 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/virtual_machines';
         }
+
+        return \Krystal\Katapult\API\RestfulKatapultApiV1\Helper::addQueryToUrl($url, $arguments);
     }
 
     public static function callApiAction(ResourceController $resourceController, $action, $arguments)

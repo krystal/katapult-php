@@ -22,7 +22,9 @@ class ConsoleSession extends \Krystal\Katapult\Resources\Organization\VirtualMac
         else
         {
             if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
-            return 'virtual_machines/' . Helper::pluckObject($arguments, VirtualMachine::class)->id . '/console_sessions';
+            $url = 'virtual_machines/' . Helper::pluckObject($arguments, VirtualMachine::class)->id . '/console_sessions';
         }
+
+        return \Krystal\Katapult\API\RestfulKatapultApiV1\Helper::addQueryToUrl($url, $arguments);
     }
 }

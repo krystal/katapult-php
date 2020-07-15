@@ -18,12 +18,14 @@ class DnsZone extends \Krystal\Katapult\Resources\Organization\DNS\DnsZone imple
     {
         if($resourceId)
         {
-            return "dns/zones/{$resourceId}";
+            $url = "dns/zones/{$resourceId}";
         }
         else
         {
             if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
-            return 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/dns/zones';
+            $url = 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/dns/zones';
         }
+
+        return \Krystal\Katapult\API\RestfulKatapultApiV1\Helper::addQueryToUrl($url, $arguments);
     }
 }

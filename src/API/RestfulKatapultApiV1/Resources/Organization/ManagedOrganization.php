@@ -22,7 +22,9 @@ class ManagedOrganization extends Organization\ManagedOrganization implements Re
         else
         {
             if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
-            return 'organizations/' . Helper::pluckObject($arguments, Organization::class)->id . '/managed';
+            $url = 'organizations/' . Helper::pluckObject($arguments, Organization::class)->id . '/managed';
         }
+
+        return \Krystal\Katapult\API\RestfulKatapultApiV1\Helper::addQueryToUrl($url, $arguments);
     }
 }

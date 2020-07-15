@@ -17,11 +17,13 @@ class VirtualMachineBuild extends \Krystal\Katapult\Resources\Organization\Virtu
     {
         if($resourceId)
         {
-            return "virtual_machines/builds/{$resourceId}";
+            $url = "virtual_machines/builds/{$resourceId}";
         }
         else
         {
             throw new \Exception('VirtualMachineBuild does not support fetching a multiple resources');
         }
+
+        return \Krystal\Katapult\API\RestfulKatapultApiV1\Helper::addQueryToUrl($url, $arguments);
     }
 }
