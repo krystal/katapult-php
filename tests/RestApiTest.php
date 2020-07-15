@@ -43,6 +43,7 @@ class RestApiTest extends TestCase
         $this->resourceClasses = [
             RestfulKatapultApiV1\Resources\DataCenter::class,
             RestfulKatapultApiV1\Resources\Organization::class,
+            RestfulKatapultApiV1\Resources\VirtualMachinePackage::class,
         ];
     }
 
