@@ -98,10 +98,21 @@ class ResourceController implements ResourceControllerInterface
         return $mappedResourceClass::getUrl($resourceId, array_merge($this->arguments, $contextualArguments));
     }
 
+
     /**
+     * @return ResourceInterface|null
+     */
+    public function first()
+    {
+        $resources = $this->all(false);
+        return count($resources) > 0 ? reset($resources) : null;
+    }
+
+    /**
+     * @param bool $fetchAllPages
      * @return array
      */
-    public function all()
+    public function all($fetchAllPages = true)
     {
         $lastFetchedPage = null;
         $nextPage = 1;
@@ -121,7 +132,7 @@ class ResourceController implements ResourceControllerInterface
             }
 
             // If this route doesn't support pagination, break out
-            if(!isset($responseBody->pagination)) break;
+            if(!$fetchAllPages || !isset($responseBody->pagination)) break;
 
             $lastFetchedPage = $nextPage;
             $totalPages = $responseBody->pagination->total_pages;

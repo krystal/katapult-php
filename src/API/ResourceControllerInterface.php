@@ -10,4 +10,9 @@ interface ResourceControllerInterface
      * @return array
      */
     public function all();
+
+    /**
+     * @return ResourceInterface|null
+     */
+    public function first();
 }

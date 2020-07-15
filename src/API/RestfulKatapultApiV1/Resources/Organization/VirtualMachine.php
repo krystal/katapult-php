@@ -23,6 +23,7 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
     const ACTION_STOP = 'stop';
     const ACTION_SHUTDOWN = 'shutdown';
     const ACTION_RESET = 'reset';
+    const ACTION_CHANGE_PACKAGE = 'change_package';
 
     public static function getUrl($resourceId = null, $arguments = null)
     {
@@ -48,6 +49,10 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
 
                     case self::ACTION_RESET:
                         $url .= "/reset";
+                        break;
+
+                    case self::ACTION_CHANGE_PACKAGE:
+                        $url .= "/package";
                         break;
                 }
             }
@@ -121,5 +126,12 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
         return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_RESET
         ]));
+    }
+
+    public function changePackage($virtualMachinePackageLookup)
+    {
+        return $this->resourceController->api->put($this->resourceController->createApiUrl($this->id, [
+            'action' => self::ACTION_CHANGE_PACKAGE
+        ]), ['virtual_machine_package' => $virtualMachinePackageLookup]);
     }
 }

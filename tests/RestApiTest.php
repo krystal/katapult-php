@@ -217,6 +217,16 @@ class RestApiTest extends TestCase
     }
 
     /** @test */
+    public function can_get_first_of_resource()
+    {
+        foreach($this->resourceClasses as $resourceClass)
+        {
+            $resource = $this->katapult->resource($resourceClass)->first();
+            $this->assertInstanceOf($resourceClass, $resource);
+        }
+    }
+
+    /** @test */
     public function can_create_dns_zone()
     {
         if(!self::TEST_DNS) return;
@@ -229,7 +239,6 @@ class RestApiTest extends TestCase
         ]);
 
         $this->assertInstanceOf(Organization\DNS\DnsZone::class, $zone);
-
     }
 
     /** @test */
@@ -435,6 +444,43 @@ class RestApiTest extends TestCase
                 $consoleSession = $resource->createConsoleSession();
                 $this->assertInstanceOf(VirtualMachine\ConsoleSession::class, $consoleSession);
                 $this->assertTrue(strlen($consoleSession->url) > 15);
+                $success++;
+            }
+            catch(\Exception $e)
+            {
+                $failed++;
+            }
+        }
+
+        $this->assertEquals(count($resources), $success);
+        $this->assertLessThanOrEqual(0, $failed);
+    }
+
+    /** @test */
+    public function can_change_virtual_machine_packages()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        $totalToCreate = 1;
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        // Create some VMs
+        $resources = $this->createVmsAndWaitUntilReady($firstOrg, $totalToCreate);
+        $this->assertCount($totalToCreate, $resources);
+
+        $success = 0;
+        $failed = 0;
+
+        foreach($resources as $resource)
+        {
+            try
+            {
+                // Start the VM and wait for it to come online
+                if($resource->state != 'started') $this->executeVmPowerOperationAndWaitUntilCompleted($resource, RestfulKatapultApiV1\Resources\Organization\VirtualMachine::ACTION_START);
+
+                $resource->changePackage(['id' => 'vmpkg_NZ9vnAhUyUlanf65']);
                 $success++;
             }
             catch(\Exception $e)
