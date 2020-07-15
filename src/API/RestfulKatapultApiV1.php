@@ -68,10 +68,9 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
         {
             $this->client = new GuzzleClient([
                 'base_uri' => $this->endpoint,
-                'timeout' => 2.0,
+                'timeout' => 5.0,
                 'headers' => [
                     'Authorization' => "Bearer {$this->authToken}",
-                    //'Content-Type' => 'application/json',
                     'Accepts' => 'application/json',
                     'User-Agent' => 'Katapult-PHP',
                 ]
