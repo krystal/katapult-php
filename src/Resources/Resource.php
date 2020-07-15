@@ -34,11 +34,16 @@ abstract class Resource implements ResourceInterface
         return $this;
     }
 
-    public static function instantiateFromSpec($spec, ResourceControllerInterface $resourceController)
+    public static function instantiateFromSpec($spec, ResourceControllerInterface $resourceController = null)
     {
         $resourceName = get_called_class();
         $resource = new $resourceName();
-        return $resource->setAttributes($spec)->setResourceController($resourceController);
+        $resource->setAttributes($spec);
+
+        // Set a controller?
+        if($resourceController) $resource->setResourceController($resourceController);
+
+        return $resource;
     }
 
     public function __get($name)

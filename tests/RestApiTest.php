@@ -131,6 +131,8 @@ class RestApiTest extends TestCase
                     unset($vmBuilds[$buildIndex]);
                 }
             }
+
+            sleep(1);
         }
 
         sleep($total * $waitPerVm);
