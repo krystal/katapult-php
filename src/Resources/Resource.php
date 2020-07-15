@@ -12,9 +12,9 @@ abstract class Resource implements ResourceInterface
     protected $attributes = [];
 
     /**
-     * @var ResourceControllerInterface $resourceController
+     * @var ResourceControllerInterface|null $resourceController
      */
-    protected $resourceController;
+    protected $resourceController = null;
 
     public static function getName()
     {
