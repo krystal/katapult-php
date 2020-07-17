@@ -9,7 +9,7 @@ PHP library for integrating with [Katapult](https://katapult.io/)
 
 ## Version constraints
 * V1.x supports PHP 5.6
-* V2.x supports PHP 7.3 (not released)
+* V2.x supports PHP 7.3
 
 ## Installation
 
@@ -22,23 +22,7 @@ composer require krystal/katapult
 ## Usage
 
 ``` php
-use Krystal\Katapult\Katapult;
-use Krystal\Katapult\Resources\Organization;
-use Krystal\Katapult\API\RestfulKatapultApiV1;
-
-// Instantiate Katapult
-$useProductionApi = true;
-$katapultApi = (new RestfulKatapultApiV1($useProductionApi))->setAuthenticationToken('your-api-token');
-$katapult = Katapult::make($katapultApi);
-
-// Fetch organizations, and grab the first one
-$firstOrganization = $katapult->resource(Organization::class)->all()[0];
-
-// Make the request
-$response = $katapult->resource(Organization\VirtualMachine::class, $firstOrganization)->build([
-    'package' => ['id' => 'vmpkg_B66yYQl0e3UNTCEa'], // Change as suitable, or fetch from the API
-    'data_center' => ['id' => 'loc_gTvEnqqnKohbFBJR'] // As above
-]);
+// TODO
 ```
 
 ### Testing
