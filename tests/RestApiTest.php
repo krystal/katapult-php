@@ -355,6 +355,27 @@ class RestApiTest extends TestCase
     }
 
     /** @test */
+    public function can_change_flexible_resources_of_virtual_machine()
+    {
+        if(!self::TEST_COMPUTE) return;
+
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        // Creates VMs to test this method with
+        $vms = $this->createVmsAndWaitUntilReady($firstOrg, 1, 0);
+        $vm = reset($vms);
+
+        // Change its resources
+        $task = $vm->changeFlexibleResources([
+            'cpu_cores' => rand(4, 10),
+            'memory_in_gb' => rand(4, 10)
+        ]);
+
+        $this->assertInstanceOf(Task::class, $task);
+    }
+
+    /** @test */
     public function can_fetch_virtual_machines()
     {
         $totalToCreate = 2;
@@ -463,7 +484,8 @@ class RestApiTest extends TestCase
                 {
                     try
                     {
-                        $vm->{$powerOperation}();
+                        $task = $vm->{$powerOperation}();
+                        $this->assertInstanceOf(Task::class, $task);
                         $success++;
                     }
                     catch(\Exception $e)
@@ -541,7 +563,8 @@ class RestApiTest extends TestCase
                 // Start the VM and wait for it to come online
                 if($resource->state != 'started') $this->executeVmPowerOperationAndWaitUntilCompleted($resource, RestfulKatapultApiV1\Resources\Organization\VirtualMachine::ACTION_START);
 
-                $resource->changePackage(['id' => 'vmpkg_NZ9vnAhUyUlanf65']);
+                $task = $resource->changePackage(['id' => 'vmpkg_NZ9vnAhUyUlanf65']);
+                $this->assertInstanceOf(Task::class, $task);
                 $success++;
             }
             catch(\Exception $e)
