@@ -100,38 +100,76 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
         return Katapult::make($this->resourceController->api)->resource(\Krystal\Katapult\Resources\Organization\VirtualMachine\ConsoleSession::class, $this)->create();
     }
 
+    /**
+     * @return Task
+     */
     public function start()
     {
-        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+        $res = $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_START
         ]));
+
+        return Task::instantiateFromSpec(\GuzzleHttp\json_decode($res->getBody())->task, $this->resourceController);
     }
 
+    /**
+     * @return Task
+     */
     public function stop()
     {
-        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+        $res = $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_STOP
         ]));
+
+        return Task::instantiateFromSpec(\GuzzleHttp\json_decode($res->getBody())->task, $this->resourceController);
     }
 
+    /**
+     * @return Task
+     */
     public function shutdown()
     {
-        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+        $res = $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_SHUTDOWN
         ]));
+
+        return Task::instantiateFromSpec(\GuzzleHttp\json_decode($res->getBody())->task, $this->resourceController);
     }
 
+    /**
+     * @return Task
+     */
     public function reset()
     {
-        return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
+        $res = $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_RESET
         ]));
+
+        return Task::instantiateFromSpec(\GuzzleHttp\json_decode($res->getBody())->task, $this->resourceController);
     }
 
+    /**
+     * @return Task
+     */
     public function changePackage($virtualMachinePackageLookup)
     {
-        return $this->resourceController->api->put($this->resourceController->createApiUrl($this->id, [
+        $res = $this->resourceController->api->put($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_CHANGE_PACKAGE
         ]), ['virtual_machine_package' => $virtualMachinePackageLookup]);
+
+        return Task::instantiateFromSpec(\GuzzleHttp\json_decode($res->getBody())->task, $this->resourceController);
+    }
+
+    /**
+     * @param array $resources
+     * @return Task
+     */
+    public function changeFlexibleResources($resources)
+    {
+        $res = $this->resourceController->api->put($this->resourceController->createApiUrl($this->id) . '/flexible_resources', [
+            'resources' => $resources
+        ]);
+
+        return Task::instantiateFromSpec(\GuzzleHttp\json_decode($res->getBody())->task, $this->resourceController);
     }
 }
