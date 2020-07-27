@@ -30,6 +30,11 @@ class RestApiTest extends TestCase
      */
     private $katapult;
 
+    /**
+     * @var string[]
+     */
+    private $orgDependendeptResourceClasses;
+
     const TEST_DNS = true;
     const TEST_COMPUTE = true;
 
@@ -44,6 +49,10 @@ class RestApiTest extends TestCase
             RestfulKatapultApiV1\Resources\DataCenter::class,
             RestfulKatapultApiV1\Resources\Organization::class,
             RestfulKatapultApiV1\Resources\VirtualMachinePackage::class,
+        ];
+
+        $this->orgDependendeptResourceClasses = [
+            RestfulKatapultApiV1\Resources\DiskTemplate::class,
         ];
     }
 
@@ -222,6 +231,56 @@ class RestApiTest extends TestCase
         foreach($this->resourceClasses as $resourceClass)
         {
             $resource = $this->katapult->resource($resourceClass)->first();
+            $this->assertInstanceOf($resourceClass, $resource);
+        }
+    }
+
+    /** @test */
+    public function can_list_organization_resources()
+    {
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        foreach($this->orgDependendeptResourceClasses as $resourceClass)
+        {
+            $resources = $this->katapult->resource($resourceClass, $firstOrg)->all();
+            $this->assertTrue(is_array($resources));
+            $this->assertTrue(count($resources) > 0);
+
+            foreach($resources as $resource)
+            {
+                $this->assertInstanceOf($resourceClass, $resource);
+            }
+        }
+    }
+
+    /** @test */
+    public function can_get_single_organization_resources()
+    {
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        foreach($this->orgDependendeptResourceClasses as $resourceClass)
+        {
+            // Certain resources cannot be fetched individually
+            if(in_array($resourceClass, [
+                RestfulKatapultApiV1\Resources\DiskTemplate::class,
+            ])) continue;
+
+            $resources = $this->katapult->resource($resourceClass, $firstOrg)->all();
+
+            $firstResource = reset($resources);
+            $fetchedResource = $this->katapult->resource($resourceClass)->get($firstResource->id);
+            $this->assertInstanceOf($resourceClass, $fetchedResource);
+        }
+    }
+
+    /** @test */
+    public function can_get_first_of_organization_resource()
+    {
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        foreach($this->orgDependendeptResourceClasses as $resourceClass)
+        {
+            $resource = $this->katapult->resource($resourceClass, $firstOrg)->first();
             $this->assertInstanceOf($resourceClass, $resource);
         }
     }
