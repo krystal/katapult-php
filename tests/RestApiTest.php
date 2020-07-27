@@ -33,7 +33,7 @@ class RestApiTest extends TestCase
     /**
      * @var string[]
      */
-    private $orgDependendeptResourceClasses;
+    private $orgDependentResourceClasses;
 
     const TEST_DNS = true;
     const TEST_COMPUTE = true;
@@ -51,7 +51,7 @@ class RestApiTest extends TestCase
             RestfulKatapultApiV1\Resources\VirtualMachinePackage::class,
         ];
 
-        $this->orgDependendeptResourceClasses = [
+        $this->orgDependentResourceClasses = [
             RestfulKatapultApiV1\Resources\DiskTemplate::class,
         ];
     }
@@ -240,7 +240,7 @@ class RestApiTest extends TestCase
     {
         $firstOrg = self::getFirstOrganization($this->katapult);
 
-        foreach($this->orgDependendeptResourceClasses as $resourceClass)
+        foreach($this->orgDependentResourceClasses as $resourceClass)
         {
             $resources = $this->katapult->resource($resourceClass, $firstOrg)->all();
             $this->assertTrue(is_array($resources));
@@ -258,7 +258,7 @@ class RestApiTest extends TestCase
     {
         $firstOrg = self::getFirstOrganization($this->katapult);
 
-        foreach($this->orgDependendeptResourceClasses as $resourceClass)
+        foreach($this->orgDependentResourceClasses as $resourceClass)
         {
             // Certain resources cannot be fetched individually
             if(in_array($resourceClass, [
@@ -278,7 +278,7 @@ class RestApiTest extends TestCase
     {
         $firstOrg = self::getFirstOrganization($this->katapult);
 
-        foreach($this->orgDependendeptResourceClasses as $resourceClass)
+        foreach($this->orgDependentResourceClasses as $resourceClass)
         {
             $resource = $this->katapult->resource($resourceClass, $firstOrg)->first();
             $this->assertInstanceOf($resourceClass, $resource);
