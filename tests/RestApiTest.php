@@ -53,6 +53,7 @@ class RestApiTest extends TestCase
 
         $this->orgDependentResourceClasses = [
             RestfulKatapultApiV1\Resources\DiskTemplate::class,
+            RestfulKatapultApiV1\Resources\VirtualNetwork::class,
         ];
     }
 
@@ -263,6 +264,7 @@ class RestApiTest extends TestCase
             // Certain resources cannot be fetched individually
             if(in_array($resourceClass, [
                 RestfulKatapultApiV1\Resources\DiskTemplate::class,
+                RestfulKatapultApiV1\Resources\VirtualNetwork::class,
             ])) continue;
 
             $resources = $this->katapult->resource($resourceClass, $firstOrg)->all();
