@@ -16,19 +16,19 @@ use Krystal\Katapult\Resources\Organization\VirtualMachine\VirtualMachineBuild;
 class RestApiTest extends TestCase
 {
     /**
-     * @var void
+     * @var RestfulKatapultApiV1
      */
     private $katapultApi;
-
-    /**
-     * @var string[]
-     */
-    private $resourceClasses;
 
     /**
      * @var Katapult
      */
     private $katapult;
+
+    /**
+     * @var string[]
+     */
+    private $resourceClasses;
 
     /**
      * @var string[]
