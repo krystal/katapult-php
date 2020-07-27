@@ -54,6 +54,7 @@ class RestApiTest extends TestCase
         $this->orgDependentResourceClasses = [
             RestfulKatapultApiV1\Resources\DiskTemplate::class,
             RestfulKatapultApiV1\Resources\VirtualNetwork::class,
+            RestfulKatapultApiV1\Resources\Network::class,
         ];
     }
 
@@ -265,6 +266,7 @@ class RestApiTest extends TestCase
             if(in_array($resourceClass, [
                 RestfulKatapultApiV1\Resources\DiskTemplate::class,
                 RestfulKatapultApiV1\Resources\VirtualNetwork::class,
+                RestfulKatapultApiV1\Resources\Network::class,
             ])) continue;
 
             $resources = $this->katapult->resource($resourceClass, $firstOrg)->all();
