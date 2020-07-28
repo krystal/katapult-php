@@ -184,7 +184,9 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
      */
     public function getProperty_management_url()
     {
-        $managementHost = parse_url($this->resourceController->api->getEndpoint(), \PHP_URL_HOST);
+        $apiHost = parse_url($this->resourceController->api->getEndpoint(), \PHP_URL_HOST);
+        $managementHost = Helper::strReplaceFirst('api.', 'my.', $apiHost);
+        echo $managementHost;
         return "https://{$managementHost}/o/{$this->organization->sub_domain}/virtual_machines/{$this->id}";
     }
 }
