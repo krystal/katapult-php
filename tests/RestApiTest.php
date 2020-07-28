@@ -402,6 +402,20 @@ class RestApiTest extends TestCase
     }
 
     /** @test */
+    public function can_fetch_virtual_machine_management_url()
+    {
+        // First we need to fetch an org, so we can fetch it's resources
+        $firstOrg = self::getFirstOrganization($this->katapult);
+
+        // Creates VMs to test this method with
+        $vms = $this->createVmsAndWaitUntilReady($firstOrg, 1, 0);
+        $vm = reset($vms);
+
+        $this->assertStringStartsWith('https://', $vm->management_url);
+        $this->assertTrue(strpos($vm->management_url, $vm->id) !== false);
+    }
+
+    /** @test */
     public function can_perform_power_operations_on_virtual_machines()
     {
         if(!self::TEST_COMPUTE) return;

@@ -48,6 +48,8 @@ abstract class Resource implements ResourceInterface
 
     public function __get($name)
     {
+        $getterMethod = "getProperty_{$name}";
+        if(method_exists($this, $getterMethod)) return $this->{$getterMethod}();
         return isset($this->attributes[$name]) ? $this->attributes[$name] : null;
     }
 }

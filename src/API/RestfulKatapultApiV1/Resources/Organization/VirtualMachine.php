@@ -13,6 +13,12 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMach
 use Krystal\Katapult\Helper;
 use Krystal\Katapult\Katapult;
 
+/**
+ * Class VirtualMachine
+ * @package Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization
+ *
+ * @property-read string $management_url
+ */
 class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMachine implements ResourceInterface
 {
     use SnakeCaseResourceName;
@@ -172,4 +178,14 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
 
         return Task::instantiateFromSpec(\GuzzleHttp\json_decode($res->getBody())->task, $this->resourceController);
     }
+
+    /**
+     * @return string
+     */
+    public function getProperty_management_url()
+    {
+        $managementHost = parse_url($this->resourceController->api->getEndpoint(), \PHP_URL_HOST);
+        return "https://{$managementHost}/o/{$this->organization->sub_domain}/virtual_machines/{$this->id}";
+    }
 }
+

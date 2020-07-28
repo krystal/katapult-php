@@ -46,6 +46,14 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
     }
 
     /**
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
+    }
+
+    /**
      * @param string $authToken
      */
     public function setAuthenticationToken($authToken)
