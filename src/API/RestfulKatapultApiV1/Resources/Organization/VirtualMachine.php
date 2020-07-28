@@ -186,7 +186,6 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
     {
         $apiHost = parse_url($this->resourceController->api->getEndpoint(), \PHP_URL_HOST);
         $managementHost = Helper::strReplaceFirst('api.', 'my.', $apiHost);
-        echo $managementHost;
         return "https://{$managementHost}/o/{$this->organization->sub_domain}/virtual_machines/{$this->id}";
     }
 }
