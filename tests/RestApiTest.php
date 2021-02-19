@@ -33,7 +33,7 @@ class RestApiTest extends TestCase
     const TEST_DNS = true;
     const TEST_COMPUTE = true;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -47,7 +47,7 @@ class RestApiTest extends TestCase
         ];
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
 

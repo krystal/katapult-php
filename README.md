@@ -9,7 +9,7 @@ PHP library for integrating with [Katapult](https://katapult.io/)
 
 ## Version constraints
 * V1.x supports PHP 5.6
-* V2.x supports PHP 7.3
+* V2.x supports PHP 7.4
 
 ## Installation
 
