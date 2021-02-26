@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\DataCenter;
 use Krystal\Katapult\Resources\Organization\VirtualMachine\VirtualMachineBuild;
 
-class RestApiTest extends TestCase
+class RestApiTester extends TestCase
 {
     /**
      * @var void
@@ -30,14 +30,14 @@ class RestApiTest extends TestCase
      */
     private $katapult;
 
-    const TEST_DNS = true;
-    const TEST_COMPUTE = true;
+    const TEST_DNS = false;
+    const TEST_COMPUTE = false;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->katapultApi = (new RestfulKatapultApiV1())->setAuthenticationToken(getenv('KATAPULT_API_TOKEN'));
+        $this->katapultApi = (new RestfulKatapultApiV1(true))->setAuthenticationToken(getenv('KATAPULT_API_TOKEN'));
         $this->katapult = Katapult::make($this->katapultApi);
 
         $this->resourceClasses = [
