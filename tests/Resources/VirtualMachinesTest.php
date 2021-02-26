@@ -3,6 +3,8 @@
 namespace Krystal\Katapult\Tests\Resources;
 
 use Exception;
+use GuzzleHttp\Exception\RequestException;
+use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMachine as ApiV1VirtualMachine;
 use Krystal\Katapult\Resources\Organization;
 use Krystal\Katapult\Resources\Organization\VirtualMachine;
 use Krystal\Katapult\Resources\Organization\VirtualMachine\VirtualMachineBuild;
@@ -18,7 +20,6 @@ use Krystal\Katapult\Tests\RestApiTestCase;
  * Class VirtualMachinesTest
  * @package Krystal\Katapult\Tests\Resources
  *
- * @todo Power operations
  * @todo Console sessions
  * @todo Package changes
  */
@@ -36,12 +37,116 @@ class VirtualMachinesTest extends RestApiTestCase
     /**
      * @throws Exception
      */
+    public function testVmCanBeStarted()
+    {
+        $vm = $this->createResource();
+
+        $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_STOP);
+
+        // Kind of useless, we'd get an exception if we didn't run it successfully
+        $this->assertTrue(
+            !!$vm->start()
+        );
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testVmCanBeStopped()
+    {
+        $vm = $this->createResource();
+
+        $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
+
+        // Kind of useless, we'd get an exception if we didn't run it successfully
+        $this->assertTrue(
+            !!$vm->stop()
+        );
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testVmCanBeShutdown()
+    {
+        $vm = $this->createResource();
+
+        $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
+
+        // Kind of useless, we'd get an exception if we didn't run it successfully
+        $this->assertTrue(
+            !!$vm->shutdown()
+        );
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testVmCanBeReset()
+    {
+        $vm = $this->createResource();
+
+        $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
+
+        // Kind of useless, we'd get an exception if we didn't run it successfully
+        $this->assertTrue(
+            !!$vm->reset()
+        );
+    }
+
+    /**
+     * @throws Exception
+     */
     protected function createResource(): VirtualMachine
     {
         /** @var VirtualMachine $resource */
         $resource = $this->createVmsAndWaitUntilReady()[0];
 
         return $resource;
+    }
+
+    /**
+     * @param VirtualMachine $virtualMachine
+     * @param string $powerOperation
+     * @param bool $justWait - If true, just wait for the expected state, don't request it from Katapult
+     * @throws Exception
+     */
+    protected function executeVmPowerOperationAndWaitUntilComplete(VirtualMachine $virtualMachine, string $powerOperation, bool $justWait = false)
+    {
+        if(!$justWait) {
+            try {
+                $virtualMachine->{$powerOperation}();
+            } catch(RequestException $e) {
+                // Account for the VM being unable to transition to a state because it's already there. These are pre-flight checks. And these are just preceding calls for the actual power function test
+                // Rethrow the exception if it's not the error we're expecting.
+                if(strpos($e->getResponse()->getBody(), 'machine cannot transition') === false) {
+                    throw $e;
+                }
+            }
+        }
+
+        switch($powerOperation) {
+            case ApiV1VirtualMachine::ACTION_START:
+            case ApiV1VirtualMachine::ACTION_RESET:
+                $expectedState = 'started';
+                break;
+
+            case ApiV1VirtualMachine::ACTION_SHUTDOWN:
+            case ApiV1VirtualMachine::ACTION_STOP:
+                $expectedState = 'stopped';
+                break;
+
+            default:
+                throw new Exception('Unexpected action');
+        }
+
+        while(true) {
+            if($this->katapult->resource(VirtualMachine::class)->get($virtualMachine->id)->state === $expectedState) {
+                return;
+            }
+
+            sleep(1);
+        }
     }
 
     protected function createVmsAndWaitUntilReady($total = 1, $waitPerVm = 0, $timeoutPerVm = 10): array
