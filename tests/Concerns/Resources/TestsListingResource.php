@@ -10,8 +10,6 @@ trait TestsListingResource
             $this->createResources();
         }
 
-
-
         $resources = $this->katapult->resource(static::RESOURCE, $this->scopeToOrganization())->all();
 
         $this->assertTrue(is_array($resources));

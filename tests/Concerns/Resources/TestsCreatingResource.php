@@ -4,16 +4,14 @@ namespace Krystal\Katapult\Tests\Concerns\Resources;
 
 trait TestsCreatingResource
 {
-    abstract protected function createResources(int $count = 2): array;
+    abstract protected function createResource();
 
     public function testCanCreateResource()
     {
-        $resource = $this->createResources(1);
-
-        $this->assertTrue(count($resource) > 0);
+        $resource = $this->createResource();
 
         $this->assertTrue(
-            is_a($resource[0], static::RESOURCE)
+            is_a($resource, static::RESOURCE)
         );
     }
 }

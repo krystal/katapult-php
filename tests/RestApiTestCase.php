@@ -4,7 +4,9 @@ namespace Krystal\Katapult\Tests;
 
 use Krystal\Katapult\API\RestfulKatapultApiV1;
 use Krystal\Katapult\Katapult;
+use Krystal\Katapult\Resources\DataCenter;
 use Krystal\Katapult\Resources\Organization;
+use Krystal\Katapult\Resources\VirtualMachinePackage;
 
 abstract class RestApiTestCase extends TestCase
 {
@@ -36,8 +38,17 @@ abstract class RestApiTestCase extends TestCase
 
     protected function getFirstOrganization(): Organization
     {
-        $organizations = $this->katapult->resource(Organization::class)->all();
-        return reset($organizations);
+        return $this->katapult->resource(Organization::class)->first();
+    }
+
+    protected function getFirstDataCenter(): DataCenter
+    {
+        return $this->katapult->resource(DataCenter::class)->first();
+    }
+
+    protected function getVirtualMachinePackage(): VirtualMachinePackage
+    {
+        return $this->katapult->resource(VirtualMachinePackage::class)->first();
     }
 
     protected function scopeToOrganization(): ? Organization

@@ -6,10 +6,13 @@ trait TestsFetchingResource
 {
     public function testCanFetchResource()
     {
-        $resources = $this->katapult->resource(static::RESOURCE, $this->scopeToOrganization())->all();
+        if ($this->hasTrait(CreateResourcesBeforeTesting::class)) {
+            $this->createResources();
+        }
 
-        $firstResource = reset($resources);
-        $fetchedResource = $this->katapult->resource(static::RESOURCE, $this->scopeToOrganization())->get($firstResource->id);
+        $firstResource = $this->katapult->resource(static::RESOURCE, $this->scopeToOrganization())->first();
+
+        $fetchedResource = $this->katapult->resource(static::RESOURCE)->get($firstResource->id);
 
         $this->assertInstanceOf(static::RESOURCE, $fetchedResource);
     }
