@@ -8,6 +8,7 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMach
 use Krystal\Katapult\Resources\Organization;
 use Krystal\Katapult\Resources\Organization\VirtualMachine;
 use Krystal\Katapult\Resources\Organization\VirtualMachine\VirtualMachineBuild;
+use Krystal\Katapult\Resources\VirtualMachinePackage;
 use Krystal\Katapult\Tests\Concerns\Resources\CreateResourcesBeforeTesting;
 use Krystal\Katapult\Tests\Concerns\Resources\CreatesResources;
 use Krystal\Katapult\Tests\Concerns\Resources\TestsCreatingResource;
@@ -19,9 +20,6 @@ use Krystal\Katapult\Tests\RestApiTestCase;
 /**
  * Class VirtualMachinesTest
  * @package Krystal\Katapult\Tests\Resources
- *
- * @todo Console sessions
- * @todo Package changes
  */
 class VirtualMachinesTest extends RestApiTestCase
 {
@@ -49,6 +47,38 @@ class VirtualMachinesTest extends RestApiTestCase
         $consoleSession = $vm->createConsoleSession();
 
         $this->assertInstanceOf(VirtualMachine\ConsoleSession::class, $consoleSession);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testVmPackageCanBeChanged()
+    {
+        $vm = $this->createResource();
+
+        // Start the VM and wait for it to come online
+        if($vm->state !== VirtualMachine::STATE_STARTED) {
+            $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
+        }
+
+        $vmPackages = $this->katapult->resource(VirtualMachinePackage::class)->all();
+
+        foreach($vmPackages as $vmPackage) {
+            if($vmPackage->id === $vm->package->id) {
+                continue;
+            }
+
+            $vmPackageToUse = $vmPackage;
+            break;
+        }
+
+        $this->assertTrue(
+            isset($vmPackageToUse)
+        );
+
+        $this->assertTrue(
+            !!$vm->changePackage(['id' => $vmPackageToUse->id])
+        );
     }
 
     /**
