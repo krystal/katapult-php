@@ -50,6 +50,11 @@ abstract class Resource implements ResourceInterface
     {
         return isset($this->attributes[$name]) ? $this->attributes[$name] : null;
     }
+
+    public function resourceIsScopedByOrganization(): bool
+    {
+        return strpos(get_class($this), "Krystal\Katapult\Resources\Organization\\") === 0;
+    }
 }
 
 

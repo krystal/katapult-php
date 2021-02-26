@@ -24,4 +24,6 @@ interface ResourceInterface
      * @return ResourceInterface
      */
     public function setResourceController(ResourceControllerInterface $resourceController);
+
+    public function resourceIsScopedByOrganization(): bool;
 }

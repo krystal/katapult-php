@@ -10,7 +10,9 @@ trait TestsListingResource
             $this->createResources();
         }
 
-        $resources = $this->katapult->resource(static::RESOURCE)->all();
+
+
+        $resources = $this->katapult->resource(static::RESOURCE, $this->scopeToOrganization())->all();
 
         $this->assertTrue(is_array($resources));
         $this->assertTrue(count($resources) > 0);
@@ -26,7 +28,7 @@ trait TestsListingResource
             $this->createResources();
         }
 
-        $resource = $this->katapult->resource(static::RESOURCE)->first();
+        $resource = $this->katapult->resource(static::RESOURCE, $this->scopeToOrganization())->first();
 
         $this->assertInstanceOf(static::RESOURCE, $resource);
     }

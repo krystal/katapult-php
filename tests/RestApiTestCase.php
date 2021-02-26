@@ -39,6 +39,17 @@ abstract class RestApiTestCase extends TestCase
         $organizations = $this->katapult->resource(Organization::class)->all();
         return reset($organizations);
     }
+
+    protected function scopeToOrganization(): ? Organization
+    {
+        $resourceClass = static::RESOURCE;
+
+        if (!(new $resourceClass)->resourceIsScopedByOrganization()) {
+            return null;
+        }
+
+        return $this->getFirstOrganization();
+    }
 }
 
 

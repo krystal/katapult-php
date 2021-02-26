@@ -21,5 +21,10 @@ abstract class TestCase extends PHPUnitTestCase
     {
         return Helper::classUsesTrait($this, $trait);
     }
+
+    protected static function randomString(): string
+    {
+        return md5(microtime() . mt_rand());
+    }
 }
 
