@@ -2,6 +2,7 @@
 
 namespace Krystal\Katapult\Tests;
 
+use Krystal\Katapult\Helper;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 abstract class TestCase extends PHPUnitTestCase
@@ -14,6 +15,11 @@ abstract class TestCase extends PHPUnitTestCase
     protected function tearDown(): void
     {
         parent::tearDown();
+    }
+
+    protected function hasTrait(string $trait): bool
+    {
+        return Helper::classUsesTrait($this, $trait);
     }
 }
 

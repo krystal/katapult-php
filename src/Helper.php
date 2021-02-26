@@ -22,4 +22,9 @@ class Helper
 
         return null;
     }
+
+    public static function classUsesTrait($class, string $trait): bool
+    {
+        return in_array($trait, class_uses($class));
+    }
 }
