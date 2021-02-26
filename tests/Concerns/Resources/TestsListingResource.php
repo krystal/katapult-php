@@ -15,5 +15,12 @@ trait TestsListingResource
             $this->assertInstanceOf(static::RESOURCE, $resource);
         }
     }
+
+    public function testCanFetchFirstResource()
+    {
+        $resource = $this->katapult->resource(static::RESOURCE)->first();
+
+        $this->assertInstanceOf(static::RESOURCE, $resource);
+    }
 }
 
