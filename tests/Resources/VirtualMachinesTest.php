@@ -196,7 +196,7 @@ class VirtualMachinesTest extends RestApiTestCase
         }
     }
 
-    protected function createVmsAndWaitUntilReady($total = 1, $waitPerVm = 0, $timeoutPerVm = 10): array
+    protected function createVmsAndWaitUntilReady($total = 1, $waitPerVm = 5, $timeoutPerVm = 10): array
     {
         $vmBuilds = [];
 
