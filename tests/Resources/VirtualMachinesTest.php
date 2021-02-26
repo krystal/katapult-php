@@ -37,6 +37,23 @@ class VirtualMachinesTest extends RestApiTestCase
     /**
      * @throws Exception
      */
+    public function testConsoleSessionCanBeCreated()
+    {
+        $vm = $this->createResource();
+
+        // Start the VM and wait for it to come online
+        if($vm->state != 'started') {
+            $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
+        }
+
+        $consoleSession = $vm->createConsoleSession();
+
+        $this->assertInstanceOf(VirtualMachine\ConsoleSession::class, $consoleSession);
+    }
+
+    /**
+     * @throws Exception
+     */
     public function testVmCanBeStarted()
     {
         $vm = $this->createResource();
