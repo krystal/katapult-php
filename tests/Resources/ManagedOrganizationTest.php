@@ -16,15 +16,7 @@ class ManagedOrganizationTest extends RestApiTestCase
 
     protected function createResource(): ManagedOrganization
     {
-        $orgKey = substr('php-lib-test-' . self::randomString(), 0, 30);
-
-        /** @var ManagedOrganization $resource */
-        $resource = $this->katapult->resource(static::RESOURCE, $this->getFirstOrganization())->create([
-            'name' => $orgKey,
-            'sub_domain' => $orgKey
-        ]);
-
-        return $resource;
+        return new ManagedOrganization();
     }
 }
 

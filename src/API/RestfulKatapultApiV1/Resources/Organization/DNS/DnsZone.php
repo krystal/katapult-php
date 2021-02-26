@@ -6,6 +6,7 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\ResourceInterface;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\CanBeDeleted;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\HandlesApiActions;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SnakeCaseResourceName;
+use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SupportsIndexing;
 use Krystal\Katapult\Helper;
 
 class DnsZone extends \Krystal\Katapult\Resources\Organization\DNS\DnsZone implements ResourceInterface
@@ -13,6 +14,7 @@ class DnsZone extends \Krystal\Katapult\Resources\Organization\DNS\DnsZone imple
     use SnakeCaseResourceName;
     use HandlesApiActions;
     use CanBeDeleted;
+    use SupportsIndexing;
 
     public static function getUrl($resourceId = null, $arguments = null)
     {

@@ -6,6 +6,7 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\ResourceController;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\HandlesApiActions;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\HasStandardUrls;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SnakeCaseResourceName;
+use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SupportsIndexing;
 use Krystal\Katapult\Helper;
 use Krystal\Katapult\Katapult;
 
@@ -14,6 +15,7 @@ class Organization extends \Krystal\Katapult\Resources\Organization implements R
     use SnakeCaseResourceName;
     use HandlesApiActions;
     use HasStandardUrls;
+    use SupportsIndexing;
 
     /**
      * @return Organization\ManagedOrganization

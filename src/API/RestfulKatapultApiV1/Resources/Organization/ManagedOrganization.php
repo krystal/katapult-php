@@ -3,6 +3,7 @@
 namespace Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization;
 
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\ResourceInterface;
+use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\DoesNotSupportIndexing;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\HandlesApiActions;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SnakeCaseResourceName;
 use Krystal\Katapult\Helper;
@@ -12,6 +13,7 @@ class ManagedOrganization extends Organization\ManagedOrganization implements Re
 {
     use HandlesApiActions;
     use SnakeCaseResourceName;
+    use DoesNotSupportIndexing;
 
     public static function getUrl($resourceId = null, $arguments = null)
     {

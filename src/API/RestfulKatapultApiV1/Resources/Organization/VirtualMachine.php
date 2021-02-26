@@ -10,6 +10,7 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\HandlesApiActions;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SnakeCaseResourceName;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Task;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMachine\VirtualMachineBuild;
+use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SupportsIndexing;
 use Krystal\Katapult\Helper;
 use Krystal\Katapult\Katapult;
 
@@ -18,6 +19,7 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
     use SnakeCaseResourceName;
     use HandlesApiActions;
     use CanBeDeleted;
+    use SupportsIndexing;
 
     const ACTION_START = 'start';
     const ACTION_STOP = 'stop';

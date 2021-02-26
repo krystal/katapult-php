@@ -114,6 +114,11 @@ class ResourceController implements ResourceControllerInterface
      */
     public function all($fetchAllPages = true)
     {
+        // If this resource doesn't support index listing, just return an empty array
+        if (!$this->mappedResourceClass::supportsResourceIndex()) {
+            return [];
+        }
+
         $lastFetchedPage = null;
         $nextPage = 1;
         $totalPages = null;
