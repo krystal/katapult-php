@@ -9,6 +9,7 @@ use Krystal\Katapult\Resources\Organization\VirtualMachine\VirtualMachineBuild;
 use Krystal\Katapult\Tests\Concerns\Resources\CreateResourcesBeforeTesting;
 use Krystal\Katapult\Tests\Concerns\Resources\CreatesResources;
 use Krystal\Katapult\Tests\Concerns\Resources\TestsCreatingResource;
+use Krystal\Katapult\Tests\Concerns\Resources\TestsDeletingResources;
 use Krystal\Katapult\Tests\Concerns\Resources\TestsFetchingResource;
 use Krystal\Katapult\Tests\Concerns\Resources\TestsListingResource;
 use Krystal\Katapult\Tests\RestApiTestCase;
@@ -28,6 +29,7 @@ class VirtualMachinesTest extends RestApiTestCase
     use TestsCreatingResource;
     use TestsFetchingResource;
     use TestsListingResource;
+    use TestsDeletingResources;
 
     const RESOURCE = VirtualMachine::class;
 
