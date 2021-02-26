@@ -42,7 +42,7 @@ class VirtualMachinesTest extends RestApiTestCase
         $vm = $this->createResource();
 
         // Start the VM and wait for it to come online
-        if($vm->state != 'started') {
+        if($vm->state !== VirtualMachine::STATE_STARTED) {
             $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
         }
 
@@ -145,12 +145,12 @@ class VirtualMachinesTest extends RestApiTestCase
         switch($powerOperation) {
             case ApiV1VirtualMachine::ACTION_START:
             case ApiV1VirtualMachine::ACTION_RESET:
-                $expectedState = 'started';
+                $expectedState = VirtualMachine::STATE_STARTED;
                 break;
 
             case ApiV1VirtualMachine::ACTION_SHUTDOWN:
             case ApiV1VirtualMachine::ACTION_STOP:
-                $expectedState = 'stopped';
+                $expectedState = VirtualMachine::STATE_STOPPED;
                 break;
 
             default:
