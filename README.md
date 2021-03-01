@@ -22,7 +22,20 @@ composer require krystal/katapult
 ## Usage
 
 ``` php
-// TODO
+use Krystal\Katapult\API\RestfulKatapultApiV1 as KatapultApi;
+use Krystal\Katapult\Katapult;
+use Krystal\Katapult\Resources\DataCenter;
+use Krystal\Katapult\Resources\Organization;
+use Krystal\Katapult\Resources\VirtualMachinePackage;
+
+$katapult = Katapult::make(new KatapultApi(
+    'your-katapult-api-token'
+));
+
+$dataCenters = $katapult->resource(DataCenter::class)->all();
+$organization = $katapult->resource(Organization::class)->first();
+$virtualMachinePackages = $katapult->resource(VirtualMachinePackage::class)->all();
+$virtualMachines = $katapult->resource(Organization\VirtualMachine::class, $organization)->all();
 ```
 
 ### Testing
