@@ -16,7 +16,7 @@ class DnsZone extends \Krystal\Katapult\Resources\Organization\DNS\DnsZone imple
     use CanBeDeleted;
     use SupportsIndexing;
 
-    public static function getUrl($resourceId = null, $arguments = null)
+    public static function getUrl(string $resourceId = null, array $arguments = null): string
     {
         if ($resourceId) {
             $url = "dns/zones/{$resourceId}";
@@ -24,6 +24,7 @@ class DnsZone extends \Krystal\Katapult\Resources\Organization\DNS\DnsZone imple
             if (!is_array($arguments) || count($arguments) < 1) {
                 throw new \Exception('No arguments supplied to getUrl method');
             }
+
             $url = 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/dns/zones';
         }
 

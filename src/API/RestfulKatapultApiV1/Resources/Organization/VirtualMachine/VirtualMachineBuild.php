@@ -15,7 +15,7 @@ class VirtualMachineBuild extends \Krystal\Katapult\Resources\Organization\Virtu
     use SnakeCaseResourceName;
     use DoesNotSupportIndexing;
 
-    public static function getUrl($resourceId = null, $arguments = null)
+    public static function getUrl(string $resourceId = null, array $arguments = null): string
     {
         if ($resourceId) {
             $url = "virtual_machines/builds/{$resourceId}";

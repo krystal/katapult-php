@@ -2,6 +2,7 @@
 
 namespace Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization;
 
+use GuzzleHttp\Utils as GuzzleUtils;
 use Krystal\Katapult\API\RestfulKatapultApiV1\ResourceController;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMachine\ConsoleSession;
 use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\ResourceInterface;
@@ -13,6 +14,7 @@ use Krystal\Katapult\API\RestfulKatapultApiV1\Resources\Organization\VirtualMach
 use Krystal\Katapult\API\RestfulKatapultApiV1\Traits\SupportsIndexing;
 use Krystal\Katapult\Helper;
 use Krystal\Katapult\Katapult;
+use Psr\Http\Message\ResponseInterface;
 
 class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMachine implements ResourceInterface
 {
@@ -27,7 +29,7 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
     const ACTION_RESET = 'reset';
     const ACTION_CHANGE_PACKAGE = 'change_package';
 
-    public static function getUrl($resourceId = null, $arguments = null)
+    public static function getUrl(string $resourceId = null, array $arguments = null): string
     {
         if ($resourceId) {
             $url = "virtual_machines/{$resourceId}";
@@ -59,18 +61,19 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
             if (!is_array($arguments) || count($arguments) < 1) {
                 throw new \Exception('No arguments supplied to getUrl method');
             }
+
             $url = 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/virtual_machines';
         }
 
         return \Krystal\Katapult\API\RestfulKatapultApiV1\Helper::addQueryToUrl($url, $arguments);
     }
 
-    public static function callApiAction(ResourceController $resourceController, $action, $arguments)
+    public static function callApiAction(ResourceController $resourceController, string $action, array $arguments)
     {
         switch ($action) {
             case 'build':
                 $res = $resourceController->api->post($resourceController->createApiUrl() . '/build', $arguments[0]);
-                $body = \GuzzleHttp\json_decode($res->getBody());
+                $body = GuzzleUtils::jsonDecode($res->getBody());
 
                 return (object)[
                     'task' => Task::instantiateFromSpec($body->task, $resourceController),
@@ -79,7 +82,7 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
 
             case 'buildFromSpec':
                 $res = $resourceController->api->post($resourceController->createApiUrl() . '/build_from_spec', $arguments[0]);
-                $body = \GuzzleHttp\json_decode($res->getBody());
+                $body = GuzzleUtils::jsonDecode($res->getBody());
 
                 return (object)[
                     'task' => Task::instantiateFromSpec($body->task, $resourceController),
@@ -90,43 +93,42 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
         throw new \Exception('Invalid action called');
     }
 
-    /**
-     * @return ConsoleSession
-     */
-    public function createConsoleSession()
+    public function createConsoleSession(): ConsoleSession
     {
-        return Katapult::make($this->resourceController->api)->resource(\Krystal\Katapult\Resources\Organization\VirtualMachine\ConsoleSession::class, $this)->create();
+        return Katapult::make($this->resourceController->api)
+            ->resource(\Krystal\Katapult\Resources\Organization\VirtualMachine\ConsoleSession::class, $this)
+            ->create();
     }
 
-    public function start()
+    public function start(): ResponseInterface
     {
         return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_START
         ]));
     }
 
-    public function stop()
+    public function stop(): ResponseInterface
     {
         return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_STOP
         ]));
     }
 
-    public function shutdown()
+    public function shutdown(): ResponseInterface
     {
         return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_SHUTDOWN
         ]));
     }
 
-    public function reset()
+    public function reset(): ResponseInterface
     {
         return $this->resourceController->api->post($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_RESET
         ]));
     }
 
-    public function changePackage($virtualMachinePackageLookup)
+    public function changePackage($virtualMachinePackageLookup): ResponseInterface
     {
         return $this->resourceController->api->put($this->resourceController->createApiUrl($this->id, [
             'action' => self::ACTION_CHANGE_PACKAGE
