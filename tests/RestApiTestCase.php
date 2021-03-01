@@ -17,7 +17,10 @@ abstract class RestApiTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->katapultApi = (new RestfulKatapultApiV1(true))->setAuthenticationToken(getenv('KATAPULT_API_TOKEN'));
+        $this->katapultApi = new RestfulKatapultApiV1(
+            getenv('KATAPULT_API_TOKEN')
+        );
+
         $this->katapult = Katapult::make($this->katapultApi);
     }
 

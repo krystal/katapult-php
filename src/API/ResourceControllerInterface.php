@@ -6,13 +6,6 @@ use Krystal\Katapult\Resources\ResourceInterface;
 
 interface ResourceControllerInterface
 {
-    /**
-     * @return array
-     */
-    public function all();
-
-    /**
-     * @return ResourceInterface|null
-     */
-    public function first();
+    public function all(): array;
+    public function first(): ? ResourceInterface;
 }

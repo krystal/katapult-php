@@ -4,101 +4,90 @@ namespace Krystal\Katapult\API;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Krystal\Katapult\API\RestfulKatapultApiV1\ResourceController;
+use Psr\Http\Message\ResponseInterface;
 
 class RestfulKatapultApiV1 extends AbstractKatapultApi
 {
     const PRODUCTION_ENDPOINT = 'https://api.katapult.io/core/v1/';
     const STAGING_ENDPOINT = 'https://api.katapult.dev/core/v1/';
 
-    /**
-     * @var string
-     */
-    private $authToken;
+    private string $authToken;
+    private string $endpoint;
+    private GuzzleClient $client;
 
-    /**
-     * @var string
-     */
-    private $endpoint;
-
-    /**
-     * @var GuzzleClient
-     */
-    private $client;
-
-    public function __construct($useProductionEndpoint = false)
+    public function __construct(string $authToken, $useProductionEndpoint = true)
     {
-        if ($useProductionEndpoint) {
-            $this->setEndpoint(self::PRODUCTION_ENDPOINT);
-        } else {
-            $this->setEndpoint(self::STAGING_ENDPOINT);
-        }
+        $this
+            ->setEndpoint($useProductionEndpoint ? self::PRODUCTION_ENDPOINT : self::STAGING_ENDPOINT, false)
+            ->setAuthenticationToken($authToken, false)
+            ->rebuildClient();
     }
 
-    /**
-     * @param string $endpoint
-     */
-    public function setEndpoint($endpoint)
+    public function rebuildClient(): RestfulKatapultApiV1
     {
-        $this->endpoint = $endpoint;
-    }
+        $this->client = new GuzzleClient([
+            'base_uri' => $this->endpoint,
+            'timeout' => 5.0,
+            'headers' => [
+                'Authorization' => "Bearer {$this->authToken}",
+                'Accepts' => 'application/json',
+                'User-Agent' => 'Katapult-PHP',
+            ]
+        ]);
 
-    /**
-     * @param string $authToken
-     */
-    public function setAuthenticationToken($authToken)
-    {
-        $this->authToken = $authToken;
         return $this;
     }
 
-    public function getResourceController($resourceClass, ...$args)
+    public function setEndpoint(string $endpoint, bool $rebuildClient = true): RestfulKatapultApiV1
+    {
+        $this->endpoint = $endpoint;
+
+        if ($rebuildClient) {
+            $this->rebuildClient();
+        }
+
+        return $this;
+    }
+
+    public function setAuthenticationToken(string $authToken, bool $rebuildClient = true): RestfulKatapultApiV1
+    {
+        $this->authToken = $authToken;
+
+        if ($rebuildClient) {
+            $this->rebuildClient();
+        }
+
+        return $this;
+    }
+
+    public function getResourceController($resourceClass, ...$args): ResourceController
     {
         return ResourceController::make($resourceClass, $this, ...$args);
     }
 
-    /**
-     * @return GuzzleClient
-     */
-    protected function getClient()
+    public function get($url): ResponseInterface
     {
-        if (!$this->client) {
-            $this->client = new GuzzleClient([
-                'base_uri' => $this->endpoint,
-                'timeout' => 5.0,
-                'headers' => [
-                    'Authorization' => "Bearer {$this->authToken}",
-                    'Accepts' => 'application/json',
-                    'User-Agent' => 'Katapult-PHP',
-                ]
-            ]);
-        }
-
-        return $this->client;
+        return $this->client->get($url);
     }
 
-    public function get($url)
-    {
-        return $this->getClient()->get($url);
-    }
-
-    public function post($url, array $body = [])
+    public function post($url, array $body = []): ResponseInterface
     {
         $body['php_nonce'] = md5(microtime());
 
-        return $this->getClient()->post($url, [
+        return $this->client->post($url, [
             'json' => $body
         ]);
     }
 
-    public function put($url, array $body = [])
+    public function put($url, array $body = []): ResponseInterface
     {
-        return $this->getClient()->put($url, [
+        return $this->client->put($url, [
             'json' => $body
         ]);
     }
 
-    public function delete($url)
+    public function delete($url): ResponseInterface
     {
-        return $this->getClient()->delete($url);
+        return $this->client->delete($url);
     }
 }

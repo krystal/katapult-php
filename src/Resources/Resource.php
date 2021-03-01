@@ -16,9 +16,9 @@ abstract class Resource implements ResourceInterface
         return end($parts);
     }
 
-    public function setAttributes(array $attributes): ResourceInterface
+    public function setAttributes(object $attributes): ResourceInterface
     {
-        $this->attributes = $attributes;
+        $this->attributes = (array)$attributes;
 
         return $this;
     }
@@ -30,7 +30,7 @@ abstract class Resource implements ResourceInterface
         return $this;
     }
 
-    public static function instantiateFromSpec($spec, ResourceControllerInterface $resourceController = null): ResourceInterface
+    public static function instantiateFromSpec(object $spec, ResourceControllerInterface $resourceController = null): ResourceInterface
     {
         $resourceName = get_called_class();
         $resource = new $resourceName();

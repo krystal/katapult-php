@@ -17,11 +17,10 @@ class Organization extends \Krystal\Katapult\Resources\Organization implements R
     use HasStandardUrls;
     use SupportsIndexing;
 
-    /**
-     * @return Organization\ManagedOrganization
-     */
-    public function createManagedOrganisation()
+    public function createManagedOrganisation(): Organization\ManagedOrganization
     {
-        return Katapult::make($this->resourceController->api)->resource(\Krystal\Katapult\Resources\Organization\ManagedOrganization::class, $this)->create();
+        return Katapult::make($this->resourceController->api)
+            ->resource(\Krystal\Katapult\Resources\Organization\ManagedOrganization::class, $this)
+            ->create();
     }
 }
