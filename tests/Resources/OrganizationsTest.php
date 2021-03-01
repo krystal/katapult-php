@@ -14,5 +14,3 @@ class OrganizationsTest extends RestApiTestCase
 
     const RESOURCE = Organization::class;
 }
-
-

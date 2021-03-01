@@ -14,7 +14,7 @@ trait TestsDeletingResources
 
         $deleted = 0;
 
-        foreach($resources as $resource) {
+        foreach ($resources as $resource) {
             $resource->delete();
             $deleted++;
         }
@@ -22,4 +22,3 @@ trait TestsDeletingResources
         $this->assertEquals($deleted, count($resources));
     }
 }
-

@@ -6,5 +6,3 @@ trait CreateResourcesBeforeTesting
 {
     abstract protected function createResources(int $count = 2): array;
 }
-
-

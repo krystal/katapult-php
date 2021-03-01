@@ -62,5 +62,3 @@ abstract class RestApiTestCase extends TestCase
         return $this->getFirstOrganization();
     }
 }
-
-

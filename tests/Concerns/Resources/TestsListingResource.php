@@ -15,7 +15,7 @@ trait TestsListingResource
         $this->assertTrue(is_array($resources));
         $this->assertTrue(count($resources) > 0);
 
-        foreach($resources as $resource) {
+        foreach ($resources as $resource) {
             $this->assertInstanceOf(static::RESOURCE, $resource);
         }
     }
@@ -31,4 +31,3 @@ trait TestsListingResource
         $this->assertInstanceOf(static::RESOURCE, $resource);
     }
 }
-

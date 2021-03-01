@@ -40,7 +40,7 @@ class VirtualMachinesTest extends RestApiTestCase
         $vm = $this->createResource();
 
         // Start the VM and wait for it to come online
-        if($vm->state !== VirtualMachine::STATE_STARTED) {
+        if ($vm->state !== VirtualMachine::STATE_STARTED) {
             $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
         }
 
@@ -57,14 +57,14 @@ class VirtualMachinesTest extends RestApiTestCase
         $vm = $this->createResource();
 
         // Start the VM and wait for it to come online
-        if($vm->state !== VirtualMachine::STATE_STARTED) {
+        if ($vm->state !== VirtualMachine::STATE_STARTED) {
             $this->executeVmPowerOperationAndWaitUntilComplete($vm, ApiV1VirtualMachine::ACTION_START);
         }
 
         $vmPackages = $this->katapult->resource(VirtualMachinePackage::class)->all();
 
-        foreach($vmPackages as $vmPackage) {
-            if($vmPackage->id === $vm->package->id) {
+        foreach ($vmPackages as $vmPackage) {
+            if ($vmPackage->id === $vm->package->id) {
                 continue;
             }
 
@@ -160,19 +160,19 @@ class VirtualMachinesTest extends RestApiTestCase
      */
     protected function executeVmPowerOperationAndWaitUntilComplete(VirtualMachine $virtualMachine, string $powerOperation, bool $justWait = false)
     {
-        if(!$justWait) {
+        if (!$justWait) {
             try {
                 $virtualMachine->{$powerOperation}();
-            } catch(RequestException $e) {
+            } catch (RequestException $e) {
                 // Account for the VM being unable to transition to a state because it's already there. These are pre-flight checks. And these are just preceding calls for the actual power function test
                 // Rethrow the exception if it's not the error we're expecting.
-                if(strpos($e->getResponse()->getBody(), 'machine cannot transition') === false) {
+                if (strpos($e->getResponse()->getBody(), 'machine cannot transition') === false) {
                     throw $e;
                 }
             }
         }
 
-        switch($powerOperation) {
+        switch ($powerOperation) {
             case ApiV1VirtualMachine::ACTION_START:
             case ApiV1VirtualMachine::ACTION_RESET:
                 $expectedState = VirtualMachine::STATE_STARTED;
@@ -187,8 +187,8 @@ class VirtualMachinesTest extends RestApiTestCase
                 throw new Exception('Unexpected action');
         }
 
-        while(true) {
-            if($this->katapult->resource(VirtualMachine::class)->get($virtualMachine->id)->state === $expectedState) {
+        while (true) {
+            if ($this->katapult->resource(VirtualMachine::class)->get($virtualMachine->id)->state === $expectedState) {
                 return;
             }
 
@@ -203,7 +203,7 @@ class VirtualMachinesTest extends RestApiTestCase
         $packageId = $this->getVirtualMachinePackage()->id;
         $dataCenterId = $this->getFirstDataCenter()->id;
 
-        for($i = 0; $i < $total; $i++) {
+        for ($i = 0; $i < $total; $i++) {
             $response = $this->katapult->resource(Organization\VirtualMachine::class, $this->getFirstOrganization())->build([
                 'package' => ['id' => $packageId],
                 'data_center' => ['id' => $dataCenterId]
@@ -215,18 +215,17 @@ class VirtualMachinesTest extends RestApiTestCase
         $vms = [];
         $startedAt = time();
 
-        while(count($vmBuilds) > 0) {
-
-            if($startedAt < (time() - ($total * $timeoutPerVm))) {
+        while (count($vmBuilds) > 0) {
+            if ($startedAt < (time() - ($total * $timeoutPerVm))) {
                 throw new Exception('Timeout exceeded for creating VMs');
             }
 
-            foreach($vmBuilds as $buildIndex => $vmBuild) {
+            foreach ($vmBuilds as $buildIndex => $vmBuild) {
                 // Check if the VM is built
                 $virtualMachineBuild = $this->katapult->resource(VirtualMachineBuild::class)->get($vmBuild->id);
 
                 // If built, add it to the VMs array and remove the build from the build array
-                if($virtualMachineBuild->virtual_machine) {
+                if ($virtualMachineBuild->virtual_machine) {
                     $vms[] = $this->katapult->resource(VirtualMachine::class)->get($virtualMachineBuild->virtual_machine->id);
                     unset($vmBuilds[$buildIndex]);
                 }

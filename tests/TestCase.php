@@ -17,4 +17,3 @@ abstract class TestCase extends PHPUnitTestCase
         return md5(microtime() . mt_rand());
     }
 }
-

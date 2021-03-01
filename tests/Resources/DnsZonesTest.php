@@ -32,5 +32,3 @@ class DnsZonesTest extends RestApiTestCase
         return $resource;
     }
 }
-
-

@@ -17,4 +17,3 @@ trait TestsFetchingResource
         $this->assertInstanceOf(static::RESOURCE, $fetchedResource);
     }
 }
-

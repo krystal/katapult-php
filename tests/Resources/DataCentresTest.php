@@ -14,5 +14,3 @@ class DataCentresTest extends RestApiTestCase
 
     const RESOURCE = DataCenter::class;
 }
-
-

@@ -27,5 +27,3 @@ class ManagedOrganizationTest extends RestApiTestCase
         return $resource;
     }
 }
-
-

@@ -14,5 +14,3 @@ class VirtualMachinePackagesTest extends RestApiTestCase
 
     const RESOURCE = VirtualMachinePackage::class;
 }
-
-
