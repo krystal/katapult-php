@@ -4,7 +4,9 @@ namespace Krystal\Katapult;
 
 class Helper
 {
-    // Sourced from Laravel Illuminate Str helper: \Illuminate\Support\Str::snake
+    /**
+     * @note Sourced from Laravel Illuminate Str helper: \Illuminate\Support\Str::snake
+     */
     public static function snakeCase($value, $delimiter = '_')
     {
         $value = preg_replace('/\s+/u', '', $value);

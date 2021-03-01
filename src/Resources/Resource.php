@@ -6,35 +6,31 @@ use Krystal\Katapult\API\ResourceControllerInterface;
 
 abstract class Resource implements ResourceInterface
 {
-    /*
-     * @var array
-     */
-    protected $attributes = [];
+    protected array $attributes = [];
+    protected ? ResourceControllerInterface $resourceController = null;
 
-    /**
-     * @var ResourceControllerInterface|null $resourceController
-     */
-    protected $resourceController = null;
-
-    public static function getName()
+    public static function getName(): string
     {
         $parts = explode('\\', get_called_class());
+
         return end($parts);
     }
 
-    public function setAttributes($attributes)
+    public function setAttributes(array $attributes): ResourceInterface
     {
-        $this->attributes = (array)$attributes;
+        $this->attributes = $attributes;
+
         return $this;
     }
 
-    public function setResourceController(ResourceControllerInterface $resourceController)
+    public function setResourceController(ResourceControllerInterface $resourceController): ResourceInterface
     {
         $this->resourceController = $resourceController;
+
         return $this;
     }
 
-    public static function instantiateFromSpec($spec, ResourceControllerInterface $resourceController = null)
+    public static function instantiateFromSpec($spec, ResourceControllerInterface $resourceController = null): ResourceInterface
     {
         $resourceName = get_called_class();
         $resource = new $resourceName();
@@ -48,7 +44,7 @@ abstract class Resource implements ResourceInterface
         return $resource;
     }
 
-    public function __get($name)
+    public function __get(string $name)
     {
         return isset($this->attributes[$name]) ? $this->attributes[$name] : null;
     }
