@@ -93,7 +93,9 @@ class ResourceController implements ResourceControllerInterface
      */
     public function createApiUrl($resourceId = null, $contextualArguments = null)
     {
-        if(!$contextualArguments) $contextualArguments = [];
+        if (!$contextualArguments) {
+            $contextualArguments = [];
+        }
         $mappedResourceClass = $this->mappedResourceClass; // Due to lacking Uniform Variable Syntax in PHP < 7
         return $mappedResourceClass::getUrl($resourceId, array_merge($this->arguments, $contextualArguments));
     }
@@ -126,18 +128,18 @@ class ResourceController implements ResourceControllerInterface
         $resources = [];
         $resourceClass = $this->mappedResourceClass; // Due to lacking Uniform Variable Syntax in PHP < 7
 
-        while($lastFetchedPage === null || $lastFetchedPage < $totalPages)
-        {
+        while ($lastFetchedPage === null || $lastFetchedPage < $totalPages) {
             $res = $this->api->get($this->createApiUrl(null, ['query' => ['page' => $nextPage]]));
             $responseBody = \GuzzleHttp\json_decode($res->getBody());
 
-            foreach($responseBody->{$this->resourceNamePlural} as $resourceSpec)
-            {
+            foreach ($responseBody->{$this->resourceNamePlural} as $resourceSpec) {
                 $resources[] = $resourceClass::instantiateFromSpec($resourceSpec, $this);
             }
 
             // If this route doesn't support pagination, break out
-            if(!$fetchAllPages || !isset($responseBody->pagination)) break;
+            if (!$fetchAllPages || !isset($responseBody->pagination)) {
+                break;
+            }
 
             $lastFetchedPage = $nextPage;
             $totalPages = $responseBody->pagination->total_pages;
@@ -163,7 +165,9 @@ class ResourceController implements ResourceControllerInterface
      */
     public function create(array $specification = null)
     {
-        if(!$specification) $specification = [];
+        if (!$specification) {
+            $specification = [];
+        }
         $res = $this->api->post($this->createApiUrl(), $specification);
 
         return $this->createResourceFromSpec(\GuzzleHttp\json_decode($res->getBody())->{$this->resourceName});
@@ -178,8 +182,7 @@ class ResourceController implements ResourceControllerInterface
 
     public function __get($name)
     {
-        switch($name)
-        {
+        switch ($name) {
             case 'api':
             case 'resourceName':
                 return $this->{$name};

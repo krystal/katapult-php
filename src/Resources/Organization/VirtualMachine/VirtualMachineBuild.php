@@ -6,5 +6,4 @@ use Krystal\Katapult\Resources\Resource;
 
 class VirtualMachineBuild extends Resource
 {
-
 }

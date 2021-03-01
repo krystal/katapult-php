@@ -23,4 +23,3 @@ class Katapult
         return $this->api->getResourceController($resourceClass, ...$args);
     }
 }
-

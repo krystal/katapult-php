@@ -25,4 +25,3 @@ class Organization extends \Krystal\Katapult\Resources\Organization implements R
         return Katapult::make($this->resourceController->api)->resource(\Krystal\Katapult\Resources\Organization\ManagedOrganization::class, $this)->create();
     }
 }
-

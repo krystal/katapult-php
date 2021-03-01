@@ -41,7 +41,9 @@ abstract class Resource implements ResourceInterface
         $resource->setAttributes($spec);
 
         // Set a controller?
-        if($resourceController) $resource->setResourceController($resourceController);
+        if ($resourceController) {
+            $resource->setResourceController($resourceController);
+        }
 
         return $resource;
     }
@@ -56,5 +58,3 @@ abstract class Resource implements ResourceInterface
         return strpos(get_class($this), "Krystal\Katapult\Resources\Organization\\") === 0;
     }
 }
-
-

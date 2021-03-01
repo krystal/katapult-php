@@ -12,5 +12,4 @@ use Krystal\Katapult\Resources\Resource;
 
 class ConsoleSession extends Resource
 {
-
 }

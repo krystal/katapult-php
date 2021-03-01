@@ -17,12 +17,9 @@ class VirtualMachineBuild extends \Krystal\Katapult\Resources\Organization\Virtu
 
     public static function getUrl($resourceId = null, $arguments = null)
     {
-        if($resourceId)
-        {
+        if ($resourceId) {
             $url = "virtual_machines/builds/{$resourceId}";
-        }
-        else
-        {
+        } else {
             throw new \Exception('VirtualMachineBuild does not support fetching a multiple resources');
         }
 

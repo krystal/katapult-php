@@ -29,14 +29,11 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
 
     public static function getUrl($resourceId = null, $arguments = null)
     {
-        if($resourceId)
-        {
+        if ($resourceId) {
             $url = "virtual_machines/{$resourceId}";
 
-            if(isset($arguments['action']) && $arguments['action'])
-            {
-                switch($arguments['action'])
-                {
+            if (isset($arguments['action']) && $arguments['action']) {
+                switch ($arguments['action']) {
                     case self::ACTION_START:
                         $url .= "/start";
                         break;
@@ -58,10 +55,10 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
                         break;
                 }
             }
-        }
-        else
-        {
-            if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
+        } else {
+            if (!is_array($arguments) || count($arguments) < 1) {
+                throw new \Exception('No arguments supplied to getUrl method');
+            }
             $url = 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/virtual_machines';
         }
 
@@ -70,8 +67,7 @@ class VirtualMachine extends \Krystal\Katapult\Resources\Organization\VirtualMac
 
     public static function callApiAction(ResourceController $resourceController, $action, $arguments)
     {
-        switch($action)
-        {
+        switch ($action) {
             case 'build':
                 $res = $resourceController->api->post($resourceController->createApiUrl() . '/build', $arguments[0]);
                 $body = \GuzzleHttp\json_decode($res->getBody());

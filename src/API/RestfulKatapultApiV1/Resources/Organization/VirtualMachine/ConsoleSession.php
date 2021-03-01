@@ -17,13 +17,12 @@ class ConsoleSession extends \Krystal\Katapult\Resources\Organization\VirtualMac
 
     public static function getUrl($resourceId = null, $arguments = null)
     {
-        if($resourceId)
-        {
+        if ($resourceId) {
             throw new \Exception('ConsoleSession does not support fetching a single resource');
-        }
-        else
-        {
-            if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
+        } else {
+            if (!is_array($arguments) || count($arguments) < 1) {
+                throw new \Exception('No arguments supplied to getUrl method');
+            }
             $url = 'virtual_machines/' . Helper::pluckObject($arguments, VirtualMachine::class)->id . '/console_sessions';
         }
 

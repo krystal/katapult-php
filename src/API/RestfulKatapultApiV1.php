@@ -27,12 +27,9 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
 
     public function __construct($useProductionEndpoint = false)
     {
-        if($useProductionEndpoint)
-        {
+        if ($useProductionEndpoint) {
             $this->setEndpoint(self::PRODUCTION_ENDPOINT);
-        }
-        else
-        {
+        } else {
             $this->setEndpoint(self::STAGING_ENDPOINT);
         }
     }
@@ -64,8 +61,7 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
      */
     protected function getClient()
     {
-        if(!$this->client)
-        {
+        if (!$this->client) {
             $this->client = new GuzzleClient([
                 'base_uri' => $this->endpoint,
                 'timeout' => 5.0,
@@ -106,5 +102,3 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
         return $this->getClient()->delete($url);
     }
 }
-
-

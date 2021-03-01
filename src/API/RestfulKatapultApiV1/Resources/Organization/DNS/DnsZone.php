@@ -18,13 +18,12 @@ class DnsZone extends \Krystal\Katapult\Resources\Organization\DNS\DnsZone imple
 
     public static function getUrl($resourceId = null, $arguments = null)
     {
-        if($resourceId)
-        {
+        if ($resourceId) {
             $url = "dns/zones/{$resourceId}";
-        }
-        else
-        {
-            if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
+        } else {
+            if (!is_array($arguments) || count($arguments) < 1) {
+                throw new \Exception('No arguments supplied to getUrl method');
+            }
             $url = 'organizations/' . Helper::pluckObject($arguments, \Krystal\Katapult\Resources\Organization::class)->id . '/dns/zones';
         }
 

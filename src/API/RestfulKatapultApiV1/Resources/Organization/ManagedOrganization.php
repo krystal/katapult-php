@@ -17,13 +17,12 @@ class ManagedOrganization extends Organization\ManagedOrganization implements Re
 
     public static function getUrl($resourceId = null, $arguments = null)
     {
-        if($resourceId)
-        {
+        if ($resourceId) {
             throw new \Exception('ManagedOrganization does not support fetching a single resource');
-        }
-        else
-        {
-            if(!is_array($arguments) || count($arguments) < 1) throw new \Exception('No arguments supplied to getUrl method');
+        } else {
+            if (!is_array($arguments) || count($arguments) < 1) {
+                throw new \Exception('No arguments supplied to getUrl method');
+            }
             $url = 'organizations/' . Helper::pluckObject($arguments, Organization::class)->id . '/managed';
         }
 

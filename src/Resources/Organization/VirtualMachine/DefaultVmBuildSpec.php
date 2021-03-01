@@ -110,14 +110,11 @@ class DefaultVmBuildSpec
             ]
         ];
 
-        if($this->packageId)
-        {
+        if ($this->packageId) {
             $spec['Resources'] = [
                 'Package' => $this->packageId
             ];
-        }
-        else
-        {
+        } else {
             $spec['Resources'] = [
                 'Memory' => $this->memory,
                 'CPUCores' => $this->cpuCores
@@ -134,14 +131,11 @@ class DefaultVmBuildSpec
             ];
         }
 
-        if($this->hostname)
-        {
+        if ($this->hostname) {
             $spec['Hostname'] = [
                 'Hostname' => $this->hostname
             ];
-        }
-        else
-        {
+        } else {
             $spec['Hostname'] = [
                 'Hostname' => [
                     '_attributes' => ['type' => 'random'],
@@ -243,4 +237,3 @@ class DefaultVmBuildSpec
         return $this;
     }
 }
-

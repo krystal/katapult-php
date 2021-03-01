@@ -9,7 +9,9 @@ trait SnakeCaseResourceName
     public static function getResourceName($pluralize = false)
     {
         $name = Helper::snakeCase(self::getName());
-        if($pluralize) $name .= 's';
+        if ($pluralize) {
+            $name .= 's';
+        }
         return $name;
     }
 }

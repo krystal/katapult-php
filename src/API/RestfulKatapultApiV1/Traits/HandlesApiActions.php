@@ -11,4 +11,3 @@ trait HandlesApiActions
         throw new \Exception('No custom actions have been defined on this resource');
     }
 }
-

@@ -6,8 +6,7 @@ class Helper
 {
     public static function addQueryToUrl($url, $arguments = null)
     {
-        if($arguments && isset($arguments['query']))
-        {
+        if ($arguments && isset($arguments['query'])) {
             $url .= '?' . http_build_query($arguments['query']);
         }
 
