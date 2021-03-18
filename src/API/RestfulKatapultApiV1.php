@@ -3,6 +3,7 @@
 namespace Krystal\Katapult\API;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\HandlerStack;
 use Krystal\Katapult\API\RestfulKatapultApiV1\ResourceController;
 use Psr\Http\Message\ResponseInterface;
 
@@ -15,17 +16,17 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
     private string $endpoint;
     private GuzzleClient $client;
 
-    public function __construct(string $authToken, $useProductionEndpoint = true)
+    public function __construct(string $authToken, $useProductionEndpoint = true, HandlerStack $handlerStack = null)
     {
         $this
             ->setEndpoint($useProductionEndpoint ? self::PRODUCTION_ENDPOINT : self::STAGING_ENDPOINT, false)
             ->setAuthenticationToken($authToken, false)
-            ->rebuildClient();
+            ->rebuildClient($handlerStack);
     }
 
-    public function rebuildClient(): RestfulKatapultApiV1
+    public function rebuildClient(HandlerStack $handlerStack = null): RestfulKatapultApiV1
     {
-        $this->client = new GuzzleClient([
+        $guzzleOptions = [
             'base_uri' => $this->endpoint,
             'timeout' => 5.0,
             'headers' => [
@@ -33,7 +34,13 @@ class RestfulKatapultApiV1 extends AbstractKatapultApi
                 'Accepts' => 'application/json',
                 'User-Agent' => 'Katapult-PHP',
             ]
-        ]);
+        ];
+
+        if ($handlerStack) {
+            $guzzleOptions['handler'] = $handlerStack;
+        }
+
+        $this->client = new GuzzleClient($guzzleOptions);
 
         return $this;
     }
