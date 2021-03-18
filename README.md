@@ -39,7 +39,7 @@ $virtualMachines = $katapult->resource(Organization\VirtualMachine::class, $orga
 ```
 
 ### Guzzle handler stack
-You can change the handler stack used by Guzzle, which is usually used for adding middleware, such as logging requests.
+You can inject your own handler stack for Guzzle, which is usually done for adding middleware, such as logging requests.
 
 ```php
 use Krystal\Katapult\API\RestfulKatapultApiV1 as KatapultApi;
