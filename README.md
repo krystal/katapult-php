@@ -47,7 +47,7 @@ use Krystal\Katapult\Katapult;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Psr\Http\Message\RequestInterface;
-use \Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface;
 
 // Create a handler stack
 $handlerStack = HandlerStack::create();
