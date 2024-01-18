@@ -16,11 +16,6 @@ use Psr\Http\Client\ClientInterface;
 class ClientFactory
 {
     /**
-     * Updted by release-please
-     */
-    private const VERSION = '3.0.0'; // x-release-please-version
-
-    /**
      * @var string Your API key from Katapult.
      */
     private string $token;
@@ -31,6 +26,8 @@ class ClientFactory
      */
     private string $host = 'api.katapult.io';
 
+    private string $version;
+
     /**
      * @var ClientInterface|null Optional HTTP client to use, if you don't want to rely on php-http/discovery.
      */
@@ -39,6 +36,7 @@ class ClientFactory
     public function __construct(string $token)
     {
         $this->token = $token;
+        $this->version = trim(file_get_contents(__DIR__ . '/../VERSION'));
     }
 
     /**
@@ -84,7 +82,7 @@ class ClientFactory
 
         $plugins[] = new HeaderSetPlugin([
             'Authorization' => 'Bearer ' . $this->token,
-            'User-Agent' => 'KatapultAPIClientPHP/' . self::VERSION,
+            'User-Agent' => 'KatapultAPIClientPHP/' . $this->version,
         ]);
 
         $plugins[] = new ErrorPlugin();
