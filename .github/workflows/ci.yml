@@ -7,13 +7,20 @@ on:
     branches:
       - main
       - master
-      - v3
+      - 3.x
+      - 2.x
+      - 1.x
 
 jobs:
 
   release-please:
     runs-on: [ ubuntu-latest ]
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v3'
+    if: |
+        github.ref == 'refs/heads/main' ||
+        github.ref == 'refs/heads/master' ||
+        github.ref == 'refs/heads/1.x' ||
+        github.ref == 'refs/heads/2.x' ||
+        github.ref == 'refs/heads/3.x'
     outputs:
       release_created: ${{ steps.release-please.outputs.release_created }}
       tag_name: ${{ steps.release-please.outputs.tag_name }}
