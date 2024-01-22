@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/krystal/katapult-php/compare/v3.0.0...v3.0.1) (2024-01-22)
+
+
+### Miscellaneous Chores
+
+* 3.x to become main/default ([85ef77c](https://github.com/krystal/katapult-php/commit/85ef77c7691440ee72286ca46a29a1b1a5852a35))
+
 ## [3.0.0](https://github.com/krystal/katapult-php/compare/v2.3.0...v3.0.0) (2024-01-19)
 
 
