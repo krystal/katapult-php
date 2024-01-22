@@ -2,9 +2,8 @@
   "bootstrap-sha": "426c4620d806ddc37828fe9b37c8aef186d1b9bf",
   "packages": {
     ".": {
-      "release-type": "simple",
+      "release-type": "php",
       "changelog-path": "CHANGELOG.md",
-      "extra-files": [],
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
