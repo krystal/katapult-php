@@ -8,9 +8,9 @@
 A PHP library for integrating with [Katapult](https://katapult.io/)
 
 ## Version constraints
-* V1.x supports PHP 5.6
-* V2.x supports PHP 7.4
-* V3.x supports PHP 8.1
+* [v1.x](https://github.com/krystal/katapult-php/tree/1.x) supports PHP 5.6
+* [v2.x](https://github.com/krystal/katapult-php/tree/2.x) supports PHP 7.4
+* v3.x supports PHP 8.1
 
 ## Installation
 
