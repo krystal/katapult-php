@@ -30,11 +30,11 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
      */
     protected $name;
     /**
-     * @var GetVirtualMachineNetworkInterfacesPartNetwork
+     * @var GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork
      */
     protected $network;
     /**
-     * @var GetVirtualMachineNetworkInterfacesPartIPAddresses[]
+     * @var GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesIpAddressesItem[]
      */
     protected $ipAddresses;
 
@@ -64,12 +64,12 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
         return $this;
     }
 
-    public function getNetwork(): GetVirtualMachineNetworkInterfacesPartNetwork
+    public function getNetwork(): GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(GetVirtualMachineNetworkInterfacesPartNetwork $network): self
+    public function setNetwork(GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;
@@ -78,7 +78,7 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
     }
 
     /**
-     * @return GetVirtualMachineNetworkInterfacesPartIPAddresses[]
+     * @return GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesIpAddressesItem[]
      */
     public function getIpAddresses(): array
     {
@@ -86,7 +86,7 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
     }
 
     /**
-     * @param GetVirtualMachineNetworkInterfacesPartIPAddresses[] $ipAddresses
+     * @param GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesIpAddressesItem[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

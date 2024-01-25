@@ -77,17 +77,23 @@ class DiskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setStorageSpeed($data['storage_speed']);
             unset($data['storage_speed']);
         }
-        if (\array_key_exists('io_profile', $data)) {
-            $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskIOProfile', 'json', $context));
+        if (\array_key_exists('io_profile', $data) && $data['io_profile'] !== null) {
+            $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskIoProfile', 'json', $context));
             unset($data['io_profile']);
+        } elseif (\array_key_exists('io_profile', $data) && $data['io_profile'] === null) {
+            $object->setIoProfile(null);
         }
-        if (\array_key_exists('virtual_machine_disk', $data)) {
-            $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachineDisk', 'json', $context));
+        if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
+            $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskVirtualMachineDisk', 'json', $context));
             unset($data['virtual_machine_disk']);
+        } elseif (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] === null) {
+            $object->setVirtualMachineDisk(null);
         }
-        if (\array_key_exists('installation', $data)) {
+        if (\array_key_exists('installation', $data) && $data['installation'] !== null) {
             $object->setInstallation($this->denormalizer->denormalize($data['installation'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskInstallation', 'json', $context));
             unset($data['installation']);
+        } elseif (\array_key_exists('installation', $data) && $data['installation'] === null) {
+            $object->setInstallation(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -49,9 +49,11 @@ class GetVirtualMachinePartGPUsNormalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
@@ -66,7 +68,7 @@ class GetVirtualMachinePartGPUsNormalizer implements DenormalizerInterface, Norm
             unset($data['available']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($this->denormalizer->denormalize($data['type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePartType', 'json', $context));
+            $object->setType($this->denormalizer->denormalize($data['type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePartGPUsType', 'json', $context));
             unset($data['type']);
         }
         foreach ($data as $key => $value) {

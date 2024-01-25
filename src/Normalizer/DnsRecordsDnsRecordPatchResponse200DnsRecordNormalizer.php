@@ -53,25 +53,31 @@ class DnsRecordsDnsRecordPatchResponse200DnsRecordNormalizer implements Denormal
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
         if (\array_key_exists('full_name', $data)) {
             $object->setFullName($data['full_name']);
             unset($data['full_name']);
         }
-        if (\array_key_exists('ttl', $data)) {
+        if (\array_key_exists('ttl', $data) && $data['ttl'] !== null) {
             $object->setTtl($data['ttl']);
             unset($data['ttl']);
+        } elseif (\array_key_exists('ttl', $data) && $data['ttl'] === null) {
+            $object->setTtl(null);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
             unset($data['type']);
         }
-        if (\array_key_exists('priority', $data)) {
+        if (\array_key_exists('priority', $data) && $data['priority'] !== null) {
             $object->setPriority($data['priority']);
             unset($data['priority']);
+        } elseif (\array_key_exists('priority', $data) && $data['priority'] === null) {
+            $object->setPriority(null);
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);

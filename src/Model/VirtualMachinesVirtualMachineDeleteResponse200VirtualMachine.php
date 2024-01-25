@@ -38,7 +38,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
      */
     protected $fqdn;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -46,7 +46,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
      */
     protected $createdAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $initialRootPassword;
     /**
@@ -54,43 +54,43 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
      */
     protected $state;
     /**
-     * @var DeleteVirtualMachinePartZone
+     * @var DeleteVirtualMachine200ResponseVirtualMachineZone
      */
     protected $zone;
     /**
-     * @var DeleteVirtualMachinePartOrganization
+     * @var DeleteVirtualMachine200ResponseVirtualMachineOrganization
      */
     protected $organization;
     /**
-     * @var DeleteVirtualMachinePartGroup
+     * @var DeleteVirtualMachine200ResponseVirtualMachineGroup|null
      */
     protected $group;
     /**
-     * @var DeleteVirtualMachinePartPackage
+     * @var DeleteVirtualMachine200ResponseVirtualMachinePackage|null
      */
     protected $package;
     /**
-     * @var DeleteVirtualMachinePartAttachedISO
+     * @var DeleteVirtualMachine200ResponseVirtualMachineAttachedIso|null
      */
     protected $attachedIso;
     /**
-     * @var int
+     * @var int|null
      */
     protected $memoryInGb;
     /**
-     * @var int
+     * @var int|null
      */
     protected $cpuCores;
     /**
-     * @var DeleteVirtualMachinePartGPUType
+     * @var DeleteVirtualMachine200ResponseVirtualMachineGpuType|null
      */
     protected $gpuType;
     /**
-     * @var DeleteVirtualMachinePartGPUs[]
+     * @var DeleteVirtualMachine200ResponseVirtualMachineGpusItem[]
      */
     protected $gpus;
     /**
-     * @var DeleteVirtualMachinePartTags[]
+     * @var DeleteVirtualMachine200ResponseVirtualMachineTagsItem[]
      */
     protected $tags;
     /**
@@ -98,7 +98,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
      */
     protected $tagNames;
     /**
-     * @var DeleteVirtualMachinePartIPAddresses[]
+     * @var DeleteVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
      */
     protected $ipAddresses;
 
@@ -154,12 +154,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -180,12 +180,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getInitialRootPassword(): string
+    public function getInitialRootPassword(): ?string
     {
         return $this->initialRootPassword;
     }
 
-    public function setInitialRootPassword(string $initialRootPassword): self
+    public function setInitialRootPassword(?string $initialRootPassword): self
     {
         $this->initialized['initialRootPassword'] = true;
         $this->initialRootPassword = $initialRootPassword;
@@ -206,12 +206,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getZone(): DeleteVirtualMachinePartZone
+    public function getZone(): DeleteVirtualMachine200ResponseVirtualMachineZone
     {
         return $this->zone;
     }
 
-    public function setZone(DeleteVirtualMachinePartZone $zone): self
+    public function setZone(DeleteVirtualMachine200ResponseVirtualMachineZone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -219,12 +219,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getOrganization(): DeleteVirtualMachinePartOrganization
+    public function getOrganization(): DeleteVirtualMachine200ResponseVirtualMachineOrganization
     {
         return $this->organization;
     }
 
-    public function setOrganization(DeleteVirtualMachinePartOrganization $organization): self
+    public function setOrganization(DeleteVirtualMachine200ResponseVirtualMachineOrganization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;
@@ -232,12 +232,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getGroup(): DeleteVirtualMachinePartGroup
+    public function getGroup(): ?DeleteVirtualMachine200ResponseVirtualMachineGroup
     {
         return $this->group;
     }
 
-    public function setGroup(DeleteVirtualMachinePartGroup $group): self
+    public function setGroup(?DeleteVirtualMachine200ResponseVirtualMachineGroup $group): self
     {
         $this->initialized['group'] = true;
         $this->group = $group;
@@ -245,12 +245,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getPackage(): DeleteVirtualMachinePartPackage
+    public function getPackage(): ?DeleteVirtualMachine200ResponseVirtualMachinePackage
     {
         return $this->package;
     }
 
-    public function setPackage(DeleteVirtualMachinePartPackage $package): self
+    public function setPackage(?DeleteVirtualMachine200ResponseVirtualMachinePackage $package): self
     {
         $this->initialized['package'] = true;
         $this->package = $package;
@@ -258,12 +258,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getAttachedIso(): DeleteVirtualMachinePartAttachedISO
+    public function getAttachedIso(): ?DeleteVirtualMachine200ResponseVirtualMachineAttachedIso
     {
         return $this->attachedIso;
     }
 
-    public function setAttachedIso(DeleteVirtualMachinePartAttachedISO $attachedIso): self
+    public function setAttachedIso(?DeleteVirtualMachine200ResponseVirtualMachineAttachedIso $attachedIso): self
     {
         $this->initialized['attachedIso'] = true;
         $this->attachedIso = $attachedIso;
@@ -271,12 +271,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getMemoryInGb(): int
+    public function getMemoryInGb(): ?int
     {
         return $this->memoryInGb;
     }
 
-    public function setMemoryInGb(int $memoryInGb): self
+    public function setMemoryInGb(?int $memoryInGb): self
     {
         $this->initialized['memoryInGb'] = true;
         $this->memoryInGb = $memoryInGb;
@@ -284,12 +284,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getCpuCores(): int
+    public function getCpuCores(): ?int
     {
         return $this->cpuCores;
     }
 
-    public function setCpuCores(int $cpuCores): self
+    public function setCpuCores(?int $cpuCores): self
     {
         $this->initialized['cpuCores'] = true;
         $this->cpuCores = $cpuCores;
@@ -297,12 +297,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
         return $this;
     }
 
-    public function getGpuType(): DeleteVirtualMachinePartGPUType
+    public function getGpuType(): ?DeleteVirtualMachine200ResponseVirtualMachineGpuType
     {
         return $this->gpuType;
     }
 
-    public function setGpuType(DeleteVirtualMachinePartGPUType $gpuType): self
+    public function setGpuType(?DeleteVirtualMachine200ResponseVirtualMachineGpuType $gpuType): self
     {
         $this->initialized['gpuType'] = true;
         $this->gpuType = $gpuType;
@@ -311,7 +311,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
     }
 
     /**
-     * @return DeleteVirtualMachinePartGPUs[]
+     * @return DeleteVirtualMachine200ResponseVirtualMachineGpusItem[]
      */
     public function getGpus(): array
     {
@@ -319,7 +319,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
     }
 
     /**
-     * @param DeleteVirtualMachinePartGPUs[] $gpus
+     * @param DeleteVirtualMachine200ResponseVirtualMachineGpusItem[] $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -330,7 +330,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
     }
 
     /**
-     * @return DeleteVirtualMachinePartTags[]
+     * @return DeleteVirtualMachine200ResponseVirtualMachineTagsItem[]
      */
     public function getTags(): array
     {
@@ -338,7 +338,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
     }
 
     /**
-     * @param DeleteVirtualMachinePartTags[] $tags
+     * @param DeleteVirtualMachine200ResponseVirtualMachineTagsItem[] $tags
      */
     public function setTags(array $tags): self
     {
@@ -368,7 +368,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
     }
 
     /**
-     * @return DeleteVirtualMachinePartIPAddresses[]
+     * @return DeleteVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
      */
     public function getIpAddresses(): array
     {
@@ -376,7 +376,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine extends \Arra
     }
 
     /**
-     * @param DeleteVirtualMachinePartIPAddresses[] $ipAddresses
+     * @param DeleteVirtualMachine200ResponseVirtualMachineIpAddressesItem[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

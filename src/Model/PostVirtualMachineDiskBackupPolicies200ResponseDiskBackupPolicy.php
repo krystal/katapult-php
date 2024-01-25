@@ -38,11 +38,11 @@ class PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicy extends \A
      */
     protected $target;
     /**
-     * @var PostVirtualMachineDiskBackupPoliciesPartSchedule
+     * @var PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicySchedule
      */
     protected $schedule;
     /**
-     * @var int
+     * @var int|null
      */
     protected $autoMoveToTrashAt;
 
@@ -98,12 +98,12 @@ class PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicy extends \A
         return $this;
     }
 
-    public function getSchedule(): PostVirtualMachineDiskBackupPoliciesPartSchedule
+    public function getSchedule(): PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicySchedule
     {
         return $this->schedule;
     }
 
-    public function setSchedule(PostVirtualMachineDiskBackupPoliciesPartSchedule $schedule): self
+    public function setSchedule(PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicySchedule $schedule): self
     {
         $this->initialized['schedule'] = true;
         $this->schedule = $schedule;
@@ -111,12 +111,12 @@ class PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicy extends \A
         return $this;
     }
 
-    public function getAutoMoveToTrashAt(): int
+    public function getAutoMoveToTrashAt(): ?int
     {
         return $this->autoMoveToTrashAt;
     }
 
-    public function setAutoMoveToTrashAt(int $autoMoveToTrashAt): self
+    public function setAutoMoveToTrashAt(?int $autoMoveToTrashAt): self
     {
         $this->initialized['autoMoveToTrashAt'] = true;
         $this->autoMoveToTrashAt = $autoMoveToTrashAt;

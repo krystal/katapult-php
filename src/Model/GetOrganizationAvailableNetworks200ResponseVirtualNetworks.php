@@ -30,7 +30,7 @@ class GetOrganizationAvailableNetworks200ResponseVirtualNetworks extends \ArrayO
      */
     protected $name;
     /**
-     * @var GetOrganizationAvailableNetworksPartDataCenter
+     * @var GetOrganizationAvailableNetworks200ResponseVirtualNetworksDataCenter
      */
     protected $dataCenter;
 
@@ -60,12 +60,12 @@ class GetOrganizationAvailableNetworks200ResponseVirtualNetworks extends \ArrayO
         return $this;
     }
 
-    public function getDataCenter(): GetOrganizationAvailableNetworksPartDataCenter
+    public function getDataCenter(): GetOrganizationAvailableNetworks200ResponseVirtualNetworksDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetOrganizationAvailableNetworksPartDataCenter $dataCenter): self
+    public function setDataCenter(GetOrganizationAvailableNetworks200ResponseVirtualNetworksDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

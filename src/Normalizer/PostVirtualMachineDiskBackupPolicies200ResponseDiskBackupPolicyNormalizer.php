@@ -69,12 +69,14 @@ class PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyNormalizer 
             unset($data['target']);
         }
         if (\array_key_exists('schedule', $data)) {
-            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineDiskBackupPoliciesPartSchedule', 'json', $context));
+            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicySchedule', 'json', $context));
             unset($data['schedule']);
         }
-        if (\array_key_exists('auto_move_to_trash_at', $data)) {
+        if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {
             $object->setAutoMoveToTrashAt($data['auto_move_to_trash_at']);
             unset($data['auto_move_to_trash_at']);
+        } elseif (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] === null) {
+            $object->setAutoMoveToTrashAt(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

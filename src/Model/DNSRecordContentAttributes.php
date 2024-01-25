@@ -22,68 +22,68 @@ class DNSRecordContentAttributes extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var RecordContentAttributesForA
+     * @var DNSRecordContentAttributesA|null
      */
     protected $a;
     /**
-     * @var RecordContentAttributesForAAAA
+     * @var DNSRecordContentAttributesAAAA|null
      */
     protected $aAAA;
     /**
-     * @var RecordContentAttributesForALIAS
+     * @var DNSRecordContentAttributesALIAS|null
      */
     protected $aLIAS;
     /**
-     * @var RecordContentAttributesForCAA
+     * @var DNSRecordContentAttributesCAA|null
      */
     protected $cAA;
     /**
-     * @var RecordContentAttributesForCNAME
+     * @var DNSRecordContentAttributesCNAME|null
      */
     protected $cNAME;
     /**
-     * @var RecordContentAttributesForIPS
+     * @var DNSRecordContentAttributesIPS|null
      */
     protected $iPS;
     /**
-     * @var RecordContentAttributesForMX
+     * @var DNSRecordContentAttributesMX|null
      */
     protected $mX;
     /**
-     * @var RecordContentAttributesForNS
+     * @var DNSRecordContentAttributesNS|null
      */
     protected $nS;
     /**
-     * @var RecordContentAttributesForPTR
+     * @var DNSRecordContentAttributesPTR|null
      */
     protected $pTR;
     /**
-     * @var array<string, mixed>
+     * @var DNSRecordContentAttributesSOA|null
      */
     protected $sOA;
     /**
-     * @var RecordContentAttributesForSRV
+     * @var DNSRecordContentAttributesSRV|null
      */
     protected $sRV;
     /**
-     * @var RecordContentAttributesForSSHFP
+     * @var DNSRecordContentAttributesSSHFP|null
      */
     protected $sSHFP;
     /**
-     * @var RecordContentAttributesForTXT
+     * @var DNSRecordContentAttributesTXT|null
      */
     protected $tXT;
     /**
-     * @var RecordContentAttributesForVirtualMachine
+     * @var DNSRecordContentAttributesVirtualMachine|null
      */
     protected $virtualMachine;
 
-    public function getA(): RecordContentAttributesForA
+    public function getA(): ?DNSRecordContentAttributesA
     {
         return $this->a;
     }
 
-    public function setA(RecordContentAttributesForA $a): self
+    public function setA(?DNSRecordContentAttributesA $a): self
     {
         $this->initialized['a'] = true;
         $this->a = $a;
@@ -91,12 +91,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getAAAA(): RecordContentAttributesForAAAA
+    public function getAAAA(): ?DNSRecordContentAttributesAAAA
     {
         return $this->aAAA;
     }
 
-    public function setAAAA(RecordContentAttributesForAAAA $aAAA): self
+    public function setAAAA(?DNSRecordContentAttributesAAAA $aAAA): self
     {
         $this->initialized['aAAA'] = true;
         $this->aAAA = $aAAA;
@@ -104,12 +104,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getALIAS(): RecordContentAttributesForALIAS
+    public function getALIAS(): ?DNSRecordContentAttributesALIAS
     {
         return $this->aLIAS;
     }
 
-    public function setALIAS(RecordContentAttributesForALIAS $aLIAS): self
+    public function setALIAS(?DNSRecordContentAttributesALIAS $aLIAS): self
     {
         $this->initialized['aLIAS'] = true;
         $this->aLIAS = $aLIAS;
@@ -117,12 +117,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getCAA(): RecordContentAttributesForCAA
+    public function getCAA(): ?DNSRecordContentAttributesCAA
     {
         return $this->cAA;
     }
 
-    public function setCAA(RecordContentAttributesForCAA $cAA): self
+    public function setCAA(?DNSRecordContentAttributesCAA $cAA): self
     {
         $this->initialized['cAA'] = true;
         $this->cAA = $cAA;
@@ -130,12 +130,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getCNAME(): RecordContentAttributesForCNAME
+    public function getCNAME(): ?DNSRecordContentAttributesCNAME
     {
         return $this->cNAME;
     }
 
-    public function setCNAME(RecordContentAttributesForCNAME $cNAME): self
+    public function setCNAME(?DNSRecordContentAttributesCNAME $cNAME): self
     {
         $this->initialized['cNAME'] = true;
         $this->cNAME = $cNAME;
@@ -143,12 +143,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getIPS(): RecordContentAttributesForIPS
+    public function getIPS(): ?DNSRecordContentAttributesIPS
     {
         return $this->iPS;
     }
 
-    public function setIPS(RecordContentAttributesForIPS $iPS): self
+    public function setIPS(?DNSRecordContentAttributesIPS $iPS): self
     {
         $this->initialized['iPS'] = true;
         $this->iPS = $iPS;
@@ -156,12 +156,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getMX(): RecordContentAttributesForMX
+    public function getMX(): ?DNSRecordContentAttributesMX
     {
         return $this->mX;
     }
 
-    public function setMX(RecordContentAttributesForMX $mX): self
+    public function setMX(?DNSRecordContentAttributesMX $mX): self
     {
         $this->initialized['mX'] = true;
         $this->mX = $mX;
@@ -169,12 +169,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getNS(): RecordContentAttributesForNS
+    public function getNS(): ?DNSRecordContentAttributesNS
     {
         return $this->nS;
     }
 
-    public function setNS(RecordContentAttributesForNS $nS): self
+    public function setNS(?DNSRecordContentAttributesNS $nS): self
     {
         $this->initialized['nS'] = true;
         $this->nS = $nS;
@@ -182,12 +182,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getPTR(): RecordContentAttributesForPTR
+    public function getPTR(): ?DNSRecordContentAttributesPTR
     {
         return $this->pTR;
     }
 
-    public function setPTR(RecordContentAttributesForPTR $pTR): self
+    public function setPTR(?DNSRecordContentAttributesPTR $pTR): self
     {
         $this->initialized['pTR'] = true;
         $this->pTR = $pTR;
@@ -195,18 +195,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getSOA(): iterable
+    public function getSOA(): ?DNSRecordContentAttributesSOA
     {
         return $this->sOA;
     }
 
-    /**
-     * @param array<string, mixed> $sOA
-     */
-    public function setSOA(iterable $sOA): self
+    public function setSOA(?DNSRecordContentAttributesSOA $sOA): self
     {
         $this->initialized['sOA'] = true;
         $this->sOA = $sOA;
@@ -214,12 +208,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getSRV(): RecordContentAttributesForSRV
+    public function getSRV(): ?DNSRecordContentAttributesSRV
     {
         return $this->sRV;
     }
 
-    public function setSRV(RecordContentAttributesForSRV $sRV): self
+    public function setSRV(?DNSRecordContentAttributesSRV $sRV): self
     {
         $this->initialized['sRV'] = true;
         $this->sRV = $sRV;
@@ -227,12 +221,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getSSHFP(): RecordContentAttributesForSSHFP
+    public function getSSHFP(): ?DNSRecordContentAttributesSSHFP
     {
         return $this->sSHFP;
     }
 
-    public function setSSHFP(RecordContentAttributesForSSHFP $sSHFP): self
+    public function setSSHFP(?DNSRecordContentAttributesSSHFP $sSHFP): self
     {
         $this->initialized['sSHFP'] = true;
         $this->sSHFP = $sSHFP;
@@ -240,12 +234,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getTXT(): RecordContentAttributesForTXT
+    public function getTXT(): ?DNSRecordContentAttributesTXT
     {
         return $this->tXT;
     }
 
-    public function setTXT(RecordContentAttributesForTXT $tXT): self
+    public function setTXT(?DNSRecordContentAttributesTXT $tXT): self
     {
         $this->initialized['tXT'] = true;
         $this->tXT = $tXT;
@@ -253,12 +247,12 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getVirtualMachine(): RecordContentAttributesForVirtualMachine
+    public function getVirtualMachine(): ?DNSRecordContentAttributesVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(RecordContentAttributesForVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(?DNSRecordContentAttributesVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;

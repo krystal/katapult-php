@@ -49,9 +49,11 @@ class PermissionDeniedNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('details', $data)) {
+        if (\array_key_exists('details', $data) && $data['details'] !== null) {
             $object->setDetails($data['details']);
             unset($data['details']);
+        } elseif (\array_key_exists('details', $data) && $data['details'] === null) {
+            $object->setDetails(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

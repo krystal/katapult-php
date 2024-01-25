@@ -76,7 +76,7 @@ class GetGPUType200ResponseGPUTypeNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('data_centers', $data)) {
             $values = [];
             foreach ($data['data_centers'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypePartDataCenters', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUType200ResponseGPUTypeDataCentersItem', 'json', $context);
             }
             $object->setDataCenters($values);
             unset($data['data_centers']);

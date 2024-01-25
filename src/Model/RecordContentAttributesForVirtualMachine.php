@@ -22,16 +22,16 @@ class RecordContentAttributesForVirtualMachine extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $virtualMachine;
 
-    public function getVirtualMachine(): string
+    public function getVirtualMachine(): ?string
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(string $virtualMachine): self
+    public function setVirtualMachine(?string $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;

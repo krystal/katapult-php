@@ -50,7 +50,7 @@ class DeleteVirtualMachinePartPackage extends \ArrayObject
      */
     protected $storageInGb;
     /**
-     * @var int
+     * @var int|null
      */
     protected $monthlyBandwidthAllowanceInGb;
     /**
@@ -58,7 +58,7 @@ class DeleteVirtualMachinePartPackage extends \ArrayObject
      */
     protected $privacy;
     /**
-     * @var DeleteVirtualMachinePartIcon
+     * @var DeleteVirtualMachinePartPackageIcon|null
      */
     protected $icon;
 
@@ -153,12 +153,12 @@ class DeleteVirtualMachinePartPackage extends \ArrayObject
         return $this;
     }
 
-    public function getMonthlyBandwidthAllowanceInGb(): int
+    public function getMonthlyBandwidthAllowanceInGb(): ?int
     {
         return $this->monthlyBandwidthAllowanceInGb;
     }
 
-    public function setMonthlyBandwidthAllowanceInGb(int $monthlyBandwidthAllowanceInGb): self
+    public function setMonthlyBandwidthAllowanceInGb(?int $monthlyBandwidthAllowanceInGb): self
     {
         $this->initialized['monthlyBandwidthAllowanceInGb'] = true;
         $this->monthlyBandwidthAllowanceInGb = $monthlyBandwidthAllowanceInGb;
@@ -179,12 +179,12 @@ class DeleteVirtualMachinePartPackage extends \ArrayObject
         return $this;
     }
 
-    public function getIcon(): DeleteVirtualMachinePartIcon
+    public function getIcon(): ?DeleteVirtualMachinePartPackageIcon
     {
         return $this->icon;
     }
 
-    public function setIcon(DeleteVirtualMachinePartIcon $icon): self
+    public function setIcon(?DeleteVirtualMachinePartPackageIcon $icon): self
     {
         $this->initialized['icon'] = true;
         $this->icon = $icon;

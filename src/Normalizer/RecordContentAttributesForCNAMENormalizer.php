@@ -49,9 +49,11 @@ class RecordContentAttributesForCNAMENormalizer implements DenormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('hostname', $data)) {
+        if (\array_key_exists('hostname', $data) && $data['hostname'] !== null) {
             $object->setHostname($data['hostname']);
             unset($data['hostname']);
+        } elseif (\array_key_exists('hostname', $data) && $data['hostname'] === null) {
+            $object->setHostname(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

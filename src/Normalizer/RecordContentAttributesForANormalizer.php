@@ -49,9 +49,11 @@ class RecordContentAttributesForANormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ip_address', $data)) {
+        if (\array_key_exists('ip_address', $data) && $data['ip_address'] !== null) {
             $object->setIpAddress($data['ip_address']);
             unset($data['ip_address']);
+        } elseif (\array_key_exists('ip_address', $data) && $data['ip_address'] === null) {
+            $object->setIpAddress(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

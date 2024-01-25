@@ -30,11 +30,11 @@ class GetDiskPartAttributes extends \ArrayObject
      */
     protected $label;
     /**
-     * @var string
+     * @var string|null
      */
     protected $value;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -68,12 +68,12 @@ class GetDiskPartAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    public function setValue(string $value): self
+    public function setValue(?string $value): self
     {
         $this->initialized['value'] = true;
         $this->value = $value;
@@ -81,12 +81,12 @@ class GetDiskPartAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;

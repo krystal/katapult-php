@@ -49,17 +49,23 @@ class RecordContentAttributesForCAANormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('flag', $data)) {
+        if (\array_key_exists('flag', $data) && $data['flag'] !== null) {
             $object->setFlag($data['flag']);
             unset($data['flag']);
+        } elseif (\array_key_exists('flag', $data) && $data['flag'] === null) {
+            $object->setFlag(null);
         }
-        if (\array_key_exists('tag', $data)) {
+        if (\array_key_exists('tag', $data) && $data['tag'] !== null) {
             $object->setTag($data['tag']);
             unset($data['tag']);
+        } elseif (\array_key_exists('tag', $data) && $data['tag'] === null) {
+            $object->setTag(null);
         }
-        if (\array_key_exists('value', $data)) {
+        if (\array_key_exists('value', $data) && $data['value'] !== null) {
             $object->setValue($data['value']);
             unset($data['value']);
+        } elseif (\array_key_exists('value', $data) && $data['value'] === null) {
+            $object->setValue(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -26,7 +26,7 @@ class DnsRecordsDnsRecordGetResponse200DnsRecord extends \ArrayObject
      */
     protected $id;
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
@@ -34,7 +34,7 @@ class DnsRecordsDnsRecordGetResponse200DnsRecord extends \ArrayObject
      */
     protected $fullName;
     /**
-     * @var int
+     * @var int|null
      */
     protected $ttl;
     /**
@@ -42,7 +42,7 @@ class DnsRecordsDnsRecordGetResponse200DnsRecord extends \ArrayObject
      */
     protected $type;
     /**
-     * @var int
+     * @var int|null
      */
     protected $priority;
     /**
@@ -67,12 +67,12 @@ class DnsRecordsDnsRecordGetResponse200DnsRecord extends \ArrayObject
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -93,12 +93,12 @@ class DnsRecordsDnsRecordGetResponse200DnsRecord extends \ArrayObject
         return $this;
     }
 
-    public function getTtl(): int
+    public function getTtl(): ?int
     {
         return $this->ttl;
     }
 
-    public function setTtl(int $ttl): self
+    public function setTtl(?int $ttl): self
     {
         $this->initialized['ttl'] = true;
         $this->ttl = $ttl;
@@ -119,12 +119,12 @@ class DnsRecordsDnsRecordGetResponse200DnsRecord extends \ArrayObject
         return $this;
     }
 
-    public function getPriority(): int
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    public function setPriority(int $priority): self
+    public function setPriority(?int $priority): self
     {
         $this->initialized['priority'] = true;
         $this->priority = $priority;

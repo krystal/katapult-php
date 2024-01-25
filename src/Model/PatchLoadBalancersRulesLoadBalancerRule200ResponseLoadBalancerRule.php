@@ -46,7 +46,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
      */
     protected $proxyProtocol;
     /**
-     * @var PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
+     * @var PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleCertificatesItem[]
      */
     protected $certificates;
     /**
@@ -90,7 +90,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
      */
     protected $checkHttpStatuses;
     /**
-     * @var PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer
+     * @var PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleLoadBalancer
      */
     protected $loadBalancer;
 
@@ -173,7 +173,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
     }
 
     /**
-     * @return PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
+     * @return PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleCertificatesItem[]
      */
     public function getCertificates(): array
     {
@@ -181,7 +181,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
     }
 
     /**
-     * @param PatchLoadBalancersRulesLoadBalancerRulePartCertificates[] $certificates
+     * @param PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleCertificatesItem[] $certificates
      */
     public function setCertificates(array $certificates): self
     {
@@ -321,12 +321,12 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
         return $this;
     }
 
-    public function getLoadBalancer(): PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer
+    public function getLoadBalancer(): PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleLoadBalancer
     {
         return $this->loadBalancer;
     }
 
-    public function setLoadBalancer(PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer $loadBalancer): self
+    public function setLoadBalancer(PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleLoadBalancer $loadBalancer): self
     {
         $this->initialized['loadBalancer'] = true;
         $this->loadBalancer = $loadBalancer;

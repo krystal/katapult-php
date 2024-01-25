@@ -38,7 +38,7 @@ class CountriesCountryGetResponse200Country extends \ArrayObject
      */
     protected $isoCode3;
     /**
-     * @var string
+     * @var string|null
      */
     protected $timeZone;
     /**
@@ -98,12 +98,12 @@ class CountriesCountryGetResponse200Country extends \ArrayObject
         return $this;
     }
 
-    public function getTimeZone(): string
+    public function getTimeZone(): ?string
     {
         return $this->timeZone;
     }
 
-    public function setTimeZone(string $timeZone): self
+    public function setTimeZone(?string $timeZone): self
     {
         $this->initialized['timeZone'] = true;
         $this->timeZone = $timeZone;

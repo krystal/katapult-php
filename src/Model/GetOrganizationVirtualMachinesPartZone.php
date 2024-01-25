@@ -30,11 +30,11 @@ class GetOrganizationVirtualMachinesPartZone extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var GetOrganizationVirtualMachinesPartDataCenter
+     * @var GetOrganizationVirtualMachinesPartZoneDataCenter
      */
     protected $dataCenter;
 
@@ -64,12 +64,12 @@ class GetOrganizationVirtualMachinesPartZone extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class GetOrganizationVirtualMachinesPartZone extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetOrganizationVirtualMachinesPartDataCenter
+    public function getDataCenter(): GetOrganizationVirtualMachinesPartZoneDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetOrganizationVirtualMachinesPartDataCenter $dataCenter): self
+    public function setDataCenter(GetOrganizationVirtualMachinesPartZoneDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

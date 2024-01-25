@@ -30,7 +30,7 @@ class GetDiskTemplate200ResponseDiskTemplate extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -42,11 +42,11 @@ class GetDiskTemplate200ResponseDiskTemplate extends \ArrayObject
      */
     protected $universal;
     /**
-     * @var GetDiskTemplatePartLatestVersion
+     * @var GetDiskTemplate200ResponseDiskTemplateLatestVersion|null
      */
     protected $latestVersion;
     /**
-     * @var GetDiskTemplatePartOperatingSystem
+     * @var GetDiskTemplate200ResponseDiskTemplateOperatingSystem|null
      */
     protected $operatingSystem;
 
@@ -76,12 +76,12 @@ class GetDiskTemplate200ResponseDiskTemplate extends \ArrayObject
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -115,12 +115,12 @@ class GetDiskTemplate200ResponseDiskTemplate extends \ArrayObject
         return $this;
     }
 
-    public function getLatestVersion(): GetDiskTemplatePartLatestVersion
+    public function getLatestVersion(): ?GetDiskTemplate200ResponseDiskTemplateLatestVersion
     {
         return $this->latestVersion;
     }
 
-    public function setLatestVersion(GetDiskTemplatePartLatestVersion $latestVersion): self
+    public function setLatestVersion(?GetDiskTemplate200ResponseDiskTemplateLatestVersion $latestVersion): self
     {
         $this->initialized['latestVersion'] = true;
         $this->latestVersion = $latestVersion;
@@ -128,12 +128,12 @@ class GetDiskTemplate200ResponseDiskTemplate extends \ArrayObject
         return $this;
     }
 
-    public function getOperatingSystem(): GetDiskTemplatePartOperatingSystem
+    public function getOperatingSystem(): ?GetDiskTemplate200ResponseDiskTemplateOperatingSystem
     {
         return $this->operatingSystem;
     }
 
-    public function setOperatingSystem(GetDiskTemplatePartOperatingSystem $operatingSystem): self
+    public function setOperatingSystem(?GetDiskTemplate200ResponseDiskTemplateOperatingSystem $operatingSystem): self
     {
         $this->initialized['operatingSystem'] = true;
         $this->operatingSystem = $operatingSystem;

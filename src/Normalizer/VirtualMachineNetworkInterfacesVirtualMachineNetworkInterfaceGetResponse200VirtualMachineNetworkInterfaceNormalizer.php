@@ -54,7 +54,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
             unset($data['id']);
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNIPartVirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         if (\array_key_exists('name', $data)) {
@@ -62,7 +62,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
             unset($data['name']);
         }
         if (\array_key_exists('network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNIPartNetwork', 'json', $context));
+            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork', 'json', $context));
             unset($data['network']);
         }
         if (\array_key_exists('mac_address', $data)) {
@@ -76,13 +76,13 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
         if (\array_key_exists('ip_addresses', $data)) {
             $values = [];
             foreach ($data['ip_addresses'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNIPartIPAddresses', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceIpAddressesItem', 'json', $context);
             }
             $object->setIpAddresses($values);
             unset($data['ip_addresses']);
         }
         if (\array_key_exists('speed_profile', $data)) {
-            $object->setSpeedProfile($this->denormalizer->denormalize($data['speed_profile'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNIPartSpeedProfile', 'json', $context));
+            $object->setSpeedProfile($this->denormalizer->denormalize($data['speed_profile'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceSpeedProfile', 'json', $context));
             unset($data['speed_profile']);
         }
         foreach ($data as $key => $value_1) {

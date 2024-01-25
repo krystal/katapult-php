@@ -57,9 +57,11 @@ class LoadBalancersLoadBalancerDeleteResponse200LoadBalancerNormalizer implement
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('api_reference', $data)) {
+        if (\array_key_exists('api_reference', $data) && $data['api_reference'] !== null) {
             $object->setApiReference($data['api_reference']);
             unset($data['api_reference']);
+        } elseif (\array_key_exists('api_reference', $data) && $data['api_reference'] === null) {
+            $object->setApiReference(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

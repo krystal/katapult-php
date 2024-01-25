@@ -30,7 +30,7 @@ class DeleteVirtualMachinePartOperatingSystem extends \ArrayObject
      */
     protected $name;
     /**
-     * @var DeleteVirtualMachinePartBadge
+     * @var DeleteVirtualMachinePartOperatingSystemBadge|null
      */
     protected $badge;
 
@@ -60,12 +60,12 @@ class DeleteVirtualMachinePartOperatingSystem extends \ArrayObject
         return $this;
     }
 
-    public function getBadge(): DeleteVirtualMachinePartBadge
+    public function getBadge(): ?DeleteVirtualMachinePartOperatingSystemBadge
     {
         return $this->badge;
     }
 
-    public function setBadge(DeleteVirtualMachinePartBadge $badge): self
+    public function setBadge(?DeleteVirtualMachinePartOperatingSystemBadge $badge): self
     {
         $this->initialized['badge'] = true;
         $this->badge = $badge;

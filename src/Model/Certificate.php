@@ -46,37 +46,37 @@ class Certificate extends \ArrayObject
      */
     protected $createdAt;
     /**
-     * @var int
+     * @var int|null
      */
     protected $expiresAt;
     /**
-     * @var int
+     * @var int|null
      */
     protected $lastIssuedAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $issueError;
     /**
-     * @var string
+     * @var string|null
      */
     protected $authorizationMethod;
     /**
      * This is the URL that can be used to access this certificate's details. through the certificate API (a different API to this one). If null, this means that it is no longer available. If that is the case, you can get a new URL by resetting the API token for this certificate.
      *
-     * @var string
+     * @var string|null
      */
     protected $certificateApiUrl;
     /**
-     * @var string
+     * @var string|null
      */
     protected $certificate;
     /**
-     * @var string
+     * @var string|null
      */
     protected $chain;
     /**
-     * @var string
+     * @var string|null
      */
     protected $privateKey;
 
@@ -164,12 +164,12 @@ class Certificate extends \ArrayObject
         return $this;
     }
 
-    public function getExpiresAt(): int
+    public function getExpiresAt(): ?int
     {
         return $this->expiresAt;
     }
 
-    public function setExpiresAt(int $expiresAt): self
+    public function setExpiresAt(?int $expiresAt): self
     {
         $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
@@ -177,12 +177,12 @@ class Certificate extends \ArrayObject
         return $this;
     }
 
-    public function getLastIssuedAt(): int
+    public function getLastIssuedAt(): ?int
     {
         return $this->lastIssuedAt;
     }
 
-    public function setLastIssuedAt(int $lastIssuedAt): self
+    public function setLastIssuedAt(?int $lastIssuedAt): self
     {
         $this->initialized['lastIssuedAt'] = true;
         $this->lastIssuedAt = $lastIssuedAt;
@@ -190,12 +190,12 @@ class Certificate extends \ArrayObject
         return $this;
     }
 
-    public function getIssueError(): string
+    public function getIssueError(): ?string
     {
         return $this->issueError;
     }
 
-    public function setIssueError(string $issueError): self
+    public function setIssueError(?string $issueError): self
     {
         $this->initialized['issueError'] = true;
         $this->issueError = $issueError;
@@ -203,12 +203,12 @@ class Certificate extends \ArrayObject
         return $this;
     }
 
-    public function getAuthorizationMethod(): string
+    public function getAuthorizationMethod(): ?string
     {
         return $this->authorizationMethod;
     }
 
-    public function setAuthorizationMethod(string $authorizationMethod): self
+    public function setAuthorizationMethod(?string $authorizationMethod): self
     {
         $this->initialized['authorizationMethod'] = true;
         $this->authorizationMethod = $authorizationMethod;
@@ -219,7 +219,7 @@ class Certificate extends \ArrayObject
     /**
      * This is the URL that can be used to access this certificate's details. through the certificate API (a different API to this one). If null, this means that it is no longer available. If that is the case, you can get a new URL by resetting the API token for this certificate.
      */
-    public function getCertificateApiUrl(): string
+    public function getCertificateApiUrl(): ?string
     {
         return $this->certificateApiUrl;
     }
@@ -227,7 +227,7 @@ class Certificate extends \ArrayObject
     /**
      * This is the URL that can be used to access this certificate's details. through the certificate API (a different API to this one). If null, this means that it is no longer available. If that is the case, you can get a new URL by resetting the API token for this certificate.
      */
-    public function setCertificateApiUrl(string $certificateApiUrl): self
+    public function setCertificateApiUrl(?string $certificateApiUrl): self
     {
         $this->initialized['certificateApiUrl'] = true;
         $this->certificateApiUrl = $certificateApiUrl;
@@ -235,12 +235,12 @@ class Certificate extends \ArrayObject
         return $this;
     }
 
-    public function getCertificate(): string
+    public function getCertificate(): ?string
     {
         return $this->certificate;
     }
 
-    public function setCertificate(string $certificate): self
+    public function setCertificate(?string $certificate): self
     {
         $this->initialized['certificate'] = true;
         $this->certificate = $certificate;
@@ -248,12 +248,12 @@ class Certificate extends \ArrayObject
         return $this;
     }
 
-    public function getChain(): string
+    public function getChain(): ?string
     {
         return $this->chain;
     }
 
-    public function setChain(string $chain): self
+    public function setChain(?string $chain): self
     {
         $this->initialized['chain'] = true;
         $this->chain = $chain;
@@ -261,12 +261,12 @@ class Certificate extends \ArrayObject
         return $this;
     }
 
-    public function getPrivateKey(): string
+    public function getPrivateKey(): ?string
     {
         return $this->privateKey;
     }
 
-    public function setPrivateKey(string $privateKey): self
+    public function setPrivateKey(?string $privateKey): self
     {
         $this->initialized['privateKey'] = true;
         $this->privateKey = $privateKey;

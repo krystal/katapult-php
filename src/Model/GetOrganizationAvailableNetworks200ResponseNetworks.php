@@ -30,11 +30,11 @@ class GetOrganizationAvailableNetworks200ResponseNetworks extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var GetOrganizationAvailableNetworksPartDataCenter
+     * @var GetOrganizationAvailableNetworks200ResponseNetworksDataCenter
      */
     protected $dataCenter;
 
@@ -64,12 +64,12 @@ class GetOrganizationAvailableNetworks200ResponseNetworks extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class GetOrganizationAvailableNetworks200ResponseNetworks extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetOrganizationAvailableNetworksPartDataCenter
+    public function getDataCenter(): GetOrganizationAvailableNetworks200ResponseNetworksDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetOrganizationAvailableNetworksPartDataCenter $dataCenter): self
+    public function setDataCenter(GetOrganizationAvailableNetworks200ResponseNetworksDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

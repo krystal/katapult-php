@@ -81,9 +81,11 @@ class GetVirtualMachinePackages200ResponseVirtualMachinePackagesNormalizer imple
             $object->setPrivacy($data['privacy']);
             unset($data['privacy']);
         }
-        if (\array_key_exists('icon', $data)) {
-            $object->setIcon($this->denormalizer->denormalize($data['icon'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePackagesPartIcon', 'json', $context));
+        if (\array_key_exists('icon', $data) && $data['icon'] !== null) {
+            $object->setIcon($this->denormalizer->denormalize($data['icon'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePackages200ResponseVirtualMachinePackagesIcon', 'json', $context));
             unset($data['icon']);
+        } elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
+            $object->setIcon(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

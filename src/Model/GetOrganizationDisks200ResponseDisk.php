@@ -42,7 +42,7 @@ class GetOrganizationDisks200ResponseDisk extends \ArrayObject
      */
     protected $state;
     /**
-     * @var GetOrganizationDisksPartVirtualMachineDisk
+     * @var GetOrganizationDisks200ResponseDiskVirtualMachineDisk|null
      */
     protected $virtualMachineDisk;
 
@@ -111,12 +111,12 @@ class GetOrganizationDisks200ResponseDisk extends \ArrayObject
         return $this;
     }
 
-    public function getVirtualMachineDisk(): GetOrganizationDisksPartVirtualMachineDisk
+    public function getVirtualMachineDisk(): ?GetOrganizationDisks200ResponseDiskVirtualMachineDisk
     {
         return $this->virtualMachineDisk;
     }
 
-    public function setVirtualMachineDisk(GetOrganizationDisksPartVirtualMachineDisk $virtualMachineDisk): self
+    public function setVirtualMachineDisk(?GetOrganizationDisks200ResponseDiskVirtualMachineDisk $virtualMachineDisk): self
     {
         $this->initialized['virtualMachineDisk'] = true;
         $this->virtualMachineDisk = $virtualMachineDisk;

@@ -38,11 +38,11 @@ class DisksDiskDiskBackupPoliciesPostResponse200DiskBackupPolicy extends \ArrayO
      */
     protected $target;
     /**
-     * @var PostDiskDiskBackupPoliciesPartSchedule
+     * @var PostDiskDiskBackupPolicies200ResponseDiskBackupPolicySchedule
      */
     protected $schedule;
     /**
-     * @var int
+     * @var int|null
      */
     protected $autoMoveToTrashAt;
 
@@ -98,12 +98,12 @@ class DisksDiskDiskBackupPoliciesPostResponse200DiskBackupPolicy extends \ArrayO
         return $this;
     }
 
-    public function getSchedule(): PostDiskDiskBackupPoliciesPartSchedule
+    public function getSchedule(): PostDiskDiskBackupPolicies200ResponseDiskBackupPolicySchedule
     {
         return $this->schedule;
     }
 
-    public function setSchedule(PostDiskDiskBackupPoliciesPartSchedule $schedule): self
+    public function setSchedule(PostDiskDiskBackupPolicies200ResponseDiskBackupPolicySchedule $schedule): self
     {
         $this->initialized['schedule'] = true;
         $this->schedule = $schedule;
@@ -111,12 +111,12 @@ class DisksDiskDiskBackupPoliciesPostResponse200DiskBackupPolicy extends \ArrayO
         return $this;
     }
 
-    public function getAutoMoveToTrashAt(): int
+    public function getAutoMoveToTrashAt(): ?int
     {
         return $this->autoMoveToTrashAt;
     }
 
-    public function setAutoMoveToTrashAt(int $autoMoveToTrashAt): self
+    public function setAutoMoveToTrashAt(?int $autoMoveToTrashAt): self
     {
         $this->initialized['autoMoveToTrashAt'] = true;
         $this->autoMoveToTrashAt = $autoMoveToTrashAt;

@@ -30,7 +30,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $apiReference;
     /**
@@ -46,7 +46,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
      */
     protected $resourceIds;
     /**
-     * @var GetLoadBalancerPartIPAddress[]
+     * @var GetLoadBalancer200ResponseLoadBalancerIpAddressItem[]
      */
     protected $ipAddress;
     /**
@@ -62,7 +62,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
      */
     protected $backendCertificateKey;
     /**
-     * @var GetLoadBalancerPartDataCenter
+     * @var GetLoadBalancer200ResponseLoadBalancerDataCenter
      */
     protected $dataCenter;
     /**
@@ -70,7 +70,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
      */
     protected $enableWeighting;
     /**
-     * @var GetLoadBalancerPartWeights[]
+     * @var GetLoadBalancer200ResponseLoadBalancerWeightsItem[]
      */
     protected $weights;
     /**
@@ -104,12 +104,12 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
         return $this;
     }
 
-    public function getApiReference(): string
+    public function getApiReference(): ?string
     {
         return $this->apiReference;
     }
 
-    public function setApiReference(string $apiReference): self
+    public function setApiReference(?string $apiReference): self
     {
         $this->initialized['apiReference'] = true;
         $this->apiReference = $apiReference;
@@ -169,7 +169,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return GetLoadBalancerPartIPAddress[]
+     * @return GetLoadBalancer200ResponseLoadBalancerIpAddressItem[]
      */
     public function getIpAddress(): array
     {
@@ -177,7 +177,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param GetLoadBalancerPartIPAddress[] $ipAddress
+     * @param GetLoadBalancer200ResponseLoadBalancerIpAddressItem[] $ipAddress
      */
     public function setIpAddress(array $ipAddress): self
     {
@@ -226,12 +226,12 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetLoadBalancerPartDataCenter
+    public function getDataCenter(): GetLoadBalancer200ResponseLoadBalancerDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetLoadBalancerPartDataCenter $dataCenter): self
+    public function setDataCenter(GetLoadBalancer200ResponseLoadBalancerDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
@@ -253,7 +253,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return GetLoadBalancerPartWeights[]
+     * @return GetLoadBalancer200ResponseLoadBalancerWeightsItem[]
      */
     public function getWeights(): array
     {
@@ -261,7 +261,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param GetLoadBalancerPartWeights[] $weights
+     * @param GetLoadBalancer200ResponseLoadBalancerWeightsItem[] $weights
      */
     public function setWeights(array $weights): self
     {

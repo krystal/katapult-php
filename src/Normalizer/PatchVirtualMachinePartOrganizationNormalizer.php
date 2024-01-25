@@ -77,49 +77,69 @@ class PatchVirtualMachinePartOrganizationNormalizer implements DenormalizerInter
             $object->setManaged($data['managed']);
             unset($data['managed']);
         }
-        if (\array_key_exists('billing_name', $data)) {
+        if (\array_key_exists('billing_name', $data) && $data['billing_name'] !== null) {
             $object->setBillingName($data['billing_name']);
             unset($data['billing_name']);
+        } elseif (\array_key_exists('billing_name', $data) && $data['billing_name'] === null) {
+            $object->setBillingName(null);
         }
-        if (\array_key_exists('address1', $data)) {
+        if (\array_key_exists('address1', $data) && $data['address1'] !== null) {
             $object->setAddress1($data['address1']);
             unset($data['address1']);
+        } elseif (\array_key_exists('address1', $data) && $data['address1'] === null) {
+            $object->setAddress1(null);
         }
-        if (\array_key_exists('address2', $data)) {
+        if (\array_key_exists('address2', $data) && $data['address2'] !== null) {
             $object->setAddress2($data['address2']);
             unset($data['address2']);
+        } elseif (\array_key_exists('address2', $data) && $data['address2'] === null) {
+            $object->setAddress2(null);
         }
-        if (\array_key_exists('address3', $data)) {
+        if (\array_key_exists('address3', $data) && $data['address3'] !== null) {
             $object->setAddress3($data['address3']);
             unset($data['address3']);
+        } elseif (\array_key_exists('address3', $data) && $data['address3'] === null) {
+            $object->setAddress3(null);
         }
-        if (\array_key_exists('address4', $data)) {
+        if (\array_key_exists('address4', $data) && $data['address4'] !== null) {
             $object->setAddress4($data['address4']);
             unset($data['address4']);
+        } elseif (\array_key_exists('address4', $data) && $data['address4'] === null) {
+            $object->setAddress4(null);
         }
-        if (\array_key_exists('postcode', $data)) {
+        if (\array_key_exists('postcode', $data) && $data['postcode'] !== null) {
             $object->setPostcode($data['postcode']);
             unset($data['postcode']);
+        } elseif (\array_key_exists('postcode', $data) && $data['postcode'] === null) {
+            $object->setPostcode(null);
         }
-        if (\array_key_exists('vat_number', $data)) {
+        if (\array_key_exists('vat_number', $data) && $data['vat_number'] !== null) {
             $object->setVatNumber($data['vat_number']);
             unset($data['vat_number']);
+        } elseif (\array_key_exists('vat_number', $data) && $data['vat_number'] === null) {
+            $object->setVatNumber(null);
         }
-        if (\array_key_exists('phone_number', $data)) {
+        if (\array_key_exists('phone_number', $data) && $data['phone_number'] !== null) {
             $object->setPhoneNumber($data['phone_number']);
             unset($data['phone_number']);
+        } elseif (\array_key_exists('phone_number', $data) && $data['phone_number'] === null) {
+            $object->setPhoneNumber(null);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartCurrency', 'json', $context));
+            $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartOrganizationCurrency', 'json', $context));
             unset($data['currency']);
         }
-        if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartCountry', 'json', $context));
+        if (\array_key_exists('country', $data) && $data['country'] !== null) {
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartOrganizationCountry', 'json', $context));
             unset($data['country']);
+        } elseif (\array_key_exists('country', $data) && $data['country'] === null) {
+            $object->setCountry(null);
         }
-        if (\array_key_exists('country_state', $data)) {
-            $object->setCountryState($this->denormalizer->denormalize($data['country_state'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartCountryState', 'json', $context));
+        if (\array_key_exists('country_state', $data) && $data['country_state'] !== null) {
+            $object->setCountryState($this->denormalizer->denormalize($data['country_state'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartOrganizationCountryState', 'json', $context));
             unset($data['country_state']);
+        } elseif (\array_key_exists('country_state', $data) && $data['country_state'] === null) {
+            $object->setCountryState(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -49,69 +49,93 @@ class DNSRecordContentAttributesNormalizer implements DenormalizerInterface, Nor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('A', $data)) {
-            $object->setA($this->denormalizer->denormalize($data['A'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForA', 'json', $context));
+        if (\array_key_exists('A', $data) && $data['A'] !== null) {
+            $object->setA($this->denormalizer->denormalize($data['A'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesA', 'json', $context));
             unset($data['A']);
+        } elseif (\array_key_exists('A', $data) && $data['A'] === null) {
+            $object->setA(null);
         }
-        if (\array_key_exists('AAAA', $data)) {
-            $object->setAAAA($this->denormalizer->denormalize($data['AAAA'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForAAAA', 'json', $context));
+        if (\array_key_exists('AAAA', $data) && $data['AAAA'] !== null) {
+            $object->setAAAA($this->denormalizer->denormalize($data['AAAA'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesAAAA', 'json', $context));
             unset($data['AAAA']);
+        } elseif (\array_key_exists('AAAA', $data) && $data['AAAA'] === null) {
+            $object->setAAAA(null);
         }
-        if (\array_key_exists('ALIAS', $data)) {
-            $object->setALIAS($this->denormalizer->denormalize($data['ALIAS'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForALIAS', 'json', $context));
+        if (\array_key_exists('ALIAS', $data) && $data['ALIAS'] !== null) {
+            $object->setALIAS($this->denormalizer->denormalize($data['ALIAS'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesALIAS', 'json', $context));
             unset($data['ALIAS']);
+        } elseif (\array_key_exists('ALIAS', $data) && $data['ALIAS'] === null) {
+            $object->setALIAS(null);
         }
-        if (\array_key_exists('CAA', $data)) {
-            $object->setCAA($this->denormalizer->denormalize($data['CAA'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForCAA', 'json', $context));
+        if (\array_key_exists('CAA', $data) && $data['CAA'] !== null) {
+            $object->setCAA($this->denormalizer->denormalize($data['CAA'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesCAA', 'json', $context));
             unset($data['CAA']);
+        } elseif (\array_key_exists('CAA', $data) && $data['CAA'] === null) {
+            $object->setCAA(null);
         }
-        if (\array_key_exists('CNAME', $data)) {
-            $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForCNAME', 'json', $context));
+        if (\array_key_exists('CNAME', $data) && $data['CNAME'] !== null) {
+            $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesCNAME', 'json', $context));
             unset($data['CNAME']);
+        } elseif (\array_key_exists('CNAME', $data) && $data['CNAME'] === null) {
+            $object->setCNAME(null);
         }
-        if (\array_key_exists('IPS', $data)) {
-            $object->setIPS($this->denormalizer->denormalize($data['IPS'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForIPS', 'json', $context));
+        if (\array_key_exists('IPS', $data) && $data['IPS'] !== null) {
+            $object->setIPS($this->denormalizer->denormalize($data['IPS'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesIPS', 'json', $context));
             unset($data['IPS']);
+        } elseif (\array_key_exists('IPS', $data) && $data['IPS'] === null) {
+            $object->setIPS(null);
         }
-        if (\array_key_exists('MX', $data)) {
-            $object->setMX($this->denormalizer->denormalize($data['MX'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForMX', 'json', $context));
+        if (\array_key_exists('MX', $data) && $data['MX'] !== null) {
+            $object->setMX($this->denormalizer->denormalize($data['MX'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesMX', 'json', $context));
             unset($data['MX']);
+        } elseif (\array_key_exists('MX', $data) && $data['MX'] === null) {
+            $object->setMX(null);
         }
-        if (\array_key_exists('NS', $data)) {
-            $object->setNS($this->denormalizer->denormalize($data['NS'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForNS', 'json', $context));
+        if (\array_key_exists('NS', $data) && $data['NS'] !== null) {
+            $object->setNS($this->denormalizer->denormalize($data['NS'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesNS', 'json', $context));
             unset($data['NS']);
+        } elseif (\array_key_exists('NS', $data) && $data['NS'] === null) {
+            $object->setNS(null);
         }
-        if (\array_key_exists('PTR', $data)) {
-            $object->setPTR($this->denormalizer->denormalize($data['PTR'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForPTR', 'json', $context));
+        if (\array_key_exists('PTR', $data) && $data['PTR'] !== null) {
+            $object->setPTR($this->denormalizer->denormalize($data['PTR'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesPTR', 'json', $context));
             unset($data['PTR']);
+        } elseif (\array_key_exists('PTR', $data) && $data['PTR'] === null) {
+            $object->setPTR(null);
         }
-        if (\array_key_exists('SOA', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['SOA'] as $key => $value) {
-                $values[$key] = $value;
-            }
-            $object->setSOA($values);
+        if (\array_key_exists('SOA', $data) && $data['SOA'] !== null) {
+            $object->setSOA($this->denormalizer->denormalize($data['SOA'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesSOA', 'json', $context));
             unset($data['SOA']);
+        } elseif (\array_key_exists('SOA', $data) && $data['SOA'] === null) {
+            $object->setSOA(null);
         }
-        if (\array_key_exists('SRV', $data)) {
-            $object->setSRV($this->denormalizer->denormalize($data['SRV'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForSRV', 'json', $context));
+        if (\array_key_exists('SRV', $data) && $data['SRV'] !== null) {
+            $object->setSRV($this->denormalizer->denormalize($data['SRV'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesSRV', 'json', $context));
             unset($data['SRV']);
+        } elseif (\array_key_exists('SRV', $data) && $data['SRV'] === null) {
+            $object->setSRV(null);
         }
-        if (\array_key_exists('SSHFP', $data)) {
-            $object->setSSHFP($this->denormalizer->denormalize($data['SSHFP'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForSSHFP', 'json', $context));
+        if (\array_key_exists('SSHFP', $data) && $data['SSHFP'] !== null) {
+            $object->setSSHFP($this->denormalizer->denormalize($data['SSHFP'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesSSHFP', 'json', $context));
             unset($data['SSHFP']);
+        } elseif (\array_key_exists('SSHFP', $data) && $data['SSHFP'] === null) {
+            $object->setSSHFP(null);
         }
-        if (\array_key_exists('TXT', $data)) {
-            $object->setTXT($this->denormalizer->denormalize($data['TXT'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForTXT', 'json', $context));
+        if (\array_key_exists('TXT', $data) && $data['TXT'] !== null) {
+            $object->setTXT($this->denormalizer->denormalize($data['TXT'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesTXT', 'json', $context));
             unset($data['TXT']);
+        } elseif (\array_key_exists('TXT', $data) && $data['TXT'] === null) {
+            $object->setTXT(null);
         }
-        if (\array_key_exists('VirtualMachine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\RecordContentAttributesForVirtualMachine', 'json', $context));
+        if (\array_key_exists('VirtualMachine', $data) && $data['VirtualMachine'] !== null) {
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesVirtualMachine', 'json', $context));
             unset($data['VirtualMachine']);
+        } elseif (\array_key_exists('VirtualMachine', $data) && $data['VirtualMachine'] === null) {
+            $object->setVirtualMachine(null);
         }
-        foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_1;
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
             }
         }
 
@@ -152,11 +176,7 @@ class DNSRecordContentAttributesNormalizer implements DenormalizerInterface, Nor
             $data['PTR'] = $this->normalizer->normalize($object->getPTR(), 'json', $context);
         }
         if ($object->isInitialized('sOA') && null !== $object->getSOA()) {
-            $values = [];
-            foreach ($object->getSOA() as $key => $value) {
-                $values[$key] = $value;
-            }
-            $data['SOA'] = $values;
+            $data['SOA'] = $this->normalizer->normalize($object->getSOA(), 'json', $context);
         }
         if ($object->isInitialized('sRV') && null !== $object->getSRV()) {
             $data['SRV'] = $this->normalizer->normalize($object->getSRV(), 'json', $context);
@@ -170,9 +190,9 @@ class DNSRecordContentAttributesNormalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('virtualMachine') && null !== $object->getVirtualMachine()) {
             $data['VirtualMachine'] = $this->normalizer->normalize($object->getVirtualMachine(), 'json', $context);
         }
-        foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $data[$key_1] = $value_1;
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

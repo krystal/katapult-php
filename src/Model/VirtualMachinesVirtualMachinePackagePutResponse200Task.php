@@ -38,11 +38,11 @@ class VirtualMachinesVirtualMachinePackagePutResponse200Task extends \ArrayObjec
      */
     protected $createdAt;
     /**
-     * @var int
+     * @var int|null
      */
     protected $startedAt;
     /**
-     * @var int
+     * @var int|null
      */
     protected $finishedAt;
     /**
@@ -102,12 +102,12 @@ class VirtualMachinesVirtualMachinePackagePutResponse200Task extends \ArrayObjec
         return $this;
     }
 
-    public function getStartedAt(): int
+    public function getStartedAt(): ?int
     {
         return $this->startedAt;
     }
 
-    public function setStartedAt(int $startedAt): self
+    public function setStartedAt(?int $startedAt): self
     {
         $this->initialized['startedAt'] = true;
         $this->startedAt = $startedAt;
@@ -115,12 +115,12 @@ class VirtualMachinesVirtualMachinePackagePutResponse200Task extends \ArrayObjec
         return $this;
     }
 
-    public function getFinishedAt(): int
+    public function getFinishedAt(): ?int
     {
         return $this->finishedAt;
     }
 
-    public function setFinishedAt(int $finishedAt): self
+    public function setFinishedAt(?int $finishedAt): self
     {
         $this->initialized['finishedAt'] = true;
         $this->finishedAt = $finishedAt;

@@ -49,9 +49,11 @@ class RecordContentAttributesForTXTNormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('content', $data)) {
+        if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $object->setContent($data['content']);
             unset($data['content']);
+        } elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+            $object->setContent(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

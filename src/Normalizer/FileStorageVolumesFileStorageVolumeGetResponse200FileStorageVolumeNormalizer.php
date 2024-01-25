@@ -58,7 +58,7 @@ class FileStorageVolumesFileStorageVolumeGetResponse200FileStorageVolumeNormaliz
             unset($data['name']);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetFileStorageVolumePartDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetFileStorageVolume200ResponseFileStorageVolumeDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         if (\array_key_exists('associations', $data)) {
@@ -73,13 +73,17 @@ class FileStorageVolumesFileStorageVolumeGetResponse200FileStorageVolumeNormaliz
             $object->setState($data['state']);
             unset($data['state']);
         }
-        if (\array_key_exists('nfs_location', $data)) {
+        if (\array_key_exists('nfs_location', $data) && $data['nfs_location'] !== null) {
             $object->setNfsLocation($data['nfs_location']);
             unset($data['nfs_location']);
+        } elseif (\array_key_exists('nfs_location', $data) && $data['nfs_location'] === null) {
+            $object->setNfsLocation(null);
         }
-        if (\array_key_exists('size', $data)) {
+        if (\array_key_exists('size', $data) && $data['size'] !== null) {
             $object->setSize($data['size']);
             unset($data['size']);
+        } elseif (\array_key_exists('size', $data) && $data['size'] === null) {
+            $object->setSize(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

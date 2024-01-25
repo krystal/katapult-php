@@ -62,16 +62,12 @@ class DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicyNormaliz
             unset($data['target']);
         }
         if (\array_key_exists('schedule', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['schedule'] as $key => $value) {
-                $values[$key] = $value;
-            }
-            $object->setSchedule($values);
+            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchDiskBackupPolicy200ResponseDiskBackupPolicySchedule', 'json', $context));
             unset($data['schedule']);
         }
-        foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_1;
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
             }
         }
 
@@ -94,15 +90,11 @@ class DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicyNormaliz
             $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);
         }
         if ($object->isInitialized('schedule') && null !== $object->getSchedule()) {
-            $values = [];
-            foreach ($object->getSchedule() as $key => $value) {
-                $values[$key] = $value;
-            }
-            $data['schedule'] = $values;
+            $data['schedule'] = $this->normalizer->normalize($object->getSchedule(), 'json', $context);
         }
-        foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $data[$key_1] = $value_1;
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

@@ -30,11 +30,11 @@ class NetworkSpeedProfile extends \ArrayObject
      */
     protected $name;
     /**
-     * @var int
+     * @var int|null
      */
     protected $uploadSpeedInMbit;
     /**
-     * @var int
+     * @var int|null
      */
     protected $downloadSpeedInMbit;
     /**
@@ -68,12 +68,12 @@ class NetworkSpeedProfile extends \ArrayObject
         return $this;
     }
 
-    public function getUploadSpeedInMbit(): int
+    public function getUploadSpeedInMbit(): ?int
     {
         return $this->uploadSpeedInMbit;
     }
 
-    public function setUploadSpeedInMbit(int $uploadSpeedInMbit): self
+    public function setUploadSpeedInMbit(?int $uploadSpeedInMbit): self
     {
         $this->initialized['uploadSpeedInMbit'] = true;
         $this->uploadSpeedInMbit = $uploadSpeedInMbit;
@@ -81,12 +81,12 @@ class NetworkSpeedProfile extends \ArrayObject
         return $this;
     }
 
-    public function getDownloadSpeedInMbit(): int
+    public function getDownloadSpeedInMbit(): ?int
     {
         return $this->downloadSpeedInMbit;
     }
 
-    public function setDownloadSpeedInMbit(int $downloadSpeedInMbit): self
+    public function setDownloadSpeedInMbit(?int $downloadSpeedInMbit): self
     {
         $this->initialized['downloadSpeedInMbit'] = true;
         $this->downloadSpeedInMbit = $downloadSpeedInMbit;

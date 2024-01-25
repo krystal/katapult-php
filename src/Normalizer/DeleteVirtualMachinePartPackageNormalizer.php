@@ -77,17 +77,21 @@ class DeleteVirtualMachinePartPackageNormalizer implements DenormalizerInterface
             $object->setStorageInGb($data['storage_in_gb']);
             unset($data['storage_in_gb']);
         }
-        if (\array_key_exists('monthly_bandwidth_allowance_in_gb', $data)) {
+        if (\array_key_exists('monthly_bandwidth_allowance_in_gb', $data) && $data['monthly_bandwidth_allowance_in_gb'] !== null) {
             $object->setMonthlyBandwidthAllowanceInGb($data['monthly_bandwidth_allowance_in_gb']);
             unset($data['monthly_bandwidth_allowance_in_gb']);
+        } elseif (\array_key_exists('monthly_bandwidth_allowance_in_gb', $data) && $data['monthly_bandwidth_allowance_in_gb'] === null) {
+            $object->setMonthlyBandwidthAllowanceInGb(null);
         }
         if (\array_key_exists('privacy', $data)) {
             $object->setPrivacy($data['privacy']);
             unset($data['privacy']);
         }
-        if (\array_key_exists('icon', $data)) {
-            $object->setIcon($this->denormalizer->denormalize($data['icon'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartIcon', 'json', $context));
+        if (\array_key_exists('icon', $data) && $data['icon'] !== null) {
+            $object->setIcon($this->denormalizer->denormalize($data['icon'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartPackageIcon', 'json', $context));
             unset($data['icon']);
+        } elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
+            $object->setIcon(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,19 +42,19 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
      */
     protected $createdAt;
     /**
-     * @var GetOrganizationVirtualMachinesPartZone
+     * @var GetOrganizationVirtualMachines200ResponseVirtualMachinesZone
      */
     protected $zone;
     /**
-     * @var GetOrganizationVirtualMachinesPartPackage
+     * @var GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage|null
      */
     protected $package;
     /**
-     * @var GetOrganizationVirtualMachinesPartGPUType
+     * @var GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType|null
      */
     protected $gpuType;
     /**
-     * @var GetOrganizationVirtualMachinesPartIPAddresses[]
+     * @var GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem[]
      */
     protected $ipAddresses;
 
@@ -123,12 +123,12 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
         return $this;
     }
 
-    public function getZone(): GetOrganizationVirtualMachinesPartZone
+    public function getZone(): GetOrganizationVirtualMachines200ResponseVirtualMachinesZone
     {
         return $this->zone;
     }
 
-    public function setZone(GetOrganizationVirtualMachinesPartZone $zone): self
+    public function setZone(GetOrganizationVirtualMachines200ResponseVirtualMachinesZone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -136,12 +136,12 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
         return $this;
     }
 
-    public function getPackage(): GetOrganizationVirtualMachinesPartPackage
+    public function getPackage(): ?GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage
     {
         return $this->package;
     }
 
-    public function setPackage(GetOrganizationVirtualMachinesPartPackage $package): self
+    public function setPackage(?GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage $package): self
     {
         $this->initialized['package'] = true;
         $this->package = $package;
@@ -149,12 +149,12 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
         return $this;
     }
 
-    public function getGpuType(): GetOrganizationVirtualMachinesPartGPUType
+    public function getGpuType(): ?GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType
     {
         return $this->gpuType;
     }
 
-    public function setGpuType(GetOrganizationVirtualMachinesPartGPUType $gpuType): self
+    public function setGpuType(?GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType $gpuType): self
     {
         $this->initialized['gpuType'] = true;
         $this->gpuType = $gpuType;
@@ -163,7 +163,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
     }
 
     /**
-     * @return GetOrganizationVirtualMachinesPartIPAddresses[]
+     * @return GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem[]
      */
     public function getIpAddresses(): array
     {
@@ -171,7 +171,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
     }
 
     /**
-     * @param GetOrganizationVirtualMachinesPartIPAddresses[] $ipAddresses
+     * @param GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

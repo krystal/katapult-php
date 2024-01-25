@@ -65,9 +65,11 @@ class PostOrganizationManagedPartCountryNormalizer implements DenormalizerInterf
             $object->setIsoCode3($data['iso_code3']);
             unset($data['iso_code3']);
         }
-        if (\array_key_exists('time_zone', $data)) {
+        if (\array_key_exists('time_zone', $data) && $data['time_zone'] !== null) {
             $object->setTimeZone($data['time_zone']);
             unset($data['time_zone']);
+        } elseif (\array_key_exists('time_zone', $data) && $data['time_zone'] === null) {
+            $object->setTimeZone(null);
         }
         if (\array_key_exists('eu', $data)) {
             $object->setEu($data['eu']);

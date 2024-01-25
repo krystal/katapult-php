@@ -26,7 +26,7 @@ class PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule exte
      */
     protected $id;
     /**
-     * @var PatchSecurityGroupsRulesSecurityGroupRulePartSecurityGroup
+     * @var PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRuleSecurityGroup
      */
     protected $securityGroup;
     /**
@@ -42,7 +42,7 @@ class PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule exte
      */
     protected $action;
     /**
-     * @var string
+     * @var string|null
      */
     protected $ports;
     /**
@@ -50,7 +50,7 @@ class PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule exte
      */
     protected $targets;
     /**
-     * @var string
+     * @var string|null
      */
     protected $notes;
 
@@ -67,12 +67,12 @@ class PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule exte
         return $this;
     }
 
-    public function getSecurityGroup(): PatchSecurityGroupsRulesSecurityGroupRulePartSecurityGroup
+    public function getSecurityGroup(): PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRuleSecurityGroup
     {
         return $this->securityGroup;
     }
 
-    public function setSecurityGroup(PatchSecurityGroupsRulesSecurityGroupRulePartSecurityGroup $securityGroup): self
+    public function setSecurityGroup(PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRuleSecurityGroup $securityGroup): self
     {
         $this->initialized['securityGroup'] = true;
         $this->securityGroup = $securityGroup;
@@ -119,12 +119,12 @@ class PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule exte
         return $this;
     }
 
-    public function getPorts(): string
+    public function getPorts(): ?string
     {
         return $this->ports;
     }
 
-    public function setPorts(string $ports): self
+    public function setPorts(?string $ports): self
     {
         $this->initialized['ports'] = true;
         $this->ports = $ports;
@@ -151,12 +151,12 @@ class PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule exte
         return $this;
     }
 
-    public function getNotes(): string
+    public function getNotes(): ?string
     {
         return $this->notes;
     }
 
-    public function setNotes(string $notes): self
+    public function setNotes(?string $notes): self
     {
         $this->initialized['notes'] = true;
         $this->notes = $notes;

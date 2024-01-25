@@ -30,11 +30,11 @@ class PatchVirtualMachinePartZone extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var PatchVirtualMachinePartDataCenter
+     * @var PatchVirtualMachinePartZoneDataCenter
      */
     protected $dataCenter;
 
@@ -64,12 +64,12 @@ class PatchVirtualMachinePartZone extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class PatchVirtualMachinePartZone extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): PatchVirtualMachinePartDataCenter
+    public function getDataCenter(): PatchVirtualMachinePartZoneDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(PatchVirtualMachinePartDataCenter $dataCenter): self
+    public function setDataCenter(PatchVirtualMachinePartZoneDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

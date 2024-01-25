@@ -66,7 +66,7 @@ class GetDiskTemplateVersionSpec200ResponseDiskTemplateVersionNormalizer impleme
             unset($data['size_in_gb']);
         }
         if (\array_key_exists('disk_template', $data)) {
-            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskTemplateVersionSpecPartDiskTemplate', 'json', $context));
+            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskTemplateVersionSpec200ResponseDiskTemplateVersionDiskTemplate', 'json', $context));
             unset($data['disk_template']);
         }
         foreach ($data as $key => $value) {

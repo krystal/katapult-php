@@ -65,9 +65,11 @@ class GetSecurityGroupRules200ResponseSecurityGroupRulesNormalizer implements De
             $object->setAction($data['action']);
             unset($data['action']);
         }
-        if (\array_key_exists('ports', $data)) {
+        if (\array_key_exists('ports', $data) && $data['ports'] !== null) {
             $object->setPorts($data['ports']);
             unset($data['ports']);
+        } elseif (\array_key_exists('ports', $data) && $data['ports'] === null) {
+            $object->setPorts(null);
         }
         if (\array_key_exists('targets', $data)) {
             $values = [];
@@ -77,9 +79,11 @@ class GetSecurityGroupRules200ResponseSecurityGroupRulesNormalizer implements De
             $object->setTargets($values);
             unset($data['targets']);
         }
-        if (\array_key_exists('notes', $data)) {
+        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
             $object->setNotes($data['notes']);
             unset($data['notes']);
+        } elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
+            $object->setNotes(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

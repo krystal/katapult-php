@@ -30,7 +30,7 @@ class OperatingSystemsOperatingSystemGetResponse200OperatingSystem extends \Arra
      */
     protected $name;
     /**
-     * @var Attachment
+     * @var OperatingSystemBadge|null
      */
     protected $badge;
 
@@ -60,12 +60,12 @@ class OperatingSystemsOperatingSystemGetResponse200OperatingSystem extends \Arra
         return $this;
     }
 
-    public function getBadge(): Attachment
+    public function getBadge(): ?OperatingSystemBadge
     {
         return $this->badge;
     }
 
-    public function setBadge(Attachment $badge): self
+    public function setBadge(?OperatingSystemBadge $badge): self
     {
         $this->initialized['badge'] = true;
         $this->badge = $badge;

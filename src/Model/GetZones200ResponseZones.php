@@ -30,11 +30,11 @@ class GetZones200ResponseZones extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var GetZonesPartDataCenter
+     * @var GetZones200ResponseZonesDataCenter
      */
     protected $dataCenter;
 
@@ -64,12 +64,12 @@ class GetZones200ResponseZones extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class GetZones200ResponseZones extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetZonesPartDataCenter
+    public function getDataCenter(): GetZones200ResponseZonesDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetZonesPartDataCenter $dataCenter): self
+    public function setDataCenter(GetZones200ResponseZonesDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

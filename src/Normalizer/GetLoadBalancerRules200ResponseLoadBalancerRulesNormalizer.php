@@ -72,7 +72,7 @@ class GetLoadBalancerRules200ResponseLoadBalancerRulesNormalizer implements Deno
         if (\array_key_exists('certificates', $data)) {
             $values = [];
             foreach ($data['certificates'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancerRulesPartCertificates', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancerRules200ResponseLoadBalancerRulesCertificatesItem', 'json', $context);
             }
             $object->setCertificates($values);
             unset($data['certificates']);

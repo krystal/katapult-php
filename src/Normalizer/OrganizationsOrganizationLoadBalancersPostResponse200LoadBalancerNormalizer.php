@@ -57,9 +57,11 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancerNormalize
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('api_reference', $data)) {
+        if (\array_key_exists('api_reference', $data) && $data['api_reference'] !== null) {
             $object->setApiReference($data['api_reference']);
             unset($data['api_reference']);
+        } elseif (\array_key_exists('api_reference', $data) && $data['api_reference'] === null) {
+            $object->setApiReference(null);
         }
         if (\array_key_exists('resource_type', $data)) {
             $object->setResourceType($data['resource_type']);
@@ -84,7 +86,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancerNormalize
         if (\array_key_exists('ip_address', $data)) {
             $values_2 = [];
             foreach ($data['ip_address'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationLoadBalancersPartIPAddress', 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationLoadBalancers200ResponseLoadBalancerIpAddressItem', 'json', $context);
             }
             $object->setIpAddress($values_2);
             unset($data['ip_address']);
@@ -102,7 +104,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancerNormalize
             unset($data['backend_certificate_key']);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationLoadBalancersPartDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationLoadBalancers200ResponseLoadBalancerDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         if (\array_key_exists('enable_weighting', $data)) {
@@ -112,7 +114,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancerNormalize
         if (\array_key_exists('weights', $data)) {
             $values_3 = [];
             foreach ($data['weights'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationLoadBalancersPartWeights', 'json', $context);
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationLoadBalancers200ResponseLoadBalancerWeightsItem', 'json', $context);
             }
             $object->setWeights($values_3);
             unset($data['weights']);

@@ -38,11 +38,11 @@ class GetOrganizationCertificates200ResponseCertificates extends \ArrayObject
      */
     protected $state;
     /**
-     * @var int
+     * @var int|null
      */
     protected $expiresAt;
     /**
-     * @var int
+     * @var int|null
      */
     protected $lastIssuedAt;
 
@@ -98,12 +98,12 @@ class GetOrganizationCertificates200ResponseCertificates extends \ArrayObject
         return $this;
     }
 
-    public function getExpiresAt(): int
+    public function getExpiresAt(): ?int
     {
         return $this->expiresAt;
     }
 
-    public function setExpiresAt(int $expiresAt): self
+    public function setExpiresAt(?int $expiresAt): self
     {
         $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
@@ -111,12 +111,12 @@ class GetOrganizationCertificates200ResponseCertificates extends \ArrayObject
         return $this;
     }
 
-    public function getLastIssuedAt(): int
+    public function getLastIssuedAt(): ?int
     {
         return $this->lastIssuedAt;
     }
 
-    public function setLastIssuedAt(int $lastIssuedAt): self
+    public function setLastIssuedAt(?int $lastIssuedAt): self
     {
         $this->initialized['lastIssuedAt'] = true;
         $this->lastIssuedAt = $lastIssuedAt;

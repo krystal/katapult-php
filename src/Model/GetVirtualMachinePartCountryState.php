@@ -34,7 +34,7 @@ class GetVirtualMachinePartCountryState extends \ArrayObject
      */
     protected $code;
     /**
-     * @var GetVirtualMachinePartCountry
+     * @var GetVirtualMachinePartCountryStateCountry
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class GetVirtualMachinePartCountryState extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): GetVirtualMachinePartCountry
+    public function getCountry(): GetVirtualMachinePartCountryStateCountry
     {
         return $this->country;
     }
 
-    public function setCountry(GetVirtualMachinePartCountry $country): self
+    public function setCountry(GetVirtualMachinePartCountryStateCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

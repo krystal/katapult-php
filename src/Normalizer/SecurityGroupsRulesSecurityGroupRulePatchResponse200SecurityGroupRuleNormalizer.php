@@ -54,7 +54,7 @@ class SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRuleNorma
             unset($data['id']);
         }
         if (\array_key_exists('security_group', $data)) {
-            $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchSecurityGroupsRulesSecurityGroupRulePartSecurityGroup', 'json', $context));
+            $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRuleSecurityGroup', 'json', $context));
             unset($data['security_group']);
         }
         if (\array_key_exists('direction', $data)) {
@@ -69,9 +69,11 @@ class SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRuleNorma
             $object->setAction($data['action']);
             unset($data['action']);
         }
-        if (\array_key_exists('ports', $data)) {
+        if (\array_key_exists('ports', $data) && $data['ports'] !== null) {
             $object->setPorts($data['ports']);
             unset($data['ports']);
+        } elseif (\array_key_exists('ports', $data) && $data['ports'] === null) {
+            $object->setPorts(null);
         }
         if (\array_key_exists('targets', $data)) {
             $values = [];
@@ -81,9 +83,11 @@ class SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRuleNorma
             $object->setTargets($values);
             unset($data['targets']);
         }
-        if (\array_key_exists('notes', $data)) {
+        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
             $object->setNotes($data['notes']);
             unset($data['notes']);
+        } elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
+            $object->setNotes(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

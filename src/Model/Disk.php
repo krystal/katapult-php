@@ -50,15 +50,15 @@ class Disk extends \ArrayObject
      */
     protected $storageSpeed;
     /**
-     * @var DiskIOProfile
+     * @var DiskIoProfile|null
      */
     protected $ioProfile;
     /**
-     * @var VirtualMachineDisk
+     * @var DiskVirtualMachineDisk|null
      */
     protected $virtualMachineDisk;
     /**
-     * @var DiskInstallation
+     * @var DiskInstallation|null
      */
     protected $installation;
 
@@ -153,12 +153,12 @@ class Disk extends \ArrayObject
         return $this;
     }
 
-    public function getIoProfile(): DiskIOProfile
+    public function getIoProfile(): ?DiskIoProfile
     {
         return $this->ioProfile;
     }
 
-    public function setIoProfile(DiskIOProfile $ioProfile): self
+    public function setIoProfile(?DiskIoProfile $ioProfile): self
     {
         $this->initialized['ioProfile'] = true;
         $this->ioProfile = $ioProfile;
@@ -166,12 +166,12 @@ class Disk extends \ArrayObject
         return $this;
     }
 
-    public function getVirtualMachineDisk(): VirtualMachineDisk
+    public function getVirtualMachineDisk(): ?DiskVirtualMachineDisk
     {
         return $this->virtualMachineDisk;
     }
 
-    public function setVirtualMachineDisk(VirtualMachineDisk $virtualMachineDisk): self
+    public function setVirtualMachineDisk(?DiskVirtualMachineDisk $virtualMachineDisk): self
     {
         $this->initialized['virtualMachineDisk'] = true;
         $this->virtualMachineDisk = $virtualMachineDisk;
@@ -179,12 +179,12 @@ class Disk extends \ArrayObject
         return $this;
     }
 
-    public function getInstallation(): DiskInstallation
+    public function getInstallation(): ?DiskInstallation
     {
         return $this->installation;
     }
 
-    public function setInstallation(DiskInstallation $installation): self
+    public function setInstallation(?DiskInstallation $installation): self
     {
         $this->initialized['installation'] = true;
         $this->installation = $installation;

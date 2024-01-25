@@ -49,9 +49,11 @@ class GetOrganizationUsersWithAccess200ResponseUsersNormalizer implements Denorm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('user', $data)) {
-            $object->setUser($this->denormalizer->denormalize($data['user'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationUsersWithAccessPartUser', 'json', $context));
+        if (\array_key_exists('user', $data) && $data['user'] !== null) {
+            $object->setUser($this->denormalizer->denormalize($data['user'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationUsersWithAccess200ResponseUsersUser', 'json', $context));
             unset($data['user']);
+        } elseif (\array_key_exists('user', $data) && $data['user'] === null) {
+            $object->setUser(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -57,9 +57,11 @@ class DiskTemplateNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         if (\array_key_exists('permalink', $data)) {
             $object->setPermalink($data['permalink']);
@@ -69,13 +71,17 @@ class DiskTemplateNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setUniversal($data['universal']);
             unset($data['universal']);
         }
-        if (\array_key_exists('latest_version', $data)) {
-            $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplateVersion', 'json', $context));
+        if (\array_key_exists('latest_version', $data) && $data['latest_version'] !== null) {
+            $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplateLatestVersion', 'json', $context));
             unset($data['latest_version']);
+        } elseif (\array_key_exists('latest_version', $data) && $data['latest_version'] === null) {
+            $object->setLatestVersion(null);
         }
-        if (\array_key_exists('operating_system', $data)) {
-            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OperatingSystem', 'json', $context));
+        if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
+            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplateOperatingSystem', 'json', $context));
             unset($data['operating_system']);
+        } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
+            $object->setOperatingSystem(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

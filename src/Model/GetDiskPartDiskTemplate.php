@@ -34,7 +34,7 @@ class GetDiskPartDiskTemplate extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var GetDiskPartOperatingSystem
+     * @var GetDiskPartDiskTemplateOperatingSystem|null
      */
     protected $operatingSystem;
 
@@ -77,12 +77,12 @@ class GetDiskPartDiskTemplate extends \ArrayObject
         return $this;
     }
 
-    public function getOperatingSystem(): GetDiskPartOperatingSystem
+    public function getOperatingSystem(): ?GetDiskPartDiskTemplateOperatingSystem
     {
         return $this->operatingSystem;
     }
 
-    public function setOperatingSystem(GetDiskPartOperatingSystem $operatingSystem): self
+    public function setOperatingSystem(?GetDiskPartDiskTemplateOperatingSystem $operatingSystem): self
     {
         $this->initialized['operatingSystem'] = true;
         $this->operatingSystem = $operatingSystem;

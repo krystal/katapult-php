@@ -30,7 +30,7 @@ class DiskTemplate extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -42,11 +42,11 @@ class DiskTemplate extends \ArrayObject
      */
     protected $universal;
     /**
-     * @var DiskTemplateVersion
+     * @var DiskTemplateLatestVersion|null
      */
     protected $latestVersion;
     /**
-     * @var OperatingSystem
+     * @var DiskTemplateOperatingSystem|null
      */
     protected $operatingSystem;
 
@@ -76,12 +76,12 @@ class DiskTemplate extends \ArrayObject
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -115,12 +115,12 @@ class DiskTemplate extends \ArrayObject
         return $this;
     }
 
-    public function getLatestVersion(): DiskTemplateVersion
+    public function getLatestVersion(): ?DiskTemplateLatestVersion
     {
         return $this->latestVersion;
     }
 
-    public function setLatestVersion(DiskTemplateVersion $latestVersion): self
+    public function setLatestVersion(?DiskTemplateLatestVersion $latestVersion): self
     {
         $this->initialized['latestVersion'] = true;
         $this->latestVersion = $latestVersion;
@@ -128,12 +128,12 @@ class DiskTemplate extends \ArrayObject
         return $this;
     }
 
-    public function getOperatingSystem(): OperatingSystem
+    public function getOperatingSystem(): ?DiskTemplateOperatingSystem
     {
         return $this->operatingSystem;
     }
 
-    public function setOperatingSystem(OperatingSystem $operatingSystem): self
+    public function setOperatingSystem(?DiskTemplateOperatingSystem $operatingSystem): self
     {
         $this->initialized['operatingSystem'] = true;
         $this->operatingSystem = $operatingSystem;

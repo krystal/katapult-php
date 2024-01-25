@@ -58,13 +58,13 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
             unset($data['name']);
         }
         if (\array_key_exists('network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachineNetworkInterfacesPartNetwork', 'json', $context));
+            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork', 'json', $context));
             unset($data['network']);
         }
         if (\array_key_exists('ip_addresses', $data)) {
             $values = [];
             foreach ($data['ip_addresses'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachineNetworkInterfacesPartIPAddresses', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesIpAddressesItem', 'json', $context);
             }
             $object->setIpAddresses($values);
             unset($data['ip_addresses']);

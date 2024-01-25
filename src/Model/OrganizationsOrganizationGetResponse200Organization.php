@@ -50,47 +50,47 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
      */
     protected $managed;
     /**
-     * @var string
+     * @var string|null
      */
     protected $billingName;
     /**
-     * @var string
+     * @var string|null
      */
     protected $address1;
     /**
-     * @var string
+     * @var string|null
      */
     protected $address2;
     /**
-     * @var string
+     * @var string|null
      */
     protected $address3;
     /**
-     * @var string
+     * @var string|null
      */
     protected $address4;
     /**
-     * @var string
+     * @var string|null
      */
     protected $postcode;
     /**
-     * @var string
+     * @var string|null
      */
     protected $vatNumber;
     /**
-     * @var string
+     * @var string|null
      */
     protected $phoneNumber;
     /**
-     * @var Currency
+     * @var OrganizationCurrency
      */
     protected $currency;
     /**
-     * @var Country
+     * @var OrganizationCountry|null
      */
     protected $country;
     /**
-     * @var CountryState
+     * @var OrganizationCountryState|null
      */
     protected $countryState;
 
@@ -185,12 +185,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getBillingName(): string
+    public function getBillingName(): ?string
     {
         return $this->billingName;
     }
 
-    public function setBillingName(string $billingName): self
+    public function setBillingName(?string $billingName): self
     {
         $this->initialized['billingName'] = true;
         $this->billingName = $billingName;
@@ -198,12 +198,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getAddress1(): string
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
-    public function setAddress1(string $address1): self
+    public function setAddress1(?string $address1): self
     {
         $this->initialized['address1'] = true;
         $this->address1 = $address1;
@@ -211,12 +211,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getAddress2(): string
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
-    public function setAddress2(string $address2): self
+    public function setAddress2(?string $address2): self
     {
         $this->initialized['address2'] = true;
         $this->address2 = $address2;
@@ -224,12 +224,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getAddress3(): string
+    public function getAddress3(): ?string
     {
         return $this->address3;
     }
 
-    public function setAddress3(string $address3): self
+    public function setAddress3(?string $address3): self
     {
         $this->initialized['address3'] = true;
         $this->address3 = $address3;
@@ -237,12 +237,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getAddress4(): string
+    public function getAddress4(): ?string
     {
         return $this->address4;
     }
 
-    public function setAddress4(string $address4): self
+    public function setAddress4(?string $address4): self
     {
         $this->initialized['address4'] = true;
         $this->address4 = $address4;
@@ -250,12 +250,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getPostcode(): string
+    public function getPostcode(): ?string
     {
         return $this->postcode;
     }
 
-    public function setPostcode(string $postcode): self
+    public function setPostcode(?string $postcode): self
     {
         $this->initialized['postcode'] = true;
         $this->postcode = $postcode;
@@ -263,12 +263,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getVatNumber(): string
+    public function getVatNumber(): ?string
     {
         return $this->vatNumber;
     }
 
-    public function setVatNumber(string $vatNumber): self
+    public function setVatNumber(?string $vatNumber): self
     {
         $this->initialized['vatNumber'] = true;
         $this->vatNumber = $vatNumber;
@@ -276,12 +276,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getPhoneNumber(): string
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $phoneNumber): self
+    public function setPhoneNumber(?string $phoneNumber): self
     {
         $this->initialized['phoneNumber'] = true;
         $this->phoneNumber = $phoneNumber;
@@ -289,12 +289,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getCurrency(): Currency
+    public function getCurrency(): OrganizationCurrency
     {
         return $this->currency;
     }
 
-    public function setCurrency(Currency $currency): self
+    public function setCurrency(OrganizationCurrency $currency): self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;
@@ -302,12 +302,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): Country
+    public function getCountry(): ?OrganizationCountry
     {
         return $this->country;
     }
 
-    public function setCountry(Country $country): self
+    public function setCountry(?OrganizationCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;
@@ -315,12 +315,12 @@ class OrganizationsOrganizationGetResponse200Organization extends \ArrayObject
         return $this;
     }
 
-    public function getCountryState(): CountryState
+    public function getCountryState(): ?OrganizationCountryState
     {
         return $this->countryState;
     }
 
-    public function setCountryState(CountryState $countryState): self
+    public function setCountryState(?OrganizationCountryState $countryState): self
     {
         $this->initialized['countryState'] = true;
         $this->countryState = $countryState;

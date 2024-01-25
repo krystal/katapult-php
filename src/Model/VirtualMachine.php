@@ -38,7 +38,7 @@ class VirtualMachine extends \ArrayObject
      */
     protected $fqdn;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -46,7 +46,7 @@ class VirtualMachine extends \ArrayObject
      */
     protected $createdAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $initialRootPassword;
     /**
@@ -54,43 +54,43 @@ class VirtualMachine extends \ArrayObject
      */
     protected $state;
     /**
-     * @var Zone
+     * @var VirtualMachineZone
      */
     protected $zone;
     /**
-     * @var Organization
+     * @var VirtualMachineOrganization
      */
     protected $organization;
     /**
-     * @var VirtualMachineGroup
+     * @var VirtualMachineGroup|null
      */
     protected $group;
     /**
-     * @var VirtualMachinePackage
+     * @var VirtualMachinePackage|null
      */
     protected $package;
     /**
-     * @var ISO
+     * @var VirtualMachineAttachedIso|null
      */
     protected $attachedIso;
     /**
-     * @var int
+     * @var int|null
      */
     protected $memoryInGb;
     /**
-     * @var int
+     * @var int|null
      */
     protected $cpuCores;
     /**
-     * @var GPUType
+     * @var VirtualMachineGpuType|null
      */
     protected $gpuType;
     /**
-     * @var VirtualMachineGPU[]
+     * @var VirtualMachineGpusItem[]
      */
     protected $gpus;
     /**
-     * @var Tag[]
+     * @var VirtualMachineTagsItem[]
      */
     protected $tags;
     /**
@@ -98,7 +98,7 @@ class VirtualMachine extends \ArrayObject
      */
     protected $tagNames;
     /**
-     * @var IPAddress[]
+     * @var VirtualMachineIpAddressesItem[]
      */
     protected $ipAddresses;
 
@@ -154,12 +154,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -180,12 +180,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getInitialRootPassword(): string
+    public function getInitialRootPassword(): ?string
     {
         return $this->initialRootPassword;
     }
 
-    public function setInitialRootPassword(string $initialRootPassword): self
+    public function setInitialRootPassword(?string $initialRootPassword): self
     {
         $this->initialized['initialRootPassword'] = true;
         $this->initialRootPassword = $initialRootPassword;
@@ -206,12 +206,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getZone(): Zone
+    public function getZone(): VirtualMachineZone
     {
         return $this->zone;
     }
 
-    public function setZone(Zone $zone): self
+    public function setZone(VirtualMachineZone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -219,12 +219,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getOrganization(): Organization
+    public function getOrganization(): VirtualMachineOrganization
     {
         return $this->organization;
     }
 
-    public function setOrganization(Organization $organization): self
+    public function setOrganization(VirtualMachineOrganization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;
@@ -232,12 +232,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getGroup(): VirtualMachineGroup
+    public function getGroup(): ?VirtualMachineGroup
     {
         return $this->group;
     }
 
-    public function setGroup(VirtualMachineGroup $group): self
+    public function setGroup(?VirtualMachineGroup $group): self
     {
         $this->initialized['group'] = true;
         $this->group = $group;
@@ -245,12 +245,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getPackage(): VirtualMachinePackage
+    public function getPackage(): ?VirtualMachinePackage
     {
         return $this->package;
     }
 
-    public function setPackage(VirtualMachinePackage $package): self
+    public function setPackage(?VirtualMachinePackage $package): self
     {
         $this->initialized['package'] = true;
         $this->package = $package;
@@ -258,12 +258,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getAttachedIso(): ISO
+    public function getAttachedIso(): ?VirtualMachineAttachedIso
     {
         return $this->attachedIso;
     }
 
-    public function setAttachedIso(ISO $attachedIso): self
+    public function setAttachedIso(?VirtualMachineAttachedIso $attachedIso): self
     {
         $this->initialized['attachedIso'] = true;
         $this->attachedIso = $attachedIso;
@@ -271,12 +271,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getMemoryInGb(): int
+    public function getMemoryInGb(): ?int
     {
         return $this->memoryInGb;
     }
 
-    public function setMemoryInGb(int $memoryInGb): self
+    public function setMemoryInGb(?int $memoryInGb): self
     {
         $this->initialized['memoryInGb'] = true;
         $this->memoryInGb = $memoryInGb;
@@ -284,12 +284,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getCpuCores(): int
+    public function getCpuCores(): ?int
     {
         return $this->cpuCores;
     }
 
-    public function setCpuCores(int $cpuCores): self
+    public function setCpuCores(?int $cpuCores): self
     {
         $this->initialized['cpuCores'] = true;
         $this->cpuCores = $cpuCores;
@@ -297,12 +297,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getGpuType(): GPUType
+    public function getGpuType(): ?VirtualMachineGpuType
     {
         return $this->gpuType;
     }
 
-    public function setGpuType(GPUType $gpuType): self
+    public function setGpuType(?VirtualMachineGpuType $gpuType): self
     {
         $this->initialized['gpuType'] = true;
         $this->gpuType = $gpuType;
@@ -311,7 +311,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return VirtualMachineGPU[]
+     * @return VirtualMachineGpusItem[]
      */
     public function getGpus(): array
     {
@@ -319,7 +319,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param VirtualMachineGPU[] $gpus
+     * @param VirtualMachineGpusItem[] $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -330,7 +330,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return Tag[]
+     * @return VirtualMachineTagsItem[]
      */
     public function getTags(): array
     {
@@ -338,7 +338,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param Tag[] $tags
+     * @param VirtualMachineTagsItem[] $tags
      */
     public function setTags(array $tags): self
     {
@@ -368,7 +368,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return IPAddress[]
+     * @return VirtualMachineIpAddressesItem[]
      */
     public function getIpAddresses(): array
     {
@@ -376,7 +376,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param IPAddress[] $ipAddresses
+     * @param VirtualMachineIpAddressesItem[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

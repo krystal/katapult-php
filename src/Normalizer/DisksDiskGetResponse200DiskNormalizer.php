@@ -77,17 +77,23 @@ class DisksDiskGetResponse200DiskNormalizer implements DenormalizerInterface, No
             $object->setStorageSpeed($data['storage_speed']);
             unset($data['storage_speed']);
         }
-        if (\array_key_exists('io_profile', $data)) {
-            $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartIOProfile', 'json', $context));
+        if (\array_key_exists('io_profile', $data) && $data['io_profile'] !== null) {
+            $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDisk200ResponseDiskIoProfile', 'json', $context));
             unset($data['io_profile']);
+        } elseif (\array_key_exists('io_profile', $data) && $data['io_profile'] === null) {
+            $object->setIoProfile(null);
         }
-        if (\array_key_exists('virtual_machine_disk', $data)) {
-            $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartVirtualMachineDisk', 'json', $context));
+        if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
+            $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDisk200ResponseDiskVirtualMachineDisk', 'json', $context));
             unset($data['virtual_machine_disk']);
+        } elseif (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] === null) {
+            $object->setVirtualMachineDisk(null);
         }
-        if (\array_key_exists('installation', $data)) {
-            $object->setInstallation($this->denormalizer->denormalize($data['installation'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartInstallation', 'json', $context));
+        if (\array_key_exists('installation', $data) && $data['installation'] !== null) {
+            $object->setInstallation($this->denormalizer->denormalize($data['installation'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDisk200ResponseDiskInstallation', 'json', $context));
             unset($data['installation']);
+        } elseif (\array_key_exists('installation', $data) && $data['installation'] === null) {
+            $object->setInstallation(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

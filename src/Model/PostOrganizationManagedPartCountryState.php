@@ -34,7 +34,7 @@ class PostOrganizationManagedPartCountryState extends \ArrayObject
      */
     protected $code;
     /**
-     * @var PostOrganizationManagedPartCountry
+     * @var PostOrganizationManagedPartCountryStateCountry
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class PostOrganizationManagedPartCountryState extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): PostOrganizationManagedPartCountry
+    public function getCountry(): PostOrganizationManagedPartCountryStateCountry
     {
         return $this->country;
     }
 
-    public function setCountry(PostOrganizationManagedPartCountry $country): self
+    public function setCountry(PostOrganizationManagedPartCountryStateCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

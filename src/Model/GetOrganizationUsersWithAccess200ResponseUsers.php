@@ -22,16 +22,16 @@ class GetOrganizationUsersWithAccess200ResponseUsers extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var GetOrganizationUsersWithAccessPartUser
+     * @var GetOrganizationUsersWithAccess200ResponseUsersUser|null
      */
     protected $user;
 
-    public function getUser(): GetOrganizationUsersWithAccessPartUser
+    public function getUser(): ?GetOrganizationUsersWithAccess200ResponseUsersUser
     {
         return $this->user;
     }
 
-    public function setUser(GetOrganizationUsersWithAccessPartUser $user): self
+    public function setUser(?GetOrganizationUsersWithAccess200ResponseUsersUser $user): self
     {
         $this->initialized['user'] = true;
         $this->user = $user;

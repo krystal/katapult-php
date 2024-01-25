@@ -30,11 +30,11 @@ class DataCenter extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var Country
+     * @var DataCenterCountry
      */
     protected $country;
 
@@ -64,12 +64,12 @@ class DataCenter extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class DataCenter extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): Country
+    public function getCountry(): DataCenterCountry
     {
         return $this->country;
     }
 
-    public function setCountry(Country $country): self
+    public function setCountry(DataCenterCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

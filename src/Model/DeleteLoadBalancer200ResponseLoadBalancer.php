@@ -30,7 +30,7 @@ class DeleteLoadBalancer200ResponseLoadBalancer extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $apiReference;
 
@@ -60,12 +60,12 @@ class DeleteLoadBalancer200ResponseLoadBalancer extends \ArrayObject
         return $this;
     }
 
-    public function getApiReference(): string
+    public function getApiReference(): ?string
     {
         return $this->apiReference;
     }
 
-    public function setApiReference(string $apiReference): self
+    public function setApiReference(?string $apiReference): self
     {
         $this->initialized['apiReference'] = true;
         $this->apiReference = $apiReference;

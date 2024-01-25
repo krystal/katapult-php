@@ -49,9 +49,11 @@ class PatchVirtualMachinePartGPUsNormalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
@@ -66,7 +68,7 @@ class PatchVirtualMachinePartGPUsNormalizer implements DenormalizerInterface, No
             unset($data['available']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($this->denormalizer->denormalize($data['type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartType', 'json', $context));
+            $object->setType($this->denormalizer->denormalize($data['type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartGPUsType', 'json', $context));
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
