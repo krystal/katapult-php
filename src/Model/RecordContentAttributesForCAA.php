@@ -22,24 +22,24 @@ class RecordContentAttributesForCAA extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $flag;
     /**
-     * @var string
+     * @var string|null
      */
     protected $tag;
     /**
-     * @var string
+     * @var string|null
      */
     protected $value;
 
-    public function getFlag(): string
+    public function getFlag(): ?string
     {
         return $this->flag;
     }
 
-    public function setFlag(string $flag): self
+    public function setFlag(?string $flag): self
     {
         $this->initialized['flag'] = true;
         $this->flag = $flag;
@@ -47,12 +47,12 @@ class RecordContentAttributesForCAA extends \ArrayObject
         return $this;
     }
 
-    public function getTag(): string
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    public function setTag(string $tag): self
+    public function setTag(?string $tag): self
     {
         $this->initialized['tag'] = true;
         $this->tag = $tag;
@@ -60,12 +60,12 @@ class RecordContentAttributesForCAA extends \ArrayObject
         return $this;
     }
 
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    public function setValue(string $value): self
+    public function setValue(?string $value): self
     {
         $this->initialized['value'] = true;
         $this->value = $value;

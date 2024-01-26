@@ -61,13 +61,17 @@ class DiskIOProfileNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setPermalink($data['permalink']);
             unset($data['permalink']);
         }
-        if (\array_key_exists('speed_in_mb', $data)) {
+        if (\array_key_exists('speed_in_mb', $data) && $data['speed_in_mb'] !== null) {
             $object->setSpeedInMb($data['speed_in_mb']);
             unset($data['speed_in_mb']);
+        } elseif (\array_key_exists('speed_in_mb', $data) && $data['speed_in_mb'] === null) {
+            $object->setSpeedInMb(null);
         }
-        if (\array_key_exists('iops', $data)) {
+        if (\array_key_exists('iops', $data) && $data['iops'] !== null) {
             $object->setIops($data['iops']);
             unset($data['iops']);
+        } elseif (\array_key_exists('iops', $data) && $data['iops'] === null) {
+            $object->setIops(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

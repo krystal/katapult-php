@@ -50,7 +50,7 @@ class GetVirtualMachinePartPackage extends \ArrayObject
      */
     protected $storageInGb;
     /**
-     * @var int
+     * @var int|null
      */
     protected $monthlyBandwidthAllowanceInGb;
     /**
@@ -58,7 +58,7 @@ class GetVirtualMachinePartPackage extends \ArrayObject
      */
     protected $privacy;
     /**
-     * @var GetVirtualMachinePartIcon
+     * @var GetVirtualMachinePartPackageIcon|null
      */
     protected $icon;
 
@@ -153,12 +153,12 @@ class GetVirtualMachinePartPackage extends \ArrayObject
         return $this;
     }
 
-    public function getMonthlyBandwidthAllowanceInGb(): int
+    public function getMonthlyBandwidthAllowanceInGb(): ?int
     {
         return $this->monthlyBandwidthAllowanceInGb;
     }
 
-    public function setMonthlyBandwidthAllowanceInGb(int $monthlyBandwidthAllowanceInGb): self
+    public function setMonthlyBandwidthAllowanceInGb(?int $monthlyBandwidthAllowanceInGb): self
     {
         $this->initialized['monthlyBandwidthAllowanceInGb'] = true;
         $this->monthlyBandwidthAllowanceInGb = $monthlyBandwidthAllowanceInGb;
@@ -179,12 +179,12 @@ class GetVirtualMachinePartPackage extends \ArrayObject
         return $this;
     }
 
-    public function getIcon(): GetVirtualMachinePartIcon
+    public function getIcon(): ?GetVirtualMachinePartPackageIcon
     {
         return $this->icon;
     }
 
-    public function setIcon(GetVirtualMachinePartIcon $icon): self
+    public function setIcon(?GetVirtualMachinePartPackageIcon $icon): self
     {
         $this->initialized['icon'] = true;
         $this->icon = $icon;

@@ -34,7 +34,7 @@ class CountryState extends \ArrayObject
      */
     protected $code;
     /**
-     * @var Country
+     * @var CountryStateCountry
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class CountryState extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): Country
+    public function getCountry(): CountryStateCountry
     {
         return $this->country;
     }
 
-    public function setCountry(Country $country): self
+    public function setCountry(CountryStateCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

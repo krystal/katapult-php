@@ -49,17 +49,23 @@ class RecordContentAttributesForSSHFPNormalizer implements DenormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('algorithm', $data)) {
+        if (\array_key_exists('algorithm', $data) && $data['algorithm'] !== null) {
             $object->setAlgorithm($data['algorithm']);
             unset($data['algorithm']);
+        } elseif (\array_key_exists('algorithm', $data) && $data['algorithm'] === null) {
+            $object->setAlgorithm(null);
         }
-        if (\array_key_exists('fingerprint_type', $data)) {
+        if (\array_key_exists('fingerprint_type', $data) && $data['fingerprint_type'] !== null) {
             $object->setFingerprintType($data['fingerprint_type']);
             unset($data['fingerprint_type']);
+        } elseif (\array_key_exists('fingerprint_type', $data) && $data['fingerprint_type'] === null) {
+            $object->setFingerprintType(null);
         }
-        if (\array_key_exists('fingerprint', $data)) {
+        if (\array_key_exists('fingerprint', $data) && $data['fingerprint'] !== null) {
             $object->setFingerprint($data['fingerprint']);
             unset($data['fingerprint']);
+        } elseif (\array_key_exists('fingerprint', $data) && $data['fingerprint'] === null) {
+            $object->setFingerprint(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

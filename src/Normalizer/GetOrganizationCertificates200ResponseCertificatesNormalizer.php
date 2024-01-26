@@ -65,13 +65,17 @@ class GetOrganizationCertificates200ResponseCertificatesNormalizer implements De
             $object->setState($data['state']);
             unset($data['state']);
         }
-        if (\array_key_exists('expires_at', $data)) {
+        if (\array_key_exists('expires_at', $data) && $data['expires_at'] !== null) {
             $object->setExpiresAt($data['expires_at']);
             unset($data['expires_at']);
+        } elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
+            $object->setExpiresAt(null);
         }
-        if (\array_key_exists('last_issued_at', $data)) {
+        if (\array_key_exists('last_issued_at', $data) && $data['last_issued_at'] !== null) {
             $object->setLastIssuedAt($data['last_issued_at']);
             unset($data['last_issued_at']);
+        } elseif (\array_key_exists('last_issued_at', $data) && $data['last_issued_at'] === null) {
+            $object->setLastIssuedAt(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

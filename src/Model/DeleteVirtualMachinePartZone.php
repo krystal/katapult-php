@@ -30,11 +30,11 @@ class DeleteVirtualMachinePartZone extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var DeleteVirtualMachinePartDataCenter
+     * @var DeleteVirtualMachinePartZoneDataCenter
      */
     protected $dataCenter;
 
@@ -64,12 +64,12 @@ class DeleteVirtualMachinePartZone extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class DeleteVirtualMachinePartZone extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): DeleteVirtualMachinePartDataCenter
+    public function getDataCenter(): DeleteVirtualMachinePartZoneDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DeleteVirtualMachinePartDataCenter $dataCenter): self
+    public function setDataCenter(DeleteVirtualMachinePartZoneDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

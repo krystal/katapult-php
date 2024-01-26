@@ -34,7 +34,7 @@ class PatchDiskBackupPolicy200ResponseDiskBackupPolicy extends \ArrayObject
      */
     protected $target;
     /**
-     * @var array<string, mixed>
+     * @var PatchDiskBackupPolicy200ResponseDiskBackupPolicySchedule
      */
     protected $schedule;
 
@@ -77,18 +77,12 @@ class PatchDiskBackupPolicy200ResponseDiskBackupPolicy extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getSchedule(): iterable
+    public function getSchedule(): PatchDiskBackupPolicy200ResponseDiskBackupPolicySchedule
     {
         return $this->schedule;
     }
 
-    /**
-     * @param array<string, mixed> $schedule
-     */
-    public function setSchedule(iterable $schedule): self
+    public function setSchedule(PatchDiskBackupPolicy200ResponseDiskBackupPolicySchedule $schedule): self
     {
         $this->initialized['schedule'] = true;
         $this->schedule = $schedule;

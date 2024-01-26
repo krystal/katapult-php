@@ -30,7 +30,7 @@ class ISO extends \ArrayObject
      */
     protected $name;
     /**
-     * @var OperatingSystem
+     * @var ISOOperatingSystem|null
      */
     protected $operatingSystem;
 
@@ -60,12 +60,12 @@ class ISO extends \ArrayObject
         return $this;
     }
 
-    public function getOperatingSystem(): OperatingSystem
+    public function getOperatingSystem(): ?ISOOperatingSystem
     {
         return $this->operatingSystem;
     }
 
-    public function setOperatingSystem(OperatingSystem $operatingSystem): self
+    public function setOperatingSystem(?ISOOperatingSystem $operatingSystem): self
     {
         $this->initialized['operatingSystem'] = true;
         $this->operatingSystem = $operatingSystem;

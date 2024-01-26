@@ -34,7 +34,7 @@ class DeleteVirtualMachinePartCountryState extends \ArrayObject
      */
     protected $code;
     /**
-     * @var DeleteVirtualMachinePartCountry
+     * @var DeleteVirtualMachinePartCountryStateCountry
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class DeleteVirtualMachinePartCountryState extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): DeleteVirtualMachinePartCountry
+    public function getCountry(): DeleteVirtualMachinePartCountryStateCountry
     {
         return $this->country;
     }
 
-    public function setCountry(DeleteVirtualMachinePartCountry $country): self
+    public function setCountry(DeleteVirtualMachinePartCountryStateCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

@@ -50,7 +50,7 @@ class GetVirtualMachineDisks200ResponseDisksNormalizer implements DenormalizerIn
             return $object;
         }
         if (\array_key_exists('disk', $data)) {
-            $object->setDisk($this->denormalizer->denormalize($data['disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachineDisksPartDisk', 'json', $context));
+            $object->setDisk($this->denormalizer->denormalize($data['disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachineDisks200ResponseDisksDisk', 'json', $context));
             unset($data['disk']);
         }
         if (\array_key_exists('attach_on_boot', $data)) {

@@ -34,7 +34,7 @@ class TemplateSpecField extends \ArrayObject
      */
     protected $label;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -42,11 +42,11 @@ class TemplateSpecField extends \ArrayObject
      */
     protected $required;
     /**
-     * @var string
+     * @var string|null
      */
     protected $placeholder;
     /**
-     * @var string
+     * @var string|null
      */
     protected $prefill;
 
@@ -89,12 +89,12 @@ class TemplateSpecField extends \ArrayObject
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -115,12 +115,12 @@ class TemplateSpecField extends \ArrayObject
         return $this;
     }
 
-    public function getPlaceholder(): string
+    public function getPlaceholder(): ?string
     {
         return $this->placeholder;
     }
 
-    public function setPlaceholder(string $placeholder): self
+    public function setPlaceholder(?string $placeholder): self
     {
         $this->initialized['placeholder'] = true;
         $this->placeholder = $placeholder;
@@ -128,12 +128,12 @@ class TemplateSpecField extends \ArrayObject
         return $this;
     }
 
-    public function getPrefill(): string
+    public function getPrefill(): ?string
     {
         return $this->prefill;
     }
 
-    public function setPrefill(string $prefill): self
+    public function setPrefill(?string $prefill): self
     {
         $this->initialized['prefill'] = true;
         $this->prefill = $prefill;

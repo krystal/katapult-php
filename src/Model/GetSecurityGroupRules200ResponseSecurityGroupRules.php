@@ -38,7 +38,7 @@ class GetSecurityGroupRules200ResponseSecurityGroupRules extends \ArrayObject
      */
     protected $action;
     /**
-     * @var string
+     * @var string|null
      */
     protected $ports;
     /**
@@ -46,7 +46,7 @@ class GetSecurityGroupRules200ResponseSecurityGroupRules extends \ArrayObject
      */
     protected $targets;
     /**
-     * @var string
+     * @var string|null
      */
     protected $notes;
 
@@ -102,12 +102,12 @@ class GetSecurityGroupRules200ResponseSecurityGroupRules extends \ArrayObject
         return $this;
     }
 
-    public function getPorts(): string
+    public function getPorts(): ?string
     {
         return $this->ports;
     }
 
-    public function setPorts(string $ports): self
+    public function setPorts(?string $ports): self
     {
         $this->initialized['ports'] = true;
         $this->ports = $ports;
@@ -134,12 +134,12 @@ class GetSecurityGroupRules200ResponseSecurityGroupRules extends \ArrayObject
         return $this;
     }
 
-    public function getNotes(): string
+    public function getNotes(): ?string
     {
         return $this->notes;
     }
 
-    public function setNotes(string $notes): self
+    public function setNotes(?string $notes): self
     {
         $this->initialized['notes'] = true;
         $this->notes = $notes;

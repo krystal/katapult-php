@@ -57,9 +57,11 @@ class PatchVirtualMachinePartOperatingSystemNormalizer implements DenormalizerIn
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('badge', $data)) {
-            $object->setBadge($this->denormalizer->denormalize($data['badge'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartBadge', 'json', $context));
+        if (\array_key_exists('badge', $data) && $data['badge'] !== null) {
+            $object->setBadge($this->denormalizer->denormalize($data['badge'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartOperatingSystemBadge', 'json', $context));
             unset($data['badge']);
+        } elseif (\array_key_exists('badge', $data) && $data['badge'] === null) {
+            $object->setBadge(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

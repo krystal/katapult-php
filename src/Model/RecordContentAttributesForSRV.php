@@ -22,24 +22,24 @@ class RecordContentAttributesForSRV extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $weight;
     /**
-     * @var string
+     * @var string|null
      */
     protected $port;
     /**
-     * @var string
+     * @var string|null
      */
     protected $target;
 
-    public function getWeight(): string
+    public function getWeight(): ?string
     {
         return $this->weight;
     }
 
-    public function setWeight(string $weight): self
+    public function setWeight(?string $weight): self
     {
         $this->initialized['weight'] = true;
         $this->weight = $weight;
@@ -47,12 +47,12 @@ class RecordContentAttributesForSRV extends \ArrayObject
         return $this;
     }
 
-    public function getPort(): string
+    public function getPort(): ?string
     {
         return $this->port;
     }
 
-    public function setPort(string $port): self
+    public function setPort(?string $port): self
     {
         $this->initialized['port'] = true;
         $this->port = $port;
@@ -60,12 +60,12 @@ class RecordContentAttributesForSRV extends \ArrayObject
         return $this;
     }
 
-    public function getTarget(): string
+    public function getTarget(): ?string
     {
         return $this->target;
     }
 
-    public function setTarget(string $target): self
+    public function setTarget(?string $target): self
     {
         $this->initialized['target'] = true;
         $this->target = $target;

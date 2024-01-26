@@ -30,11 +30,11 @@ class DataCentersDataCenterGetResponse200DataCenter extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var GetDataCenterPartCountry
+     * @var GetDataCenter200ResponseDataCenterCountry
      */
     protected $country;
 
@@ -64,12 +64,12 @@ class DataCentersDataCenterGetResponse200DataCenter extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class DataCentersDataCenterGetResponse200DataCenter extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): GetDataCenterPartCountry
+    public function getCountry(): GetDataCenter200ResponseDataCenterCountry
     {
         return $this->country;
     }
 
-    public function setCountry(GetDataCenterPartCountry $country): self
+    public function setCountry(GetDataCenter200ResponseDataCenterCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

@@ -49,17 +49,23 @@ class RecordContentAttributesForSRVNormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('weight', $data)) {
+        if (\array_key_exists('weight', $data) && $data['weight'] !== null) {
             $object->setWeight($data['weight']);
             unset($data['weight']);
+        } elseif (\array_key_exists('weight', $data) && $data['weight'] === null) {
+            $object->setWeight(null);
         }
-        if (\array_key_exists('port', $data)) {
+        if (\array_key_exists('port', $data) && $data['port'] !== null) {
             $object->setPort($data['port']);
             unset($data['port']);
+        } elseif (\array_key_exists('port', $data) && $data['port'] === null) {
+            $object->setPort(null);
         }
-        if (\array_key_exists('target', $data)) {
+        if (\array_key_exists('target', $data) && $data['target'] !== null) {
             $object->setTarget($data['target']);
             unset($data['target']);
+        } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+            $object->setTarget(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -34,7 +34,7 @@ class VirtualMachinesBuildsVirtualMachineBuildGetResponse200VirtualMachineBuild 
      */
     protected $state;
     /**
-     * @var GetVirtualMachinesBuildsVirtualMachineBuildPartVirtualMachine
+     * @var GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine|null
      */
     protected $virtualMachine;
     /**
@@ -81,12 +81,12 @@ class VirtualMachinesBuildsVirtualMachineBuildGetResponse200VirtualMachineBuild 
         return $this;
     }
 
-    public function getVirtualMachine(): GetVirtualMachinesBuildsVirtualMachineBuildPartVirtualMachine
+    public function getVirtualMachine(): ?GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(GetVirtualMachinesBuildsVirtualMachineBuildPartVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(?GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;

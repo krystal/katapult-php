@@ -22,16 +22,16 @@ class RecordContentAttributesForAAAA extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $ipAddress;
 
-    public function getIpAddress(): string
+    public function getIpAddress(): ?string
     {
         return $this->ipAddress;
     }
 
-    public function setIpAddress(string $ipAddress): self
+    public function setIpAddress(?string $ipAddress): self
     {
         $this->initialized['ipAddress'] = true;
         $this->ipAddress = $ipAddress;

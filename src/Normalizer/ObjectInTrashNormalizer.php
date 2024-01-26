@@ -49,9 +49,11 @@ class ObjectInTrashNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('trash_object', $data)) {
-            $object->setTrashObject($this->denormalizer->denormalize($data['trash_object'], 'Krystal\\Katapult\\KatapultAPI\\Model\\TrashObject', 'json', $context));
+        if (\array_key_exists('trash_object', $data) && $data['trash_object'] !== null) {
+            $object->setTrashObject($this->denormalizer->denormalize($data['trash_object'], 'Krystal\\Katapult\\KatapultAPI\\Model\\ObjectInTrashTrashObject', 'json', $context));
             unset($data['trash_object']);
+        } elseif (\array_key_exists('trash_object', $data) && $data['trash_object'] === null) {
+            $object->setTrashObject(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

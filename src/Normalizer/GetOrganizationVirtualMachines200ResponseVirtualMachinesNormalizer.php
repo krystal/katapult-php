@@ -70,21 +70,25 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachinesNormalizer impleme
             unset($data['created_at']);
         }
         if (\array_key_exists('zone', $data)) {
-            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartZone', 'json', $context));
+            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesZone', 'json', $context));
             unset($data['zone']);
         }
-        if (\array_key_exists('package', $data)) {
-            $object->setPackage($this->denormalizer->denormalize($data['package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartPackage', 'json', $context));
+        if (\array_key_exists('package', $data) && $data['package'] !== null) {
+            $object->setPackage($this->denormalizer->denormalize($data['package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage', 'json', $context));
             unset($data['package']);
+        } elseif (\array_key_exists('package', $data) && $data['package'] === null) {
+            $object->setPackage(null);
         }
-        if (\array_key_exists('gpu_type', $data)) {
-            $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartGPUType', 'json', $context));
+        if (\array_key_exists('gpu_type', $data) && $data['gpu_type'] !== null) {
+            $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType', 'json', $context));
             unset($data['gpu_type']);
+        } elseif (\array_key_exists('gpu_type', $data) && $data['gpu_type'] === null) {
+            $object->setGpuType(null);
         }
         if (\array_key_exists('ip_addresses', $data)) {
             $values = [];
             foreach ($data['ip_addresses'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartIPAddresses', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem', 'json', $context);
             }
             $object->setIpAddresses($values);
             unset($data['ip_addresses']);

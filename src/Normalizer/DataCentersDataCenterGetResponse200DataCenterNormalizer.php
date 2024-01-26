@@ -57,12 +57,14 @@ class DataCentersDataCenterGetResponse200DataCenterNormalizer implements Denorma
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('permalink', $data)) {
+        if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
             $object->setPermalink($data['permalink']);
             unset($data['permalink']);
+        } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
+            $object->setPermalink(null);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDataCenterPartCountry', 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDataCenter200ResponseDataCenterCountry', 'json', $context));
             unset($data['country']);
         }
         foreach ($data as $key => $value) {

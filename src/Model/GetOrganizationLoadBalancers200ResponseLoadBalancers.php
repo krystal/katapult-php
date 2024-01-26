@@ -30,7 +30,7 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $apiReference;
     /**
@@ -46,11 +46,11 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
      */
     protected $resourceIds;
     /**
-     * @var GetOrganizationLoadBalancersPartIPAddress[]
+     * @var GetOrganizationLoadBalancers200ResponseLoadBalancersIpAddressItem[]
      */
     protected $ipAddress;
     /**
-     * @var GetOrganizationLoadBalancersPartDataCenter
+     * @var GetOrganizationLoadBalancers200ResponseLoadBalancersDataCenter
      */
     protected $dataCenter;
 
@@ -80,12 +80,12 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
         return $this;
     }
 
-    public function getApiReference(): string
+    public function getApiReference(): ?string
     {
         return $this->apiReference;
     }
 
-    public function setApiReference(string $apiReference): self
+    public function setApiReference(?string $apiReference): self
     {
         $this->initialized['apiReference'] = true;
         $this->apiReference = $apiReference;
@@ -145,7 +145,7 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
     }
 
     /**
-     * @return GetOrganizationLoadBalancersPartIPAddress[]
+     * @return GetOrganizationLoadBalancers200ResponseLoadBalancersIpAddressItem[]
      */
     public function getIpAddress(): array
     {
@@ -153,7 +153,7 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
     }
 
     /**
-     * @param GetOrganizationLoadBalancersPartIPAddress[] $ipAddress
+     * @param GetOrganizationLoadBalancers200ResponseLoadBalancersIpAddressItem[] $ipAddress
      */
     public function setIpAddress(array $ipAddress): self
     {
@@ -163,12 +163,12 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetOrganizationLoadBalancersPartDataCenter
+    public function getDataCenter(): GetOrganizationLoadBalancers200ResponseLoadBalancersDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetOrganizationLoadBalancersPartDataCenter $dataCenter): self
+    public function setDataCenter(GetOrganizationLoadBalancers200ResponseLoadBalancersDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

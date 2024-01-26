@@ -34,11 +34,11 @@ class DiskIOProfile extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var int
+     * @var int|null
      */
     protected $speedInMb;
     /**
-     * @var int
+     * @var int|null
      */
     protected $iops;
 
@@ -81,12 +81,12 @@ class DiskIOProfile extends \ArrayObject
         return $this;
     }
 
-    public function getSpeedInMb(): int
+    public function getSpeedInMb(): ?int
     {
         return $this->speedInMb;
     }
 
-    public function setSpeedInMb(int $speedInMb): self
+    public function setSpeedInMb(?int $speedInMb): self
     {
         $this->initialized['speedInMb'] = true;
         $this->speedInMb = $speedInMb;
@@ -94,12 +94,12 @@ class DiskIOProfile extends \ArrayObject
         return $this;
     }
 
-    public function getIops(): int
+    public function getIops(): ?int
     {
         return $this->iops;
     }
 
-    public function setIops(int $iops): self
+    public function setIops(?int $iops): self
     {
         $this->initialized['iops'] = true;
         $this->iops = $iops;

@@ -57,13 +57,17 @@ class GetDiskPartAttributesNormalizer implements DenormalizerInterface, Normaliz
             $object->setLabel($data['label']);
             unset($data['label']);
         }
-        if (\array_key_exists('value', $data)) {
+        if (\array_key_exists('value', $data) && $data['value'] !== null) {
             $object->setValue($data['value']);
             unset($data['value']);
+        } elseif (\array_key_exists('value', $data) && $data['value'] === null) {
+            $object->setValue(null);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         if (\array_key_exists('protect', $data)) {
             $object->setProtect($data['protect']);

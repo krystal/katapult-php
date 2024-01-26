@@ -30,7 +30,7 @@ class DiskBackupPoliciesDiskBackupPolicyScheduleDeleteResponse200DiskBackupPolic
      */
     protected $target;
     /**
-     * @var int
+     * @var int|null
      */
     protected $autoMoveToTrashAt;
 
@@ -60,12 +60,12 @@ class DiskBackupPoliciesDiskBackupPolicyScheduleDeleteResponse200DiskBackupPolic
         return $this;
     }
 
-    public function getAutoMoveToTrashAt(): int
+    public function getAutoMoveToTrashAt(): ?int
     {
         return $this->autoMoveToTrashAt;
     }
 
-    public function setAutoMoveToTrashAt(int $autoMoveToTrashAt): self
+    public function setAutoMoveToTrashAt(?int $autoMoveToTrashAt): self
     {
         $this->initialized['autoMoveToTrashAt'] = true;
         $this->autoMoveToTrashAt = $autoMoveToTrashAt;

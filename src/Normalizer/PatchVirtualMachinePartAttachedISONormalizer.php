@@ -57,9 +57,11 @@ class PatchVirtualMachinePartAttachedISONormalizer implements DenormalizerInterf
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('operating_system', $data)) {
-            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartOperatingSystem', 'json', $context));
+        if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
+            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartAttachedISOOperatingSystem', 'json', $context));
             unset($data['operating_system']);
+        } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
+            $object->setOperatingSystem(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

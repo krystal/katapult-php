@@ -30,7 +30,7 @@ class GetDiskTemplatePartOperatingSystem extends \ArrayObject
      */
     protected $name;
     /**
-     * @var GetDiskTemplatePartBadge
+     * @var GetDiskTemplatePartOperatingSystemBadge|null
      */
     protected $badge;
 
@@ -60,12 +60,12 @@ class GetDiskTemplatePartOperatingSystem extends \ArrayObject
         return $this;
     }
 
-    public function getBadge(): GetDiskTemplatePartBadge
+    public function getBadge(): ?GetDiskTemplatePartOperatingSystemBadge
     {
         return $this->badge;
     }
 
-    public function setBadge(GetDiskTemplatePartBadge $badge): self
+    public function setBadge(?GetDiskTemplatePartOperatingSystemBadge $badge): self
     {
         $this->initialized['badge'] = true;
         $this->badge = $badge;

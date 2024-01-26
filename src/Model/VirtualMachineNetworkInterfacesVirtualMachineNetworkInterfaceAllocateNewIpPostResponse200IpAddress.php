@@ -38,7 +38,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
      */
     protected $vip;
     /**
-     * @var string
+     * @var string|null
      */
     protected $label;
     /**
@@ -46,15 +46,15 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
      */
     protected $addressWithMask;
     /**
-     * @var Network
+     * @var IPAddressNetwork
      */
     protected $network;
     /**
-     * @var string
+     * @var string|null
      */
     protected $allocationId;
     /**
-     * @var string
+     * @var string|null
      */
     protected $allocationType;
 
@@ -110,12 +110,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
         return $this;
     }
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    public function setLabel(string $label): self
+    public function setLabel(?string $label): self
     {
         $this->initialized['label'] = true;
         $this->label = $label;
@@ -136,12 +136,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
         return $this;
     }
 
-    public function getNetwork(): Network
+    public function getNetwork(): IPAddressNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(Network $network): self
+    public function setNetwork(IPAddressNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;
@@ -149,12 +149,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
         return $this;
     }
 
-    public function getAllocationId(): string
+    public function getAllocationId(): ?string
     {
         return $this->allocationId;
     }
 
-    public function setAllocationId(string $allocationId): self
+    public function setAllocationId(?string $allocationId): self
     {
         $this->initialized['allocationId'] = true;
         $this->allocationId = $allocationId;
@@ -162,12 +162,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
         return $this;
     }
 
-    public function getAllocationType(): string
+    public function getAllocationType(): ?string
     {
         return $this->allocationType;
     }
 
-    public function setAllocationType(string $allocationType): self
+    public function setAllocationType(?string $allocationType): self
     {
         $this->initialized['allocationType'] = true;
         $this->allocationType = $allocationType;

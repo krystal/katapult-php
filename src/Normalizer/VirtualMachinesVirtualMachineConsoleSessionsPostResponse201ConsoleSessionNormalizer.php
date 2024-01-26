@@ -62,7 +62,7 @@ class VirtualMachinesVirtualMachineConsoleSessionsPostResponse201ConsoleSessionN
             unset($data['expires_at']);
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineConsoleSessionsPartVirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineConsoleSessions201ResponseConsoleSessionVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         foreach ($data as $key => $value) {

@@ -34,7 +34,7 @@ class VirtualMachinesVirtualMachineConsoleSessionsPostResponse201ConsoleSession 
      */
     protected $expiresAt;
     /**
-     * @var PostVirtualMachineConsoleSessionsPartVirtualMachine
+     * @var PostVirtualMachineConsoleSessions201ResponseConsoleSessionVirtualMachine
      */
     protected $virtualMachine;
 
@@ -77,12 +77,12 @@ class VirtualMachinesVirtualMachineConsoleSessionsPostResponse201ConsoleSession 
         return $this;
     }
 
-    public function getVirtualMachine(): PostVirtualMachineConsoleSessionsPartVirtualMachine
+    public function getVirtualMachine(): PostVirtualMachineConsoleSessions201ResponseConsoleSessionVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(PostVirtualMachineConsoleSessionsPartVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(PostVirtualMachineConsoleSessions201ResponseConsoleSessionVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;

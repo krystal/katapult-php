@@ -57,12 +57,14 @@ class DeleteVirtualMachinePartNetworkNormalizer implements DenormalizerInterface
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('permalink', $data)) {
+        if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
             $object->setPermalink($data['permalink']);
             unset($data['permalink']);
+        } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
+            $object->setPermalink(null);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartNetworkDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         foreach ($data as $key => $value) {

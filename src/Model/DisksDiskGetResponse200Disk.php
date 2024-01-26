@@ -50,15 +50,15 @@ class DisksDiskGetResponse200Disk extends \ArrayObject
      */
     protected $storageSpeed;
     /**
-     * @var GetDiskPartIOProfile
+     * @var GetDisk200ResponseDiskIoProfile|null
      */
     protected $ioProfile;
     /**
-     * @var GetDiskPartVirtualMachineDisk
+     * @var GetDisk200ResponseDiskVirtualMachineDisk|null
      */
     protected $virtualMachineDisk;
     /**
-     * @var GetDiskPartInstallation
+     * @var GetDisk200ResponseDiskInstallation|null
      */
     protected $installation;
 
@@ -153,12 +153,12 @@ class DisksDiskGetResponse200Disk extends \ArrayObject
         return $this;
     }
 
-    public function getIoProfile(): GetDiskPartIOProfile
+    public function getIoProfile(): ?GetDisk200ResponseDiskIoProfile
     {
         return $this->ioProfile;
     }
 
-    public function setIoProfile(GetDiskPartIOProfile $ioProfile): self
+    public function setIoProfile(?GetDisk200ResponseDiskIoProfile $ioProfile): self
     {
         $this->initialized['ioProfile'] = true;
         $this->ioProfile = $ioProfile;
@@ -166,12 +166,12 @@ class DisksDiskGetResponse200Disk extends \ArrayObject
         return $this;
     }
 
-    public function getVirtualMachineDisk(): GetDiskPartVirtualMachineDisk
+    public function getVirtualMachineDisk(): ?GetDisk200ResponseDiskVirtualMachineDisk
     {
         return $this->virtualMachineDisk;
     }
 
-    public function setVirtualMachineDisk(GetDiskPartVirtualMachineDisk $virtualMachineDisk): self
+    public function setVirtualMachineDisk(?GetDisk200ResponseDiskVirtualMachineDisk $virtualMachineDisk): self
     {
         $this->initialized['virtualMachineDisk'] = true;
         $this->virtualMachineDisk = $virtualMachineDisk;
@@ -179,12 +179,12 @@ class DisksDiskGetResponse200Disk extends \ArrayObject
         return $this;
     }
 
-    public function getInstallation(): GetDiskPartInstallation
+    public function getInstallation(): ?GetDisk200ResponseDiskInstallation
     {
         return $this->installation;
     }
 
-    public function setInstallation(GetDiskPartInstallation $installation): self
+    public function setInstallation(?GetDisk200ResponseDiskInstallation $installation): self
     {
         $this->initialized['installation'] = true;
         $this->installation = $installation;

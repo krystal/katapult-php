@@ -61,21 +61,27 @@ class TemplateSpecFieldNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setLabel($data['label']);
             unset($data['label']);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
             unset($data['required']);
         }
-        if (\array_key_exists('placeholder', $data)) {
+        if (\array_key_exists('placeholder', $data) && $data['placeholder'] !== null) {
             $object->setPlaceholder($data['placeholder']);
             unset($data['placeholder']);
+        } elseif (\array_key_exists('placeholder', $data) && $data['placeholder'] === null) {
+            $object->setPlaceholder(null);
         }
-        if (\array_key_exists('prefill', $data)) {
+        if (\array_key_exists('prefill', $data) && $data['prefill'] !== null) {
             $object->setPrefill($data['prefill']);
             unset($data['prefill']);
+        } elseif (\array_key_exists('prefill', $data) && $data['prefill'] === null) {
+            $object->setPrefill(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

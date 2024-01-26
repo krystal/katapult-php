@@ -65,13 +65,17 @@ class OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200TaskNormalizer
             $object->setCreatedAt($data['created_at']);
             unset($data['created_at']);
         }
-        if (\array_key_exists('started_at', $data)) {
+        if (\array_key_exists('started_at', $data) && $data['started_at'] !== null) {
             $object->setStartedAt($data['started_at']);
             unset($data['started_at']);
+        } elseif (\array_key_exists('started_at', $data) && $data['started_at'] === null) {
+            $object->setStartedAt(null);
         }
-        if (\array_key_exists('finished_at', $data)) {
+        if (\array_key_exists('finished_at', $data) && $data['finished_at'] !== null) {
             $object->setFinishedAt($data['finished_at']);
             unset($data['finished_at']);
+        } elseif (\array_key_exists('finished_at', $data) && $data['finished_at'] === null) {
+            $object->setFinishedAt(null);
         }
         if (\array_key_exists('progress', $data)) {
             $object->setProgress($data['progress']);

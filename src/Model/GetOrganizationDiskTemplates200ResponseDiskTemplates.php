@@ -30,7 +30,7 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplates extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -42,11 +42,11 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplates extends \ArrayObject
      */
     protected $universal;
     /**
-     * @var GetOrganizationDiskTemplatesPartLatestVersion
+     * @var GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion|null
      */
     protected $latestVersion;
     /**
-     * @var GetOrganizationDiskTemplatesPartOperatingSystem
+     * @var GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem|null
      */
     protected $operatingSystem;
 
@@ -76,12 +76,12 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplates extends \ArrayObject
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -115,12 +115,12 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplates extends \ArrayObject
         return $this;
     }
 
-    public function getLatestVersion(): GetOrganizationDiskTemplatesPartLatestVersion
+    public function getLatestVersion(): ?GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion
     {
         return $this->latestVersion;
     }
 
-    public function setLatestVersion(GetOrganizationDiskTemplatesPartLatestVersion $latestVersion): self
+    public function setLatestVersion(?GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion $latestVersion): self
     {
         $this->initialized['latestVersion'] = true;
         $this->latestVersion = $latestVersion;
@@ -128,12 +128,12 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplates extends \ArrayObject
         return $this;
     }
 
-    public function getOperatingSystem(): GetOrganizationDiskTemplatesPartOperatingSystem
+    public function getOperatingSystem(): ?GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem
     {
         return $this->operatingSystem;
     }
 
-    public function setOperatingSystem(GetOrganizationDiskTemplatesPartOperatingSystem $operatingSystem): self
+    public function setOperatingSystem(?GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem $operatingSystem): self
     {
         $this->initialized['operatingSystem'] = true;
         $this->operatingSystem = $operatingSystem;

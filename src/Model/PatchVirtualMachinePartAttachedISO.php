@@ -30,7 +30,7 @@ class PatchVirtualMachinePartAttachedISO extends \ArrayObject
      */
     protected $name;
     /**
-     * @var PatchVirtualMachinePartOperatingSystem
+     * @var PatchVirtualMachinePartAttachedISOOperatingSystem|null
      */
     protected $operatingSystem;
 
@@ -60,12 +60,12 @@ class PatchVirtualMachinePartAttachedISO extends \ArrayObject
         return $this;
     }
 
-    public function getOperatingSystem(): PatchVirtualMachinePartOperatingSystem
+    public function getOperatingSystem(): ?PatchVirtualMachinePartAttachedISOOperatingSystem
     {
         return $this->operatingSystem;
     }
 
-    public function setOperatingSystem(PatchVirtualMachinePartOperatingSystem $operatingSystem): self
+    public function setOperatingSystem(?PatchVirtualMachinePartAttachedISOOperatingSystem $operatingSystem): self
     {
         $this->initialized['operatingSystem'] = true;
         $this->operatingSystem = $operatingSystem;

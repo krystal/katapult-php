@@ -24,7 +24,7 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
     /**
      * Unique ID for this GPU. Not available when status is "detached".
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
@@ -42,14 +42,14 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
      */
     protected $available;
     /**
-     * @var PatchVirtualMachinePartType
+     * @var PatchVirtualMachinePartGPUsType
      */
     protected $type;
 
     /**
      * Unique ID for this GPU. Not available when status is "detached".
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -57,7 +57,7 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
     /**
      * Unique ID for this GPU. Not available when status is "detached".
      */
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -110,12 +110,12 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
         return $this;
     }
 
-    public function getType(): PatchVirtualMachinePartType
+    public function getType(): PatchVirtualMachinePartGPUsType
     {
         return $this->type;
     }
 
-    public function setType(PatchVirtualMachinePartType $type): self
+    public function setType(PatchVirtualMachinePartGPUsType $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

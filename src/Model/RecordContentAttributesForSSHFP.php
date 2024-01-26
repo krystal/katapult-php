@@ -22,24 +22,24 @@ class RecordContentAttributesForSSHFP extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $algorithm;
     /**
-     * @var string
+     * @var string|null
      */
     protected $fingerprintType;
     /**
-     * @var string
+     * @var string|null
      */
     protected $fingerprint;
 
-    public function getAlgorithm(): string
+    public function getAlgorithm(): ?string
     {
         return $this->algorithm;
     }
 
-    public function setAlgorithm(string $algorithm): self
+    public function setAlgorithm(?string $algorithm): self
     {
         $this->initialized['algorithm'] = true;
         $this->algorithm = $algorithm;
@@ -47,12 +47,12 @@ class RecordContentAttributesForSSHFP extends \ArrayObject
         return $this;
     }
 
-    public function getFingerprintType(): string
+    public function getFingerprintType(): ?string
     {
         return $this->fingerprintType;
     }
 
-    public function setFingerprintType(string $fingerprintType): self
+    public function setFingerprintType(?string $fingerprintType): self
     {
         $this->initialized['fingerprintType'] = true;
         $this->fingerprintType = $fingerprintType;
@@ -60,12 +60,12 @@ class RecordContentAttributesForSSHFP extends \ArrayObject
         return $this;
     }
 
-    public function getFingerprint(): string
+    public function getFingerprint(): ?string
     {
         return $this->fingerprint;
     }
 
-    public function setFingerprint(string $fingerprint): self
+    public function setFingerprint(?string $fingerprint): self
     {
         $this->initialized['fingerprint'] = true;
         $this->fingerprint = $fingerprint;

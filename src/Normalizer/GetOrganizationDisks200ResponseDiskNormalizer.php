@@ -69,9 +69,11 @@ class GetOrganizationDisks200ResponseDiskNormalizer implements DenormalizerInter
             $object->setState($data['state']);
             unset($data['state']);
         }
-        if (\array_key_exists('virtual_machine_disk', $data)) {
-            $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationDisksPartVirtualMachineDisk', 'json', $context));
+        if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
+            $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationDisks200ResponseDiskVirtualMachineDisk', 'json', $context));
             unset($data['virtual_machine_disk']);
+        } elseif (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] === null) {
+            $object->setVirtualMachineDisk(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

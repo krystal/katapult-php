@@ -30,7 +30,7 @@ class GetVirtualMachinePartOperatingSystem extends \ArrayObject
      */
     protected $name;
     /**
-     * @var GetVirtualMachinePartBadge
+     * @var GetVirtualMachinePartOperatingSystemBadge|null
      */
     protected $badge;
 
@@ -60,12 +60,12 @@ class GetVirtualMachinePartOperatingSystem extends \ArrayObject
         return $this;
     }
 
-    public function getBadge(): GetVirtualMachinePartBadge
+    public function getBadge(): ?GetVirtualMachinePartOperatingSystemBadge
     {
         return $this->badge;
     }
 
-    public function setBadge(GetVirtualMachinePartBadge $badge): self
+    public function setBadge(?GetVirtualMachinePartOperatingSystemBadge $badge): self
     {
         $this->initialized['badge'] = true;
         $this->badge = $badge;

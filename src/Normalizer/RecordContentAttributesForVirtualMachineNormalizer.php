@@ -49,9 +49,11 @@ class RecordContentAttributesForVirtualMachineNormalizer implements Denormalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('virtual_machine', $data)) {
+        if (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] !== null) {
             $object->setVirtualMachine($data['virtual_machine']);
             unset($data['virtual_machine']);
+        } elseif (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] === null) {
+            $object->setVirtualMachine(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

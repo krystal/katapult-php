@@ -77,37 +77,53 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setCreatedAt($data['created_at']);
             unset($data['created_at']);
         }
-        if (\array_key_exists('expires_at', $data)) {
+        if (\array_key_exists('expires_at', $data) && $data['expires_at'] !== null) {
             $object->setExpiresAt($data['expires_at']);
             unset($data['expires_at']);
+        } elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
+            $object->setExpiresAt(null);
         }
-        if (\array_key_exists('last_issued_at', $data)) {
+        if (\array_key_exists('last_issued_at', $data) && $data['last_issued_at'] !== null) {
             $object->setLastIssuedAt($data['last_issued_at']);
             unset($data['last_issued_at']);
+        } elseif (\array_key_exists('last_issued_at', $data) && $data['last_issued_at'] === null) {
+            $object->setLastIssuedAt(null);
         }
-        if (\array_key_exists('issue_error', $data)) {
+        if (\array_key_exists('issue_error', $data) && $data['issue_error'] !== null) {
             $object->setIssueError($data['issue_error']);
             unset($data['issue_error']);
+        } elseif (\array_key_exists('issue_error', $data) && $data['issue_error'] === null) {
+            $object->setIssueError(null);
         }
-        if (\array_key_exists('authorization_method', $data)) {
+        if (\array_key_exists('authorization_method', $data) && $data['authorization_method'] !== null) {
             $object->setAuthorizationMethod($data['authorization_method']);
             unset($data['authorization_method']);
+        } elseif (\array_key_exists('authorization_method', $data) && $data['authorization_method'] === null) {
+            $object->setAuthorizationMethod(null);
         }
-        if (\array_key_exists('certificate_api_url', $data)) {
+        if (\array_key_exists('certificate_api_url', $data) && $data['certificate_api_url'] !== null) {
             $object->setCertificateApiUrl($data['certificate_api_url']);
             unset($data['certificate_api_url']);
+        } elseif (\array_key_exists('certificate_api_url', $data) && $data['certificate_api_url'] === null) {
+            $object->setCertificateApiUrl(null);
         }
-        if (\array_key_exists('certificate', $data)) {
+        if (\array_key_exists('certificate', $data) && $data['certificate'] !== null) {
             $object->setCertificate($data['certificate']);
             unset($data['certificate']);
+        } elseif (\array_key_exists('certificate', $data) && $data['certificate'] === null) {
+            $object->setCertificate(null);
         }
-        if (\array_key_exists('chain', $data)) {
+        if (\array_key_exists('chain', $data) && $data['chain'] !== null) {
             $object->setChain($data['chain']);
             unset($data['chain']);
+        } elseif (\array_key_exists('chain', $data) && $data['chain'] === null) {
+            $object->setChain(null);
         }
-        if (\array_key_exists('private_key', $data)) {
+        if (\array_key_exists('private_key', $data) && $data['private_key'] !== null) {
             $object->setPrivateKey($data['private_key']);
             unset($data['private_key']);
+        } elseif (\array_key_exists('private_key', $data) && $data['private_key'] === null) {
+            $object->setPrivateKey(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

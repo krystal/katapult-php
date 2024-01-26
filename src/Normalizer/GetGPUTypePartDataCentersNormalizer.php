@@ -57,9 +57,11 @@ class GetGPUTypePartDataCentersNormalizer implements DenormalizerInterface, Norm
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('permalink', $data)) {
+        if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
             $object->setPermalink($data['permalink']);
             unset($data['permalink']);
+        } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
+            $object->setPermalink(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

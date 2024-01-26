@@ -30,7 +30,7 @@ class DeleteFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
      */
     protected $name;
     /**
-     * @var DeleteFileStorageVolumePartDataCenter
+     * @var DeleteFileStorageVolume200ResponseFileStorageVolumeDataCenter
      */
     protected $dataCenter;
     /**
@@ -44,13 +44,13 @@ class DeleteFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
     /**
      * The NFS location of where to mount the volume from.
      *
-     * @var string
+     * @var string|null
      */
     protected $nfsLocation;
     /**
      * The size of the volume in bytes.
      *
-     * @var int
+     * @var int|null
      */
     protected $size;
 
@@ -80,12 +80,12 @@ class DeleteFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): DeleteFileStorageVolumePartDataCenter
+    public function getDataCenter(): DeleteFileStorageVolume200ResponseFileStorageVolumeDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DeleteFileStorageVolumePartDataCenter $dataCenter): self
+    public function setDataCenter(DeleteFileStorageVolume200ResponseFileStorageVolumeDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
@@ -128,7 +128,7 @@ class DeleteFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
     /**
      * The NFS location of where to mount the volume from.
      */
-    public function getNfsLocation(): string
+    public function getNfsLocation(): ?string
     {
         return $this->nfsLocation;
     }
@@ -136,7 +136,7 @@ class DeleteFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
     /**
      * The NFS location of where to mount the volume from.
      */
-    public function setNfsLocation(string $nfsLocation): self
+    public function setNfsLocation(?string $nfsLocation): self
     {
         $this->initialized['nfsLocation'] = true;
         $this->nfsLocation = $nfsLocation;
@@ -147,7 +147,7 @@ class DeleteFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
     /**
      * The size of the volume in bytes.
      */
-    public function getSize(): int
+    public function getSize(): ?int
     {
         return $this->size;
     }
@@ -155,7 +155,7 @@ class DeleteFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
     /**
      * The size of the volume in bytes.
      */
-    public function setSize(int $size): self
+    public function setSize(?int $size): self
     {
         $this->initialized['size'] = true;
         $this->size = $size;

@@ -53,13 +53,17 @@ class DisksDiskDiskBackupPoliciesGetResponse200PaginationNormalizer implements D
             $object->setCurrentPage($data['current_page']);
             unset($data['current_page']);
         }
-        if (\array_key_exists('total_pages', $data)) {
+        if (\array_key_exists('total_pages', $data) && $data['total_pages'] !== null) {
             $object->setTotalPages($data['total_pages']);
             unset($data['total_pages']);
+        } elseif (\array_key_exists('total_pages', $data) && $data['total_pages'] === null) {
+            $object->setTotalPages(null);
         }
-        if (\array_key_exists('total', $data)) {
+        if (\array_key_exists('total', $data) && $data['total'] !== null) {
             $object->setTotal($data['total']);
             unset($data['total']);
+        } elseif (\array_key_exists('total', $data) && $data['total'] === null) {
+            $object->setTotal(null);
         }
         if (\array_key_exists('per_page', $data)) {
             $object->setPerPage($data['per_page']);

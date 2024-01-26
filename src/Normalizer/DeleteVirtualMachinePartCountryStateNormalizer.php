@@ -62,7 +62,7 @@ class DeleteVirtualMachinePartCountryStateNormalizer implements DenormalizerInte
             unset($data['code']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartCountry', 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartCountryStateCountry', 'json', $context));
             unset($data['country']);
         }
         foreach ($data as $key => $value) {

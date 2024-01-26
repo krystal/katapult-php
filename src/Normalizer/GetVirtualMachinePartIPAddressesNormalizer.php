@@ -65,25 +65,31 @@ class GetVirtualMachinePartIPAddressesNormalizer implements DenormalizerInterfac
             $object->setVip($data['vip']);
             unset($data['vip']);
         }
-        if (\array_key_exists('label', $data)) {
+        if (\array_key_exists('label', $data) && $data['label'] !== null) {
             $object->setLabel($data['label']);
             unset($data['label']);
+        } elseif (\array_key_exists('label', $data) && $data['label'] === null) {
+            $object->setLabel(null);
         }
         if (\array_key_exists('address_with_mask', $data)) {
             $object->setAddressWithMask($data['address_with_mask']);
             unset($data['address_with_mask']);
         }
         if (\array_key_exists('network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePartNetwork', 'json', $context));
+            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePartIPAddressesNetwork', 'json', $context));
             unset($data['network']);
         }
-        if (\array_key_exists('allocation_id', $data)) {
+        if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {
             $object->setAllocationId($data['allocation_id']);
             unset($data['allocation_id']);
+        } elseif (\array_key_exists('allocation_id', $data) && $data['allocation_id'] === null) {
+            $object->setAllocationId(null);
         }
-        if (\array_key_exists('allocation_type', $data)) {
+        if (\array_key_exists('allocation_type', $data) && $data['allocation_type'] !== null) {
             $object->setAllocationType($data['allocation_type']);
             unset($data['allocation_type']);
+        } elseif (\array_key_exists('allocation_type', $data) && $data['allocation_type'] === null) {
+            $object->setAllocationType(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

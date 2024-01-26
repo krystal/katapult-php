@@ -22,16 +22,16 @@ class InvalidAPIToken extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $details;
 
-    public function getDetails(): string
+    public function getDetails(): ?string
     {
         return $this->details;
     }
 
-    public function setDetails(string $details): self
+    public function setDetails(?string $details): self
     {
         $this->initialized['details'] = true;
         $this->details = $details;

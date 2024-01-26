@@ -22,16 +22,16 @@ class ObjectInTrash extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var TrashObject
+     * @var ObjectInTrashTrashObject|null
      */
     protected $trashObject;
 
-    public function getTrashObject(): TrashObject
+    public function getTrashObject(): ?ObjectInTrashTrashObject
     {
         return $this->trashObject;
     }
 
-    public function setTrashObject(TrashObject $trashObject): self
+    public function setTrashObject(?ObjectInTrashTrashObject $trashObject): self
     {
         $this->initialized['trashObject'] = true;
         $this->trashObject = $trashObject;

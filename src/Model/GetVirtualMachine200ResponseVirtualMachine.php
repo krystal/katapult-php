@@ -38,7 +38,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $fqdn;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
@@ -46,7 +46,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $createdAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $initialRootPassword;
     /**
@@ -54,43 +54,43 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $state;
     /**
-     * @var GetVirtualMachinePartZone
+     * @var GetVirtualMachine200ResponseVirtualMachineZone
      */
     protected $zone;
     /**
-     * @var GetVirtualMachinePartOrganization
+     * @var GetVirtualMachine200ResponseVirtualMachineOrganization
      */
     protected $organization;
     /**
-     * @var GetVirtualMachinePartGroup
+     * @var GetVirtualMachine200ResponseVirtualMachineGroup|null
      */
     protected $group;
     /**
-     * @var GetVirtualMachinePartPackage
+     * @var GetVirtualMachine200ResponseVirtualMachinePackage|null
      */
     protected $package;
     /**
-     * @var GetVirtualMachinePartAttachedISO
+     * @var GetVirtualMachine200ResponseVirtualMachineAttachedIso|null
      */
     protected $attachedIso;
     /**
-     * @var int
+     * @var int|null
      */
     protected $memoryInGb;
     /**
-     * @var int
+     * @var int|null
      */
     protected $cpuCores;
     /**
-     * @var GetVirtualMachinePartGPUType
+     * @var GetVirtualMachine200ResponseVirtualMachineGpuType|null
      */
     protected $gpuType;
     /**
-     * @var GetVirtualMachinePartGPUs[]
+     * @var GetVirtualMachine200ResponseVirtualMachineGpusItem[]
      */
     protected $gpus;
     /**
-     * @var GetVirtualMachinePartTags[]
+     * @var GetVirtualMachine200ResponseVirtualMachineTagsItem[]
      */
     protected $tags;
     /**
@@ -98,7 +98,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $tagNames;
     /**
-     * @var GetVirtualMachinePartIPAddresses[]
+     * @var GetVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
      */
     protected $ipAddresses;
 
@@ -154,12 +154,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
@@ -180,12 +180,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getInitialRootPassword(): string
+    public function getInitialRootPassword(): ?string
     {
         return $this->initialRootPassword;
     }
 
-    public function setInitialRootPassword(string $initialRootPassword): self
+    public function setInitialRootPassword(?string $initialRootPassword): self
     {
         $this->initialized['initialRootPassword'] = true;
         $this->initialRootPassword = $initialRootPassword;
@@ -206,12 +206,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getZone(): GetVirtualMachinePartZone
+    public function getZone(): GetVirtualMachine200ResponseVirtualMachineZone
     {
         return $this->zone;
     }
 
-    public function setZone(GetVirtualMachinePartZone $zone): self
+    public function setZone(GetVirtualMachine200ResponseVirtualMachineZone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -219,12 +219,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getOrganization(): GetVirtualMachinePartOrganization
+    public function getOrganization(): GetVirtualMachine200ResponseVirtualMachineOrganization
     {
         return $this->organization;
     }
 
-    public function setOrganization(GetVirtualMachinePartOrganization $organization): self
+    public function setOrganization(GetVirtualMachine200ResponseVirtualMachineOrganization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;
@@ -232,12 +232,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getGroup(): GetVirtualMachinePartGroup
+    public function getGroup(): ?GetVirtualMachine200ResponseVirtualMachineGroup
     {
         return $this->group;
     }
 
-    public function setGroup(GetVirtualMachinePartGroup $group): self
+    public function setGroup(?GetVirtualMachine200ResponseVirtualMachineGroup $group): self
     {
         $this->initialized['group'] = true;
         $this->group = $group;
@@ -245,12 +245,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getPackage(): GetVirtualMachinePartPackage
+    public function getPackage(): ?GetVirtualMachine200ResponseVirtualMachinePackage
     {
         return $this->package;
     }
 
-    public function setPackage(GetVirtualMachinePartPackage $package): self
+    public function setPackage(?GetVirtualMachine200ResponseVirtualMachinePackage $package): self
     {
         $this->initialized['package'] = true;
         $this->package = $package;
@@ -258,12 +258,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getAttachedIso(): GetVirtualMachinePartAttachedISO
+    public function getAttachedIso(): ?GetVirtualMachine200ResponseVirtualMachineAttachedIso
     {
         return $this->attachedIso;
     }
 
-    public function setAttachedIso(GetVirtualMachinePartAttachedISO $attachedIso): self
+    public function setAttachedIso(?GetVirtualMachine200ResponseVirtualMachineAttachedIso $attachedIso): self
     {
         $this->initialized['attachedIso'] = true;
         $this->attachedIso = $attachedIso;
@@ -271,12 +271,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getMemoryInGb(): int
+    public function getMemoryInGb(): ?int
     {
         return $this->memoryInGb;
     }
 
-    public function setMemoryInGb(int $memoryInGb): self
+    public function setMemoryInGb(?int $memoryInGb): self
     {
         $this->initialized['memoryInGb'] = true;
         $this->memoryInGb = $memoryInGb;
@@ -284,12 +284,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getCpuCores(): int
+    public function getCpuCores(): ?int
     {
         return $this->cpuCores;
     }
 
-    public function setCpuCores(int $cpuCores): self
+    public function setCpuCores(?int $cpuCores): self
     {
         $this->initialized['cpuCores'] = true;
         $this->cpuCores = $cpuCores;
@@ -297,12 +297,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getGpuType(): GetVirtualMachinePartGPUType
+    public function getGpuType(): ?GetVirtualMachine200ResponseVirtualMachineGpuType
     {
         return $this->gpuType;
     }
 
-    public function setGpuType(GetVirtualMachinePartGPUType $gpuType): self
+    public function setGpuType(?GetVirtualMachine200ResponseVirtualMachineGpuType $gpuType): self
     {
         $this->initialized['gpuType'] = true;
         $this->gpuType = $gpuType;
@@ -311,7 +311,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return GetVirtualMachinePartGPUs[]
+     * @return GetVirtualMachine200ResponseVirtualMachineGpusItem[]
      */
     public function getGpus(): array
     {
@@ -319,7 +319,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param GetVirtualMachinePartGPUs[] $gpus
+     * @param GetVirtualMachine200ResponseVirtualMachineGpusItem[] $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -330,7 +330,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return GetVirtualMachinePartTags[]
+     * @return GetVirtualMachine200ResponseVirtualMachineTagsItem[]
      */
     public function getTags(): array
     {
@@ -338,7 +338,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param GetVirtualMachinePartTags[] $tags
+     * @param GetVirtualMachine200ResponseVirtualMachineTagsItem[] $tags
      */
     public function setTags(array $tags): self
     {
@@ -368,7 +368,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return GetVirtualMachinePartIPAddresses[]
+     * @return GetVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
      */
     public function getIpAddresses(): array
     {
@@ -376,7 +376,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param GetVirtualMachinePartIPAddresses[] $ipAddresses
+     * @param GetVirtualMachine200ResponseVirtualMachineIpAddressesItem[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

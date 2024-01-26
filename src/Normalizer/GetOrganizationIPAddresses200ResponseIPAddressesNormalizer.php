@@ -65,13 +65,17 @@ class GetOrganizationIPAddresses200ResponseIPAddressesNormalizer implements Deno
             $object->setVip($data['vip']);
             unset($data['vip']);
         }
-        if (\array_key_exists('allocation_id', $data)) {
+        if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {
             $object->setAllocationId($data['allocation_id']);
             unset($data['allocation_id']);
+        } elseif (\array_key_exists('allocation_id', $data) && $data['allocation_id'] === null) {
+            $object->setAllocationId(null);
         }
-        if (\array_key_exists('allocation_type', $data)) {
+        if (\array_key_exists('allocation_type', $data) && $data['allocation_type'] !== null) {
             $object->setAllocationType($data['allocation_type']);
             unset($data['allocation_type']);
+        } elseif (\array_key_exists('allocation_type', $data) && $data['allocation_type'] === null) {
+            $object->setAllocationType(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

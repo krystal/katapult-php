@@ -52,7 +52,7 @@ class TemplateSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('fields', $data)) {
             $values = [];
             foreach ($data['fields'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\TemplateSpecField', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\TemplateSpecFieldsItem', 'json', $context);
             }
             $object->setFields($values);
             unset($data['fields']);

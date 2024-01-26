@@ -38,11 +38,11 @@ class GetOrganizationIPAddresses200ResponseIPAddresses extends \ArrayObject
      */
     protected $vip;
     /**
-     * @var string
+     * @var string|null
      */
     protected $allocationId;
     /**
-     * @var string
+     * @var string|null
      */
     protected $allocationType;
 
@@ -98,12 +98,12 @@ class GetOrganizationIPAddresses200ResponseIPAddresses extends \ArrayObject
         return $this;
     }
 
-    public function getAllocationId(): string
+    public function getAllocationId(): ?string
     {
         return $this->allocationId;
     }
 
-    public function setAllocationId(string $allocationId): self
+    public function setAllocationId(?string $allocationId): self
     {
         $this->initialized['allocationId'] = true;
         $this->allocationId = $allocationId;
@@ -111,12 +111,12 @@ class GetOrganizationIPAddresses200ResponseIPAddresses extends \ArrayObject
         return $this;
     }
 
-    public function getAllocationType(): string
+    public function getAllocationType(): ?string
     {
         return $this->allocationType;
     }
 
-    public function setAllocationType(string $allocationType): self
+    public function setAllocationType(?string $allocationType): self
     {
         $this->initialized['allocationType'] = true;
         $this->allocationType = $allocationType;

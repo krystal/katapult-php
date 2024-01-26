@@ -65,58 +65,74 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachineNormalizer imp
             $object->setFqdn($data['fqdn']);
             unset($data['fqdn']);
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);
             unset($data['created_at']);
         }
-        if (\array_key_exists('initial_root_password', $data)) {
+        if (\array_key_exists('initial_root_password', $data) && $data['initial_root_password'] !== null) {
             $object->setInitialRootPassword($data['initial_root_password']);
             unset($data['initial_root_password']);
+        } elseif (\array_key_exists('initial_root_password', $data) && $data['initial_root_password'] === null) {
+            $object->setInitialRootPassword(null);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
             unset($data['state']);
         }
         if (\array_key_exists('zone', $data)) {
-            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartZone', 'json', $context));
+            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineZone', 'json', $context));
             unset($data['zone']);
         }
         if (\array_key_exists('organization', $data)) {
-            $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartOrganization', 'json', $context));
+            $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineOrganization', 'json', $context));
             unset($data['organization']);
         }
-        if (\array_key_exists('group', $data)) {
-            $object->setGroup($this->denormalizer->denormalize($data['group'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartGroup', 'json', $context));
+        if (\array_key_exists('group', $data) && $data['group'] !== null) {
+            $object->setGroup($this->denormalizer->denormalize($data['group'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineGroup', 'json', $context));
             unset($data['group']);
+        } elseif (\array_key_exists('group', $data) && $data['group'] === null) {
+            $object->setGroup(null);
         }
-        if (\array_key_exists('package', $data)) {
-            $object->setPackage($this->denormalizer->denormalize($data['package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartPackage', 'json', $context));
+        if (\array_key_exists('package', $data) && $data['package'] !== null) {
+            $object->setPackage($this->denormalizer->denormalize($data['package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachinePackage', 'json', $context));
             unset($data['package']);
+        } elseif (\array_key_exists('package', $data) && $data['package'] === null) {
+            $object->setPackage(null);
         }
-        if (\array_key_exists('attached_iso', $data)) {
-            $object->setAttachedIso($this->denormalizer->denormalize($data['attached_iso'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartAttachedISO', 'json', $context));
+        if (\array_key_exists('attached_iso', $data) && $data['attached_iso'] !== null) {
+            $object->setAttachedIso($this->denormalizer->denormalize($data['attached_iso'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineAttachedIso', 'json', $context));
             unset($data['attached_iso']);
+        } elseif (\array_key_exists('attached_iso', $data) && $data['attached_iso'] === null) {
+            $object->setAttachedIso(null);
         }
-        if (\array_key_exists('memory_in_gb', $data)) {
+        if (\array_key_exists('memory_in_gb', $data) && $data['memory_in_gb'] !== null) {
             $object->setMemoryInGb($data['memory_in_gb']);
             unset($data['memory_in_gb']);
+        } elseif (\array_key_exists('memory_in_gb', $data) && $data['memory_in_gb'] === null) {
+            $object->setMemoryInGb(null);
         }
-        if (\array_key_exists('cpu_cores', $data)) {
+        if (\array_key_exists('cpu_cores', $data) && $data['cpu_cores'] !== null) {
             $object->setCpuCores($data['cpu_cores']);
             unset($data['cpu_cores']);
+        } elseif (\array_key_exists('cpu_cores', $data) && $data['cpu_cores'] === null) {
+            $object->setCpuCores(null);
         }
-        if (\array_key_exists('gpu_type', $data)) {
-            $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartGPUType', 'json', $context));
+        if (\array_key_exists('gpu_type', $data) && $data['gpu_type'] !== null) {
+            $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineGpuType', 'json', $context));
             unset($data['gpu_type']);
+        } elseif (\array_key_exists('gpu_type', $data) && $data['gpu_type'] === null) {
+            $object->setGpuType(null);
         }
         if (\array_key_exists('gpus', $data)) {
             $values = [];
             foreach ($data['gpus'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartGPUs', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineGpusItem', 'json', $context);
             }
             $object->setGpus($values);
             unset($data['gpus']);
@@ -124,7 +140,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachineNormalizer imp
         if (\array_key_exists('tags', $data)) {
             $values_1 = [];
             foreach ($data['tags'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartTags', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineTagsItem', 'json', $context);
             }
             $object->setTags($values_1);
             unset($data['tags']);
@@ -140,7 +156,7 @@ class VirtualMachinesVirtualMachineDeleteResponse200VirtualMachineNormalizer imp
         if (\array_key_exists('ip_addresses', $data)) {
             $values_3 = [];
             foreach ($data['ip_addresses'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartIPAddresses', 'json', $context);
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachineIpAddressesItem', 'json', $context);
             }
             $object->setIpAddresses($values_3);
             unset($data['ip_addresses']);

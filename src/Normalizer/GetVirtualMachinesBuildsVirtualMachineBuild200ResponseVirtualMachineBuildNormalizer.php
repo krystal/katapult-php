@@ -61,9 +61,11 @@ class GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildN
             $object->setState($data['state']);
             unset($data['state']);
         }
-        if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinesBuildsVirtualMachineBuildPartVirtualMachine', 'json', $context));
+        if (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] !== null) {
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
+        } elseif (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] === null) {
+            $object->setVirtualMachine(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);

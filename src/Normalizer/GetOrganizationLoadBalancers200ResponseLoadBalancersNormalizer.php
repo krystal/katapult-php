@@ -57,9 +57,11 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancersNormalizer implements 
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('api_reference', $data)) {
+        if (\array_key_exists('api_reference', $data) && $data['api_reference'] !== null) {
             $object->setApiReference($data['api_reference']);
             unset($data['api_reference']);
+        } elseif (\array_key_exists('api_reference', $data) && $data['api_reference'] === null) {
+            $object->setApiReference(null);
         }
         if (\array_key_exists('resource_type', $data)) {
             $object->setResourceType($data['resource_type']);
@@ -84,13 +86,13 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancersNormalizer implements 
         if (\array_key_exists('ip_address', $data)) {
             $values_2 = [];
             foreach ($data['ip_address'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationLoadBalancersPartIPAddress', 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancersIpAddressItem', 'json', $context);
             }
             $object->setIpAddress($values_2);
             unset($data['ip_address']);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationLoadBalancersPartDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancersDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         foreach ($data as $key => $value_3) {

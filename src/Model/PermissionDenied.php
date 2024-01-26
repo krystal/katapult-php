@@ -24,14 +24,14 @@ class PermissionDenied extends \ArrayObject
     /**
      * Additional information regarding the reason why permission was denied.
      *
-     * @var string
+     * @var string|null
      */
     protected $details;
 
     /**
      * Additional information regarding the reason why permission was denied.
      */
-    public function getDetails(): string
+    public function getDetails(): ?string
     {
         return $this->details;
     }
@@ -39,7 +39,7 @@ class PermissionDenied extends \ArrayObject
     /**
      * Additional information regarding the reason why permission was denied.
      */
-    public function setDetails(string $details): self
+    public function setDetails(?string $details): self
     {
         $this->initialized['details'] = true;
         $this->details = $details;

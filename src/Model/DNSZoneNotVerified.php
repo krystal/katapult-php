@@ -21,17 +21,15 @@ class DNSZoneNotVerified extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-    /**
-     * @var DNSZoneVerificationDetails
-     */
+
     protected $verificationDetails;
 
-    public function getVerificationDetails(): DNSZoneVerificationDetails
+    public function getVerificationDetails()
     {
         return $this->verificationDetails;
     }
 
-    public function setVerificationDetails(DNSZoneVerificationDetails $verificationDetails): self
+    public function setVerificationDetails($verificationDetails): self
     {
         $this->initialized['verificationDetails'] = true;
         $this->verificationDetails = $verificationDetails;

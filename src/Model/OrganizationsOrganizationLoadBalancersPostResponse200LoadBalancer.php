@@ -30,7 +30,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $apiReference;
     /**
@@ -46,7 +46,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
      */
     protected $resourceIds;
     /**
-     * @var PostOrganizationLoadBalancersPartIPAddress[]
+     * @var PostOrganizationLoadBalancers200ResponseLoadBalancerIpAddressItem[]
      */
     protected $ipAddress;
     /**
@@ -62,7 +62,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
      */
     protected $backendCertificateKey;
     /**
-     * @var PostOrganizationLoadBalancersPartDataCenter
+     * @var PostOrganizationLoadBalancers200ResponseLoadBalancerDataCenter
      */
     protected $dataCenter;
     /**
@@ -70,7 +70,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
      */
     protected $enableWeighting;
     /**
-     * @var PostOrganizationLoadBalancersPartWeights[]
+     * @var PostOrganizationLoadBalancers200ResponseLoadBalancerWeightsItem[]
      */
     protected $weights;
     /**
@@ -104,12 +104,12 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
         return $this;
     }
 
-    public function getApiReference(): string
+    public function getApiReference(): ?string
     {
         return $this->apiReference;
     }
 
-    public function setApiReference(string $apiReference): self
+    public function setApiReference(?string $apiReference): self
     {
         $this->initialized['apiReference'] = true;
         $this->apiReference = $apiReference;
@@ -169,7 +169,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @return PostOrganizationLoadBalancersPartIPAddress[]
+     * @return PostOrganizationLoadBalancers200ResponseLoadBalancerIpAddressItem[]
      */
     public function getIpAddress(): array
     {
@@ -177,7 +177,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @param PostOrganizationLoadBalancersPartIPAddress[] $ipAddress
+     * @param PostOrganizationLoadBalancers200ResponseLoadBalancerIpAddressItem[] $ipAddress
      */
     public function setIpAddress(array $ipAddress): self
     {
@@ -226,12 +226,12 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
         return $this;
     }
 
-    public function getDataCenter(): PostOrganizationLoadBalancersPartDataCenter
+    public function getDataCenter(): PostOrganizationLoadBalancers200ResponseLoadBalancerDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(PostOrganizationLoadBalancersPartDataCenter $dataCenter): self
+    public function setDataCenter(PostOrganizationLoadBalancers200ResponseLoadBalancerDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
@@ -253,7 +253,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @return PostOrganizationLoadBalancersPartWeights[]
+     * @return PostOrganizationLoadBalancers200ResponseLoadBalancerWeightsItem[]
      */
     public function getWeights(): array
     {
@@ -261,7 +261,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @param PostOrganizationLoadBalancersPartWeights[] $weights
+     * @param PostOrganizationLoadBalancers200ResponseLoadBalancerWeightsItem[] $weights
      */
     public function setWeights(array $weights): self
     {

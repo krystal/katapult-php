@@ -22,16 +22,16 @@ class AAAA extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $ip;
 
-    public function getIp(): string
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    public function setIp(string $ip): self
+    public function setIp(?string $ip): self
     {
         $this->initialized['ip'] = true;
         $this->ip = $ip;

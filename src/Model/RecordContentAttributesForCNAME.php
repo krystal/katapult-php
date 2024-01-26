@@ -22,16 +22,16 @@ class RecordContentAttributesForCNAME extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|null
      */
     protected $hostname;
 
-    public function getHostname(): string
+    public function getHostname(): ?string
     {
         return $this->hostname;
     }
 
-    public function setHostname(string $hostname): self
+    public function setHostname(?string $hostname): self
     {
         $this->initialized['hostname'] = true;
         $this->hostname = $hostname;

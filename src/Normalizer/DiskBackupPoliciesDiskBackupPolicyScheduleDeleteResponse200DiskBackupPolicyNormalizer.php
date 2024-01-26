@@ -57,9 +57,11 @@ class DiskBackupPoliciesDiskBackupPolicyScheduleDeleteResponse200DiskBackupPolic
             $object->setTarget($this->denormalizer->denormalize($data['target'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPolicyTarget', 'json', $context));
             unset($data['target']);
         }
-        if (\array_key_exists('auto_move_to_trash_at', $data)) {
+        if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {
             $object->setAutoMoveToTrashAt($data['auto_move_to_trash_at']);
             unset($data['auto_move_to_trash_at']);
+        } elseif (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] === null) {
+            $object->setAutoMoveToTrashAt(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

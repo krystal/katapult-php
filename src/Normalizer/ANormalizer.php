@@ -49,9 +49,11 @@ class ANormalizer implements DenormalizerInterface, NormalizerInterface, Denorma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ip', $data)) {
+        if (\array_key_exists('ip', $data) && $data['ip'] !== null) {
             $object->setIp($data['ip']);
             unset($data['ip']);
+        } elseif (\array_key_exists('ip', $data) && $data['ip'] === null) {
+            $object->setIp(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

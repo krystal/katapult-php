@@ -57,13 +57,17 @@ class NetworkSpeedProfileNormalizer implements DenormalizerInterface, Normalizer
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('upload_speed_in_mbit', $data)) {
+        if (\array_key_exists('upload_speed_in_mbit', $data) && $data['upload_speed_in_mbit'] !== null) {
             $object->setUploadSpeedInMbit($data['upload_speed_in_mbit']);
             unset($data['upload_speed_in_mbit']);
+        } elseif (\array_key_exists('upload_speed_in_mbit', $data) && $data['upload_speed_in_mbit'] === null) {
+            $object->setUploadSpeedInMbit(null);
         }
-        if (\array_key_exists('download_speed_in_mbit', $data)) {
+        if (\array_key_exists('download_speed_in_mbit', $data) && $data['download_speed_in_mbit'] !== null) {
             $object->setDownloadSpeedInMbit($data['download_speed_in_mbit']);
             unset($data['download_speed_in_mbit']);
+        } elseif (\array_key_exists('download_speed_in_mbit', $data) && $data['download_speed_in_mbit'] === null) {
+            $object->setDownloadSpeedInMbit(null);
         }
         if (\array_key_exists('permalink', $data)) {
             $object->setPermalink($data['permalink']);

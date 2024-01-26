@@ -54,7 +54,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetwo
             unset($data['id']);
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         if (\array_key_exists('name', $data)) {
@@ -62,7 +62,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetwo
             unset($data['name']);
         }
         if (\array_key_exists('network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork', 'json', $context));
+            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork', 'json', $context));
             unset($data['network']);
         }
         if (\array_key_exists('mac_address', $data)) {
@@ -76,7 +76,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetwo
         if (\array_key_exists('ip_addresses', $data)) {
             $values = [];
             foreach ($data['ip_addresses'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceIpAddressesItem', 'json', $context);
             }
             $object->setIpAddresses($values);
             unset($data['ip_addresses']);

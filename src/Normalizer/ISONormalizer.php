@@ -57,9 +57,11 @@ class ISONormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('operating_system', $data)) {
-            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OperatingSystem', 'json', $context));
+        if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
+            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\ISOOperatingSystem', 'json', $context));
             unset($data['operating_system']);
+        } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
+            $object->setOperatingSystem(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

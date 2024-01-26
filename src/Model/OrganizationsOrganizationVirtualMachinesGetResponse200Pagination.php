@@ -30,13 +30,13 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200Pagination extends \
     /**
      * The total number of pages.
      *
-     * @var int
+     * @var int|null
      */
     protected $totalPages;
     /**
      * The total number of items across all pages.
      *
-     * @var int
+     * @var int|null
      */
     protected $total;
     /**
@@ -74,7 +74,7 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200Pagination extends \
     /**
      * The total number of pages.
      */
-    public function getTotalPages(): int
+    public function getTotalPages(): ?int
     {
         return $this->totalPages;
     }
@@ -82,7 +82,7 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200Pagination extends \
     /**
      * The total number of pages.
      */
-    public function setTotalPages(int $totalPages): self
+    public function setTotalPages(?int $totalPages): self
     {
         $this->initialized['totalPages'] = true;
         $this->totalPages = $totalPages;
@@ -93,7 +93,7 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200Pagination extends \
     /**
      * The total number of items across all pages.
      */
-    public function getTotal(): int
+    public function getTotal(): ?int
     {
         return $this->total;
     }
@@ -101,7 +101,7 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200Pagination extends \
     /**
      * The total number of items across all pages.
      */
-    public function setTotal(int $total): self
+    public function setTotal(?int $total): self
     {
         $this->initialized['total'] = true;
         $this->total = $total;

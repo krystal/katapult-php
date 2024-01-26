@@ -30,11 +30,11 @@ class GetDataCenterDefaultNetwork200ResponseNetwork extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
-     * @var GetDataCenterDefaultNetworkPartDataCenter
+     * @var GetDataCenterDefaultNetwork200ResponseNetworkDataCenter
      */
     protected $dataCenter;
 
@@ -64,12 +64,12 @@ class GetDataCenterDefaultNetwork200ResponseNetwork extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(string $permalink): self
+    public function setPermalink(?string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
@@ -77,12 +77,12 @@ class GetDataCenterDefaultNetwork200ResponseNetwork extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetDataCenterDefaultNetworkPartDataCenter
+    public function getDataCenter(): GetDataCenterDefaultNetwork200ResponseNetworkDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetDataCenterDefaultNetworkPartDataCenter $dataCenter): self
+    public function setDataCenter(GetDataCenterDefaultNetwork200ResponseNetworkDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
