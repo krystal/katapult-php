@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.1](https://github.com/krystal/katapult-php/compare/v3.0.0...v3.0.1) (2024-01-26)
+
+
+### Bug Fixes
+
+* some API properties are nullable ([8b16a08](https://github.com/krystal/katapult-php/commit/8b16a08de4556df2130c4993f9b71fc0245061e8))
+
+
+### Miscellaneous Chores
+
+* 3.x to become main/default ([85ef77c](https://github.com/krystal/katapult-php/commit/85ef77c7691440ee72286ca46a29a1b1a5852a35))
+* **docs:** link to branches ([d2a5596](https://github.com/krystal/katapult-php/commit/d2a55968f0d34d9f816ab5fab80f54bb7ff20cf1))
+
 ## [3.0.0](https://github.com/krystal/katapult-php/compare/v2.3.0...v3.0.0) (2024-01-19)
 
 
