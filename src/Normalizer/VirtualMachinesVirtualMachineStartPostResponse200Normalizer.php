@@ -50,7 +50,7 @@ class VirtualMachinesVirtualMachineStartPostResponse200Normalizer implements Den
             return $object;
         }
         if (\array_key_exists('task', $data)) {
-            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesVirtualMachineStartPostResponse200Task', 'json', $context));
+            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineStart200ResponseTask', 'json', $context));
             unset($data['task']);
         }
         foreach ($data as $key => $value) {

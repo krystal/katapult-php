@@ -50,11 +50,11 @@ class VirtualMachinesVirtualMachineDeleteResponse200Normalizer implements Denorm
             return $object;
         }
         if (\array_key_exists('trash_object', $data)) {
-            $object->setTrashObject($this->denormalizer->denormalize($data['trash_object'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesVirtualMachineDeleteResponse200TrashObject', 'json', $context));
+            $object->setTrashObject($this->denormalizer->denormalize($data['trash_object'], 'Krystal\\Katapult\\KatapultAPI\\Model\\TrashObject', 'json', $context));
             unset($data['trash_object']);
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachine200ResponseVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         foreach ($data as $key => $value) {

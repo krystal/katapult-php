@@ -22,11 +22,11 @@ class VirtualMachineDisk extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachineDiskVirtualMachine
+     * @var VirtualMachine
      */
     protected $virtualMachine;
     /**
-     * @var VirtualMachineDiskDisk
+     * @var Disk
      */
     protected $disk;
     /**
@@ -42,12 +42,12 @@ class VirtualMachineDisk extends \ArrayObject
      */
     protected $state;
 
-    public function getVirtualMachine(): VirtualMachineDiskVirtualMachine
+    public function getVirtualMachine(): VirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(VirtualMachineDiskVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(VirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;
@@ -55,12 +55,12 @@ class VirtualMachineDisk extends \ArrayObject
         return $this;
     }
 
-    public function getDisk(): VirtualMachineDiskDisk
+    public function getDisk(): Disk
     {
         return $this->disk;
     }
 
-    public function setDisk(VirtualMachineDiskDisk $disk): self
+    public function setDisk(Disk $disk): self
     {
         $this->initialized['disk'] = true;
         $this->disk = $disk;

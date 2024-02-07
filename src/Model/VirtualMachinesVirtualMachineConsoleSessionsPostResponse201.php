@@ -22,16 +22,16 @@ class VirtualMachinesVirtualMachineConsoleSessionsPostResponse201 extends \Array
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinesVirtualMachineConsoleSessionsPostResponse201ConsoleSession
+     * @var PostVirtualMachineConsoleSessions201ResponseConsoleSession
      */
     protected $consoleSession;
 
-    public function getConsoleSession(): VirtualMachinesVirtualMachineConsoleSessionsPostResponse201ConsoleSession
+    public function getConsoleSession(): PostVirtualMachineConsoleSessions201ResponseConsoleSession
     {
         return $this->consoleSession;
     }
 
-    public function setConsoleSession(VirtualMachinesVirtualMachineConsoleSessionsPostResponse201ConsoleSession $consoleSession): self
+    public function setConsoleSession(PostVirtualMachineConsoleSessions201ResponseConsoleSession $consoleSession): self
     {
         $this->initialized['consoleSession'] = true;
         $this->consoleSession = $consoleSession;

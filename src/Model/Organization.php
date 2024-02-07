@@ -82,7 +82,7 @@ class Organization extends \ArrayObject
      */
     protected $phoneNumber;
     /**
-     * @var OrganizationCurrency
+     * @var Currency
      */
     protected $currency;
     /**
@@ -289,12 +289,12 @@ class Organization extends \ArrayObject
         return $this;
     }
 
-    public function getCurrency(): OrganizationCurrency
+    public function getCurrency(): Currency
     {
         return $this->currency;
     }
 
-    public function setCurrency(OrganizationCurrency $currency): self
+    public function setCurrency(Currency $currency): self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

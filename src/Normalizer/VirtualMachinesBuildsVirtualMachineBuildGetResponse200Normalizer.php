@@ -50,7 +50,7 @@ class VirtualMachinesBuildsVirtualMachineBuildGetResponse200Normalizer implement
             return $object;
         }
         if (\array_key_exists('virtual_machine_build', $data)) {
-            $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesBuildsVirtualMachineBuildGetResponse200VirtualMachineBuild', 'json', $context));
+            $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild', 'json', $context));
             unset($data['virtual_machine_build']);
         }
         foreach ($data as $key => $value) {

@@ -27,7 +27,9 @@ class DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200 extends \ArrayOb
      * @var DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200DiskTemplateVersion
      */
     protected $diskTemplateVersion;
-
+    /**
+     * @var TemplateSpec
+     */
     protected $spec;
 
     /**
@@ -49,12 +51,12 @@ class DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200 extends \ArrayOb
         return $this;
     }
 
-    public function getSpec()
+    public function getSpec(): TemplateSpec
     {
         return $this->spec;
     }
 
-    public function setSpec($spec): self
+    public function setSpec(TemplateSpec $spec): self
     {
         $this->initialized['spec'] = true;
         $this->spec = $spec;

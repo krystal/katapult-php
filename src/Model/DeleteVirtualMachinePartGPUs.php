@@ -32,7 +32,7 @@ class DeleteVirtualMachinePartGPUs extends \ArrayObject
      */
     protected $status;
     /**
-     * @var string
+     * @var string|null
      */
     protected $pendingAction;
     /**
@@ -42,7 +42,7 @@ class DeleteVirtualMachinePartGPUs extends \ArrayObject
      */
     protected $available;
     /**
-     * @var DeleteVirtualMachinePartGPUsType
+     * @var DeleteVirtualMachinePartType
      */
     protected $type;
 
@@ -78,12 +78,12 @@ class DeleteVirtualMachinePartGPUs extends \ArrayObject
         return $this;
     }
 
-    public function getPendingAction(): string
+    public function getPendingAction(): ?string
     {
         return $this->pendingAction;
     }
 
-    public function setPendingAction(string $pendingAction): self
+    public function setPendingAction(?string $pendingAction): self
     {
         $this->initialized['pendingAction'] = true;
         $this->pendingAction = $pendingAction;
@@ -110,12 +110,12 @@ class DeleteVirtualMachinePartGPUs extends \ArrayObject
         return $this;
     }
 
-    public function getType(): DeleteVirtualMachinePartGPUsType
+    public function getType(): DeleteVirtualMachinePartType
     {
         return $this->type;
     }
 
-    public function setType(DeleteVirtualMachinePartGPUsType $type): self
+    public function setType(DeleteVirtualMachinePartType $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

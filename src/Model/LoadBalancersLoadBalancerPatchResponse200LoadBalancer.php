@@ -46,7 +46,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
      */
     protected $resourceIds;
     /**
-     * @var PatchLoadBalancer200ResponseLoadBalancerIpAddressItem[]
+     * @var PatchLoadBalancerPartIPAddress[]
      */
     protected $ipAddress;
     /**
@@ -62,7 +62,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
      */
     protected $backendCertificateKey;
     /**
-     * @var PatchLoadBalancer200ResponseLoadBalancerDataCenter
+     * @var PatchLoadBalancerPartDataCenter
      */
     protected $dataCenter;
     /**
@@ -70,7 +70,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
      */
     protected $enableWeighting;
     /**
-     * @var PatchLoadBalancer200ResponseLoadBalancerWeightsItem[]
+     * @var PatchLoadBalancerPartWeights[]
      */
     protected $weights;
     /**
@@ -169,7 +169,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return PatchLoadBalancer200ResponseLoadBalancerIpAddressItem[]
+     * @return PatchLoadBalancerPartIPAddress[]
      */
     public function getIpAddress(): array
     {
@@ -177,7 +177,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param PatchLoadBalancer200ResponseLoadBalancerIpAddressItem[] $ipAddress
+     * @param PatchLoadBalancerPartIPAddress[] $ipAddress
      */
     public function setIpAddress(array $ipAddress): self
     {
@@ -226,12 +226,12 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): PatchLoadBalancer200ResponseLoadBalancerDataCenter
+    public function getDataCenter(): PatchLoadBalancerPartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(PatchLoadBalancer200ResponseLoadBalancerDataCenter $dataCenter): self
+    public function setDataCenter(PatchLoadBalancerPartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
@@ -253,7 +253,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return PatchLoadBalancer200ResponseLoadBalancerWeightsItem[]
+     * @return PatchLoadBalancerPartWeights[]
      */
     public function getWeights(): array
     {
@@ -261,7 +261,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param PatchLoadBalancer200ResponseLoadBalancerWeightsItem[] $weights
+     * @param PatchLoadBalancerPartWeights[] $weights
      */
     public function setWeights(array $weights): self
     {

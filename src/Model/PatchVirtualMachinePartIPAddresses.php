@@ -46,7 +46,7 @@ class PatchVirtualMachinePartIPAddresses extends \ArrayObject
      */
     protected $addressWithMask;
     /**
-     * @var PatchVirtualMachinePartIPAddressesNetwork
+     * @var PatchVirtualMachinePartNetwork
      */
     protected $network;
     /**
@@ -136,12 +136,12 @@ class PatchVirtualMachinePartIPAddresses extends \ArrayObject
         return $this;
     }
 
-    public function getNetwork(): PatchVirtualMachinePartIPAddressesNetwork
+    public function getNetwork(): PatchVirtualMachinePartNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(PatchVirtualMachinePartIPAddressesNetwork $network): self
+    public function setNetwork(PatchVirtualMachinePartNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;

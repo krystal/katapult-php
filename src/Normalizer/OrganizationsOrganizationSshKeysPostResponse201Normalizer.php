@@ -50,7 +50,7 @@ class OrganizationsOrganizationSshKeysPostResponse201Normalizer implements Denor
             return $object;
         }
         if (\array_key_exists('ssh_key', $data)) {
-            $object->setSshKey($this->denormalizer->denormalize($data['ssh_key'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationSshKeysPostResponse201SshKey', 'json', $context));
+            $object->setSshKey($this->denormalizer->denormalize($data['ssh_key'], 'Krystal\\Katapult\\KatapultAPI\\Model\\AuthSSHKey', 'json', $context));
             unset($data['ssh_key']);
         }
         foreach ($data as $key => $value) {

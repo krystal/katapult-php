@@ -22,16 +22,16 @@ class GpuTypesGpuTypeGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var GpuTypesGpuTypeGetResponse200GpuType
+     * @var GetGPUType200ResponseGPUType
      */
     protected $gpuType;
 
-    public function getGpuType(): GpuTypesGpuTypeGetResponse200GpuType
+    public function getGpuType(): GetGPUType200ResponseGPUType
     {
         return $this->gpuType;
     }
 
-    public function setGpuType(GpuTypesGpuTypeGetResponse200GpuType $gpuType): self
+    public function setGpuType(GetGPUType200ResponseGPUType $gpuType): self
     {
         $this->initialized['gpuType'] = true;
         $this->gpuType = $gpuType;

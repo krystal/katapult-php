@@ -50,7 +50,7 @@ class DnsZonesDnsZoneRecordsPostResponse200Normalizer implements DenormalizerInt
             return $object;
         }
         if (\array_key_exists('dns_record', $data)) {
-            $object->setDnsRecord($this->denormalizer->denormalize($data['dns_record'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DnsZonesDnsZoneRecordsPostResponse200DnsRecord', 'json', $context));
+            $object->setDnsRecord($this->denormalizer->denormalize($data['dns_record'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecord', 'json', $context));
             unset($data['dns_record']);
         }
         foreach ($data as $key => $value) {

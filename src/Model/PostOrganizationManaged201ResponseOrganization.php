@@ -82,7 +82,7 @@ class PostOrganizationManaged201ResponseOrganization extends \ArrayObject
      */
     protected $phoneNumber;
     /**
-     * @var PostOrganizationManaged201ResponseOrganizationCurrency
+     * @var PostOrganizationManagedPartCurrency
      */
     protected $currency;
     /**
@@ -289,12 +289,12 @@ class PostOrganizationManaged201ResponseOrganization extends \ArrayObject
         return $this;
     }
 
-    public function getCurrency(): PostOrganizationManaged201ResponseOrganizationCurrency
+    public function getCurrency(): PostOrganizationManagedPartCurrency
     {
         return $this->currency;
     }
 
-    public function setCurrency(PostOrganizationManaged201ResponseOrganizationCurrency $currency): self
+    public function setCurrency(PostOrganizationManagedPartCurrency $currency): self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

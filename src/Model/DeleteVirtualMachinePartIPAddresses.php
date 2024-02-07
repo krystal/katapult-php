@@ -46,7 +46,7 @@ class DeleteVirtualMachinePartIPAddresses extends \ArrayObject
      */
     protected $addressWithMask;
     /**
-     * @var DeleteVirtualMachinePartIPAddressesNetwork
+     * @var DeleteVirtualMachinePartNetwork
      */
     protected $network;
     /**
@@ -136,12 +136,12 @@ class DeleteVirtualMachinePartIPAddresses extends \ArrayObject
         return $this;
     }
 
-    public function getNetwork(): DeleteVirtualMachinePartIPAddressesNetwork
+    public function getNetwork(): DeleteVirtualMachinePartNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(DeleteVirtualMachinePartIPAddressesNetwork $network): self
+    public function setNetwork(DeleteVirtualMachinePartNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;

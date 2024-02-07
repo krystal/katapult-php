@@ -30,7 +30,7 @@ class GetDiskPartDiskTemplateVersion extends \ArrayObject
      */
     protected $stable;
     /**
-     * @var GetDiskPartDiskTemplateVersionDiskTemplate
+     * @var GetDiskPartDiskTemplate
      */
     protected $diskTemplate;
 
@@ -60,12 +60,12 @@ class GetDiskPartDiskTemplateVersion extends \ArrayObject
         return $this;
     }
 
-    public function getDiskTemplate(): GetDiskPartDiskTemplateVersionDiskTemplate
+    public function getDiskTemplate(): GetDiskPartDiskTemplate
     {
         return $this->diskTemplate;
     }
 
-    public function setDiskTemplate(GetDiskPartDiskTemplateVersionDiskTemplate $diskTemplate): self
+    public function setDiskTemplate(GetDiskPartDiskTemplate $diskTemplate): self
     {
         $this->initialized['diskTemplate'] = true;
         $this->diskTemplate = $diskTemplate;

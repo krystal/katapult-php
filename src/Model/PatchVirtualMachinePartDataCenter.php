@@ -34,7 +34,7 @@ class PatchVirtualMachinePartDataCenter extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var PatchVirtualMachinePartDataCenterCountry
+     * @var PatchVirtualMachinePartCountry
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class PatchVirtualMachinePartDataCenter extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): PatchVirtualMachinePartDataCenterCountry
+    public function getCountry(): PatchVirtualMachinePartCountry
     {
         return $this->country;
     }
 
-    public function setCountry(PatchVirtualMachinePartDataCenterCountry $country): self
+    public function setCountry(PatchVirtualMachinePartCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

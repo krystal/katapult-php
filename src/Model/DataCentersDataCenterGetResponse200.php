@@ -22,16 +22,16 @@ class DataCentersDataCenterGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var DataCentersDataCenterGetResponse200DataCenter
+     * @var GetDataCenter200ResponseDataCenter
      */
     protected $dataCenter;
 
-    public function getDataCenter(): DataCentersDataCenterGetResponse200DataCenter
+    public function getDataCenter(): GetDataCenter200ResponseDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DataCentersDataCenterGetResponse200DataCenter $dataCenter): self
+    public function setDataCenter(GetDataCenter200ResponseDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

@@ -50,7 +50,7 @@ class TasksTaskGetResponse200Normalizer implements DenormalizerInterface, Normal
             return $object;
         }
         if (\array_key_exists('task', $data)) {
-            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\TasksTaskGetResponse200Task', 'json', $context));
+            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Task', 'json', $context));
             unset($data['task']);
         }
         foreach ($data as $key => $value) {

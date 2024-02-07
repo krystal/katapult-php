@@ -34,7 +34,7 @@ class DeleteVirtualMachinePartDataCenter extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var DeleteVirtualMachinePartDataCenterCountry
+     * @var DeleteVirtualMachinePartCountry
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class DeleteVirtualMachinePartDataCenter extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): DeleteVirtualMachinePartDataCenterCountry
+    public function getCountry(): DeleteVirtualMachinePartCountry
     {
         return $this->country;
     }
 
-    public function setCountry(DeleteVirtualMachinePartDataCenterCountry $country): self
+    public function setCountry(DeleteVirtualMachinePartCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

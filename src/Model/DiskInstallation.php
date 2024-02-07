@@ -26,11 +26,11 @@ class DiskInstallation extends \ArrayObject
      */
     protected $id;
     /**
-     * @var DiskInstallationDiskTemplateVersion
+     * @var DiskTemplateVersion
      */
     protected $diskTemplateVersion;
     /**
-     * @var DiskInstallationAttributesItem[]
+     * @var DiskInstallationAttribute[]
      */
     protected $attributes;
 
@@ -47,12 +47,12 @@ class DiskInstallation extends \ArrayObject
         return $this;
     }
 
-    public function getDiskTemplateVersion(): DiskInstallationDiskTemplateVersion
+    public function getDiskTemplateVersion(): DiskTemplateVersion
     {
         return $this->diskTemplateVersion;
     }
 
-    public function setDiskTemplateVersion(DiskInstallationDiskTemplateVersion $diskTemplateVersion): self
+    public function setDiskTemplateVersion(DiskTemplateVersion $diskTemplateVersion): self
     {
         $this->initialized['diskTemplateVersion'] = true;
         $this->diskTemplateVersion = $diskTemplateVersion;
@@ -61,7 +61,7 @@ class DiskInstallation extends \ArrayObject
     }
 
     /**
-     * @return DiskInstallationAttributesItem[]
+     * @return DiskInstallationAttribute[]
      */
     public function getAttributes(): array
     {
@@ -69,7 +69,7 @@ class DiskInstallation extends \ArrayObject
     }
 
     /**
-     * @param DiskInstallationAttributesItem[] $attributes
+     * @param DiskInstallationAttribute[] $attributes
      */
     public function setAttributes(array $attributes): self
     {

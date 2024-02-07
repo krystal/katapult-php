@@ -50,7 +50,7 @@ class DNSZoneNotVerifiedNormalizer implements DenormalizerInterface, NormalizerI
             return $object;
         }
         if (\array_key_exists('verification_details', $data)) {
-            $object->setVerificationDetails($data['verification_details']);
+            $object->setVerificationDetails($this->denormalizer->denormalize($data['verification_details'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSZoneVerificationDetails', 'json', $context));
             unset($data['verification_details']);
         }
         foreach ($data as $key => $value) {
@@ -69,7 +69,7 @@ class DNSZoneNotVerifiedNormalizer implements DenormalizerInterface, NormalizerI
     {
         $data = [];
         if ($object->isInitialized('verificationDetails') && null !== $object->getVerificationDetails()) {
-            $data['verification_details'] = $object->getVerificationDetails();
+            $data['verification_details'] = $this->normalizer->normalize($object->getVerificationDetails(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

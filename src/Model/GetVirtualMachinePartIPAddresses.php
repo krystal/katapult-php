@@ -46,7 +46,7 @@ class GetVirtualMachinePartIPAddresses extends \ArrayObject
      */
     protected $addressWithMask;
     /**
-     * @var GetVirtualMachinePartIPAddressesNetwork
+     * @var GetVirtualMachinePartNetwork
      */
     protected $network;
     /**
@@ -136,12 +136,12 @@ class GetVirtualMachinePartIPAddresses extends \ArrayObject
         return $this;
     }
 
-    public function getNetwork(): GetVirtualMachinePartIPAddressesNetwork
+    public function getNetwork(): GetVirtualMachinePartNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(GetVirtualMachinePartIPAddressesNetwork $network): self
+    public function setNetwork(GetVirtualMachinePartNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;

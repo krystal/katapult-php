@@ -22,16 +22,16 @@ class SshKeysSshKeyDeleteResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var SshKeysSshKeyDeleteResponse200SshKey
+     * @var AuthSSHKey
      */
     protected $sshKey;
 
-    public function getSshKey(): SshKeysSshKeyDeleteResponse200SshKey
+    public function getSshKey(): AuthSSHKey
     {
         return $this->sshKey;
     }
 
-    public function setSshKey(SshKeysSshKeyDeleteResponse200SshKey $sshKey): self
+    public function setSshKey(AuthSSHKey $sshKey): self
     {
         $this->initialized['sshKey'] = true;
         $this->sshKey = $sshKey;

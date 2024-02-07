@@ -30,7 +30,7 @@ class FileStorageVolumesFileStorageVolumeDeleteResponse200FileStorageVolume exte
      */
     protected $name;
     /**
-     * @var DeleteFileStorageVolume200ResponseFileStorageVolumeDataCenter
+     * @var DeleteFileStorageVolumePartDataCenter
      */
     protected $dataCenter;
     /**
@@ -80,12 +80,12 @@ class FileStorageVolumesFileStorageVolumeDeleteResponse200FileStorageVolume exte
         return $this;
     }
 
-    public function getDataCenter(): DeleteFileStorageVolume200ResponseFileStorageVolumeDataCenter
+    public function getDataCenter(): DeleteFileStorageVolumePartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DeleteFileStorageVolume200ResponseFileStorageVolumeDataCenter $dataCenter): self
+    public function setDataCenter(DeleteFileStorageVolumePartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

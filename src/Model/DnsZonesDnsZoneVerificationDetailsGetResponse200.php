@@ -21,15 +21,17 @@ class DnsZonesDnsZoneVerificationDetailsGetResponse200 extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
+    /**
+     * @var DNSZoneVerificationDetails
+     */
     protected $details;
 
-    public function getDetails()
+    public function getDetails(): DNSZoneVerificationDetails
     {
         return $this->details;
     }
 
-    public function setDetails($details): self
+    public function setDetails(DNSZoneVerificationDetails $details): self
     {
         $this->initialized['details'] = true;
         $this->details = $details;

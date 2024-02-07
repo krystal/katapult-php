@@ -50,7 +50,7 @@ class UsersCurrentGetResponse200Normalizer implements DenormalizerInterface, Nor
             return $object;
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($this->denormalizer->denormalize($data['user'], 'Krystal\\Katapult\\KatapultAPI\\Model\\UsersCurrentGetResponse200User', 'json', $context));
+            $object->setUser($this->denormalizer->denormalize($data['user'], 'Krystal\\Katapult\\KatapultAPI\\Model\\User', 'json', $context));
             unset($data['user']);
         }
         if (\array_key_exists('organizations', $data)) {

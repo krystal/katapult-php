@@ -76,7 +76,7 @@ class PatchVirtualMachinePartIPAddressesNormalizer implements DenormalizerInterf
             unset($data['address_with_mask']);
         }
         if (\array_key_exists('network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartIPAddressesNetwork', 'json', $context));
+            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartNetwork', 'json', $context));
             unset($data['network']);
         }
         if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {

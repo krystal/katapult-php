@@ -69,7 +69,7 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200DiskBackupPo
             unset($data['target']);
         }
         if (\array_key_exists('schedule', $data)) {
-            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicySchedule', 'json', $context));
+            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineDiskBackupPoliciesPartSchedule', 'json', $context));
             unset($data['schedule']);
         }
         if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {

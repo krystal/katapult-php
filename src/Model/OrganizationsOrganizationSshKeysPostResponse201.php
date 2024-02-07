@@ -22,16 +22,16 @@ class OrganizationsOrganizationSshKeysPostResponse201 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationSshKeysPostResponse201SshKey
+     * @var AuthSSHKey
      */
     protected $sshKey;
 
-    public function getSshKey(): OrganizationsOrganizationSshKeysPostResponse201SshKey
+    public function getSshKey(): AuthSSHKey
     {
         return $this->sshKey;
     }
 
-    public function setSshKey(OrganizationsOrganizationSshKeysPostResponse201SshKey $sshKey): self
+    public function setSshKey(AuthSSHKey $sshKey): self
     {
         $this->initialized['sshKey'] = true;
         $this->sshKey = $sshKey;

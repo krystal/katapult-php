@@ -50,7 +50,7 @@ class VirtualMachinesVirtualMachineShutdownPostResponse200Normalizer implements 
             return $object;
         }
         if (\array_key_exists('task', $data)) {
-            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesVirtualMachineShutdownPostResponse200Task', 'json', $context));
+            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineShutdown200ResponseTask', 'json', $context));
             unset($data['task']);
         }
         foreach ($data as $key => $value) {

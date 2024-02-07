@@ -58,7 +58,7 @@ class DNSRecordContentAttributes extends \ArrayObject
      */
     protected $pTR;
     /**
-     * @var DNSRecordContentAttributesSOA|null
+     * @var array<string, mixed>|null
      */
     protected $sOA;
     /**
@@ -195,12 +195,18 @@ class DNSRecordContentAttributes extends \ArrayObject
         return $this;
     }
 
-    public function getSOA(): ?DNSRecordContentAttributesSOA
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function getSOA(): ?iterable
     {
         return $this->sOA;
     }
 
-    public function setSOA(?DNSRecordContentAttributesSOA $sOA): self
+    /**
+     * @param array<string, mixed>|null $sOA
+     */
+    public function setSOA(?iterable $sOA): self
     {
         $this->initialized['sOA'] = true;
         $this->sOA = $sOA;

@@ -46,7 +46,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
      */
     protected $resourceIds;
     /**
-     * @var PostOrganizationLoadBalancers200ResponseLoadBalancerIpAddressItem[]
+     * @var PostOrganizationLoadBalancersPartIPAddress[]
      */
     protected $ipAddress;
     /**
@@ -62,7 +62,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
      */
     protected $backendCertificateKey;
     /**
-     * @var PostOrganizationLoadBalancers200ResponseLoadBalancerDataCenter
+     * @var PostOrganizationLoadBalancersPartDataCenter
      */
     protected $dataCenter;
     /**
@@ -70,7 +70,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
      */
     protected $enableWeighting;
     /**
-     * @var PostOrganizationLoadBalancers200ResponseLoadBalancerWeightsItem[]
+     * @var PostOrganizationLoadBalancersPartWeights[]
      */
     protected $weights;
     /**
@@ -169,7 +169,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return PostOrganizationLoadBalancers200ResponseLoadBalancerIpAddressItem[]
+     * @return PostOrganizationLoadBalancersPartIPAddress[]
      */
     public function getIpAddress(): array
     {
@@ -177,7 +177,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param PostOrganizationLoadBalancers200ResponseLoadBalancerIpAddressItem[] $ipAddress
+     * @param PostOrganizationLoadBalancersPartIPAddress[] $ipAddress
      */
     public function setIpAddress(array $ipAddress): self
     {
@@ -226,12 +226,12 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): PostOrganizationLoadBalancers200ResponseLoadBalancerDataCenter
+    public function getDataCenter(): PostOrganizationLoadBalancersPartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(PostOrganizationLoadBalancers200ResponseLoadBalancerDataCenter $dataCenter): self
+    public function setDataCenter(PostOrganizationLoadBalancersPartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
@@ -253,7 +253,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return PostOrganizationLoadBalancers200ResponseLoadBalancerWeightsItem[]
+     * @return PostOrganizationLoadBalancersPartWeights[]
      */
     public function getWeights(): array
     {
@@ -261,7 +261,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param PostOrganizationLoadBalancers200ResponseLoadBalancerWeightsItem[] $weights
+     * @param PostOrganizationLoadBalancersPartWeights[] $weights
      */
     public function setWeights(array $weights): self
     {

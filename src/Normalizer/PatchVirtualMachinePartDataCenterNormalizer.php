@@ -64,7 +64,7 @@ class PatchVirtualMachinePartDataCenterNormalizer implements DenormalizerInterfa
             $object->setPermalink(null);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartDataCenterCountry', 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartCountry', 'json', $context));
             unset($data['country']);
         }
         foreach ($data as $key => $value) {

@@ -50,11 +50,11 @@ class VirtualMachineDiskNormalizer implements DenormalizerInterface, NormalizerI
             return $object;
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachineDiskVirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         if (\array_key_exists('disk', $data)) {
-            $object->setDisk($this->denormalizer->denormalize($data['disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachineDiskDisk', 'json', $context));
+            $object->setDisk($this->denormalizer->denormalize($data['disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Disk', 'json', $context));
             unset($data['disk']);
         }
         if (\array_key_exists('attach_on_boot', $data)) {

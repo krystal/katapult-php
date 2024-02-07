@@ -22,16 +22,16 @@ class DnsZonesDnsZoneRecordsPostResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var DnsZonesDnsZoneRecordsPostResponse200DnsRecord
+     * @var DNSRecord
      */
     protected $dnsRecord;
 
-    public function getDnsRecord(): DnsZonesDnsZoneRecordsPostResponse200DnsRecord
+    public function getDnsRecord(): DNSRecord
     {
         return $this->dnsRecord;
     }
 
-    public function setDnsRecord(DnsZonesDnsZoneRecordsPostResponse200DnsRecord $dnsRecord): self
+    public function setDnsRecord(DNSRecord $dnsRecord): self
     {
         $this->initialized['dnsRecord'] = true;
         $this->dnsRecord = $dnsRecord;

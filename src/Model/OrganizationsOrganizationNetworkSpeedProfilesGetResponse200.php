@@ -22,7 +22,7 @@ class OrganizationsOrganizationNetworkSpeedProfilesGetResponse200 extends \Array
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationNetworkSpeedProfilesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class OrganizationsOrganizationNetworkSpeedProfilesGetResponse200 extends \Array
      */
     protected $networkSpeedProfiles;
 
-    public function getPagination(): OrganizationsOrganizationNetworkSpeedProfilesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OrganizationsOrganizationNetworkSpeedProfilesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

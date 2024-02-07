@@ -38,7 +38,7 @@ class DiskTemplateVersion extends \ArrayObject
      */
     protected $sizeInGb;
     /**
-     * @var DiskTemplateVersionDiskTemplate
+     * @var DiskTemplate
      */
     protected $diskTemplate;
 
@@ -94,12 +94,12 @@ class DiskTemplateVersion extends \ArrayObject
         return $this;
     }
 
-    public function getDiskTemplate(): DiskTemplateVersionDiskTemplate
+    public function getDiskTemplate(): DiskTemplate
     {
         return $this->diskTemplate;
     }
 
-    public function setDiskTemplate(DiskTemplateVersionDiskTemplate $diskTemplate): self
+    public function setDiskTemplate(DiskTemplate $diskTemplate): self
     {
         $this->initialized['diskTemplate'] = true;
         $this->diskTemplate = $diskTemplate;

@@ -50,7 +50,7 @@ class DnsZonesDnsZoneVerificationDetailsGetResponse200Normalizer implements Deno
             return $object;
         }
         if (\array_key_exists('details', $data)) {
-            $object->setDetails($data['details']);
+            $object->setDetails($this->denormalizer->denormalize($data['details'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSZoneVerificationDetails', 'json', $context));
             unset($data['details']);
         }
         foreach ($data as $key => $value) {
@@ -68,7 +68,7 @@ class DnsZonesDnsZoneVerificationDetailsGetResponse200Normalizer implements Deno
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        $data['details'] = $object->getDetails();
+        $data['details'] = $this->normalizer->normalize($object->getDetails(), 'json', $context);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

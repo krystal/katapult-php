@@ -126,7 +126,7 @@ class PatchVirtualMachinePartOrganizationNormalizer implements DenormalizerInter
             $object->setPhoneNumber(null);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartOrganizationCurrency', 'json', $context));
+            $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartCurrency', 'json', $context));
             unset($data['currency']);
         }
         if (\array_key_exists('country', $data) && $data['country'] !== null) {

@@ -22,7 +22,7 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200 extends \Arr
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200 extends \Arr
      */
     protected $diskBackupPolicies;
 
-    public function getPagination(): VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

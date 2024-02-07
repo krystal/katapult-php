@@ -82,7 +82,7 @@ class PatchVirtualMachinePartOrganization extends \ArrayObject
      */
     protected $phoneNumber;
     /**
-     * @var PatchVirtualMachinePartOrganizationCurrency
+     * @var PatchVirtualMachinePartCurrency
      */
     protected $currency;
     /**
@@ -289,12 +289,12 @@ class PatchVirtualMachinePartOrganization extends \ArrayObject
         return $this;
     }
 
-    public function getCurrency(): PatchVirtualMachinePartOrganizationCurrency
+    public function getCurrency(): PatchVirtualMachinePartCurrency
     {
         return $this->currency;
     }
 
-    public function setCurrency(PatchVirtualMachinePartOrganizationCurrency $currency): self
+    public function setCurrency(PatchVirtualMachinePartCurrency $currency): self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

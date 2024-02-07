@@ -22,7 +22,7 @@ class SecurityGroupsSecurityGroupRulesGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var SecurityGroupsSecurityGroupRulesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class SecurityGroupsSecurityGroupRulesGetResponse200 extends \ArrayObject
      */
     protected $securityGroupRules;
 
-    public function getPagination(): SecurityGroupsSecurityGroupRulesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(SecurityGroupsSecurityGroupRulesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

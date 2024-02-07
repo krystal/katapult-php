@@ -32,7 +32,7 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
      */
     protected $status;
     /**
-     * @var string
+     * @var string|null
      */
     protected $pendingAction;
     /**
@@ -42,7 +42,7 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
      */
     protected $available;
     /**
-     * @var PatchVirtualMachinePartGPUsType
+     * @var PatchVirtualMachinePartType
      */
     protected $type;
 
@@ -78,12 +78,12 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
         return $this;
     }
 
-    public function getPendingAction(): string
+    public function getPendingAction(): ?string
     {
         return $this->pendingAction;
     }
 
-    public function setPendingAction(string $pendingAction): self
+    public function setPendingAction(?string $pendingAction): self
     {
         $this->initialized['pendingAction'] = true;
         $this->pendingAction = $pendingAction;
@@ -110,12 +110,12 @@ class PatchVirtualMachinePartGPUs extends \ArrayObject
         return $this;
     }
 
-    public function getType(): PatchVirtualMachinePartGPUsType
+    public function getType(): PatchVirtualMachinePartType
     {
         return $this->type;
     }
 
-    public function setType(PatchVirtualMachinePartGPUsType $type): self
+    public function setType(PatchVirtualMachinePartType $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

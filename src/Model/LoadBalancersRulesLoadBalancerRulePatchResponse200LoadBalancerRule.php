@@ -46,7 +46,7 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
      */
     protected $proxyProtocol;
     /**
-     * @var PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleCertificatesItem[]
+     * @var PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
      */
     protected $certificates;
     /**
@@ -74,7 +74,7 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
      */
     protected $checkPath;
     /**
-     * @var string
+     * @var string|null
      */
     protected $checkProtocol;
     /**
@@ -86,11 +86,11 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
      */
     protected $checkTimeout;
     /**
-     * @var string
+     * @var string|null
      */
     protected $checkHttpStatuses;
     /**
-     * @var PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleLoadBalancer
+     * @var PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer
      */
     protected $loadBalancer;
 
@@ -173,7 +173,7 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
     }
 
     /**
-     * @return PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleCertificatesItem[]
+     * @return PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
      */
     public function getCertificates(): array
     {
@@ -181,7 +181,7 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
     }
 
     /**
-     * @param PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleCertificatesItem[] $certificates
+     * @param PatchLoadBalancersRulesLoadBalancerRulePartCertificates[] $certificates
      */
     public function setCertificates(array $certificates): self
     {
@@ -269,12 +269,12 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
         return $this;
     }
 
-    public function getCheckProtocol(): string
+    public function getCheckProtocol(): ?string
     {
         return $this->checkProtocol;
     }
 
-    public function setCheckProtocol(string $checkProtocol): self
+    public function setCheckProtocol(?string $checkProtocol): self
     {
         $this->initialized['checkProtocol'] = true;
         $this->checkProtocol = $checkProtocol;
@@ -308,12 +308,12 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
         return $this;
     }
 
-    public function getCheckHttpStatuses(): string
+    public function getCheckHttpStatuses(): ?string
     {
         return $this->checkHttpStatuses;
     }
 
-    public function setCheckHttpStatuses(string $checkHttpStatuses): self
+    public function setCheckHttpStatuses(?string $checkHttpStatuses): self
     {
         $this->initialized['checkHttpStatuses'] = true;
         $this->checkHttpStatuses = $checkHttpStatuses;
@@ -321,12 +321,12 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
         return $this;
     }
 
-    public function getLoadBalancer(): PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleLoadBalancer
+    public function getLoadBalancer(): PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer
     {
         return $this->loadBalancer;
     }
 
-    public function setLoadBalancer(PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleLoadBalancer $loadBalancer): self
+    public function setLoadBalancer(PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer $loadBalancer): self
     {
         $this->initialized['loadBalancer'] = true;
         $this->loadBalancer = $loadBalancer;

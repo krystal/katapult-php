@@ -54,11 +54,11 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $state;
     /**
-     * @var GetVirtualMachine200ResponseVirtualMachineZone
+     * @var GetVirtualMachinePartZone
      */
     protected $zone;
     /**
-     * @var GetVirtualMachine200ResponseVirtualMachineOrganization
+     * @var GetVirtualMachinePartOrganization
      */
     protected $organization;
     /**
@@ -86,11 +86,11 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $gpuType;
     /**
-     * @var GetVirtualMachine200ResponseVirtualMachineGpusItem[]
+     * @var GetVirtualMachinePartGPUs[]
      */
     protected $gpus;
     /**
-     * @var GetVirtualMachine200ResponseVirtualMachineTagsItem[]
+     * @var GetVirtualMachinePartTags[]
      */
     protected $tags;
     /**
@@ -98,7 +98,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $tagNames;
     /**
-     * @var GetVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
+     * @var GetVirtualMachinePartIPAddresses[]
      */
     protected $ipAddresses;
 
@@ -206,12 +206,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getZone(): GetVirtualMachine200ResponseVirtualMachineZone
+    public function getZone(): GetVirtualMachinePartZone
     {
         return $this->zone;
     }
 
-    public function setZone(GetVirtualMachine200ResponseVirtualMachineZone $zone): self
+    public function setZone(GetVirtualMachinePartZone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -219,12 +219,12 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getOrganization(): GetVirtualMachine200ResponseVirtualMachineOrganization
+    public function getOrganization(): GetVirtualMachinePartOrganization
     {
         return $this->organization;
     }
 
-    public function setOrganization(GetVirtualMachine200ResponseVirtualMachineOrganization $organization): self
+    public function setOrganization(GetVirtualMachinePartOrganization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;
@@ -311,7 +311,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return GetVirtualMachine200ResponseVirtualMachineGpusItem[]
+     * @return GetVirtualMachinePartGPUs[]
      */
     public function getGpus(): array
     {
@@ -319,7 +319,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param GetVirtualMachine200ResponseVirtualMachineGpusItem[] $gpus
+     * @param GetVirtualMachinePartGPUs[] $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -330,7 +330,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return GetVirtualMachine200ResponseVirtualMachineTagsItem[]
+     * @return GetVirtualMachinePartTags[]
      */
     public function getTags(): array
     {
@@ -338,7 +338,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param GetVirtualMachine200ResponseVirtualMachineTagsItem[] $tags
+     * @param GetVirtualMachinePartTags[] $tags
      */
     public function setTags(array $tags): self
     {
@@ -368,7 +368,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return GetVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
+     * @return GetVirtualMachinePartIPAddresses[]
      */
     public function getIpAddresses(): array
     {
@@ -376,7 +376,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param GetVirtualMachine200ResponseVirtualMachineIpAddressesItem[] $ipAddresses
+     * @param GetVirtualMachinePartIPAddresses[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

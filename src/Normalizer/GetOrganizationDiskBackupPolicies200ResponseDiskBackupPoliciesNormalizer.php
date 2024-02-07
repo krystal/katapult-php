@@ -69,7 +69,7 @@ class GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesNormalizer i
             unset($data['target']);
         }
         if (\array_key_exists('schedule', $data)) {
-            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesSchedule', 'json', $context));
+            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationDiskBackupPoliciesPartSchedule', 'json', $context));
             unset($data['schedule']);
         }
         foreach ($data as $key => $value) {

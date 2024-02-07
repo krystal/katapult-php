@@ -82,7 +82,7 @@ class DeleteVirtualMachinePartOrganization extends \ArrayObject
      */
     protected $phoneNumber;
     /**
-     * @var DeleteVirtualMachinePartOrganizationCurrency
+     * @var DeleteVirtualMachinePartCurrency
      */
     protected $currency;
     /**
@@ -289,12 +289,12 @@ class DeleteVirtualMachinePartOrganization extends \ArrayObject
         return $this;
     }
 
-    public function getCurrency(): DeleteVirtualMachinePartOrganizationCurrency
+    public function getCurrency(): DeleteVirtualMachinePartCurrency
     {
         return $this->currency;
     }
 
-    public function setCurrency(DeleteVirtualMachinePartOrganizationCurrency $currency): self
+    public function setCurrency(DeleteVirtualMachinePartCurrency $currency): self
     {
         $this->initialized['currency'] = true;
         $this->currency = $currency;

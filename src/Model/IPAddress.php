@@ -46,7 +46,7 @@ class IPAddress extends \ArrayObject
      */
     protected $addressWithMask;
     /**
-     * @var IPAddressNetwork
+     * @var Network
      */
     protected $network;
     /**
@@ -136,12 +136,12 @@ class IPAddress extends \ArrayObject
         return $this;
     }
 
-    public function getNetwork(): IPAddressNetwork
+    public function getNetwork(): Network
     {
         return $this->network;
     }
 
-    public function setNetwork(IPAddressNetwork $network): self
+    public function setNetwork(Network $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;

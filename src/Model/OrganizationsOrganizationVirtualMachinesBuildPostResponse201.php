@@ -22,7 +22,7 @@ class OrganizationsOrganizationVirtualMachinesBuildPostResponse201 extends \Arra
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationVirtualMachinesBuildPostResponse201Task
+     * @var PostOrganizationVirtualMachinesBuild201ResponseTask
      */
     protected $task;
     /**
@@ -32,7 +32,7 @@ class OrganizationsOrganizationVirtualMachinesBuildPostResponse201 extends \Arra
      */
     protected $build;
     /**
-     * @var OrganizationsOrganizationVirtualMachinesBuildPostResponse201VirtualMachineBuild
+     * @var PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild
      */
     protected $virtualMachineBuild;
     /**
@@ -40,12 +40,12 @@ class OrganizationsOrganizationVirtualMachinesBuildPostResponse201 extends \Arra
      */
     protected $hostname;
 
-    public function getTask(): OrganizationsOrganizationVirtualMachinesBuildPostResponse201Task
+    public function getTask(): PostOrganizationVirtualMachinesBuild201ResponseTask
     {
         return $this->task;
     }
 
-    public function setTask(OrganizationsOrganizationVirtualMachinesBuildPostResponse201Task $task): self
+    public function setTask(PostOrganizationVirtualMachinesBuild201ResponseTask $task): self
     {
         $this->initialized['task'] = true;
         $this->task = $task;
@@ -72,12 +72,12 @@ class OrganizationsOrganizationVirtualMachinesBuildPostResponse201 extends \Arra
         return $this;
     }
 
-    public function getVirtualMachineBuild(): OrganizationsOrganizationVirtualMachinesBuildPostResponse201VirtualMachineBuild
+    public function getVirtualMachineBuild(): PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild
     {
         return $this->virtualMachineBuild;
     }
 
-    public function setVirtualMachineBuild(OrganizationsOrganizationVirtualMachinesBuildPostResponse201VirtualMachineBuild $virtualMachineBuild): self
+    public function setVirtualMachineBuild(PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild $virtualMachineBuild): self
     {
         $this->initialized['virtualMachineBuild'] = true;
         $this->virtualMachineBuild = $virtualMachineBuild;

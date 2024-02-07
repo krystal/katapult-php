@@ -53,39 +53,21 @@ class DnsZonesDnsZoneRecordsPostResponse200DnsRecordNormalizer implements Denorm
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+        if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
             unset($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
         }
-        if (\array_key_exists('full_name', $data)) {
-            $object->setFullName($data['full_name']);
-            unset($data['full_name']);
-        }
-        if (\array_key_exists('ttl', $data) && $data['ttl'] !== null) {
+        if (\array_key_exists('ttl', $data)) {
             $object->setTtl($data['ttl']);
             unset($data['ttl']);
-        } elseif (\array_key_exists('ttl', $data) && $data['ttl'] === null) {
-            $object->setTtl(null);
         }
-        if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
-            unset($data['type']);
+        if (\array_key_exists('record_type', $data)) {
+            $object->setRecordType($data['record_type']);
+            unset($data['record_type']);
         }
-        if (\array_key_exists('priority', $data) && $data['priority'] !== null) {
-            $object->setPriority($data['priority']);
-            unset($data['priority']);
-        } elseif (\array_key_exists('priority', $data) && $data['priority'] === null) {
-            $object->setPriority(null);
-        }
-        if (\array_key_exists('content', $data)) {
-            $object->setContent($data['content']);
-            unset($data['content']);
-        }
-        if (\array_key_exists('content_attributes', $data)) {
-            $object->setContentAttributes($this->denormalizer->denormalize($data['content_attributes'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributes', 'json', $context));
-            unset($data['content_attributes']);
+        if (\array_key_exists('properties', $data)) {
+            $object->setProperties($this->denormalizer->denormalize($data['properties'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordProperties', 'json', $context));
+            unset($data['properties']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -108,23 +90,14 @@ class DnsZonesDnsZoneRecordsPostResponse200DnsRecordNormalizer implements Denorm
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if ($object->isInitialized('fullName') && null !== $object->getFullName()) {
-            $data['full_name'] = $object->getFullName();
-        }
         if ($object->isInitialized('ttl') && null !== $object->getTtl()) {
             $data['ttl'] = $object->getTtl();
         }
-        if ($object->isInitialized('type') && null !== $object->getType()) {
-            $data['type'] = $object->getType();
+        if ($object->isInitialized('recordType') && null !== $object->getRecordType()) {
+            $data['record_type'] = $object->getRecordType();
         }
-        if ($object->isInitialized('priority') && null !== $object->getPriority()) {
-            $data['priority'] = $object->getPriority();
-        }
-        if ($object->isInitialized('content') && null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
-        if ($object->isInitialized('contentAttributes') && null !== $object->getContentAttributes()) {
-            $data['content_attributes'] = $this->normalizer->normalize($object->getContentAttributes(), 'json', $context);
+        if ($object->isInitialized('properties') && null !== $object->getProperties()) {
+            $data['properties'] = $this->normalizer->normalize($object->getProperties(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

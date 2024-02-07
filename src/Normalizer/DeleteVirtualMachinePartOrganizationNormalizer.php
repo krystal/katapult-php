@@ -126,7 +126,7 @@ class DeleteVirtualMachinePartOrganizationNormalizer implements DenormalizerInte
             $object->setPhoneNumber(null);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartOrganizationCurrency', 'json', $context));
+            $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartCurrency', 'json', $context));
             unset($data['currency']);
         }
         if (\array_key_exists('country', $data) && $data['country'] !== null) {

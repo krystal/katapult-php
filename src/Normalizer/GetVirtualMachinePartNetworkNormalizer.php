@@ -64,7 +64,7 @@ class GetVirtualMachinePartNetworkNormalizer implements DenormalizerInterface, N
             $object->setPermalink(null);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePartNetworkDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachinePartDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         foreach ($data as $key => $value) {

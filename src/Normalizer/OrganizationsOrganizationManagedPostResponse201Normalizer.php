@@ -50,7 +50,7 @@ class OrganizationsOrganizationManagedPostResponse201Normalizer implements Denor
             return $object;
         }
         if (\array_key_exists('organization', $data)) {
-            $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationManagedPostResponse201Organization', 'json', $context));
+            $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationManaged201ResponseOrganization', 'json', $context));
             unset($data['organization']);
         }
         foreach ($data as $key => $value) {

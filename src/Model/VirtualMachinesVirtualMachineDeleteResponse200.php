@@ -22,20 +22,20 @@ class VirtualMachinesVirtualMachineDeleteResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinesVirtualMachineDeleteResponse200TrashObject
+     * @var TrashObject
      */
     protected $trashObject;
     /**
-     * @var VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine
+     * @var DeleteVirtualMachine200ResponseVirtualMachine
      */
     protected $virtualMachine;
 
-    public function getTrashObject(): VirtualMachinesVirtualMachineDeleteResponse200TrashObject
+    public function getTrashObject(): TrashObject
     {
         return $this->trashObject;
     }
 
-    public function setTrashObject(VirtualMachinesVirtualMachineDeleteResponse200TrashObject $trashObject): self
+    public function setTrashObject(TrashObject $trashObject): self
     {
         $this->initialized['trashObject'] = true;
         $this->trashObject = $trashObject;
@@ -43,12 +43,12 @@ class VirtualMachinesVirtualMachineDeleteResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getVirtualMachine(): VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine
+    public function getVirtualMachine(): DeleteVirtualMachine200ResponseVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(VirtualMachinesVirtualMachineDeleteResponse200VirtualMachine $virtualMachine): self
+    public function setVirtualMachine(DeleteVirtualMachine200ResponseVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;

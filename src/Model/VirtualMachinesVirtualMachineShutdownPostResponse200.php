@@ -22,16 +22,16 @@ class VirtualMachinesVirtualMachineShutdownPostResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinesVirtualMachineShutdownPostResponse200Task
+     * @var PostVirtualMachineShutdown200ResponseTask
      */
     protected $task;
 
-    public function getTask(): VirtualMachinesVirtualMachineShutdownPostResponse200Task
+    public function getTask(): PostVirtualMachineShutdown200ResponseTask
     {
         return $this->task;
     }
 
-    public function setTask(VirtualMachinesVirtualMachineShutdownPostResponse200Task $task): self
+    public function setTask(PostVirtualMachineShutdown200ResponseTask $task): self
     {
         $this->initialized['task'] = true;
         $this->task = $task;

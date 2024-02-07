@@ -54,11 +54,11 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
      */
     protected $state;
     /**
-     * @var PatchVirtualMachine200ResponseVirtualMachineZone
+     * @var PatchVirtualMachinePartZone
      */
     protected $zone;
     /**
-     * @var PatchVirtualMachine200ResponseVirtualMachineOrganization
+     * @var PatchVirtualMachinePartOrganization
      */
     protected $organization;
     /**
@@ -86,11 +86,11 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
      */
     protected $gpuType;
     /**
-     * @var PatchVirtualMachine200ResponseVirtualMachineGpusItem[]
+     * @var PatchVirtualMachinePartGPUs[]
      */
     protected $gpus;
     /**
-     * @var PatchVirtualMachine200ResponseVirtualMachineTagsItem[]
+     * @var PatchVirtualMachinePartTags[]
      */
     protected $tags;
     /**
@@ -98,7 +98,7 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
      */
     protected $tagNames;
     /**
-     * @var PatchVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
+     * @var PatchVirtualMachinePartIPAddresses[]
      */
     protected $ipAddresses;
 
@@ -206,12 +206,12 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
         return $this;
     }
 
-    public function getZone(): PatchVirtualMachine200ResponseVirtualMachineZone
+    public function getZone(): PatchVirtualMachinePartZone
     {
         return $this->zone;
     }
 
-    public function setZone(PatchVirtualMachine200ResponseVirtualMachineZone $zone): self
+    public function setZone(PatchVirtualMachinePartZone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -219,12 +219,12 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
         return $this;
     }
 
-    public function getOrganization(): PatchVirtualMachine200ResponseVirtualMachineOrganization
+    public function getOrganization(): PatchVirtualMachinePartOrganization
     {
         return $this->organization;
     }
 
-    public function setOrganization(PatchVirtualMachine200ResponseVirtualMachineOrganization $organization): self
+    public function setOrganization(PatchVirtualMachinePartOrganization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;
@@ -311,7 +311,7 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
     }
 
     /**
-     * @return PatchVirtualMachine200ResponseVirtualMachineGpusItem[]
+     * @return PatchVirtualMachinePartGPUs[]
      */
     public function getGpus(): array
     {
@@ -319,7 +319,7 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
     }
 
     /**
-     * @param PatchVirtualMachine200ResponseVirtualMachineGpusItem[] $gpus
+     * @param PatchVirtualMachinePartGPUs[] $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -330,7 +330,7 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
     }
 
     /**
-     * @return PatchVirtualMachine200ResponseVirtualMachineTagsItem[]
+     * @return PatchVirtualMachinePartTags[]
      */
     public function getTags(): array
     {
@@ -338,7 +338,7 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
     }
 
     /**
-     * @param PatchVirtualMachine200ResponseVirtualMachineTagsItem[] $tags
+     * @param PatchVirtualMachinePartTags[] $tags
      */
     public function setTags(array $tags): self
     {
@@ -368,7 +368,7 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
     }
 
     /**
-     * @return PatchVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
+     * @return PatchVirtualMachinePartIPAddresses[]
      */
     public function getIpAddresses(): array
     {
@@ -376,7 +376,7 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
     }
 
     /**
-     * @param PatchVirtualMachine200ResponseVirtualMachineIpAddressesItem[] $ipAddresses
+     * @param PatchVirtualMachinePartIPAddresses[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

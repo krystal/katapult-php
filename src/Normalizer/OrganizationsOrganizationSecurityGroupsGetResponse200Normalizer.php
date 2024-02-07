@@ -50,7 +50,7 @@ class OrganizationsOrganizationSecurityGroupsGetResponse200Normalizer implements
             return $object;
         }
         if (\array_key_exists('pagination', $data)) {
-            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationSecurityGroupsGetResponse200Pagination', 'json', $context));
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PaginationObject', 'json', $context));
             unset($data['pagination']);
         }
         if (\array_key_exists('security_groups', $data)) {

@@ -22,7 +22,7 @@ class VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200 extends \Arra
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200 extends \Arra
      */
     protected $virtualMachineNetworkInterfaces;
 
-    public function getPagination(): VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

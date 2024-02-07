@@ -70,7 +70,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachinesNormalizer impleme
             unset($data['created_at']);
         }
         if (\array_key_exists('zone', $data)) {
-            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesZone', 'json', $context));
+            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartZone', 'json', $context));
             unset($data['zone']);
         }
         if (\array_key_exists('package', $data) && $data['package'] !== null) {
@@ -88,7 +88,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachinesNormalizer impleme
         if (\array_key_exists('ip_addresses', $data)) {
             $values = [];
             foreach ($data['ip_addresses'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartIPAddresses', 'json', $context);
             }
             $object->setIpAddresses($values);
             unset($data['ip_addresses']);

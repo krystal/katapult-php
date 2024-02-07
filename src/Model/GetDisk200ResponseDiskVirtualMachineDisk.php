@@ -22,7 +22,7 @@ class GetDisk200ResponseDiskVirtualMachineDisk extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var GetDiskPartVirtualMachineDiskVirtualMachine
+     * @var GetDiskPartVirtualMachine
      */
     protected $virtualMachine;
     /**
@@ -38,12 +38,12 @@ class GetDisk200ResponseDiskVirtualMachineDisk extends \ArrayObject
      */
     protected $state;
 
-    public function getVirtualMachine(): GetDiskPartVirtualMachineDiskVirtualMachine
+    public function getVirtualMachine(): GetDiskPartVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(GetDiskPartVirtualMachineDiskVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(GetDiskPartVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;

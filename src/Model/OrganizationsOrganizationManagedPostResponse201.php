@@ -22,16 +22,16 @@ class OrganizationsOrganizationManagedPostResponse201 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationManagedPostResponse201Organization
+     * @var PostOrganizationManaged201ResponseOrganization
      */
     protected $organization;
 
-    public function getOrganization(): OrganizationsOrganizationManagedPostResponse201Organization
+    public function getOrganization(): PostOrganizationManaged201ResponseOrganization
     {
         return $this->organization;
     }
 
-    public function setOrganization(OrganizationsOrganizationManagedPostResponse201Organization $organization): self
+    public function setOrganization(PostOrganizationManaged201ResponseOrganization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;

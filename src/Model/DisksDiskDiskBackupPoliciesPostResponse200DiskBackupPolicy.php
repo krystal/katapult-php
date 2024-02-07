@@ -38,7 +38,7 @@ class DisksDiskDiskBackupPoliciesPostResponse200DiskBackupPolicy extends \ArrayO
      */
     protected $target;
     /**
-     * @var PostDiskDiskBackupPolicies200ResponseDiskBackupPolicySchedule
+     * @var PostDiskDiskBackupPoliciesPartSchedule
      */
     protected $schedule;
     /**
@@ -98,12 +98,12 @@ class DisksDiskDiskBackupPoliciesPostResponse200DiskBackupPolicy extends \ArrayO
         return $this;
     }
 
-    public function getSchedule(): PostDiskDiskBackupPolicies200ResponseDiskBackupPolicySchedule
+    public function getSchedule(): PostDiskDiskBackupPoliciesPartSchedule
     {
         return $this->schedule;
     }
 
-    public function setSchedule(PostDiskDiskBackupPolicies200ResponseDiskBackupPolicySchedule $schedule): self
+    public function setSchedule(PostDiskDiskBackupPoliciesPartSchedule $schedule): self
     {
         $this->initialized['schedule'] = true;
         $this->schedule = $schedule;

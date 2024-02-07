@@ -34,7 +34,7 @@ class GetVirtualMachinePartNetwork extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var GetVirtualMachinePartNetworkDataCenter
+     * @var GetVirtualMachinePartDataCenter
      */
     protected $dataCenter;
 
@@ -77,12 +77,12 @@ class GetVirtualMachinePartNetwork extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetVirtualMachinePartNetworkDataCenter
+    public function getDataCenter(): GetVirtualMachinePartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetVirtualMachinePartNetworkDataCenter $dataCenter): self
+    public function setDataCenter(GetVirtualMachinePartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

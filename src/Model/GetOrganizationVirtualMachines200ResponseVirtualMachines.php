@@ -42,7 +42,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
      */
     protected $createdAt;
     /**
-     * @var GetOrganizationVirtualMachines200ResponseVirtualMachinesZone
+     * @var GetOrganizationVirtualMachinesPartZone
      */
     protected $zone;
     /**
@@ -54,7 +54,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
      */
     protected $gpuType;
     /**
-     * @var GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem[]
+     * @var GetOrganizationVirtualMachinesPartIPAddresses[]
      */
     protected $ipAddresses;
 
@@ -123,12 +123,12 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
         return $this;
     }
 
-    public function getZone(): GetOrganizationVirtualMachines200ResponseVirtualMachinesZone
+    public function getZone(): GetOrganizationVirtualMachinesPartZone
     {
         return $this->zone;
     }
 
-    public function setZone(GetOrganizationVirtualMachines200ResponseVirtualMachinesZone $zone): self
+    public function setZone(GetOrganizationVirtualMachinesPartZone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -163,7 +163,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
     }
 
     /**
-     * @return GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem[]
+     * @return GetOrganizationVirtualMachinesPartIPAddresses[]
      */
     public function getIpAddresses(): array
     {
@@ -171,7 +171,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
     }
 
     /**
-     * @param GetOrganizationVirtualMachines200ResponseVirtualMachinesIpAddressesItem[] $ipAddresses
+     * @param GetOrganizationVirtualMachinesPartIPAddresses[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

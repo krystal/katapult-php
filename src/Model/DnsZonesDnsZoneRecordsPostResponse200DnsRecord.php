@@ -26,33 +26,21 @@ class DnsZonesDnsZoneRecordsPostResponse200DnsRecord extends \ArrayObject
      */
     protected $id;
     /**
-     * @var string|null
+     * @var string
      */
     protected $name;
     /**
-     * @var string
-     */
-    protected $fullName;
-    /**
-     * @var int|null
+     * @var int
      */
     protected $ttl;
     /**
      * @var string
      */
-    protected $type;
+    protected $recordType;
     /**
-     * @var int|null
+     * @var DNSRecordProperties
      */
-    protected $priority;
-    /**
-     * @var string
-     */
-    protected $content;
-    /**
-     * @var DNSRecordContentAttributes
-     */
-    protected $contentAttributes;
+    protected $properties;
 
     public function getId(): string
     {
@@ -67,12 +55,12 @@ class DnsZonesDnsZoneRecordsPostResponse200DnsRecord extends \ArrayObject
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(?string $name): self
+    public function setName(string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -80,25 +68,12 @@ class DnsZonesDnsZoneRecordsPostResponse200DnsRecord extends \ArrayObject
         return $this;
     }
 
-    public function getFullName(): string
-    {
-        return $this->fullName;
-    }
-
-    public function setFullName(string $fullName): self
-    {
-        $this->initialized['fullName'] = true;
-        $this->fullName = $fullName;
-
-        return $this;
-    }
-
-    public function getTtl(): ?int
+    public function getTtl(): int
     {
         return $this->ttl;
     }
 
-    public function setTtl(?int $ttl): self
+    public function setTtl(int $ttl): self
     {
         $this->initialized['ttl'] = true;
         $this->ttl = $ttl;
@@ -106,54 +81,28 @@ class DnsZonesDnsZoneRecordsPostResponse200DnsRecord extends \ArrayObject
         return $this;
     }
 
-    public function getType(): string
+    public function getRecordType(): string
     {
-        return $this->type;
+        return $this->recordType;
     }
 
-    public function setType(string $type): self
+    public function setRecordType(string $recordType): self
     {
-        $this->initialized['type'] = true;
-        $this->type = $type;
+        $this->initialized['recordType'] = true;
+        $this->recordType = $recordType;
 
         return $this;
     }
 
-    public function getPriority(): ?int
+    public function getProperties(): DNSRecordProperties
     {
-        return $this->priority;
+        return $this->properties;
     }
 
-    public function setPriority(?int $priority): self
+    public function setProperties(DNSRecordProperties $properties): self
     {
-        $this->initialized['priority'] = true;
-        $this->priority = $priority;
-
-        return $this;
-    }
-
-    public function getContent(): string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content): self
-    {
-        $this->initialized['content'] = true;
-        $this->content = $content;
-
-        return $this;
-    }
-
-    public function getContentAttributes(): DNSRecordContentAttributes
-    {
-        return $this->contentAttributes;
-    }
-
-    public function setContentAttributes(DNSRecordContentAttributes $contentAttributes): self
-    {
-        $this->initialized['contentAttributes'] = true;
-        $this->contentAttributes = $contentAttributes;
+        $this->initialized['properties'] = true;
+        $this->properties = $properties;
 
         return $this;
     }

@@ -22,7 +22,7 @@ class UsersCurrentGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var UsersCurrentGetResponse200User
+     * @var User
      */
     protected $user;
     /**
@@ -34,12 +34,12 @@ class UsersCurrentGetResponse200 extends \ArrayObject
      */
     protected $apiTokenId;
 
-    public function getUser(): UsersCurrentGetResponse200User
+    public function getUser(): User
     {
         return $this->user;
     }
 
-    public function setUser(UsersCurrentGetResponse200User $user): self
+    public function setUser(User $user): self
     {
         $this->initialized['user'] = true;
         $this->user = $user;

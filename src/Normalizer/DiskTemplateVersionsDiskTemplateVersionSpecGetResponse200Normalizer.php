@@ -54,7 +54,7 @@ class DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200Normalizer implem
             unset($data['disk_template_version']);
         }
         if (\array_key_exists('spec', $data)) {
-            $object->setSpec($data['spec']);
+            $object->setSpec($this->denormalizer->denormalize($data['spec'], 'Krystal\\Katapult\\KatapultAPI\\Model\\TemplateSpec', 'json', $context));
             unset($data['spec']);
         }
         foreach ($data as $key => $value) {
@@ -73,7 +73,7 @@ class DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200Normalizer implem
     {
         $data = [];
         $data['disk_template_version'] = $this->normalizer->normalize($object->getDiskTemplateVersion(), 'json', $context);
-        $data['spec'] = $object->getSpec();
+        $data['spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

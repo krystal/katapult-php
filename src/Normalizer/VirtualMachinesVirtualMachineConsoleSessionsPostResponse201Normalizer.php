@@ -50,7 +50,7 @@ class VirtualMachinesVirtualMachineConsoleSessionsPostResponse201Normalizer impl
             return $object;
         }
         if (\array_key_exists('console_session', $data)) {
-            $object->setConsoleSession($this->denormalizer->denormalize($data['console_session'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201ConsoleSession', 'json', $context));
+            $object->setConsoleSession($this->denormalizer->denormalize($data['console_session'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostVirtualMachineConsoleSessions201ResponseConsoleSession', 'json', $context));
             unset($data['console_session']);
         }
         foreach ($data as $key => $value) {

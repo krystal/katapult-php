@@ -34,7 +34,7 @@ class PatchVirtualMachinePartCountryState extends \ArrayObject
      */
     protected $code;
     /**
-     * @var PatchVirtualMachinePartCountryStateCountry
+     * @var PatchVirtualMachinePartCountry
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class PatchVirtualMachinePartCountryState extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): PatchVirtualMachinePartCountryStateCountry
+    public function getCountry(): PatchVirtualMachinePartCountry
     {
         return $this->country;
     }
 
-    public function setCountry(PatchVirtualMachinePartCountryStateCountry $country): self
+    public function setCountry(PatchVirtualMachinePartCountry $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

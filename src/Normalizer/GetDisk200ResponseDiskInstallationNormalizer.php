@@ -54,13 +54,13 @@ class GetDisk200ResponseDiskInstallationNormalizer implements DenormalizerInterf
             unset($data['id']);
         }
         if (\array_key_exists('disk_template_version', $data)) {
-            $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartInstallationDiskTemplateVersion', 'json', $context));
+            $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartDiskTemplateVersion', 'json', $context));
             unset($data['disk_template_version']);
         }
         if (\array_key_exists('attributes', $data)) {
             $values = [];
             foreach ($data['attributes'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartInstallationAttributesItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartAttributes', 'json', $context);
             }
             $object->setAttributes($values);
             unset($data['attributes']);

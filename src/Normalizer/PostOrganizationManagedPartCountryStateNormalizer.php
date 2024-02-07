@@ -62,7 +62,7 @@ class PostOrganizationManagedPartCountryStateNormalizer implements DenormalizerI
             unset($data['code']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationManagedPartCountryStateCountry', 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationManagedPartCountry', 'json', $context));
             unset($data['country']);
         }
         foreach ($data as $key => $value) {

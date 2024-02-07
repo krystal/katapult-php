@@ -59,16 +59,18 @@ class DeleteVirtualMachinePartGPUsNormalizer implements DenormalizerInterface, N
             $object->setStatus($data['status']);
             unset($data['status']);
         }
-        if (\array_key_exists('pending_action', $data)) {
+        if (\array_key_exists('pending_action', $data) && $data['pending_action'] !== null) {
             $object->setPendingAction($data['pending_action']);
             unset($data['pending_action']);
+        } elseif (\array_key_exists('pending_action', $data) && $data['pending_action'] === null) {
+            $object->setPendingAction(null);
         }
         if (\array_key_exists('available', $data)) {
             $object->setAvailable($data['available']);
             unset($data['available']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($this->denormalizer->denormalize($data['type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartGPUsType', 'json', $context));
+            $object->setType($this->denormalizer->denormalize($data['type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartType', 'json', $context));
             unset($data['type']);
         }
         foreach ($data as $key => $value) {

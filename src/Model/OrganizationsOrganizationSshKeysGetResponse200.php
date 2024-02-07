@@ -22,7 +22,7 @@ class OrganizationsOrganizationSshKeysGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationSshKeysGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -30,12 +30,12 @@ class OrganizationsOrganizationSshKeysGetResponse200 extends \ArrayObject
      */
     protected $sshKeys;
 
-    public function getPagination(): OrganizationsOrganizationSshKeysGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OrganizationsOrganizationSshKeysGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

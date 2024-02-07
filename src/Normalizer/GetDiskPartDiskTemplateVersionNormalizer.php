@@ -58,7 +58,7 @@ class GetDiskPartDiskTemplateVersionNormalizer implements DenormalizerInterface,
             unset($data['stable']);
         }
         if (\array_key_exists('disk_template', $data)) {
-            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartDiskTemplateVersionDiskTemplate', 'json', $context));
+            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartDiskTemplate', 'json', $context));
             unset($data['disk_template']);
         }
         foreach ($data as $key => $value) {

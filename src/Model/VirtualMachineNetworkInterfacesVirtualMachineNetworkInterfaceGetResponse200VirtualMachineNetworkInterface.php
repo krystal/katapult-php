@@ -26,7 +26,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
      */
     protected $id;
     /**
-     * @var GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualMachine
+     * @var GetVMNIVMNIPartVirtualMachine
      */
     protected $virtualMachine;
     /**
@@ -34,7 +34,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
      */
     protected $name;
     /**
-     * @var GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork
+     * @var GetVMNIVMNIPartNetwork
      */
     protected $network;
     /**
@@ -46,11 +46,11 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
      */
     protected $state;
     /**
-     * @var GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceIpAddressesItem[]
+     * @var GetVMNIVMNIPartIPAddresses[]
      */
     protected $ipAddresses;
     /**
-     * @var GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceSpeedProfile
+     * @var GetVMNIVMNIPartSpeedProfile
      */
     protected $speedProfile;
 
@@ -67,12 +67,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
         return $this;
     }
 
-    public function getVirtualMachine(): GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualMachine
+    public function getVirtualMachine(): GetVMNIVMNIPartVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(GetVMNIVMNIPartVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;
@@ -93,12 +93,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
         return $this;
     }
 
-    public function getNetwork(): GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork
+    public function getNetwork(): GetVMNIVMNIPartNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork $network): self
+    public function setNetwork(GetVMNIVMNIPartNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;
@@ -133,7 +133,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
     }
 
     /**
-     * @return GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceIpAddressesItem[]
+     * @return GetVMNIVMNIPartIPAddresses[]
      */
     public function getIpAddresses(): array
     {
@@ -141,7 +141,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
     }
 
     /**
-     * @param GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceIpAddressesItem[] $ipAddresses
+     * @param GetVMNIVMNIPartIPAddresses[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {
@@ -151,12 +151,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
         return $this;
     }
 
-    public function getSpeedProfile(): GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceSpeedProfile
+    public function getSpeedProfile(): GetVMNIVMNIPartSpeedProfile
     {
         return $this->speedProfile;
     }
 
-    public function setSpeedProfile(GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceSpeedProfile $speedProfile): self
+    public function setSpeedProfile(GetVMNIVMNIPartSpeedProfile $speedProfile): self
     {
         $this->initialized['speedProfile'] = true;
         $this->speedProfile = $speedProfile;

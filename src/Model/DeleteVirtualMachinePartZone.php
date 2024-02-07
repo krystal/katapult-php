@@ -34,7 +34,7 @@ class DeleteVirtualMachinePartZone extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var DeleteVirtualMachinePartZoneDataCenter
+     * @var DeleteVirtualMachinePartDataCenter
      */
     protected $dataCenter;
 
@@ -77,12 +77,12 @@ class DeleteVirtualMachinePartZone extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): DeleteVirtualMachinePartZoneDataCenter
+    public function getDataCenter(): DeleteVirtualMachinePartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DeleteVirtualMachinePartZoneDataCenter $dataCenter): self
+    public function setDataCenter(DeleteVirtualMachinePartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
