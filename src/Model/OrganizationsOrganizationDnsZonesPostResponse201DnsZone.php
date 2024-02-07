@@ -32,11 +32,15 @@ class OrganizationsOrganizationDnsZonesPostResponse201DnsZone extends \ArrayObje
     /**
      * @var int
      */
-    protected $defaultTtl;
+    protected $ttl;
     /**
      * @var bool
      */
     protected $verified;
+    /**
+     * @var bool
+     */
+    protected $infrastructureZone;
 
     public function getId(): string
     {
@@ -64,15 +68,15 @@ class OrganizationsOrganizationDnsZonesPostResponse201DnsZone extends \ArrayObje
         return $this;
     }
 
-    public function getDefaultTtl(): int
+    public function getTtl(): int
     {
-        return $this->defaultTtl;
+        return $this->ttl;
     }
 
-    public function setDefaultTtl(int $defaultTtl): self
+    public function setTtl(int $ttl): self
     {
-        $this->initialized['defaultTtl'] = true;
-        $this->defaultTtl = $defaultTtl;
+        $this->initialized['ttl'] = true;
+        $this->ttl = $ttl;
 
         return $this;
     }
@@ -86,6 +90,19 @@ class OrganizationsOrganizationDnsZonesPostResponse201DnsZone extends \ArrayObje
     {
         $this->initialized['verified'] = true;
         $this->verified = $verified;
+
+        return $this;
+    }
+
+    public function getInfrastructureZone(): bool
+    {
+        return $this->infrastructureZone;
+    }
+
+    public function setInfrastructureZone(bool $infrastructureZone): self
+    {
+        $this->initialized['infrastructureZone'] = true;
+        $this->infrastructureZone = $infrastructureZone;
 
         return $this;
     }
