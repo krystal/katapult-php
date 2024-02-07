@@ -30,7 +30,7 @@ class OrganizationsOrganizationFileStorageVolumesPostResponse201FileStorageVolum
      */
     protected $name;
     /**
-     * @var PostOrganizationFileStorageVolumesPartDataCenter
+     * @var DataCenter
      */
     protected $dataCenter;
     /**
@@ -80,12 +80,12 @@ class OrganizationsOrganizationFileStorageVolumesPostResponse201FileStorageVolum
         return $this;
     }
 
-    public function getDataCenter(): PostOrganizationFileStorageVolumesPartDataCenter
+    public function getDataCenter(): DataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(PostOrganizationFileStorageVolumesPartDataCenter $dataCenter): self
+    public function setDataCenter(DataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

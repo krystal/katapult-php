@@ -34,7 +34,7 @@ class GetZones200ResponseZones extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var GetZonesPartDataCenter
+     * @var DataCenter
      */
     protected $dataCenter;
 
@@ -77,12 +77,12 @@ class GetZones200ResponseZones extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): GetZonesPartDataCenter
+    public function getDataCenter(): DataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetZonesPartDataCenter $dataCenter): self
+    public function setDataCenter(DataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

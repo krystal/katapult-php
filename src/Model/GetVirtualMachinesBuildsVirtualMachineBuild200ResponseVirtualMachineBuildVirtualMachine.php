@@ -38,9 +38,69 @@ class GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildV
      */
     protected $fqdn;
     /**
+     * @var string|null
+     */
+    protected $description;
+    /**
+     * @var int
+     */
+    protected $createdAt;
+    /**
+     * @var string|null
+     */
+    protected $initialRootPassword;
+    /**
      * @var string
      */
     protected $state;
+    /**
+     * @var Zone
+     */
+    protected $zone;
+    /**
+     * @var Organization
+     */
+    protected $organization;
+    /**
+     * @var VirtualMachineGroup|null
+     */
+    protected $group;
+    /**
+     * @var VirtualMachinePackage|null
+     */
+    protected $package;
+    /**
+     * @var VirtualMachineAttachedIso|null
+     */
+    protected $attachedIso;
+    /**
+     * @var int|null
+     */
+    protected $memoryInGb;
+    /**
+     * @var int|null
+     */
+    protected $cpuCores;
+    /**
+     * @var VirtualMachineGpuType|null
+     */
+    protected $gpuType;
+    /**
+     * @var VirtualMachineGPU[]
+     */
+    protected $gpus;
+    /**
+     * @var Tag[]
+     */
+    protected $tags;
+    /**
+     * @var string[]
+     */
+    protected $tagNames;
+    /**
+     * @var IPAddress[]
+     */
+    protected $ipAddresses;
 
     public function getId(): string
     {
@@ -94,6 +154,45 @@ class GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildV
         return $this;
     }
 
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->initialized['description'] = true;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): int
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(int $createdAt): self
+    {
+        $this->initialized['createdAt'] = true;
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getInitialRootPassword(): ?string
+    {
+        return $this->initialRootPassword;
+    }
+
+    public function setInitialRootPassword(?string $initialRootPassword): self
+    {
+        $this->initialized['initialRootPassword'] = true;
+        $this->initialRootPassword = $initialRootPassword;
+
+        return $this;
+    }
+
     public function getState(): string
     {
         return $this->state;
@@ -103,6 +202,186 @@ class GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildV
     {
         $this->initialized['state'] = true;
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getZone(): Zone
+    {
+        return $this->zone;
+    }
+
+    public function setZone(Zone $zone): self
+    {
+        $this->initialized['zone'] = true;
+        $this->zone = $zone;
+
+        return $this;
+    }
+
+    public function getOrganization(): Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(Organization $organization): self
+    {
+        $this->initialized['organization'] = true;
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    public function getGroup(): ?VirtualMachineGroup
+    {
+        return $this->group;
+    }
+
+    public function setGroup(?VirtualMachineGroup $group): self
+    {
+        $this->initialized['group'] = true;
+        $this->group = $group;
+
+        return $this;
+    }
+
+    public function getPackage(): ?VirtualMachinePackage
+    {
+        return $this->package;
+    }
+
+    public function setPackage(?VirtualMachinePackage $package): self
+    {
+        $this->initialized['package'] = true;
+        $this->package = $package;
+
+        return $this;
+    }
+
+    public function getAttachedIso(): ?VirtualMachineAttachedIso
+    {
+        return $this->attachedIso;
+    }
+
+    public function setAttachedIso(?VirtualMachineAttachedIso $attachedIso): self
+    {
+        $this->initialized['attachedIso'] = true;
+        $this->attachedIso = $attachedIso;
+
+        return $this;
+    }
+
+    public function getMemoryInGb(): ?int
+    {
+        return $this->memoryInGb;
+    }
+
+    public function setMemoryInGb(?int $memoryInGb): self
+    {
+        $this->initialized['memoryInGb'] = true;
+        $this->memoryInGb = $memoryInGb;
+
+        return $this;
+    }
+
+    public function getCpuCores(): ?int
+    {
+        return $this->cpuCores;
+    }
+
+    public function setCpuCores(?int $cpuCores): self
+    {
+        $this->initialized['cpuCores'] = true;
+        $this->cpuCores = $cpuCores;
+
+        return $this;
+    }
+
+    public function getGpuType(): ?VirtualMachineGpuType
+    {
+        return $this->gpuType;
+    }
+
+    public function setGpuType(?VirtualMachineGpuType $gpuType): self
+    {
+        $this->initialized['gpuType'] = true;
+        $this->gpuType = $gpuType;
+
+        return $this;
+    }
+
+    /**
+     * @return VirtualMachineGPU[]
+     */
+    public function getGpus(): array
+    {
+        return $this->gpus;
+    }
+
+    /**
+     * @param VirtualMachineGPU[] $gpus
+     */
+    public function setGpus(array $gpus): self
+    {
+        $this->initialized['gpus'] = true;
+        $this->gpus = $gpus;
+
+        return $this;
+    }
+
+    /**
+     * @return Tag[]
+     */
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param Tag[] $tags
+     */
+    public function setTags(array $tags): self
+    {
+        $this->initialized['tags'] = true;
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getTagNames(): array
+    {
+        return $this->tagNames;
+    }
+
+    /**
+     * @param string[] $tagNames
+     */
+    public function setTagNames(array $tagNames): self
+    {
+        $this->initialized['tagNames'] = true;
+        $this->tagNames = $tagNames;
+
+        return $this;
+    }
+
+    /**
+     * @return IPAddress[]
+     */
+    public function getIpAddresses(): array
+    {
+        return $this->ipAddresses;
+    }
+
+    /**
+     * @param IPAddress[] $ipAddresses
+     */
+    public function setIpAddresses(array $ipAddresses): self
+    {
+        $this->initialized['ipAddresses'] = true;
+        $this->ipAddresses = $ipAddresses;
 
         return $this;
     }

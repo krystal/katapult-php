@@ -69,7 +69,7 @@ class DisksDiskDiskBackupPoliciesPostResponse200DiskBackupPolicyNormalizer imple
             unset($data['target']);
         }
         if (\array_key_exists('schedule', $data)) {
-            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostDiskDiskBackupPoliciesPartSchedule', 'json', $context));
+            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Schedule', 'json', $context));
             unset($data['schedule']);
         }
         if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {

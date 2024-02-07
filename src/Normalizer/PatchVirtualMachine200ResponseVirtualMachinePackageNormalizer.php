@@ -88,7 +88,7 @@ class PatchVirtualMachine200ResponseVirtualMachinePackageNormalizer implements D
             unset($data['privacy']);
         }
         if (\array_key_exists('icon', $data) && $data['icon'] !== null) {
-            $object->setIcon($this->denormalizer->denormalize($data['icon'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachinePartPackageIcon', 'json', $context));
+            $object->setIcon($this->denormalizer->denormalize($data['icon'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinePackageIcon', 'json', $context));
             unset($data['icon']);
         } elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
             $object->setIcon(null);

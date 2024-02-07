@@ -57,17 +57,13 @@ class OrganizationsOrganizationDnsZonesPostResponse201DnsZoneNormalizer implemen
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('ttl', $data)) {
-            $object->setTtl($data['ttl']);
-            unset($data['ttl']);
+        if (\array_key_exists('default_ttl', $data)) {
+            $object->setDefaultTtl($data['default_ttl']);
+            unset($data['default_ttl']);
         }
         if (\array_key_exists('verified', $data)) {
             $object->setVerified($data['verified']);
             unset($data['verified']);
-        }
-        if (\array_key_exists('infrastructure_zone', $data)) {
-            $object->setInfrastructureZone($data['infrastructure_zone']);
-            unset($data['infrastructure_zone']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -90,14 +86,11 @@ class OrganizationsOrganizationDnsZonesPostResponse201DnsZoneNormalizer implemen
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if ($object->isInitialized('ttl') && null !== $object->getTtl()) {
-            $data['ttl'] = $object->getTtl();
+        if ($object->isInitialized('defaultTtl') && null !== $object->getDefaultTtl()) {
+            $data['default_ttl'] = $object->getDefaultTtl();
         }
         if ($object->isInitialized('verified') && null !== $object->getVerified()) {
             $data['verified'] = $object->getVerified();
-        }
-        if ($object->isInitialized('infrastructureZone') && null !== $object->getInfrastructureZone()) {
-            $data['infrastructure_zone'] = $object->getInfrastructureZone();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

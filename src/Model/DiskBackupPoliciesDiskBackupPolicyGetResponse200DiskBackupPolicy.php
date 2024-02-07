@@ -38,7 +38,7 @@ class DiskBackupPoliciesDiskBackupPolicyGetResponse200DiskBackupPolicy extends \
      */
     protected $target;
     /**
-     * @var GetDiskBackupPolicyPartSchedule
+     * @var Schedule
      */
     protected $schedule;
     /**
@@ -98,12 +98,12 @@ class DiskBackupPoliciesDiskBackupPolicyGetResponse200DiskBackupPolicy extends \
         return $this;
     }
 
-    public function getSchedule(): GetDiskBackupPolicyPartSchedule
+    public function getSchedule(): Schedule
     {
         return $this->schedule;
     }
 
-    public function setSchedule(GetDiskBackupPolicyPartSchedule $schedule): self
+    public function setSchedule(Schedule $schedule): self
     {
         $this->initialized['schedule'] = true;
         $this->schedule = $schedule;

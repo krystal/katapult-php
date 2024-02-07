@@ -58,7 +58,7 @@ class PatchVirtualMachine200ResponseVirtualMachinePackage extends \ArrayObject
      */
     protected $privacy;
     /**
-     * @var PatchVirtualMachinePartPackageIcon|null
+     * @var VirtualMachinePackageIcon|null
      */
     protected $icon;
 
@@ -179,12 +179,12 @@ class PatchVirtualMachine200ResponseVirtualMachinePackage extends \ArrayObject
         return $this;
     }
 
-    public function getIcon(): ?PatchVirtualMachinePartPackageIcon
+    public function getIcon(): ?VirtualMachinePackageIcon
     {
         return $this->icon;
     }
 
-    public function setIcon(?PatchVirtualMachinePartPackageIcon $icon): self
+    public function setIcon(?VirtualMachinePackageIcon $icon): self
     {
         $this->initialized['icon'] = true;
         $this->icon = $icon;

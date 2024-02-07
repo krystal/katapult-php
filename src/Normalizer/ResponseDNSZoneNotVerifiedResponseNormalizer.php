@@ -58,12 +58,16 @@ class ResponseDNSZoneNotVerifiedResponseNormalizer implements DenormalizerInterf
             unset($data['description']);
         }
         if (\array_key_exists('detail', $data)) {
-            $object->setDetail($this->denormalizer->denormalize($data['detail'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSZoneNotVerified', 'json', $context));
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['detail'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setDetail($values);
             unset($data['detail']);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
             }
         }
 
@@ -83,11 +87,15 @@ class ResponseDNSZoneNotVerifiedResponseNormalizer implements DenormalizerInterf
             $data['description'] = $object->getDescription();
         }
         if ($object->isInitialized('detail') && null !== $object->getDetail()) {
-            $data['detail'] = $this->normalizer->normalize($object->getDetail(), 'json', $context);
+            $values = [];
+            foreach ($object->getDetail() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['detail'] = $values;
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
             }
         }
 

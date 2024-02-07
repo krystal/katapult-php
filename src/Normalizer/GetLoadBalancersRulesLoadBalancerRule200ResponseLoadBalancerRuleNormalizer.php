@@ -76,7 +76,7 @@ class GetLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleNormalizer
         if (\array_key_exists('certificates', $data)) {
             $values = [];
             foreach ($data['certificates'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancersRulesLoadBalancerRulePartCertificates', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\Certificate', 'json', $context);
             }
             $object->setCertificates($values);
             unset($data['certificates']);
@@ -126,7 +126,7 @@ class GetLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleNormalizer
             $object->setCheckHttpStatuses(null);
         }
         if (\array_key_exists('load_balancer', $data)) {
-            $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancersRulesLoadBalancerRulePartLoadBalancer', 'json', $context));
+            $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], 'Krystal\\Katapult\\KatapultAPI\\Model\\LoadBalancer', 'json', $context));
             unset($data['load_balancer']);
         }
         foreach ($data as $key => $value_1) {

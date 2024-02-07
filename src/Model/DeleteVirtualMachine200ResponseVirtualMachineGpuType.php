@@ -45,6 +45,10 @@ class DeleteVirtualMachine200ResponseVirtualMachineGpuType extends \ArrayObject
      * @var string
      */
     protected $permalink;
+    /**
+     * @var GPUTypeDataCentersItem[]
+     */
+    protected $dataCenters;
 
     public function getId(): string
     {
@@ -120,6 +124,25 @@ class DeleteVirtualMachine200ResponseVirtualMachineGpuType extends \ArrayObject
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
+
+        return $this;
+    }
+
+    /**
+     * @return GPUTypeDataCentersItem[]
+     */
+    public function getDataCenters(): array
+    {
+        return $this->dataCenters;
+    }
+
+    /**
+     * @param GPUTypeDataCentersItem[] $dataCenters
+     */
+    public function setDataCenters(array $dataCenters): self
+    {
+        $this->initialized['dataCenters'] = true;
+        $this->dataCenters = $dataCenters;
 
         return $this;
     }

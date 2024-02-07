@@ -33,6 +33,10 @@ class GetGPUTypes200ResponseGPUTypesDataCentersItem extends \ArrayObject
      * @var string|null
      */
     protected $permalink;
+    /**
+     * @var Country
+     */
+    protected $country;
 
     public function getId(): string
     {
@@ -69,6 +73,19 @@ class GetGPUTypes200ResponseGPUTypesDataCentersItem extends \ArrayObject
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
+
+        return $this;
+    }
+
+    public function getCountry(): Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(Country $country): self
+    {
+        $this->initialized['country'] = true;
+        $this->country = $country;
 
         return $this;
     }

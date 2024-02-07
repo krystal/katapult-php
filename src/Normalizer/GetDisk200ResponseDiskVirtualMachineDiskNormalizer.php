@@ -50,8 +50,12 @@ class GetDisk200ResponseDiskVirtualMachineDiskNormalizer implements Denormalizer
             return $object;
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartVirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
+        }
+        if (\array_key_exists('disk', $data)) {
+            $object->setDisk($this->denormalizer->denormalize($data['disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Disk', 'json', $context));
+            unset($data['disk']);
         }
         if (\array_key_exists('attach_on_boot', $data)) {
             $object->setAttachOnBoot($data['attach_on_boot']);
@@ -82,6 +86,9 @@ class GetDisk200ResponseDiskVirtualMachineDiskNormalizer implements Denormalizer
         $data = [];
         if ($object->isInitialized('virtualMachine') && null !== $object->getVirtualMachine()) {
             $data['virtual_machine'] = $this->normalizer->normalize($object->getVirtualMachine(), 'json', $context);
+        }
+        if ($object->isInitialized('disk') && null !== $object->getDisk()) {
+            $data['disk'] = $this->normalizer->normalize($object->getDisk(), 'json', $context);
         }
         if ($object->isInitialized('attachOnBoot') && null !== $object->getAttachOnBoot()) {
             $data['attach_on_boot'] = $object->getAttachOnBoot();

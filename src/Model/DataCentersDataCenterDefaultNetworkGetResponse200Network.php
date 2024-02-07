@@ -34,7 +34,7 @@ class DataCentersDataCenterDefaultNetworkGetResponse200Network extends \ArrayObj
      */
     protected $permalink;
     /**
-     * @var GetDataCenterDefaultNetworkPartDataCenter
+     * @var DataCenter
      */
     protected $dataCenter;
 
@@ -77,12 +77,12 @@ class DataCentersDataCenterDefaultNetworkGetResponse200Network extends \ArrayObj
         return $this;
     }
 
-    public function getDataCenter(): GetDataCenterDefaultNetworkPartDataCenter
+    public function getDataCenter(): DataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(GetDataCenterDefaultNetworkPartDataCenter $dataCenter): self
+    public function setDataCenter(DataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

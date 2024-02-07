@@ -53,17 +53,21 @@ class DNSRecordArgumentsNormalizer implements DenormalizerInterface, NormalizerI
             $object->setName($data['name']);
             unset($data['name']);
         }
+        if (\array_key_exists('type', $data)) {
+            $object->setType($data['type']);
+            unset($data['type']);
+        }
         if (\array_key_exists('ttl', $data)) {
             $object->setTtl($data['ttl']);
             unset($data['ttl']);
         }
-        if (\array_key_exists('record_type', $data)) {
-            $object->setRecordType($data['record_type']);
-            unset($data['record_type']);
+        if (\array_key_exists('priority', $data)) {
+            $object->setPriority($data['priority']);
+            unset($data['priority']);
         }
-        if (\array_key_exists('properties', $data)) {
-            $object->setProperties($this->denormalizer->denormalize($data['properties'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordPropertiesArguments', 'json', $context));
-            unset($data['properties']);
+        if (\array_key_exists('content', $data)) {
+            $object->setContent($this->denormalizer->denormalize($data['content'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArguments', 'json', $context));
+            unset($data['content']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -83,14 +87,17 @@ class DNSRecordArgumentsNormalizer implements DenormalizerInterface, NormalizerI
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
+        if ($object->isInitialized('type') && null !== $object->getType()) {
+            $data['type'] = $object->getType();
+        }
         if ($object->isInitialized('ttl') && null !== $object->getTtl()) {
             $data['ttl'] = $object->getTtl();
         }
-        if ($object->isInitialized('recordType') && null !== $object->getRecordType()) {
-            $data['record_type'] = $object->getRecordType();
+        if ($object->isInitialized('priority') && null !== $object->getPriority()) {
+            $data['priority'] = $object->getPriority();
         }
-        if ($object->isInitialized('properties') && null !== $object->getProperties()) {
-            $data['properties'] = $this->normalizer->normalize($object->getProperties(), 'json', $context);
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
+            $data['content'] = $this->normalizer->normalize($object->getContent(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

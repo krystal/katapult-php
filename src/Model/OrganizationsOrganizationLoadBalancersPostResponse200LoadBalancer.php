@@ -46,7 +46,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
      */
     protected $resourceIds;
     /**
-     * @var PostOrganizationLoadBalancersPartIPAddress[]
+     * @var IPAddress[]
      */
     protected $ipAddress;
     /**
@@ -62,7 +62,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
      */
     protected $backendCertificateKey;
     /**
-     * @var PostOrganizationLoadBalancersPartDataCenter
+     * @var DataCenter
      */
     protected $dataCenter;
     /**
@@ -70,7 +70,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
      */
     protected $enableWeighting;
     /**
-     * @var PostOrganizationLoadBalancersPartWeights[]
+     * @var LoadBalancerWeight[]
      */
     protected $weights;
     /**
@@ -169,7 +169,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @return PostOrganizationLoadBalancersPartIPAddress[]
+     * @return IPAddress[]
      */
     public function getIpAddress(): array
     {
@@ -177,7 +177,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @param PostOrganizationLoadBalancersPartIPAddress[] $ipAddress
+     * @param IPAddress[] $ipAddress
      */
     public function setIpAddress(array $ipAddress): self
     {
@@ -226,12 +226,12 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
         return $this;
     }
 
-    public function getDataCenter(): PostOrganizationLoadBalancersPartDataCenter
+    public function getDataCenter(): DataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(PostOrganizationLoadBalancersPartDataCenter $dataCenter): self
+    public function setDataCenter(DataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
@@ -253,7 +253,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @return PostOrganizationLoadBalancersPartWeights[]
+     * @return LoadBalancerWeight[]
      */
     public function getWeights(): array
     {
@@ -261,7 +261,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer extends 
     }
 
     /**
-     * @param PostOrganizationLoadBalancersPartWeights[] $weights
+     * @param LoadBalancerWeight[] $weights
      */
     public function setWeights(array $weights): self
     {

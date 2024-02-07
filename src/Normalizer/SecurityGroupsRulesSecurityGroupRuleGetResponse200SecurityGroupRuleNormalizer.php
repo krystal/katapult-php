@@ -54,7 +54,7 @@ class SecurityGroupsRulesSecurityGroupRuleGetResponse200SecurityGroupRuleNormali
             unset($data['id']);
         }
         if (\array_key_exists('security_group', $data)) {
-            $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup', 'json', $context));
+            $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'Krystal\\Katapult\\KatapultAPI\\Model\\SecurityGroup', 'json', $context));
             unset($data['security_group']);
         }
         if (\array_key_exists('direction', $data)) {

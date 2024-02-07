@@ -34,7 +34,7 @@ class PostVirtualMachineConsoleSessions201ResponseConsoleSession extends \ArrayO
      */
     protected $expiresAt;
     /**
-     * @var PostVirtualMachineConsoleSessionsPartVirtualMachine
+     * @var VirtualMachine
      */
     protected $virtualMachine;
 
@@ -77,12 +77,12 @@ class PostVirtualMachineConsoleSessions201ResponseConsoleSession extends \ArrayO
         return $this;
     }
 
-    public function getVirtualMachine(): PostVirtualMachineConsoleSessionsPartVirtualMachine
+    public function getVirtualMachine(): VirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(PostVirtualMachineConsoleSessionsPartVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(VirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;

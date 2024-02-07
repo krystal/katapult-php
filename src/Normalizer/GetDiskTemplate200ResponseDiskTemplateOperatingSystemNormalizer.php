@@ -58,7 +58,7 @@ class GetDiskTemplate200ResponseDiskTemplateOperatingSystemNormalizer implements
             unset($data['name']);
         }
         if (\array_key_exists('badge', $data) && $data['badge'] !== null) {
-            $object->setBadge($this->denormalizer->denormalize($data['badge'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskTemplatePartOperatingSystemBadge', 'json', $context));
+            $object->setBadge($this->denormalizer->denormalize($data['badge'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OperatingSystemBadge', 'json', $context));
             unset($data['badge']);
         } elseif (\array_key_exists('badge', $data) && $data['badge'] === null) {
             $object->setBadge(null);

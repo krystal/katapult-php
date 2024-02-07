@@ -26,7 +26,7 @@ class SecurityGroupsRulesSecurityGroupRuleGetResponse200SecurityGroupRule extend
      */
     protected $id;
     /**
-     * @var GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup
+     * @var SecurityGroup
      */
     protected $securityGroup;
     /**
@@ -67,12 +67,12 @@ class SecurityGroupsRulesSecurityGroupRuleGetResponse200SecurityGroupRule extend
         return $this;
     }
 
-    public function getSecurityGroup(): GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup
+    public function getSecurityGroup(): SecurityGroup
     {
         return $this->securityGroup;
     }
 
-    public function setSecurityGroup(GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup $securityGroup): self
+    public function setSecurityGroup(SecurityGroup $securityGroup): self
     {
         $this->initialized['securityGroup'] = true;
         $this->securityGroup = $securityGroup;

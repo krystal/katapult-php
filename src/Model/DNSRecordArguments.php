@@ -22,33 +22,58 @@ class DNSRecordArguments extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * The name of the record.
+     *
      * @var string
      */
     protected $name;
+    /**
+     * @var string
+     */
+    protected $type;
     /**
      * @var int
      */
     protected $ttl;
     /**
-     * @var string
+     * @var int
      */
-    protected $recordType;
+    protected $priority;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
+     * All 'content[]' params are mutually exclusive, only one can be provided.
      *
-     * @var DNSRecordPropertiesArguments
+     * @var DNSRecordContentArguments
      */
-    protected $properties;
+    protected $content;
 
+    /**
+     * The name of the record.
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * The name of the record.
+     */
     public function setName(string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->initialized['type'] = true;
+        $this->type = $type;
 
         return $this;
     }
@@ -66,34 +91,34 @@ class DNSRecordArguments extends \ArrayObject
         return $this;
     }
 
-    public function getRecordType(): string
+    public function getPriority(): int
     {
-        return $this->recordType;
+        return $this->priority;
     }
 
-    public function setRecordType(string $recordType): self
+    public function setPriority(int $priority): self
     {
-        $this->initialized['recordType'] = true;
-        $this->recordType = $recordType;
+        $this->initialized['priority'] = true;
+        $this->priority = $priority;
 
         return $this;
     }
 
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
+     * All 'content[]' params are mutually exclusive, only one can be provided.
      */
-    public function getProperties(): DNSRecordPropertiesArguments
+    public function getContent(): DNSRecordContentArguments
     {
-        return $this->properties;
+        return $this->content;
     }
 
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
+     * All 'content[]' params are mutually exclusive, only one can be provided.
      */
-    public function setProperties(DNSRecordPropertiesArguments $properties): self
+    public function setContent(DNSRecordContentArguments $content): self
     {
-        $this->initialized['properties'] = true;
-        $this->properties = $properties;
+        $this->initialized['content'] = true;
+        $this->content = $content;
 
         return $this;
     }

@@ -34,7 +34,7 @@ class GetDataCenters200ResponseDataCenters extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var GetDataCentersPartCountry
+     * @var Country
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class GetDataCenters200ResponseDataCenters extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): GetDataCentersPartCountry
+    public function getCountry(): Country
     {
         return $this->country;
     }
 
-    public function setCountry(GetDataCentersPartCountry $country): self
+    public function setCountry(Country $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

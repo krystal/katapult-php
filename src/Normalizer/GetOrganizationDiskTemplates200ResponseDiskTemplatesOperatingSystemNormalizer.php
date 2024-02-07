@@ -57,6 +57,12 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystemNormali
             $object->setName($data['name']);
             unset($data['name']);
         }
+        if (\array_key_exists('badge', $data) && $data['badge'] !== null) {
+            $object->setBadge($this->denormalizer->denormalize($data['badge'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OperatingSystemBadge', 'json', $context));
+            unset($data['badge']);
+        } elseif (\array_key_exists('badge', $data) && $data['badge'] === null) {
+            $object->setBadge(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -77,6 +83,9 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystemNormali
         }
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
+        }
+        if ($object->isInitialized('badge') && null !== $object->getBadge()) {
+            $data['badge'] = $this->normalizer->normalize($object->getBadge(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

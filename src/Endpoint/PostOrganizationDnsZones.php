@@ -26,7 +26,7 @@ class PostOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
 
     public function getUri(): string
     {
-        return '/organizations/:organization/dns/zones';
+        return '/organizations/:organization/dns_zones';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array

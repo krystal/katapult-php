@@ -30,7 +30,7 @@ class ResponseDNSZoneNotVerifiedResponse extends \ArrayObject
      */
     protected $description;
     /**
-     * @var DNSZoneNotVerified
+     * @var array<string, mixed>
      */
     protected $detail;
 
@@ -60,12 +60,18 @@ class ResponseDNSZoneNotVerifiedResponse extends \ArrayObject
         return $this;
     }
 
-    public function getDetail(): DNSZoneNotVerified
+    /**
+     * @return array<string, mixed>
+     */
+    public function getDetail(): iterable
     {
         return $this->detail;
     }
 
-    public function setDetail(DNSZoneNotVerified $detail): self
+    /**
+     * @param array<string, mixed> $detail
+     */
+    public function setDetail(iterable $detail): self
     {
         $this->initialized['detail'] = true;
         $this->detail = $detail;
