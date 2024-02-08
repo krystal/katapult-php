@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/krystal/katapult-php/compare/v3.0.1...v3.0.2) (2024-02-08)
+
+
+### Bug Fixes
+
+* api spec fixes for nullable and partial models ([fca8f39](https://github.com/krystal/katapult-php/commit/fca8f391312ee3aa34d0771aa00fc9911453569b))
+
 ## [3.0.1](https://github.com/krystal/katapult-php/compare/v3.0.0...v3.0.1) (2024-01-26)
 
 
