@@ -38,7 +38,7 @@ class DiskTemplateVersionsDiskTemplateVersionGetResponse200DiskTemplateVersion e
      */
     protected $sizeInGb;
     /**
-     * @var DiskTemplate
+     * @var GetDiskTemplateVersionPartDiskTemplate
      */
     protected $diskTemplate;
 
@@ -94,12 +94,12 @@ class DiskTemplateVersionsDiskTemplateVersionGetResponse200DiskTemplateVersion e
         return $this;
     }
 
-    public function getDiskTemplate(): DiskTemplate
+    public function getDiskTemplate(): GetDiskTemplateVersionPartDiskTemplate
     {
         return $this->diskTemplate;
     }
 
-    public function setDiskTemplate(DiskTemplate $diskTemplate): self
+    public function setDiskTemplate(GetDiskTemplateVersionPartDiskTemplate $diskTemplate): self
     {
         $this->initialized['diskTemplate'] = true;
         $this->diskTemplate = $diskTemplate;

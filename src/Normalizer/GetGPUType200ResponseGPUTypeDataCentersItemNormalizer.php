@@ -63,10 +63,6 @@ class GetGPUType200ResponseGPUTypeDataCentersItemNormalizer implements Denormali
         } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
             $object->setPermalink(null);
         }
-        if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Country', 'json', $context));
-            unset($data['country']);
-        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -90,9 +86,6 @@ class GetGPUType200ResponseGPUTypeDataCentersItemNormalizer implements Denormali
         }
         if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
             $data['permalink'] = $object->getPermalink();
-        }
-        if ($object->isInitialized('country') && null !== $object->getCountry()) {
-            $data['country'] = $this->normalizer->normalize($object->getCountry(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

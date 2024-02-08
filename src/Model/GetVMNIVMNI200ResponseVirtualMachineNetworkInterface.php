@@ -26,7 +26,7 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
      */
     protected $id;
     /**
-     * @var VirtualMachine
+     * @var GetVMNIVMNIPartVirtualMachine
      */
     protected $virtualMachine;
     /**
@@ -34,7 +34,7 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
      */
     protected $name;
     /**
-     * @var Network
+     * @var GetVMNIVMNIPartNetwork
      */
     protected $network;
     /**
@@ -46,11 +46,11 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
      */
     protected $state;
     /**
-     * @var IPAddress[]
+     * @var GetVMNIVMNIPartIPAddresses[]
      */
     protected $ipAddresses;
     /**
-     * @var NetworkSpeedProfile
+     * @var GetVMNIVMNIPartSpeedProfile
      */
     protected $speedProfile;
 
@@ -67,12 +67,12 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
         return $this;
     }
 
-    public function getVirtualMachine(): VirtualMachine
+    public function getVirtualMachine(): GetVMNIVMNIPartVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(VirtualMachine $virtualMachine): self
+    public function setVirtualMachine(GetVMNIVMNIPartVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;
@@ -93,12 +93,12 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
         return $this;
     }
 
-    public function getNetwork(): Network
+    public function getNetwork(): GetVMNIVMNIPartNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(Network $network): self
+    public function setNetwork(GetVMNIVMNIPartNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;
@@ -133,7 +133,7 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
     }
 
     /**
-     * @return IPAddress[]
+     * @return GetVMNIVMNIPartIPAddresses[]
      */
     public function getIpAddresses(): array
     {
@@ -141,7 +141,7 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
     }
 
     /**
-     * @param IPAddress[] $ipAddresses
+     * @param GetVMNIVMNIPartIPAddresses[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {
@@ -151,12 +151,12 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
         return $this;
     }
 
-    public function getSpeedProfile(): NetworkSpeedProfile
+    public function getSpeedProfile(): GetVMNIVMNIPartSpeedProfile
     {
         return $this->speedProfile;
     }
 
-    public function setSpeedProfile(NetworkSpeedProfile $speedProfile): self
+    public function setSpeedProfile(GetVMNIVMNIPartSpeedProfile $speedProfile): self
     {
         $this->initialized['speedProfile'] = true;
         $this->speedProfile = $speedProfile;

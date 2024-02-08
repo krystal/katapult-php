@@ -42,7 +42,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
      */
     protected $createdAt;
     /**
-     * @var GetOrganizationVirtualMachinesPartZone
+     * @var Zone
      */
     protected $zone;
     /**
@@ -123,12 +123,12 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
         return $this;
     }
 
-    public function getZone(): GetOrganizationVirtualMachinesPartZone
+    public function getZone(): Zone
     {
         return $this->zone;
     }
 
-    public function setZone(GetOrganizationVirtualMachinesPartZone $zone): self
+    public function setZone(Zone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;

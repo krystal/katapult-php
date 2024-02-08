@@ -34,7 +34,7 @@ class GetOrganizationAvailableNetworks200ResponseNetworks extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var DataCenter
+     * @var GetOrganizationAvailableNetworksPartDataCenter
      */
     protected $dataCenter;
 
@@ -77,12 +77,12 @@ class GetOrganizationAvailableNetworks200ResponseNetworks extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): DataCenter
+    public function getDataCenter(): GetOrganizationAvailableNetworksPartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DataCenter $dataCenter): self
+    public function setDataCenter(GetOrganizationAvailableNetworksPartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

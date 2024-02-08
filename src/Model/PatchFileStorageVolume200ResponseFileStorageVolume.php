@@ -30,7 +30,7 @@ class PatchFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
      */
     protected $name;
     /**
-     * @var DataCenter
+     * @var PatchFileStorageVolumePartDataCenter
      */
     protected $dataCenter;
     /**
@@ -80,12 +80,12 @@ class PatchFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): DataCenter
+    public function getDataCenter(): PatchFileStorageVolumePartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DataCenter $dataCenter): self
+    public function setDataCenter(PatchFileStorageVolumePartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

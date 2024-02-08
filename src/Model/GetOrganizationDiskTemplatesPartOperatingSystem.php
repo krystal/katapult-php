@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Krystal\Katapult\KatapultAPI\Model;
 
-class GetOrganizationVirtualMachinesPartZone extends \ArrayObject
+class GetOrganizationDiskTemplatesPartOperatingSystem extends \ArrayObject
 {
     /**
      * @var array
@@ -29,14 +29,6 @@ class GetOrganizationVirtualMachinesPartZone extends \ArrayObject
      * @var string
      */
     protected $name;
-    /**
-     * @var string|null
-     */
-    protected $permalink;
-    /**
-     * @var DataCenter
-     */
-    protected $dataCenter;
 
     public function getId(): string
     {
@@ -60,32 +52,6 @@ class GetOrganizationVirtualMachinesPartZone extends \ArrayObject
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPermalink(): ?string
-    {
-        return $this->permalink;
-    }
-
-    public function setPermalink(?string $permalink): self
-    {
-        $this->initialized['permalink'] = true;
-        $this->permalink = $permalink;
-
-        return $this;
-    }
-
-    public function getDataCenter(): DataCenter
-    {
-        return $this->dataCenter;
-    }
-
-    public function setDataCenter(DataCenter $dataCenter): self
-    {
-        $this->initialized['dataCenter'] = true;
-        $this->dataCenter = $dataCenter;
 
         return $this;
     }

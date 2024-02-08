@@ -53,22 +53,6 @@ class GetDiskTemplate200ResponseDiskTemplateLatestVersionNormalizer implements D
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('number', $data)) {
-            $object->setNumber($data['number']);
-            unset($data['number']);
-        }
-        if (\array_key_exists('stable', $data)) {
-            $object->setStable($data['stable']);
-            unset($data['stable']);
-        }
-        if (\array_key_exists('size_in_gb', $data)) {
-            $object->setSizeInGb($data['size_in_gb']);
-            unset($data['size_in_gb']);
-        }
-        if (\array_key_exists('disk_template', $data)) {
-            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplate', 'json', $context));
-            unset($data['disk_template']);
-        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -86,18 +70,6 @@ class GetDiskTemplate200ResponseDiskTemplateLatestVersionNormalizer implements D
         $data = [];
         if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
-        }
-        if ($object->isInitialized('number') && null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if ($object->isInitialized('stable') && null !== $object->getStable()) {
-            $data['stable'] = $object->getStable();
-        }
-        if ($object->isInitialized('sizeInGb') && null !== $object->getSizeInGb()) {
-            $data['size_in_gb'] = $object->getSizeInGb();
-        }
-        if ($object->isInitialized('diskTemplate') && null !== $object->getDiskTemplate()) {
-            $data['disk_template'] = $this->normalizer->normalize($object->getDiskTemplate(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

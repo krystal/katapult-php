@@ -26,7 +26,7 @@ class PostSecurityGroupRules200ResponseSecurityGroupRule extends \ArrayObject
      */
     protected $id;
     /**
-     * @var SecurityGroup
+     * @var PostSecurityGroupRulesPartSecurityGroup
      */
     protected $securityGroup;
     /**
@@ -67,12 +67,12 @@ class PostSecurityGroupRules200ResponseSecurityGroupRule extends \ArrayObject
         return $this;
     }
 
-    public function getSecurityGroup(): SecurityGroup
+    public function getSecurityGroup(): PostSecurityGroupRulesPartSecurityGroup
     {
         return $this->securityGroup;
     }
 
-    public function setSecurityGroup(SecurityGroup $securityGroup): self
+    public function setSecurityGroup(PostSecurityGroupRulesPartSecurityGroup $securityGroup): self
     {
         $this->initialized['securityGroup'] = true;
         $this->securityGroup = $securityGroup;

@@ -70,7 +70,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachinesNormalizer impleme
             unset($data['created_at']);
         }
         if (\array_key_exists('zone', $data)) {
-            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartZone', 'json', $context));
+            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Zone', 'json', $context));
             unset($data['zone']);
         }
         if (\array_key_exists('package', $data) && $data['package'] !== null) {

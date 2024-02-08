@@ -46,7 +46,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
      */
     protected $proxyProtocol;
     /**
-     * @var Certificate[]
+     * @var PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
      */
     protected $certificates;
     /**
@@ -90,7 +90,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
      */
     protected $checkHttpStatuses;
     /**
-     * @var LoadBalancer
+     * @var PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer
      */
     protected $loadBalancer;
 
@@ -173,7 +173,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
     }
 
     /**
-     * @return Certificate[]
+     * @return PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
      */
     public function getCertificates(): array
     {
@@ -181,7 +181,7 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
     }
 
     /**
-     * @param Certificate[] $certificates
+     * @param PatchLoadBalancersRulesLoadBalancerRulePartCertificates[] $certificates
      */
     public function setCertificates(array $certificates): self
     {
@@ -321,12 +321,12 @@ class PatchLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule extends
         return $this;
     }
 
-    public function getLoadBalancer(): LoadBalancer
+    public function getLoadBalancer(): PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer
     {
         return $this->loadBalancer;
     }
 
-    public function setLoadBalancer(LoadBalancer $loadBalancer): self
+    public function setLoadBalancer(PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer $loadBalancer): self
     {
         $this->initialized['loadBalancer'] = true;
         $this->loadBalancer = $loadBalancer;

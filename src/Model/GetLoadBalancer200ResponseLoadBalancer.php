@@ -46,7 +46,7 @@ class GetLoadBalancer200ResponseLoadBalancer extends \ArrayObject
      */
     protected $resourceIds;
     /**
-     * @var IPAddress[]
+     * @var GetLoadBalancerPartIPAddress[]
      */
     protected $ipAddress;
     /**
@@ -62,7 +62,7 @@ class GetLoadBalancer200ResponseLoadBalancer extends \ArrayObject
      */
     protected $backendCertificateKey;
     /**
-     * @var DataCenter
+     * @var GetLoadBalancerPartDataCenter
      */
     protected $dataCenter;
     /**
@@ -169,7 +169,7 @@ class GetLoadBalancer200ResponseLoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return IPAddress[]
+     * @return GetLoadBalancerPartIPAddress[]
      */
     public function getIpAddress(): array
     {
@@ -177,7 +177,7 @@ class GetLoadBalancer200ResponseLoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param IPAddress[] $ipAddress
+     * @param GetLoadBalancerPartIPAddress[] $ipAddress
      */
     public function setIpAddress(array $ipAddress): self
     {
@@ -226,12 +226,12 @@ class GetLoadBalancer200ResponseLoadBalancer extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): DataCenter
+    public function getDataCenter(): GetLoadBalancerPartDataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(DataCenter $dataCenter): self
+    public function setDataCenter(GetLoadBalancerPartDataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

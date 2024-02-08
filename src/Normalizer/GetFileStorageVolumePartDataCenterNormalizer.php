@@ -20,7 +20,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class GetOrganizationVirtualMachinesPartZoneNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class GetFileStorageVolumePartDataCenterNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -29,12 +29,12 @@ class GetOrganizationVirtualMachinesPartZoneNormalizer implements DenormalizerIn
 
     public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartZone';
+        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetFileStorageVolumePartDataCenter';
     }
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartZone';
+        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetFileStorageVolumePartDataCenter';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -45,7 +45,7 @@ class GetOrganizationVirtualMachinesPartZoneNormalizer implements DenormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\GetOrganizationVirtualMachinesPartZone();
+        $object = new \Krystal\Katapult\KatapultAPI\Model\GetFileStorageVolumePartDataCenter();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,10 +62,6 @@ class GetOrganizationVirtualMachinesPartZoneNormalizer implements DenormalizerIn
             unset($data['permalink']);
         } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
             $object->setPermalink(null);
-        }
-        if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCenter', 'json', $context));
-            unset($data['data_center']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -91,9 +87,6 @@ class GetOrganizationVirtualMachinesPartZoneNormalizer implements DenormalizerIn
         if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
             $data['permalink'] = $object->getPermalink();
         }
-        if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
-            $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
-        }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;
@@ -105,6 +98,6 @@ class GetOrganizationVirtualMachinesPartZoneNormalizer implements DenormalizerIn
 
     public function getSupportedTypes(string $format = null): array
     {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachinesPartZone' => false];
+        return ['Krystal\\Katapult\\KatapultAPI\\Model\\GetFileStorageVolumePartDataCenter' => false];
     }
 }

@@ -29,18 +29,6 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion extends 
      * @var int
      */
     protected $number;
-    /**
-     * @var bool
-     */
-    protected $stable;
-    /**
-     * @var int
-     */
-    protected $sizeInGb;
-    /**
-     * @var DiskTemplate
-     */
-    protected $diskTemplate;
 
     public function getId(): string
     {
@@ -64,45 +52,6 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion extends 
     {
         $this->initialized['number'] = true;
         $this->number = $number;
-
-        return $this;
-    }
-
-    public function getStable(): bool
-    {
-        return $this->stable;
-    }
-
-    public function setStable(bool $stable): self
-    {
-        $this->initialized['stable'] = true;
-        $this->stable = $stable;
-
-        return $this;
-    }
-
-    public function getSizeInGb(): int
-    {
-        return $this->sizeInGb;
-    }
-
-    public function setSizeInGb(int $sizeInGb): self
-    {
-        $this->initialized['sizeInGb'] = true;
-        $this->sizeInGb = $sizeInGb;
-
-        return $this;
-    }
-
-    public function getDiskTemplate(): DiskTemplate
-    {
-        return $this->diskTemplate;
-    }
-
-    public function setDiskTemplate(DiskTemplate $diskTemplate): self
-    {
-        $this->initialized['diskTemplate'] = true;
-        $this->diskTemplate = $diskTemplate;
 
         return $this;
     }

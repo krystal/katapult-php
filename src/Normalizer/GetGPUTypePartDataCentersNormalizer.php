@@ -20,7 +20,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class GetOrganizationUsersWithAccessPartUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class GetGPUTypePartDataCentersNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -29,12 +29,12 @@ class GetOrganizationUsersWithAccessPartUserNormalizer implements DenormalizerIn
 
     public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationUsersWithAccessPartUser';
+        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypePartDataCenters';
     }
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationUsersWithAccessPartUser';
+        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypePartDataCenters';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -45,7 +45,7 @@ class GetOrganizationUsersWithAccessPartUserNormalizer implements DenormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\GetOrganizationUsersWithAccessPartUser();
+        $object = new \Krystal\Katapult\KatapultAPI\Model\GetGPUTypePartDataCenters();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -53,17 +53,15 @@ class GetOrganizationUsersWithAccessPartUserNormalizer implements DenormalizerIn
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('first_name', $data)) {
-            $object->setFirstName($data['first_name']);
-            unset($data['first_name']);
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
         }
-        if (\array_key_exists('last_name', $data)) {
-            $object->setLastName($data['last_name']);
-            unset($data['last_name']);
-        }
-        if (\array_key_exists('avatar_url', $data)) {
-            $object->setAvatarUrl($data['avatar_url']);
-            unset($data['avatar_url']);
+        if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
+            $object->setPermalink($data['permalink']);
+            unset($data['permalink']);
+        } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
+            $object->setPermalink(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -83,14 +81,11 @@ class GetOrganizationUsersWithAccessPartUserNormalizer implements DenormalizerIn
         if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
-            $data['first_name'] = $object->getFirstName();
+        if ($object->isInitialized('name') && null !== $object->getName()) {
+            $data['name'] = $object->getName();
         }
-        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
-            $data['last_name'] = $object->getLastName();
-        }
-        if ($object->isInitialized('avatarUrl') && null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
+        if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
+            $data['permalink'] = $object->getPermalink();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -103,6 +98,6 @@ class GetOrganizationUsersWithAccessPartUserNormalizer implements DenormalizerIn
 
     public function getSupportedTypes(string $format = null): array
     {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationUsersWithAccessPartUser' => false];
+        return ['Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypePartDataCenters' => false];
     }
 }

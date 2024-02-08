@@ -29,10 +29,6 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem extend
      * @var string
      */
     protected $name;
-    /**
-     * @var OperatingSystemBadge|null
-     */
-    protected $badge;
 
     public function getId(): string
     {
@@ -56,19 +52,6 @@ class GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem extend
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getBadge(): ?OperatingSystemBadge
-    {
-        return $this->badge;
-    }
-
-    public function setBadge(?OperatingSystemBadge $badge): self
-    {
-        $this->initialized['badge'] = true;
-        $this->badge = $badge;
 
         return $this;
     }

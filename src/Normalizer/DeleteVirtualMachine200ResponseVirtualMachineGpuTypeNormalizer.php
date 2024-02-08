@@ -73,17 +73,9 @@ class DeleteVirtualMachine200ResponseVirtualMachineGpuTypeNormalizer implements 
             $object->setPermalink($data['permalink']);
             unset($data['permalink']);
         }
-        if (\array_key_exists('data_centers', $data)) {
-            $values = [];
-            foreach ($data['data_centers'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GPUTypeDataCentersItem', 'json', $context);
-            }
-            $object->setDataCenters($values);
-            unset($data['data_centers']);
-        }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
 
@@ -114,16 +106,9 @@ class DeleteVirtualMachine200ResponseVirtualMachineGpuTypeNormalizer implements 
         if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
             $data['permalink'] = $object->getPermalink();
         }
-        if ($object->isInitialized('dataCenters') && null !== $object->getDataCenters()) {
-            $values = [];
-            foreach ($object->getDataCenters() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['data_centers'] = $values;
-        }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value;
             }
         }
 
