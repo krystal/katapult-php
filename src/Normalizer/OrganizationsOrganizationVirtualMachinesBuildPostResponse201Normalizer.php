@@ -50,7 +50,7 @@ class OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer imp
             return $object;
         }
         if (\array_key_exists('task', $data)) {
-            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Task', 'json', $context));
+            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseTask', 'json', $context));
             unset($data['task']);
         }
         if (\array_key_exists('build', $data)) {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer imp
             unset($data['build']);
         }
         if (\array_key_exists('virtual_machine_build', $data)) {
-            $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201VirtualMachineBuild', 'json', $context));
+            $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild', 'json', $context));
             unset($data['virtual_machine_build']);
         }
         if (\array_key_exists('hostname', $data)) {

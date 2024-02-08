@@ -22,7 +22,7 @@ class DataCentersDataCenterGpuTypesGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var DataCentersDataCenterGpuTypesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -30,12 +30,12 @@ class DataCentersDataCenterGpuTypesGetResponse200 extends \ArrayObject
      */
     protected $gpuTypes;
 
-    public function getPagination(): DataCentersDataCenterGpuTypesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(DataCentersDataCenterGpuTypesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

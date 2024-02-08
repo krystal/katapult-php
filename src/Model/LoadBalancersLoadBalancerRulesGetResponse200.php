@@ -22,7 +22,7 @@ class LoadBalancersLoadBalancerRulesGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var LoadBalancersLoadBalancerRulesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class LoadBalancersLoadBalancerRulesGetResponse200 extends \ArrayObject
      */
     protected $loadBalancerRules;
 
-    public function getPagination(): LoadBalancersLoadBalancerRulesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(LoadBalancersLoadBalancerRulesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

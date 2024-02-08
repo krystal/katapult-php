@@ -22,7 +22,7 @@ class OrganizationsOrganizationFileStorageVolumesGetResponse200 extends \ArrayOb
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationFileStorageVolumesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class OrganizationsOrganizationFileStorageVolumesGetResponse200 extends \ArrayOb
      */
     protected $fileStorageVolumes;
 
-    public function getPagination(): OrganizationsOrganizationFileStorageVolumesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OrganizationsOrganizationFileStorageVolumesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

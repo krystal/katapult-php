@@ -38,7 +38,7 @@ class GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies extends \
      */
     protected $target;
     /**
-     * @var GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesSchedule
+     * @var GetVirtualMachineDiskBackupPoliciesPartSchedule
      */
     protected $schedule;
 
@@ -94,12 +94,12 @@ class GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies extends \
         return $this;
     }
 
-    public function getSchedule(): GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesSchedule
+    public function getSchedule(): GetVirtualMachineDiskBackupPoliciesPartSchedule
     {
         return $this->schedule;
     }
 
-    public function setSchedule(GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesSchedule $schedule): self
+    public function setSchedule(GetVirtualMachineDiskBackupPoliciesPartSchedule $schedule): self
     {
         $this->initialized['schedule'] = true;
         $this->schedule = $schedule;

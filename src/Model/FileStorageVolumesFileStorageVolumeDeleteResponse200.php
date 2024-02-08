@@ -22,7 +22,7 @@ class FileStorageVolumesFileStorageVolumeDeleteResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var FileStorageVolumesFileStorageVolumeDeleteResponse200TrashObject
+     * @var TrashObject
      */
     protected $trashObject;
     /**
@@ -32,12 +32,12 @@ class FileStorageVolumesFileStorageVolumeDeleteResponse200 extends \ArrayObject
      */
     protected $fileStorageVolume;
 
-    public function getTrashObject(): FileStorageVolumesFileStorageVolumeDeleteResponse200TrashObject
+    public function getTrashObject(): TrashObject
     {
         return $this->trashObject;
     }
 
-    public function setTrashObject(FileStorageVolumesFileStorageVolumeDeleteResponse200TrashObject $trashObject): self
+    public function setTrashObject(TrashObject $trashObject): self
     {
         $this->initialized['trashObject'] = true;
         $this->trashObject = $trashObject;

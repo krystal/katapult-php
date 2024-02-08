@@ -50,7 +50,7 @@ class OrganizationsOrganizationFileStorageVolumesGetResponse200Normalizer implem
             return $object;
         }
         if (\array_key_exists('pagination', $data)) {
-            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationFileStorageVolumesGetResponse200Pagination', 'json', $context));
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PaginationObject', 'json', $context));
             unset($data['pagination']);
         }
         if (\array_key_exists('file_storage_volumes', $data)) {

@@ -28,7 +28,7 @@ class DnsRecordsDnsRecordPatchBody extends \ArrayObject
      */
     protected $dnsRecord;
     /**
-     * All 'details[]' params are mutually exclusive, only one can be provided.
+     * All 'properties[]' params are mutually exclusive, only one can be provided.
      *
      * @var DNSRecordArguments
      */
@@ -54,7 +54,7 @@ class DnsRecordsDnsRecordPatchBody extends \ArrayObject
     }
 
     /**
-     * All 'details[]' params are mutually exclusive, only one can be provided.
+     * All 'properties[]' params are mutually exclusive, only one can be provided.
      */
     public function getProperties(): DNSRecordArguments
     {
@@ -62,7 +62,7 @@ class DnsRecordsDnsRecordPatchBody extends \ArrayObject
     }
 
     /**
-     * All 'details[]' params are mutually exclusive, only one can be provided.
+     * All 'properties[]' params are mutually exclusive, only one can be provided.
      */
     public function setProperties(DNSRecordArguments $properties): self
     {

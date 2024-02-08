@@ -76,7 +76,7 @@ class LoadBalancersRulesLoadBalancerRuleGetResponse200LoadBalancerRuleNormalizer
         if (\array_key_exists('certificates', $data)) {
             $values = [];
             foreach ($data['certificates'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleCertificatesItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancersRulesLoadBalancerRulePartCertificates', 'json', $context);
             }
             $object->setCertificates($values);
             unset($data['certificates']);
@@ -105,9 +105,11 @@ class LoadBalancersRulesLoadBalancerRuleGetResponse200LoadBalancerRuleNormalizer
             $object->setCheckPath($data['check_path']);
             unset($data['check_path']);
         }
-        if (\array_key_exists('check_protocol', $data)) {
+        if (\array_key_exists('check_protocol', $data) && $data['check_protocol'] !== null) {
             $object->setCheckProtocol($data['check_protocol']);
             unset($data['check_protocol']);
+        } elseif (\array_key_exists('check_protocol', $data) && $data['check_protocol'] === null) {
+            $object->setCheckProtocol(null);
         }
         if (\array_key_exists('check_rise', $data)) {
             $object->setCheckRise($data['check_rise']);
@@ -117,12 +119,14 @@ class LoadBalancersRulesLoadBalancerRuleGetResponse200LoadBalancerRuleNormalizer
             $object->setCheckTimeout($data['check_timeout']);
             unset($data['check_timeout']);
         }
-        if (\array_key_exists('check_http_statuses', $data)) {
+        if (\array_key_exists('check_http_statuses', $data) && $data['check_http_statuses'] !== null) {
             $object->setCheckHttpStatuses($data['check_http_statuses']);
             unset($data['check_http_statuses']);
+        } elseif (\array_key_exists('check_http_statuses', $data) && $data['check_http_statuses'] === null) {
+            $object->setCheckHttpStatuses(null);
         }
         if (\array_key_exists('load_balancer', $data)) {
-            $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleLoadBalancer', 'json', $context));
+            $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetLoadBalancersRulesLoadBalancerRulePartLoadBalancer', 'json', $context));
             unset($data['load_balancer']);
         }
         foreach ($data as $key => $value_1) {

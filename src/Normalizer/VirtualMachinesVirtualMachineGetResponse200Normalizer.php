@@ -50,7 +50,7 @@ class VirtualMachinesVirtualMachineGetResponse200Normalizer implements Denormali
             return $object;
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesVirtualMachineGetResponse200VirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetVirtualMachine200ResponseVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         foreach ($data as $key => $value) {

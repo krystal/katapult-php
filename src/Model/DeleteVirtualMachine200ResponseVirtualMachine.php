@@ -54,11 +54,11 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $state;
     /**
-     * @var DeleteVirtualMachine200ResponseVirtualMachineZone
+     * @var Zone
      */
     protected $zone;
     /**
-     * @var DeleteVirtualMachine200ResponseVirtualMachineOrganization
+     * @var Organization
      */
     protected $organization;
     /**
@@ -86,11 +86,11 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $gpuType;
     /**
-     * @var DeleteVirtualMachine200ResponseVirtualMachineGpusItem[]
+     * @var VirtualMachineGPU[]
      */
     protected $gpus;
     /**
-     * @var DeleteVirtualMachine200ResponseVirtualMachineTagsItem[]
+     * @var Tag[]
      */
     protected $tags;
     /**
@@ -98,7 +98,7 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $tagNames;
     /**
-     * @var DeleteVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
+     * @var IPAddress[]
      */
     protected $ipAddresses;
 
@@ -206,12 +206,12 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getZone(): DeleteVirtualMachine200ResponseVirtualMachineZone
+    public function getZone(): Zone
     {
         return $this->zone;
     }
 
-    public function setZone(DeleteVirtualMachine200ResponseVirtualMachineZone $zone): self
+    public function setZone(Zone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -219,12 +219,12 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getOrganization(): DeleteVirtualMachine200ResponseVirtualMachineOrganization
+    public function getOrganization(): Organization
     {
         return $this->organization;
     }
 
-    public function setOrganization(DeleteVirtualMachine200ResponseVirtualMachineOrganization $organization): self
+    public function setOrganization(Organization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;
@@ -311,7 +311,7 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return DeleteVirtualMachine200ResponseVirtualMachineGpusItem[]
+     * @return VirtualMachineGPU[]
      */
     public function getGpus(): array
     {
@@ -319,7 +319,7 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param DeleteVirtualMachine200ResponseVirtualMachineGpusItem[] $gpus
+     * @param VirtualMachineGPU[] $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -330,7 +330,7 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return DeleteVirtualMachine200ResponseVirtualMachineTagsItem[]
+     * @return Tag[]
      */
     public function getTags(): array
     {
@@ -338,7 +338,7 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param DeleteVirtualMachine200ResponseVirtualMachineTagsItem[] $tags
+     * @param Tag[] $tags
      */
     public function setTags(array $tags): self
     {
@@ -368,7 +368,7 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return DeleteVirtualMachine200ResponseVirtualMachineIpAddressesItem[]
+     * @return IPAddress[]
      */
     public function getIpAddresses(): array
     {
@@ -376,7 +376,7 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param DeleteVirtualMachine200ResponseVirtualMachineIpAddressesItem[] $ipAddresses
+     * @param IPAddress[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

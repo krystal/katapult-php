@@ -76,7 +76,7 @@ class IpAddressesIpAddressGetResponse200IpAddressNormalizer implements Denormali
             unset($data['address_with_mask']);
         }
         if (\array_key_exists('network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\IPAddressNetwork', 'json', $context));
+            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Network', 'json', $context));
             unset($data['network']);
         }
         if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {

@@ -22,7 +22,7 @@ class OperatingSystemsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OperatingSystemsGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class OperatingSystemsGetResponse200 extends \ArrayObject
      */
     protected $operatingSystems;
 
-    public function getPagination(): OperatingSystemsGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OperatingSystemsGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

@@ -34,7 +34,7 @@ class GPUTypeDataCentersItem extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var DataCenterCountry
+     * @var Country
      */
     protected $country;
 
@@ -77,12 +77,12 @@ class GPUTypeDataCentersItem extends \ArrayObject
         return $this;
     }
 
-    public function getCountry(): DataCenterCountry
+    public function getCountry(): Country
     {
         return $this->country;
     }
 
-    public function setCountry(DataCenterCountry $country): self
+    public function setCountry(Country $country): self
     {
         $this->initialized['country'] = true;
         $this->country = $country;

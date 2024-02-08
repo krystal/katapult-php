@@ -22,7 +22,7 @@ class OrganizationsOrganizationDiskTemplatesGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationDiskTemplatesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class OrganizationsOrganizationDiskTemplatesGetResponse200 extends \ArrayObject
      */
     protected $diskTemplates;
 
-    public function getPagination(): OrganizationsOrganizationDiskTemplatesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OrganizationsOrganizationDiskTemplatesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

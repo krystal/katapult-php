@@ -22,16 +22,16 @@ class VirtualMachinesBuildsVirtualMachineBuildGetResponse200 extends \ArrayObjec
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinesBuildsVirtualMachineBuildGetResponse200VirtualMachineBuild
+     * @var GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild
      */
     protected $virtualMachineBuild;
 
-    public function getVirtualMachineBuild(): VirtualMachinesBuildsVirtualMachineBuildGetResponse200VirtualMachineBuild
+    public function getVirtualMachineBuild(): GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild
     {
         return $this->virtualMachineBuild;
     }
 
-    public function setVirtualMachineBuild(VirtualMachinesBuildsVirtualMachineBuildGetResponse200VirtualMachineBuild $virtualMachineBuild): self
+    public function setVirtualMachineBuild(GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild $virtualMachineBuild): self
     {
         $this->initialized['virtualMachineBuild'] = true;
         $this->virtualMachineBuild = $virtualMachineBuild;

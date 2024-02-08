@@ -22,16 +22,16 @@ class VirtualMachinesVirtualMachineStopPostResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinesVirtualMachineStopPostResponse200Task
+     * @var PostVirtualMachineStop200ResponseTask
      */
     protected $task;
 
-    public function getTask(): VirtualMachinesVirtualMachineStopPostResponse200Task
+    public function getTask(): PostVirtualMachineStop200ResponseTask
     {
         return $this->task;
     }
 
-    public function setTask(VirtualMachinesVirtualMachineStopPostResponse200Task $task): self
+    public function setTask(PostVirtualMachineStop200ResponseTask $task): self
     {
         $this->initialized['task'] = true;
         $this->task = $task;

@@ -22,7 +22,7 @@ class OrganizationsOrganizationManagedGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationManagedGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -30,12 +30,12 @@ class OrganizationsOrganizationManagedGetResponse200 extends \ArrayObject
      */
     protected $organizations;
 
-    public function getPagination(): OrganizationsOrganizationManagedGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OrganizationsOrganizationManagedGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

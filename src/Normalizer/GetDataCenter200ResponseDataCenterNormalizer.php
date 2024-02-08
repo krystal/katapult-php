@@ -64,7 +64,7 @@ class GetDataCenter200ResponseDataCenterNormalizer implements DenormalizerInterf
             $object->setPermalink(null);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDataCenter200ResponseDataCenterCountry', 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDataCenterPartCountry', 'json', $context));
             unset($data['country']);
         }
         foreach ($data as $key => $value) {

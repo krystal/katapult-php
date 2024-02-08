@@ -22,11 +22,11 @@ class DiskTemplatesDiskTemplateVersionsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var DiskTemplatesDiskTemplateVersionsGetResponse200DiskTemplate
+     * @var GetDiskTemplateVersions200ResponseDiskTemplate
      */
     protected $diskTemplate;
     /**
-     * @var DiskTemplatesDiskTemplateVersionsGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -36,12 +36,12 @@ class DiskTemplatesDiskTemplateVersionsGetResponse200 extends \ArrayObject
      */
     protected $diskTemplateVersions;
 
-    public function getDiskTemplate(): DiskTemplatesDiskTemplateVersionsGetResponse200DiskTemplate
+    public function getDiskTemplate(): GetDiskTemplateVersions200ResponseDiskTemplate
     {
         return $this->diskTemplate;
     }
 
-    public function setDiskTemplate(DiskTemplatesDiskTemplateVersionsGetResponse200DiskTemplate $diskTemplate): self
+    public function setDiskTemplate(GetDiskTemplateVersions200ResponseDiskTemplate $diskTemplate): self
     {
         $this->initialized['diskTemplate'] = true;
         $this->diskTemplate = $diskTemplate;
@@ -49,12 +49,12 @@ class DiskTemplatesDiskTemplateVersionsGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getPagination(): DiskTemplatesDiskTemplateVersionsGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(DiskTemplatesDiskTemplateVersionsGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

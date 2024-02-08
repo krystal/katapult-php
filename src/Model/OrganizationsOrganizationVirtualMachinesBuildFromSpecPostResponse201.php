@@ -22,7 +22,7 @@ class OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201 exten
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Task
+     * @var PostOrganizationVirtualMachinesBuildFromSpec201ResponseTask
      */
     protected $task;
     /**
@@ -32,7 +32,7 @@ class OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201 exten
      */
     protected $build;
     /**
-     * @var OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201VirtualMachineBuild
+     * @var PostOrganizationVirtualMachinesBuildFromSpec201ResponseVirtualMachineBuild
      */
     protected $virtualMachineBuild;
     /**
@@ -40,12 +40,12 @@ class OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201 exten
      */
     protected $hostname;
 
-    public function getTask(): OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Task
+    public function getTask(): PostOrganizationVirtualMachinesBuildFromSpec201ResponseTask
     {
         return $this->task;
     }
 
-    public function setTask(OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Task $task): self
+    public function setTask(PostOrganizationVirtualMachinesBuildFromSpec201ResponseTask $task): self
     {
         $this->initialized['task'] = true;
         $this->task = $task;
@@ -72,12 +72,12 @@ class OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201 exten
         return $this;
     }
 
-    public function getVirtualMachineBuild(): OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201VirtualMachineBuild
+    public function getVirtualMachineBuild(): PostOrganizationVirtualMachinesBuildFromSpec201ResponseVirtualMachineBuild
     {
         return $this->virtualMachineBuild;
     }
 
-    public function setVirtualMachineBuild(OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201VirtualMachineBuild $virtualMachineBuild): self
+    public function setVirtualMachineBuild(PostOrganizationVirtualMachinesBuildFromSpec201ResponseVirtualMachineBuild $virtualMachineBuild): self
     {
         $this->initialized['virtualMachineBuild'] = true;
         $this->virtualMachineBuild = $virtualMachineBuild;

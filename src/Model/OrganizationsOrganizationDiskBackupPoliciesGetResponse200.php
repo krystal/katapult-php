@@ -22,7 +22,7 @@ class OrganizationsOrganizationDiskBackupPoliciesGetResponse200 extends \ArrayOb
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationDiskBackupPoliciesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class OrganizationsOrganizationDiskBackupPoliciesGetResponse200 extends \ArrayOb
      */
     protected $diskBackupPolicies;
 
-    public function getPagination(): OrganizationsOrganizationDiskBackupPoliciesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OrganizationsOrganizationDiskBackupPoliciesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

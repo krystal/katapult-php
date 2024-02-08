@@ -22,16 +22,16 @@ class OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200 extends \Arra
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200Task
+     * @var Task
      */
     protected $task;
 
-    public function getTask(): OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200Task
+    public function getTask(): Task
     {
         return $this->task;
     }
 
-    public function setTask(OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200Task $task): self
+    public function setTask(Task $task): self
     {
         $this->initialized['task'] = true;
         $this->task = $task;

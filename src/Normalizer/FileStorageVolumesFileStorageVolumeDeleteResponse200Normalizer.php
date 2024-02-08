@@ -50,7 +50,7 @@ class FileStorageVolumesFileStorageVolumeDeleteResponse200Normalizer implements 
             return $object;
         }
         if (\array_key_exists('trash_object', $data)) {
-            $object->setTrashObject($this->denormalizer->denormalize($data['trash_object'], 'Krystal\\Katapult\\KatapultAPI\\Model\\FileStorageVolumesFileStorageVolumeDeleteResponse200TrashObject', 'json', $context));
+            $object->setTrashObject($this->denormalizer->denormalize($data['trash_object'], 'Krystal\\Katapult\\KatapultAPI\\Model\\TrashObject', 'json', $context));
             unset($data['trash_object']);
         }
         if (\array_key_exists('file_storage_volume', $data)) {

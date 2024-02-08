@@ -22,7 +22,7 @@ class OrganizationsOrganizationCertificatesGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OrganizationsOrganizationCertificatesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -30,12 +30,12 @@ class OrganizationsOrganizationCertificatesGetResponse200 extends \ArrayObject
      */
     protected $certificates;
 
-    public function getPagination(): OrganizationsOrganizationCertificatesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(OrganizationsOrganizationCertificatesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

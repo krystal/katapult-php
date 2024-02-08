@@ -50,7 +50,7 @@ class VirtualMachinesVirtualMachineFlexibleResourcesPutResponse200Normalizer imp
             return $object;
         }
         if (\array_key_exists('task', $data)) {
-            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinesVirtualMachineFlexibleResourcesPutResponse200Task', 'json', $context));
+            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Task', 'json', $context));
             unset($data['task']);
         }
         foreach ($data as $key => $value) {

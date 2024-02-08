@@ -22,7 +22,7 @@ class CountriesCountryCountryStatesGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var CountriesCountryCountryStatesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -32,12 +32,12 @@ class CountriesCountryCountryStatesGetResponse200 extends \ArrayObject
      */
     protected $countryStates;
 
-    public function getPagination(): CountriesCountryCountryStatesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(CountriesCountryCountryStatesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

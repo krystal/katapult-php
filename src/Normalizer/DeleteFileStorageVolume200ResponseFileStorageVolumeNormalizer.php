@@ -58,7 +58,7 @@ class DeleteFileStorageVolume200ResponseFileStorageVolumeNormalizer implements D
             unset($data['name']);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteFileStorageVolume200ResponseFileStorageVolumeDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteFileStorageVolumePartDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         if (\array_key_exists('associations', $data)) {

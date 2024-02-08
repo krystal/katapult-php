@@ -104,7 +104,11 @@ class DNSRecordContentAttributesNormalizer implements DenormalizerInterface, Nor
             $object->setPTR(null);
         }
         if (\array_key_exists('SOA', $data) && $data['SOA'] !== null) {
-            $object->setSOA($this->denormalizer->denormalize($data['SOA'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentAttributesSOA', 'json', $context));
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['SOA'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setSOA($values);
             unset($data['SOA']);
         } elseif (\array_key_exists('SOA', $data) && $data['SOA'] === null) {
             $object->setSOA(null);
@@ -133,9 +137,9 @@ class DNSRecordContentAttributesNormalizer implements DenormalizerInterface, Nor
         } elseif (\array_key_exists('VirtualMachine', $data) && $data['VirtualMachine'] === null) {
             $object->setVirtualMachine(null);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
             }
         }
 
@@ -176,7 +180,11 @@ class DNSRecordContentAttributesNormalizer implements DenormalizerInterface, Nor
             $data['PTR'] = $this->normalizer->normalize($object->getPTR(), 'json', $context);
         }
         if ($object->isInitialized('sOA') && null !== $object->getSOA()) {
-            $data['SOA'] = $this->normalizer->normalize($object->getSOA(), 'json', $context);
+            $values = [];
+            foreach ($object->getSOA() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['SOA'] = $values;
         }
         if ($object->isInitialized('sRV') && null !== $object->getSRV()) {
             $data['SRV'] = $this->normalizer->normalize($object->getSRV(), 'json', $context);
@@ -190,9 +198,9 @@ class DNSRecordContentAttributesNormalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('virtualMachine') && null !== $object->getVirtualMachine()) {
             $data['VirtualMachine'] = $this->normalizer->normalize($object->getVirtualMachine(), 'json', $context);
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
             }
         }
 

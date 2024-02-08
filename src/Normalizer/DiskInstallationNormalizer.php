@@ -54,13 +54,13 @@ class DiskInstallationNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['id']);
         }
         if (\array_key_exists('disk_template_version', $data)) {
-            $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskInstallationDiskTemplateVersion', 'json', $context));
+            $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplateVersion', 'json', $context));
             unset($data['disk_template_version']);
         }
         if (\array_key_exists('attributes', $data)) {
             $values = [];
             foreach ($data['attributes'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskInstallationAttributesItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskInstallationAttribute', 'json', $context);
             }
             $object->setAttributes($values);
             unset($data['attributes']);

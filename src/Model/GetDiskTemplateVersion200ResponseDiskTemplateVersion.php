@@ -38,7 +38,7 @@ class GetDiskTemplateVersion200ResponseDiskTemplateVersion extends \ArrayObject
      */
     protected $sizeInGb;
     /**
-     * @var GetDiskTemplateVersion200ResponseDiskTemplateVersionDiskTemplate
+     * @var GetDiskTemplateVersionPartDiskTemplate
      */
     protected $diskTemplate;
 
@@ -94,12 +94,12 @@ class GetDiskTemplateVersion200ResponseDiskTemplateVersion extends \ArrayObject
         return $this;
     }
 
-    public function getDiskTemplate(): GetDiskTemplateVersion200ResponseDiskTemplateVersionDiskTemplate
+    public function getDiskTemplate(): GetDiskTemplateVersionPartDiskTemplate
     {
         return $this->diskTemplate;
     }
 
-    public function setDiskTemplate(GetDiskTemplateVersion200ResponseDiskTemplateVersionDiskTemplate $diskTemplate): self
+    public function setDiskTemplate(GetDiskTemplateVersionPartDiskTemplate $diskTemplate): self
     {
         $this->initialized['diskTemplate'] = true;
         $this->diskTemplate = $diskTemplate;

@@ -50,7 +50,7 @@ class GetDisk200ResponseDiskVirtualMachineDiskNormalizer implements Denormalizer
             return $object;
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartVirtualMachineDiskVirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskPartVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         if (\array_key_exists('attach_on_boot', $data)) {

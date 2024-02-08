@@ -32,7 +32,7 @@ class VirtualMachineGPU extends \ArrayObject
      */
     protected $status;
     /**
-     * @var string
+     * @var string|null
      */
     protected $pendingAction;
     /**
@@ -42,7 +42,7 @@ class VirtualMachineGPU extends \ArrayObject
      */
     protected $available;
     /**
-     * @var VirtualMachineGPUType
+     * @var GPUType
      */
     protected $type;
 
@@ -78,12 +78,12 @@ class VirtualMachineGPU extends \ArrayObject
         return $this;
     }
 
-    public function getPendingAction(): string
+    public function getPendingAction(): ?string
     {
         return $this->pendingAction;
     }
 
-    public function setPendingAction(string $pendingAction): self
+    public function setPendingAction(?string $pendingAction): self
     {
         $this->initialized['pendingAction'] = true;
         $this->pendingAction = $pendingAction;
@@ -110,12 +110,12 @@ class VirtualMachineGPU extends \ArrayObject
         return $this;
     }
 
-    public function getType(): VirtualMachineGPUType
+    public function getType(): GPUType
     {
         return $this->type;
     }
 
-    public function setType(VirtualMachineGPUType $type): self
+    public function setType(GPUType $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

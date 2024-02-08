@@ -54,11 +54,11 @@ class VirtualMachine extends \ArrayObject
      */
     protected $state;
     /**
-     * @var VirtualMachineZone
+     * @var Zone
      */
     protected $zone;
     /**
-     * @var VirtualMachineOrganization
+     * @var Organization
      */
     protected $organization;
     /**
@@ -86,11 +86,11 @@ class VirtualMachine extends \ArrayObject
      */
     protected $gpuType;
     /**
-     * @var VirtualMachineGpusItem[]
+     * @var VirtualMachineGPU[]
      */
     protected $gpus;
     /**
-     * @var VirtualMachineTagsItem[]
+     * @var Tag[]
      */
     protected $tags;
     /**
@@ -98,7 +98,7 @@ class VirtualMachine extends \ArrayObject
      */
     protected $tagNames;
     /**
-     * @var VirtualMachineIpAddressesItem[]
+     * @var IPAddress[]
      */
     protected $ipAddresses;
 
@@ -206,12 +206,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getZone(): VirtualMachineZone
+    public function getZone(): Zone
     {
         return $this->zone;
     }
 
-    public function setZone(VirtualMachineZone $zone): self
+    public function setZone(Zone $zone): self
     {
         $this->initialized['zone'] = true;
         $this->zone = $zone;
@@ -219,12 +219,12 @@ class VirtualMachine extends \ArrayObject
         return $this;
     }
 
-    public function getOrganization(): VirtualMachineOrganization
+    public function getOrganization(): Organization
     {
         return $this->organization;
     }
 
-    public function setOrganization(VirtualMachineOrganization $organization): self
+    public function setOrganization(Organization $organization): self
     {
         $this->initialized['organization'] = true;
         $this->organization = $organization;
@@ -311,7 +311,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return VirtualMachineGpusItem[]
+     * @return VirtualMachineGPU[]
      */
     public function getGpus(): array
     {
@@ -319,7 +319,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param VirtualMachineGpusItem[] $gpus
+     * @param VirtualMachineGPU[] $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -330,7 +330,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return VirtualMachineTagsItem[]
+     * @return Tag[]
      */
     public function getTags(): array
     {
@@ -338,7 +338,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param VirtualMachineTagsItem[] $tags
+     * @param Tag[] $tags
      */
     public function setTags(array $tags): self
     {
@@ -368,7 +368,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return VirtualMachineIpAddressesItem[]
+     * @return IPAddress[]
      */
     public function getIpAddresses(): array
     {
@@ -376,7 +376,7 @@ class VirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param VirtualMachineIpAddressesItem[] $ipAddresses
+     * @param IPAddress[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

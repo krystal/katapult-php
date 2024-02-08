@@ -50,11 +50,11 @@ class DiskTemplatesDiskTemplateVersionsGetResponse200Normalizer implements Denor
             return $object;
         }
         if (\array_key_exists('disk_template', $data)) {
-            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplatesDiskTemplateVersionsGetResponse200DiskTemplate', 'json', $context));
+            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDiskTemplateVersions200ResponseDiskTemplate', 'json', $context));
             unset($data['disk_template']);
         }
         if (\array_key_exists('pagination', $data)) {
-            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplatesDiskTemplateVersionsGetResponse200Pagination', 'json', $context));
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PaginationObject', 'json', $context));
             unset($data['pagination']);
         }
         if (\array_key_exists('disk_template_versions', $data)) {

@@ -30,7 +30,7 @@ class DeleteVirtualMachine200ResponseVirtualMachineAttachedIso extends \ArrayObj
      */
     protected $name;
     /**
-     * @var DeleteVirtualMachinePartAttachedISOOperatingSystem|null
+     * @var ISOOperatingSystem|null
      */
     protected $operatingSystem;
 
@@ -60,12 +60,12 @@ class DeleteVirtualMachine200ResponseVirtualMachineAttachedIso extends \ArrayObj
         return $this;
     }
 
-    public function getOperatingSystem(): ?DeleteVirtualMachinePartAttachedISOOperatingSystem
+    public function getOperatingSystem(): ?ISOOperatingSystem
     {
         return $this->operatingSystem;
     }
 
-    public function setOperatingSystem(?DeleteVirtualMachinePartAttachedISOOperatingSystem $operatingSystem): self
+    public function setOperatingSystem(?ISOOperatingSystem $operatingSystem): self
     {
         $this->initialized['operatingSystem'] = true;
         $this->operatingSystem = $operatingSystem;

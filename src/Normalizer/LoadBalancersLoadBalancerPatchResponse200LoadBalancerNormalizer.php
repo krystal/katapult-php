@@ -86,7 +86,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer implements
         if (\array_key_exists('ip_address', $data)) {
             $values_2 = [];
             foreach ($data['ip_address'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancer200ResponseLoadBalancerIpAddressItem', 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancerPartIPAddress', 'json', $context);
             }
             $object->setIpAddress($values_2);
             unset($data['ip_address']);
@@ -104,7 +104,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer implements
             unset($data['backend_certificate_key']);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancer200ResponseLoadBalancerDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancerPartDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         if (\array_key_exists('enable_weighting', $data)) {
@@ -114,7 +114,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer implements
         if (\array_key_exists('weights', $data)) {
             $values_3 = [];
             foreach ($data['weights'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancer200ResponseLoadBalancerWeightsItem', 'json', $context);
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\LoadBalancerWeight', 'json', $context);
             }
             $object->setWeights($values_3);
             unset($data['weights']);

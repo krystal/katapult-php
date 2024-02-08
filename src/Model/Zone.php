@@ -34,7 +34,7 @@ class Zone extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var ZoneDataCenter
+     * @var DataCenter
      */
     protected $dataCenter;
 
@@ -77,12 +77,12 @@ class Zone extends \ArrayObject
         return $this;
     }
 
-    public function getDataCenter(): ZoneDataCenter
+    public function getDataCenter(): DataCenter
     {
         return $this->dataCenter;
     }
 
-    public function setDataCenter(ZoneDataCenter $dataCenter): self
+    public function setDataCenter(DataCenter $dataCenter): self
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;

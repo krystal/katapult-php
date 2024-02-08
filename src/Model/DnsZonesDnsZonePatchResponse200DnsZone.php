@@ -32,15 +32,11 @@ class DnsZonesDnsZonePatchResponse200DnsZone extends \ArrayObject
     /**
      * @var int
      */
-    protected $ttl;
+    protected $defaultTtl;
     /**
      * @var bool
      */
     protected $verified;
-    /**
-     * @var bool
-     */
-    protected $infrastructureZone;
 
     public function getId(): string
     {
@@ -68,15 +64,15 @@ class DnsZonesDnsZonePatchResponse200DnsZone extends \ArrayObject
         return $this;
     }
 
-    public function getTtl(): int
+    public function getDefaultTtl(): int
     {
-        return $this->ttl;
+        return $this->defaultTtl;
     }
 
-    public function setTtl(int $ttl): self
+    public function setDefaultTtl(int $defaultTtl): self
     {
-        $this->initialized['ttl'] = true;
-        $this->ttl = $ttl;
+        $this->initialized['defaultTtl'] = true;
+        $this->defaultTtl = $defaultTtl;
 
         return $this;
     }
@@ -90,19 +86,6 @@ class DnsZonesDnsZonePatchResponse200DnsZone extends \ArrayObject
     {
         $this->initialized['verified'] = true;
         $this->verified = $verified;
-
-        return $this;
-    }
-
-    public function getInfrastructureZone(): bool
-    {
-        return $this->infrastructureZone;
-    }
-
-    public function setInfrastructureZone(bool $infrastructureZone): self
-    {
-        $this->initialized['infrastructureZone'] = true;
-        $this->infrastructureZone = $infrastructureZone;
 
         return $this;
     }

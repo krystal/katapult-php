@@ -50,7 +50,7 @@ class VirtualMachinePackagesVirtualMachinePackageGetResponse200Normalizer implem
             return $object;
         }
         if (\array_key_exists('virtual_machine_package', $data)) {
-            $object->setVirtualMachinePackage($this->denormalizer->denormalize($data['virtual_machine_package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinePackagesVirtualMachinePackageGetResponse200VirtualMachinePackage', 'json', $context));
+            $object->setVirtualMachinePackage($this->denormalizer->denormalize($data['virtual_machine_package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinePackage', 'json', $context));
             unset($data['virtual_machine_package']);
         }
         foreach ($data as $key => $value) {

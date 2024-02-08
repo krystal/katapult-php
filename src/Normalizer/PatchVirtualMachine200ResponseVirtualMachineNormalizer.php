@@ -86,11 +86,11 @@ class PatchVirtualMachine200ResponseVirtualMachineNormalizer implements Denormal
             unset($data['state']);
         }
         if (\array_key_exists('zone', $data)) {
-            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachine200ResponseVirtualMachineZone', 'json', $context));
+            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Zone', 'json', $context));
             unset($data['zone']);
         }
         if (\array_key_exists('organization', $data)) {
-            $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachine200ResponseVirtualMachineOrganization', 'json', $context));
+            $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Organization', 'json', $context));
             unset($data['organization']);
         }
         if (\array_key_exists('group', $data) && $data['group'] !== null) {
@@ -132,7 +132,7 @@ class PatchVirtualMachine200ResponseVirtualMachineNormalizer implements Denormal
         if (\array_key_exists('gpus', $data)) {
             $values = [];
             foreach ($data['gpus'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachine200ResponseVirtualMachineGpusItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachineGPU', 'json', $context);
             }
             $object->setGpus($values);
             unset($data['gpus']);
@@ -140,7 +140,7 @@ class PatchVirtualMachine200ResponseVirtualMachineNormalizer implements Denormal
         if (\array_key_exists('tags', $data)) {
             $values_1 = [];
             foreach ($data['tags'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachine200ResponseVirtualMachineTagsItem', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Krystal\\Katapult\\KatapultAPI\\Model\\Tag', 'json', $context);
             }
             $object->setTags($values_1);
             unset($data['tags']);
@@ -156,7 +156,7 @@ class PatchVirtualMachine200ResponseVirtualMachineNormalizer implements Denormal
         if (\array_key_exists('ip_addresses', $data)) {
             $values_3 = [];
             foreach ($data['ip_addresses'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachine200ResponseVirtualMachineIpAddressesItem', 'json', $context);
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\IPAddress', 'json', $context);
             }
             $object->setIpAddresses($values_3);
             unset($data['ip_addresses']);

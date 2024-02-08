@@ -22,16 +22,16 @@ class VirtualMachinePackagesVirtualMachinePackageGetResponse200 extends \ArrayOb
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinePackagesVirtualMachinePackageGetResponse200VirtualMachinePackage
+     * @var VirtualMachinePackage
      */
     protected $virtualMachinePackage;
 
-    public function getVirtualMachinePackage(): VirtualMachinePackagesVirtualMachinePackageGetResponse200VirtualMachinePackage
+    public function getVirtualMachinePackage(): VirtualMachinePackage
     {
         return $this->virtualMachinePackage;
     }
 
-    public function setVirtualMachinePackage(VirtualMachinePackagesVirtualMachinePackageGetResponse200VirtualMachinePackage $virtualMachinePackage): self
+    public function setVirtualMachinePackage(VirtualMachinePackage $virtualMachinePackage): self
     {
         $this->initialized['virtualMachinePackage'] = true;
         $this->virtualMachinePackage = $virtualMachinePackage;

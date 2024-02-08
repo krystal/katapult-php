@@ -22,19 +22,27 @@ class DNSZoneArguments extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * The name of the zone (only available for creation).
+     *
      * @var string
      */
     protected $name;
     /**
      * @var int
      */
-    protected $ttl;
+    protected $defaultTtl;
 
+    /**
+     * The name of the zone (only available for creation).
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * The name of the zone (only available for creation).
+     */
     public function setName(string $name): self
     {
         $this->initialized['name'] = true;
@@ -43,15 +51,15 @@ class DNSZoneArguments extends \ArrayObject
         return $this;
     }
 
-    public function getTtl(): int
+    public function getDefaultTtl(): int
     {
-        return $this->ttl;
+        return $this->defaultTtl;
     }
 
-    public function setTtl(int $ttl): self
+    public function setDefaultTtl(int $defaultTtl): self
     {
-        $this->initialized['ttl'] = true;
-        $this->ttl = $ttl;
+        $this->initialized['defaultTtl'] = true;
+        $this->defaultTtl = $defaultTtl;
 
         return $this;
     }

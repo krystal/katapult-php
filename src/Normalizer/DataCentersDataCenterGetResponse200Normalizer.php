@@ -50,7 +50,7 @@ class DataCentersDataCenterGetResponse200Normalizer implements DenormalizerInter
             return $object;
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCentersDataCenterGetResponse200DataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetDataCenter200ResponseDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         foreach ($data as $key => $value) {

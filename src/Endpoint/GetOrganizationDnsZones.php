@@ -17,8 +17,8 @@ class GetOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
     /**
      * @param array $queryParameters {
      *
-     * @var string $organization[id] The organization to return DNS zones for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return DNS zones for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -35,7 +35,7 @@ class GetOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
 
     public function getUri(): string
     {
-        return '/organizations/:organization/dns/zones';
+        return '/organizations/:organization/dns_zones';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array

@@ -58,7 +58,7 @@ class GetFileStorageVolume200ResponseFileStorageVolumeNormalizer implements Deno
             unset($data['name']);
         }
         if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetFileStorageVolume200ResponseFileStorageVolumeDataCenter', 'json', $context));
+            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetFileStorageVolumePartDataCenter', 'json', $context));
             unset($data['data_center']);
         }
         if (\array_key_exists('associations', $data)) {

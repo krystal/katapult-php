@@ -62,7 +62,7 @@ class CountryStateNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['code']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\CountryStateCountry', 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Country', 'json', $context));
             unset($data['country']);
         }
         foreach ($data as $key => $value) {

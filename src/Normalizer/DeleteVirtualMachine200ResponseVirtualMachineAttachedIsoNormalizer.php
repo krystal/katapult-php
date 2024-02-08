@@ -58,7 +58,7 @@ class DeleteVirtualMachine200ResponseVirtualMachineAttachedIsoNormalizer impleme
             unset($data['name']);
         }
         if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
-            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DeleteVirtualMachinePartAttachedISOOperatingSystem', 'json', $context));
+            $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'Krystal\\Katapult\\KatapultAPI\\Model\\ISOOperatingSystem', 'json', $context));
             unset($data['operating_system']);
         } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
             $object->setOperatingSystem(null);

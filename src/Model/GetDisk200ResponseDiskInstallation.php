@@ -26,11 +26,11 @@ class GetDisk200ResponseDiskInstallation extends \ArrayObject
      */
     protected $id;
     /**
-     * @var GetDiskPartInstallationDiskTemplateVersion
+     * @var DiskTemplateVersion
      */
     protected $diskTemplateVersion;
     /**
-     * @var GetDiskPartInstallationAttributesItem[]
+     * @var DiskInstallationAttribute[]
      */
     protected $attributes;
 
@@ -47,12 +47,12 @@ class GetDisk200ResponseDiskInstallation extends \ArrayObject
         return $this;
     }
 
-    public function getDiskTemplateVersion(): GetDiskPartInstallationDiskTemplateVersion
+    public function getDiskTemplateVersion(): DiskTemplateVersion
     {
         return $this->diskTemplateVersion;
     }
 
-    public function setDiskTemplateVersion(GetDiskPartInstallationDiskTemplateVersion $diskTemplateVersion): self
+    public function setDiskTemplateVersion(DiskTemplateVersion $diskTemplateVersion): self
     {
         $this->initialized['diskTemplateVersion'] = true;
         $this->diskTemplateVersion = $diskTemplateVersion;
@@ -61,7 +61,7 @@ class GetDisk200ResponseDiskInstallation extends \ArrayObject
     }
 
     /**
-     * @return GetDiskPartInstallationAttributesItem[]
+     * @return DiskInstallationAttribute[]
      */
     public function getAttributes(): array
     {
@@ -69,7 +69,7 @@ class GetDisk200ResponseDiskInstallation extends \ArrayObject
     }
 
     /**
-     * @param GetDiskPartInstallationAttributesItem[] $attributes
+     * @param DiskInstallationAttribute[] $attributes
      */
     public function setAttributes(array $attributes): self
     {

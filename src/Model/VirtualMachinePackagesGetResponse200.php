@@ -22,7 +22,7 @@ class VirtualMachinePackagesGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var VirtualMachinePackagesGetResponse200Pagination
+     * @var PaginationObject
      */
     protected $pagination;
     /**
@@ -30,12 +30,12 @@ class VirtualMachinePackagesGetResponse200 extends \ArrayObject
      */
     protected $virtualMachinePackages;
 
-    public function getPagination(): VirtualMachinePackagesGetResponse200Pagination
+    public function getPagination(): PaginationObject
     {
         return $this->pagination;
     }
 
-    public function setPagination(VirtualMachinePackagesGetResponse200Pagination $pagination): self
+    public function setPagination(PaginationObject $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;

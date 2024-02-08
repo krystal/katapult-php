@@ -64,7 +64,7 @@ class DataCenterNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setPermalink(null);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCenterCountry', 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Country', 'json', $context));
             unset($data['country']);
         }
         foreach ($data as $key => $value) {

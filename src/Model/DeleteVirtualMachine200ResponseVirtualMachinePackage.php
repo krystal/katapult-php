@@ -58,7 +58,7 @@ class DeleteVirtualMachine200ResponseVirtualMachinePackage extends \ArrayObject
      */
     protected $privacy;
     /**
-     * @var DeleteVirtualMachinePartPackageIcon|null
+     * @var VirtualMachinePackageIcon|null
      */
     protected $icon;
 
@@ -179,12 +179,12 @@ class DeleteVirtualMachine200ResponseVirtualMachinePackage extends \ArrayObject
         return $this;
     }
 
-    public function getIcon(): ?DeleteVirtualMachinePartPackageIcon
+    public function getIcon(): ?VirtualMachinePackageIcon
     {
         return $this->icon;
     }
 
-    public function setIcon(?DeleteVirtualMachinePartPackageIcon $icon): self
+    public function setIcon(?VirtualMachinePackageIcon $icon): self
     {
         $this->initialized['icon'] = true;
         $this->icon = $icon;

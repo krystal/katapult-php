@@ -50,7 +50,7 @@ class GetOrganizationDisksPartVirtualMachineDiskNormalizer implements Denormaliz
             return $object;
         }
         if (\array_key_exists('virtual_machine', $data)) {
-            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationDisksPartVirtualMachineDiskVirtualMachine', 'json', $context));
+            $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationDisksPartVirtualMachine', 'json', $context));
             unset($data['virtual_machine']);
         }
         foreach ($data as $key => $value) {

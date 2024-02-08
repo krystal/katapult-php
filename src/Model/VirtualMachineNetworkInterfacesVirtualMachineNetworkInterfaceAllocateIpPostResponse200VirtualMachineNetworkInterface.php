@@ -26,7 +26,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPos
      */
     protected $id;
     /**
-     * @var PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualMachine
+     * @var PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine
      */
     protected $virtualMachine;
     /**
@@ -34,7 +34,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPos
      */
     protected $name;
     /**
-     * @var PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork
+     * @var PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork
      */
     protected $network;
     /**
@@ -46,7 +46,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPos
      */
     protected $state;
     /**
-     * @var PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceIpAddressesItem[]
+     * @var PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses[]
      */
     protected $ipAddresses;
 
@@ -63,12 +63,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPos
         return $this;
     }
 
-    public function getVirtualMachine(): PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualMachine
+    public function getVirtualMachine(): PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    public function setVirtualMachine(PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualMachine $virtualMachine): self
+    public function setVirtualMachine(PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;
@@ -89,12 +89,12 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPos
         return $this;
     }
 
-    public function getNetwork(): PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork
+    public function getNetwork(): PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork $network): self
+    public function setNetwork(PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;
@@ -129,7 +129,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPos
     }
 
     /**
-     * @return PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceIpAddressesItem[]
+     * @return PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses[]
      */
     public function getIpAddresses(): array
     {
@@ -137,7 +137,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPos
     }
 
     /**
-     * @param PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceIpAddressesItem[] $ipAddresses
+     * @param PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses[] $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

@@ -53,9 +53,9 @@ class DNSZoneArgumentsNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('ttl', $data)) {
-            $object->setTtl($data['ttl']);
-            unset($data['ttl']);
+        if (\array_key_exists('default_ttl', $data)) {
+            $object->setDefaultTtl($data['default_ttl']);
+            unset($data['default_ttl']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -72,9 +72,11 @@ class DNSZoneArgumentsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        $data['name'] = $object->getName();
-        if ($object->isInitialized('ttl') && null !== $object->getTtl()) {
-            $data['ttl'] = $object->getTtl();
+        if ($object->isInitialized('name') && null !== $object->getName()) {
+            $data['name'] = $object->getName();
+        }
+        if ($object->isInitialized('defaultTtl') && null !== $object->getDefaultTtl()) {
+            $data['default_ttl'] = $object->getDefaultTtl();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
