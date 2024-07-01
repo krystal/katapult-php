@@ -12,5 +12,6 @@ enum VirtualMachineStateEnum: string
     case Migrating = 'migrating';
     case Stopping = 'stopping';
     case ShuttingDown = 'shutting_down';
+    case Transferring = 'transferring';
     case Orphaned = 'orphaned';
 }

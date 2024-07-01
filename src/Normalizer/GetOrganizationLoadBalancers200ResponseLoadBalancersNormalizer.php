@@ -84,20 +84,16 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancersNormalizer implements 
             unset($data['resource_ids']);
         }
         if (\array_key_exists('ip_address', $data)) {
-            $values_2 = [];
-            foreach ($data['ip_address'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationLoadBalancersPartIPAddress', 'json', $context);
-            }
-            $object->setIpAddress($values_2);
+            $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationLoadBalancersPartIPAddress', 'json', $context));
             unset($data['ip_address']);
         }
         if (\array_key_exists('data_center', $data)) {
             $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationLoadBalancersPartDataCenter', 'json', $context));
             unset($data['data_center']);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_2;
             }
         }
 
@@ -137,18 +133,14 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancersNormalizer implements 
             $data['resource_ids'] = $values_1;
         }
         if ($object->isInitialized('ipAddress') && null !== $object->getIpAddress()) {
-            $values_2 = [];
-            foreach ($object->getIpAddress() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-            }
-            $data['ip_address'] = $values_2;
+            $data['ip_address'] = $this->normalizer->normalize($object->getIpAddress(), 'json', $context);
         }
         if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
             $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
         }
-        foreach ($object as $key => $value_3) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_3;
+                $data[$key] = $value_2;
             }
         }
 

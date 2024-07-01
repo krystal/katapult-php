@@ -44,7 +44,7 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
     }
 
     /**
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostResponse200|null
+     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostResponse201|null
      *
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersForbiddenException
@@ -56,8 +56,8 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationLoadBalancersPostResponse200', 'json');
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationLoadBalancersPostResponse201', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersBadRequestException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator400Response', 'json'), $response);
