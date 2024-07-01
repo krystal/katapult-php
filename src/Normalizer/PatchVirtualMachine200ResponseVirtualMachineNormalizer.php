@@ -123,6 +123,12 @@ class PatchVirtualMachine200ResponseVirtualMachineNormalizer implements Denormal
         } elseif (\array_key_exists('cpu_cores', $data) && $data['cpu_cores'] === null) {
             $object->setCpuCores(null);
         }
+        if (\array_key_exists('use_dedicated_cpus', $data) && $data['use_dedicated_cpus'] !== null) {
+            $object->setUseDedicatedCpus($data['use_dedicated_cpus']);
+            unset($data['use_dedicated_cpus']);
+        } elseif (\array_key_exists('use_dedicated_cpus', $data) && $data['use_dedicated_cpus'] === null) {
+            $object->setUseDedicatedCpus(null);
+        }
         if (\array_key_exists('gpu_type', $data) && $data['gpu_type'] !== null) {
             $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchVirtualMachine200ResponseVirtualMachineGpuType', 'json', $context));
             unset($data['gpu_type']);
@@ -220,6 +226,9 @@ class PatchVirtualMachine200ResponseVirtualMachineNormalizer implements Denormal
         }
         if ($object->isInitialized('cpuCores') && null !== $object->getCpuCores()) {
             $data['cpu_cores'] = $object->getCpuCores();
+        }
+        if ($object->isInitialized('useDedicatedCpus') && null !== $object->getUseDedicatedCpus()) {
+            $data['use_dedicated_cpus'] = $object->getUseDedicatedCpus();
         }
         if ($object->isInitialized('gpuType') && null !== $object->getGpuType()) {
             $data['gpu_type'] = $this->normalizer->normalize($object->getGpuType(), 'json', $context);

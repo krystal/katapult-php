@@ -93,6 +93,10 @@ class DeleteVirtualMachine200ResponseVirtualMachinePackageNormalizer implements 
         } elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
             $object->setIcon(null);
         }
+        if (\array_key_exists('use_dedicated_cpus', $data)) {
+            $object->setUseDedicatedCpus($data['use_dedicated_cpus']);
+            unset($data['use_dedicated_cpus']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -137,6 +141,9 @@ class DeleteVirtualMachine200ResponseVirtualMachinePackageNormalizer implements 
         }
         if ($object->isInitialized('icon') && null !== $object->getIcon()) {
             $data['icon'] = $this->normalizer->normalize($object->getIcon(), 'json', $context);
+        }
+        if ($object->isInitialized('useDedicatedCpus') && null !== $object->getUseDedicatedCpus()) {
+            $data['use_dedicated_cpus'] = $object->getUseDedicatedCpus();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

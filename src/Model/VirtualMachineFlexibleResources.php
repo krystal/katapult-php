@@ -29,6 +29,10 @@ class VirtualMachineFlexibleResources extends \ArrayObject
      * @var int
      */
     protected $memoryInGb;
+    /**
+     * @var bool
+     */
+    protected $useDedicatedCpus;
 
     public function getCpuCores(): int
     {
@@ -52,6 +56,19 @@ class VirtualMachineFlexibleResources extends \ArrayObject
     {
         $this->initialized['memoryInGb'] = true;
         $this->memoryInGb = $memoryInGb;
+
+        return $this;
+    }
+
+    public function getUseDedicatedCpus(): bool
+    {
+        return $this->useDedicatedCpus;
+    }
+
+    public function setUseDedicatedCpus(bool $useDedicatedCpus): self
+    {
+        $this->initialized['useDedicatedCpus'] = true;
+        $this->useDedicatedCpus = $useDedicatedCpus;
 
         return $this;
     }

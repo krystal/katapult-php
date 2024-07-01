@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Krystal\Katapult\KatapultAPI\Model;
 
-class OrganizationsOrganizationLoadBalancersPostResponse200 extends \ArrayObject
+class OrganizationsOrganizationLoadBalancersPostResponse201 extends \ArrayObject
 {
     /**
      * @var array
@@ -24,14 +24,14 @@ class OrganizationsOrganizationLoadBalancersPostResponse200 extends \ArrayObject
     /**
      * The load balancer that has been created.
      *
-     * @var OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer
+     * @var OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer
      */
     protected $loadBalancer;
 
     /**
      * The load balancer that has been created.
      */
-    public function getLoadBalancer(): OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer
+    public function getLoadBalancer(): OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer
     {
         return $this->loadBalancer;
     }
@@ -39,7 +39,7 @@ class OrganizationsOrganizationLoadBalancersPostResponse200 extends \ArrayObject
     /**
      * The load balancer that has been created.
      */
-    public function setLoadBalancer(OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer $loadBalancer): self
+    public function setLoadBalancer(OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer $loadBalancer): self
     {
         $this->initialized['loadBalancer'] = true;
         $this->loadBalancer = $loadBalancer;

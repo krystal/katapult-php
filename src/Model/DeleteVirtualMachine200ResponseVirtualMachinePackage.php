@@ -61,6 +61,10 @@ class DeleteVirtualMachine200ResponseVirtualMachinePackage extends \ArrayObject
      * @var VirtualMachinePackageIcon|null
      */
     protected $icon;
+    /**
+     * @var bool
+     */
+    protected $useDedicatedCpus;
 
     public function getId(): string
     {
@@ -188,6 +192,19 @@ class DeleteVirtualMachine200ResponseVirtualMachinePackage extends \ArrayObject
     {
         $this->initialized['icon'] = true;
         $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getUseDedicatedCpus(): bool
+    {
+        return $this->useDedicatedCpus;
+    }
+
+    public function setUseDedicatedCpus(bool $useDedicatedCpus): self
+    {
+        $this->initialized['useDedicatedCpus'] = true;
+        $this->useDedicatedCpus = $useDedicatedCpus;
 
         return $this;
     }

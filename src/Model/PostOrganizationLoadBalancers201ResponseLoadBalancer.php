@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Krystal\Katapult\KatapultAPI\Model;
 
-class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
+class PostOrganizationLoadBalancers201ResponseLoadBalancer extends \ArrayObject
 {
     /**
      * @var array
@@ -46,7 +46,7 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
      */
     protected $resourceIds;
     /**
-     * @var PostOrganizationLoadBalancersPartIPAddress[]
+     * @var PostOrganizationLoadBalancersPartIPAddress
      */
     protected $ipAddress;
     /**
@@ -168,18 +168,12 @@ class PostOrganizationLoadBalancers200ResponseLoadBalancer extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return PostOrganizationLoadBalancersPartIPAddress[]
-     */
-    public function getIpAddress(): array
+    public function getIpAddress(): PostOrganizationLoadBalancersPartIPAddress
     {
         return $this->ipAddress;
     }
 
-    /**
-     * @param PostOrganizationLoadBalancersPartIPAddress[] $ipAddress
-     */
-    public function setIpAddress(array $ipAddress): self
+    public function setIpAddress(PostOrganizationLoadBalancersPartIPAddress $ipAddress): self
     {
         $this->initialized['ipAddress'] = true;
         $this->ipAddress = $ipAddress;

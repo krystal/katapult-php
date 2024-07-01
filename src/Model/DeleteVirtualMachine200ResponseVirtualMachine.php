@@ -82,6 +82,10 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $cpuCores;
     /**
+     * @var bool|null
+     */
+    protected $useDedicatedCpus;
+    /**
      * @var DeleteVirtualMachine200ResponseVirtualMachineGpuType|null
      */
     protected $gpuType;
@@ -293,6 +297,19 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     {
         $this->initialized['cpuCores'] = true;
         $this->cpuCores = $cpuCores;
+
+        return $this;
+    }
+
+    public function getUseDedicatedCpus(): ?bool
+    {
+        return $this->useDedicatedCpus;
+    }
+
+    public function setUseDedicatedCpus(?bool $useDedicatedCpus): self
+    {
+        $this->initialized['useDedicatedCpus'] = true;
+        $this->useDedicatedCpus = $useDedicatedCpus;
 
         return $this;
     }

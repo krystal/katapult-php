@@ -46,7 +46,7 @@ class GetLoadBalancer200ResponseLoadBalancer extends \ArrayObject
      */
     protected $resourceIds;
     /**
-     * @var GetLoadBalancerPartIPAddress[]
+     * @var GetLoadBalancerPartIPAddress
      */
     protected $ipAddress;
     /**
@@ -168,18 +168,12 @@ class GetLoadBalancer200ResponseLoadBalancer extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return GetLoadBalancerPartIPAddress[]
-     */
-    public function getIpAddress(): array
+    public function getIpAddress(): GetLoadBalancerPartIPAddress
     {
         return $this->ipAddress;
     }
 
-    /**
-     * @param GetLoadBalancerPartIPAddress[] $ipAddress
-     */
-    public function setIpAddress(array $ipAddress): self
+    public function setIpAddress(GetLoadBalancerPartIPAddress $ipAddress): self
     {
         $this->initialized['ipAddress'] = true;
         $this->ipAddress = $ipAddress;

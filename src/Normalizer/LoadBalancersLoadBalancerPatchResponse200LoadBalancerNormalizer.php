@@ -84,11 +84,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer implements
             unset($data['resource_ids']);
         }
         if (\array_key_exists('ip_address', $data)) {
-            $values_2 = [];
-            foreach ($data['ip_address'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancerPartIPAddress', 'json', $context);
-            }
-            $object->setIpAddress($values_2);
+            $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancerPartIPAddress', 'json', $context));
             unset($data['ip_address']);
         }
         if (\array_key_exists('https_redirect', $data)) {
@@ -112,24 +108,24 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer implements
             unset($data['enable_weighting']);
         }
         if (\array_key_exists('weights', $data)) {
-            $values_3 = [];
-            foreach ($data['weights'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Krystal\\Katapult\\KatapultAPI\\Model\\LoadBalancerWeight', 'json', $context);
+            $values_2 = [];
+            foreach ($data['weights'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Krystal\\Katapult\\KatapultAPI\\Model\\LoadBalancerWeight', 'json', $context);
             }
-            $object->setWeights($values_3);
+            $object->setWeights($values_2);
             unset($data['weights']);
         }
         if (\array_key_exists('standby_vms', $data)) {
-            $values_4 = [];
-            foreach ($data['standby_vms'] as $value_4) {
-                $values_4[] = $value_4;
+            $values_3 = [];
+            foreach ($data['standby_vms'] as $value_3) {
+                $values_3[] = $value_3;
             }
-            $object->setStandbyVms($values_4);
+            $object->setStandbyVms($values_3);
             unset($data['standby_vms']);
         }
-        foreach ($data as $key => $value_5) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_5;
+                $object[$key] = $value_4;
             }
         }
 
@@ -169,11 +165,7 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer implements
             $data['resource_ids'] = $values_1;
         }
         if ($object->isInitialized('ipAddress') && null !== $object->getIpAddress()) {
-            $values_2 = [];
-            foreach ($object->getIpAddress() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-            }
-            $data['ip_address'] = $values_2;
+            $data['ip_address'] = $this->normalizer->normalize($object->getIpAddress(), 'json', $context);
         }
         if ($object->isInitialized('httpsRedirect') && null !== $object->getHttpsRedirect()) {
             $data['https_redirect'] = $object->getHttpsRedirect();
@@ -191,22 +183,22 @@ class LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer implements
             $data['enable_weighting'] = $object->getEnableWeighting();
         }
         if ($object->isInitialized('weights') && null !== $object->getWeights()) {
-            $values_3 = [];
-            foreach ($object->getWeights() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $values_2 = [];
+            foreach ($object->getWeights() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $data['weights'] = $values_3;
+            $data['weights'] = $values_2;
         }
         if ($object->isInitialized('standbyVms') && null !== $object->getStandbyVms()) {
-            $values_4 = [];
-            foreach ($object->getStandbyVms() as $value_4) {
-                $values_4[] = $value_4;
+            $values_3 = [];
+            foreach ($object->getStandbyVms() as $value_3) {
+                $values_3[] = $value_3;
             }
-            $data['standby_vms'] = $values_4;
+            $data['standby_vms'] = $values_3;
         }
-        foreach ($object as $key => $value_5) {
+        foreach ($object as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_5;
+                $data[$key] = $value_4;
             }
         }
 

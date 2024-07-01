@@ -20,7 +20,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class OrganizationsOrganizationLoadBalancersPostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class AddressListEntryLookupNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -29,12 +29,12 @@ class OrganizationsOrganizationLoadBalancersPostResponse200Normalizer implements
 
     public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationLoadBalancersPostResponse200';
+        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\AddressListEntryLookup';
     }
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationLoadBalancersPostResponse200';
+        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\AddressListEntryLookup';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -45,13 +45,13 @@ class OrganizationsOrganizationLoadBalancersPostResponse200Normalizer implements
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostResponse200();
+        $object = new \Krystal\Katapult\KatapultAPI\Model\AddressListEntryLookup();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('load_balancer', $data)) {
-            $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationLoadBalancersPostResponse200LoadBalancer', 'json', $context));
-            unset($data['load_balancer']);
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
+            unset($data['id']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -68,7 +68,9 @@ class OrganizationsOrganizationLoadBalancersPostResponse200Normalizer implements
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        $data['load_balancer'] = $this->normalizer->normalize($object->getLoadBalancer(), 'json', $context);
+        if ($object->isInitialized('id') && null !== $object->getId()) {
+            $data['id'] = $object->getId();
+        }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;
@@ -80,6 +82,6 @@ class OrganizationsOrganizationLoadBalancersPostResponse200Normalizer implements
 
     public function getSupportedTypes(string $format = null): array
     {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationLoadBalancersPostResponse200' => false];
+        return ['Krystal\\Katapult\\KatapultAPI\\Model\\AddressListEntryLookup' => false];
     }
 }

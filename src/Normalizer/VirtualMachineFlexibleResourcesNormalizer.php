@@ -57,6 +57,10 @@ class VirtualMachineFlexibleResourcesNormalizer implements DenormalizerInterface
             $object->setMemoryInGb($data['memory_in_gb']);
             unset($data['memory_in_gb']);
         }
+        if (\array_key_exists('use_dedicated_cpus', $data)) {
+            $object->setUseDedicatedCpus($data['use_dedicated_cpus']);
+            unset($data['use_dedicated_cpus']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -74,6 +78,9 @@ class VirtualMachineFlexibleResourcesNormalizer implements DenormalizerInterface
         $data = [];
         $data['cpu_cores'] = $object->getCpuCores();
         $data['memory_in_gb'] = $object->getMemoryInGb();
+        if ($object->isInitialized('useDedicatedCpus') && null !== $object->getUseDedicatedCpus()) {
+            $data['use_dedicated_cpus'] = $object->getUseDedicatedCpus();
+        }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

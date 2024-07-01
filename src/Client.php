@@ -107,6 +107,27 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationPolicyLimitsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationPolicyLimitsBadRequestException
+     * @throws Exception\GetOrganizationPolicyLimitsForbiddenException
+     * @throws Exception\GetOrganizationPolicyLimitsNotFoundException
+     * @throws Exception\GetOrganizationPolicyLimitsTooManyRequestsException
+     */
+    public function getOrganizationPolicyLimits(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationPolicyLimits($queryParameters), $fetch);
+    }
+
+    /**
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var int    $page
      * @var int    $per_page
@@ -529,6 +550,22 @@ class Client extends Runtime\Client\Client
     public function postVirtualMachineAllocateIp(Model\VirtualMachinesVirtualMachineAllocateIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineAllocateIp($requestBody), $fetch);
+    }
+
+    /**
+     * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $accept Accept content header text/plain|application/json
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetVirtualMachineAuthorizedKeysBadRequestException
+     * @throws Exception\GetVirtualMachineAuthorizedKeysForbiddenException
+     * @throws Exception\GetVirtualMachineAuthorizedKeysNotFoundException
+     * @throws Exception\GetVirtualMachineAuthorizedKeysTooManyRequestsException
+     */
+    public function getVirtualMachineAuthorizedKeys(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    {
+        return $this->executeEndpoint(new Endpoint\GetVirtualMachineAuthorizedKeys($accept), $fetch);
     }
 
     /**
@@ -1496,6 +1533,205 @@ class Client extends Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
+     * @var int $page
+     * @var int $per_page
+     *          }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetAddressListsBadRequestException
+     * @throws Exception\GetAddressListsForbiddenException
+     * @throws Exception\GetAddressListsTooManyRequestsException
+     */
+    public function getAddressLists(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetAddressLists($queryParameters), $fetch);
+    }
+
+    /**
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var int    $page
+     * @var int    $per_page
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationAddressListsBadRequestException
+     * @throws Exception\GetOrganizationAddressListsForbiddenException
+     * @throws Exception\GetOrganizationAddressListsNotFoundException
+     * @throws Exception\GetOrganizationAddressListsTooManyRequestsException
+     */
+    public function getOrganizationAddressLists(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationAddressLists($queryParameters), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAddressListsPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostOrganizationAddressListsBadRequestException
+     * @throws Exception\PostOrganizationAddressListsForbiddenException
+     * @throws Exception\PostOrganizationAddressListsNotFoundException
+     * @throws Exception\PostOrganizationAddressListsUnprocessableEntityException
+     * @throws Exception\PostOrganizationAddressListsTooManyRequestsException
+     */
+    public function postOrganizationAddressLists(Model\OrganizationsOrganizationAddressListsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostOrganizationAddressLists($requestBody), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteAddressListBadRequestException
+     * @throws Exception\DeleteAddressListForbiddenException
+     * @throws Exception\DeleteAddressListNotFoundException
+     * @throws Exception\DeleteAddressListTooManyRequestsException
+     */
+    public function deleteAddressList(Model\AddressListsAddressListDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteAddressList($requestBody), $fetch);
+    }
+
+    /**
+     * @param array $queryParameters {
+     *
+     * @var string $address_list[id] The address list to return. All 'address_list[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetAddressListBadRequestException
+     * @throws Exception\GetAddressListForbiddenException
+     * @throws Exception\GetAddressListNotFoundException
+     * @throws Exception\GetAddressListTooManyRequestsException
+     */
+    public function getAddressList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetAddressList($queryParameters), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchAddressListBadRequestException
+     * @throws Exception\PatchAddressListForbiddenException
+     * @throws Exception\PatchAddressListNotFoundException
+     * @throws Exception\PatchAddressListUnprocessableEntityException
+     * @throws Exception\PatchAddressListTooManyRequestsException
+     */
+    public function patchAddressList(Model\AddressListsAddressListPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchAddressList($requestBody), $fetch);
+    }
+
+    /**
+     * @param array $queryParameters {
+     *
+     * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
+     * @var int    $page
+     * @var int    $per_page
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListEntriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetAddressListEntriesBadRequestException
+     * @throws Exception\GetAddressListEntriesForbiddenException
+     * @throws Exception\GetAddressListEntriesNotFoundException
+     * @throws Exception\GetAddressListEntriesTooManyRequestsException
+     */
+    public function getAddressListEntries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetAddressListEntries($queryParameters), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListEntriesPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostAddressListEntriesBadRequestException
+     * @throws Exception\PostAddressListEntriesForbiddenException
+     * @throws Exception\PostAddressListEntriesNotFoundException
+     * @throws Exception\PostAddressListEntriesUnprocessableEntityException
+     * @throws Exception\PostAddressListEntriesTooManyRequestsException
+     */
+    public function postAddressListEntries(Model\AddressListsAddressListEntriesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostAddressListEntries($requestBody), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteAddressListEntryBadRequestException
+     * @throws Exception\DeleteAddressListEntryForbiddenException
+     * @throws Exception\DeleteAddressListEntryNotFoundException
+     * @throws Exception\DeleteAddressListEntryTooManyRequestsException
+     */
+    public function deleteAddressListEntry(Model\AddressListEntriesAddressListEntryDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteAddressListEntry($requestBody), $fetch);
+    }
+
+    /**
+     * @param array $queryParameters {
+     *
+     * @var string $address_list_entry[id] The address list entry to return. All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetAddressListEntryBadRequestException
+     * @throws Exception\GetAddressListEntryForbiddenException
+     * @throws Exception\GetAddressListEntryNotFoundException
+     * @throws Exception\GetAddressListEntryTooManyRequestsException
+     */
+    public function getAddressListEntry(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetAddressListEntry($queryParameters), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchAddressListEntryBadRequestException
+     * @throws Exception\PatchAddressListEntryForbiddenException
+     * @throws Exception\PatchAddressListEntryNotFoundException
+     * @throws Exception\PatchAddressListEntryUnprocessableEntityException
+     * @throws Exception\PatchAddressListEntryTooManyRequestsException
+     */
+    public function patchAddressListEntry(Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchAddressListEntry($requestBody), $fetch);
+    }
+
+    /**
+     * @param array $queryParameters {
+     *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var int    $page
@@ -1563,7 +1799,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationLoadBalancersBadRequestException
      * @throws Exception\PostOrganizationLoadBalancersForbiddenException
@@ -2495,7 +2731,7 @@ class Client extends Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('http://katapult-api.localhost/core/v1');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.katapult.io/core/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {
