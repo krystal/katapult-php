@@ -10,7 +10,12 @@ A PHP library for integrating with [Katapult](https://katapult.io/)
 ## Version constraints
 * [v1.x](https://github.com/krystal/katapult-php/tree/1.x) supports PHP 5.6
 * [v2.x](https://github.com/krystal/katapult-php/tree/2.x) supports PHP 7.4
-* v3.x supports PHP 8.1
+
+From version 3, we switched to an OpenAPI based generator.
+
+Versions 3 and up require a minimum of PHP 8.1 and follow semantic versioning.
+
+Please refer to `composer.json` for any specific language requirements for your version.
 
 ## Installation
 
