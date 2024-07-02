@@ -7,13 +7,16 @@
     "jane-php/open-api-runtime": "^7.5"
   },
   "require-dev": {
-    "jane-php/open-api-3": "^7.5"
+    "jane-php/open-api-3": "7.5"
   },
   "config": {
     "preferred-install": {
       "*": "dist"
     },
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
   },
   "autoload": {
     "psr-4": {
