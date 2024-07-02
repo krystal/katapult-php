@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/krystal/katapult-php/compare/v4.0.0...v4.0.1) (2024-07-02)
+
+
+### Bug Fixes
+
+* lock Jane to 7.5 ([7ed6c55](https://github.com/krystal/katapult-php/commit/7ed6c555280bb26a47735aa4aff11b3e0a462753))
+
 ## [4.0.0](https://github.com/krystal/katapult-php/compare/v3.0.2...v4.0.0) (2024-07-01)
 
 
