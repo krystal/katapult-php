@@ -22,16 +22,16 @@ class OrganizationsOrganizationAvailableNetworksGetResponse200 extends \ArrayObj
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var GetOrganizationAvailableNetworks200ResponseNetworks[]
+     * @var list<GetOrganizationAvailableNetworks200ResponseNetworks>
      */
     protected $networks;
     /**
-     * @var GetOrganizationAvailableNetworks200ResponseVirtualNetworks[]
+     * @var list<GetOrganizationAvailableNetworks200ResponseVirtualNetworks>
      */
     protected $virtualNetworks;
 
     /**
-     * @return GetOrganizationAvailableNetworks200ResponseNetworks[]
+     * @return list<GetOrganizationAvailableNetworks200ResponseNetworks>
      */
     public function getNetworks(): array
     {
@@ -39,7 +39,7 @@ class OrganizationsOrganizationAvailableNetworksGetResponse200 extends \ArrayObj
     }
 
     /**
-     * @param GetOrganizationAvailableNetworks200ResponseNetworks[] $networks
+     * @param list<GetOrganizationAvailableNetworks200ResponseNetworks> $networks
      */
     public function setNetworks(array $networks): self
     {
@@ -50,7 +50,7 @@ class OrganizationsOrganizationAvailableNetworksGetResponse200 extends \ArrayObj
     }
 
     /**
-     * @return GetOrganizationAvailableNetworks200ResponseVirtualNetworks[]
+     * @return list<GetOrganizationAvailableNetworks200ResponseVirtualNetworks>
      */
     public function getVirtualNetworks(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationAvailableNetworksGetResponse200 extends \ArrayObj
     }
 
     /**
-     * @param GetOrganizationAvailableNetworks200ResponseVirtualNetworks[] $virtualNetworks
+     * @param list<GetOrganizationAvailableNetworks200ResponseVirtualNetworks> $virtualNetworks
      */
     public function setVirtualNetworks(array $virtualNetworks): self
     {

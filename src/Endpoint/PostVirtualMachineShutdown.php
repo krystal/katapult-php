@@ -14,7 +14,7 @@ class PostVirtualMachineShutdown extends \Krystal\Katapult\KatapultAPI\Runtime\C
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PostVirtualMachineShutdown extends \Krystal\Katapult\KatapultAPI\Runtime\C
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

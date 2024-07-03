@@ -28,7 +28,7 @@ class AddressListsGetResponse200 extends \ArrayObject
     /**
      * A list of all global address lists.
      *
-     * @var GetAddressLists200ResponseAddressLists[]
+     * @var list<GetAddressLists200ResponseAddressLists>
      */
     protected $addressLists;
 
@@ -48,7 +48,7 @@ class AddressListsGetResponse200 extends \ArrayObject
     /**
      * A list of all global address lists.
      *
-     * @return GetAddressLists200ResponseAddressLists[]
+     * @return list<GetAddressLists200ResponseAddressLists>
      */
     public function getAddressLists(): array
     {
@@ -58,7 +58,7 @@ class AddressListsGetResponse200 extends \ArrayObject
     /**
      * A list of all global address lists.
      *
-     * @param GetAddressLists200ResponseAddressLists[] $addressLists
+     * @param list<GetAddressLists200ResponseAddressLists> $addressLists
      */
     public function setAddressLists(array $addressLists): self
     {

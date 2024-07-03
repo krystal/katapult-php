@@ -66,7 +66,7 @@ class GetOrganizationVirtualMachineGroups extends \Krystal\Katapult\KatapultAPI\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

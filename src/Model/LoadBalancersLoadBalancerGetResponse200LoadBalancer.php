@@ -38,11 +38,11 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
      */
     protected $resourceType;
     /**
-     * @var LoadBalancerResource[]
+     * @var list<LoadBalancerResource>
      */
     protected $resources;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $resourceIds;
     /**
@@ -70,11 +70,11 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
      */
     protected $enableWeighting;
     /**
-     * @var LoadBalancerWeight[]
+     * @var list<LoadBalancerWeight>
      */
     protected $weights;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $standbyVms;
 
@@ -131,7 +131,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return LoadBalancerResource[]
+     * @return list<LoadBalancerResource>
      */
     public function getResources(): array
     {
@@ -139,7 +139,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param LoadBalancerResource[] $resources
+     * @param list<LoadBalancerResource> $resources
      */
     public function setResources(array $resources): self
     {
@@ -150,7 +150,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getResourceIds(): array
     {
@@ -158,7 +158,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param string[] $resourceIds
+     * @param list<string> $resourceIds
      */
     public function setResourceIds(array $resourceIds): self
     {
@@ -247,7 +247,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return LoadBalancerWeight[]
+     * @return list<LoadBalancerWeight>
      */
     public function getWeights(): array
     {
@@ -255,7 +255,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param LoadBalancerWeight[] $weights
+     * @param list<LoadBalancerWeight> $weights
      */
     public function setWeights(array $weights): self
     {
@@ -266,7 +266,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getStandbyVms(): array
     {
@@ -274,7 +274,7 @@ class LoadBalancersLoadBalancerGetResponse200LoadBalancer extends \ArrayObject
     }
 
     /**
-     * @param string[] $standbyVms
+     * @param list<string> $standbyVms
      */
     public function setStandbyVms(array $standbyVms): self
     {

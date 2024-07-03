@@ -28,7 +28,7 @@ class OrganizationsOrganizationDiskTemplatesGetResponse200 extends \ArrayObject
     /**
      * The list of disk templates.
      *
-     * @var GetOrganizationDiskTemplates200ResponseDiskTemplates[]
+     * @var list<GetOrganizationDiskTemplates200ResponseDiskTemplates>
      */
     protected $diskTemplates;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationDiskTemplatesGetResponse200 extends \ArrayObject
     /**
      * The list of disk templates.
      *
-     * @return GetOrganizationDiskTemplates200ResponseDiskTemplates[]
+     * @return list<GetOrganizationDiskTemplates200ResponseDiskTemplates>
      */
     public function getDiskTemplates(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationDiskTemplatesGetResponse200 extends \ArrayObject
     /**
      * The list of disk templates.
      *
-     * @param GetOrganizationDiskTemplates200ResponseDiskTemplates[] $diskTemplates
+     * @param list<GetOrganizationDiskTemplates200ResponseDiskTemplates> $diskTemplates
      */
     public function setDiskTemplates(array $diskTemplates): self
     {

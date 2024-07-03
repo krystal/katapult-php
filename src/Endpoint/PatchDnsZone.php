@@ -14,7 +14,7 @@ class PatchDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZonePatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZonePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PatchDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

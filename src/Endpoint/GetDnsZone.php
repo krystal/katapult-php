@@ -66,7 +66,7 @@ class GetDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDnsZoneNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDnsZoneTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

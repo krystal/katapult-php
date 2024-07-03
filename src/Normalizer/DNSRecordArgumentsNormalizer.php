@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,96 +21,186 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class DNSRecordArgumentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class DNSRecordArgumentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\DNSRecordArguments();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\DNSRecordArguments();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('name', $data)) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            }
+            if (\array_key_exists('type', $data)) {
+                $object->setType($data['type']);
+                unset($data['type']);
+            }
+            if (\array_key_exists('ttl', $data)) {
+                $object->setTtl($data['ttl']);
+                unset($data['ttl']);
+            }
+            if (\array_key_exists('priority', $data)) {
+                $object->setPriority($data['priority']);
+                unset($data['priority']);
+            }
+            if (\array_key_exists('content', $data)) {
+                $object->setContent($this->denormalizer->denormalize($data['content'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArguments', 'json', $context));
+                unset($data['content']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
-            unset($data['name']);
-        }
-        if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
-            unset($data['type']);
-        }
-        if (\array_key_exists('ttl', $data)) {
-            $object->setTtl($data['ttl']);
-            unset($data['ttl']);
-        }
-        if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
-            unset($data['priority']);
-        }
-        if (\array_key_exists('content', $data)) {
-            $object->setContent($this->denormalizer->denormalize($data['content'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArguments', 'json', $context));
-            unset($data['content']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
             }
-        }
-
-        return $object;
-    }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if ($object->isInitialized('type') && null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if ($object->isInitialized('ttl') && null !== $object->getTtl()) {
-            $data['ttl'] = $object->getTtl();
-        }
-        if ($object->isInitialized('priority') && null !== $object->getPriority()) {
-            $data['priority'] = $object->getPriority();
-        }
-        if ($object->isInitialized('content') && null !== $object->getContent()) {
-            $data['content'] = $this->normalizer->normalize($object->getContent(), 'json', $context);
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('type') && null !== $object->getType()) {
+                $data['type'] = $object->getType();
             }
+            if ($object->isInitialized('ttl') && null !== $object->getTtl()) {
+                $data['ttl'] = $object->getTtl();
+            }
+            if ($object->isInitialized('priority') && null !== $object->getPriority()) {
+                $data['priority'] = $object->getPriority();
+            }
+            if ($object->isInitialized('content') && null !== $object->getContent()) {
+                $data['content'] = $this->normalizer->normalize($object->getContent(), 'json', $context);
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class DNSRecordArgumentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments' => false];
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments';
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments';
+        }
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\DNSRecordArguments();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('name', $data)) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            }
+            if (\array_key_exists('type', $data)) {
+                $object->setType($data['type']);
+                unset($data['type']);
+            }
+            if (\array_key_exists('ttl', $data)) {
+                $object->setTtl($data['ttl']);
+                unset($data['ttl']);
+            }
+            if (\array_key_exists('priority', $data)) {
+                $object->setPriority($data['priority']);
+                unset($data['priority']);
+            }
+            if (\array_key_exists('content', $data)) {
+                $object->setContent($this->denormalizer->denormalize($data['content'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArguments', 'json', $context));
+                unset($data['content']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('type') && null !== $object->getType()) {
+                $data['type'] = $object->getType();
+            }
+            if ($object->isInitialized('ttl') && null !== $object->getTtl()) {
+                $data['ttl'] = $object->getTtl();
+            }
+            if ($object->isInitialized('priority') && null !== $object->getPriority()) {
+                $data['priority'] = $object->getPriority();
+            }
+            if ($object->isInitialized('content') && null !== $object->getContent()) {
+                $data['content'] = $this->normalizer->normalize($object->getContent(), 'json', $context);
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordArguments' => false];
+        }
     }
 }

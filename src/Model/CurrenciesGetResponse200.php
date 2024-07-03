@@ -28,7 +28,7 @@ class CurrenciesGetResponse200 extends \ArrayObject
     /**
      * The list of currencies.
      *
-     * @var GetCurrencies200ResponseCurrencies[]
+     * @var list<GetCurrencies200ResponseCurrencies>
      */
     protected $currencies;
 
@@ -48,7 +48,7 @@ class CurrenciesGetResponse200 extends \ArrayObject
     /**
      * The list of currencies.
      *
-     * @return GetCurrencies200ResponseCurrencies[]
+     * @return list<GetCurrencies200ResponseCurrencies>
      */
     public function getCurrencies(): array
     {
@@ -58,7 +58,7 @@ class CurrenciesGetResponse200 extends \ArrayObject
     /**
      * The list of currencies.
      *
-     * @param GetCurrencies200ResponseCurrencies[] $currencies
+     * @param list<GetCurrencies200ResponseCurrencies> $currencies
      */
     public function setCurrencies(array $currencies): self
     {

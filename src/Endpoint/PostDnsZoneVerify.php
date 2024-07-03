@@ -14,7 +14,7 @@ class PostDnsZoneVerify extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PostDnsZoneVerify extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

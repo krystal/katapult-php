@@ -14,7 +14,7 @@ class PostVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -53,7 +53,7 @@ class PostVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineDiskBackupPoliciesUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineDiskBackupPoliciesTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

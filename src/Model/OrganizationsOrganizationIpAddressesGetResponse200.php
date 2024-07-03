@@ -28,7 +28,7 @@ class OrganizationsOrganizationIpAddressesGetResponse200 extends \ArrayObject
     /**
      * The IP addresses belonging to this organization.
      *
-     * @var GetOrganizationIPAddresses200ResponseIPAddresses[]
+     * @var list<GetOrganizationIPAddresses200ResponseIPAddresses>
      */
     protected $ipAddresses;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationIpAddressesGetResponse200 extends \ArrayObject
     /**
      * The IP addresses belonging to this organization.
      *
-     * @return GetOrganizationIPAddresses200ResponseIPAddresses[]
+     * @return list<GetOrganizationIPAddresses200ResponseIPAddresses>
      */
     public function getIpAddresses(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationIpAddressesGetResponse200 extends \ArrayObject
     /**
      * The IP addresses belonging to this organization.
      *
-     * @param GetOrganizationIPAddresses200ResponseIPAddresses[] $ipAddresses
+     * @param list<GetOrganizationIPAddresses200ResponseIPAddresses> $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

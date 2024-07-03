@@ -34,7 +34,7 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
      */
     protected $network;
     /**
-     * @var GetVirtualMachineNetworkInterfacesPartIPAddresses[]
+     * @var list<GetVirtualMachineNetworkInterfacesPartIPAddresses>
      */
     protected $ipAddresses;
 
@@ -78,7 +78,7 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
     }
 
     /**
-     * @return GetVirtualMachineNetworkInterfacesPartIPAddresses[]
+     * @return list<GetVirtualMachineNetworkInterfacesPartIPAddresses>
      */
     public function getIpAddresses(): array
     {
@@ -86,7 +86,7 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
     }
 
     /**
-     * @param GetVirtualMachineNetworkInterfacesPartIPAddresses[] $ipAddresses
+     * @param list<GetVirtualMachineNetworkInterfacesPartIPAddresses> $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

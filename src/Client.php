@@ -15,7 +15,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DataCentersGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DataCentersGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDataCentersBadRequestException
      * @throws Exception\GetDataCentersForbiddenException
@@ -35,7 +35,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DataCentersDataCenterGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DataCentersDataCenterGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDataCenterBadRequestException
      * @throws Exception\GetDataCenterForbiddenException
@@ -56,7 +56,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DataCentersDataCenterDefaultNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DataCentersDataCenterDefaultNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDataCenterDefaultNetworkBadRequestException
      * @throws Exception\GetDataCenterDefaultNetworkForbiddenException
@@ -71,7 +71,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationsBadRequestException
      * @throws Exception\GetOrganizationsForbiddenException
@@ -91,7 +91,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationBadRequestException
      * @throws Exception\GetOrganizationForbiddenException
@@ -112,7 +112,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationPolicyLimitsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationPolicyLimitsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationPolicyLimitsBadRequestException
      * @throws Exception\GetOrganizationPolicyLimitsForbiddenException
@@ -135,7 +135,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationUsersWithAccessGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationUsersWithAccessGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationUsersWithAccessBadRequestException
      * @throws Exception\GetOrganizationUsersWithAccessForbiddenException
@@ -158,7 +158,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationManagedGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationManagedGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationManagedBadRequestException
      * @throws Exception\GetOrganizationManagedForbiddenException
@@ -173,7 +173,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationManagedPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationManagedPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationManagedBadRequestException
      * @throws Exception\PostOrganizationManagedForbiddenException
@@ -181,7 +181,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationManagedUnprocessableEntityException
      * @throws Exception\PostOrganizationManagedTooManyRequestsException
      */
-    public function postOrganizationManaged(Model\OrganizationsOrganizationManagedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationManaged(?Model\OrganizationsOrganizationManagedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationManaged($requestBody), $fetch);
     }
@@ -197,7 +197,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationDisksBadRequestException
      * @throws Exception\GetOrganizationDisksForbiddenException
@@ -217,7 +217,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DisksDiskGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DisksDiskGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDiskBadRequestException
      * @throws Exception\GetDiskForbiddenException
@@ -240,7 +240,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachineDisksBadRequestException
      * @throws Exception\GetVirtualMachineDisksForbiddenException
@@ -266,7 +266,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDiskTemplatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationDiskTemplatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationDiskTemplatesBadRequestException
      * @throws Exception\GetOrganizationDiskTemplatesForbiddenException
@@ -287,7 +287,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskTemplatesDiskTemplateGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskTemplatesDiskTemplateGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDiskTemplateBadRequestException
      * @throws Exception\GetDiskTemplateForbiddenException
@@ -310,7 +310,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskTemplatesDiskTemplateVersionsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskTemplatesDiskTemplateVersionsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDiskTemplateVersionsBadRequestException
      * @throws Exception\GetDiskTemplateVersionsForbiddenException
@@ -330,7 +330,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskTemplateVersionsDiskTemplateVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskTemplateVersionsDiskTemplateVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDiskTemplateVersionBadRequestException
      * @throws Exception\GetDiskTemplateVersionForbiddenException
@@ -350,7 +350,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDiskTemplateVersionSpecBadRequestException
      * @throws Exception\GetDiskTemplateVersionSpecForbiddenException
@@ -371,7 +371,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\GpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\GpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetGpuTypesBadRequestException
      * @throws Exception\GetGpuTypesForbiddenException
@@ -391,7 +391,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\GpuTypesGpuTypeGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\GpuTypesGpuTypeGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetGpuTypeBadRequestException
      * @throws Exception\GetGpuTypeForbiddenException
@@ -414,7 +414,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DataCentersDataCenterGpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DataCentersDataCenterGpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDataCenterGpuTypesBadRequestException
      * @throws Exception\GetDataCenterGpuTypesForbiddenException
@@ -437,7 +437,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationVirtualMachinesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationVirtualMachinesBadRequestException
      * @throws Exception\GetOrganizationVirtualMachinesForbiddenException
@@ -452,7 +452,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteVirtualMachineBadRequestException
      * @throws Exception\DeleteVirtualMachineForbiddenException
@@ -460,7 +460,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteVirtualMachineNotAcceptableException
      * @throws Exception\DeleteVirtualMachineTooManyRequestsException
      */
-    public function deleteVirtualMachine(Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteVirtualMachine(?Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteVirtualMachine($requestBody), $fetch);
     }
@@ -474,7 +474,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachineBadRequestException
      * @throws Exception\GetVirtualMachineForbiddenException
@@ -490,7 +490,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachinePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachinePatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchVirtualMachineBadRequestException
      * @throws Exception\PatchVirtualMachineForbiddenException
@@ -498,7 +498,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchVirtualMachineNotAcceptableException
      * @throws Exception\PatchVirtualMachineTooManyRequestsException
      */
-    public function patchVirtualMachine(Model\VirtualMachinesVirtualMachinePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchVirtualMachine(?Model\VirtualMachinesVirtualMachinePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchVirtualMachine($requestBody), $fetch);
     }
@@ -506,7 +506,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachinePackagePutResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachinePackagePutResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PutVirtualMachinePackageBadRequestException
      * @throws Exception\PutVirtualMachinePackageForbiddenException
@@ -514,7 +514,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PutVirtualMachinePackageNotAcceptableException
      * @throws Exception\PutVirtualMachinePackageTooManyRequestsException
      */
-    public function putVirtualMachinePackage(Model\VirtualMachinesVirtualMachinePackagePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function putVirtualMachinePackage(?Model\VirtualMachinesVirtualMachinePackagePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PutVirtualMachinePackage($requestBody), $fetch);
     }
@@ -522,7 +522,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineFlexibleResourcesPutResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineFlexibleResourcesPutResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PutVirtualMachineFlexibleResourcesBadRequestException
      * @throws Exception\PutVirtualMachineFlexibleResourcesForbiddenException
@@ -530,7 +530,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PutVirtualMachineFlexibleResourcesNotAcceptableException
      * @throws Exception\PutVirtualMachineFlexibleResourcesTooManyRequestsException
      */
-    public function putVirtualMachineFlexibleResources(Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function putVirtualMachineFlexibleResources(?Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PutVirtualMachineFlexibleResources($requestBody), $fetch);
     }
@@ -538,7 +538,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineAllocateIpBadRequestException
      * @throws Exception\PostVirtualMachineAllocateIpForbiddenException
@@ -547,7 +547,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineAllocateIpUnprocessableEntityException
      * @throws Exception\PostVirtualMachineAllocateIpTooManyRequestsException
      */
-    public function postVirtualMachineAllocateIp(Model\VirtualMachinesVirtualMachineAllocateIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineAllocateIp(?Model\VirtualMachinesVirtualMachineAllocateIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineAllocateIp($requestBody), $fetch);
     }
@@ -571,7 +571,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationVirtualMachinesBuildBadRequestException
      * @throws Exception\PostOrganizationVirtualMachinesBuildForbiddenException
@@ -579,7 +579,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationVirtualMachinesBuildUnprocessableEntityException
      * @throws Exception\PostOrganizationVirtualMachinesBuildTooManyRequestsException
      */
-    public function postOrganizationVirtualMachinesBuild(Model\OrganizationsOrganizationVirtualMachinesBuildPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationVirtualMachinesBuild(?Model\OrganizationsOrganizationVirtualMachinesBuildPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationVirtualMachinesBuild($requestBody), $fetch);
     }
@@ -587,7 +587,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecBadRequestException
      * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecForbiddenException
@@ -595,7 +595,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecUnprocessableEntityException
      * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecTooManyRequestsException
      */
-    public function postOrganizationVirtualMachinesBuildFromSpec(Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationVirtualMachinesBuildFromSpec(?Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationVirtualMachinesBuildFromSpec($requestBody), $fetch);
     }
@@ -608,7 +608,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildBadRequestException
      * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildForbiddenException
@@ -623,7 +623,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineStartPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineStartPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineStartBadRequestException
      * @throws Exception\PostVirtualMachineStartForbiddenException
@@ -631,7 +631,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineStartNotAcceptableException
      * @throws Exception\PostVirtualMachineStartTooManyRequestsException
      */
-    public function postVirtualMachineStart(Model\VirtualMachinesVirtualMachineStartPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineStart(?Model\VirtualMachinesVirtualMachineStartPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineStart($requestBody), $fetch);
     }
@@ -639,7 +639,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineStopPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineStopPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineStopBadRequestException
      * @throws Exception\PostVirtualMachineStopForbiddenException
@@ -647,7 +647,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineStopNotAcceptableException
      * @throws Exception\PostVirtualMachineStopTooManyRequestsException
      */
-    public function postVirtualMachineStop(Model\VirtualMachinesVirtualMachineStopPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineStop(?Model\VirtualMachinesVirtualMachineStopPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineStop($requestBody), $fetch);
     }
@@ -655,7 +655,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineShutdownPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineShutdownPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineShutdownBadRequestException
      * @throws Exception\PostVirtualMachineShutdownForbiddenException
@@ -663,7 +663,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineShutdownNotAcceptableException
      * @throws Exception\PostVirtualMachineShutdownTooManyRequestsException
      */
-    public function postVirtualMachineShutdown(Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineShutdown(?Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineShutdown($requestBody), $fetch);
     }
@@ -671,7 +671,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineResetPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineResetPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineResetBadRequestException
      * @throws Exception\PostVirtualMachineResetForbiddenException
@@ -679,7 +679,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineResetNotAcceptableException
      * @throws Exception\PostVirtualMachineResetTooManyRequestsException
      */
-    public function postVirtualMachineReset(Model\VirtualMachinesVirtualMachineResetPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineReset(?Model\VirtualMachinesVirtualMachineResetPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineReset($requestBody), $fetch);
     }
@@ -687,7 +687,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineConsoleSessionsBadRequestException
      * @throws Exception\PostVirtualMachineConsoleSessionsForbiddenException
@@ -696,7 +696,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineConsoleSessionsUnprocessableEntityException
      * @throws Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException
      */
-    public function postVirtualMachineConsoleSessions(Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineConsoleSessions(?Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineConsoleSessions($requestBody), $fetch);
     }
@@ -712,7 +712,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinePackagesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinePackagesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachinePackagesBadRequestException
      * @throws Exception\GetVirtualMachinePackagesForbiddenException
@@ -733,7 +733,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinePackagesVirtualMachinePackageGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinePackagesVirtualMachinePackageGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachinePackageBadRequestException
      * @throws Exception\GetVirtualMachinePackageForbiddenException
@@ -756,7 +756,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationSshKeysGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationSshKeysGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationSshKeysBadRequestException
      * @throws Exception\GetOrganizationSshKeysForbiddenException
@@ -771,7 +771,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationSshKeysPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationSshKeysPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationSshKeysBadRequestException
      * @throws Exception\PostOrganizationSshKeysForbiddenException
@@ -779,7 +779,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationSshKeysUnprocessableEntityException
      * @throws Exception\PostOrganizationSshKeysTooManyRequestsException
      */
-    public function postOrganizationSshKeys(Model\OrganizationsOrganizationSshKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationSshKeys(?Model\OrganizationsOrganizationSshKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationSshKeys($requestBody), $fetch);
     }
@@ -787,7 +787,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SshKeysSshKeyDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SshKeysSshKeyDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteSshKeyBadRequestException
      * @throws Exception\DeleteSshKeyForbiddenException
@@ -795,7 +795,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteSshKeyConflictException
      * @throws Exception\DeleteSshKeyTooManyRequestsException
      */
-    public function deleteSshKey(Model\SshKeysSshKeyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteSshKey(?Model\SshKeysSshKeyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteSshKey($requestBody), $fetch);
     }
@@ -811,7 +811,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationDiskBackupPoliciesBadRequestException
      * @throws Exception\GetOrganizationDiskBackupPoliciesForbiddenException
@@ -835,7 +835,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachineDiskBackupPoliciesBadRequestException
      * @throws Exception\GetVirtualMachineDiskBackupPoliciesForbiddenException
@@ -851,7 +851,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineDiskBackupPoliciesBadRequestException
      * @throws Exception\PostVirtualMachineDiskBackupPoliciesForbiddenException
@@ -860,7 +860,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineDiskBackupPoliciesUnprocessableEntityException
      * @throws Exception\PostVirtualMachineDiskBackupPoliciesTooManyRequestsException
      */
-    public function postVirtualMachineDiskBackupPolicies(Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineDiskBackupPolicies(?Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineDiskBackupPolicies($requestBody), $fetch);
     }
@@ -875,7 +875,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DisksDiskDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DisksDiskDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDiskDiskBackupPoliciesBadRequestException
      * @throws Exception\GetDiskDiskBackupPoliciesForbiddenException
@@ -890,7 +890,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DisksDiskDiskBackupPoliciesPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DisksDiskDiskBackupPoliciesPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostDiskDiskBackupPoliciesBadRequestException
      * @throws Exception\PostDiskDiskBackupPoliciesForbiddenException
@@ -898,7 +898,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostDiskDiskBackupPoliciesUnprocessableEntityException
      * @throws Exception\PostDiskDiskBackupPoliciesTooManyRequestsException
      */
-    public function postDiskDiskBackupPolicies(Model\DisksDiskDiskBackupPoliciesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postDiskDiskBackupPolicies(?Model\DisksDiskDiskBackupPoliciesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostDiskDiskBackupPolicies($requestBody), $fetch);
     }
@@ -906,7 +906,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskBackupPoliciesDiskBackupPolicyDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteDiskBackupPolicyBadRequestException
      * @throws Exception\DeleteDiskBackupPolicyForbiddenException
@@ -914,7 +914,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteDiskBackupPolicyNotAcceptableException
      * @throws Exception\DeleteDiskBackupPolicyTooManyRequestsException
      */
-    public function deleteDiskBackupPolicy(Model\DiskBackupPoliciesDiskBackupPolicyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteDiskBackupPolicy(?Model\DiskBackupPoliciesDiskBackupPolicyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteDiskBackupPolicy($requestBody), $fetch);
     }
@@ -927,7 +927,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskBackupPoliciesDiskBackupPolicyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDiskBackupPolicyBadRequestException
      * @throws Exception\GetDiskBackupPolicyForbiddenException
@@ -943,7 +943,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskBackupPoliciesDiskBackupPolicyPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchDiskBackupPolicyBadRequestException
      * @throws Exception\PatchDiskBackupPolicyForbiddenException
@@ -952,7 +952,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchDiskBackupPolicyUnprocessableEntityException
      * @throws Exception\PatchDiskBackupPolicyTooManyRequestsException
      */
-    public function patchDiskBackupPolicy(Model\DiskBackupPoliciesDiskBackupPolicyPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchDiskBackupPolicy(?Model\DiskBackupPoliciesDiskBackupPolicyPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchDiskBackupPolicy($requestBody), $fetch);
     }
@@ -960,7 +960,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteDiskBackupPolicyScheduleBadRequestException
      * @throws Exception\DeleteDiskBackupPolicyScheduleForbiddenException
@@ -968,7 +968,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteDiskBackupPolicyScheduleNotAcceptableException
      * @throws Exception\DeleteDiskBackupPolicyScheduleTooManyRequestsException
      */
-    public function deleteDiskBackupPolicySchedule(Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteDiskBackupPolicySchedule(?Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteDiskBackupPolicySchedule($requestBody), $fetch);
     }
@@ -984,7 +984,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDnsZonesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationDnsZonesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationDnsZonesBadRequestException
      * @throws Exception\GetOrganizationDnsZonesForbiddenException
@@ -999,7 +999,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDnsZonesPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationDnsZonesPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationDnsZonesBadRequestException
      * @throws Exception\PostOrganizationDnsZonesForbiddenException
@@ -1007,7 +1007,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationDnsZonesUnprocessableEntityException
      * @throws Exception\PostOrganizationDnsZonesTooManyRequestsException
      */
-    public function postOrganizationDnsZones(Model\OrganizationsOrganizationDnsZonesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationDnsZones(?Model\OrganizationsOrganizationDnsZonesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationDnsZones($requestBody), $fetch);
     }
@@ -1021,7 +1021,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDnsZonesNameserversGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationDnsZonesNameserversGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationDnsZonesNameserversBadRequestException
      * @throws Exception\GetOrganizationDnsZonesNameserversForbiddenException
@@ -1036,14 +1036,14 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsZonesDnsZoneDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteDnsZoneBadRequestException
      * @throws Exception\DeleteDnsZoneForbiddenException
      * @throws Exception\DeleteDnsZoneNotFoundException
      * @throws Exception\DeleteDnsZoneTooManyRequestsException
      */
-    public function deleteDnsZone(Model\DnsZonesDnsZoneDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteDnsZone(?Model\DnsZonesDnsZoneDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteDnsZone($requestBody), $fetch);
     }
@@ -1057,7 +1057,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsZonesDnsZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDnsZoneBadRequestException
      * @throws Exception\GetDnsZoneForbiddenException
@@ -1072,7 +1072,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZonePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsZonesDnsZonePatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchDnsZoneBadRequestException
      * @throws Exception\PatchDnsZoneForbiddenException
@@ -1080,7 +1080,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchDnsZoneUnprocessableEntityException
      * @throws Exception\PatchDnsZoneTooManyRequestsException
      */
-    public function patchDnsZone(Model\DnsZonesDnsZonePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchDnsZone(?Model\DnsZonesDnsZonePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchDnsZone($requestBody), $fetch);
     }
@@ -1088,7 +1088,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneVerifyPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsZonesDnsZoneVerifyPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostDnsZoneVerifyBadRequestException
      * @throws Exception\PostDnsZoneVerifyForbiddenException
@@ -1096,7 +1096,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostDnsZoneVerifyUnprocessableEntityException
      * @throws Exception\PostDnsZoneVerifyTooManyRequestsException
      */
-    public function postDnsZoneVerify(Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postDnsZoneVerify(?Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostDnsZoneVerify($requestBody), $fetch);
     }
@@ -1110,7 +1110,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneRecordsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsZonesDnsZoneRecordsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDnsZoneRecordsBadRequestException
      * @throws Exception\GetDnsZoneRecordsForbiddenException
@@ -1125,7 +1125,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneRecordsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsZonesDnsZoneRecordsPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostDnsZoneRecordsBadRequestException
      * @throws Exception\PostDnsZoneRecordsForbiddenException
@@ -1133,7 +1133,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostDnsZoneRecordsUnprocessableEntityException
      * @throws Exception\PostDnsZoneRecordsTooManyRequestsException
      */
-    public function postDnsZoneRecords(Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postDnsZoneRecords(?Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostDnsZoneRecords($requestBody), $fetch);
     }
@@ -1141,14 +1141,14 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsRecordsDnsRecordDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsRecordsDnsRecordDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteDnsRecordBadRequestException
      * @throws Exception\DeleteDnsRecordForbiddenException
      * @throws Exception\DeleteDnsRecordNotFoundException
      * @throws Exception\DeleteDnsRecordTooManyRequestsException
      */
-    public function deleteDnsRecord(Model\DnsRecordsDnsRecordDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteDnsRecord(?Model\DnsRecordsDnsRecordDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteDnsRecord($requestBody), $fetch);
     }
@@ -1161,7 +1161,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsRecordsDnsRecordGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsRecordsDnsRecordGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetDnsRecordBadRequestException
      * @throws Exception\GetDnsRecordForbiddenException
@@ -1176,7 +1176,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\DnsRecordsDnsRecordPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\DnsRecordsDnsRecordPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchDnsRecordBadRequestException
      * @throws Exception\PatchDnsRecordForbiddenException
@@ -1184,7 +1184,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchDnsRecordUnprocessableEntityException
      * @throws Exception\PatchDnsRecordTooManyRequestsException
      */
-    public function patchDnsRecord(Model\DnsRecordsDnsRecordPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchDnsRecord(?Model\DnsRecordsDnsRecordPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchDnsRecord($requestBody), $fetch);
     }
@@ -1200,7 +1200,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationSecurityGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationSecurityGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationSecurityGroupsBadRequestException
      * @throws Exception\GetOrganizationSecurityGroupsForbiddenException
@@ -1215,7 +1215,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationSecurityGroupsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationSecurityGroupsPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationSecurityGroupsBadRequestException
      * @throws Exception\PostOrganizationSecurityGroupsForbiddenException
@@ -1223,7 +1223,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationSecurityGroupsUnprocessableEntityException
      * @throws Exception\PostOrganizationSecurityGroupsTooManyRequestsException
      */
-    public function postOrganizationSecurityGroups(Model\OrganizationsOrganizationSecurityGroupsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationSecurityGroups(?Model\OrganizationsOrganizationSecurityGroupsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationSecurityGroups($requestBody), $fetch);
     }
@@ -1231,7 +1231,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsSecurityGroupDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteSecurityGroupBadRequestException
      * @throws Exception\DeleteSecurityGroupForbiddenException
@@ -1240,7 +1240,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteSecurityGroupUnprocessableEntityException
      * @throws Exception\DeleteSecurityGroupTooManyRequestsException
      */
-    public function deleteSecurityGroup(Model\SecurityGroupsSecurityGroupDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteSecurityGroup(?Model\SecurityGroupsSecurityGroupDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteSecurityGroup($requestBody), $fetch);
     }
@@ -1253,7 +1253,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsSecurityGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetSecurityGroupBadRequestException
      * @throws Exception\GetSecurityGroupForbiddenException
@@ -1268,7 +1268,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsSecurityGroupPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchSecurityGroupBadRequestException
      * @throws Exception\PatchSecurityGroupForbiddenException
@@ -1276,7 +1276,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchSecurityGroupUnprocessableEntityException
      * @throws Exception\PatchSecurityGroupTooManyRequestsException
      */
-    public function patchSecurityGroup(Model\SecurityGroupsSecurityGroupPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchSecurityGroup(?Model\SecurityGroupsSecurityGroupPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchSecurityGroup($requestBody), $fetch);
     }
@@ -1291,7 +1291,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsSecurityGroupRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetSecurityGroupRulesBadRequestException
      * @throws Exception\GetSecurityGroupRulesForbiddenException
@@ -1306,7 +1306,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsSecurityGroupRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostSecurityGroupRulesBadRequestException
      * @throws Exception\PostSecurityGroupRulesForbiddenException
@@ -1314,7 +1314,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostSecurityGroupRulesUnprocessableEntityException
      * @throws Exception\PostSecurityGroupRulesTooManyRequestsException
      */
-    public function postSecurityGroupRules(Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postSecurityGroupRules(?Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostSecurityGroupRules($requestBody), $fetch);
     }
@@ -1322,7 +1322,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsRulesSecurityGroupRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleBadRequestException
      * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleForbiddenException
@@ -1330,7 +1330,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
      */
-    public function deleteSecurityGroupsRulesSecurityGroupRule(Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteSecurityGroupsRulesSecurityGroupRule($requestBody), $fetch);
     }
@@ -1343,7 +1343,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsRulesSecurityGroupRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleBadRequestException
      * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleForbiddenException
@@ -1358,7 +1358,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleBadRequestException
      * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleForbiddenException
@@ -1366,7 +1366,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
      */
-    public function patchSecurityGroupsRulesSecurityGroupRule(Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchSecurityGroupsRulesSecurityGroupRule($requestBody), $fetch);
     }
@@ -1382,7 +1382,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationFileStorageVolumesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationFileStorageVolumesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationFileStorageVolumesBadRequestException
      * @throws Exception\GetOrganizationFileStorageVolumesForbiddenException
@@ -1397,7 +1397,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationFileStorageVolumesPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationFileStorageVolumesPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationFileStorageVolumesBadRequestException
      * @throws Exception\PostOrganizationFileStorageVolumesForbiddenException
@@ -1405,7 +1405,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationFileStorageVolumesUnprocessableEntityException
      * @throws Exception\PostOrganizationFileStorageVolumesTooManyRequestsException
      */
-    public function postOrganizationFileStorageVolumes(Model\OrganizationsOrganizationFileStorageVolumesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationFileStorageVolumes(?Model\OrganizationsOrganizationFileStorageVolumesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationFileStorageVolumes($requestBody), $fetch);
     }
@@ -1413,7 +1413,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumeDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\FileStorageVolumesFileStorageVolumeDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteFileStorageVolumeBadRequestException
      * @throws Exception\DeleteFileStorageVolumeForbiddenException
@@ -1422,7 +1422,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteFileStorageVolumeUnprocessableEntityException
      * @throws Exception\DeleteFileStorageVolumeTooManyRequestsException
      */
-    public function deleteFileStorageVolume(Model\FileStorageVolumesFileStorageVolumeDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteFileStorageVolume(?Model\FileStorageVolumesFileStorageVolumeDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteFileStorageVolume($requestBody), $fetch);
     }
@@ -1435,7 +1435,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumeGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\FileStorageVolumesFileStorageVolumeGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetFileStorageVolumeBadRequestException
      * @throws Exception\GetFileStorageVolumeForbiddenException
@@ -1451,7 +1451,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\FileStorageVolumesFileStorageVolumePatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchFileStorageVolumeBadRequestException
      * @throws Exception\PatchFileStorageVolumeForbiddenException
@@ -1460,7 +1460,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchFileStorageVolumeUnprocessableEntityException
      * @throws Exception\PatchFileStorageVolumeTooManyRequestsException
      */
-    public function patchFileStorageVolume(Model\FileStorageVolumesFileStorageVolumePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchFileStorageVolume(?Model\FileStorageVolumesFileStorageVolumePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchFileStorageVolume($requestBody), $fetch);
     }
@@ -1474,7 +1474,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAvailableNetworksGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationAvailableNetworksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationAvailableNetworksBadRequestException
      * @throws Exception\GetOrganizationAvailableNetworksForbiddenException
@@ -1495,7 +1495,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\NetworksNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\NetworksNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetNetworkBadRequestException
      * @throws Exception\GetNetworkForbiddenException
@@ -1518,7 +1518,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationNetworkSpeedProfilesBadRequestException
      * @throws Exception\GetOrganizationNetworkSpeedProfilesForbiddenException
@@ -1539,7 +1539,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetAddressListsBadRequestException
      * @throws Exception\GetAddressListsForbiddenException
@@ -1561,7 +1561,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationAddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationAddressListsBadRequestException
      * @throws Exception\GetOrganizationAddressListsForbiddenException
@@ -1576,7 +1576,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAddressListsPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationAddressListsPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationAddressListsBadRequestException
      * @throws Exception\PostOrganizationAddressListsForbiddenException
@@ -1584,7 +1584,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationAddressListsUnprocessableEntityException
      * @throws Exception\PostOrganizationAddressListsTooManyRequestsException
      */
-    public function postOrganizationAddressLists(Model\OrganizationsOrganizationAddressListsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationAddressLists(?Model\OrganizationsOrganizationAddressListsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationAddressLists($requestBody), $fetch);
     }
@@ -1592,14 +1592,14 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListsAddressListDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteAddressListBadRequestException
      * @throws Exception\DeleteAddressListForbiddenException
      * @throws Exception\DeleteAddressListNotFoundException
      * @throws Exception\DeleteAddressListTooManyRequestsException
      */
-    public function deleteAddressList(Model\AddressListsAddressListDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteAddressList(?Model\AddressListsAddressListDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteAddressList($requestBody), $fetch);
     }
@@ -1612,7 +1612,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListsAddressListGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetAddressListBadRequestException
      * @throws Exception\GetAddressListForbiddenException
@@ -1627,7 +1627,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListsAddressListPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchAddressListBadRequestException
      * @throws Exception\PatchAddressListForbiddenException
@@ -1635,7 +1635,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchAddressListUnprocessableEntityException
      * @throws Exception\PatchAddressListTooManyRequestsException
      */
-    public function patchAddressList(Model\AddressListsAddressListPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchAddressList(?Model\AddressListsAddressListPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchAddressList($requestBody), $fetch);
     }
@@ -1650,7 +1650,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListEntriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListsAddressListEntriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetAddressListEntriesBadRequestException
      * @throws Exception\GetAddressListEntriesForbiddenException
@@ -1665,7 +1665,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListEntriesPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListsAddressListEntriesPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostAddressListEntriesBadRequestException
      * @throws Exception\PostAddressListEntriesForbiddenException
@@ -1673,7 +1673,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostAddressListEntriesUnprocessableEntityException
      * @throws Exception\PostAddressListEntriesTooManyRequestsException
      */
-    public function postAddressListEntries(Model\AddressListsAddressListEntriesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postAddressListEntries(?Model\AddressListsAddressListEntriesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostAddressListEntries($requestBody), $fetch);
     }
@@ -1681,14 +1681,14 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListEntriesAddressListEntryDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteAddressListEntryBadRequestException
      * @throws Exception\DeleteAddressListEntryForbiddenException
      * @throws Exception\DeleteAddressListEntryNotFoundException
      * @throws Exception\DeleteAddressListEntryTooManyRequestsException
      */
-    public function deleteAddressListEntry(Model\AddressListEntriesAddressListEntryDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteAddressListEntry(?Model\AddressListEntriesAddressListEntryDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteAddressListEntry($requestBody), $fetch);
     }
@@ -1701,7 +1701,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListEntriesAddressListEntryGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetAddressListEntryBadRequestException
      * @throws Exception\GetAddressListEntryForbiddenException
@@ -1716,7 +1716,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListEntriesAddressListEntryPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchAddressListEntryBadRequestException
      * @throws Exception\PatchAddressListEntryForbiddenException
@@ -1724,7 +1724,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchAddressListEntryUnprocessableEntityException
      * @throws Exception\PatchAddressListEntryTooManyRequestsException
      */
-    public function patchAddressListEntry(Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchAddressListEntry(?Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchAddressListEntry($requestBody), $fetch);
     }
@@ -1740,7 +1740,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationCertificatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationCertificatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationCertificatesBadRequestException
      * @throws Exception\GetOrganizationCertificatesForbiddenException
@@ -1760,7 +1760,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\CertificatesCertificateGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CertificatesCertificateGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetCertificateBadRequestException
      * @throws Exception\GetCertificateForbiddenException
@@ -1784,7 +1784,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationLoadBalancersGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationLoadBalancersBadRequestException
      * @throws Exception\GetOrganizationLoadBalancersForbiddenException
@@ -1799,7 +1799,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationLoadBalancersPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationLoadBalancersBadRequestException
      * @throws Exception\PostOrganizationLoadBalancersForbiddenException
@@ -1807,7 +1807,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationLoadBalancersUnprocessableEntityException
      * @throws Exception\PostOrganizationLoadBalancersTooManyRequestsException
      */
-    public function postOrganizationLoadBalancers(Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationLoadBalancers(?Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationLoadBalancers($requestBody), $fetch);
     }
@@ -1815,7 +1815,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersLoadBalancerDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteLoadBalancerBadRequestException
      * @throws Exception\DeleteLoadBalancerForbiddenException
@@ -1823,7 +1823,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteLoadBalancerUnprocessableEntityException
      * @throws Exception\DeleteLoadBalancerTooManyRequestsException
      */
-    public function deleteLoadBalancer(Model\LoadBalancersLoadBalancerDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteLoadBalancer(?Model\LoadBalancersLoadBalancerDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteLoadBalancer($requestBody), $fetch);
     }
@@ -1837,7 +1837,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersLoadBalancerGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetLoadBalancerBadRequestException
      * @throws Exception\GetLoadBalancerForbiddenException
@@ -1852,7 +1852,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersLoadBalancerPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchLoadBalancerBadRequestException
      * @throws Exception\PatchLoadBalancerForbiddenException
@@ -1860,7 +1860,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchLoadBalancerUnprocessableEntityException
      * @throws Exception\PatchLoadBalancerTooManyRequestsException
      */
-    public function patchLoadBalancer(Model\LoadBalancersLoadBalancerPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchLoadBalancer(?Model\LoadBalancersLoadBalancerPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchLoadBalancer($requestBody), $fetch);
     }
@@ -1876,7 +1876,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersLoadBalancerRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetLoadBalancerRulesBadRequestException
      * @throws Exception\GetLoadBalancerRulesForbiddenException
@@ -1891,7 +1891,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersLoadBalancerRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostLoadBalancerRulesBadRequestException
      * @throws Exception\PostLoadBalancerRulesForbiddenException
@@ -1899,7 +1899,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostLoadBalancerRulesUnprocessableEntityException
      * @throws Exception\PostLoadBalancerRulesTooManyRequestsException
      */
-    public function postLoadBalancerRules(Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postLoadBalancerRules(?Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostLoadBalancerRules($requestBody), $fetch);
     }
@@ -1907,7 +1907,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersRulesLoadBalancerRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersRulesLoadBalancerRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleBadRequestException
      * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleForbiddenException
@@ -1915,7 +1915,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
      * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
      */
-    public function deleteLoadBalancersRulesLoadBalancerRule(Model\LoadBalancersRulesLoadBalancerRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteLoadBalancersRulesLoadBalancerRule($requestBody), $fetch);
     }
@@ -1928,7 +1928,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersRulesLoadBalancerRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersRulesLoadBalancerRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleBadRequestException
      * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleForbiddenException
@@ -1943,7 +1943,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\LoadBalancersRulesLoadBalancerRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersRulesLoadBalancerRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleBadRequestException
      * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleForbiddenException
@@ -1951,7 +1951,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
      * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
      */
-    public function patchLoadBalancersRulesLoadBalancerRule(Model\LoadBalancersRulesLoadBalancerRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchLoadBalancersRulesLoadBalancerRule($requestBody), $fetch);
     }
@@ -1968,7 +1968,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationIpAddressesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationIpAddressesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationIpAddressesBadRequestException
      * @throws Exception\GetOrganizationIpAddressesForbiddenException
@@ -1983,7 +1983,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationIpAddressesPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationIpAddressesPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationIpAddressesBadRequestException
      * @throws Exception\PostOrganizationIpAddressesForbiddenException
@@ -1992,7 +1992,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationIpAddressesTooManyRequestsException
      * @throws Exception\PostOrganizationIpAddressesServiceUnavailableException
      */
-    public function postOrganizationIpAddresses(Model\OrganizationsOrganizationIpAddressesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationIpAddresses(?Model\OrganizationsOrganizationIpAddressesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationIpAddresses($requestBody), $fetch);
     }
@@ -2000,7 +2000,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\IpAddressesIpAddressDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteIpAddressBadRequestException
      * @throws Exception\DeleteIpAddressForbiddenException
@@ -2008,7 +2008,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteIpAddressConflictException
      * @throws Exception\DeleteIpAddressTooManyRequestsException
      */
-    public function deleteIpAddress(Model\IpAddressesIpAddressDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteIpAddress(?Model\IpAddressesIpAddressDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteIpAddress($requestBody), $fetch);
     }
@@ -2022,7 +2022,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\IpAddressesIpAddressGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetIpAddressBadRequestException
      * @throws Exception\GetIpAddressForbiddenException
@@ -2037,7 +2037,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\IpAddressesIpAddressPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchIpAddressBadRequestException
      * @throws Exception\PatchIpAddressForbiddenException
@@ -2045,7 +2045,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchIpAddressUnprocessableEntityException
      * @throws Exception\PatchIpAddressTooManyRequestsException
      */
-    public function patchIpAddress(Model\IpAddressesIpAddressPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchIpAddress(?Model\IpAddressesIpAddressPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchIpAddress($requestBody), $fetch);
     }
@@ -2053,7 +2053,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressUnallocatePostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\IpAddressesIpAddressUnallocatePostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostIpAddressUnallocateBadRequestException
      * @throws Exception\PostIpAddressUnallocateForbiddenException
@@ -2062,7 +2062,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostIpAddressUnallocateUnprocessableEntityException
      * @throws Exception\PostIpAddressUnallocateTooManyRequestsException
      */
-    public function postIpAddressUnallocate(Model\IpAddressesIpAddressUnallocatePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postIpAddressUnallocate(?Model\IpAddressesIpAddressUnallocatePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostIpAddressUnallocate($requestBody), $fetch);
     }
@@ -2078,7 +2078,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachineNetworkInterfacesBadRequestException
      * @throws Exception\GetVirtualMachineNetworkInterfacesForbiddenException
@@ -2102,7 +2102,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachineNetworkInterfaceBadRequestException
      * @throws Exception\GetVirtualMachineNetworkInterfaceForbiddenException
@@ -2123,7 +2123,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVMNIVMNIBadRequestException
      * @throws Exception\GetVMNIVMNIForbiddenException
@@ -2144,7 +2144,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsAddressVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsAddressVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionBadRequestException
      * @throws Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionForbiddenException
@@ -2159,7 +2159,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpBadRequestException
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpForbiddenException
@@ -2167,7 +2167,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpUnprocessableEntityException
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpTooManyRequestsException
      */
-    public function postVirtualMachineNetworkInterfaceAllocateIp(Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineNetworkInterfaceAllocateIp(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineNetworkInterfaceAllocateIp($requestBody), $fetch);
     }
@@ -2175,7 +2175,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpBadRequestException
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpForbiddenException
@@ -2183,7 +2183,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpTooManyRequestsException
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpServiceUnavailableException
      */
-    public function postVirtualMachineNetworkInterfaceAllocateNewIp(Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postVirtualMachineNetworkInterfaceAllocateNewIp(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostVirtualMachineNetworkInterfaceAllocateNewIp($requestBody), $fetch);
     }
@@ -2191,7 +2191,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileBadRequestException
      * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileForbiddenException
@@ -2200,7 +2200,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileUnprocessableEntityException
      * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileTooManyRequestsException
      */
-    public function patchVirtualMachineNetworkInterfaceUpdateSpeedProfile(Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchVirtualMachineNetworkInterfaceUpdateSpeedProfile(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfile($requestBody), $fetch);
     }
@@ -2216,7 +2216,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTagsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationTagsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationTagsBadRequestException
      * @throws Exception\GetOrganizationTagsForbiddenException
@@ -2231,7 +2231,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTagsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationTagsPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationTagsBadRequestException
      * @throws Exception\PostOrganizationTagsForbiddenException
@@ -2239,7 +2239,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationTagsUnprocessableEntityException
      * @throws Exception\PostOrganizationTagsTooManyRequestsException
      */
-    public function postOrganizationTags(Model\OrganizationsOrganizationTagsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationTags(?Model\OrganizationsOrganizationTagsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationTags($requestBody), $fetch);
     }
@@ -2247,14 +2247,14 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\TagsTagDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TagsTagDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteTagBadRequestException
      * @throws Exception\DeleteTagForbiddenException
      * @throws Exception\DeleteTagNotFoundException
      * @throws Exception\DeleteTagTooManyRequestsException
      */
-    public function deleteTag(Model\TagsTagDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteTag(?Model\TagsTagDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteTag($requestBody), $fetch);
     }
@@ -2267,7 +2267,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\TagsTagGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TagsTagGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetTagBadRequestException
      * @throws Exception\GetTagForbiddenException
@@ -2282,7 +2282,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\TagsTagPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TagsTagPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchTagBadRequestException
      * @throws Exception\PatchTagForbiddenException
@@ -2290,7 +2290,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchTagUnprocessableEntityException
      * @throws Exception\PatchTagTooManyRequestsException
      */
-    public function patchTag(Model\TagsTagPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchTag(?Model\TagsTagPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchTag($requestBody), $fetch);
     }
@@ -2304,7 +2304,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationVirtualMachineGroupsBadRequestException
      * @throws Exception\GetOrganizationVirtualMachineGroupsForbiddenException
@@ -2319,7 +2319,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachineGroupsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationVirtualMachineGroupsPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationVirtualMachineGroupsBadRequestException
      * @throws Exception\PostOrganizationVirtualMachineGroupsForbiddenException
@@ -2327,7 +2327,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationVirtualMachineGroupsUnprocessableEntityException
      * @throws Exception\PostOrganizationVirtualMachineGroupsTooManyRequestsException
      */
-    public function postOrganizationVirtualMachineGroups(Model\OrganizationsOrganizationVirtualMachineGroupsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationVirtualMachineGroups(?Model\OrganizationsOrganizationVirtualMachineGroupsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationVirtualMachineGroups($requestBody), $fetch);
     }
@@ -2335,7 +2335,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineGroupsVirtualMachineGroupDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineGroupsVirtualMachineGroupDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteVirtualMachineGroupBadRequestException
      * @throws Exception\DeleteVirtualMachineGroupForbiddenException
@@ -2343,7 +2343,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteVirtualMachineGroupConflictException
      * @throws Exception\DeleteVirtualMachineGroupTooManyRequestsException
      */
-    public function deleteVirtualMachineGroup(Model\VirtualMachineGroupsVirtualMachineGroupDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteVirtualMachineGroup(?Model\VirtualMachineGroupsVirtualMachineGroupDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteVirtualMachineGroup($requestBody), $fetch);
     }
@@ -2356,7 +2356,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineGroupsVirtualMachineGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineGroupsVirtualMachineGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetVirtualMachineGroupBadRequestException
      * @throws Exception\GetVirtualMachineGroupForbiddenException
@@ -2371,7 +2371,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\VirtualMachineGroupsVirtualMachineGroupPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VirtualMachineGroupsVirtualMachineGroupPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PatchVirtualMachineGroupBadRequestException
      * @throws Exception\PatchVirtualMachineGroupForbiddenException
@@ -2379,7 +2379,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchVirtualMachineGroupUnprocessableEntityException
      * @throws Exception\PatchVirtualMachineGroupTooManyRequestsException
      */
-    public function patchVirtualMachineGroup(Model\VirtualMachineGroupsVirtualMachineGroupPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchVirtualMachineGroup(?Model\VirtualMachineGroupsVirtualMachineGroupPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchVirtualMachineGroup($requestBody), $fetch);
     }
@@ -2393,7 +2393,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OperatingSystemsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OperatingSystemsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOperatingSystemsBadRequestException
      * @throws Exception\GetOperatingSystemsForbiddenException
@@ -2412,7 +2412,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OperatingSystemsOperatingSystemGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OperatingSystemsOperatingSystemGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOperatingSystemBadRequestException
      * @throws Exception\GetOperatingSystemForbiddenException
@@ -2435,7 +2435,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTrashObjectsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationTrashObjectsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetOrganizationTrashObjectsBadRequestException
      * @throws Exception\GetOrganizationTrashObjectsForbiddenException
@@ -2450,7 +2450,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostOrganizationTrashObjectsPurgeAllBadRequestException
      * @throws Exception\PostOrganizationTrashObjectsPurgeAllForbiddenException
@@ -2458,7 +2458,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationTrashObjectsPurgeAllNotAcceptableException
      * @throws Exception\PostOrganizationTrashObjectsPurgeAllTooManyRequestsException
      */
-    public function postOrganizationTrashObjectsPurgeAll(Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationTrashObjectsPurgeAll(?Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationTrashObjectsPurgeAll($requestBody), $fetch);
     }
@@ -2466,7 +2466,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\TrashObjectsTrashObjectDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TrashObjectsTrashObjectDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\DeleteTrashObjectBadRequestException
      * @throws Exception\DeleteTrashObjectForbiddenException
@@ -2474,7 +2474,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteTrashObjectNotAcceptableException
      * @throws Exception\DeleteTrashObjectTooManyRequestsException
      */
-    public function deleteTrashObject(Model\TrashObjectsTrashObjectDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function deleteTrashObject(?Model\TrashObjectsTrashObjectDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteTrashObject($requestBody), $fetch);
     }
@@ -2488,7 +2488,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\TrashObjectsTrashObjectGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TrashObjectsTrashObjectGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetTrashObjectBadRequestException
      * @throws Exception\GetTrashObjectForbiddenException
@@ -2503,14 +2503,14 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\TrashObjectsTrashObjectRestorePostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TrashObjectsTrashObjectRestorePostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostTrashObjectRestoreBadRequestException
      * @throws Exception\PostTrashObjectRestoreForbiddenException
      * @throws Exception\PostTrashObjectRestoreNotFoundException
      * @throws Exception\PostTrashObjectRestoreTooManyRequestsException
      */
-    public function postTrashObjectRestore(Model\TrashObjectsTrashObjectRestorePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postTrashObjectRestore(?Model\TrashObjectsTrashObjectRestorePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostTrashObjectRestore($requestBody), $fetch);
     }
@@ -2518,7 +2518,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\ZonesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ZonesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetZonesBadRequestException
      * @throws Exception\GetZonesForbiddenException
@@ -2538,7 +2538,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\ZonesZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ZonesZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetZoneBadRequestException
      * @throws Exception\GetZoneForbiddenException
@@ -2559,7 +2559,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\CountriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CountriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetCountriesBadRequestException
      * @throws Exception\GetCountriesForbiddenException
@@ -2580,7 +2580,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\CountriesCountryGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CountriesCountryGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetCountryBadRequestException
      * @throws Exception\GetCountryForbiddenException
@@ -2604,7 +2604,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\CountriesCountryCountryStatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CountriesCountryCountryStatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetCountryCountryStatesBadRequestException
      * @throws Exception\GetCountryCountryStatesForbiddenException
@@ -2624,7 +2624,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\CountryStatesCountryStateGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CountryStatesCountryStateGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetCountryStateBadRequestException
      * @throws Exception\GetCountryStateForbiddenException
@@ -2645,7 +2645,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\CurrenciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CurrenciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetCurrenciesBadRequestException
      * @throws Exception\GetCurrenciesForbiddenException
@@ -2665,7 +2665,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\CurrenciesCurrencyGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CurrenciesCurrencyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetCurrencyBadRequestException
      * @throws Exception\GetCurrencyForbiddenException
@@ -2685,7 +2685,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\TasksTaskGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TasksTaskGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetTaskBadRequestException
      * @throws Exception\GetTaskForbiddenException
@@ -2700,7 +2700,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\UsersCurrentGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\UsersCurrentGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\GetUsersCurrentBadRequestException
      * @throws Exception\GetUsersCurrentForbiddenException
@@ -2715,13 +2715,13 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Krystal\Katapult\KatapultAPI\Model\InvalidateLinkedWebSessionPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvalidateLinkedWebSessionPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
      * @throws Exception\PostInvalidateLinkedWebSessionBadRequestException
      * @throws Exception\PostInvalidateLinkedWebSessionForbiddenException
      * @throws Exception\PostInvalidateLinkedWebSessionTooManyRequestsException
      */
-    public function postInvalidateLinkedWebSession(Model\InvalidateLinkedWebSessionPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postInvalidateLinkedWebSession(?Model\InvalidateLinkedWebSessionPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostInvalidateLinkedWebSession($requestBody), $fetch);
     }

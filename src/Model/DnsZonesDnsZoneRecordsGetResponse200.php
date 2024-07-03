@@ -24,14 +24,14 @@ class DnsZonesDnsZoneRecordsGetResponse200 extends \ArrayObject
     /**
      * The DNS record for the provided zone.
      *
-     * @var DNSRecord[]
+     * @var list<DNSRecord>
      */
     protected $dnsRecords;
 
     /**
      * The DNS record for the provided zone.
      *
-     * @return DNSRecord[]
+     * @return list<DNSRecord>
      */
     public function getDnsRecords(): array
     {
@@ -41,7 +41,7 @@ class DnsZonesDnsZoneRecordsGetResponse200 extends \ArrayObject
     /**
      * The DNS record for the provided zone.
      *
-     * @param DNSRecord[] $dnsRecords
+     * @param list<DNSRecord> $dnsRecords
      */
     public function setDnsRecords(array $dnsRecords): self
     {

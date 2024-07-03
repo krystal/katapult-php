@@ -68,7 +68,7 @@ class GetSecurityGroupRules extends \Krystal\Katapult\KatapultAPI\Runtime\Client
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupRulesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupRulesTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

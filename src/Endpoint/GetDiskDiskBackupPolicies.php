@@ -68,7 +68,7 @@ class GetDiskDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

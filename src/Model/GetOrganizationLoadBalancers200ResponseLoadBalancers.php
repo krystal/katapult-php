@@ -38,11 +38,11 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
      */
     protected $resourceType;
     /**
-     * @var LoadBalancerResource[]
+     * @var list<LoadBalancerResource>
      */
     protected $resources;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $resourceIds;
     /**
@@ -107,7 +107,7 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
     }
 
     /**
-     * @return LoadBalancerResource[]
+     * @return list<LoadBalancerResource>
      */
     public function getResources(): array
     {
@@ -115,7 +115,7 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
     }
 
     /**
-     * @param LoadBalancerResource[] $resources
+     * @param list<LoadBalancerResource> $resources
      */
     public function setResources(array $resources): self
     {
@@ -126,7 +126,7 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getResourceIds(): array
     {
@@ -134,7 +134,7 @@ class GetOrganizationLoadBalancers200ResponseLoadBalancers extends \ArrayObject
     }
 
     /**
-     * @param string[] $resourceIds
+     * @param list<string> $resourceIds
      */
     public function setResourceIds(array $resourceIds): self
     {

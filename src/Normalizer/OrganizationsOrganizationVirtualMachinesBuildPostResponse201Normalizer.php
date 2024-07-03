@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,81 +21,156 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('task', $data)) {
+                $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseTask', 'json', $context));
+                unset($data['task']);
+            }
+            if (\array_key_exists('build', $data)) {
+                $object->setBuild($this->denormalizer->denormalize($data['build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build', 'json', $context));
+                unset($data['build']);
+            }
+            if (\array_key_exists('virtual_machine_build', $data)) {
+                $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild', 'json', $context));
+                unset($data['virtual_machine_build']);
+            }
+            if (\array_key_exists('hostname', $data)) {
+                $object->setHostname($data['hostname']);
+                unset($data['hostname']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('task', $data)) {
-            $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseTask', 'json', $context));
-            unset($data['task']);
-        }
-        if (\array_key_exists('build', $data)) {
-            $object->setBuild($this->denormalizer->denormalize($data['build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build', 'json', $context));
-            unset($data['build']);
-        }
-        if (\array_key_exists('virtual_machine_build', $data)) {
-            $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild', 'json', $context));
-            unset($data['virtual_machine_build']);
-        }
-        if (\array_key_exists('hostname', $data)) {
-            $object->setHostname($data['hostname']);
-            unset($data['hostname']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['task'] = $this->normalizer->normalize($object->getTask(), 'json', $context);
+            $data['build'] = $this->normalizer->normalize($object->getBuild(), 'json', $context);
+            $data['virtual_machine_build'] = $this->normalizer->normalize($object->getVirtualMachineBuild(), 'json', $context);
+            $data['hostname'] = $object->getHostname();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201' => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['task'] = $this->normalizer->normalize($object->getTask(), 'json', $context);
-        $data['build'] = $this->normalizer->normalize($object->getBuild(), 'json', $context);
-        $data['virtual_machine_build'] = $this->normalizer->normalize($object->getVirtualMachineBuild(), 'json', $context);
-        $data['hostname'] = $object->getHostname();
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
+        }
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('task', $data)) {
+                $object->setTask($this->denormalizer->denormalize($data['task'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseTask', 'json', $context));
+                unset($data['task']);
+            }
+            if (\array_key_exists('build', $data)) {
+                $object->setBuild($this->denormalizer->denormalize($data['build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build', 'json', $context));
+                unset($data['build']);
+            }
+            if (\array_key_exists('virtual_machine_build', $data)) {
+                $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'Krystal\\Katapult\\KatapultAPI\\Model\\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild', 'json', $context));
+                unset($data['virtual_machine_build']);
+            }
+            if (\array_key_exists('hostname', $data)) {
+                $object->setHostname($data['hostname']);
+                unset($data['hostname']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
         }
 
-        return $data;
-    }
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['task'] = $this->normalizer->normalize($object->getTask(), 'json', $context);
+            $data['build'] = $this->normalizer->normalize($object->getBuild(), 'json', $context);
+            $data['virtual_machine_build'] = $this->normalizer->normalize($object->getVirtualMachineBuild(), 'json', $context);
+            $data['hostname'] = $object->getHostname();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201' => false];
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201' => false];
+        }
     }
 }

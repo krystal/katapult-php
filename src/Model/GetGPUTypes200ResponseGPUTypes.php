@@ -46,7 +46,7 @@ class GetGPUTypes200ResponseGPUTypes extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var GetGPUTypes200ResponseGPUTypesDataCentersItem[]
+     * @var list<GetGPUTypes200ResponseGPUTypesDataCentersItem>
      */
     protected $dataCenters;
 
@@ -129,7 +129,7 @@ class GetGPUTypes200ResponseGPUTypes extends \ArrayObject
     }
 
     /**
-     * @return GetGPUTypes200ResponseGPUTypesDataCentersItem[]
+     * @return list<GetGPUTypes200ResponseGPUTypesDataCentersItem>
      */
     public function getDataCenters(): array
     {
@@ -137,7 +137,7 @@ class GetGPUTypes200ResponseGPUTypes extends \ArrayObject
     }
 
     /**
-     * @param GetGPUTypes200ResponseGPUTypesDataCentersItem[] $dataCenters
+     * @param list<GetGPUTypes200ResponseGPUTypesDataCentersItem> $dataCenters
      */
     public function setDataCenters(array $dataCenters): self
     {

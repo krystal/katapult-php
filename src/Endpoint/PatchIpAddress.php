@@ -14,7 +14,7 @@ class PatchIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressPatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PatchIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

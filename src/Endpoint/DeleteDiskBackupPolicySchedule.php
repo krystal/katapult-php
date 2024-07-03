@@ -14,7 +14,7 @@ class DeleteDiskBackupPolicySchedule extends \Krystal\Katapult\KatapultAPI\Runti
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class DeleteDiskBackupPolicySchedule extends \Krystal\Katapult\KatapultAPI\Runti
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

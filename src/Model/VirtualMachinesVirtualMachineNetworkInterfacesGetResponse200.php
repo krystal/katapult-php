@@ -28,7 +28,7 @@ class VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200 extends \Arra
     /**
      * The network interfaces for this virtual machine.
      *
-     * @var GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces[]
+     * @var list<GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces>
      */
     protected $virtualMachineNetworkInterfaces;
 
@@ -48,7 +48,7 @@ class VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200 extends \Arra
     /**
      * The network interfaces for this virtual machine.
      *
-     * @return GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces[]
+     * @return list<GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces>
      */
     public function getVirtualMachineNetworkInterfaces(): array
     {
@@ -58,7 +58,7 @@ class VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200 extends \Arra
     /**
      * The network interfaces for this virtual machine.
      *
-     * @param GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces[] $virtualMachineNetworkInterfaces
+     * @param list<GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces> $virtualMachineNetworkInterfaces
      */
     public function setVirtualMachineNetworkInterfaces(array $virtualMachineNetworkInterfaces): self
     {

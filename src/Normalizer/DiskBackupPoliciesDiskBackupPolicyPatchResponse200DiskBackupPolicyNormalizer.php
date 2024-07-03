@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,97 +21,188 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('retention', $data)) {
+                $object->setRetention($data['retention']);
+                unset($data['retention']);
+            }
+            if (\array_key_exists('target', $data)) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPolicyTarget', 'json', $context));
+                unset($data['target']);
+            }
+            if (\array_key_exists('schedule', $data)) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['schedule'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setSchedule($values);
+                unset($data['schedule']);
+            }
+            foreach ($data as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_1;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
-        }
-        if (\array_key_exists('retention', $data)) {
-            $object->setRetention($data['retention']);
-            unset($data['retention']);
-        }
-        if (\array_key_exists('target', $data)) {
-            $object->setTarget($this->denormalizer->denormalize($data['target'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPolicyTarget', 'json', $context));
-            unset($data['target']);
-        }
-        if (\array_key_exists('schedule', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['schedule'] as $key => $value) {
-                $values[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('id') && null !== $object->getId()) {
+                $data['id'] = $object->getId();
             }
-            $object->setSchedule($values);
-            unset($data['schedule']);
-        }
-        foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_1;
+            if ($object->isInitialized('retention') && null !== $object->getRetention()) {
+                $data['retention'] = $object->getRetention();
             }
+            if ($object->isInitialized('target') && null !== $object->getTarget()) {
+                $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);
+            }
+            if ($object->isInitialized('schedule') && null !== $object->getSchedule()) {
+                $values = [];
+                foreach ($object->getSchedule() as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $data['schedule'] = $values;
+            }
+            foreach ($object as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_1;
+                }
+            }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy' => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        if ($object->isInitialized('id') && null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if ($object->isInitialized('retention') && null !== $object->getRetention()) {
-            $data['retention'] = $object->getRetention();
-        }
-        if ($object->isInitialized('target') && null !== $object->getTarget()) {
-            $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);
-        }
-        if ($object->isInitialized('schedule') && null !== $object->getSchedule()) {
-            $values = [];
-            foreach ($object->getSchedule() as $key => $value) {
-                $values[$key] = $value;
-            }
-            $data['schedule'] = $values;
-        }
-        foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $data[$key_1] = $value_1;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy';
         }
 
-        return $data;
-    }
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy';
+        }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy' => false];
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('retention', $data)) {
+                $object->setRetention($data['retention']);
+                unset($data['retention']);
+            }
+            if (\array_key_exists('target', $data)) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPolicyTarget', 'json', $context));
+                unset($data['target']);
+            }
+            if (\array_key_exists('schedule', $data)) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['schedule'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setSchedule($values);
+                unset($data['schedule']);
+            }
+            foreach ($data as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_1;
+                }
+            }
+
+            return $object;
+        }
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('id') && null !== $object->getId()) {
+                $data['id'] = $object->getId();
+            }
+            if ($object->isInitialized('retention') && null !== $object->getRetention()) {
+                $data['retention'] = $object->getRetention();
+            }
+            if ($object->isInitialized('target') && null !== $object->getTarget()) {
+                $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);
+            }
+            if ($object->isInitialized('schedule') && null !== $object->getSchedule()) {
+                $values = [];
+                foreach ($object->getSchedule() as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $data['schedule'] = $values;
+            }
+            foreach ($object as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_1;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\DiskBackupPoliciesDiskBackupPolicyPatchResponse200DiskBackupPolicy' => false];
+        }
     }
 }

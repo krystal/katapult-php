@@ -50,7 +50,7 @@ class LoadBalancerRuleArguments extends \ArrayObject
      */
     protected $passthroughSsl;
     /**
-     * @var CertificateLookup[]
+     * @var list<CertificateLookup>
      */
     protected $certificates;
     /**
@@ -178,7 +178,7 @@ class LoadBalancerRuleArguments extends \ArrayObject
     }
 
     /**
-     * @return CertificateLookup[]
+     * @return list<CertificateLookup>
      */
     public function getCertificates(): array
     {
@@ -186,7 +186,7 @@ class LoadBalancerRuleArguments extends \ArrayObject
     }
 
     /**
-     * @param CertificateLookup[] $certificates
+     * @param list<CertificateLookup> $certificates
      */
     public function setCertificates(array $certificates): self
     {

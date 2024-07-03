@@ -34,7 +34,7 @@ class LoadBalancerArguments extends \ArrayObject
      */
     protected $resourceType;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $resourceIds;
     /**
@@ -52,11 +52,11 @@ class LoadBalancerArguments extends \ArrayObject
      */
     protected $enableWeighting;
     /**
-     * @var LoadBalancerWeightsArguments[]
+     * @var list<LoadBalancerWeightsArguments>
      */
     protected $weights;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $standbyVms;
 
@@ -100,7 +100,7 @@ class LoadBalancerArguments extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getResourceIds(): array
     {
@@ -108,7 +108,7 @@ class LoadBalancerArguments extends \ArrayObject
     }
 
     /**
-     * @param string[] $resourceIds
+     * @param list<string> $resourceIds
      */
     public function setResourceIds(array $resourceIds): self
     {
@@ -164,7 +164,7 @@ class LoadBalancerArguments extends \ArrayObject
     }
 
     /**
-     * @return LoadBalancerWeightsArguments[]
+     * @return list<LoadBalancerWeightsArguments>
      */
     public function getWeights(): array
     {
@@ -172,7 +172,7 @@ class LoadBalancerArguments extends \ArrayObject
     }
 
     /**
-     * @param LoadBalancerWeightsArguments[] $weights
+     * @param list<LoadBalancerWeightsArguments> $weights
      */
     public function setWeights(array $weights): self
     {
@@ -183,7 +183,7 @@ class LoadBalancerArguments extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getStandbyVms(): array
     {
@@ -191,7 +191,7 @@ class LoadBalancerArguments extends \ArrayObject
     }
 
     /**
-     * @param string[] $standbyVms
+     * @param list<string> $standbyVms
      */
     public function setStandbyVms(array $standbyVms): self
     {

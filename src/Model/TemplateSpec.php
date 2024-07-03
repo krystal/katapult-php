@@ -22,12 +22,12 @@ class TemplateSpec extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var TemplateSpecField[]
+     * @var list<TemplateSpecField>
      */
     protected $fields;
 
     /**
-     * @return TemplateSpecField[]
+     * @return list<TemplateSpecField>
      */
     public function getFields(): array
     {
@@ -35,7 +35,7 @@ class TemplateSpec extends \ArrayObject
     }
 
     /**
-     * @param TemplateSpecField[] $fields
+     * @param list<TemplateSpecField> $fields
      */
     public function setFields(array $fields): self
     {

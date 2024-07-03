@@ -22,12 +22,12 @@ class CertificatesCertificateGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var Certificate[]
+     * @var list<Certificate>
      */
     protected $certificate;
 
     /**
-     * @return Certificate[]
+     * @return list<Certificate>
      */
     public function getCertificate(): array
     {
@@ -35,7 +35,7 @@ class CertificatesCertificateGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param Certificate[] $certificate
+     * @param list<Certificate> $certificate
      */
     public function setCertificate(array $certificate): self
     {

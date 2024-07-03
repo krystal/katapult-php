@@ -22,12 +22,12 @@ class ScopeNotGrantedError extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $scopes;
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getScopes(): array
     {
@@ -35,7 +35,7 @@ class ScopeNotGrantedError extends \ArrayObject
     }
 
     /**
-     * @param string[] $scopes
+     * @param list<string> $scopes
      */
     public function setScopes(array $scopes): self
     {

@@ -64,7 +64,7 @@ class GetAddressListEntry extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntryNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntryTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

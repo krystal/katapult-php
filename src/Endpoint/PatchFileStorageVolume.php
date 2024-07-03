@@ -14,7 +14,7 @@ class PatchFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumePatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -53,7 +53,7 @@ class PatchFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

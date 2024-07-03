@@ -34,7 +34,7 @@ class FileStorageVolumeArguments extends \ArrayObject
      */
     protected $dataCenter;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $associations;
 
@@ -77,7 +77,7 @@ class FileStorageVolumeArguments extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getAssociations(): array
     {
@@ -85,7 +85,7 @@ class FileStorageVolumeArguments extends \ArrayObject
     }
 
     /**
-     * @param string[] $associations
+     * @param list<string> $associations
      */
     public function setAssociations(array $associations): self
     {

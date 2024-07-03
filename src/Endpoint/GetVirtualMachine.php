@@ -67,7 +67,7 @@ class GetVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

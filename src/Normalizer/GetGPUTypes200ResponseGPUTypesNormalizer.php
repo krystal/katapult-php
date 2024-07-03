@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,118 +21,230 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class GetGPUTypes200ResponseGPUTypesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class GetGPUTypes200ResponseGPUTypesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\GetGPUTypes200ResponseGPUTypes();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\GetGPUTypes200ResponseGPUTypes();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('name', $data)) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            }
+            if (\array_key_exists('manufacturer', $data)) {
+                $object->setManufacturer($data['manufacturer']);
+                unset($data['manufacturer']);
+            }
+            if (\array_key_exists('memory_in_gb', $data)) {
+                $object->setMemoryInGb($data['memory_in_gb']);
+                unset($data['memory_in_gb']);
+            }
+            if (\array_key_exists('memory_type', $data)) {
+                $object->setMemoryType($data['memory_type']);
+                unset($data['memory_type']);
+            }
+            if (\array_key_exists('permalink', $data)) {
+                $object->setPermalink($data['permalink']);
+                unset($data['permalink']);
+            }
+            if (\array_key_exists('data_centers', $data)) {
+                $values = [];
+                foreach ($data['data_centers'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypesDataCentersItem', 'json', $context);
+                }
+                $object->setDataCenters($values);
+                unset($data['data_centers']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
-        }
-        if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
-            unset($data['name']);
-        }
-        if (\array_key_exists('manufacturer', $data)) {
-            $object->setManufacturer($data['manufacturer']);
-            unset($data['manufacturer']);
-        }
-        if (\array_key_exists('memory_in_gb', $data)) {
-            $object->setMemoryInGb($data['memory_in_gb']);
-            unset($data['memory_in_gb']);
-        }
-        if (\array_key_exists('memory_type', $data)) {
-            $object->setMemoryType($data['memory_type']);
-            unset($data['memory_type']);
-        }
-        if (\array_key_exists('permalink', $data)) {
-            $object->setPermalink($data['permalink']);
-            unset($data['permalink']);
-        }
-        if (\array_key_exists('data_centers', $data)) {
-            $values = [];
-            foreach ($data['data_centers'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypesDataCentersItem', 'json', $context);
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('id') && null !== $object->getId()) {
+                $data['id'] = $object->getId();
             }
-            $object->setDataCenters($values);
-            unset($data['data_centers']);
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
             }
+            if ($object->isInitialized('manufacturer') && null !== $object->getManufacturer()) {
+                $data['manufacturer'] = $object->getManufacturer();
+            }
+            if ($object->isInitialized('memoryInGb') && null !== $object->getMemoryInGb()) {
+                $data['memory_in_gb'] = $object->getMemoryInGb();
+            }
+            if ($object->isInitialized('memoryType') && null !== $object->getMemoryType()) {
+                $data['memory_type'] = $object->getMemoryType();
+            }
+            if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
+                $data['permalink'] = $object->getPermalink();
+            }
+            if ($object->isInitialized('dataCenters') && null !== $object->getDataCenters()) {
+                $values = [];
+                foreach ($object->getDataCenters() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['data_centers'] = $values;
+            }
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes' => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class GetGPUTypes200ResponseGPUTypesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        if ($object->isInitialized('id') && null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if ($object->isInitialized('manufacturer') && null !== $object->getManufacturer()) {
-            $data['manufacturer'] = $object->getManufacturer();
-        }
-        if ($object->isInitialized('memoryInGb') && null !== $object->getMemoryInGb()) {
-            $data['memory_in_gb'] = $object->getMemoryInGb();
-        }
-        if ($object->isInitialized('memoryType') && null !== $object->getMemoryType()) {
-            $data['memory_type'] = $object->getMemoryType();
-        }
-        if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
-            $data['permalink'] = $object->getPermalink();
-        }
-        if ($object->isInitialized('dataCenters') && null !== $object->getDataCenters()) {
-            $values = [];
-            foreach ($object->getDataCenters() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['data_centers'] = $values;
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes';
         }
 
-        return $data;
-    }
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes';
+        }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes' => false];
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\GetGPUTypes200ResponseGPUTypes();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('name', $data)) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            }
+            if (\array_key_exists('manufacturer', $data)) {
+                $object->setManufacturer($data['manufacturer']);
+                unset($data['manufacturer']);
+            }
+            if (\array_key_exists('memory_in_gb', $data)) {
+                $object->setMemoryInGb($data['memory_in_gb']);
+                unset($data['memory_in_gb']);
+            }
+            if (\array_key_exists('memory_type', $data)) {
+                $object->setMemoryType($data['memory_type']);
+                unset($data['memory_type']);
+            }
+            if (\array_key_exists('permalink', $data)) {
+                $object->setPermalink($data['permalink']);
+                unset($data['permalink']);
+            }
+            if (\array_key_exists('data_centers', $data)) {
+                $values = [];
+                foreach ($data['data_centers'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypesDataCentersItem', 'json', $context);
+                }
+                $object->setDataCenters($values);
+                unset($data['data_centers']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
+
+            return $object;
+        }
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('id') && null !== $object->getId()) {
+                $data['id'] = $object->getId();
+            }
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('manufacturer') && null !== $object->getManufacturer()) {
+                $data['manufacturer'] = $object->getManufacturer();
+            }
+            if ($object->isInitialized('memoryInGb') && null !== $object->getMemoryInGb()) {
+                $data['memory_in_gb'] = $object->getMemoryInGb();
+            }
+            if ($object->isInitialized('memoryType') && null !== $object->getMemoryType()) {
+                $data['memory_type'] = $object->getMemoryType();
+            }
+            if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
+                $data['permalink'] = $object->getPermalink();
+            }
+            if ($object->isInitialized('dataCenters') && null !== $object->getDataCenters()) {
+                $values = [];
+                foreach ($object->getDataCenters() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['data_centers'] = $values;
+            }
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\GetGPUTypes200ResponseGPUTypes' => false];
+        }
     }
 }

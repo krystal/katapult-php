@@ -28,7 +28,7 @@ class OrganizationsOrganizationFileStorageVolumesGetResponse200 extends \ArrayOb
     /**
      * A list of all file storage volumes for the given organization.
      *
-     * @var GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes[]
+     * @var list<GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes>
      */
     protected $fileStorageVolumes;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationFileStorageVolumesGetResponse200 extends \ArrayOb
     /**
      * A list of all file storage volumes for the given organization.
      *
-     * @return GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes[]
+     * @return list<GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes>
      */
     public function getFileStorageVolumes(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationFileStorageVolumesGetResponse200 extends \ArrayOb
     /**
      * A list of all file storage volumes for the given organization.
      *
-     * @param GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes[] $fileStorageVolumes
+     * @param list<GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes> $fileStorageVolumes
      */
     public function setFileStorageVolumes(array $fileStorageVolumes): self
     {

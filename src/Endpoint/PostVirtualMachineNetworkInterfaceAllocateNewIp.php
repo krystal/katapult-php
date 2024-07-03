@@ -14,7 +14,7 @@ class PostVirtualMachineNetworkInterfaceAllocateNewIp extends \Krystal\Katapult\
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PostVirtualMachineNetworkInterfaceAllocateNewIp extends \Krystal\Katapult\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpTooManyRequestsException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpServiceUnavailableException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

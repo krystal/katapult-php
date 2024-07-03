@@ -22,12 +22,12 @@ class DataCentersGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var GetDataCenters200ResponseDataCenters[]
+     * @var list<GetDataCenters200ResponseDataCenters>
      */
     protected $dataCenters;
 
     /**
-     * @return GetDataCenters200ResponseDataCenters[]
+     * @return list<GetDataCenters200ResponseDataCenters>
      */
     public function getDataCenters(): array
     {
@@ -35,7 +35,7 @@ class DataCentersGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param GetDataCenters200ResponseDataCenters[] $dataCenters
+     * @param list<GetDataCenters200ResponseDataCenters> $dataCenters
      */
     public function setDataCenters(array $dataCenters): self
     {

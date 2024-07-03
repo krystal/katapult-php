@@ -22,12 +22,12 @@ class OrganizationsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var GetOrganizations200ResponseOrganizations[]
+     * @var list<GetOrganizations200ResponseOrganizations>
      */
     protected $organizations;
 
     /**
-     * @return GetOrganizations200ResponseOrganizations[]
+     * @return list<GetOrganizations200ResponseOrganizations>
      */
     public function getOrganizations(): array
     {
@@ -35,7 +35,7 @@ class OrganizationsGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param GetOrganizations200ResponseOrganizations[] $organizations
+     * @param list<GetOrganizations200ResponseOrganizations> $organizations
      */
     public function setOrganizations(array $organizations): self
     {

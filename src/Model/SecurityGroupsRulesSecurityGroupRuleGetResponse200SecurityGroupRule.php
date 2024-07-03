@@ -46,7 +46,7 @@ class SecurityGroupsRulesSecurityGroupRuleGetResponse200SecurityGroupRule extend
      */
     protected $ports;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $targets;
     /**
@@ -133,7 +133,7 @@ class SecurityGroupsRulesSecurityGroupRuleGetResponse200SecurityGroupRule extend
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getTargets(): array
     {
@@ -141,7 +141,7 @@ class SecurityGroupsRulesSecurityGroupRuleGetResponse200SecurityGroupRule extend
     }
 
     /**
-     * @param string[] $targets
+     * @param list<string> $targets
      */
     public function setTargets(array $targets): self
     {

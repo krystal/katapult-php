@@ -14,7 +14,7 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katap
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katap
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

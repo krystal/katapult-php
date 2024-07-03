@@ -30,7 +30,7 @@ class PatchLoadBalancersRulesLoadBalancerRulePartCertificates extends \ArrayObje
      */
     protected $name;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $additionalNames;
     /**
@@ -65,7 +65,7 @@ class PatchLoadBalancersRulesLoadBalancerRulePartCertificates extends \ArrayObje
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getAdditionalNames(): array
     {
@@ -73,7 +73,7 @@ class PatchLoadBalancersRulesLoadBalancerRulePartCertificates extends \ArrayObje
     }
 
     /**
-     * @param string[] $additionalNames
+     * @param list<string> $additionalNames
      */
     public function setAdditionalNames(array $additionalNames): self
     {

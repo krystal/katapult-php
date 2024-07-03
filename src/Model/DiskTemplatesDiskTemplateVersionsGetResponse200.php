@@ -32,7 +32,7 @@ class DiskTemplatesDiskTemplateVersionsGetResponse200 extends \ArrayObject
     /**
      * The disk template versions for the provided template.
      *
-     * @var GetDiskTemplateVersions200ResponseDiskTemplateVersions[]
+     * @var list<GetDiskTemplateVersions200ResponseDiskTemplateVersions>
      */
     protected $diskTemplateVersions;
 
@@ -65,7 +65,7 @@ class DiskTemplatesDiskTemplateVersionsGetResponse200 extends \ArrayObject
     /**
      * The disk template versions for the provided template.
      *
-     * @return GetDiskTemplateVersions200ResponseDiskTemplateVersions[]
+     * @return list<GetDiskTemplateVersions200ResponseDiskTemplateVersions>
      */
     public function getDiskTemplateVersions(): array
     {
@@ -75,7 +75,7 @@ class DiskTemplatesDiskTemplateVersionsGetResponse200 extends \ArrayObject
     /**
      * The disk template versions for the provided template.
      *
-     * @param GetDiskTemplateVersions200ResponseDiskTemplateVersions[] $diskTemplateVersions
+     * @param list<GetDiskTemplateVersions200ResponseDiskTemplateVersions> $diskTemplateVersions
      */
     public function setDiskTemplateVersions(array $diskTemplateVersions): self
     {

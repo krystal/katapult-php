@@ -14,7 +14,7 @@ class PostOrganizationIpAddresses extends \Krystal\Katapult\KatapultAPI\Runtime\
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationIpAddressesPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationIpAddressesPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -53,7 +53,7 @@ class PostOrganizationIpAddresses extends \Krystal\Katapult\KatapultAPI\Runtime\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationIpAddressesTooManyRequestsException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationIpAddressesServiceUnavailableException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

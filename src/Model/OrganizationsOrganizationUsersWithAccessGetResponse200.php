@@ -26,7 +26,7 @@ class OrganizationsOrganizationUsersWithAccessGetResponse200 extends \ArrayObjec
      */
     protected $pagination;
     /**
-     * @var GetOrganizationUsersWithAccess200ResponseUsers[]
+     * @var list<GetOrganizationUsersWithAccess200ResponseUsers>
      */
     protected $users;
 
@@ -44,7 +44,7 @@ class OrganizationsOrganizationUsersWithAccessGetResponse200 extends \ArrayObjec
     }
 
     /**
-     * @return GetOrganizationUsersWithAccess200ResponseUsers[]
+     * @return list<GetOrganizationUsersWithAccess200ResponseUsers>
      */
     public function getUsers(): array
     {
@@ -52,7 +52,7 @@ class OrganizationsOrganizationUsersWithAccessGetResponse200 extends \ArrayObjec
     }
 
     /**
-     * @param GetOrganizationUsersWithAccess200ResponseUsers[] $users
+     * @param list<GetOrganizationUsersWithAccess200ResponseUsers> $users
      */
     public function setUsers(array $users): self
     {

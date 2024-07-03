@@ -28,7 +28,7 @@ class OperatingSystemsGetResponse200 extends \ArrayObject
     /**
      * The list of available operating systems.
      *
-     * @var GetOperatingSystems200ResponseOperatingSystems[]
+     * @var list<GetOperatingSystems200ResponseOperatingSystems>
      */
     protected $operatingSystems;
 
@@ -48,7 +48,7 @@ class OperatingSystemsGetResponse200 extends \ArrayObject
     /**
      * The list of available operating systems.
      *
-     * @return GetOperatingSystems200ResponseOperatingSystems[]
+     * @return list<GetOperatingSystems200ResponseOperatingSystems>
      */
     public function getOperatingSystems(): array
     {
@@ -58,7 +58,7 @@ class OperatingSystemsGetResponse200 extends \ArrayObject
     /**
      * The list of available operating systems.
      *
-     * @param GetOperatingSystems200ResponseOperatingSystems[] $operatingSystems
+     * @param list<GetOperatingSystems200ResponseOperatingSystems> $operatingSystems
      */
     public function setOperatingSystems(array $operatingSystems): self
     {

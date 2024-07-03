@@ -38,7 +38,7 @@ class OrganizationsOrganizationAddressListsPostResponse201AddressList extends \A
      */
     protected $global;
     /**
-     * @var AddressListEntry[]
+     * @var list<AddressListEntry>
      */
     protected $entries;
 
@@ -94,7 +94,7 @@ class OrganizationsOrganizationAddressListsPostResponse201AddressList extends \A
     }
 
     /**
-     * @return AddressListEntry[]
+     * @return list<AddressListEntry>
      */
     public function getEntries(): array
     {
@@ -102,7 +102,7 @@ class OrganizationsOrganizationAddressListsPostResponse201AddressList extends \A
     }
 
     /**
-     * @param AddressListEntry[] $entries
+     * @param list<AddressListEntry> $entries
      */
     public function setEntries(array $entries): self
     {

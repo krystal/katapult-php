@@ -28,7 +28,7 @@ class OrganizationsOrganizationSecurityGroupsGetResponse200 extends \ArrayObject
     /**
      * The security groups owned by this organization.
      *
-     * @var SecurityGroup[]
+     * @var list<SecurityGroup>
      */
     protected $securityGroups;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationSecurityGroupsGetResponse200 extends \ArrayObject
     /**
      * The security groups owned by this organization.
      *
-     * @return SecurityGroup[]
+     * @return list<SecurityGroup>
      */
     public function getSecurityGroups(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationSecurityGroupsGetResponse200 extends \ArrayObject
     /**
      * The security groups owned by this organization.
      *
-     * @param SecurityGroup[] $securityGroups
+     * @param list<SecurityGroup> $securityGroups
      */
     public function setSecurityGroups(array $securityGroups): self
     {

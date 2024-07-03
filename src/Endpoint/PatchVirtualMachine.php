@@ -14,7 +14,7 @@ class PatchVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachinePatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachinePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PatchVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

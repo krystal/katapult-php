@@ -21,7 +21,6 @@ class DiskBackupPolicyTarget extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $target;
 
     public function getTarget()

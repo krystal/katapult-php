@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,87 +21,168 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class OrganizationsOrganizationAvailableNetworksGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class OrganizationsOrganizationAvailableNetworksGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAvailableNetworksGetResponse200();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAvailableNetworksGetResponse200();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('networks', $data)) {
+                $values = [];
+                foreach ($data['networks'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationAvailableNetworks200ResponseNetworks', 'json', $context);
+                }
+                $object->setNetworks($values);
+                unset($data['networks']);
+            }
+            if (\array_key_exists('virtual_networks', $data)) {
+                $values_1 = [];
+                foreach ($data['virtual_networks'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationAvailableNetworks200ResponseVirtualNetworks', 'json', $context);
+                }
+                $object->setVirtualNetworks($values_1);
+                unset($data['virtual_networks']);
+            }
+            foreach ($data as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_2;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('networks', $data)) {
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
             $values = [];
-            foreach ($data['networks'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationAvailableNetworks200ResponseNetworks', 'json', $context);
+            foreach ($object->getNetworks() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $object->setNetworks($values);
-            unset($data['networks']);
-        }
-        if (\array_key_exists('virtual_networks', $data)) {
+            $data['networks'] = $values;
             $values_1 = [];
-            foreach ($data['virtual_networks'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationAvailableNetworks200ResponseVirtualNetworks', 'json', $context);
+            foreach ($object->getVirtualNetworks() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $object->setVirtualNetworks($values_1);
-            unset($data['virtual_networks']);
-        }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+            $data['virtual_networks'] = $values_1;
+            foreach ($object as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_2;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200' => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class OrganizationsOrganizationAvailableNetworksGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $values = [];
-        foreach ($object->getNetworks() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
         }
-        $data['networks'] = $values;
-        $values_1 = [];
-        foreach ($object->getVirtualNetworks() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
         }
-        $data['virtual_networks'] = $values_1;
-        foreach ($object as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_2;
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAvailableNetworksGetResponse200();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('networks', $data)) {
+                $values = [];
+                foreach ($data['networks'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationAvailableNetworks200ResponseNetworks', 'json', $context);
+                }
+                $object->setNetworks($values);
+                unset($data['networks']);
+            }
+            if (\array_key_exists('virtual_networks', $data)) {
+                $values_1 = [];
+                foreach ($data['virtual_networks'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationAvailableNetworks200ResponseVirtualNetworks', 'json', $context);
+                }
+                $object->setVirtualNetworks($values_1);
+                unset($data['virtual_networks']);
+            }
+            foreach ($data as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_2;
+                }
+            }
+
+            return $object;
         }
 
-        return $data;
-    }
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $values = [];
+            foreach ($object->getNetworks() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['networks'] = $values;
+            $values_1 = [];
+            foreach ($object->getVirtualNetworks() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['virtual_networks'] = $values_1;
+            foreach ($object as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_2;
+                }
+            }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200' => false];
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200' => false];
+        }
     }
 }

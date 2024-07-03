@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,89 +21,172 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ScheduleArgumentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ScheduleArgumentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\ScheduleArguments();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\ScheduleArguments();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('frequency', $data)) {
+                $object->setFrequency($data['frequency']);
+                unset($data['frequency']);
+            }
+            if (\array_key_exists('interval', $data)) {
+                $object->setInterval($data['interval']);
+                unset($data['interval']);
+            }
+            if (\array_key_exists('minute', $data)) {
+                $object->setMinute($data['minute']);
+                unset($data['minute']);
+            }
+            if (\array_key_exists('time', $data)) {
+                $object->setTime($data['time']);
+                unset($data['time']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('frequency', $data)) {
-            $object->setFrequency($data['frequency']);
-            unset($data['frequency']);
-        }
-        if (\array_key_exists('interval', $data)) {
-            $object->setInterval($data['interval']);
-            unset($data['interval']);
-        }
-        if (\array_key_exists('minute', $data)) {
-            $object->setMinute($data['minute']);
-            unset($data['minute']);
-        }
-        if (\array_key_exists('time', $data)) {
-            $object->setTime($data['time']);
-            unset($data['time']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('frequency') && null !== $object->getFrequency()) {
+                $data['frequency'] = $object->getFrequency();
             }
-        }
-
-        return $object;
-    }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        if ($object->isInitialized('frequency') && null !== $object->getFrequency()) {
-            $data['frequency'] = $object->getFrequency();
-        }
-        if ($object->isInitialized('interval') && null !== $object->getInterval()) {
-            $data['interval'] = $object->getInterval();
-        }
-        if ($object->isInitialized('minute') && null !== $object->getMinute()) {
-            $data['minute'] = $object->getMinute();
-        }
-        if ($object->isInitialized('time') && null !== $object->getTime()) {
-            $data['time'] = $object->getTime();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('interval') && null !== $object->getInterval()) {
+                $data['interval'] = $object->getInterval();
             }
+            if ($object->isInitialized('minute') && null !== $object->getMinute()) {
+                $data['minute'] = $object->getMinute();
+            }
+            if ($object->isInitialized('time') && null !== $object->getTime()) {
+                $data['time'] = $object->getTime();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class ScheduleArgumentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments' => false];
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments';
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments';
+        }
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\ScheduleArguments();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('frequency', $data)) {
+                $object->setFrequency($data['frequency']);
+                unset($data['frequency']);
+            }
+            if (\array_key_exists('interval', $data)) {
+                $object->setInterval($data['interval']);
+                unset($data['interval']);
+            }
+            if (\array_key_exists('minute', $data)) {
+                $object->setMinute($data['minute']);
+                unset($data['minute']);
+            }
+            if (\array_key_exists('time', $data)) {
+                $object->setTime($data['time']);
+                unset($data['time']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('frequency') && null !== $object->getFrequency()) {
+                $data['frequency'] = $object->getFrequency();
+            }
+            if ($object->isInitialized('interval') && null !== $object->getInterval()) {
+                $data['interval'] = $object->getInterval();
+            }
+            if ($object->isInitialized('minute') && null !== $object->getMinute()) {
+                $data['minute'] = $object->getMinute();
+            }
+            if ($object->isInitialized('time') && null !== $object->getTime()) {
+                $data['time'] = $object->getTime();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\ScheduleArguments' => false];
+        }
     }
 }

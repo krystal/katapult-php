@@ -28,7 +28,7 @@ class AddressListsAddressListEntriesGetResponse200 extends \ArrayObject
     /**
      * A list of all address list entries for the given address list.
      *
-     * @var AddressListEntry[]
+     * @var list<AddressListEntry>
      */
     protected $addressListEntries;
 
@@ -48,7 +48,7 @@ class AddressListsAddressListEntriesGetResponse200 extends \ArrayObject
     /**
      * A list of all address list entries for the given address list.
      *
-     * @return AddressListEntry[]
+     * @return list<AddressListEntry>
      */
     public function getAddressListEntries(): array
     {
@@ -58,7 +58,7 @@ class AddressListsAddressListEntriesGetResponse200 extends \ArrayObject
     /**
      * A list of all address list entries for the given address list.
      *
-     * @param AddressListEntry[] $addressListEntries
+     * @param list<AddressListEntry> $addressListEntries
      */
     public function setAddressListEntries(array $addressListEntries): self
     {
