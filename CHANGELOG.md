@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.2](https://github.com/krystal/katapult-php/compare/v4.0.1...v4.0.2) (2024-07-04)
+
+
+### Bug Fixes
+
+* generated with symfony/serializer v5.4 to fix incompatibility with interfaces ([9506231](https://github.com/krystal/katapult-php/commit/950623117efc01c229479570f8e05247319096d7))
+
 ## [4.0.1](https://github.com/krystal/katapult-php/compare/v4.0.0...v4.0.1) (2024-07-02)
 
 
