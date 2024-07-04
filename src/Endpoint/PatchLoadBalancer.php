@@ -14,7 +14,7 @@ class PatchLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerPatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PatchLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

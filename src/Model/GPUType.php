@@ -46,7 +46,7 @@ class GPUType extends \ArrayObject
      */
     protected $permalink;
     /**
-     * @var GPUTypeDataCentersItem[]
+     * @var list<GPUTypeDataCentersItem>
      */
     protected $dataCenters;
 
@@ -129,7 +129,7 @@ class GPUType extends \ArrayObject
     }
 
     /**
-     * @return GPUTypeDataCentersItem[]
+     * @return list<GPUTypeDataCentersItem>
      */
     public function getDataCenters(): array
     {
@@ -137,7 +137,7 @@ class GPUType extends \ArrayObject
     }
 
     /**
-     * @param GPUTypeDataCentersItem[] $dataCenters
+     * @param list<GPUTypeDataCentersItem> $dataCenters
      */
     public function setDataCenters(array $dataCenters): self
     {

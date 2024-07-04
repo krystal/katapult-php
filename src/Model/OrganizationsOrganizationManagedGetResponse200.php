@@ -26,7 +26,7 @@ class OrganizationsOrganizationManagedGetResponse200 extends \ArrayObject
      */
     protected $pagination;
     /**
-     * @var GetOrganizationManaged200ResponseOrganizations[]
+     * @var list<GetOrganizationManaged200ResponseOrganizations>
      */
     protected $organizations;
 
@@ -44,7 +44,7 @@ class OrganizationsOrganizationManagedGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return GetOrganizationManaged200ResponseOrganizations[]
+     * @return list<GetOrganizationManaged200ResponseOrganizations>
      */
     public function getOrganizations(): array
     {
@@ -52,7 +52,7 @@ class OrganizationsOrganizationManagedGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param GetOrganizationManaged200ResponseOrganizations[] $organizations
+     * @param list<GetOrganizationManaged200ResponseOrganizations> $organizations
      */
     public function setOrganizations(array $organizations): self
     {

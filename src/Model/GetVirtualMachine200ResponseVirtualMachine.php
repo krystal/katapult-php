@@ -90,19 +90,19 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $gpuType;
     /**
-     * @var VirtualMachineGPU[]
+     * @var list<VirtualMachineGPU>
      */
     protected $gpus;
     /**
-     * @var Tag[]
+     * @var list<Tag>
      */
     protected $tags;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $tagNames;
     /**
-     * @var IPAddress[]
+     * @var list<IPAddress>
      */
     protected $ipAddresses;
 
@@ -328,7 +328,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return VirtualMachineGPU[]
+     * @return list<VirtualMachineGPU>
      */
     public function getGpus(): array
     {
@@ -336,7 +336,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param VirtualMachineGPU[] $gpus
+     * @param list<VirtualMachineGPU> $gpus
      */
     public function setGpus(array $gpus): self
     {
@@ -347,7 +347,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return Tag[]
+     * @return list<Tag>
      */
     public function getTags(): array
     {
@@ -355,7 +355,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param Tag[] $tags
+     * @param list<Tag> $tags
      */
     public function setTags(array $tags): self
     {
@@ -366,7 +366,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getTagNames(): array
     {
@@ -374,7 +374,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param string[] $tagNames
+     * @param list<string> $tagNames
      */
     public function setTagNames(array $tagNames): self
     {
@@ -385,7 +385,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @return IPAddress[]
+     * @return list<IPAddress>
      */
     public function getIpAddresses(): array
     {
@@ -393,7 +393,7 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     }
 
     /**
-     * @param IPAddress[] $ipAddresses
+     * @param list<IPAddress> $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

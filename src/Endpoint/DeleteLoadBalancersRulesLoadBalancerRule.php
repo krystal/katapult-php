@@ -14,7 +14,7 @@ class DeleteLoadBalancersRulesLoadBalancerRule extends \Krystal\Katapult\Katapul
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\LoadBalancersRulesLoadBalancerRuleDeleteBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersRulesLoadBalancerRuleDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class DeleteLoadBalancersRulesLoadBalancerRule extends \Krystal\Katapult\Katapul
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

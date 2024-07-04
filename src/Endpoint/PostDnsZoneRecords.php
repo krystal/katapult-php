@@ -14,7 +14,7 @@ class PostDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PostDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

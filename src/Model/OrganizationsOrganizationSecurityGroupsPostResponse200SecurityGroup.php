@@ -38,7 +38,7 @@ class OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup extend
      */
     protected $allowAllOutbound;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $associations;
 
@@ -95,7 +95,7 @@ class OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup extend
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getAssociations(): array
     {
@@ -103,7 +103,7 @@ class OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup extend
     }
 
     /**
-     * @param string[] $associations
+     * @param list<string> $associations
      */
     public function setAssociations(array $associations): self
     {

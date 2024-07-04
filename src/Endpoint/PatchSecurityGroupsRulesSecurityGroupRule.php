@@ -14,7 +14,7 @@ class PatchSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katapu
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PatchSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katapu
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

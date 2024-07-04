@@ -26,7 +26,7 @@ class GpuTypesGetResponse200 extends \ArrayObject
      */
     protected $pagination;
     /**
-     * @var GetGPUTypes200ResponseGPUTypes[]
+     * @var list<GetGPUTypes200ResponseGPUTypes>
      */
     protected $gpuTypes;
 
@@ -44,7 +44,7 @@ class GpuTypesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return GetGPUTypes200ResponseGPUTypes[]
+     * @return list<GetGPUTypes200ResponseGPUTypes>
      */
     public function getGpuTypes(): array
     {
@@ -52,7 +52,7 @@ class GpuTypesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param GetGPUTypes200ResponseGPUTypes[] $gpuTypes
+     * @param list<GetGPUTypes200ResponseGPUTypes> $gpuTypes
      */
     public function setGpuTypes(array $gpuTypes): self
     {

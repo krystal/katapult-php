@@ -17,7 +17,7 @@ class GetOrganizationPolicyLimitsForbiddenException extends ForbiddenException
      */
     private $response;
 
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('403 error response');
         $this->response = $response;

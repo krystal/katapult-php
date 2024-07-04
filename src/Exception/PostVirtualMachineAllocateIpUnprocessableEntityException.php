@@ -17,7 +17,7 @@ class PostVirtualMachineAllocateIpUnprocessableEntityException extends Unprocess
      */
     private $response;
 
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('422 error response');
         $this->response = $response;

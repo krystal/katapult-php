@@ -28,7 +28,7 @@ class LoadBalancersLoadBalancerRulesGetResponse200 extends \ArrayObject
     /**
      * The load balancer rules for this load balancer.
      *
-     * @var GetLoadBalancerRules200ResponseLoadBalancerRules[]
+     * @var list<GetLoadBalancerRules200ResponseLoadBalancerRules>
      */
     protected $loadBalancerRules;
 
@@ -48,7 +48,7 @@ class LoadBalancersLoadBalancerRulesGetResponse200 extends \ArrayObject
     /**
      * The load balancer rules for this load balancer.
      *
-     * @return GetLoadBalancerRules200ResponseLoadBalancerRules[]
+     * @return list<GetLoadBalancerRules200ResponseLoadBalancerRules>
      */
     public function getLoadBalancerRules(): array
     {
@@ -58,7 +58,7 @@ class LoadBalancersLoadBalancerRulesGetResponse200 extends \ArrayObject
     /**
      * The load balancer rules for this load balancer.
      *
-     * @param GetLoadBalancerRules200ResponseLoadBalancerRules[] $loadBalancerRules
+     * @param list<GetLoadBalancerRules200ResponseLoadBalancerRules> $loadBalancerRules
      */
     public function setLoadBalancerRules(array $loadBalancerRules): self
     {

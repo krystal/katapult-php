@@ -28,7 +28,7 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200 extends \Arr
     /**
      * The disk backup policies for the provided virtual machine.
      *
-     * @var GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies[]
+     * @var list<GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies>
      */
     protected $diskBackupPolicies;
 
@@ -48,7 +48,7 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200 extends \Arr
     /**
      * The disk backup policies for the provided virtual machine.
      *
-     * @return GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies[]
+     * @return list<GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies>
      */
     public function getDiskBackupPolicies(): array
     {
@@ -58,7 +58,7 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200 extends \Arr
     /**
      * The disk backup policies for the provided virtual machine.
      *
-     * @param GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies[] $diskBackupPolicies
+     * @param list<GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies> $diskBackupPolicies
      */
     public function setDiskBackupPolicies(array $diskBackupPolicies): self
     {

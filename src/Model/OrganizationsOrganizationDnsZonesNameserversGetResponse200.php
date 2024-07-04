@@ -22,12 +22,12 @@ class OrganizationsOrganizationDnsZonesNameserversGetResponse200 extends \ArrayO
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $nameservers;
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getNameservers(): array
     {
@@ -35,7 +35,7 @@ class OrganizationsOrganizationDnsZonesNameserversGetResponse200 extends \ArrayO
     }
 
     /**
-     * @param string[] $nameservers
+     * @param list<string> $nameservers
      */
     public function setNameservers(array $nameservers): self
     {

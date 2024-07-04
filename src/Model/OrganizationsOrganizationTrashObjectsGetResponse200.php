@@ -28,7 +28,7 @@ class OrganizationsOrganizationTrashObjectsGetResponse200 extends \ArrayObject
     /**
      * The trash objects that belong to this organization.
      *
-     * @var TrashObject[]
+     * @var list<TrashObject>
      */
     protected $trashObjects;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationTrashObjectsGetResponse200 extends \ArrayObject
     /**
      * The trash objects that belong to this organization.
      *
-     * @return TrashObject[]
+     * @return list<TrashObject>
      */
     public function getTrashObjects(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationTrashObjectsGetResponse200 extends \ArrayObject
     /**
      * The trash objects that belong to this organization.
      *
-     * @param TrashObject[] $trashObjects
+     * @param list<TrashObject> $trashObjects
      */
     public function setTrashObjects(array $trashObjects): self
     {

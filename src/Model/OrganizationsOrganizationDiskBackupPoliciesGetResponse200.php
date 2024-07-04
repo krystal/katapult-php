@@ -28,7 +28,7 @@ class OrganizationsOrganizationDiskBackupPoliciesGetResponse200 extends \ArrayOb
     /**
      * The disk backup policies for the provided organization.
      *
-     * @var GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies[]
+     * @var list<GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies>
      */
     protected $diskBackupPolicies;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationDiskBackupPoliciesGetResponse200 extends \ArrayOb
     /**
      * The disk backup policies for the provided organization.
      *
-     * @return GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies[]
+     * @return list<GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies>
      */
     public function getDiskBackupPolicies(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationDiskBackupPoliciesGetResponse200 extends \ArrayOb
     /**
      * The disk backup policies for the provided organization.
      *
-     * @param GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies[] $diskBackupPolicies
+     * @param list<GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies> $diskBackupPolicies
      */
     public function setDiskBackupPolicies(array $diskBackupPolicies): self
     {

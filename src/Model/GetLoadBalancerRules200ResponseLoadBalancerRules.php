@@ -42,7 +42,7 @@ class GetLoadBalancerRules200ResponseLoadBalancerRules extends \ArrayObject
      */
     protected $protocol;
     /**
-     * @var GetLoadBalancerRulesPartCertificates[]
+     * @var list<GetLoadBalancerRulesPartCertificates>
      */
     protected $certificates;
     /**
@@ -116,7 +116,7 @@ class GetLoadBalancerRules200ResponseLoadBalancerRules extends \ArrayObject
     }
 
     /**
-     * @return GetLoadBalancerRulesPartCertificates[]
+     * @return list<GetLoadBalancerRulesPartCertificates>
      */
     public function getCertificates(): array
     {
@@ -124,7 +124,7 @@ class GetLoadBalancerRules200ResponseLoadBalancerRules extends \ArrayObject
     }
 
     /**
-     * @param GetLoadBalancerRulesPartCertificates[] $certificates
+     * @param list<GetLoadBalancerRulesPartCertificates> $certificates
      */
     public function setCertificates(array $certificates): self
     {

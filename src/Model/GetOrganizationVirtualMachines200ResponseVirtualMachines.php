@@ -54,7 +54,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
      */
     protected $gpuType;
     /**
-     * @var GetOrganizationVirtualMachinesPartIPAddresses[]
+     * @var list<GetOrganizationVirtualMachinesPartIPAddresses>
      */
     protected $ipAddresses;
 
@@ -163,7 +163,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
     }
 
     /**
-     * @return GetOrganizationVirtualMachinesPartIPAddresses[]
+     * @return list<GetOrganizationVirtualMachinesPartIPAddresses>
      */
     public function getIpAddresses(): array
     {
@@ -171,7 +171,7 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
     }
 
     /**
-     * @param GetOrganizationVirtualMachinesPartIPAddresses[] $ipAddresses
+     * @param list<GetOrganizationVirtualMachinesPartIPAddresses> $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

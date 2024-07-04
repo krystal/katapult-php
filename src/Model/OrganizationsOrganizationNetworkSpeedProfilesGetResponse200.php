@@ -28,7 +28,7 @@ class OrganizationsOrganizationNetworkSpeedProfilesGetResponse200 extends \Array
     /**
      * The network speed profiles available to this organization.
      *
-     * @var NetworkSpeedProfile[]
+     * @var list<NetworkSpeedProfile>
      */
     protected $networkSpeedProfiles;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationNetworkSpeedProfilesGetResponse200 extends \Array
     /**
      * The network speed profiles available to this organization.
      *
-     * @return NetworkSpeedProfile[]
+     * @return list<NetworkSpeedProfile>
      */
     public function getNetworkSpeedProfiles(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationNetworkSpeedProfilesGetResponse200 extends \Array
     /**
      * The network speed profiles available to this organization.
      *
-     * @param NetworkSpeedProfile[] $networkSpeedProfiles
+     * @param list<NetworkSpeedProfile> $networkSpeedProfiles
      */
     public function setNetworkSpeedProfiles(array $networkSpeedProfiles): self
     {

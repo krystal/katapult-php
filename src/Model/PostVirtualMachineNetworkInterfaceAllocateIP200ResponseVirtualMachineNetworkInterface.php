@@ -46,7 +46,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetwo
      */
     protected $state;
     /**
-     * @var PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses[]
+     * @var list<PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses>
      */
     protected $ipAddresses;
 
@@ -129,7 +129,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetwo
     }
 
     /**
-     * @return PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses[]
+     * @return list<PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses>
      */
     public function getIpAddresses(): array
     {
@@ -137,7 +137,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetwo
     }
 
     /**
-     * @param PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses[] $ipAddresses
+     * @param list<PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses> $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

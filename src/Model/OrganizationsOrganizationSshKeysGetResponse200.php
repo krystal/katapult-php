@@ -26,7 +26,7 @@ class OrganizationsOrganizationSshKeysGetResponse200 extends \ArrayObject
      */
     protected $pagination;
     /**
-     * @var AuthSSHKey[]
+     * @var list<AuthSSHKey>
      */
     protected $sshKeys;
 
@@ -44,7 +44,7 @@ class OrganizationsOrganizationSshKeysGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return AuthSSHKey[]
+     * @return list<AuthSSHKey>
      */
     public function getSshKeys(): array
     {
@@ -52,7 +52,7 @@ class OrganizationsOrganizationSshKeysGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param AuthSSHKey[] $sshKeys
+     * @param list<AuthSSHKey> $sshKeys
      */
     public function setSshKeys(array $sshKeys): self
     {

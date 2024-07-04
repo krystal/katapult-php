@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,82 +21,158 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class DNSRecordContentArgumentsForSSHFPNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class DNSRecordContentArgumentsForSSHFPNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\DNSRecordContentArgumentsForSSHFP();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\DNSRecordContentArgumentsForSSHFP();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('algorithm', $data)) {
+                $object->setAlgorithm($data['algorithm']);
+                unset($data['algorithm']);
+            }
+            if (\array_key_exists('fingerprint_type', $data)) {
+                $object->setFingerprintType($data['fingerprint_type']);
+                unset($data['fingerprint_type']);
+            }
+            if (\array_key_exists('fingerprint', $data)) {
+                $object->setFingerprint($data['fingerprint']);
+                unset($data['fingerprint']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('algorithm', $data)) {
-            $object->setAlgorithm($data['algorithm']);
-            unset($data['algorithm']);
-        }
-        if (\array_key_exists('fingerprint_type', $data)) {
-            $object->setFingerprintType($data['fingerprint_type']);
-            unset($data['fingerprint_type']);
-        }
-        if (\array_key_exists('fingerprint', $data)) {
-            $object->setFingerprint($data['fingerprint']);
-            unset($data['fingerprint']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('algorithm') && null !== $object->getAlgorithm()) {
+                $data['algorithm'] = $object->getAlgorithm();
             }
-        }
-
-        return $object;
-    }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        if ($object->isInitialized('algorithm') && null !== $object->getAlgorithm()) {
-            $data['algorithm'] = $object->getAlgorithm();
-        }
-        if ($object->isInitialized('fingerprintType') && null !== $object->getFingerprintType()) {
-            $data['fingerprint_type'] = $object->getFingerprintType();
-        }
-        if ($object->isInitialized('fingerprint') && null !== $object->getFingerprint()) {
-            $data['fingerprint'] = $object->getFingerprint();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('fingerprintType') && null !== $object->getFingerprintType()) {
+                $data['fingerprint_type'] = $object->getFingerprintType();
             }
+            if ($object->isInitialized('fingerprint') && null !== $object->getFingerprint()) {
+                $data['fingerprint'] = $object->getFingerprint();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class DNSRecordContentArgumentsForSSHFPNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP' => false];
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP';
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP';
+        }
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\DNSRecordContentArgumentsForSSHFP();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('algorithm', $data)) {
+                $object->setAlgorithm($data['algorithm']);
+                unset($data['algorithm']);
+            }
+            if (\array_key_exists('fingerprint_type', $data)) {
+                $object->setFingerprintType($data['fingerprint_type']);
+                unset($data['fingerprint_type']);
+            }
+            if (\array_key_exists('fingerprint', $data)) {
+                $object->setFingerprint($data['fingerprint']);
+                unset($data['fingerprint']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('algorithm') && null !== $object->getAlgorithm()) {
+                $data['algorithm'] = $object->getAlgorithm();
+            }
+            if ($object->isInitialized('fingerprintType') && null !== $object->getFingerprintType()) {
+                $data['fingerprint_type'] = $object->getFingerprintType();
+            }
+            if ($object->isInitialized('fingerprint') && null !== $object->getFingerprint()) {
+                $data['fingerprint'] = $object->getFingerprint();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\DNSRecordContentArgumentsForSSHFP' => false];
+        }
     }
 }

@@ -28,7 +28,7 @@ class OrganizationsOrganizationDisksGetResponse200 extends \ArrayObject
     /**
      * The list of disks.
      *
-     * @var GetOrganizationDisks200ResponseDisk[]
+     * @var list<GetOrganizationDisks200ResponseDisk>
      */
     protected $disk;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationDisksGetResponse200 extends \ArrayObject
     /**
      * The list of disks.
      *
-     * @return GetOrganizationDisks200ResponseDisk[]
+     * @return list<GetOrganizationDisks200ResponseDisk>
      */
     public function getDisk(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationDisksGetResponse200 extends \ArrayObject
     /**
      * The list of disks.
      *
-     * @param GetOrganizationDisks200ResponseDisk[] $disk
+     * @param list<GetOrganizationDisks200ResponseDisk> $disk
      */
     public function setDisk(array $disk): self
     {

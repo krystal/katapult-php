@@ -28,7 +28,7 @@ class OrganizationsOrganizationTagsGetResponse200 extends \ArrayObject
     /**
      * The details for the tags on the organization.
      *
-     * @var GetOrganizationTags200ResponseTags[]
+     * @var list<GetOrganizationTags200ResponseTags>
      */
     protected $tags;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationTagsGetResponse200 extends \ArrayObject
     /**
      * The details for the tags on the organization.
      *
-     * @return GetOrganizationTags200ResponseTags[]
+     * @return list<GetOrganizationTags200ResponseTags>
      */
     public function getTags(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationTagsGetResponse200 extends \ArrayObject
     /**
      * The details for the tags on the organization.
      *
-     * @param GetOrganizationTags200ResponseTags[] $tags
+     * @param list<GetOrganizationTags200ResponseTags> $tags
      */
     public function setTags(array $tags): self
     {

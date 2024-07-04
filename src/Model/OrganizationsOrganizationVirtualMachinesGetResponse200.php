@@ -26,7 +26,7 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200 extends \ArrayObjec
      */
     protected $pagination;
     /**
-     * @var GetOrganizationVirtualMachines200ResponseVirtualMachines[]
+     * @var list<GetOrganizationVirtualMachines200ResponseVirtualMachines>
      */
     protected $virtualMachines;
 
@@ -44,7 +44,7 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200 extends \ArrayObjec
     }
 
     /**
-     * @return GetOrganizationVirtualMachines200ResponseVirtualMachines[]
+     * @return list<GetOrganizationVirtualMachines200ResponseVirtualMachines>
      */
     public function getVirtualMachines(): array
     {
@@ -52,7 +52,7 @@ class OrganizationsOrganizationVirtualMachinesGetResponse200 extends \ArrayObjec
     }
 
     /**
-     * @param GetOrganizationVirtualMachines200ResponseVirtualMachines[] $virtualMachines
+     * @param list<GetOrganizationVirtualMachines200ResponseVirtualMachines> $virtualMachines
      */
     public function setVirtualMachines(array $virtualMachines): self
     {

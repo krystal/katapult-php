@@ -38,7 +38,7 @@ class SecurityGroup extends \ArrayObject
      */
     protected $allowAllOutbound;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $associations;
 
@@ -95,7 +95,7 @@ class SecurityGroup extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getAssociations(): array
     {
@@ -103,7 +103,7 @@ class SecurityGroup extends \ArrayObject
     }
 
     /**
-     * @param string[] $associations
+     * @param list<string> $associations
      */
     public function setAssociations(array $associations): self
     {

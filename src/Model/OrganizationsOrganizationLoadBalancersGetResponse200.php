@@ -28,7 +28,7 @@ class OrganizationsOrganizationLoadBalancersGetResponse200 extends \ArrayObject
     /**
      * The load balancers owned by this organization.
      *
-     * @var GetOrganizationLoadBalancers200ResponseLoadBalancers[]
+     * @var list<GetOrganizationLoadBalancers200ResponseLoadBalancers>
      */
     protected $loadBalancers;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationLoadBalancersGetResponse200 extends \ArrayObject
     /**
      * The load balancers owned by this organization.
      *
-     * @return GetOrganizationLoadBalancers200ResponseLoadBalancers[]
+     * @return list<GetOrganizationLoadBalancers200ResponseLoadBalancers>
      */
     public function getLoadBalancers(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationLoadBalancersGetResponse200 extends \ArrayObject
     /**
      * The load balancers owned by this organization.
      *
-     * @param GetOrganizationLoadBalancers200ResponseLoadBalancers[] $loadBalancers
+     * @param list<GetOrganizationLoadBalancers200ResponseLoadBalancers> $loadBalancers
      */
     public function setLoadBalancers(array $loadBalancers): self
     {

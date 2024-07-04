@@ -14,7 +14,7 @@ class PostIpAddressUnallocate extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressUnallocatePostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressUnallocatePostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -53,7 +53,7 @@ class PostIpAddressUnallocate extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostIpAddressUnallocateUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostIpAddressUnallocateTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

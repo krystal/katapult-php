@@ -14,7 +14,7 @@ class PostOrganizationTrashObjectsPurgeAll extends \Krystal\Katapult\KatapultAPI
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PostOrganizationTrashObjectsPurgeAll extends \Krystal\Katapult\KatapultAPI
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

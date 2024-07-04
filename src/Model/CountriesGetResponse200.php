@@ -28,7 +28,7 @@ class CountriesGetResponse200 extends \ArrayObject
     /**
      * The list of countries.
      *
-     * @var GetCountries200ResponseCountries[]
+     * @var list<GetCountries200ResponseCountries>
      */
     protected $countries;
 
@@ -48,7 +48,7 @@ class CountriesGetResponse200 extends \ArrayObject
     /**
      * The list of countries.
      *
-     * @return GetCountries200ResponseCountries[]
+     * @return list<GetCountries200ResponseCountries>
      */
     public function getCountries(): array
     {
@@ -58,7 +58,7 @@ class CountriesGetResponse200 extends \ArrayObject
     /**
      * The list of countries.
      *
-     * @param GetCountries200ResponseCountries[] $countries
+     * @param list<GetCountries200ResponseCountries> $countries
      */
     public function setCountries(array $countries): self
     {

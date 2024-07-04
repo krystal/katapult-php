@@ -14,7 +14,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \Krystal\Katapult\Kat
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \Krystal\Katapult\Kat
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

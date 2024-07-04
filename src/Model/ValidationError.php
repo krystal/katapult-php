@@ -22,12 +22,12 @@ class ValidationError extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $errors;
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getErrors(): array
     {
@@ -35,7 +35,7 @@ class ValidationError extends \ArrayObject
     }
 
     /**
-     * @param string[] $errors
+     * @param list<string> $errors
      */
     public function setErrors(array $errors): self
     {

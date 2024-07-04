@@ -28,7 +28,7 @@ class OrganizationsOrganizationAddressListsGetResponse200 extends \ArrayObject
     /**
      * A list of all address lists for the given organization.
      *
-     * @var GetOrganizationAddressLists200ResponseAddressLists[]
+     * @var list<GetOrganizationAddressLists200ResponseAddressLists>
      */
     protected $addressLists;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationAddressListsGetResponse200 extends \ArrayObject
     /**
      * A list of all address lists for the given organization.
      *
-     * @return GetOrganizationAddressLists200ResponseAddressLists[]
+     * @return list<GetOrganizationAddressLists200ResponseAddressLists>
      */
     public function getAddressLists(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationAddressListsGetResponse200 extends \ArrayObject
     /**
      * A list of all address lists for the given organization.
      *
-     * @param GetOrganizationAddressLists200ResponseAddressLists[] $addressLists
+     * @param list<GetOrganizationAddressLists200ResponseAddressLists> $addressLists
      */
     public function setAddressLists(array $addressLists): self
     {

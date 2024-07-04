@@ -28,7 +28,7 @@ class OrganizationsOrganizationDnsZonesGetResponse200 extends \ArrayObject
     /**
      * The DNS zones for the provided organization.
      *
-     * @var DNSZone[]
+     * @var list<DNSZone>
      */
     protected $dnsZones;
 
@@ -48,7 +48,7 @@ class OrganizationsOrganizationDnsZonesGetResponse200 extends \ArrayObject
     /**
      * The DNS zones for the provided organization.
      *
-     * @return DNSZone[]
+     * @return list<DNSZone>
      */
     public function getDnsZones(): array
     {
@@ -58,7 +58,7 @@ class OrganizationsOrganizationDnsZonesGetResponse200 extends \ArrayObject
     /**
      * The DNS zones for the provided organization.
      *
-     * @param DNSZone[] $dnsZones
+     * @param list<DNSZone> $dnsZones
      */
     public function setDnsZones(array $dnsZones): self
     {

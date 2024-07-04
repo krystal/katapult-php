@@ -52,7 +52,7 @@ class OrganizationsOrganizationVirtualMachinesBuildPostBody extends \ArrayObject
      */
     protected $diskTemplate;
     /**
-     * @var KeyValue[]
+     * @var list<KeyValue>
      */
     protected $diskTemplateOptions;
     /**
@@ -162,7 +162,7 @@ class OrganizationsOrganizationVirtualMachinesBuildPostBody extends \ArrayObject
     }
 
     /**
-     * @return KeyValue[]
+     * @return list<KeyValue>
      */
     public function getDiskTemplateOptions(): array
     {
@@ -170,7 +170,7 @@ class OrganizationsOrganizationVirtualMachinesBuildPostBody extends \ArrayObject
     }
 
     /**
-     * @param KeyValue[] $diskTemplateOptions
+     * @param list<KeyValue> $diskTemplateOptions
      */
     public function setDiskTemplateOptions(array $diskTemplateOptions): self
     {

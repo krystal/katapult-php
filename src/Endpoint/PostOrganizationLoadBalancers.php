@@ -14,7 +14,7 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

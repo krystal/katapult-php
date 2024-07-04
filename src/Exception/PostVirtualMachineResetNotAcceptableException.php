@@ -17,7 +17,7 @@ class PostVirtualMachineResetNotAcceptableException extends NotAcceptableExcepti
      */
     private $response;
 
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('406 error response');
         $this->response = $response;

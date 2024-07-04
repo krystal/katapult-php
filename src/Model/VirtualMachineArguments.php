@@ -34,7 +34,7 @@ class VirtualMachineArguments extends \ArrayObject
      */
     protected $description;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $tagNames;
     /**
@@ -90,7 +90,7 @@ class VirtualMachineArguments extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getTagNames(): array
     {
@@ -98,7 +98,7 @@ class VirtualMachineArguments extends \ArrayObject
     }
 
     /**
-     * @param string[] $tagNames
+     * @param list<string> $tagNames
      */
     public function setTagNames(array $tagNames): self
     {

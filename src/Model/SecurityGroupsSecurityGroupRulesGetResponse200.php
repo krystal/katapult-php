@@ -28,7 +28,7 @@ class SecurityGroupsSecurityGroupRulesGetResponse200 extends \ArrayObject
     /**
      * The security group rules for this security group.
      *
-     * @var GetSecurityGroupRules200ResponseSecurityGroupRules[]
+     * @var list<GetSecurityGroupRules200ResponseSecurityGroupRules>
      */
     protected $securityGroupRules;
 
@@ -48,7 +48,7 @@ class SecurityGroupsSecurityGroupRulesGetResponse200 extends \ArrayObject
     /**
      * The security group rules for this security group.
      *
-     * @return GetSecurityGroupRules200ResponseSecurityGroupRules[]
+     * @return list<GetSecurityGroupRules200ResponseSecurityGroupRules>
      */
     public function getSecurityGroupRules(): array
     {
@@ -58,7 +58,7 @@ class SecurityGroupsSecurityGroupRulesGetResponse200 extends \ArrayObject
     /**
      * The security group rules for this security group.
      *
-     * @param GetSecurityGroupRules200ResponseSecurityGroupRules[] $securityGroupRules
+     * @param list<GetSecurityGroupRules200ResponseSecurityGroupRules> $securityGroupRules
      */
     public function setSecurityGroupRules(array $securityGroupRules): self
     {

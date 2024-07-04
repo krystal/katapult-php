@@ -30,7 +30,7 @@ class GetDisk200ResponseDiskInstallation extends \ArrayObject
      */
     protected $diskTemplateVersion;
     /**
-     * @var DiskInstallationAttribute[]
+     * @var list<DiskInstallationAttribute>
      */
     protected $attributes;
 
@@ -61,7 +61,7 @@ class GetDisk200ResponseDiskInstallation extends \ArrayObject
     }
 
     /**
-     * @return DiskInstallationAttribute[]
+     * @return list<DiskInstallationAttribute>
      */
     public function getAttributes(): array
     {
@@ -69,7 +69,7 @@ class GetDisk200ResponseDiskInstallation extends \ArrayObject
     }
 
     /**
-     * @param DiskInstallationAttribute[] $attributes
+     * @param list<DiskInstallationAttribute> $attributes
      */
     public function setAttributes(array $attributes): self
     {

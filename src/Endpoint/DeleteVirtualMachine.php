@@ -14,7 +14,7 @@ class DeleteVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class DeleteVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

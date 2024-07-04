@@ -24,14 +24,14 @@ class ZonesGetResponse200 extends \ArrayObject
     /**
      * The zones available to the current identity.
      *
-     * @var GetZones200ResponseZones[]
+     * @var list<GetZones200ResponseZones>
      */
     protected $zones;
 
     /**
      * The zones available to the current identity.
      *
-     * @return GetZones200ResponseZones[]
+     * @return list<GetZones200ResponseZones>
      */
     public function getZones(): array
     {
@@ -41,7 +41,7 @@ class ZonesGetResponse200 extends \ArrayObject
     /**
      * The zones available to the current identity.
      *
-     * @param GetZones200ResponseZones[] $zones
+     * @param list<GetZones200ResponseZones> $zones
      */
     public function setZones(array $zones): self
     {

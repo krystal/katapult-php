@@ -14,7 +14,7 @@ class PostVirtualMachineConsoleSessions extends \Krystal\Katapult\KatapultAPI\Ru
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -53,7 +53,7 @@ class PostVirtualMachineConsoleSessions extends \Krystal\Katapult\KatapultAPI\Ru
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

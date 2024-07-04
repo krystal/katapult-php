@@ -14,7 +14,7 @@ class PatchTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\TagsTagPatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TagsTagPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PatchTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchTagUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchTagTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

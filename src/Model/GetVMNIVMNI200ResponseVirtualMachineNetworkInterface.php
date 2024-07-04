@@ -46,7 +46,7 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
      */
     protected $state;
     /**
-     * @var GetVMNIVMNIPartIPAddresses[]
+     * @var list<GetVMNIVMNIPartIPAddresses>
      */
     protected $ipAddresses;
     /**
@@ -133,7 +133,7 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
     }
 
     /**
-     * @return GetVMNIVMNIPartIPAddresses[]
+     * @return list<GetVMNIVMNIPartIPAddresses>
      */
     public function getIpAddresses(): array
     {
@@ -141,7 +141,7 @@ class GetVMNIVMNI200ResponseVirtualMachineNetworkInterface extends \ArrayObject
     }
 
     /**
-     * @param GetVMNIVMNIPartIPAddresses[] $ipAddresses
+     * @param list<GetVMNIVMNIPartIPAddresses> $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

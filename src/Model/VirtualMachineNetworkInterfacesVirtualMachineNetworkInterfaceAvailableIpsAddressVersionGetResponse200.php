@@ -24,14 +24,14 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsA
     /**
      * The IP addresses available for this network interface.
      *
-     * @var IPAddress[]
+     * @var list<IPAddress>
      */
     protected $ipAddresses;
 
     /**
      * The IP addresses available for this network interface.
      *
-     * @return IPAddress[]
+     * @return list<IPAddress>
      */
     public function getIpAddresses(): array
     {
@@ -41,7 +41,7 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsA
     /**
      * The IP addresses available for this network interface.
      *
-     * @param IPAddress[] $ipAddresses
+     * @param list<IPAddress> $ipAddresses
      */
     public function setIpAddresses(array $ipAddresses): self
     {

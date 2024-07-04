@@ -28,7 +28,7 @@ class VirtualMachinesVirtualMachineDisksGetResponse200 extends \ArrayObject
     /**
      * The list of disks.
      *
-     * @var GetVirtualMachineDisks200ResponseDisks[]
+     * @var list<GetVirtualMachineDisks200ResponseDisks>
      */
     protected $disks;
 
@@ -48,7 +48,7 @@ class VirtualMachinesVirtualMachineDisksGetResponse200 extends \ArrayObject
     /**
      * The list of disks.
      *
-     * @return GetVirtualMachineDisks200ResponseDisks[]
+     * @return list<GetVirtualMachineDisks200ResponseDisks>
      */
     public function getDisks(): array
     {
@@ -58,7 +58,7 @@ class VirtualMachinesVirtualMachineDisksGetResponse200 extends \ArrayObject
     /**
      * The list of disks.
      *
-     * @param GetVirtualMachineDisks200ResponseDisks[] $disks
+     * @param list<GetVirtualMachineDisks200ResponseDisks> $disks
      */
     public function setDisks(array $disks): self
     {

@@ -65,7 +65,7 @@ class GetFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetFileStorageVolumeNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetFileStorageVolumeTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -26,7 +26,7 @@ class UsersCurrentGetResponse200 extends \ArrayObject
      */
     protected $user;
     /**
-     * @var GetUsersCurrent200ResponseOrganizations[]
+     * @var list<GetUsersCurrent200ResponseOrganizations>
      */
     protected $organizations;
     /**
@@ -48,7 +48,7 @@ class UsersCurrentGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return GetUsersCurrent200ResponseOrganizations[]
+     * @return list<GetUsersCurrent200ResponseOrganizations>
      */
     public function getOrganizations(): array
     {
@@ -56,7 +56,7 @@ class UsersCurrentGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param GetUsersCurrent200ResponseOrganizations[] $organizations
+     * @param list<GetUsersCurrent200ResponseOrganizations> $organizations
      */
     public function setOrganizations(array $organizations): self
     {

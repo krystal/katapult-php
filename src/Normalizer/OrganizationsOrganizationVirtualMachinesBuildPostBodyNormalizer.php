@@ -13,6 +13,7 @@ namespace Krystal\Katapult\KatapultAPI\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\CheckArray;
 use Krystal\Katapult\KatapultAPI\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,121 +21,236 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class OrganizationsOrganizationVirtualMachinesBuildPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class OrganizationsOrganizationVirtualMachinesBuildPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
         }
-        $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('organization', $data)) {
+                $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationLookup', 'json', $context));
+                unset($data['organization']);
+            }
+            if (\array_key_exists('zone', $data)) {
+                $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\ZoneLookup', 'json', $context));
+                unset($data['zone']);
+            }
+            if (\array_key_exists('data_center', $data)) {
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCenterLookup', 'json', $context));
+                unset($data['data_center']);
+            }
+            if (\array_key_exists('package', $data)) {
+                $object->setPackage($this->denormalizer->denormalize($data['package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinePackageLookup', 'json', $context));
+                unset($data['package']);
+            }
+            if (\array_key_exists('disk_template', $data)) {
+                $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplateLookup', 'json', $context));
+                unset($data['disk_template']);
+            }
+            if (\array_key_exists('disk_template_options', $data)) {
+                $values = [];
+                foreach ($data['disk_template_options'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\KeyValue', 'json', $context);
+                }
+                $object->setDiskTemplateOptions($values);
+                unset($data['disk_template_options']);
+            }
+            if (\array_key_exists('network', $data)) {
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\NetworkLookup', 'json', $context));
+                unset($data['network']);
+            }
+            if (\array_key_exists('hostname', $data)) {
+                $object->setHostname($data['hostname']);
+                unset($data['hostname']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('organization', $data)) {
-            $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationLookup', 'json', $context));
-            unset($data['organization']);
-        }
-        if (\array_key_exists('zone', $data)) {
-            $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\ZoneLookup', 'json', $context));
-            unset($data['zone']);
-        }
-        if (\array_key_exists('data_center', $data)) {
-            $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCenterLookup', 'json', $context));
-            unset($data['data_center']);
-        }
-        if (\array_key_exists('package', $data)) {
-            $object->setPackage($this->denormalizer->denormalize($data['package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinePackageLookup', 'json', $context));
-            unset($data['package']);
-        }
-        if (\array_key_exists('disk_template', $data)) {
-            $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplateLookup', 'json', $context));
-            unset($data['disk_template']);
-        }
-        if (\array_key_exists('disk_template_options', $data)) {
-            $values = [];
-            foreach ($data['disk_template_options'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\KeyValue', 'json', $context);
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
+            if ($object->isInitialized('zone') && null !== $object->getZone()) {
+                $data['zone'] = $this->normalizer->normalize($object->getZone(), 'json', $context);
             }
-            $object->setDiskTemplateOptions($values);
-            unset($data['disk_template_options']);
-        }
-        if (\array_key_exists('network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\NetworkLookup', 'json', $context));
-            unset($data['network']);
-        }
-        if (\array_key_exists('hostname', $data)) {
-            $object->setHostname($data['hostname']);
-            unset($data['hostname']);
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+            if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
+                $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
             }
+            $data['package'] = $this->normalizer->normalize($object->getPackage(), 'json', $context);
+            if ($object->isInitialized('diskTemplate') && null !== $object->getDiskTemplate()) {
+                $data['disk_template'] = $this->normalizer->normalize($object->getDiskTemplate(), 'json', $context);
+            }
+            if ($object->isInitialized('diskTemplateOptions') && null !== $object->getDiskTemplateOptions()) {
+                $values = [];
+                foreach ($object->getDiskTemplateOptions() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['disk_template_options'] = $values;
+            }
+            if ($object->isInitialized('network') && null !== $object->getNetwork()) {
+                $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
+            }
+            if ($object->isInitialized('hostname') && null !== $object->getHostname()) {
+                $data['hostname'] = $object->getHostname();
+            }
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody' => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class OrganizationsOrganizationVirtualMachinesBuildPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
-        if ($object->isInitialized('zone') && null !== $object->getZone()) {
-            $data['zone'] = $this->normalizer->normalize($object->getZone(), 'json', $context);
-        }
-        if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
-            $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
-        }
-        $data['package'] = $this->normalizer->normalize($object->getPackage(), 'json', $context);
-        if ($object->isInitialized('diskTemplate') && null !== $object->getDiskTemplate()) {
-            $data['disk_template'] = $this->normalizer->normalize($object->getDiskTemplate(), 'json', $context);
-        }
-        if ($object->isInitialized('diskTemplateOptions') && null !== $object->getDiskTemplateOptions()) {
-            $values = [];
-            foreach ($object->getDiskTemplateOptions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['disk_template_options'] = $values;
-        }
-        if ($object->isInitialized('network') && null !== $object->getNetwork()) {
-            $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
-        }
-        if ($object->isInitialized('hostname') && null !== $object->getHostname()) {
-            $data['hostname'] = $object->getHostname();
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
         }
 
-        return $data;
-    }
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
+        }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody' => false];
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('organization', $data)) {
+                $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationLookup', 'json', $context));
+                unset($data['organization']);
+            }
+            if (\array_key_exists('zone', $data)) {
+                $object->setZone($this->denormalizer->denormalize($data['zone'], 'Krystal\\Katapult\\KatapultAPI\\Model\\ZoneLookup', 'json', $context));
+                unset($data['zone']);
+            }
+            if (\array_key_exists('data_center', $data)) {
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCenterLookup', 'json', $context));
+                unset($data['data_center']);
+            }
+            if (\array_key_exists('package', $data)) {
+                $object->setPackage($this->denormalizer->denormalize($data['package'], 'Krystal\\Katapult\\KatapultAPI\\Model\\VirtualMachinePackageLookup', 'json', $context));
+                unset($data['package']);
+            }
+            if (\array_key_exists('disk_template', $data)) {
+                $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskTemplateLookup', 'json', $context));
+                unset($data['disk_template']);
+            }
+            if (\array_key_exists('disk_template_options', $data)) {
+                $values = [];
+                foreach ($data['disk_template_options'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\KeyValue', 'json', $context);
+                }
+                $object->setDiskTemplateOptions($values);
+                unset($data['disk_template_options']);
+            }
+            if (\array_key_exists('network', $data)) {
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'Krystal\\Katapult\\KatapultAPI\\Model\\NetworkLookup', 'json', $context));
+                unset($data['network']);
+            }
+            if (\array_key_exists('hostname', $data)) {
+                $object->setHostname($data['hostname']);
+                unset($data['hostname']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
+
+            return $object;
+        }
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
+            if ($object->isInitialized('zone') && null !== $object->getZone()) {
+                $data['zone'] = $this->normalizer->normalize($object->getZone(), 'json', $context);
+            }
+            if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
+                $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
+            }
+            $data['package'] = $this->normalizer->normalize($object->getPackage(), 'json', $context);
+            if ($object->isInitialized('diskTemplate') && null !== $object->getDiskTemplate()) {
+                $data['disk_template'] = $this->normalizer->normalize($object->getDiskTemplate(), 'json', $context);
+            }
+            if ($object->isInitialized('diskTemplateOptions') && null !== $object->getDiskTemplateOptions()) {
+                $values = [];
+                foreach ($object->getDiskTemplateOptions() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['disk_template_options'] = $values;
+            }
+            if ($object->isInitialized('network') && null !== $object->getNetwork()) {
+                $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
+            }
+            if ($object->isInitialized('hostname') && null !== $object->getHostname()) {
+                $data['hostname'] = $object->getHostname();
+            }
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody' => false];
+        }
     }
 }

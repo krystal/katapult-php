@@ -34,7 +34,7 @@ class OrganizationsOrganizationFileStorageVolumesPostResponse201FileStorageVolum
      */
     protected $dataCenter;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $associations;
     /**
@@ -94,7 +94,7 @@ class OrganizationsOrganizationFileStorageVolumesPostResponse201FileStorageVolum
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getAssociations(): array
     {
@@ -102,7 +102,7 @@ class OrganizationsOrganizationFileStorageVolumesPostResponse201FileStorageVolum
     }
 
     /**
-     * @param string[] $associations
+     * @param list<string> $associations
      */
     public function setAssociations(array $associations): self
     {

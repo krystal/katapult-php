@@ -24,14 +24,14 @@ class OrganizationsOrganizationVirtualMachineGroupsGetResponse200 extends \Array
     /**
      * The virtual machine groups for the provided organization.
      *
-     * @var VirtualMachineGroup[]
+     * @var list<VirtualMachineGroup>
      */
     protected $virtualMachineGroups;
 
     /**
      * The virtual machine groups for the provided organization.
      *
-     * @return VirtualMachineGroup[]
+     * @return list<VirtualMachineGroup>
      */
     public function getVirtualMachineGroups(): array
     {
@@ -41,7 +41,7 @@ class OrganizationsOrganizationVirtualMachineGroupsGetResponse200 extends \Array
     /**
      * The virtual machine groups for the provided organization.
      *
-     * @param VirtualMachineGroup[] $virtualMachineGroups
+     * @param list<VirtualMachineGroup> $virtualMachineGroups
      */
     public function setVirtualMachineGroups(array $virtualMachineGroups): self
     {

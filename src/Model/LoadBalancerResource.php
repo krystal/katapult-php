@@ -21,7 +21,6 @@ class LoadBalancerResource extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $resources;
 
     public function getResources()

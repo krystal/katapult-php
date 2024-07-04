@@ -42,7 +42,7 @@ class GetSecurityGroupRules200ResponseSecurityGroupRules extends \ArrayObject
      */
     protected $ports;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $targets;
     /**
@@ -116,7 +116,7 @@ class GetSecurityGroupRules200ResponseSecurityGroupRules extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getTargets(): array
     {
@@ -124,7 +124,7 @@ class GetSecurityGroupRules200ResponseSecurityGroupRules extends \ArrayObject
     }
 
     /**
-     * @param string[] $targets
+     * @param list<string> $targets
      */
     public function setTargets(array $targets): self
     {

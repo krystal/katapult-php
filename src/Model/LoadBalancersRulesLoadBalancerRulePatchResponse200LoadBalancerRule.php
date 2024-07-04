@@ -46,7 +46,7 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
      */
     protected $proxyProtocol;
     /**
-     * @var PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
+     * @var list<PatchLoadBalancersRulesLoadBalancerRulePartCertificates>
      */
     protected $certificates;
     /**
@@ -173,7 +173,7 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
     }
 
     /**
-     * @return PatchLoadBalancersRulesLoadBalancerRulePartCertificates[]
+     * @return list<PatchLoadBalancersRulesLoadBalancerRulePartCertificates>
      */
     public function getCertificates(): array
     {
@@ -181,7 +181,7 @@ class LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule extends
     }
 
     /**
-     * @param PatchLoadBalancersRulesLoadBalancerRulePartCertificates[] $certificates
+     * @param list<PatchLoadBalancersRulesLoadBalancerRulePartCertificates> $certificates
      */
     public function setCertificates(array $certificates): self
     {

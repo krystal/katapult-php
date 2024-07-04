@@ -14,7 +14,7 @@ class PutVirtualMachineFlexibleResources extends \Krystal\Katapult\KatapultAPI\R
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -52,7 +52,7 @@ class PutVirtualMachineFlexibleResources extends \Krystal\Katapult\KatapultAPI\R
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

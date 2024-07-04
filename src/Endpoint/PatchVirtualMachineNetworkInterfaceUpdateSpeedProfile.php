@@ -14,7 +14,7 @@ class PatchVirtualMachineNetworkInterfaceUpdateSpeedProfile extends \Krystal\Kat
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody $requestBody = null)
+    public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -53,7 +53,7 @@ class PatchVirtualMachineNetworkInterfaceUpdateSpeedProfile extends \Krystal\Kat
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileTooManyRequestsException
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

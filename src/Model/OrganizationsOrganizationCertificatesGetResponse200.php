@@ -26,7 +26,7 @@ class OrganizationsOrganizationCertificatesGetResponse200 extends \ArrayObject
      */
     protected $pagination;
     /**
-     * @var GetOrganizationCertificates200ResponseCertificates[]
+     * @var list<GetOrganizationCertificates200ResponseCertificates>
      */
     protected $certificates;
 
@@ -44,7 +44,7 @@ class OrganizationsOrganizationCertificatesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return GetOrganizationCertificates200ResponseCertificates[]
+     * @return list<GetOrganizationCertificates200ResponseCertificates>
      */
     public function getCertificates(): array
     {
@@ -52,7 +52,7 @@ class OrganizationsOrganizationCertificatesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param GetOrganizationCertificates200ResponseCertificates[] $certificates
+     * @param list<GetOrganizationCertificates200ResponseCertificates> $certificates
      */
     public function setCertificates(array $certificates): self
     {
