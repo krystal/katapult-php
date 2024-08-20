@@ -15,6 +15,8 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Kryst
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of IP addresses that can be allocated to a specific network interface.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
@@ -33,7 +35,7 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Kryst
 
     public function getUri(): string
     {
-        return '/virtual_machine_network_interfaces/:virtual_machine_network_interface/available_ips/:address_version';
+        return '/virtual_machine_network_interfaces/virtual_machine_network_interface/available_ips/address_version';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Kryst
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Kryst
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -15,6 +15,8 @@ class GetOrganization extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns information about a specific organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -33,7 +35,7 @@ class GetOrganization extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
 
     public function getUri(): string
     {
-        return '/organizations/:organization';
+        return '/organizations/organization';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetOrganization extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetOrganization extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

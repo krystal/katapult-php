@@ -54,6 +54,14 @@ class Disk extends \ArrayObject
      */
     protected $ioProfile;
     /**
+     * @var string|null
+     */
+    protected $busType;
+    /**
+     * @var DataCenter
+     */
+    protected $dataCenter;
+    /**
      * @var DiskVirtualMachineDisk|null
      */
     protected $virtualMachineDisk;
@@ -162,6 +170,32 @@ class Disk extends \ArrayObject
     {
         $this->initialized['ioProfile'] = true;
         $this->ioProfile = $ioProfile;
+
+        return $this;
+    }
+
+    public function getBusType(): ?string
+    {
+        return $this->busType;
+    }
+
+    public function setBusType(?string $busType): self
+    {
+        $this->initialized['busType'] = true;
+        $this->busType = $busType;
+
+        return $this;
+    }
+
+    public function getDataCenter(): DataCenter
+    {
+        return $this->dataCenter;
+    }
+
+    public function setDataCenter(DataCenter $dataCenter): self
+    {
+        $this->initialized['dataCenter'] = true;
+        $this->dataCenter = $dataCenter;
 
         return $this;
     }

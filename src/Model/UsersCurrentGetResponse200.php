@@ -30,7 +30,7 @@ class UsersCurrentGetResponse200 extends \ArrayObject
      */
     protected $organizations;
     /**
-     * @var string
+     * @var string|null
      */
     protected $apiTokenId;
 
@@ -66,12 +66,12 @@ class UsersCurrentGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getApiTokenId(): string
+    public function getApiTokenId(): ?string
     {
         return $this->apiTokenId;
     }
 
-    public function setApiTokenId(string $apiTokenId): self
+    public function setApiTokenId(?string $apiTokenId): self
     {
         $this->initialized['apiTokenId'] = true;
         $this->apiTokenId = $apiTokenId;

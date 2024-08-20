@@ -13,27 +13,17 @@ namespace Krystal\Katapult\KatapultAPI\Exception;
 class PostVirtualMachineNetworkInterfaceAllocateNewIpServiceUnavailableException extends ServiceUnavailableException
 {
     /**
-     * @var \Krystal\Katapult\KatapultAPI\Model\ResponseNoAvailableAddressesResponse
-     */
-    private $responseNoAvailableAddressesResponse;
-    /**
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
 
-    public function __construct(\Krystal\Katapult\KatapultAPI\Model\ResponseNoAvailableAddressesResponse $responseNoAvailableAddressesResponse, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
-        parent::__construct('Our pool of addresses for that version seems to have run dry. If this issue continues, please contact support.');
-        $this->responseNoAvailableAddressesResponse = $responseNoAvailableAddressesResponse;
+        parent::__construct('503 error response');
         $this->response = $response;
     }
 
-    public function getResponseNoAvailableAddressesResponse(): \Krystal\Katapult\KatapultAPI\Model\ResponseNoAvailableAddressesResponse
-    {
-        return $this->responseNoAvailableAddressesResponse;
-    }
-
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): ?\Psr\Http\Message\ResponseInterface
     {
         return $this->response;
     }

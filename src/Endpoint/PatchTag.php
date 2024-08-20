@@ -14,6 +14,9 @@ class PatchTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Updates a tag with the provided properties.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TagsTagPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
 
     public function getUri(): string
     {
-        return '/tags/:tag';
+        return '/tags/tag';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchTagNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchTagUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchTagTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchTagServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchTagTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchTagServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

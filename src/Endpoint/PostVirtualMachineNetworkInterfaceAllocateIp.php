@@ -14,6 +14,9 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \Krystal\Katapult\Kat
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Allocate a specific IP address to a given network interface.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \Krystal\Katapult\Kat
 
     public function getUri(): string
     {
-        return '/virtual_machine_network_interfaces/:virtual_machine_network_interface/allocate_ip';
+        return '/virtual_machine_network_interfaces/virtual_machine_network_interface/allocate_ip';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \Krystal\Katapult\Kat
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \Krystal\Katapult\Kat
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateIpServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

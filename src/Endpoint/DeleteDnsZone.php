@@ -14,6 +14,9 @@ class DeleteDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Delete a DNS zone.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
 
     public function getUri(): string
     {
-        return '/dns_zones/:dns_zone';
+        return '/dns_zones/dns_zone';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -50,6 +53,7 @@ class DeleteDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsZoneForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsZoneNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsZoneTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsZoneServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +73,9 @@ class DeleteDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsZoneTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsZoneServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

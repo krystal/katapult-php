@@ -14,6 +14,9 @@ class DeleteDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Delete a DNS record.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsRecordsDnsRecordDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
 
     public function getUri(): string
     {
-        return '/dns_records/:dns_record';
+        return '/dns_records/dns_record';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -50,6 +53,7 @@ class DeleteDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsRecordForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsRecordNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsRecordTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsRecordServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +73,9 @@ class DeleteDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsRecordTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteDnsRecordServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

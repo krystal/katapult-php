@@ -15,6 +15,8 @@ class GetCurrency extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return details for a specific currency.
+     *
      * @param array $queryParameters {
      *
      * @var string $currency[id] The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
@@ -33,7 +35,7 @@ class GetCurrency extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
 
     public function getUri(): string
     {
-        return '/currencies/:currency';
+        return '/currencies/currency';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetCurrency extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCurrencyForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCurrencyNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCurrencyTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCurrencyServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetCurrency extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetCurrencyTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetCurrencyServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

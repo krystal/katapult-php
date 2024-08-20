@@ -29,6 +29,10 @@ class GetOrganizationTags200ResponseTags extends \ArrayObject
      * @var string
      */
     protected $name;
+    /**
+     * @var string
+     */
+    protected $color;
 
     public function getId(): string
     {
@@ -52,6 +56,19 @@ class GetOrganizationTags200ResponseTags extends \ArrayObject
     {
         $this->initialized['name'] = true;
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->initialized['color'] = true;
+        $this->color = $color;
 
         return $this;
     }

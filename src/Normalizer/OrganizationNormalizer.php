@@ -71,6 +71,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setCreatedAt($data['created_at']);
                 unset($data['created_at']);
             }
+            if (\array_key_exists('activated_at', $data) && $data['activated_at'] !== null) {
+                $object->setActivatedAt($data['activated_at']);
+                unset($data['activated_at']);
+            } elseif (\array_key_exists('activated_at', $data) && $data['activated_at'] === null) {
+                $object->setActivatedAt(null);
+            }
             if (\array_key_exists('suspended', $data)) {
                 $object->setSuspended($data['suspended']);
                 unset($data['suspended']);
@@ -169,6 +175,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
                 $data['created_at'] = $object->getCreatedAt();
+            }
+            if ($object->isInitialized('activatedAt') && null !== $object->getActivatedAt()) {
+                $data['activated_at'] = $object->getActivatedAt();
             }
             if ($object->isInitialized('suspended') && null !== $object->getSuspended()) {
                 $data['suspended'] = $object->getSuspended();
@@ -273,6 +282,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setCreatedAt($data['created_at']);
                 unset($data['created_at']);
             }
+            if (\array_key_exists('activated_at', $data) && $data['activated_at'] !== null) {
+                $object->setActivatedAt($data['activated_at']);
+                unset($data['activated_at']);
+            } elseif (\array_key_exists('activated_at', $data) && $data['activated_at'] === null) {
+                $object->setActivatedAt(null);
+            }
             if (\array_key_exists('suspended', $data)) {
                 $object->setSuspended($data['suspended']);
                 unset($data['suspended']);
@@ -371,6 +386,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
                 $data['created_at'] = $object->getCreatedAt();
+            }
+            if ($object->isInitialized('activatedAt') && null !== $object->getActivatedAt()) {
+                $data['activated_at'] = $object->getActivatedAt();
             }
             if ($object->isInitialized('suspended') && null !== $object->getSuspended()) {
                 $data['suspended'] = $object->getSuspended();

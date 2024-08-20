@@ -14,6 +14,9 @@ class DeleteFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Delete a file storage volume.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumeDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
 
     public function getUri(): string
     {
-        return '/file_storage_volumes/:file_storage_volume';
+        return '/file_storage_volumes/file_storage_volume';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -52,6 +55,7 @@ class DeleteFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteFileStorageVolumeNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteFileStorageVolumeUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteFileStorageVolumeTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteFileStorageVolumeServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -77,6 +81,9 @@ class DeleteFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteFileStorageVolumeTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteFileStorageVolumeServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

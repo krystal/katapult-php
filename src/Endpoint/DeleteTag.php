@@ -14,6 +14,9 @@ class DeleteTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoin
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Deletes a tag.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TagsTagDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoin
 
     public function getUri(): string
     {
-        return '/tags/:tag';
+        return '/tags/tag';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -50,6 +53,7 @@ class DeleteTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoin
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTagForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTagNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTagTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTagServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +73,9 @@ class DeleteTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoin
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteTagTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteTagServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

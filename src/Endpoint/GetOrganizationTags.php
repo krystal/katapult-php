@@ -15,6 +15,8 @@ class GetOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all tags for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to list the tags for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -35,7 +37,7 @@ class GetOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
 
     public function getUri(): string
     {
-        return '/organizations/:organization/tags';
+        return '/organizations/organization/tags';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTagsForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTagsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTagsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTagsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTagsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTagsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

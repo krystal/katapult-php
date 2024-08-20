@@ -59,6 +59,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
+            if (\array_key_exists('color', $data)) {
+                $object->setColor($data['color']);
+                unset($data['color']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -76,6 +80,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('name') && null !== $object->getName()) {
                 $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('color') && null !== $object->getColor()) {
+                $data['color'] = $object->getColor();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -129,6 +136,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
+            if (\array_key_exists('color', $data)) {
+                $object->setColor($data['color']);
+                unset($data['color']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -146,6 +157,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('name') && null !== $object->getName()) {
                 $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('color') && null !== $object->getColor()) {
+                $data['color'] = $object->getColor();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {

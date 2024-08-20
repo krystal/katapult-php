@@ -14,6 +14,9 @@ class PostSecurityGroupRules extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Create a new security group rule.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostSecurityGroupRules extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     public function getUri(): string
     {
-        return '/security_groups/:security_group/rules';
+        return '/security_groups/security_group/rules';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostSecurityGroupRules extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostSecurityGroupRulesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostSecurityGroupRulesUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostSecurityGroupRulesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostSecurityGroupRulesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostSecurityGroupRules extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostSecurityGroupRulesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostSecurityGroupRulesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

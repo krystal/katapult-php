@@ -15,6 +15,8 @@ class GetOrganizationSshKeys extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all SSH keys for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to list SSH keys for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -35,7 +37,7 @@ class GetOrganizationSshKeys extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     public function getUri(): string
     {
-        return '/organizations/:organization/ssh_keys';
+        return '/organizations/organization/ssh_keys';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetOrganizationSshKeys extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationSshKeysForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationSshKeysNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationSshKeysTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationSshKeysServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetOrganizationSshKeys extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationSshKeysTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationSshKeysServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

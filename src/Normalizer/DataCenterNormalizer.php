@@ -59,11 +59,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
-            if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
+            if (\array_key_exists('permalink', $data)) {
                 $object->setPermalink($data['permalink']);
                 unset($data['permalink']);
-            } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
-                $object->setPermalink(null);
             }
             if (\array_key_exists('country', $data)) {
                 $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Country', 'json', $context));
@@ -145,11 +143,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
-            if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
+            if (\array_key_exists('permalink', $data)) {
                 $object->setPermalink($data['permalink']);
                 unset($data['permalink']);
-            } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
-                $object->setPermalink(null);
             }
             if (\array_key_exists('country', $data)) {
                 $object->setCountry($this->denormalizer->denormalize($data['country'], 'Krystal\\Katapult\\KatapultAPI\\Model\\Country', 'json', $context));

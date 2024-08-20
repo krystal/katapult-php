@@ -63,9 +63,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setOrganizations($values);
                 unset($data['organizations']);
             }
-            if (\array_key_exists('api_token_id', $data)) {
+            if (\array_key_exists('api_token_id', $data) && $data['api_token_id'] !== null) {
                 $object->setApiTokenId($data['api_token_id']);
                 unset($data['api_token_id']);
+            } elseif (\array_key_exists('api_token_id', $data) && $data['api_token_id'] === null) {
+                $object->setApiTokenId(null);
             }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -142,9 +144,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setOrganizations($values);
                 unset($data['organizations']);
             }
-            if (\array_key_exists('api_token_id', $data)) {
+            if (\array_key_exists('api_token_id', $data) && $data['api_token_id'] !== null) {
                 $object->setApiTokenId($data['api_token_id']);
                 unset($data['api_token_id']);
+            } elseif (\array_key_exists('api_token_id', $data) && $data['api_token_id'] === null) {
+                $object->setApiTokenId(null);
             }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {

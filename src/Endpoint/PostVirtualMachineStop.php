@@ -14,6 +14,9 @@ class PostVirtualMachineStop extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Queues a task to stop a virtual machine.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineStopPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostVirtualMachineStop extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     public function getUri(): string
     {
-        return '/virtual_machines/:virtual_machine/stop';
+        return '/virtual_machines/virtual_machine/stop';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostVirtualMachineStop extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineStopNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineStopNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineStopTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineStopServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostVirtualMachineStop extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineStopTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineStopServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

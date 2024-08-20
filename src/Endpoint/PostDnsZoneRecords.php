@@ -14,6 +14,9 @@ class PostDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Create a new DNS record.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 
     public function getUri(): string
     {
-        return '/dns_zones/:dns_zone/records';
+        return '/dns_zones/dns_zone/records';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneRecordsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

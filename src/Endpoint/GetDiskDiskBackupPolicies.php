@@ -15,6 +15,8 @@ class GetDiskDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all disk backup policies for a given disk.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk[id] The disk to return disk backup policies for. All 'disk[]' params are mutually exclusive, only one can be provided.
@@ -34,7 +36,7 @@ class GetDiskDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
 
     public function getUri(): string
     {
-        return '/disks/:disk/disk_backup_policies';
+        return '/disks/disk/disk_backup_policies';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -66,7 +68,9 @@ class GetDiskDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesNotFoundException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,8 +88,14 @@ class GetDiskDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesNotFoundException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseDiskNotFoundResponse', 'json'), $response);
         }
+        if (is_null($contentType) === false && (406 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesNotAcceptableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseObjectInTrashResponse', 'json'), $response);
+        }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskDiskBackupPoliciesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

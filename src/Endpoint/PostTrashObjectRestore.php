@@ -14,6 +14,9 @@ class PostTrashObjectRestore extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Restore a trashed object to its original location.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TrashObjectsTrashObjectRestorePostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostTrashObjectRestore extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     public function getUri(): string
     {
-        return '/trash_objects/:trash_object/restore';
+        return '/trash_objects/trash_object/restore';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -50,6 +53,7 @@ class PostTrashObjectRestore extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostTrashObjectRestoreForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostTrashObjectRestoreNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostTrashObjectRestoreTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostTrashObjectRestoreServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -69,6 +73,9 @@ class PostTrashObjectRestore extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostTrashObjectRestoreTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostTrashObjectRestoreServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

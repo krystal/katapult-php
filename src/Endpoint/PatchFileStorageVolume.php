@@ -14,6 +14,9 @@ class PatchFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Update a file storage volume with new properties.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     public function getUri(): string
     {
-        return '/file_storage_volumes/:file_storage_volume';
+        return '/file_storage_volumes/file_storage_volume';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -52,6 +55,7 @@ class PatchFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -77,6 +81,9 @@ class PatchFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchFileStorageVolumeServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

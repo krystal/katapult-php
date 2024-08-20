@@ -15,6 +15,8 @@ class GetZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns the details for a specific zone.
+     *
      * @param array $queryParameters {
      *
      * @var string $zone[id] The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
@@ -33,7 +35,7 @@ class GetZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
 
     public function getUri(): string
     {
-        return '/zones/:zone';
+        return '/zones/zone';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZoneForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZoneNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZoneTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZoneServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetZoneTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetZoneServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

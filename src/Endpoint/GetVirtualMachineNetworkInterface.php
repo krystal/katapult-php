@@ -15,6 +15,8 @@ class GetVirtualMachineNetworkInterface extends \Krystal\Katapult\KatapultAPI\Ru
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return information about a virtual machine network interface for a specific network.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine[id] The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -35,7 +37,7 @@ class GetVirtualMachineNetworkInterface extends \Krystal\Katapult\KatapultAPI\Ru
 
     public function getUri(): string
     {
-        return '/virtual_machines/:virtual_machine/networks/:network/interface';
+        return '/virtual_machines/virtual_machine/networks/network/interface';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -70,6 +72,7 @@ class GetVirtualMachineNetworkInterface extends \Krystal\Katapult\KatapultAPI\Ru
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -92,6 +95,9 @@ class GetVirtualMachineNetworkInterface extends \Krystal\Katapult\KatapultAPI\Ru
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineNetworkInterfaceServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

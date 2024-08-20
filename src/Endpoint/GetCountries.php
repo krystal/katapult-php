@@ -15,6 +15,8 @@ class GetCountries extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return a list of all countries available in Katapult.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -64,6 +66,7 @@ class GetCountries extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountriesBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountriesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountriesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountriesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -80,6 +83,9 @@ class GetCountries extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetCountriesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetCountriesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

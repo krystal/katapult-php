@@ -14,6 +14,9 @@ class PatchSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katapu
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Updates a security group rule with new properties.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katapu
 
     public function getUri(): string
     {
-        return '/security_groups/rules/:security_group_rule';
+        return '/security_groups/rules/security_group_rule';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katapu
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katapu
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

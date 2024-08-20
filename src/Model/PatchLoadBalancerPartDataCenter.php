@@ -30,7 +30,7 @@ class PatchLoadBalancerPartDataCenter extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string|null
+     * @var string
      */
     protected $permalink;
 
@@ -60,12 +60,12 @@ class PatchLoadBalancerPartDataCenter extends \ArrayObject
         return $this;
     }
 
-    public function getPermalink(): ?string
+    public function getPermalink(): string
     {
         return $this->permalink;
     }
 
-    public function setPermalink(?string $permalink): self
+    public function setPermalink(string $permalink): self
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;

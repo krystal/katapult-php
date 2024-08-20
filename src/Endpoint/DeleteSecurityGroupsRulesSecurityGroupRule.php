@@ -14,6 +14,9 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katap
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Delete a security group rule.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katap
 
     public function getUri(): string
     {
-        return '/security_groups/rules/:security_group_rule';
+        return '/security_groups/rules/security_group_rule';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katap
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katap
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

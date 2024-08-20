@@ -26,7 +26,7 @@ class DeleteVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
 
     public function getUri(): string
     {
-        return '/virtual_machine_groups/:virtual_machine_group';
+        return '/virtual_machine_groups/virtual_machine_group';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +51,7 @@ class DeleteVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineGroupNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineGroupConflictException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineGroupTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineGroupServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +74,9 @@ class DeleteVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineGroupTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineGroupServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

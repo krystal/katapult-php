@@ -14,6 +14,9 @@ class DeleteLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Delete a load balancer.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 
     public function getUri(): string
     {
-        return '/load_balancers/:load_balancer';
+        return '/load_balancers/load_balancer';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class DeleteLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancerNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancerUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancerTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancerServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class DeleteLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancerTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteLoadBalancerServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

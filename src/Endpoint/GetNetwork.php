@@ -15,6 +15,8 @@ class GetNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns details for a specific network.
+     *
      * @param array $queryParameters {
      *
      * @var string $network[id] The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
@@ -33,7 +35,7 @@ class GetNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
 
     public function getUri(): string
     {
-        return '/networks/:network';
+        return '/networks/network';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetNetworkForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetNetworkNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetNetworkTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetNetworkServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetNetworkTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetNetworkServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

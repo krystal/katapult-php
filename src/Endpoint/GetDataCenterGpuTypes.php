@@ -15,6 +15,8 @@ class GetDataCenterGpuTypes extends \Krystal\Katapult\KatapultAPI\Runtime\Client
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Provides a list of all GPU types available in a given data center.
+     *
      * @param array $queryParameters {
      *
      * @var string $data_center[id] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
@@ -35,7 +37,7 @@ class GetDataCenterGpuTypes extends \Krystal\Katapult\KatapultAPI\Runtime\Client
 
     public function getUri(): string
     {
-        return '/data_centers/:data_center/gpu_types';
+        return '/data_centers/data_center/gpu_types';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetDataCenterGpuTypes extends \Krystal\Katapult\KatapultAPI\Runtime\Client
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterGpuTypesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterGpuTypesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterGpuTypesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterGpuTypesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetDataCenterGpuTypes extends \Krystal\Katapult\KatapultAPI\Runtime\Client
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterGpuTypesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterGpuTypesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

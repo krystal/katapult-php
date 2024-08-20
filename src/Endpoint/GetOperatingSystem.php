@@ -15,6 +15,8 @@ class GetOperatingSystem extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return details for a specific operating system.
+     *
      * @param array $queryParameters {
      *
      * @var string $operating_system[id] The operating system to return. All 'operating_system[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetOperatingSystem extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 
     public function getUri(): string
     {
-        return '/operating_systems/:operating_system';
+        return '/operating_systems/operating_system';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -63,6 +65,7 @@ class GetOperatingSystem extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -82,6 +85,9 @@ class GetOperatingSystem extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

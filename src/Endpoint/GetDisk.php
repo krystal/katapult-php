@@ -15,6 +15,8 @@ class GetDisk extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return details for a specific disk.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk[id] The disk to return. All 'disk[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetDisk extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
 
     public function getUri(): string
     {
-        return '/disks/:disk';
+        return '/disks/disk';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -62,7 +64,9 @@ class GetDisk extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskNotFoundException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -80,8 +84,14 @@ class GetDisk extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskNotFoundException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseDiskNotFoundResponse', 'json'), $response);
         }
+        if (is_null($contentType) === false && (406 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskNotAcceptableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseObjectInTrashResponse', 'json'), $response);
+        }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

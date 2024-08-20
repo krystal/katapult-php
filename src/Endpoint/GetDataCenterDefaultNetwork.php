@@ -15,6 +15,8 @@ class GetDataCenterDefaultNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Provide details of default network for a data center.
+     *
      * @param array $queryParameters {
      *
      * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
@@ -33,7 +35,7 @@ class GetDataCenterDefaultNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\
 
     public function getUri(): string
     {
-        return '/data_centers/:data_center/default_network';
+        return '/data_centers/data_center/default_network';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetDataCenterDefaultNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterDefaultNetworkForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterDefaultNetworkNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterDefaultNetworkTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterDefaultNetworkServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetDataCenterDefaultNetwork extends \Krystal\Katapult\KatapultAPI\Runtime\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterDefaultNetworkTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterDefaultNetworkServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

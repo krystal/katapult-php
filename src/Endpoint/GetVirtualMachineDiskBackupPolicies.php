@@ -15,6 +15,8 @@ class GetVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all disk backup policies for a given virtual machine.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine[id] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -36,7 +38,7 @@ class GetVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\
 
     public function getUri(): string
     {
-        return '/virtual_machines/:virtual_machine/disk_backup_policies';
+        return '/virtual_machines/virtual_machine/disk_backup_policies';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -72,6 +74,7 @@ class GetVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineDiskBackupPoliciesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineDiskBackupPoliciesNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineDiskBackupPoliciesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineDiskBackupPoliciesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -94,6 +97,9 @@ class GetVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineDiskBackupPoliciesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineDiskBackupPoliciesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

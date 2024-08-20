@@ -15,6 +15,8 @@ class GetSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Base
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns details about a security group.
+     *
      * @param array $queryParameters {
      *
      * @var string $security_group[id] The security group to return the details for. All 'security_group[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Base
 
     public function getUri(): string
     {
-        return '/security_groups/:security_group';
+        return '/security_groups/security_group';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -63,6 +65,7 @@ class GetSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Base
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -82,6 +85,9 @@ class GetSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Base
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetSecurityGroupServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

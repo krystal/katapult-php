@@ -15,6 +15,8 @@ class GetOrganizationVirtualMachines extends \Krystal\Katapult\KatapultAPI\Runti
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all virtual machines for a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -35,7 +37,7 @@ class GetOrganizationVirtualMachines extends \Krystal\Katapult\KatapultAPI\Runti
 
     public function getUri(): string
     {
-        return '/organizations/:organization/virtual_machines';
+        return '/organizations/organization/virtual_machines';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetOrganizationVirtualMachines extends \Krystal\Katapult\KatapultAPI\Runti
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachinesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachinesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachinesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachinesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetOrganizationVirtualMachines extends \Krystal\Katapult\KatapultAPI\Runti
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachinesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachinesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -15,6 +15,12 @@ class GetOrganizationUsersWithAccess extends \Krystal\Katapult\KatapultAPI\Runti
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * This will return a simple list of users with any access to this organization. This
+     * endpoint is available to all users with access to the organization therefore allows
+     * them to see a small amount of information about their peers. This is useful when
+     * combined with other API actions that require the ID of a fellow user (such as when
+     * determining which users to assign a virtual machine).
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -35,7 +41,7 @@ class GetOrganizationUsersWithAccess extends \Krystal\Katapult\KatapultAPI\Runti
 
     public function getUri(): string
     {
-        return '/organizations/:organization/users_with_access';
+        return '/organizations/organization/users_with_access';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +75,7 @@ class GetOrganizationUsersWithAccess extends \Krystal\Katapult\KatapultAPI\Runti
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationUsersWithAccessForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationUsersWithAccessNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationUsersWithAccessTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationUsersWithAccessServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +95,9 @@ class GetOrganizationUsersWithAccess extends \Krystal\Katapult\KatapultAPI\Runti
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationUsersWithAccessTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationUsersWithAccessServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

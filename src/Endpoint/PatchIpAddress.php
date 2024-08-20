@@ -14,6 +14,9 @@ class PatchIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Updates the details on an IP address.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
 
     public function getUri(): string
     {
-        return '/ip_addresses/:ip_address';
+        return '/ip_addresses/ip_address';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchIpAddressServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -14,6 +14,9 @@ class PutVirtualMachineFlexibleResources extends \Krystal\Katapult\KatapultAPI\R
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Change the flexible resources assigned to a virtual machine.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PutVirtualMachineFlexibleResources extends \Krystal\Katapult\KatapultAPI\R
 
     public function getUri(): string
     {
-        return '/virtual_machines/:virtual_machine/flexible_resources';
+        return '/virtual_machines/virtual_machine/flexible_resources';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PutVirtualMachineFlexibleResources extends \Krystal\Katapult\KatapultAPI\R
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PutVirtualMachineFlexibleResources extends \Krystal\Katapult\KatapultAPI\R
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PutVirtualMachineFlexibleResourcesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

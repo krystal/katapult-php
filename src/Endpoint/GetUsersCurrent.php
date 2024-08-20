@@ -41,6 +41,7 @@ class GetUsersCurrent extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetUsersCurrentForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetUsersCurrentNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetUsersCurrentTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetUsersCurrentServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -60,6 +61,9 @@ class GetUsersCurrent extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetUsersCurrentTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetUsersCurrentServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

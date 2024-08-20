@@ -15,6 +15,8 @@ class GetAddressLists extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all global address lists.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -64,6 +66,7 @@ class GetAddressLists extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListsBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListsForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -80,6 +83,9 @@ class GetAddressLists extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetAddressListsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetAddressListsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

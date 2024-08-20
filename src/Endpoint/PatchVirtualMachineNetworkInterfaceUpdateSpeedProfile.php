@@ -26,7 +26,7 @@ class PatchVirtualMachineNetworkInterfaceUpdateSpeedProfile extends \Krystal\Kat
 
     public function getUri(): string
     {
-        return '/virtual_machine_network_interfaces/:virtual_machine_network_interface/update_speed_profile';
+        return '/virtual_machine_network_interfaces/virtual_machine_network_interface/update_speed_profile';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -52,6 +52,7 @@ class PatchVirtualMachineNetworkInterfaceUpdateSpeedProfile extends \Krystal\Kat
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -77,6 +78,9 @@ class PatchVirtualMachineNetworkInterfaceUpdateSpeedProfile extends \Krystal\Kat
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

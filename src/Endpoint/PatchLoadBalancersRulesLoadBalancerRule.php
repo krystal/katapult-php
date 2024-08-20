@@ -14,6 +14,9 @@ class PatchLoadBalancersRulesLoadBalancerRule extends \Krystal\Katapult\Katapult
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Updates a load balancer rule with new properties.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersRulesLoadBalancerRulePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchLoadBalancersRulesLoadBalancerRule extends \Krystal\Katapult\Katapult
 
     public function getUri(): string
     {
-        return '/load_balancers/rules/:load_balancer_rule';
+        return '/load_balancers/rules/load_balancer_rule';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchLoadBalancersRulesLoadBalancerRule extends \Krystal\Katapult\Katapult
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancersRulesLoadBalancerRuleNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchLoadBalancersRulesLoadBalancerRule extends \Krystal\Katapult\Katapult
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancersRulesLoadBalancerRuleTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancersRulesLoadBalancerRuleServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -14,6 +14,9 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Create a new load balancer for a given organization.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
 
     public function getUri(): string
     {
-        return '/organizations/:organization/load_balancers';
+        return '/organizations/organization/load_balancers';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationLoadBalancersServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

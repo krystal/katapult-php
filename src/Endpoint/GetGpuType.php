@@ -15,6 +15,8 @@ class GetGpuType extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Provide details for a specific GPU type.
+     *
      * @param array $queryParameters {
      *
      * @var string $gpu_type[id] All 'gpu_type[]' params are mutually exclusive, only one can be provided
@@ -33,7 +35,7 @@ class GetGpuType extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
 
     public function getUri(): string
     {
-        return '/gpu_types/:gpu_type';
+        return '/gpu_types/gpu_type';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetGpuType extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypeForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypeNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypeTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypeServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetGpuType extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypeTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypeServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

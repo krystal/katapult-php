@@ -40,6 +40,7 @@ class GetDataCenters extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCentersBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCentersForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCentersTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCentersServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -56,6 +57,9 @@ class GetDataCenters extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCentersTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCentersServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -15,6 +15,8 @@ class GetOrganizationPolicyLimits extends \Krystal\Katapult\KatapultAPI\Runtime\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns the computed policy limits for a organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -33,7 +35,7 @@ class GetOrganizationPolicyLimits extends \Krystal\Katapult\KatapultAPI\Runtime\
 
     public function getUri(): string
     {
-        return '/organizations/:organization/policy_limits';
+        return '/organizations/organization/policy_limits';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetOrganizationPolicyLimits extends \Krystal\Katapult\KatapultAPI\Runtime\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationPolicyLimitsForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationPolicyLimitsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationPolicyLimitsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationPolicyLimitsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetOrganizationPolicyLimits extends \Krystal\Katapult\KatapultAPI\Runtime\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationPolicyLimitsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationPolicyLimitsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

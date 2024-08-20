@@ -74,6 +74,14 @@ class OrganizationPolicy extends \ArrayObject
      */
     protected $maximumIsos;
     /**
+     * @var IntegerOrUnlimited
+     */
+    protected $maximumDiskSize;
+    /**
+     * @var IntegerValue
+     */
+    protected $minimumDiskSize;
+    /**
      * @var bool
      */
     protected $flexibleVirtualMachineResources;
@@ -251,6 +259,32 @@ class OrganizationPolicy extends \ArrayObject
     {
         $this->initialized['maximumIsos'] = true;
         $this->maximumIsos = $maximumIsos;
+
+        return $this;
+    }
+
+    public function getMaximumDiskSize(): IntegerOrUnlimited
+    {
+        return $this->maximumDiskSize;
+    }
+
+    public function setMaximumDiskSize(IntegerOrUnlimited $maximumDiskSize): self
+    {
+        $this->initialized['maximumDiskSize'] = true;
+        $this->maximumDiskSize = $maximumDiskSize;
+
+        return $this;
+    }
+
+    public function getMinimumDiskSize(): IntegerValue
+    {
+        return $this->minimumDiskSize;
+    }
+
+    public function setMinimumDiskSize(IntegerValue $minimumDiskSize): self
+    {
+        $this->initialized['minimumDiskSize'] = true;
+        $this->minimumDiskSize = $minimumDiskSize;
 
         return $this;
     }

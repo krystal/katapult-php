@@ -15,6 +15,8 @@ class GetOrganizationAvailableNetworks extends \Krystal\Katapult\KatapultAPI\Run
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all networks available for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -33,7 +35,7 @@ class GetOrganizationAvailableNetworks extends \Krystal\Katapult\KatapultAPI\Run
 
     public function getUri(): string
     {
-        return '/organizations/:organization/available_networks';
+        return '/organizations/organization/available_networks';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetOrganizationAvailableNetworks extends \Krystal\Katapult\KatapultAPI\Run
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationAvailableNetworksForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationAvailableNetworksNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationAvailableNetworksTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationAvailableNetworksServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetOrganizationAvailableNetworks extends \Krystal\Katapult\KatapultAPI\Run
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationAvailableNetworksTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationAvailableNetworksServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

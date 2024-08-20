@@ -15,6 +15,8 @@ class GetCountryState extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return details for a specific country state.
+     *
      * @param array $queryParameters {
      *
      * @var string $country_state[id] The country state to return. All 'country_state[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetCountryState extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
 
     public function getUri(): string
     {
-        return '/country_states/:country_state';
+        return '/country_states/country_state';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -63,6 +65,7 @@ class GetCountryState extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountryStateForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountryStateNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountryStateTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetCountryStateServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -82,6 +85,9 @@ class GetCountryState extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetCountryStateTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetCountryStateServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

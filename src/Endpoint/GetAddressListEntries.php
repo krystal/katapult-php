@@ -15,6 +15,8 @@ class GetAddressListEntries extends \Krystal\Katapult\KatapultAPI\Runtime\Client
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all address list entries for a given address list.
+     *
      * @param array $queryParameters {
      *
      * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
@@ -34,7 +36,7 @@ class GetAddressListEntries extends \Krystal\Katapult\KatapultAPI\Runtime\Client
 
     public function getUri(): string
     {
-        return '/address_lists/:address_list/entries';
+        return '/address_lists/address_list/entries';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -67,6 +69,7 @@ class GetAddressListEntries extends \Krystal\Katapult\KatapultAPI\Runtime\Client
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntriesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntriesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntriesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntriesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -86,6 +89,9 @@ class GetAddressListEntries extends \Krystal\Katapult\KatapultAPI\Runtime\Client
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntriesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetAddressListEntriesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

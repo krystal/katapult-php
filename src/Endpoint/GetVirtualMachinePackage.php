@@ -15,6 +15,8 @@ class GetVirtualMachinePackage extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return information about a given virtual machine package.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_package[id] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided
@@ -33,7 +35,7 @@ class GetVirtualMachinePackage extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
 
     public function getUri(): string
     {
-        return '/virtual_machine_packages/:virtual_machine_package';
+        return '/virtual_machine_packages/virtual_machine_package';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetVirtualMachinePackage extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachinePackageForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachinePackageNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachinePackageTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachinePackageServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetVirtualMachinePackage extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachinePackageTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachinePackageServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

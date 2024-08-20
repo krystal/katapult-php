@@ -14,6 +14,9 @@ class PostDnsZoneVerify extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Attempt to verify the nameservers for a given DNS zone.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostDnsZoneVerify extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 
     public function getUri(): string
     {
-        return '/dns_zones/:dns_zone/verify';
+        return '/dns_zones/dns_zone/verify';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostDnsZoneVerify extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostDnsZoneVerify extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostDnsZoneVerifyServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -15,6 +15,8 @@ class GetDiskTemplateVersion extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return details for a specific disk template version.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk_template_version[id] The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetDiskTemplateVersion extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     public function getUri(): string
     {
-        return '/disk_template_versions/:disk_template_version';
+        return '/disk_template_versions/disk_template_version';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -63,6 +65,7 @@ class GetDiskTemplateVersion extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskTemplateVersionForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskTemplateVersionNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskTemplateVersionTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskTemplateVersionServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -82,6 +85,9 @@ class GetDiskTemplateVersion extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskTemplateVersionTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskTemplateVersionServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -14,6 +14,9 @@ class PostOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Creates a new tag with the provided properties.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTagsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
 
     public function getUri(): string
     {
-        return '/organizations/:organization/tags';
+        return '/organizations/organization/tags';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTagsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTagsUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTagsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTagsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTagsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTagsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

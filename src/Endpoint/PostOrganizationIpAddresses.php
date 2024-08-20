@@ -14,6 +14,9 @@ class PostOrganizationIpAddresses extends \Krystal\Katapult\KatapultAPI\Runtime\
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Creates a new IP address on this organization.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationIpAddressesPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostOrganizationIpAddresses extends \Krystal\Katapult\KatapultAPI\Runtime\
 
     public function getUri(): string
     {
-        return '/organizations/:organization/ip_addresses';
+        return '/organizations/organization/ip_addresses';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -76,7 +79,7 @@ class PostOrganizationIpAddresses extends \Krystal\Katapult\KatapultAPI\Runtime\
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationIpAddressesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationIpAddressesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseNoAvailableAddressesResponse', 'json'), $response);
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationIpAddressesServiceUnavailableException($response);
         }
     }
 

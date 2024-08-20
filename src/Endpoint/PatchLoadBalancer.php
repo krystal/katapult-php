@@ -14,6 +14,9 @@ class PatchLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Updates a load balancer with new properties.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 
     public function getUri(): string
     {
-        return '/load_balancers/:load_balancer';
+        return '/load_balancers/load_balancer';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchLoadBalancerServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

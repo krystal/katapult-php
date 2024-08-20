@@ -15,6 +15,8 @@ class GetOrganizationNetworkSpeedProfiles extends \Krystal\Katapult\KatapultAPI\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns a list of all network speed profiles available to an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to use when looking up network speed profiles. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -35,7 +37,7 @@ class GetOrganizationNetworkSpeedProfiles extends \Krystal\Katapult\KatapultAPI\
 
     public function getUri(): string
     {
-        return '/organizations/:organization/network_speed_profiles';
+        return '/organizations/organization/network_speed_profiles';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetOrganizationNetworkSpeedProfiles extends \Krystal\Katapult\KatapultAPI\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationNetworkSpeedProfilesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationNetworkSpeedProfilesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationNetworkSpeedProfilesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationNetworkSpeedProfilesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetOrganizationNetworkSpeedProfiles extends \Krystal\Katapult\KatapultAPI\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationNetworkSpeedProfilesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationNetworkSpeedProfilesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

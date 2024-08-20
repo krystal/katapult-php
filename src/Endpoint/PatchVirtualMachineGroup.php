@@ -14,6 +14,9 @@ class PatchVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Update a virtual machine group with the provided details.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineGroupsVirtualMachineGroupPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
 
     public function getUri(): string
     {
-        return '/virtual_machine_groups/:virtual_machine_group';
+        return '/virtual_machine_groups/virtual_machine_group';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineGroupNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineGroupUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineGroupTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineGroupServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineGroupTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchVirtualMachineGroupServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

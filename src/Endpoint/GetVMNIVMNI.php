@@ -15,6 +15,8 @@ class GetVMNIVMNI extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return information about a given virtual machine network interface.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_network_interface[id] The network interface to show the information for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetVMNIVMNI extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
 
     public function getUri(): string
     {
-        return '/virtual_machine_network_interfaces/:virtual_machine_network_interface';
+        return '/virtual_machine_network_interfaces/virtual_machine_network_interface';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -63,6 +65,7 @@ class GetVMNIVMNI extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVMNIVMNIForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVMNIVMNINotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVMNIVMNITooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVMNIVMNIServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -82,6 +85,9 @@ class GetVMNIVMNI extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetVMNIVMNITooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetVMNIVMNIServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

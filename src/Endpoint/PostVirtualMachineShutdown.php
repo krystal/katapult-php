@@ -14,6 +14,9 @@ class PostVirtualMachineShutdown extends \Krystal\Katapult\KatapultAPI\Runtime\C
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Queues a task to shutdown a virtual machine.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostVirtualMachineShutdown extends \Krystal\Katapult\KatapultAPI\Runtime\C
 
     public function getUri(): string
     {
-        return '/virtual_machines/:virtual_machine/shutdown';
+        return '/virtual_machines/virtual_machine/shutdown';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostVirtualMachineShutdown extends \Krystal\Katapult\KatapultAPI\Runtime\C
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostVirtualMachineShutdown extends \Krystal\Katapult\KatapultAPI\Runtime\C
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineShutdownServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

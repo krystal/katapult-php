@@ -16,6 +16,8 @@ class GetVirtualMachineAuthorizedKeys extends \Krystal\Katapult\KatapultAPI\Runt
     protected $accept;
 
     /**
+     * Return the authorized keys for the virtual machine associated with the provided API token.
+     *
      * @param array $accept Accept content header text/plain|application/json
      */
     public function __construct(array $accept = [])
@@ -54,6 +56,7 @@ class GetVirtualMachineAuthorizedKeys extends \Krystal\Katapult\KatapultAPI\Runt
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineAuthorizedKeysForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineAuthorizedKeysNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineAuthorizedKeysTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineAuthorizedKeysServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -72,6 +75,9 @@ class GetVirtualMachineAuthorizedKeys extends \Krystal\Katapult\KatapultAPI\Runt
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineAuthorizedKeysTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetVirtualMachineAuthorizedKeysServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

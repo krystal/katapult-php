@@ -14,6 +14,9 @@ class PostOrganizationTrashObjectsPurgeAll extends \Krystal\Katapult\KatapultAPI
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Purge all trash objects for an organization.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostOrganizationTrashObjectsPurgeAll extends \Krystal\Katapult\KatapultAPI
 
     public function getUri(): string
     {
-        return '/organizations/:organization/trash_objects/purge_all';
+        return '/organizations/organization/trash_objects/purge_all';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostOrganizationTrashObjectsPurgeAll extends \Krystal\Katapult\KatapultAPI
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostOrganizationTrashObjectsPurgeAll extends \Krystal\Katapult\KatapultAPI
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationTrashObjectsPurgeAllServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -14,6 +14,9 @@ class PostOrganizationSecurityGroups extends \Krystal\Katapult\KatapultAPI\Runti
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Create a new security group for a given organization.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationSecurityGroupsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostOrganizationSecurityGroups extends \Krystal\Katapult\KatapultAPI\Runti
 
     public function getUri(): string
     {
-        return '/organizations/:organization/security_groups';
+        return '/organizations/organization/security_groups';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostOrganizationSecurityGroups extends \Krystal\Katapult\KatapultAPI\Runti
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationSecurityGroupsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationSecurityGroupsUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationSecurityGroupsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationSecurityGroupsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostOrganizationSecurityGroups extends \Krystal\Katapult\KatapultAPI\Runti
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationSecurityGroupsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationSecurityGroupsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

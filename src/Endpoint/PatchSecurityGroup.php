@@ -14,6 +14,9 @@ class PatchSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Updates a security group with new properties.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupPatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
 
     public function getUri(): string
     {
-        return '/security_groups/:security_group';
+        return '/security_groups/security_group';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchSecurityGroupServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

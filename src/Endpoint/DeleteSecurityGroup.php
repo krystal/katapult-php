@@ -14,6 +14,9 @@ class DeleteSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Delete a security group.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
 
     public function getUri(): string
     {
-        return '/security_groups/:security_group';
+        return '/security_groups/security_group';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -52,6 +55,7 @@ class DeleteSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupConflictException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -77,6 +81,9 @@ class DeleteSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteSecurityGroupServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -14,6 +14,9 @@ class PostOrganizationFileStorageVolumes extends \Krystal\Katapult\KatapultAPI\R
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Create a new file storage volume for a given organization.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationFileStorageVolumesPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostOrganizationFileStorageVolumes extends \Krystal\Katapult\KatapultAPI\R
 
     public function getUri(): string
     {
-        return '/organizations/:organization/file_storage_volumes';
+        return '/organizations/organization/file_storage_volumes';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostOrganizationFileStorageVolumes extends \Krystal\Katapult\KatapultAPI\R
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationFileStorageVolumesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationFileStorageVolumesUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationFileStorageVolumesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationFileStorageVolumesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostOrganizationFileStorageVolumes extends \Krystal\Katapult\KatapultAPI\R
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationFileStorageVolumesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationFileStorageVolumesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

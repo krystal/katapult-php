@@ -15,6 +15,8 @@ class GetTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint i
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns details about a specific tag.
+     *
      * @param array $queryParameters {
      *
      * @var string $tag[id] The tag to load the details for. All 'tag[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint i
 
     public function getUri(): string
     {
-        return '/tags/:tag';
+        return '/tags/tag';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -63,6 +65,7 @@ class GetTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint i
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetTagForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetTagNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetTagTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetTagServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -82,6 +85,9 @@ class GetTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint i
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetTagTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetTagServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -15,6 +15,8 @@ class GetOperatingSystems extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return a list of all operating systems.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -64,6 +66,7 @@ class GetOperatingSystems extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemsBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemsForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -80,6 +83,9 @@ class GetOperatingSystems extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOperatingSystemsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

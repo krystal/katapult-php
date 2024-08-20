@@ -103,6 +103,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setMaximumIsos($this->denormalizer->denormalize($data['maximum_isos'], 'Krystal\\Katapult\\KatapultAPI\\Model\\IntegerOrUnlimited', 'json', $context));
                 unset($data['maximum_isos']);
             }
+            if (\array_key_exists('maximum_disk_size', $data)) {
+                $object->setMaximumDiskSize($this->denormalizer->denormalize($data['maximum_disk_size'], 'Krystal\\Katapult\\KatapultAPI\\Model\\IntegerOrUnlimited', 'json', $context));
+                unset($data['maximum_disk_size']);
+            }
+            if (\array_key_exists('minimum_disk_size', $data)) {
+                $object->setMinimumDiskSize($this->denormalizer->denormalize($data['minimum_disk_size'], 'Krystal\\Katapult\\KatapultAPI\\Model\\IntegerValue', 'json', $context));
+                unset($data['minimum_disk_size']);
+            }
             if (\array_key_exists('flexible_virtual_machine_resources', $data)) {
                 $object->setFlexibleVirtualMachineResources($data['flexible_virtual_machine_resources']);
                 unset($data['flexible_virtual_machine_resources']);
@@ -165,6 +173,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('maximumIsos') && null !== $object->getMaximumIsos()) {
                 $data['maximum_isos'] = $this->normalizer->normalize($object->getMaximumIsos(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumDiskSize') && null !== $object->getMaximumDiskSize()) {
+                $data['maximum_disk_size'] = $this->normalizer->normalize($object->getMaximumDiskSize(), 'json', $context);
+            }
+            if ($object->isInitialized('minimumDiskSize') && null !== $object->getMinimumDiskSize()) {
+                $data['minimum_disk_size'] = $this->normalizer->normalize($object->getMinimumDiskSize(), 'json', $context);
             }
             if ($object->isInitialized('flexibleVirtualMachineResources') && null !== $object->getFlexibleVirtualMachineResources()) {
                 $data['flexible_virtual_machine_resources'] = $object->getFlexibleVirtualMachineResources();
@@ -271,6 +285,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setMaximumIsos($this->denormalizer->denormalize($data['maximum_isos'], 'Krystal\\Katapult\\KatapultAPI\\Model\\IntegerOrUnlimited', 'json', $context));
                 unset($data['maximum_isos']);
             }
+            if (\array_key_exists('maximum_disk_size', $data)) {
+                $object->setMaximumDiskSize($this->denormalizer->denormalize($data['maximum_disk_size'], 'Krystal\\Katapult\\KatapultAPI\\Model\\IntegerOrUnlimited', 'json', $context));
+                unset($data['maximum_disk_size']);
+            }
+            if (\array_key_exists('minimum_disk_size', $data)) {
+                $object->setMinimumDiskSize($this->denormalizer->denormalize($data['minimum_disk_size'], 'Krystal\\Katapult\\KatapultAPI\\Model\\IntegerValue', 'json', $context));
+                unset($data['minimum_disk_size']);
+            }
             if (\array_key_exists('flexible_virtual_machine_resources', $data)) {
                 $object->setFlexibleVirtualMachineResources($data['flexible_virtual_machine_resources']);
                 unset($data['flexible_virtual_machine_resources']);
@@ -333,6 +355,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('maximumIsos') && null !== $object->getMaximumIsos()) {
                 $data['maximum_isos'] = $this->normalizer->normalize($object->getMaximumIsos(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumDiskSize') && null !== $object->getMaximumDiskSize()) {
+                $data['maximum_disk_size'] = $this->normalizer->normalize($object->getMaximumDiskSize(), 'json', $context);
+            }
+            if ($object->isInitialized('minimumDiskSize') && null !== $object->getMinimumDiskSize()) {
+                $data['minimum_disk_size'] = $this->normalizer->normalize($object->getMinimumDiskSize(), 'json', $context);
             }
             if ($object->isInitialized('flexibleVirtualMachineResources') && null !== $object->getFlexibleVirtualMachineResources()) {
                 $data['flexible_virtual_machine_resources'] = $object->getFlexibleVirtualMachineResources();

@@ -15,6 +15,8 @@ class GetOrganizationTrashObjects extends \Krystal\Katapult\KatapultAPI\Runtime\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Provides a full list of all trash objects for a specific organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to find all trash objects for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -35,7 +37,7 @@ class GetOrganizationTrashObjects extends \Krystal\Katapult\KatapultAPI\Runtime\
 
     public function getUri(): string
     {
-        return '/organizations/:organization/trash_objects';
+        return '/organizations/organization/trash_objects';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetOrganizationTrashObjects extends \Krystal\Katapult\KatapultAPI\Runtime\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTrashObjectsForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTrashObjectsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTrashObjectsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTrashObjectsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetOrganizationTrashObjects extends \Krystal\Katapult\KatapultAPI\Runtime\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTrashObjectsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationTrashObjectsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

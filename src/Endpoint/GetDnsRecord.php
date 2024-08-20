@@ -15,6 +15,8 @@ class GetDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return details for a specific DNS record.
+     *
      * @param array $queryParameters {
      *
      * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
 
     public function getUri(): string
     {
-        return '/dns_records/:dns_record';
+        return '/dns_records/dns_record';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -63,6 +65,7 @@ class GetDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDnsRecordForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDnsRecordNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDnsRecordTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDnsRecordServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -82,6 +85,9 @@ class GetDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDnsRecordTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDnsRecordServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

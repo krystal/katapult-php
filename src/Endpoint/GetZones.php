@@ -40,6 +40,7 @@ class GetZones extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZonesBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZonesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZonesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetZonesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -56,6 +57,9 @@ class GetZones extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetZonesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetZonesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

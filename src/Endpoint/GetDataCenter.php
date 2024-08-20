@@ -15,6 +15,8 @@ class GetDataCenter extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Provide details for a specific data center.
+     *
      * @param array $queryParameters {
      *
      * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
@@ -33,7 +35,7 @@ class GetDataCenter extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
 
     public function getUri(): string
     {
-        return '/data_centers/:data_center';
+        return '/data_centers/data_center';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetDataCenter extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetDataCenter extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDataCenterServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

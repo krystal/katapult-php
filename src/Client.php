@@ -20,6 +20,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDataCentersBadRequestException
      * @throws Exception\GetDataCentersForbiddenException
      * @throws Exception\GetDataCentersTooManyRequestsException
+     * @throws Exception\GetDataCentersServiceUnavailableException
      */
     public function getDataCenters(string $fetch = self::FETCH_OBJECT)
     {
@@ -27,6 +28,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provide details for a specific data center.
+     *
      * @param array $queryParameters {
      *
      * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
@@ -41,6 +44,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDataCenterForbiddenException
      * @throws Exception\GetDataCenterNotFoundException
      * @throws Exception\GetDataCenterTooManyRequestsException
+     * @throws Exception\GetDataCenterServiceUnavailableException
      */
     public function getDataCenter(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -48,6 +52,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provide details of default network for a data center.
+     *
      * @param array $queryParameters {
      *
      * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
@@ -62,6 +68,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDataCenterDefaultNetworkForbiddenException
      * @throws Exception\GetDataCenterDefaultNetworkNotFoundException
      * @throws Exception\GetDataCenterDefaultNetworkTooManyRequestsException
+     * @throws Exception\GetDataCenterDefaultNetworkServiceUnavailableException
      */
     public function getDataCenterDefaultNetwork(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -76,6 +83,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationsBadRequestException
      * @throws Exception\GetOrganizationsForbiddenException
      * @throws Exception\GetOrganizationsTooManyRequestsException
+     * @throws Exception\GetOrganizationsServiceUnavailableException
      */
     public function getOrganizations(string $fetch = self::FETCH_OBJECT)
     {
@@ -83,6 +91,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns information about a specific organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -97,6 +107,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationForbiddenException
      * @throws Exception\GetOrganizationNotFoundException
      * @throws Exception\GetOrganizationTooManyRequestsException
+     * @throws Exception\GetOrganizationServiceUnavailableException
      */
     public function getOrganization(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -104,6 +115,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns the computed policy limits for a organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -118,6 +131,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationPolicyLimitsForbiddenException
      * @throws Exception\GetOrganizationPolicyLimitsNotFoundException
      * @throws Exception\GetOrganizationPolicyLimitsTooManyRequestsException
+     * @throws Exception\GetOrganizationPolicyLimitsServiceUnavailableException
      */
     public function getOrganizationPolicyLimits(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -125,6 +139,12 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * This will return a simple list of users with any access to this organization. This
+     * endpoint is available to all users with access to the organization therefore allows
+     * them to see a small amount of information about their peers. This is useful when
+     * combined with other API actions that require the ID of a fellow user (such as when
+     * determining which users to assign a virtual machine).
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -141,6 +161,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationUsersWithAccessForbiddenException
      * @throws Exception\GetOrganizationUsersWithAccessNotFoundException
      * @throws Exception\GetOrganizationUsersWithAccessTooManyRequestsException
+     * @throws Exception\GetOrganizationUsersWithAccessServiceUnavailableException
      */
     public function getOrganizationUsersWithAccess(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -148,6 +169,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * List all managed organizations owned by the given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -164,6 +187,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationManagedForbiddenException
      * @throws Exception\GetOrganizationManagedNotFoundException
      * @throws Exception\GetOrganizationManagedTooManyRequestsException
+     * @throws Exception\GetOrganizationManagedServiceUnavailableException
      */
     public function getOrganizationManaged(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -171,6 +195,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new managed organization within an existing organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationManagedPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -180,6 +206,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationManagedNotFoundException
      * @throws Exception\PostOrganizationManagedUnprocessableEntityException
      * @throws Exception\PostOrganizationManagedTooManyRequestsException
+     * @throws Exception\PostOrganizationManagedServiceUnavailableException
      */
     public function postOrganizationManaged(?Model\OrganizationsOrganizationManagedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -187,6 +214,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all disks owned by an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -203,6 +232,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationDisksForbiddenException
      * @throws Exception\GetOrganizationDisksNotFoundException
      * @throws Exception\GetOrganizationDisksTooManyRequestsException
+     * @throws Exception\GetOrganizationDisksServiceUnavailableException
      */
     public function getOrganizationDisks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -210,6 +240,48 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new disk for a given organization.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationDisksPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostOrganizationDisksBadRequestException
+     * @throws Exception\PostOrganizationDisksForbiddenException
+     * @throws Exception\PostOrganizationDisksNotFoundException
+     * @throws Exception\PostOrganizationDisksNotAcceptableException
+     * @throws Exception\PostOrganizationDisksUnprocessableEntityException
+     * @throws Exception\PostOrganizationDisksTooManyRequestsException
+     * @throws Exception\PostOrganizationDisksServiceUnavailableException
+     */
+    public function postOrganizationDisks(?Model\OrganizationsOrganizationDisksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostOrganizationDisks($requestBody), $fetch);
+    }
+
+    /**
+     * Deletes a disk and moves it to the trash.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteDiskBadRequestException
+     * @throws Exception\DeleteDiskForbiddenException
+     * @throws Exception\DeleteDiskNotFoundException
+     * @throws Exception\DeleteDiskNotAcceptableException
+     * @throws Exception\DeleteDiskUnprocessableEntityException
+     * @throws Exception\DeleteDiskTooManyRequestsException
+     * @throws Exception\DeleteDiskServiceUnavailableException
+     */
+    public function deleteDisk(?Model\DisksDiskDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteDisk($requestBody), $fetch);
+    }
+
+    /**
+     * Return details for a specific disk.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk[id] The disk to return. All 'disk[]' params are mutually exclusive, only one can be provided.
@@ -222,7 +294,9 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDiskBadRequestException
      * @throws Exception\GetDiskForbiddenException
      * @throws Exception\GetDiskNotFoundException
+     * @throws Exception\GetDiskNotAcceptableException
      * @throws Exception\GetDiskTooManyRequestsException
+     * @throws Exception\GetDiskServiceUnavailableException
      */
     public function getDisk(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -230,6 +304,147 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update a disk for a given organization.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchDiskBadRequestException
+     * @throws Exception\PatchDiskForbiddenException
+     * @throws Exception\PatchDiskNotFoundException
+     * @throws Exception\PatchDiskNotAcceptableException
+     * @throws Exception\PatchDiskUnprocessableEntityException
+     * @throws Exception\PatchDiskTooManyRequestsException
+     * @throws Exception\PatchDiskServiceUnavailableException
+     */
+    public function patchDisk(?Model\DisksDiskPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchDisk($requestBody), $fetch);
+    }
+
+    /**
+     * Assign a disk to a virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskAssignPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostDiskAssignBadRequestException
+     * @throws Exception\PostDiskAssignForbiddenException
+     * @throws Exception\PostDiskAssignNotFoundException
+     * @throws Exception\PostDiskAssignNotAcceptableException
+     * @throws Exception\PostDiskAssignUnprocessableEntityException
+     * @throws Exception\PostDiskAssignTooManyRequestsException
+     * @throws Exception\PostDiskAssignServiceUnavailableException
+     */
+    public function postDiskAssign(?Model\DisksDiskAssignPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostDiskAssign($requestBody), $fetch);
+    }
+
+    /**
+     * Unassign a disk from a virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskUnassignPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostDiskUnassignBadRequestException
+     * @throws Exception\PostDiskUnassignForbiddenException
+     * @throws Exception\PostDiskUnassignNotFoundException
+     * @throws Exception\PostDiskUnassignNotAcceptableException
+     * @throws Exception\PostDiskUnassignUnprocessableEntityException
+     * @throws Exception\PostDiskUnassignTooManyRequestsException
+     * @throws Exception\PostDiskUnassignServiceUnavailableException
+     */
+    public function postDiskUnassign(?Model\DisksDiskUnassignPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostDiskUnassign($requestBody), $fetch);
+    }
+
+    /**
+     * Attach a disk to its virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskAttachPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostDiskAttachBadRequestException
+     * @throws Exception\PostDiskAttachForbiddenException
+     * @throws Exception\PostDiskAttachNotFoundException
+     * @throws Exception\PostDiskAttachNotAcceptableException
+     * @throws Exception\PostDiskAttachUnprocessableEntityException
+     * @throws Exception\PostDiskAttachTooManyRequestsException
+     * @throws Exception\PostDiskAttachServiceUnavailableException
+     */
+    public function postDiskAttach(?Model\DisksDiskAttachPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostDiskAttach($requestBody), $fetch);
+    }
+
+    /**
+     * Detach a disk from its virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskDetachPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostDiskDetachBadRequestException
+     * @throws Exception\PostDiskDetachForbiddenException
+     * @throws Exception\PostDiskDetachNotFoundException
+     * @throws Exception\PostDiskDetachNotAcceptableException
+     * @throws Exception\PostDiskDetachUnprocessableEntityException
+     * @throws Exception\PostDiskDetachTooManyRequestsException
+     * @throws Exception\PostDiskDetachServiceUnavailableException
+     */
+    public function postDiskDetach(?Model\DisksDiskDetachPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostDiskDetach($requestBody), $fetch);
+    }
+
+    /**
+     * Resize a disk.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskResizePutResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PutDiskResizeBadRequestException
+     * @throws Exception\PutDiskResizeForbiddenException
+     * @throws Exception\PutDiskResizeNotFoundException
+     * @throws Exception\PutDiskResizeNotAcceptableException
+     * @throws Exception\PutDiskResizeUnprocessableEntityException
+     * @throws Exception\PutDiskResizeTooManyRequestsException
+     * @throws Exception\PutDiskResizeServiceUnavailableException
+     */
+    public function putDiskResize(?Model\DisksDiskResizePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PutDiskResize($requestBody), $fetch);
+    }
+
+    /**
+     * Change disk IO profile.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DisksDiskIoProfilePutResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PutDiskIoProfileBadRequestException
+     * @throws Exception\PutDiskIoProfileForbiddenException
+     * @throws Exception\PutDiskIoProfileNotFoundException
+     * @throws Exception\PutDiskIoProfileNotAcceptableException
+     * @throws Exception\PutDiskIoProfileTooManyRequestsException
+     * @throws Exception\PutDiskIoProfileServiceUnavailableException
+     */
+    public function putDiskIoProfile(?Model\DisksDiskIoProfilePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PutDiskIoProfile($requestBody), $fetch);
+    }
+
+    /**
+     * Return a list of all disks for a given virtual machine.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine[id] The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -247,6 +462,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineDisksNotFoundException
      * @throws Exception\GetVirtualMachineDisksNotAcceptableException
      * @throws Exception\GetVirtualMachineDisksTooManyRequestsException
+     * @throws Exception\GetVirtualMachineDisksServiceUnavailableException
      */
     public function getVirtualMachineDisks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -254,6 +470,34 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all disk IO profiles available to this organization.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var int    $page
+     * @var int    $per_page
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationDiskIoProfilesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationDiskIoProfilesBadRequestException
+     * @throws Exception\GetOrganizationDiskIoProfilesForbiddenException
+     * @throws Exception\GetOrganizationDiskIoProfilesNotFoundException
+     * @throws Exception\GetOrganizationDiskIoProfilesTooManyRequestsException
+     * @throws Exception\GetOrganizationDiskIoProfilesServiceUnavailableException
+     */
+    public function getOrganizationDiskIoProfiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationDiskIoProfiles($queryParameters), $fetch);
+    }
+
+    /**
+     * Return a list of all disk templates owned by an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to find disk templates for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -272,6 +516,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationDiskTemplatesForbiddenException
      * @throws Exception\GetOrganizationDiskTemplatesNotFoundException
      * @throws Exception\GetOrganizationDiskTemplatesTooManyRequestsException
+     * @throws Exception\GetOrganizationDiskTemplatesServiceUnavailableException
      */
     public function getOrganizationDiskTemplates(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -279,6 +524,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific disk template.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk_template[id] The disk template to return. All 'disk_template[]' params are mutually exclusive, only one can be provided.
@@ -293,6 +540,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDiskTemplateForbiddenException
      * @throws Exception\GetDiskTemplateNotFoundException
      * @throws Exception\GetDiskTemplateTooManyRequestsException
+     * @throws Exception\GetDiskTemplateServiceUnavailableException
      */
     public function getDiskTemplate(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -300,6 +548,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all disk template versions for a specific disk template.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk_template[id] The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
@@ -316,6 +566,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDiskTemplateVersionsForbiddenException
      * @throws Exception\GetDiskTemplateVersionsNotFoundException
      * @throws Exception\GetDiskTemplateVersionsTooManyRequestsException
+     * @throws Exception\GetDiskTemplateVersionsServiceUnavailableException
      */
     public function getDiskTemplateVersions(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -323,6 +574,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific disk template version.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk_template_version[id] The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
@@ -336,6 +589,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDiskTemplateVersionForbiddenException
      * @throws Exception\GetDiskTemplateVersionNotFoundException
      * @throws Exception\GetDiskTemplateVersionTooManyRequestsException
+     * @throws Exception\GetDiskTemplateVersionServiceUnavailableException
      */
     public function getDiskTemplateVersion(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -343,6 +597,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details provided by this template's specification.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk_template_version[id] The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
@@ -356,6 +612,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDiskTemplateVersionSpecForbiddenException
      * @throws Exception\GetDiskTemplateVersionSpecNotFoundException
      * @throws Exception\GetDiskTemplateVersionSpecTooManyRequestsException
+     * @throws Exception\GetDiskTemplateVersionSpecServiceUnavailableException
      */
     public function getDiskTemplateVersionSpec(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -363,6 +620,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provides a full list of all GPU types.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -376,6 +635,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetGpuTypesBadRequestException
      * @throws Exception\GetGpuTypesForbiddenException
      * @throws Exception\GetGpuTypesTooManyRequestsException
+     * @throws Exception\GetGpuTypesServiceUnavailableException
      */
     public function getGpuTypes(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -383,6 +643,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provide details for a specific GPU type.
+     *
      * @param array $queryParameters {
      *
      * @var string $gpu_type[id] All 'gpu_type[]' params are mutually exclusive, only one can be provided
@@ -397,6 +659,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetGpuTypeForbiddenException
      * @throws Exception\GetGpuTypeNotFoundException
      * @throws Exception\GetGpuTypeTooManyRequestsException
+     * @throws Exception\GetGpuTypeServiceUnavailableException
      */
     public function getGpuType(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -404,6 +667,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provides a list of all GPU types available in a given data center.
+     *
      * @param array $queryParameters {
      *
      * @var string $data_center[id] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
@@ -420,6 +685,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDataCenterGpuTypesForbiddenException
      * @throws Exception\GetDataCenterGpuTypesNotFoundException
      * @throws Exception\GetDataCenterGpuTypesTooManyRequestsException
+     * @throws Exception\GetDataCenterGpuTypesServiceUnavailableException
      */
     public function getDataCenterGpuTypes(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -427,6 +693,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all virtual machines for a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -443,6 +711,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationVirtualMachinesForbiddenException
      * @throws Exception\GetOrganizationVirtualMachinesNotFoundException
      * @throws Exception\GetOrganizationVirtualMachinesTooManyRequestsException
+     * @throws Exception\GetOrganizationVirtualMachinesServiceUnavailableException
      */
     public function getOrganizationVirtualMachines(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -450,6 +719,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Moves an existing virtual machine to the trash.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -459,6 +730,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteVirtualMachineNotFoundException
      * @throws Exception\DeleteVirtualMachineNotAcceptableException
      * @throws Exception\DeleteVirtualMachineTooManyRequestsException
+     * @throws Exception\DeleteVirtualMachineServiceUnavailableException
      */
     public function deleteVirtualMachine(?Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -466,6 +738,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return information about a virtual machine.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine[id] All 'virtual_machine[]' params are mutually exclusive, only one can be provided
@@ -481,6 +755,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineNotFoundException
      * @throws Exception\GetVirtualMachineNotAcceptableException
      * @throws Exception\GetVirtualMachineTooManyRequestsException
+     * @throws Exception\GetVirtualMachineServiceUnavailableException
      */
     public function getVirtualMachine(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -488,6 +763,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update the properties of a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachinePatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -497,6 +774,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchVirtualMachineNotFoundException
      * @throws Exception\PatchVirtualMachineNotAcceptableException
      * @throws Exception\PatchVirtualMachineTooManyRequestsException
+     * @throws Exception\PatchVirtualMachineServiceUnavailableException
      */
     public function patchVirtualMachine(?Model\VirtualMachinesVirtualMachinePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -504,6 +782,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Change a package for a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachinePackagePutResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -513,6 +793,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PutVirtualMachinePackageNotFoundException
      * @throws Exception\PutVirtualMachinePackageNotAcceptableException
      * @throws Exception\PutVirtualMachinePackageTooManyRequestsException
+     * @throws Exception\PutVirtualMachinePackageServiceUnavailableException
      */
     public function putVirtualMachinePackage(?Model\VirtualMachinesVirtualMachinePackagePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -520,6 +801,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Change the flexible resources assigned to a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineFlexibleResourcesPutResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -529,6 +812,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PutVirtualMachineFlexibleResourcesNotFoundException
      * @throws Exception\PutVirtualMachineFlexibleResourcesNotAcceptableException
      * @throws Exception\PutVirtualMachineFlexibleResourcesTooManyRequestsException
+     * @throws Exception\PutVirtualMachineFlexibleResourcesServiceUnavailableException
      */
     public function putVirtualMachineFlexibleResources(?Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -536,6 +820,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Allocate an IP address to a virtual machine, automatically determining the network interface.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -546,6 +832,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineAllocateIpNotAcceptableException
      * @throws Exception\PostVirtualMachineAllocateIpUnprocessableEntityException
      * @throws Exception\PostVirtualMachineAllocateIpTooManyRequestsException
+     * @throws Exception\PostVirtualMachineAllocateIpServiceUnavailableException
      */
     public function postVirtualMachineAllocateIp(?Model\VirtualMachinesVirtualMachineAllocateIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -553,6 +840,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return the authorized keys for the virtual machine associated with the provided API token.
+     *
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      * @param array  $accept Accept content header text/plain|application/json
      *
@@ -562,6 +851,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineAuthorizedKeysForbiddenException
      * @throws Exception\GetVirtualMachineAuthorizedKeysNotFoundException
      * @throws Exception\GetVirtualMachineAuthorizedKeysTooManyRequestsException
+     * @throws Exception\GetVirtualMachineAuthorizedKeysServiceUnavailableException
      */
     public function getVirtualMachineAuthorizedKeys(string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -569,6 +859,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Builds a new virtual machine based on the arguments provided to this endpoint. Virtual machines will be built in the background. This task will return an task object that will allow you to monitor the build process using the appropriate API action. This action only offers a small subset of the full functionality needed when provisioning virtual machines - see the `build_from_spec` action for a full advanced virtual machine creation method.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -578,6 +870,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationVirtualMachinesBuildNotFoundException
      * @throws Exception\PostOrganizationVirtualMachinesBuildUnprocessableEntityException
      * @throws Exception\PostOrganizationVirtualMachinesBuildTooManyRequestsException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildServiceUnavailableException
      */
     public function postOrganizationVirtualMachinesBuild(?Model\OrganizationsOrganizationVirtualMachinesBuildPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -585,6 +878,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Builds a new virtual machine by receiving a virtual machine spec document.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -594,6 +889,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecNotFoundException
      * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecUnprocessableEntityException
      * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecTooManyRequestsException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecServiceUnavailableException
      */
     public function postOrganizationVirtualMachinesBuildFromSpec(?Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -601,6 +897,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return virtual machine build information.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_build[id] All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
@@ -614,6 +912,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildForbiddenException
      * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildNotFoundException
      * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildTooManyRequestsException
+     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildServiceUnavailableException
      */
     public function getVirtualMachinesBuildsVirtualMachineBuild(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -621,6 +920,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Queues a task to start a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineStartPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -630,6 +931,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineStartNotFoundException
      * @throws Exception\PostVirtualMachineStartNotAcceptableException
      * @throws Exception\PostVirtualMachineStartTooManyRequestsException
+     * @throws Exception\PostVirtualMachineStartServiceUnavailableException
      */
     public function postVirtualMachineStart(?Model\VirtualMachinesVirtualMachineStartPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -637,6 +939,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Queues a task to stop a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineStopPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -646,6 +950,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineStopNotFoundException
      * @throws Exception\PostVirtualMachineStopNotAcceptableException
      * @throws Exception\PostVirtualMachineStopTooManyRequestsException
+     * @throws Exception\PostVirtualMachineStopServiceUnavailableException
      */
     public function postVirtualMachineStop(?Model\VirtualMachinesVirtualMachineStopPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -653,6 +958,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Queues a task to shutdown a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineShutdownPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -662,6 +969,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineShutdownNotFoundException
      * @throws Exception\PostVirtualMachineShutdownNotAcceptableException
      * @throws Exception\PostVirtualMachineShutdownTooManyRequestsException
+     * @throws Exception\PostVirtualMachineShutdownServiceUnavailableException
      */
     public function postVirtualMachineShutdown(?Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -669,6 +977,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Queues a task to reset a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineResetPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -678,6 +988,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineResetNotFoundException
      * @throws Exception\PostVirtualMachineResetNotAcceptableException
      * @throws Exception\PostVirtualMachineResetTooManyRequestsException
+     * @throws Exception\PostVirtualMachineResetServiceUnavailableException
      */
     public function postVirtualMachineReset(?Model\VirtualMachinesVirtualMachineResetPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -685,6 +996,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Creates a new console session which can be opened in a browser.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -695,6 +1008,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineConsoleSessionsNotAcceptableException
      * @throws Exception\PostVirtualMachineConsoleSessionsUnprocessableEntityException
      * @throws Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException
+     * @throws Exception\PostVirtualMachineConsoleSessionsServiceUnavailableException
      */
     public function postVirtualMachineConsoleSessions(?Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -702,6 +1016,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of virtual machine packages.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -718,6 +1034,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachinePackagesForbiddenException
      * @throws Exception\GetVirtualMachinePackagesNotFoundException
      * @throws Exception\GetVirtualMachinePackagesTooManyRequestsException
+     * @throws Exception\GetVirtualMachinePackagesServiceUnavailableException
      */
     public function getVirtualMachinePackages(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -725,6 +1042,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return information about a given virtual machine package.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_package[id] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided
@@ -739,6 +1058,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachinePackageForbiddenException
      * @throws Exception\GetVirtualMachinePackageNotFoundException
      * @throws Exception\GetVirtualMachinePackageTooManyRequestsException
+     * @throws Exception\GetVirtualMachinePackageServiceUnavailableException
      */
     public function getVirtualMachinePackage(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -746,6 +1066,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all SSH keys for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to list SSH keys for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -762,6 +1084,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationSshKeysForbiddenException
      * @throws Exception\GetOrganizationSshKeysNotFoundException
      * @throws Exception\GetOrganizationSshKeysTooManyRequestsException
+     * @throws Exception\GetOrganizationSshKeysServiceUnavailableException
      */
     public function getOrganizationSshKeys(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -769,6 +1092,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Add an SSH key to an organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationSshKeysPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -778,6 +1103,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationSshKeysNotFoundException
      * @throws Exception\PostOrganizationSshKeysUnprocessableEntityException
      * @throws Exception\PostOrganizationSshKeysTooManyRequestsException
+     * @throws Exception\PostOrganizationSshKeysServiceUnavailableException
      */
     public function postOrganizationSshKeys(?Model\OrganizationsOrganizationSshKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -785,6 +1111,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete an SSH key.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SshKeysSshKeyDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -794,6 +1122,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteSshKeyNotFoundException
      * @throws Exception\DeleteSshKeyConflictException
      * @throws Exception\DeleteSshKeyTooManyRequestsException
+     * @throws Exception\DeleteSshKeyServiceUnavailableException
      */
     public function deleteSshKey(?Model\SshKeysSshKeyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -801,6 +1130,110 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all API tokens for an organization.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var int    $page
+     * @var int    $per_page
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationApiTokensGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationApiTokensBadRequestException
+     * @throws Exception\GetOrganizationApiTokensForbiddenException
+     * @throws Exception\GetOrganizationApiTokensNotFoundException
+     * @throws Exception\GetOrganizationApiTokensTooManyRequestsException
+     * @throws Exception\GetOrganizationApiTokensServiceUnavailableException
+     */
+    public function getOrganizationApiTokens(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationApiTokens($queryParameters), $fetch);
+    }
+
+    /**
+     * Create a new API token for a given organization.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationApiTokensPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostOrganizationApiTokensBadRequestException
+     * @throws Exception\PostOrganizationApiTokensForbiddenException
+     * @throws Exception\PostOrganizationApiTokensNotFoundException
+     * @throws Exception\PostOrganizationApiTokensUnprocessableEntityException
+     * @throws Exception\PostOrganizationApiTokensTooManyRequestsException
+     * @throws Exception\PostOrganizationApiTokensServiceUnavailableException
+     */
+    public function postOrganizationApiTokens(?Model\OrganizationsOrganizationApiTokensPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostOrganizationApiTokens($requestBody), $fetch);
+    }
+
+    /**
+     * Delete an organization API token.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ApiTokensApiTokenDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteApiTokenBadRequestException
+     * @throws Exception\DeleteApiTokenForbiddenException
+     * @throws Exception\DeleteApiTokenNotFoundException
+     * @throws Exception\DeleteApiTokenUnprocessableEntityException
+     * @throws Exception\DeleteApiTokenTooManyRequestsException
+     * @throws Exception\DeleteApiTokenServiceUnavailableException
+     */
+    public function deleteApiToken(?Model\ApiTokensApiTokenDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteApiToken($requestBody), $fetch);
+    }
+
+    /**
+     * Updates an organization API token with new properties.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ApiTokensApiTokenPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchApiTokenBadRequestException
+     * @throws Exception\PatchApiTokenForbiddenException
+     * @throws Exception\PatchApiTokenNotFoundException
+     * @throws Exception\PatchApiTokenUnprocessableEntityException
+     * @throws Exception\PatchApiTokenTooManyRequestsException
+     * @throws Exception\PatchApiTokenServiceUnavailableException
+     */
+    public function patchApiToken(?Model\ApiTokensApiTokenPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchApiToken($requestBody), $fetch);
+    }
+
+    /**
+     * Regenerates the secret for an organization API token.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ApiTokensApiTokenRegenerateSecretPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostApiTokenRegenerateSecretBadRequestException
+     * @throws Exception\PostApiTokenRegenerateSecretForbiddenException
+     * @throws Exception\PostApiTokenRegenerateSecretNotFoundException
+     * @throws Exception\PostApiTokenRegenerateSecretUnprocessableEntityException
+     * @throws Exception\PostApiTokenRegenerateSecretTooManyRequestsException
+     * @throws Exception\PostApiTokenRegenerateSecretServiceUnavailableException
+     */
+    public function postApiTokenRegenerateSecret(?Model\ApiTokensApiTokenRegenerateSecretPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostApiTokenRegenerateSecret($requestBody), $fetch);
+    }
+
+    /**
+     * Returns a list of all disk backup policies for a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -817,6 +1250,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationDiskBackupPoliciesForbiddenException
      * @throws Exception\GetOrganizationDiskBackupPoliciesNotFoundException
      * @throws Exception\GetOrganizationDiskBackupPoliciesTooManyRequestsException
+     * @throws Exception\GetOrganizationDiskBackupPoliciesServiceUnavailableException
      */
     public function getOrganizationDiskBackupPolicies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -824,6 +1258,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all disk backup policies for a given virtual machine.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine[id] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -842,6 +1278,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineDiskBackupPoliciesNotFoundException
      * @throws Exception\GetVirtualMachineDiskBackupPoliciesNotAcceptableException
      * @throws Exception\GetVirtualMachineDiskBackupPoliciesTooManyRequestsException
+     * @throws Exception\GetVirtualMachineDiskBackupPoliciesServiceUnavailableException
      */
     public function getVirtualMachineDiskBackupPolicies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -849,6 +1286,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Creates a new disk backup policy for a virtual machine.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -859,6 +1298,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineDiskBackupPoliciesNotAcceptableException
      * @throws Exception\PostVirtualMachineDiskBackupPoliciesUnprocessableEntityException
      * @throws Exception\PostVirtualMachineDiskBackupPoliciesTooManyRequestsException
+     * @throws Exception\PostVirtualMachineDiskBackupPoliciesServiceUnavailableException
      */
     public function postVirtualMachineDiskBackupPolicies(?Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -866,6 +1306,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all disk backup policies for a given disk.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk[id] The disk to return disk backup policies for. All 'disk[]' params are mutually exclusive, only one can be provided.
@@ -880,7 +1322,9 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDiskDiskBackupPoliciesBadRequestException
      * @throws Exception\GetDiskDiskBackupPoliciesForbiddenException
      * @throws Exception\GetDiskDiskBackupPoliciesNotFoundException
+     * @throws Exception\GetDiskDiskBackupPoliciesNotAcceptableException
      * @throws Exception\GetDiskDiskBackupPoliciesTooManyRequestsException
+     * @throws Exception\GetDiskDiskBackupPoliciesServiceUnavailableException
      */
     public function getDiskDiskBackupPolicies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -888,6 +1332,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Creates a new disk backup policy for a disk.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DisksDiskDiskBackupPoliciesPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -895,8 +1341,10 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostDiskDiskBackupPoliciesBadRequestException
      * @throws Exception\PostDiskDiskBackupPoliciesForbiddenException
      * @throws Exception\PostDiskDiskBackupPoliciesNotFoundException
+     * @throws Exception\PostDiskDiskBackupPoliciesNotAcceptableException
      * @throws Exception\PostDiskDiskBackupPoliciesUnprocessableEntityException
      * @throws Exception\PostDiskDiskBackupPoliciesTooManyRequestsException
+     * @throws Exception\PostDiskDiskBackupPoliciesServiceUnavailableException
      */
     public function postDiskDiskBackupPolicies(?Model\DisksDiskDiskBackupPoliciesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -904,6 +1352,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Deletes a disk backup policy and moves it to the trash.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskBackupPoliciesDiskBackupPolicyDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -913,6 +1363,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteDiskBackupPolicyNotFoundException
      * @throws Exception\DeleteDiskBackupPolicyNotAcceptableException
      * @throws Exception\DeleteDiskBackupPolicyTooManyRequestsException
+     * @throws Exception\DeleteDiskBackupPolicyServiceUnavailableException
      */
     public function deleteDiskBackupPolicy(?Model\DiskBackupPoliciesDiskBackupPolicyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -920,6 +1371,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns information about a specific disk backup policy.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk_backup_policy[id] The disk backup policy to get information for. All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
@@ -934,6 +1387,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDiskBackupPolicyNotFoundException
      * @throws Exception\GetDiskBackupPolicyNotAcceptableException
      * @throws Exception\GetDiskBackupPolicyTooManyRequestsException
+     * @throws Exception\GetDiskBackupPolicyServiceUnavailableException
      */
     public function getDiskBackupPolicy(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -941,6 +1395,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Updates the disk backup policy with the provided details.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskBackupPoliciesDiskBackupPolicyPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -951,6 +1407,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchDiskBackupPolicyNotAcceptableException
      * @throws Exception\PatchDiskBackupPolicyUnprocessableEntityException
      * @throws Exception\PatchDiskBackupPolicyTooManyRequestsException
+     * @throws Exception\PatchDiskBackupPolicyServiceUnavailableException
      */
     public function patchDiskBackupPolicy(?Model\DiskBackupPoliciesDiskBackupPolicyPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -958,6 +1415,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Schedules a disk backup policy to be moved to the trash at a specific time. The backup policy will continue to function as normal until this time is reached.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -967,6 +1426,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteDiskBackupPolicyScheduleNotFoundException
      * @throws Exception\DeleteDiskBackupPolicyScheduleNotAcceptableException
      * @throws Exception\DeleteDiskBackupPolicyScheduleTooManyRequestsException
+     * @throws Exception\DeleteDiskBackupPolicyScheduleServiceUnavailableException
      */
     public function deleteDiskBackupPolicySchedule(?Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -974,6 +1434,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all DNS zones.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -990,6 +1452,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationDnsZonesForbiddenException
      * @throws Exception\GetOrganizationDnsZonesNotFoundException
      * @throws Exception\GetOrganizationDnsZonesTooManyRequestsException
+     * @throws Exception\GetOrganizationDnsZonesServiceUnavailableException
      */
     public function getOrganizationDnsZones(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -997,6 +1460,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new DNS zone within an existing organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDnsZonesPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -1006,6 +1471,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationDnsZonesNotFoundException
      * @throws Exception\PostOrganizationDnsZonesUnprocessableEntityException
      * @throws Exception\PostOrganizationDnsZonesTooManyRequestsException
+     * @throws Exception\PostOrganizationDnsZonesServiceUnavailableException
      */
     public function postOrganizationDnsZones(?Model\OrganizationsOrganizationDnsZonesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1013,6 +1479,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of nameservers that should be used for DNS zones within a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -1027,6 +1495,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationDnsZonesNameserversForbiddenException
      * @throws Exception\GetOrganizationDnsZonesNameserversNotFoundException
      * @throws Exception\GetOrganizationDnsZonesNameserversTooManyRequestsException
+     * @throws Exception\GetOrganizationDnsZonesNameserversServiceUnavailableException
      */
     public function getOrganizationDnsZonesNameservers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1034,6 +1503,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a DNS zone.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZoneDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1042,6 +1513,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteDnsZoneForbiddenException
      * @throws Exception\DeleteDnsZoneNotFoundException
      * @throws Exception\DeleteDnsZoneTooManyRequestsException
+     * @throws Exception\DeleteDnsZoneServiceUnavailableException
      */
     public function deleteDnsZone(?Model\DnsZonesDnsZoneDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1049,6 +1521,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific DNS zone.
+     *
      * @param array $queryParameters {
      *
      * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
@@ -1063,6 +1537,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDnsZoneForbiddenException
      * @throws Exception\GetDnsZoneNotFoundException
      * @throws Exception\GetDnsZoneTooManyRequestsException
+     * @throws Exception\GetDnsZoneServiceUnavailableException
      */
     public function getDnsZone(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1070,6 +1545,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update properties for a DNS zone.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZonePatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1079,6 +1556,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchDnsZoneNotFoundException
      * @throws Exception\PatchDnsZoneUnprocessableEntityException
      * @throws Exception\PatchDnsZoneTooManyRequestsException
+     * @throws Exception\PatchDnsZoneServiceUnavailableException
      */
     public function patchDnsZone(?Model\DnsZonesDnsZonePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1086,6 +1564,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Attempt to verify the nameservers for a given DNS zone.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZoneVerifyPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1095,6 +1575,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostDnsZoneVerifyNotFoundException
      * @throws Exception\PostDnsZoneVerifyUnprocessableEntityException
      * @throws Exception\PostDnsZoneVerifyTooManyRequestsException
+     * @throws Exception\PostDnsZoneVerifyServiceUnavailableException
      */
     public function postDnsZoneVerify(?Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1102,6 +1583,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all DNS records in a zone.
+     *
      * @param array $queryParameters {
      *
      * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
@@ -1116,6 +1599,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDnsZoneRecordsForbiddenException
      * @throws Exception\GetDnsZoneRecordsNotFoundException
      * @throws Exception\GetDnsZoneRecordsTooManyRequestsException
+     * @throws Exception\GetDnsZoneRecordsServiceUnavailableException
      */
     public function getDnsZoneRecords(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1123,6 +1607,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new DNS record.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZoneRecordsPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1132,6 +1618,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostDnsZoneRecordsNotFoundException
      * @throws Exception\PostDnsZoneRecordsUnprocessableEntityException
      * @throws Exception\PostDnsZoneRecordsTooManyRequestsException
+     * @throws Exception\PostDnsZoneRecordsServiceUnavailableException
      */
     public function postDnsZoneRecords(?Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1139,6 +1626,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a DNS record.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsRecordsDnsRecordDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1147,6 +1636,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteDnsRecordForbiddenException
      * @throws Exception\DeleteDnsRecordNotFoundException
      * @throws Exception\DeleteDnsRecordTooManyRequestsException
+     * @throws Exception\DeleteDnsRecordServiceUnavailableException
      */
     public function deleteDnsRecord(?Model\DnsRecordsDnsRecordDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1154,6 +1644,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific DNS record.
+     *
      * @param array $queryParameters {
      *
      * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
@@ -1167,6 +1659,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetDnsRecordForbiddenException
      * @throws Exception\GetDnsRecordNotFoundException
      * @throws Exception\GetDnsRecordTooManyRequestsException
+     * @throws Exception\GetDnsRecordServiceUnavailableException
      */
     public function getDnsRecord(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1174,6 +1667,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update a DNS record properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsRecordsDnsRecordPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1183,6 +1678,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchDnsRecordNotFoundException
      * @throws Exception\PatchDnsRecordUnprocessableEntityException
      * @throws Exception\PatchDnsRecordTooManyRequestsException
+     * @throws Exception\PatchDnsRecordServiceUnavailableException
      */
     public function patchDnsRecord(?Model\DnsRecordsDnsRecordPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1190,6 +1686,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all security groups for a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return all security groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -1206,6 +1704,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationSecurityGroupsForbiddenException
      * @throws Exception\GetOrganizationSecurityGroupsNotFoundException
      * @throws Exception\GetOrganizationSecurityGroupsTooManyRequestsException
+     * @throws Exception\GetOrganizationSecurityGroupsServiceUnavailableException
      */
     public function getOrganizationSecurityGroups(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1213,6 +1712,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new security group for a given organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationSecurityGroupsPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1222,6 +1723,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationSecurityGroupsNotFoundException
      * @throws Exception\PostOrganizationSecurityGroupsUnprocessableEntityException
      * @throws Exception\PostOrganizationSecurityGroupsTooManyRequestsException
+     * @throws Exception\PostOrganizationSecurityGroupsServiceUnavailableException
      */
     public function postOrganizationSecurityGroups(?Model\OrganizationsOrganizationSecurityGroupsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1229,6 +1731,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a security group.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsSecurityGroupDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1239,6 +1743,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteSecurityGroupConflictException
      * @throws Exception\DeleteSecurityGroupUnprocessableEntityException
      * @throws Exception\DeleteSecurityGroupTooManyRequestsException
+     * @throws Exception\DeleteSecurityGroupServiceUnavailableException
      */
     public function deleteSecurityGroup(?Model\SecurityGroupsSecurityGroupDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1246,6 +1751,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details about a security group.
+     *
      * @param array $queryParameters {
      *
      * @var string $security_group[id] The security group to return the details for. All 'security_group[]' params are mutually exclusive, only one can be provided.
@@ -1259,6 +1766,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetSecurityGroupForbiddenException
      * @throws Exception\GetSecurityGroupNotFoundException
      * @throws Exception\GetSecurityGroupTooManyRequestsException
+     * @throws Exception\GetSecurityGroupServiceUnavailableException
      */
     public function getSecurityGroup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1266,6 +1774,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Updates a security group with new properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsSecurityGroupPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1275,6 +1785,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchSecurityGroupNotFoundException
      * @throws Exception\PatchSecurityGroupUnprocessableEntityException
      * @throws Exception\PatchSecurityGroupTooManyRequestsException
+     * @throws Exception\PatchSecurityGroupServiceUnavailableException
      */
     public function patchSecurityGroup(?Model\SecurityGroupsSecurityGroupPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1282,6 +1793,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all rules for a given security group.
+     *
      * @param array $queryParameters {
      *
      * @var string $security_group[id] The security group to return all load rules for. All 'security_group[]' params are mutually exclusive, only one can be provided.
@@ -1297,6 +1810,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetSecurityGroupRulesForbiddenException
      * @throws Exception\GetSecurityGroupRulesNotFoundException
      * @throws Exception\GetSecurityGroupRulesTooManyRequestsException
+     * @throws Exception\GetSecurityGroupRulesServiceUnavailableException
      */
     public function getSecurityGroupRules(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1304,6 +1818,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new security group rule.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsSecurityGroupRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1313,6 +1829,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostSecurityGroupRulesNotFoundException
      * @throws Exception\PostSecurityGroupRulesUnprocessableEntityException
      * @throws Exception\PostSecurityGroupRulesTooManyRequestsException
+     * @throws Exception\PostSecurityGroupRulesServiceUnavailableException
      */
     public function postSecurityGroupRules(?Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1320,6 +1837,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a security group rule.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsRulesSecurityGroupRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1329,6 +1848,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleNotFoundException
      * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
      */
     public function deleteSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1336,6 +1856,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details about a security group rule.
+     *
      * @param array $queryParameters {
      *
      * @var string $security_group_rule[id] The security group rule to return the details for. All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
@@ -1349,6 +1871,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleForbiddenException
      * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleNotFoundException
      * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
      */
     public function getSecurityGroupsRulesSecurityGroupRule(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1356,6 +1879,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Updates a security group rule with new properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1365,6 +1890,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleNotFoundException
      * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
      * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
      */
     public function patchSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1372,6 +1898,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all file storage volumes for a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return all file storage volumes for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -1388,6 +1916,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationFileStorageVolumesForbiddenException
      * @throws Exception\GetOrganizationFileStorageVolumesNotFoundException
      * @throws Exception\GetOrganizationFileStorageVolumesTooManyRequestsException
+     * @throws Exception\GetOrganizationFileStorageVolumesServiceUnavailableException
      */
     public function getOrganizationFileStorageVolumes(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1395,6 +1924,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new file storage volume for a given organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationFileStorageVolumesPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -1404,6 +1935,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationFileStorageVolumesNotFoundException
      * @throws Exception\PostOrganizationFileStorageVolumesUnprocessableEntityException
      * @throws Exception\PostOrganizationFileStorageVolumesTooManyRequestsException
+     * @throws Exception\PostOrganizationFileStorageVolumesServiceUnavailableException
      */
     public function postOrganizationFileStorageVolumes(?Model\OrganizationsOrganizationFileStorageVolumesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1411,6 +1943,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a file storage volume.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\FileStorageVolumesFileStorageVolumeDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1421,6 +1955,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteFileStorageVolumeNotAcceptableException
      * @throws Exception\DeleteFileStorageVolumeUnprocessableEntityException
      * @throws Exception\DeleteFileStorageVolumeTooManyRequestsException
+     * @throws Exception\DeleteFileStorageVolumeServiceUnavailableException
      */
     public function deleteFileStorageVolume(?Model\FileStorageVolumesFileStorageVolumeDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1428,6 +1963,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details for a file storage volume.
+     *
      * @param array $queryParameters {
      *
      * @var string $file_storage_volume[id] The file storage volume to return. All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
@@ -1442,6 +1979,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetFileStorageVolumeNotFoundException
      * @throws Exception\GetFileStorageVolumeNotAcceptableException
      * @throws Exception\GetFileStorageVolumeTooManyRequestsException
+     * @throws Exception\GetFileStorageVolumeServiceUnavailableException
      */
     public function getFileStorageVolume(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1449,6 +1987,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update a file storage volume with new properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\FileStorageVolumesFileStorageVolumePatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1459,6 +1999,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchFileStorageVolumeNotAcceptableException
      * @throws Exception\PatchFileStorageVolumeUnprocessableEntityException
      * @throws Exception\PatchFileStorageVolumeTooManyRequestsException
+     * @throws Exception\PatchFileStorageVolumeServiceUnavailableException
      */
     public function patchFileStorageVolume(?Model\FileStorageVolumesFileStorageVolumePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1466,6 +2007,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all networks available for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -1480,6 +2023,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationAvailableNetworksForbiddenException
      * @throws Exception\GetOrganizationAvailableNetworksNotFoundException
      * @throws Exception\GetOrganizationAvailableNetworksTooManyRequestsException
+     * @throws Exception\GetOrganizationAvailableNetworksServiceUnavailableException
      */
     public function getOrganizationAvailableNetworks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1487,6 +2031,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details for a specific network.
+     *
      * @param array $queryParameters {
      *
      * @var string $network[id] The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
@@ -1501,6 +2047,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetNetworkForbiddenException
      * @throws Exception\GetNetworkNotFoundException
      * @throws Exception\GetNetworkTooManyRequestsException
+     * @throws Exception\GetNetworkServiceUnavailableException
      */
     public function getNetwork(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1508,6 +2055,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all network speed profiles available to an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to use when looking up network speed profiles. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -1524,6 +2073,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationNetworkSpeedProfilesForbiddenException
      * @throws Exception\GetOrganizationNetworkSpeedProfilesNotFoundException
      * @throws Exception\GetOrganizationNetworkSpeedProfilesTooManyRequestsException
+     * @throws Exception\GetOrganizationNetworkSpeedProfilesServiceUnavailableException
      */
     public function getOrganizationNetworkSpeedProfiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1531,6 +2081,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all global address lists.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -1544,6 +2096,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetAddressListsBadRequestException
      * @throws Exception\GetAddressListsForbiddenException
      * @throws Exception\GetAddressListsTooManyRequestsException
+     * @throws Exception\GetAddressListsServiceUnavailableException
      */
     public function getAddressLists(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1551,6 +2104,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all address lists for a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -1567,6 +2122,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationAddressListsForbiddenException
      * @throws Exception\GetOrganizationAddressListsNotFoundException
      * @throws Exception\GetOrganizationAddressListsTooManyRequestsException
+     * @throws Exception\GetOrganizationAddressListsServiceUnavailableException
      */
     public function getOrganizationAddressLists(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1574,6 +2130,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new address list for a given organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationAddressListsPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -1583,6 +2141,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationAddressListsNotFoundException
      * @throws Exception\PostOrganizationAddressListsUnprocessableEntityException
      * @throws Exception\PostOrganizationAddressListsTooManyRequestsException
+     * @throws Exception\PostOrganizationAddressListsServiceUnavailableException
      */
     public function postOrganizationAddressLists(?Model\OrganizationsOrganizationAddressListsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1590,6 +2149,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a address list.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsAddressListDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1598,6 +2159,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteAddressListForbiddenException
      * @throws Exception\DeleteAddressListNotFoundException
      * @throws Exception\DeleteAddressListTooManyRequestsException
+     * @throws Exception\DeleteAddressListServiceUnavailableException
      */
     public function deleteAddressList(?Model\AddressListsAddressListDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1605,6 +2167,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details for a address list.
+     *
      * @param array $queryParameters {
      *
      * @var string $address_list[id] The address list to return. All 'address_list[]' params are mutually exclusive, only one can be provided.
@@ -1618,6 +2182,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetAddressListForbiddenException
      * @throws Exception\GetAddressListNotFoundException
      * @throws Exception\GetAddressListTooManyRequestsException
+     * @throws Exception\GetAddressListServiceUnavailableException
      */
     public function getAddressList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1625,6 +2190,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update a address list with new properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsAddressListPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1634,6 +2201,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchAddressListNotFoundException
      * @throws Exception\PatchAddressListUnprocessableEntityException
      * @throws Exception\PatchAddressListTooManyRequestsException
+     * @throws Exception\PatchAddressListServiceUnavailableException
      */
     public function patchAddressList(?Model\AddressListsAddressListPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1641,6 +2209,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all address list entries for a given address list.
+     *
      * @param array $queryParameters {
      *
      * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
@@ -1656,6 +2226,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetAddressListEntriesForbiddenException
      * @throws Exception\GetAddressListEntriesNotFoundException
      * @throws Exception\GetAddressListEntriesTooManyRequestsException
+     * @throws Exception\GetAddressListEntriesServiceUnavailableException
      */
     public function getAddressListEntries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1663,6 +2234,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new address list entry for a given address list.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsAddressListEntriesPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -1672,6 +2245,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostAddressListEntriesNotFoundException
      * @throws Exception\PostAddressListEntriesUnprocessableEntityException
      * @throws Exception\PostAddressListEntriesTooManyRequestsException
+     * @throws Exception\PostAddressListEntriesServiceUnavailableException
      */
     public function postAddressListEntries(?Model\AddressListsAddressListEntriesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1679,6 +2253,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete an address list entry.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListEntriesAddressListEntryDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1687,6 +2263,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteAddressListEntryForbiddenException
      * @throws Exception\DeleteAddressListEntryNotFoundException
      * @throws Exception\DeleteAddressListEntryTooManyRequestsException
+     * @throws Exception\DeleteAddressListEntryServiceUnavailableException
      */
     public function deleteAddressListEntry(?Model\AddressListEntriesAddressListEntryDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1694,6 +2271,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details for an address list entry.
+     *
      * @param array $queryParameters {
      *
      * @var string $address_list_entry[id] The address list entry to return. All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
@@ -1707,6 +2286,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetAddressListEntryForbiddenException
      * @throws Exception\GetAddressListEntryNotFoundException
      * @throws Exception\GetAddressListEntryTooManyRequestsException
+     * @throws Exception\GetAddressListEntryServiceUnavailableException
      */
     public function getAddressListEntry(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1714,6 +2294,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update an address list entry with new properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListEntriesAddressListEntryPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1723,6 +2305,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchAddressListEntryNotFoundException
      * @throws Exception\PatchAddressListEntryUnprocessableEntityException
      * @throws Exception\PatchAddressListEntryTooManyRequestsException
+     * @throws Exception\PatchAddressListEntryServiceUnavailableException
      */
     public function patchAddressListEntry(?Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1730,6 +2313,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provides a full list of certificates.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -1746,6 +2331,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationCertificatesForbiddenException
      * @throws Exception\GetOrganizationCertificatesNotFoundException
      * @throws Exception\GetOrganizationCertificatesTooManyRequestsException
+     * @throws Exception\GetOrganizationCertificatesServiceUnavailableException
      */
     public function getOrganizationCertificates(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1753,6 +2339,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific certificate.
+     *
      * @param array $queryParameters {
      *
      * @var string $certificate[id] All 'certificate[]' params are mutually exclusive, only one can be provided.
@@ -1767,6 +2355,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetCertificateNotFoundException
      * @throws Exception\GetCertificateNotAcceptableException
      * @throws Exception\GetCertificateTooManyRequestsException
+     * @throws Exception\GetCertificateServiceUnavailableException
      */
     public function getCertificate(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1774,6 +2363,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all load balancers for a given organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -1790,6 +2381,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationLoadBalancersForbiddenException
      * @throws Exception\GetOrganizationLoadBalancersNotFoundException
      * @throws Exception\GetOrganizationLoadBalancersTooManyRequestsException
+     * @throws Exception\GetOrganizationLoadBalancersServiceUnavailableException
      */
     public function getOrganizationLoadBalancers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1797,6 +2389,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new load balancer for a given organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationLoadBalancersPostResponse201|\Psr\Http\Message\ResponseInterface|null
@@ -1806,6 +2400,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationLoadBalancersNotFoundException
      * @throws Exception\PostOrganizationLoadBalancersUnprocessableEntityException
      * @throws Exception\PostOrganizationLoadBalancersTooManyRequestsException
+     * @throws Exception\PostOrganizationLoadBalancersServiceUnavailableException
      */
     public function postOrganizationLoadBalancers(?Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1813,6 +2408,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a load balancer.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersLoadBalancerDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1822,6 +2419,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteLoadBalancerNotFoundException
      * @throws Exception\DeleteLoadBalancerUnprocessableEntityException
      * @throws Exception\DeleteLoadBalancerTooManyRequestsException
+     * @throws Exception\DeleteLoadBalancerServiceUnavailableException
      */
     public function deleteLoadBalancer(?Model\LoadBalancersLoadBalancerDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1829,6 +2427,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details about a load balancer.
+     *
      * @param array $queryParameters {
      *
      * @var string $load_balancer[id] The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
@@ -1843,6 +2443,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetLoadBalancerForbiddenException
      * @throws Exception\GetLoadBalancerNotFoundException
      * @throws Exception\GetLoadBalancerTooManyRequestsException
+     * @throws Exception\GetLoadBalancerServiceUnavailableException
      */
     public function getLoadBalancer(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1850,6 +2451,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Updates a load balancer with new properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersLoadBalancerPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1859,6 +2462,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchLoadBalancerNotFoundException
      * @throws Exception\PatchLoadBalancerUnprocessableEntityException
      * @throws Exception\PatchLoadBalancerTooManyRequestsException
+     * @throws Exception\PatchLoadBalancerServiceUnavailableException
      */
     public function patchLoadBalancer(?Model\LoadBalancersLoadBalancerPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1866,6 +2470,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all rules for a given load balancer.
+     *
      * @param array $queryParameters {
      *
      * @var string $load_balancer[id] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
@@ -1882,6 +2488,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetLoadBalancerRulesForbiddenException
      * @throws Exception\GetLoadBalancerRulesNotFoundException
      * @throws Exception\GetLoadBalancerRulesTooManyRequestsException
+     * @throws Exception\GetLoadBalancerRulesServiceUnavailableException
      */
     public function getLoadBalancerRules(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1889,6 +2496,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new load balancer rule.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersLoadBalancerRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1898,6 +2507,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostLoadBalancerRulesNotFoundException
      * @throws Exception\PostLoadBalancerRulesUnprocessableEntityException
      * @throws Exception\PostLoadBalancerRulesTooManyRequestsException
+     * @throws Exception\PostLoadBalancerRulesServiceUnavailableException
      */
     public function postLoadBalancerRules(?Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1905,6 +2515,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Delete a load balancer rule.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersRulesLoadBalancerRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1914,6 +2526,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleNotFoundException
      * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
      * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
+     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
      */
     public function deleteLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1921,6 +2534,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details about a load balancer rule.
+     *
      * @param array $queryParameters {
      *
      * @var string $load_balancer_rule[id] The load balancer rule to return the details for. All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
@@ -1934,6 +2549,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleForbiddenException
      * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleNotFoundException
      * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
+     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
      */
     public function getLoadBalancersRulesLoadBalancerRule(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1941,6 +2557,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Updates a load balancer rule with new properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersRulesLoadBalancerRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1950,6 +2568,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleNotFoundException
      * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
      * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
+     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
      */
     public function patchLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1957,6 +2576,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all IP addresses belonging to an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to use when looking up IP addresses. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -1974,6 +2595,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationIpAddressesForbiddenException
      * @throws Exception\GetOrganizationIpAddressesNotFoundException
      * @throws Exception\GetOrganizationIpAddressesTooManyRequestsException
+     * @throws Exception\GetOrganizationIpAddressesServiceUnavailableException
      */
     public function getOrganizationIpAddresses(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1981,6 +2603,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Creates a new IP address on this organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationIpAddressesPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1998,6 +2622,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Release an IP address from its organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\IpAddressesIpAddressDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2007,6 +2633,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteIpAddressNotFoundException
      * @throws Exception\DeleteIpAddressConflictException
      * @throws Exception\DeleteIpAddressTooManyRequestsException
+     * @throws Exception\DeleteIpAddressServiceUnavailableException
      */
     public function deleteIpAddress(?Model\IpAddressesIpAddressDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2014,6 +2641,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns information about a specific IP address.
+     *
      * @param array $queryParameters {
      *
      * @var string $ip_address[id] The IP address to find. All 'ip_address[]' params are mutually exclusive, only one can be provided.
@@ -2028,6 +2657,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetIpAddressForbiddenException
      * @throws Exception\GetIpAddressNotFoundException
      * @throws Exception\GetIpAddressTooManyRequestsException
+     * @throws Exception\GetIpAddressServiceUnavailableException
      */
     public function getIpAddress(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2035,6 +2665,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Updates the details on an IP address.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\IpAddressesIpAddressPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2044,6 +2676,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchIpAddressNotFoundException
      * @throws Exception\PatchIpAddressUnprocessableEntityException
      * @throws Exception\PatchIpAddressTooManyRequestsException
+     * @throws Exception\PatchIpAddressServiceUnavailableException
      */
     public function patchIpAddress(?Model\IpAddressesIpAddressPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2051,6 +2684,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Unallocate an IP address from its resource.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\IpAddressesIpAddressUnallocatePostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2061,6 +2696,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostIpAddressUnallocateConflictException
      * @throws Exception\PostIpAddressUnallocateUnprocessableEntityException
      * @throws Exception\PostIpAddressUnallocateTooManyRequestsException
+     * @throws Exception\PostIpAddressUnallocateServiceUnavailableException
      */
     public function postIpAddressUnallocate(?Model\IpAddressesIpAddressUnallocatePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2068,6 +2704,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of virtual machine network interfaces.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine[id] The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -2085,6 +2723,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineNetworkInterfacesNotFoundException
      * @throws Exception\GetVirtualMachineNetworkInterfacesNotAcceptableException
      * @throws Exception\GetVirtualMachineNetworkInterfacesTooManyRequestsException
+     * @throws Exception\GetVirtualMachineNetworkInterfacesServiceUnavailableException
      */
     public function getVirtualMachineNetworkInterfaces(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2092,6 +2731,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return information about a virtual machine network interface for a specific network.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine[id] The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -2109,6 +2750,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineNetworkInterfaceNotFoundException
      * @throws Exception\GetVirtualMachineNetworkInterfaceNotAcceptableException
      * @throws Exception\GetVirtualMachineNetworkInterfaceTooManyRequestsException
+     * @throws Exception\GetVirtualMachineNetworkInterfaceServiceUnavailableException
      */
     public function getVirtualMachineNetworkInterface(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2116,6 +2758,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return information about a given virtual machine network interface.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_network_interface[id] The network interface to show the information for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
@@ -2129,6 +2773,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVMNIVMNIForbiddenException
      * @throws Exception\GetVMNIVMNINotFoundException
      * @throws Exception\GetVMNIVMNITooManyRequestsException
+     * @throws Exception\GetVMNIVMNIServiceUnavailableException
      */
     public function getVMNIVMNI(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2136,6 +2781,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of IP addresses that can be allocated to a specific network interface.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
@@ -2150,6 +2797,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionForbiddenException
      * @throws Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionNotFoundException
      * @throws Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionTooManyRequestsException
+     * @throws Exception\GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersionServiceUnavailableException
      */
     public function getVirtualMachineNetworkInterfaceAvailableIpsAddressVersion(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2157,6 +2805,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Allocate a specific IP address to a given network interface.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2166,6 +2816,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpNotFoundException
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpUnprocessableEntityException
      * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpTooManyRequestsException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAllocateIpServiceUnavailableException
      */
     public function postVirtualMachineNetworkInterfaceAllocateIp(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2173,6 +2824,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Add a new IP address to this organization and allocate it to a virtual machine network interface.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2199,6 +2852,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileNotAcceptableException
      * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileUnprocessableEntityException
      * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileTooManyRequestsException
+     * @throws Exception\PatchVirtualMachineNetworkInterfaceUpdateSpeedProfileServiceUnavailableException
      */
     public function patchVirtualMachineNetworkInterfaceUpdateSpeedProfile(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2206,6 +2860,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns a list of all tags for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to list the tags for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -2222,6 +2878,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationTagsForbiddenException
      * @throws Exception\GetOrganizationTagsNotFoundException
      * @throws Exception\GetOrganizationTagsTooManyRequestsException
+     * @throws Exception\GetOrganizationTagsServiceUnavailableException
      */
     public function getOrganizationTags(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2229,6 +2886,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Creates a new tag with the provided properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationTagsPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2238,6 +2897,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationTagsNotFoundException
      * @throws Exception\PostOrganizationTagsUnprocessableEntityException
      * @throws Exception\PostOrganizationTagsTooManyRequestsException
+     * @throws Exception\PostOrganizationTagsServiceUnavailableException
      */
     public function postOrganizationTags(?Model\OrganizationsOrganizationTagsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2245,6 +2905,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Deletes a tag.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TagsTagDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2253,6 +2915,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteTagForbiddenException
      * @throws Exception\DeleteTagNotFoundException
      * @throws Exception\DeleteTagTooManyRequestsException
+     * @throws Exception\DeleteTagServiceUnavailableException
      */
     public function deleteTag(?Model\TagsTagDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2260,6 +2923,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details about a specific tag.
+     *
      * @param array $queryParameters {
      *
      * @var string $tag[id] The tag to load the details for. All 'tag[]' params are mutually exclusive, only one can be provided.
@@ -2273,6 +2938,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetTagForbiddenException
      * @throws Exception\GetTagNotFoundException
      * @throws Exception\GetTagTooManyRequestsException
+     * @throws Exception\GetTagServiceUnavailableException
      */
     public function getTag(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2280,6 +2946,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Updates a tag with the provided properties.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TagsTagPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2289,6 +2957,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchTagNotFoundException
      * @throws Exception\PatchTagUnprocessableEntityException
      * @throws Exception\PatchTagTooManyRequestsException
+     * @throws Exception\PatchTagServiceUnavailableException
      */
     public function patchTag(?Model\TagsTagPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2296,6 +2965,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all virtual machine groups for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -2310,6 +2981,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationVirtualMachineGroupsForbiddenException
      * @throws Exception\GetOrganizationVirtualMachineGroupsNotFoundException
      * @throws Exception\GetOrganizationVirtualMachineGroupsTooManyRequestsException
+     * @throws Exception\GetOrganizationVirtualMachineGroupsServiceUnavailableException
      */
     public function getOrganizationVirtualMachineGroups(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2317,6 +2989,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new virtual machine group with the provided details.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualMachineGroupsPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2326,6 +3000,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationVirtualMachineGroupsNotFoundException
      * @throws Exception\PostOrganizationVirtualMachineGroupsUnprocessableEntityException
      * @throws Exception\PostOrganizationVirtualMachineGroupsTooManyRequestsException
+     * @throws Exception\PostOrganizationVirtualMachineGroupsServiceUnavailableException
      */
     public function postOrganizationVirtualMachineGroups(?Model\OrganizationsOrganizationVirtualMachineGroupsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2342,6 +3017,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteVirtualMachineGroupNotFoundException
      * @throws Exception\DeleteVirtualMachineGroupConflictException
      * @throws Exception\DeleteVirtualMachineGroupTooManyRequestsException
+     * @throws Exception\DeleteVirtualMachineGroupServiceUnavailableException
      */
     public function deleteVirtualMachineGroup(?Model\VirtualMachineGroupsVirtualMachineGroupDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2349,6 +3025,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return detailed information about a virtual machine group.
+     *
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_group[id] The virtual machine group to retrieve. All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
@@ -2362,6 +3040,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetVirtualMachineGroupForbiddenException
      * @throws Exception\GetVirtualMachineGroupNotFoundException
      * @throws Exception\GetVirtualMachineGroupTooManyRequestsException
+     * @throws Exception\GetVirtualMachineGroupServiceUnavailableException
      */
     public function getVirtualMachineGroup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2369,6 +3048,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Update a virtual machine group with the provided details.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineGroupsVirtualMachineGroupPatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2378,6 +3059,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PatchVirtualMachineGroupNotFoundException
      * @throws Exception\PatchVirtualMachineGroupUnprocessableEntityException
      * @throws Exception\PatchVirtualMachineGroupTooManyRequestsException
+     * @throws Exception\PatchVirtualMachineGroupServiceUnavailableException
      */
     public function patchVirtualMachineGroup(?Model\VirtualMachineGroupsVirtualMachineGroupPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2385,6 +3067,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all operating systems.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -2398,6 +3082,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOperatingSystemsBadRequestException
      * @throws Exception\GetOperatingSystemsForbiddenException
      * @throws Exception\GetOperatingSystemsTooManyRequestsException
+     * @throws Exception\GetOperatingSystemsServiceUnavailableException
      */
     public function getOperatingSystems(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2405,6 +3090,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific operating system.
+     *
      * @param array $queryParameters {
      *
      * @var string $operating_system[id] The operating system to return. All 'operating_system[]' params are mutually exclusive, only one can be provided.
@@ -2418,6 +3105,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOperatingSystemForbiddenException
      * @throws Exception\GetOperatingSystemNotFoundException
      * @throws Exception\GetOperatingSystemTooManyRequestsException
+     * @throws Exception\GetOperatingSystemServiceUnavailableException
      */
     public function getOperatingSystem(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2425,6 +3113,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provides a full list of all trash objects for a specific organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to find all trash objects for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -2441,6 +3131,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetOrganizationTrashObjectsForbiddenException
      * @throws Exception\GetOrganizationTrashObjectsNotFoundException
      * @throws Exception\GetOrganizationTrashObjectsTooManyRequestsException
+     * @throws Exception\GetOrganizationTrashObjectsServiceUnavailableException
      */
     public function getOrganizationTrashObjects(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2448,6 +3139,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Purge all trash objects for an organization.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationTrashObjectsPurgeAllPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2457,6 +3150,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostOrganizationTrashObjectsPurgeAllNotFoundException
      * @throws Exception\PostOrganizationTrashObjectsPurgeAllNotAcceptableException
      * @throws Exception\PostOrganizationTrashObjectsPurgeAllTooManyRequestsException
+     * @throws Exception\PostOrganizationTrashObjectsPurgeAllServiceUnavailableException
      */
     public function postOrganizationTrashObjectsPurgeAll(?Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2464,6 +3158,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Purge a specific trash object.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TrashObjectsTrashObjectDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2473,6 +3169,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\DeleteTrashObjectNotFoundException
      * @throws Exception\DeleteTrashObjectNotAcceptableException
      * @throws Exception\DeleteTrashObjectTooManyRequestsException
+     * @throws Exception\DeleteTrashObjectServiceUnavailableException
      */
     public function deleteTrashObject(?Model\TrashObjectsTrashObjectDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2480,6 +3177,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Provides information on a specific trash object.
+     *
      * @param array $queryParameters {
      *
      * @var string $trash_object[id] The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
@@ -2494,6 +3193,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetTrashObjectForbiddenException
      * @throws Exception\GetTrashObjectNotFoundException
      * @throws Exception\GetTrashObjectTooManyRequestsException
+     * @throws Exception\GetTrashObjectServiceUnavailableException
      */
     public function getTrashObject(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2501,6 +3201,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Restore a trashed object to its original location.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TrashObjectsTrashObjectRestorePostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2509,6 +3211,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostTrashObjectRestoreForbiddenException
      * @throws Exception\PostTrashObjectRestoreNotFoundException
      * @throws Exception\PostTrashObjectRestoreTooManyRequestsException
+     * @throws Exception\PostTrashObjectRestoreServiceUnavailableException
      */
     public function postTrashObjectRestore(?Model\TrashObjectsTrashObjectRestorePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2523,6 +3226,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetZonesBadRequestException
      * @throws Exception\GetZonesForbiddenException
      * @throws Exception\GetZonesTooManyRequestsException
+     * @throws Exception\GetZonesServiceUnavailableException
      */
     public function getZones(string $fetch = self::FETCH_OBJECT)
     {
@@ -2530,6 +3234,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns the details for a specific zone.
+     *
      * @param array $queryParameters {
      *
      * @var string $zone[id] The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
@@ -2544,6 +3250,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetZoneForbiddenException
      * @throws Exception\GetZoneNotFoundException
      * @throws Exception\GetZoneTooManyRequestsException
+     * @throws Exception\GetZoneServiceUnavailableException
      */
     public function getZone(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2551,6 +3258,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all countries available in Katapult.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -2564,6 +3273,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetCountriesBadRequestException
      * @throws Exception\GetCountriesForbiddenException
      * @throws Exception\GetCountriesTooManyRequestsException
+     * @throws Exception\GetCountriesServiceUnavailableException
      */
     public function getCountries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2571,6 +3281,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific country.
+     *
      * @param array $queryParameters {
      *
      * @var string $country[id] The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
@@ -2586,6 +3298,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetCountryForbiddenException
      * @throws Exception\GetCountryNotFoundException
      * @throws Exception\GetCountryTooManyRequestsException
+     * @throws Exception\GetCountryServiceUnavailableException
      */
     public function getCountry(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2593,6 +3306,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all country states for a specific country.
+     *
      * @param array $queryParameters {
      *
      * @var string $country[id] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
@@ -2610,6 +3325,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetCountryCountryStatesForbiddenException
      * @throws Exception\GetCountryCountryStatesNotFoundException
      * @throws Exception\GetCountryCountryStatesTooManyRequestsException
+     * @throws Exception\GetCountryCountryStatesServiceUnavailableException
      */
     public function getCountryCountryStates(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2617,6 +3333,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific country state.
+     *
      * @param array $queryParameters {
      *
      * @var string $country_state[id] The country state to return. All 'country_state[]' params are mutually exclusive, only one can be provided.
@@ -2630,6 +3348,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetCountryStateForbiddenException
      * @throws Exception\GetCountryStateNotFoundException
      * @throws Exception\GetCountryStateTooManyRequestsException
+     * @throws Exception\GetCountryStateServiceUnavailableException
      */
     public function getCountryState(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2637,6 +3356,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return a list of all currencies available in Katapult.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -2650,6 +3371,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetCurrenciesBadRequestException
      * @throws Exception\GetCurrenciesForbiddenException
      * @throws Exception\GetCurrenciesTooManyRequestsException
+     * @throws Exception\GetCurrenciesServiceUnavailableException
      */
     public function getCurrencies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2657,6 +3379,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Return details for a specific currency.
+     *
      * @param array $queryParameters {
      *
      * @var string $currency[id] The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
@@ -2671,6 +3395,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetCurrencyForbiddenException
      * @throws Exception\GetCurrencyNotFoundException
      * @throws Exception\GetCurrencyTooManyRequestsException
+     * @throws Exception\GetCurrencyServiceUnavailableException
      */
     public function getCurrency(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2678,6 +3403,8 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details about a specific task.
+     *
      * @param array $queryParameters {
      *
      * @var string $task[id] All 'task[]' params are mutually exclusive, only one can be provided.
@@ -2691,6 +3418,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetTaskForbiddenException
      * @throws Exception\GetTaskNotFoundException
      * @throws Exception\GetTaskTooManyRequestsException
+     * @throws Exception\GetTaskServiceUnavailableException
      */
     public function getTask(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2706,6 +3434,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\GetUsersCurrentForbiddenException
      * @throws Exception\GetUsersCurrentNotFoundException
      * @throws Exception\GetUsersCurrentTooManyRequestsException
+     * @throws Exception\GetUsersCurrentServiceUnavailableException
      */
     public function getUsersCurrent(string $fetch = self::FETCH_OBJECT)
     {
@@ -2713,6 +3442,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * This endpoint allows you to invalidate the web session which is associated with your authenticated
+     * identity. This will only work for API identities (most likely API tokens) that were generated using the first-party application
+     * login flow.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\InvalidateLinkedWebSessionPostResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2720,6 +3453,7 @@ class Client extends Runtime\Client\Client
      * @throws Exception\PostInvalidateLinkedWebSessionBadRequestException
      * @throws Exception\PostInvalidateLinkedWebSessionForbiddenException
      * @throws Exception\PostInvalidateLinkedWebSessionTooManyRequestsException
+     * @throws Exception\PostInvalidateLinkedWebSessionServiceUnavailableException
      */
     public function postInvalidateLinkedWebSession(?Model\InvalidateLinkedWebSessionPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2731,7 +3465,7 @@ class Client extends Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.katapult.io/core/v1');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('http://katapult-api.localhost/core/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

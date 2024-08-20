@@ -14,6 +14,9 @@ class PostLoadBalancerRules extends \Krystal\Katapult\KatapultAPI\Runtime\Client
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Create a new load balancer rule.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostLoadBalancerRules extends \Krystal\Katapult\KatapultAPI\Runtime\Client
 
     public function getUri(): string
     {
-        return '/load_balancers/:load_balancer/rules';
+        return '/load_balancers/load_balancer/rules';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostLoadBalancerRules extends \Krystal\Katapult\KatapultAPI\Runtime\Client
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostLoadBalancerRulesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostLoadBalancerRulesUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostLoadBalancerRulesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostLoadBalancerRulesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostLoadBalancerRules extends \Krystal\Katapult\KatapultAPI\Runtime\Client
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostLoadBalancerRulesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostLoadBalancerRulesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

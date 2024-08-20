@@ -14,6 +14,9 @@ class DeleteDiskBackupPolicySchedule extends \Krystal\Katapult\KatapultAPI\Runti
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Schedules a disk backup policy to be moved to the trash at a specific time. The backup policy will continue to function as normal until this time is reached.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteDiskBackupPolicySchedule extends \Krystal\Katapult\KatapultAPI\Runti
 
     public function getUri(): string
     {
-        return '/disk_backup_policies/:disk_backup_policy/schedule';
+        return '/disk_backup_policies/disk_backup_policy/schedule';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class DeleteDiskBackupPolicySchedule extends \Krystal\Katapult\KatapultAPI\Runti
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class DeleteDiskBackupPolicySchedule extends \Krystal\Katapult\KatapultAPI\Runti
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteDiskBackupPolicyScheduleServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

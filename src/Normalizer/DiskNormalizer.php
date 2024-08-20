@@ -85,6 +85,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('io_profile', $data) && $data['io_profile'] === null) {
                 $object->setIoProfile(null);
             }
+            if (\array_key_exists('bus_type', $data) && $data['bus_type'] !== null) {
+                $object->setBusType($data['bus_type']);
+                unset($data['bus_type']);
+            } elseif (\array_key_exists('bus_type', $data) && $data['bus_type'] === null) {
+                $object->setBusType(null);
+            }
+            if (\array_key_exists('data_center', $data)) {
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCenter', 'json', $context));
+                unset($data['data_center']);
+            }
             if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
                 $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskVirtualMachineDisk', 'json', $context));
                 unset($data['virtual_machine_disk']);
@@ -132,6 +142,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('ioProfile') && null !== $object->getIoProfile()) {
                 $data['io_profile'] = $this->normalizer->normalize($object->getIoProfile(), 'json', $context);
+            }
+            if ($object->isInitialized('busType') && null !== $object->getBusType()) {
+                $data['bus_type'] = $object->getBusType();
+            }
+            if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
+                $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
             }
             if ($object->isInitialized('virtualMachineDisk') && null !== $object->getVirtualMachineDisk()) {
                 $data['virtual_machine_disk'] = $this->normalizer->normalize($object->getVirtualMachineDisk(), 'json', $context);
@@ -217,6 +233,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('io_profile', $data) && $data['io_profile'] === null) {
                 $object->setIoProfile(null);
             }
+            if (\array_key_exists('bus_type', $data) && $data['bus_type'] !== null) {
+                $object->setBusType($data['bus_type']);
+                unset($data['bus_type']);
+            } elseif (\array_key_exists('bus_type', $data) && $data['bus_type'] === null) {
+                $object->setBusType(null);
+            }
+            if (\array_key_exists('data_center', $data)) {
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DataCenter', 'json', $context));
+                unset($data['data_center']);
+            }
             if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
                 $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DiskVirtualMachineDisk', 'json', $context));
                 unset($data['virtual_machine_disk']);
@@ -264,6 +290,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('ioProfile') && null !== $object->getIoProfile()) {
                 $data['io_profile'] = $this->normalizer->normalize($object->getIoProfile(), 'json', $context);
+            }
+            if ($object->isInitialized('busType') && null !== $object->getBusType()) {
+                $data['bus_type'] = $object->getBusType();
+            }
+            if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
+                $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
             }
             if ($object->isInitialized('virtualMachineDisk') && null !== $object->getVirtualMachineDisk()) {
                 $data['virtual_machine_disk'] = $this->normalizer->normalize($object->getVirtualMachineDisk(), 'json', $context);

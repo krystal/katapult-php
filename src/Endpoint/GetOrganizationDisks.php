@@ -15,6 +15,8 @@ class GetOrganizationDisks extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return a list of all disks owned by an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -35,7 +37,7 @@ class GetOrganizationDisks extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
 
     public function getUri(): string
     {
-        return '/organizations/:organization/disks';
+        return '/organizations/organization/disks';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetOrganizationDisks extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDisksForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDisksNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDisksTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDisksServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetOrganizationDisks extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDisksTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDisksServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

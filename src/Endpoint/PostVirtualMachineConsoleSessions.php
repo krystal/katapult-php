@@ -14,6 +14,9 @@ class PostVirtualMachineConsoleSessions extends \Krystal\Katapult\KatapultAPI\Ru
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Creates a new console session which can be opened in a browser.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostVirtualMachineConsoleSessions extends \Krystal\Katapult\KatapultAPI\Ru
 
     public function getUri(): string
     {
-        return '/virtual_machines/:virtual_machine/console_sessions';
+        return '/virtual_machines/virtual_machine/console_sessions';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -52,6 +55,7 @@ class PostVirtualMachineConsoleSessions extends \Krystal\Katapult\KatapultAPI\Ru
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -77,6 +81,9 @@ class PostVirtualMachineConsoleSessions extends \Krystal\Katapult\KatapultAPI\Ru
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineConsoleSessionsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

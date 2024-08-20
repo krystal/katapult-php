@@ -14,6 +14,9 @@ class PostVirtualMachineNetworkInterfaceAllocateNewIp extends \Krystal\Katapult\
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Add a new IP address to this organization and allocate it to a virtual machine network interface.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostVirtualMachineNetworkInterfaceAllocateNewIp extends \Krystal\Katapult\
 
     public function getUri(): string
     {
-        return '/virtual_machine_network_interfaces/:virtual_machine_network_interface/allocate_new_ip';
+        return '/virtual_machine_network_interfaces/virtual_machine_network_interface/allocate_new_ip';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -72,7 +75,7 @@ class PostVirtualMachineNetworkInterfaceAllocateNewIp extends \Krystal\Katapult\
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseNoAvailableAddressesResponse', 'json'), $response);
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpServiceUnavailableException($response);
         }
     }
 

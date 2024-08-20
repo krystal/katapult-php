@@ -15,6 +15,8 @@ class GetOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return a list of all DNS zones.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -35,7 +37,7 @@ class GetOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
 
     public function getUri(): string
     {
-        return '/organizations/:organization/dns_zones';
+        return '/organizations/organization/dns_zones';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,6 +71,7 @@ class GetOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDnsZonesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDnsZonesNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDnsZonesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDnsZonesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -88,6 +91,9 @@ class GetOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDnsZonesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationDnsZonesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

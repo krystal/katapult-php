@@ -14,6 +14,9 @@ class DeleteTrashObject extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Purge a specific trash object.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TrashObjectsTrashObjectDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteTrashObject extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
 
     public function getUri(): string
     {
-        return '/trash_objects/:trash_object';
+        return '/trash_objects/trash_object';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class DeleteTrashObject extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTrashObjectNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTrashObjectNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTrashObjectTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteTrashObjectServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class DeleteTrashObject extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteTrashObjectTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteTrashObjectServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

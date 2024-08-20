@@ -14,6 +14,9 @@ class DeleteVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Moves an existing virtual machine to the trash.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
 
     public function getUri(): string
     {
-        return '/virtual_machines/:virtual_machine';
+        return '/virtual_machines/virtual_machine';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class DeleteVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class DeleteVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteVirtualMachineServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

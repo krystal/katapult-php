@@ -42,6 +42,10 @@ class GetOrganizations200ResponseOrganizations extends \ArrayObject
      */
     protected $createdAt;
     /**
+     * @var int|null
+     */
+    protected $activatedAt;
+    /**
      * @var bool
      */
     protected $suspended;
@@ -111,6 +115,19 @@ class GetOrganizations200ResponseOrganizations extends \ArrayObject
     {
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getActivatedAt(): ?int
+    {
+        return $this->activatedAt;
+    }
+
+    public function setActivatedAt(?int $activatedAt): self
+    {
+        $this->initialized['activatedAt'] = true;
+        $this->activatedAt = $activatedAt;
 
         return $this;
     }

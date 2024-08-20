@@ -14,6 +14,9 @@ class PatchDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Update properties for a DNS zone.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZonePatchBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PatchDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
 
     public function getUri(): string
     {
-        return '/dns_zones/:dns_zone';
+        return '/dns_zones/dns_zone';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PatchDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PatchDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PatchDnsZoneServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

@@ -15,6 +15,8 @@ class GetOrganizationVirtualMachineGroups extends \Krystal\Katapult\KatapultAPI\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Return a list of all virtual machine groups for an organization.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -33,7 +35,7 @@ class GetOrganizationVirtualMachineGroups extends \Krystal\Katapult\KatapultAPI\
 
     public function getUri(): string
     {
-        return '/organizations/:organization/virtual_machine_groups';
+        return '/organizations/organization/virtual_machine_groups';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -65,6 +67,7 @@ class GetOrganizationVirtualMachineGroups extends \Krystal\Katapult\KatapultAPI\
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -84,6 +87,9 @@ class GetOrganizationVirtualMachineGroups extends \Krystal\Katapult\KatapultAPI\
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetOrganizationVirtualMachineGroupsServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

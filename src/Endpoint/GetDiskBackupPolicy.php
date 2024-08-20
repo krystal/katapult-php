@@ -15,6 +15,8 @@ class GetDiskBackupPolicy extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Returns information about a specific disk backup policy.
+     *
      * @param array $queryParameters {
      *
      * @var string $disk_backup_policy[id] The disk backup policy to get information for. All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
@@ -32,7 +34,7 @@ class GetDiskBackupPolicy extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
 
     public function getUri(): string
     {
-        return '/disk_backup_policies/:disk_backup_policy';
+        return '/disk_backup_policies/disk_backup_policy';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -64,6 +66,7 @@ class GetDiskBackupPolicy extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskBackupPolicyNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskBackupPolicyNotAcceptableException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskBackupPolicyTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetDiskBackupPolicyServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -86,6 +89,9 @@ class GetDiskBackupPolicy extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskBackupPolicyTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetDiskBackupPolicyServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

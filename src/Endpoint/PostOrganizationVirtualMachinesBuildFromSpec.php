@@ -14,6 +14,9 @@ class PostOrganizationVirtualMachinesBuildFromSpec extends \Krystal\Katapult\Kat
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Builds a new virtual machine by receiving a virtual machine spec document.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class PostOrganizationVirtualMachinesBuildFromSpec extends \Krystal\Katapult\Kat
 
     public function getUri(): string
     {
-        return '/organizations/:organization/virtual_machines/build_from_spec';
+        return '/organizations/organization/virtual_machines/build_from_spec';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class PostOrganizationVirtualMachinesBuildFromSpec extends \Krystal\Katapult\Kat
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationVirtualMachinesBuildFromSpecNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationVirtualMachinesBuildFromSpecUnprocessableEntityException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationVirtualMachinesBuildFromSpecTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationVirtualMachinesBuildFromSpecServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class PostOrganizationVirtualMachinesBuildFromSpec extends \Krystal\Katapult\Kat
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationVirtualMachinesBuildFromSpecTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\PostOrganizationVirtualMachinesBuildFromSpecServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

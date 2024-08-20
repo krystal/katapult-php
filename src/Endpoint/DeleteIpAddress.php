@@ -14,6 +14,9 @@ class DeleteIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * Release an IP address from its organization.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;
@@ -26,7 +29,7 @@ class DeleteIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
 
     public function getUri(): string
     {
-        return '/ip_addresses/:ip_address';
+        return '/ip_addresses/ip_address';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -51,6 +54,7 @@ class DeleteIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteIpAddressNotFoundException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteIpAddressConflictException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteIpAddressTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\DeleteIpAddressServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -73,6 +77,9 @@ class DeleteIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteIpAddressTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\DeleteIpAddressServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

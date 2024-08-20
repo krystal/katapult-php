@@ -15,6 +15,8 @@ class GetGpuTypes extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
+     * Provides a full list of all GPU types.
+     *
      * @param array $queryParameters {
      *
      * @var int $page
@@ -64,6 +66,7 @@ class GetGpuTypes extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypesBadRequestException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypesForbiddenException
      * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypesTooManyRequestsException
+     * @throws \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypesServiceUnavailableException
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -80,6 +83,9 @@ class GetGpuTypes extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypesTooManyRequestsException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Krystal\Katapult\KatapultAPI\Exception\GetGpuTypesServiceUnavailableException($serializer->deserialize($body, 'Krystal\\Katapult\\KatapultAPI\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 
