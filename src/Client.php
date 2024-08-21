@@ -115,110 +115,6 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all address list entries for a given address list.
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\AddressListsAddressListEntriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\GetAddressListEntriesBadRequestException
-     * @throws Exception\GetAddressListEntriesForbiddenException
-     * @throws Exception\GetAddressListEntriesNotFoundException
-     * @throws Exception\GetAddressListEntriesTooManyRequestsException
-     * @throws Exception\GetAddressListEntriesServiceUnavailableException
-     */
-    public function getAddressListEntries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\GetAddressListEntries($queryParameters), $fetch);
-    }
-
-    /**
-     * Create a new address list entry for a given address list.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\AddressListsAddressListEntriesPostResponse201|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostAddressListEntriesBadRequestException
-     * @throws Exception\PostAddressListEntriesForbiddenException
-     * @throws Exception\PostAddressListEntriesNotFoundException
-     * @throws Exception\PostAddressListEntriesUnprocessableEntityException
-     * @throws Exception\PostAddressListEntriesTooManyRequestsException
-     * @throws Exception\PostAddressListEntriesServiceUnavailableException
-     */
-    public function postAddressListEntries(?Model\AddressListsAddressListEntriesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostAddressListEntries($requestBody), $fetch);
-    }
-
-    /**
-     * Delete an address list entry.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\AddressListEntriesAddressListEntryDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\DeleteAddressListEntryBadRequestException
-     * @throws Exception\DeleteAddressListEntryForbiddenException
-     * @throws Exception\DeleteAddressListEntryNotFoundException
-     * @throws Exception\DeleteAddressListEntryTooManyRequestsException
-     * @throws Exception\DeleteAddressListEntryServiceUnavailableException
-     */
-    public function deleteAddressListEntry(?Model\AddressListEntriesAddressListEntryDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\DeleteAddressListEntry($requestBody), $fetch);
-    }
-
-    /**
-     * Returns details for an address list entry.
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $address_list_entry[id] The address list entry to return. All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\AddressListEntriesAddressListEntryGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\GetAddressListEntryBadRequestException
-     * @throws Exception\GetAddressListEntryForbiddenException
-     * @throws Exception\GetAddressListEntryNotFoundException
-     * @throws Exception\GetAddressListEntryTooManyRequestsException
-     * @throws Exception\GetAddressListEntryServiceUnavailableException
-     */
-    public function getAddressListEntry(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\GetAddressListEntry($queryParameters), $fetch);
-    }
-
-    /**
-     * Update an address list entry with new properties.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\AddressListEntriesAddressListEntryPatchResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PatchAddressListEntryBadRequestException
-     * @throws Exception\PatchAddressListEntryForbiddenException
-     * @throws Exception\PatchAddressListEntryNotFoundException
-     * @throws Exception\PatchAddressListEntryUnprocessableEntityException
-     * @throws Exception\PatchAddressListEntryTooManyRequestsException
-     * @throws Exception\PatchAddressListEntryServiceUnavailableException
-     */
-    public function patchAddressListEntry(?Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PatchAddressListEntry($requestBody), $fetch);
-    }
-
-    /**
      * Returns a list of all global address lists.
      *
      * @param array $queryParameters {
@@ -347,64 +243,107 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Builds a new virtual machine based on the arguments provided to this endpoint. Virtual machines will be built in the background. This task will return an task object that will allow you to monitor the build process using the appropriate API action. This action only offers a small subset of the full functionality needed when provisioning virtual machines - see the `build_from_spec` action for a full advanced virtual machine creation method.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostOrganizationVirtualMachinesBuildBadRequestException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildForbiddenException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildNotFoundException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildUnprocessableEntityException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildTooManyRequestsException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildServiceUnavailableException
-     */
-    public function postOrganizationVirtualMachinesBuild(?Model\OrganizationsOrganizationVirtualMachinesBuildPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostOrganizationVirtualMachinesBuild($requestBody), $fetch);
-    }
-
-    /**
-     * Builds a new virtual machine by receiving a virtual machine spec document.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecBadRequestException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecForbiddenException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecNotFoundException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecUnprocessableEntityException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecTooManyRequestsException
-     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecServiceUnavailableException
-     */
-    public function postOrganizationVirtualMachinesBuildFromSpec(?Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostOrganizationVirtualMachinesBuildFromSpec($requestBody), $fetch);
-    }
-
-    /**
-     * Return virtual machine build information.
+     * Returns a list of all address list entries for a given address list.
      *
      * @param array $queryParameters {
      *
-     * @var string $virtual_machine_build[id] All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
+     * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
+     * @var int    $page
+     * @var int    $per_page
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\AddressListsAddressListEntriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
-     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildBadRequestException
-     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildForbiddenException
-     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildNotFoundException
-     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildTooManyRequestsException
-     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildServiceUnavailableException
+     * @throws Exception\GetAddressListEntriesBadRequestException
+     * @throws Exception\GetAddressListEntriesForbiddenException
+     * @throws Exception\GetAddressListEntriesNotFoundException
+     * @throws Exception\GetAddressListEntriesTooManyRequestsException
+     * @throws Exception\GetAddressListEntriesServiceUnavailableException
      */
-    public function getVirtualMachinesBuildsVirtualMachineBuild(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getAddressListEntries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new Endpoint\GetVirtualMachinesBuildsVirtualMachineBuild($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetAddressListEntries($queryParameters), $fetch);
+    }
+
+    /**
+     * Create a new address list entry for a given address list.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\AddressListsAddressListEntriesPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostAddressListEntriesBadRequestException
+     * @throws Exception\PostAddressListEntriesForbiddenException
+     * @throws Exception\PostAddressListEntriesNotFoundException
+     * @throws Exception\PostAddressListEntriesUnprocessableEntityException
+     * @throws Exception\PostAddressListEntriesTooManyRequestsException
+     * @throws Exception\PostAddressListEntriesServiceUnavailableException
+     */
+    public function postAddressListEntries(?Model\AddressListsAddressListEntriesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostAddressListEntries($requestBody), $fetch);
+    }
+
+    /**
+     * Delete an address list entry.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\AddressListEntriesAddressListEntryDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteAddressListEntryBadRequestException
+     * @throws Exception\DeleteAddressListEntryForbiddenException
+     * @throws Exception\DeleteAddressListEntryNotFoundException
+     * @throws Exception\DeleteAddressListEntryTooManyRequestsException
+     * @throws Exception\DeleteAddressListEntryServiceUnavailableException
+     */
+    public function deleteAddressListEntry(?Model\AddressListEntriesAddressListEntryDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteAddressListEntry($requestBody), $fetch);
+    }
+
+    /**
+     * Returns details for an address list entry.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $address_list_entry[id] The address list entry to return. All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\AddressListEntriesAddressListEntryGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetAddressListEntryBadRequestException
+     * @throws Exception\GetAddressListEntryForbiddenException
+     * @throws Exception\GetAddressListEntryNotFoundException
+     * @throws Exception\GetAddressListEntryTooManyRequestsException
+     * @throws Exception\GetAddressListEntryServiceUnavailableException
+     */
+    public function getAddressListEntry(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetAddressListEntry($queryParameters), $fetch);
+    }
+
+    /**
+     * Update an address list entry with new properties.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\AddressListEntriesAddressListEntryPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchAddressListEntryBadRequestException
+     * @throws Exception\PatchAddressListEntryForbiddenException
+     * @throws Exception\PatchAddressListEntryNotFoundException
+     * @throws Exception\PatchAddressListEntryUnprocessableEntityException
+     * @throws Exception\PatchAddressListEntryTooManyRequestsException
+     * @throws Exception\PatchAddressListEntryServiceUnavailableException
+     */
+    public function patchAddressListEntry(?Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchAddressListEntry($requestBody), $fetch);
     }
 
     /**
@@ -455,26 +394,6 @@ class Client extends Runtime\Client\Client
     public function getCertificate(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\GetCertificate($queryParameters), $fetch);
-    }
-
-    /**
-     * Creates a new console session which can be opened in a browser.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostVirtualMachineConsoleSessionsBadRequestException
-     * @throws Exception\PostVirtualMachineConsoleSessionsForbiddenException
-     * @throws Exception\PostVirtualMachineConsoleSessionsNotFoundException
-     * @throws Exception\PostVirtualMachineConsoleSessionsNotAcceptableException
-     * @throws Exception\PostVirtualMachineConsoleSessionsUnprocessableEntityException
-     * @throws Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException
-     * @throws Exception\PostVirtualMachineConsoleSessionsServiceUnavailableException
-     */
-    public function postVirtualMachineConsoleSessions(?Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostVirtualMachineConsoleSessions($requestBody), $fetch);
     }
 
     /**
@@ -769,6 +688,109 @@ class Client extends Runtime\Client\Client
     public function postDnsZoneVerify(?Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostDnsZoneVerify($requestBody), $fetch);
+    }
+
+    /**
+     * Return a list of all DNS records in a zone.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
+     * @var string $dns_zone[name] All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DnsZonesDnsZoneRecordsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetDnsZoneRecordsBadRequestException
+     * @throws Exception\GetDnsZoneRecordsForbiddenException
+     * @throws Exception\GetDnsZoneRecordsNotFoundException
+     * @throws Exception\GetDnsZoneRecordsTooManyRequestsException
+     * @throws Exception\GetDnsZoneRecordsServiceUnavailableException
+     */
+    public function getDnsZoneRecords(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetDnsZoneRecords($queryParameters), $fetch);
+    }
+
+    /**
+     * Create a new DNS record.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DnsZonesDnsZoneRecordsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostDnsZoneRecordsBadRequestException
+     * @throws Exception\PostDnsZoneRecordsForbiddenException
+     * @throws Exception\PostDnsZoneRecordsNotFoundException
+     * @throws Exception\PostDnsZoneRecordsUnprocessableEntityException
+     * @throws Exception\PostDnsZoneRecordsTooManyRequestsException
+     * @throws Exception\PostDnsZoneRecordsServiceUnavailableException
+     */
+    public function postDnsZoneRecords(?Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostDnsZoneRecords($requestBody), $fetch);
+    }
+
+    /**
+     * Delete a DNS record.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DnsRecordsDnsRecordDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteDnsRecordBadRequestException
+     * @throws Exception\DeleteDnsRecordForbiddenException
+     * @throws Exception\DeleteDnsRecordNotFoundException
+     * @throws Exception\DeleteDnsRecordTooManyRequestsException
+     * @throws Exception\DeleteDnsRecordServiceUnavailableException
+     */
+    public function deleteDnsRecord(?Model\DnsRecordsDnsRecordDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteDnsRecord($requestBody), $fetch);
+    }
+
+    /**
+     * Return details for a specific DNS record.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DnsRecordsDnsRecordGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetDnsRecordBadRequestException
+     * @throws Exception\GetDnsRecordForbiddenException
+     * @throws Exception\GetDnsRecordNotFoundException
+     * @throws Exception\GetDnsRecordTooManyRequestsException
+     * @throws Exception\GetDnsRecordServiceUnavailableException
+     */
+    public function getDnsRecord(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetDnsRecord($queryParameters), $fetch);
+    }
+
+    /**
+     * Update a DNS record properties.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\DnsRecordsDnsRecordPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchDnsRecordBadRequestException
+     * @throws Exception\PatchDnsRecordForbiddenException
+     * @throws Exception\PatchDnsRecordNotFoundException
+     * @throws Exception\PatchDnsRecordUnprocessableEntityException
+     * @throws Exception\PatchDnsRecordTooManyRequestsException
+     * @throws Exception\PatchDnsRecordServiceUnavailableException
+     */
+    public function patchDnsRecord(?Model\DnsRecordsDnsRecordPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchDnsRecord($requestBody), $fetch);
     }
 
     /**
@@ -1753,112 +1775,6 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all rules for a given load balancer.
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $load_balancer[id] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var string $load_balancer[api_reference] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\LoadBalancersLoadBalancerRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\GetLoadBalancerRulesBadRequestException
-     * @throws Exception\GetLoadBalancerRulesForbiddenException
-     * @throws Exception\GetLoadBalancerRulesNotFoundException
-     * @throws Exception\GetLoadBalancerRulesTooManyRequestsException
-     * @throws Exception\GetLoadBalancerRulesServiceUnavailableException
-     */
-    public function getLoadBalancerRules(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\GetLoadBalancerRules($queryParameters), $fetch);
-    }
-
-    /**
-     * Create a new load balancer rule.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\LoadBalancersLoadBalancerRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostLoadBalancerRulesBadRequestException
-     * @throws Exception\PostLoadBalancerRulesForbiddenException
-     * @throws Exception\PostLoadBalancerRulesNotFoundException
-     * @throws Exception\PostLoadBalancerRulesUnprocessableEntityException
-     * @throws Exception\PostLoadBalancerRulesTooManyRequestsException
-     * @throws Exception\PostLoadBalancerRulesServiceUnavailableException
-     */
-    public function postLoadBalancerRules(?Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostLoadBalancerRules($requestBody), $fetch);
-    }
-
-    /**
-     * Delete a load balancer rule.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\LoadBalancersRulesLoadBalancerRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleBadRequestException
-     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleForbiddenException
-     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleNotFoundException
-     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
-     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
-     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
-     */
-    public function deleteLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\DeleteLoadBalancersRulesLoadBalancerRule($requestBody), $fetch);
-    }
-
-    /**
-     * Returns details about a load balancer rule.
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $load_balancer_rule[id] The load balancer rule to return the details for. All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\LoadBalancersRulesLoadBalancerRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleBadRequestException
-     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleForbiddenException
-     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleNotFoundException
-     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
-     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
-     */
-    public function getLoadBalancersRulesLoadBalancerRule(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\GetLoadBalancersRulesLoadBalancerRule($queryParameters), $fetch);
-    }
-
-    /**
-     * Updates a load balancer rule with new properties.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\LoadBalancersRulesLoadBalancerRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleBadRequestException
-     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleForbiddenException
-     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleNotFoundException
-     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
-     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
-     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
-     */
-    public function patchLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PatchLoadBalancersRulesLoadBalancerRule($requestBody), $fetch);
-    }
-
-    /**
      * Returns a list of all load balancers for a given organization.
      *
      * @param array $queryParameters {
@@ -1966,48 +1882,109 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * List all managed organizations owned by the given organization.
+     * Returns a list of all rules for a given load balancer.
      *
      * @param array $queryParameters {
      *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $load_balancer[id] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     * @var string $load_balancer[api_reference] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\OrganizationsOrganizationManagedGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersLoadBalancerRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
-     * @throws Exception\GetOrganizationManagedBadRequestException
-     * @throws Exception\GetOrganizationManagedForbiddenException
-     * @throws Exception\GetOrganizationManagedNotFoundException
-     * @throws Exception\GetOrganizationManagedTooManyRequestsException
-     * @throws Exception\GetOrganizationManagedServiceUnavailableException
+     * @throws Exception\GetLoadBalancerRulesBadRequestException
+     * @throws Exception\GetLoadBalancerRulesForbiddenException
+     * @throws Exception\GetLoadBalancerRulesNotFoundException
+     * @throws Exception\GetLoadBalancerRulesTooManyRequestsException
+     * @throws Exception\GetLoadBalancerRulesServiceUnavailableException
      */
-    public function getOrganizationManaged(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getLoadBalancerRules(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new Endpoint\GetOrganizationManaged($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetLoadBalancerRules($queryParameters), $fetch);
     }
 
     /**
-     * Create a new managed organization within an existing organization.
+     * Create a new load balancer rule.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\OrganizationsOrganizationManagedPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\LoadBalancersLoadBalancerRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
      *
-     * @throws Exception\PostOrganizationManagedBadRequestException
-     * @throws Exception\PostOrganizationManagedForbiddenException
-     * @throws Exception\PostOrganizationManagedNotFoundException
-     * @throws Exception\PostOrganizationManagedUnprocessableEntityException
-     * @throws Exception\PostOrganizationManagedTooManyRequestsException
-     * @throws Exception\PostOrganizationManagedServiceUnavailableException
+     * @throws Exception\PostLoadBalancerRulesBadRequestException
+     * @throws Exception\PostLoadBalancerRulesForbiddenException
+     * @throws Exception\PostLoadBalancerRulesNotFoundException
+     * @throws Exception\PostLoadBalancerRulesUnprocessableEntityException
+     * @throws Exception\PostLoadBalancerRulesTooManyRequestsException
+     * @throws Exception\PostLoadBalancerRulesServiceUnavailableException
      */
-    public function postOrganizationManaged(?Model\OrganizationsOrganizationManagedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postLoadBalancerRules(?Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new Endpoint\PostOrganizationManaged($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostLoadBalancerRules($requestBody), $fetch);
+    }
+
+    /**
+     * Delete a load balancer rule.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\LoadBalancersRulesLoadBalancerRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleBadRequestException
+     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleForbiddenException
+     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleNotFoundException
+     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
+     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
+     * @throws Exception\DeleteLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
+     */
+    public function deleteLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteLoadBalancersRulesLoadBalancerRule($requestBody), $fetch);
+    }
+
+    /**
+     * Returns details about a load balancer rule.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $load_balancer_rule[id] The load balancer rule to return the details for. All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\LoadBalancersRulesLoadBalancerRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleBadRequestException
+     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleForbiddenException
+     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleNotFoundException
+     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
+     * @throws Exception\GetLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
+     */
+    public function getLoadBalancersRulesLoadBalancerRule(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetLoadBalancersRulesLoadBalancerRule($queryParameters), $fetch);
+    }
+
+    /**
+     * Updates a load balancer rule with new properties.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\LoadBalancersRulesLoadBalancerRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleBadRequestException
+     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleForbiddenException
+     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleNotFoundException
+     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleUnprocessableEntityException
+     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleTooManyRequestsException
+     * @throws Exception\PatchLoadBalancersRulesLoadBalancerRuleServiceUnavailableException
+     */
+    public function patchLoadBalancersRulesLoadBalancerRule(?Model\LoadBalancersRulesLoadBalancerRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchLoadBalancersRulesLoadBalancerRule($requestBody), $fetch);
     }
 
     /**
@@ -2131,36 +2108,6 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * This will return a simple list of users with any access to this organization. This
-     * endpoint is available to all users with access to the organization therefore allows
-     * them to see a small amount of information about their peers. This is useful when
-     * combined with other API actions that require the ID of a fellow user (such as when
-     * determining which users to assign a virtual machine).
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\OrganizationsOrganizationUsersWithAccessGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\GetOrganizationUsersWithAccessBadRequestException
-     * @throws Exception\GetOrganizationUsersWithAccessForbiddenException
-     * @throws Exception\GetOrganizationUsersWithAccessNotFoundException
-     * @throws Exception\GetOrganizationUsersWithAccessTooManyRequestsException
-     * @throws Exception\GetOrganizationUsersWithAccessServiceUnavailableException
-     */
-    public function getOrganizationUsersWithAccess(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\GetOrganizationUsersWithAccess($queryParameters), $fetch);
-    }
-
-    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2224,182 +2171,78 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Queues a task to start a virtual machine.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\VirtualMachinesVirtualMachineStartPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostVirtualMachineStartBadRequestException
-     * @throws Exception\PostVirtualMachineStartForbiddenException
-     * @throws Exception\PostVirtualMachineStartNotFoundException
-     * @throws Exception\PostVirtualMachineStartNotAcceptableException
-     * @throws Exception\PostVirtualMachineStartTooManyRequestsException
-     * @throws Exception\PostVirtualMachineStartServiceUnavailableException
-     */
-    public function postVirtualMachineStart(?Model\VirtualMachinesVirtualMachineStartPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostVirtualMachineStart($requestBody), $fetch);
-    }
-
-    /**
-     * Queues a task to stop a virtual machine.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\VirtualMachinesVirtualMachineStopPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostVirtualMachineStopBadRequestException
-     * @throws Exception\PostVirtualMachineStopForbiddenException
-     * @throws Exception\PostVirtualMachineStopNotFoundException
-     * @throws Exception\PostVirtualMachineStopNotAcceptableException
-     * @throws Exception\PostVirtualMachineStopTooManyRequestsException
-     * @throws Exception\PostVirtualMachineStopServiceUnavailableException
-     */
-    public function postVirtualMachineStop(?Model\VirtualMachinesVirtualMachineStopPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostVirtualMachineStop($requestBody), $fetch);
-    }
-
-    /**
-     * Queues a task to shutdown a virtual machine.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\VirtualMachinesVirtualMachineShutdownPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostVirtualMachineShutdownBadRequestException
-     * @throws Exception\PostVirtualMachineShutdownForbiddenException
-     * @throws Exception\PostVirtualMachineShutdownNotFoundException
-     * @throws Exception\PostVirtualMachineShutdownNotAcceptableException
-     * @throws Exception\PostVirtualMachineShutdownTooManyRequestsException
-     * @throws Exception\PostVirtualMachineShutdownServiceUnavailableException
-     */
-    public function postVirtualMachineShutdown(?Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostVirtualMachineShutdown($requestBody), $fetch);
-    }
-
-    /**
-     * Queues a task to reset a virtual machine.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\VirtualMachinesVirtualMachineResetPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostVirtualMachineResetBadRequestException
-     * @throws Exception\PostVirtualMachineResetForbiddenException
-     * @throws Exception\PostVirtualMachineResetNotFoundException
-     * @throws Exception\PostVirtualMachineResetNotAcceptableException
-     * @throws Exception\PostVirtualMachineResetTooManyRequestsException
-     * @throws Exception\PostVirtualMachineResetServiceUnavailableException
-     */
-    public function postVirtualMachineReset(?Model\VirtualMachinesVirtualMachineResetPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostVirtualMachineReset($requestBody), $fetch);
-    }
-
-    /**
-     * Return a list of all DNS records in a zone.
+     * This will return a simple list of users with any access to this organization. This
+     * endpoint is available to all users with access to the organization therefore allows
+     * them to see a small amount of information about their peers. This is useful when
+     * combined with other API actions that require the ID of a fellow user (such as when
+     * determining which users to assign a virtual machine).
      *
      * @param array $queryParameters {
      *
-     * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
-     * @var string $dns_zone[name] All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var int    $page
+     * @var int    $per_page
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DnsZonesDnsZoneRecordsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationUsersWithAccessGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
-     * @throws Exception\GetDnsZoneRecordsBadRequestException
-     * @throws Exception\GetDnsZoneRecordsForbiddenException
-     * @throws Exception\GetDnsZoneRecordsNotFoundException
-     * @throws Exception\GetDnsZoneRecordsTooManyRequestsException
-     * @throws Exception\GetDnsZoneRecordsServiceUnavailableException
+     * @throws Exception\GetOrganizationUsersWithAccessBadRequestException
+     * @throws Exception\GetOrganizationUsersWithAccessForbiddenException
+     * @throws Exception\GetOrganizationUsersWithAccessNotFoundException
+     * @throws Exception\GetOrganizationUsersWithAccessTooManyRequestsException
+     * @throws Exception\GetOrganizationUsersWithAccessServiceUnavailableException
      */
-    public function getDnsZoneRecords(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getOrganizationUsersWithAccess(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new Endpoint\GetDnsZoneRecords($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOrganizationUsersWithAccess($queryParameters), $fetch);
     }
 
     /**
-     * Create a new DNS record.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\DnsZonesDnsZoneRecordsPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostDnsZoneRecordsBadRequestException
-     * @throws Exception\PostDnsZoneRecordsForbiddenException
-     * @throws Exception\PostDnsZoneRecordsNotFoundException
-     * @throws Exception\PostDnsZoneRecordsUnprocessableEntityException
-     * @throws Exception\PostDnsZoneRecordsTooManyRequestsException
-     * @throws Exception\PostDnsZoneRecordsServiceUnavailableException
-     */
-    public function postDnsZoneRecords(?Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostDnsZoneRecords($requestBody), $fetch);
-    }
-
-    /**
-     * Delete a DNS record.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\DnsRecordsDnsRecordDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\DeleteDnsRecordBadRequestException
-     * @throws Exception\DeleteDnsRecordForbiddenException
-     * @throws Exception\DeleteDnsRecordNotFoundException
-     * @throws Exception\DeleteDnsRecordTooManyRequestsException
-     * @throws Exception\DeleteDnsRecordServiceUnavailableException
-     */
-    public function deleteDnsRecord(?Model\DnsRecordsDnsRecordDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\DeleteDnsRecord($requestBody), $fetch);
-    }
-
-    /**
-     * Return details for a specific DNS record.
+     * List all managed organizations owned by the given organization.
      *
      * @param array $queryParameters {
      *
-     * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var int    $page
+     * @var int    $per_page
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DnsRecordsDnsRecordGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationManagedGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
-     * @throws Exception\GetDnsRecordBadRequestException
-     * @throws Exception\GetDnsRecordForbiddenException
-     * @throws Exception\GetDnsRecordNotFoundException
-     * @throws Exception\GetDnsRecordTooManyRequestsException
-     * @throws Exception\GetDnsRecordServiceUnavailableException
+     * @throws Exception\GetOrganizationManagedBadRequestException
+     * @throws Exception\GetOrganizationManagedForbiddenException
+     * @throws Exception\GetOrganizationManagedNotFoundException
+     * @throws Exception\GetOrganizationManagedTooManyRequestsException
+     * @throws Exception\GetOrganizationManagedServiceUnavailableException
      */
-    public function getDnsRecord(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getOrganizationManaged(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new Endpoint\GetDnsRecord($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOrganizationManaged($queryParameters), $fetch);
     }
 
     /**
-     * Update a DNS record properties.
+     * Create a new managed organization within an existing organization.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DnsRecordsDnsRecordPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\OrganizationsOrganizationManagedPostResponse201|\Psr\Http\Message\ResponseInterface|null
      *
-     * @throws Exception\PatchDnsRecordBadRequestException
-     * @throws Exception\PatchDnsRecordForbiddenException
-     * @throws Exception\PatchDnsRecordNotFoundException
-     * @throws Exception\PatchDnsRecordUnprocessableEntityException
-     * @throws Exception\PatchDnsRecordTooManyRequestsException
-     * @throws Exception\PatchDnsRecordServiceUnavailableException
+     * @throws Exception\PostOrganizationManagedBadRequestException
+     * @throws Exception\PostOrganizationManagedForbiddenException
+     * @throws Exception\PostOrganizationManagedNotFoundException
+     * @throws Exception\PostOrganizationManagedUnprocessableEntityException
+     * @throws Exception\PostOrganizationManagedTooManyRequestsException
+     * @throws Exception\PostOrganizationManagedServiceUnavailableException
      */
-    public function patchDnsRecord(?Model\DnsRecordsDnsRecordPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postOrganizationManaged(?Model\OrganizationsOrganizationManagedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new Endpoint\PatchDnsRecord($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostOrganizationManaged($requestBody), $fetch);
     }
 
     /**
@@ -2464,111 +2307,6 @@ class Client extends Runtime\Client\Client
     public function deleteSshKey(?Model\SshKeysSshKeyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\DeleteSshKey($requestBody), $fetch);
-    }
-
-    /**
-     * Returns a list of all rules for a given security group.
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $security_group[id] The security group to return all load rules for. All 'security_group[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\SecurityGroupsSecurityGroupRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\GetSecurityGroupRulesBadRequestException
-     * @throws Exception\GetSecurityGroupRulesForbiddenException
-     * @throws Exception\GetSecurityGroupRulesNotFoundException
-     * @throws Exception\GetSecurityGroupRulesTooManyRequestsException
-     * @throws Exception\GetSecurityGroupRulesServiceUnavailableException
-     */
-    public function getSecurityGroupRules(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\GetSecurityGroupRules($queryParameters), $fetch);
-    }
-
-    /**
-     * Create a new security group rule.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\SecurityGroupsSecurityGroupRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostSecurityGroupRulesBadRequestException
-     * @throws Exception\PostSecurityGroupRulesForbiddenException
-     * @throws Exception\PostSecurityGroupRulesNotFoundException
-     * @throws Exception\PostSecurityGroupRulesUnprocessableEntityException
-     * @throws Exception\PostSecurityGroupRulesTooManyRequestsException
-     * @throws Exception\PostSecurityGroupRulesServiceUnavailableException
-     */
-    public function postSecurityGroupRules(?Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostSecurityGroupRules($requestBody), $fetch);
-    }
-
-    /**
-     * Delete a security group rule.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\SecurityGroupsRulesSecurityGroupRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleBadRequestException
-     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleForbiddenException
-     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleNotFoundException
-     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
-     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
-     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
-     */
-    public function deleteSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\DeleteSecurityGroupsRulesSecurityGroupRule($requestBody), $fetch);
-    }
-
-    /**
-     * Returns details about a security group rule.
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $security_group_rule[id] The security group rule to return the details for. All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\SecurityGroupsRulesSecurityGroupRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleBadRequestException
-     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleForbiddenException
-     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleNotFoundException
-     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
-     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
-     */
-    public function getSecurityGroupsRulesSecurityGroupRule(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\GetSecurityGroupsRulesSecurityGroupRule($queryParameters), $fetch);
-    }
-
-    /**
-     * Updates a security group rule with new properties.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleBadRequestException
-     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleForbiddenException
-     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleNotFoundException
-     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
-     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
-     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
-     */
-    public function patchSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PatchSecurityGroupsRulesSecurityGroupRule($requestBody), $fetch);
     }
 
     /**
@@ -2676,6 +2414,111 @@ class Client extends Runtime\Client\Client
     public function patchSecurityGroup(?Model\SecurityGroupsSecurityGroupPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PatchSecurityGroup($requestBody), $fetch);
+    }
+
+    /**
+     * Returns a list of all rules for a given security group.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $security_group[id] The security group to return all load rules for. All 'security_group[]' params are mutually exclusive, only one can be provided.
+     * @var int    $page
+     * @var int    $per_page
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\SecurityGroupsSecurityGroupRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetSecurityGroupRulesBadRequestException
+     * @throws Exception\GetSecurityGroupRulesForbiddenException
+     * @throws Exception\GetSecurityGroupRulesNotFoundException
+     * @throws Exception\GetSecurityGroupRulesTooManyRequestsException
+     * @throws Exception\GetSecurityGroupRulesServiceUnavailableException
+     */
+    public function getSecurityGroupRules(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetSecurityGroupRules($queryParameters), $fetch);
+    }
+
+    /**
+     * Create a new security group rule.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\SecurityGroupsSecurityGroupRulesPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostSecurityGroupRulesBadRequestException
+     * @throws Exception\PostSecurityGroupRulesForbiddenException
+     * @throws Exception\PostSecurityGroupRulesNotFoundException
+     * @throws Exception\PostSecurityGroupRulesUnprocessableEntityException
+     * @throws Exception\PostSecurityGroupRulesTooManyRequestsException
+     * @throws Exception\PostSecurityGroupRulesServiceUnavailableException
+     */
+    public function postSecurityGroupRules(?Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostSecurityGroupRules($requestBody), $fetch);
+    }
+
+    /**
+     * Delete a security group rule.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\SecurityGroupsRulesSecurityGroupRuleDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleBadRequestException
+     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleForbiddenException
+     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleNotFoundException
+     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
+     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws Exception\DeleteSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
+     */
+    public function deleteSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteSecurityGroupsRulesSecurityGroupRule($requestBody), $fetch);
+    }
+
+    /**
+     * Returns details about a security group rule.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $security_group_rule[id] The security group rule to return the details for. All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\SecurityGroupsRulesSecurityGroupRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleBadRequestException
+     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleForbiddenException
+     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleNotFoundException
+     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws Exception\GetSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
+     */
+    public function getSecurityGroupsRulesSecurityGroupRule(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetSecurityGroupsRulesSecurityGroupRule($queryParameters), $fetch);
+    }
+
+    /**
+     * Updates a security group rule with new properties.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleBadRequestException
+     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleForbiddenException
+     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleNotFoundException
+     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleUnprocessableEntityException
+     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleTooManyRequestsException
+     * @throws Exception\PatchSecurityGroupsRulesSecurityGroupRuleServiceUnavailableException
+     */
+    public function patchSecurityGroupsRulesSecurityGroupRule(?Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchSecurityGroupsRulesSecurityGroupRule($requestBody), $fetch);
     }
 
     /**
@@ -3419,6 +3262,163 @@ class Client extends Runtime\Client\Client
     public function getVirtualMachineAuthorizedKeys(string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new Endpoint\GetVirtualMachineAuthorizedKeys($accept), $fetch);
+    }
+
+    /**
+     * Builds a new virtual machine based on the arguments provided to this endpoint. Virtual machines will be built in the background. This task will return an task object that will allow you to monitor the build process using the appropriate API action. This action only offers a small subset of the full functionality needed when provisioning virtual machines - see the `build_from_spec` action for a full advanced virtual machine creation method.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostOrganizationVirtualMachinesBuildBadRequestException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildForbiddenException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildNotFoundException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildUnprocessableEntityException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildTooManyRequestsException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildServiceUnavailableException
+     */
+    public function postOrganizationVirtualMachinesBuild(?Model\OrganizationsOrganizationVirtualMachinesBuildPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostOrganizationVirtualMachinesBuild($requestBody), $fetch);
+    }
+
+    /**
+     * Builds a new virtual machine by receiving a virtual machine spec document.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecBadRequestException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecForbiddenException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecNotFoundException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecUnprocessableEntityException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecTooManyRequestsException
+     * @throws Exception\PostOrganizationVirtualMachinesBuildFromSpecServiceUnavailableException
+     */
+    public function postOrganizationVirtualMachinesBuildFromSpec(?Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostOrganizationVirtualMachinesBuildFromSpec($requestBody), $fetch);
+    }
+
+    /**
+     * Return virtual machine build information.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $virtual_machine_build[id] All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildBadRequestException
+     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildForbiddenException
+     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildNotFoundException
+     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildTooManyRequestsException
+     * @throws Exception\GetVirtualMachinesBuildsVirtualMachineBuildServiceUnavailableException
+     */
+    public function getVirtualMachinesBuildsVirtualMachineBuild(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetVirtualMachinesBuildsVirtualMachineBuild($queryParameters), $fetch);
+    }
+
+    /**
+     * Queues a task to start a virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachinesVirtualMachineStartPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineStartBadRequestException
+     * @throws Exception\PostVirtualMachineStartForbiddenException
+     * @throws Exception\PostVirtualMachineStartNotFoundException
+     * @throws Exception\PostVirtualMachineStartNotAcceptableException
+     * @throws Exception\PostVirtualMachineStartTooManyRequestsException
+     * @throws Exception\PostVirtualMachineStartServiceUnavailableException
+     */
+    public function postVirtualMachineStart(?Model\VirtualMachinesVirtualMachineStartPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineStart($requestBody), $fetch);
+    }
+
+    /**
+     * Queues a task to stop a virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachinesVirtualMachineStopPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineStopBadRequestException
+     * @throws Exception\PostVirtualMachineStopForbiddenException
+     * @throws Exception\PostVirtualMachineStopNotFoundException
+     * @throws Exception\PostVirtualMachineStopNotAcceptableException
+     * @throws Exception\PostVirtualMachineStopTooManyRequestsException
+     * @throws Exception\PostVirtualMachineStopServiceUnavailableException
+     */
+    public function postVirtualMachineStop(?Model\VirtualMachinesVirtualMachineStopPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineStop($requestBody), $fetch);
+    }
+
+    /**
+     * Queues a task to shutdown a virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachinesVirtualMachineShutdownPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineShutdownBadRequestException
+     * @throws Exception\PostVirtualMachineShutdownForbiddenException
+     * @throws Exception\PostVirtualMachineShutdownNotFoundException
+     * @throws Exception\PostVirtualMachineShutdownNotAcceptableException
+     * @throws Exception\PostVirtualMachineShutdownTooManyRequestsException
+     * @throws Exception\PostVirtualMachineShutdownServiceUnavailableException
+     */
+    public function postVirtualMachineShutdown(?Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineShutdown($requestBody), $fetch);
+    }
+
+    /**
+     * Queues a task to reset a virtual machine.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachinesVirtualMachineResetPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineResetBadRequestException
+     * @throws Exception\PostVirtualMachineResetForbiddenException
+     * @throws Exception\PostVirtualMachineResetNotFoundException
+     * @throws Exception\PostVirtualMachineResetNotAcceptableException
+     * @throws Exception\PostVirtualMachineResetTooManyRequestsException
+     * @throws Exception\PostVirtualMachineResetServiceUnavailableException
+     */
+    public function postVirtualMachineReset(?Model\VirtualMachinesVirtualMachineResetPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineReset($requestBody), $fetch);
+    }
+
+    /**
+     * Creates a new console session which can be opened in a browser.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineConsoleSessionsBadRequestException
+     * @throws Exception\PostVirtualMachineConsoleSessionsForbiddenException
+     * @throws Exception\PostVirtualMachineConsoleSessionsNotFoundException
+     * @throws Exception\PostVirtualMachineConsoleSessionsNotAcceptableException
+     * @throws Exception\PostVirtualMachineConsoleSessionsUnprocessableEntityException
+     * @throws Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException
+     * @throws Exception\PostVirtualMachineConsoleSessionsServiceUnavailableException
+     */
+    public function postVirtualMachineConsoleSessions(?Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineConsoleSessions($requestBody), $fetch);
     }
 
     /**
