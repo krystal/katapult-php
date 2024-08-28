@@ -5,7 +5,9 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
 [![Total Downloads](https://img.shields.io/packagist/dt/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
 
-A PHP library for integrating with [Katapult](https://katapult.io/)
+A PHP library for integrating with [Katapult](https://katapult.io/).
+
+You can find all the Katapult Developer Docs [here](https://developers.katapult.io/).
 
 ## Version constraints
 * [v1.x](https://github.com/krystal/katapult-php/tree/1.x) supports PHP 5.6
