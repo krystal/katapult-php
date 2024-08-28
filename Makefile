@@ -11,4 +11,4 @@ build:
 
 .PHONY: download-spec
 download-spec:
-	wget -O katapult-openapi.json https://api.katapult.io/core/v1/schema/openapi.json
+	wget -O katapult-core-openapi.json https://api.katapult.io/core/v1/schema/openapi.json
