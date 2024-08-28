@@ -5,3 +5,4 @@ coverage
 .idea
 .phpunit.result.cache
 generator/.php-cs-fixer.cache
+node_modules
