@@ -1,0 +1,17 @@
+{
+  "require-dev": {
+    "jane-php/open-api-3": "^7",
+    "nyholm/psr7": "^1.8",
+    "friendsofphp/php-cs-fixer": "^3.46"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "symfony/serializer": "v5.4"
+  }
+}

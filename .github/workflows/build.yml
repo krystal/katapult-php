@@ -1,0 +1,23 @@
+name: Build PHP client
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-php:
+    runs-on: arc-amd64
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate our client
+        run: make build
+
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v5
