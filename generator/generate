@@ -36,7 +36,7 @@ docker run \
 -u "${USER}" \
 -v "${VOLUME}" \
 -w /app/generator \
--it composer:2 \
+composer:2 \
 composer install -q
 
 # Run the generator
@@ -44,7 +44,7 @@ docker run \
 -u "${USER}" \
 -v "${VOLUME}" \
 -w /app/generator \
--it "php:8.2-cli" \
+"php:8.2-cli" \
 php -d memory_limit=1G vendor/bin/jane-openapi generate -c jane-openapi.php
 
 # Copy over our non-generated files
