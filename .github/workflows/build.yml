@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - main
+concurrency:
+  # On the main branch we want all builds to complete, even if new commits are merged.
+  group: ${{ github.ref == 'refs/heads/main' && format('ci-main-{0}', github.run_id) || format('ci-{0}-ci', github.ref) }}
+  cancel-in-progress: true
 
 jobs:
   build-php:
