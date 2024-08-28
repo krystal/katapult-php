@@ -25,6 +25,10 @@ class VirtualMachinesBuildsVirtualMachineBuildGetResponse200 extends \ArrayObjec
      * @var GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild
      */
     protected $virtualMachineBuild;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     public function getVirtualMachineBuild(): GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild
     {
@@ -35,6 +39,25 @@ class VirtualMachinesBuildsVirtualMachineBuildGetResponse200 extends \ArrayObjec
     {
         $this->initialized['virtualMachineBuild'] = true;
         $this->virtualMachineBuild = $virtualMachineBuild;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

@@ -27,6 +27,10 @@ class VirtualMachinesVirtualMachinePatchResponse200 extends \ArrayObject
      * @var VirtualMachinesVirtualMachinePatchResponse200VirtualMachine
      */
     protected $virtualMachine;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The newly updated virtual machine.
@@ -43,6 +47,25 @@ class VirtualMachinesVirtualMachinePatchResponse200 extends \ArrayObject
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

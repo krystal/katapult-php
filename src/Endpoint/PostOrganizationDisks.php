@@ -16,6 +16,8 @@ class PostOrganizationDisks extends \Krystal\Katapult\KatapultAPI\Runtime\Client
 
     /**
      * Create a new disk for a given organization.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDisksPostBody $requestBody = null)
     {

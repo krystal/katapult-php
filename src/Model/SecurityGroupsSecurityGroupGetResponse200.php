@@ -27,6 +27,10 @@ class SecurityGroupsSecurityGroupGetResponse200 extends \ArrayObject
      * @var SecurityGroupsSecurityGroupGetResponse200SecurityGroup
      */
     protected $securityGroup;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The security group.
@@ -43,6 +47,25 @@ class SecurityGroupsSecurityGroupGetResponse200 extends \ArrayObject
     {
         $this->initialized['securityGroup'] = true;
         $this->securityGroup = $securityGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

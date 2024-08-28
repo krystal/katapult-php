@@ -15,7 +15,9 @@ class PostLoadBalancerRules extends \Krystal\Katapult\KatapultAPI\Runtime\Client
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new load balancer rule.
+     * Create a new load balancer rule
+     * ## Scopes
+     * - `load_balancers`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null)
     {

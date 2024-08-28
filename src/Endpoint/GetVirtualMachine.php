@@ -15,7 +15,10 @@ class GetVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return information about a virtual machine.
+     * Return information about a virtual machine
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *

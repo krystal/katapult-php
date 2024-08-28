@@ -15,7 +15,10 @@ class PostVirtualMachineStop extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Queues a task to stop a virtual machine.
+     * Queues a task to stop a virtual machine
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:power_actions`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineStopPostBody $requestBody = null)
     {

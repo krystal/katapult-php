@@ -15,7 +15,9 @@ class PatchLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Updates a load balancer with new properties.
+     * Updates a load balancer with new properties
+     * ## Scopes
+     * - `load_balancers`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerPatchBody $requestBody = null)
     {

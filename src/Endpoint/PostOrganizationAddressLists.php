@@ -16,6 +16,8 @@ class PostOrganizationAddressLists extends \Krystal\Katapult\KatapultAPI\Runtime
 
     /**
      * Create a new address list for a given organization.
+     * ## Scopes
+     * - `address_lists`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationAddressListsPostBody $requestBody = null)
     {

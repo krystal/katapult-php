@@ -15,7 +15,9 @@ class PostOrganizationApiTokens extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new API token for a given organization.
+     * Create a new API token for a given organization
+     * ## Scopes
+     * - `api_tokens`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationApiTokensPostBody $requestBody = null)
     {

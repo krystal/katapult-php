@@ -16,6 +16,9 @@ class GetAddressLists extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
 
     /**
      * Returns a list of all global address lists.
+     * ## Scopes
+     * - `address_lists`
+     * - `address_lists:read`.
      *
      * @param array $queryParameters {
      *

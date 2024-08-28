@@ -15,7 +15,10 @@ class GetVirtualMachineNetworkInterfaces extends \Krystal\Katapult\KatapultAPI\R
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of virtual machine network interfaces.
+     * Returns a list of virtual machine network interfaces
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *

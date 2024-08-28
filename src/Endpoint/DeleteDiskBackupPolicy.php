@@ -15,7 +15,9 @@ class DeleteDiskBackupPolicy extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Deletes a disk backup policy and moves it to the trash.
+     * Deletes a disk backup policy and moves it to the trash
+     * ## Scopes
+     * - `disk_backup_policies`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyDeleteBody $requestBody = null)
     {

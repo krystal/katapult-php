@@ -105,6 +105,10 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
      * @var list<IPAddress>
      */
     protected $ipAddresses;
+    /**
+     * @var PatchVirtualMachine200ResponseVirtualMachineHypervisor|null
+     */
+    protected $hypervisor;
 
     public function getId(): string
     {
@@ -399,6 +403,19 @@ class VirtualMachinesVirtualMachinePatchResponse200VirtualMachine extends \Array
     {
         $this->initialized['ipAddresses'] = true;
         $this->ipAddresses = $ipAddresses;
+
+        return $this;
+    }
+
+    public function getHypervisor(): ?PatchVirtualMachine200ResponseVirtualMachineHypervisor
+    {
+        return $this->hypervisor;
+    }
+
+    public function setHypervisor(?PatchVirtualMachine200ResponseVirtualMachineHypervisor $hypervisor): self
+    {
+        $this->initialized['hypervisor'] = true;
+        $this->hypervisor = $hypervisor;
 
         return $this;
     }

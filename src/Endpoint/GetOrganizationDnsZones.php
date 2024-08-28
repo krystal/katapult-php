@@ -15,7 +15,10 @@ class GetOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return a list of all DNS zones.
+     * Return a list of all DNS zones
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *

@@ -15,7 +15,10 @@ class GetDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return details for a specific DNS zone.
+     * Return details for a specific DNS zone
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *

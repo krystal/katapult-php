@@ -15,7 +15,10 @@ class GetVMNIVMNI extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpo
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return information about a given virtual machine network interface.
+     * Return information about a given virtual machine network interface
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *

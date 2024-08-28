@@ -27,6 +27,10 @@ class DisksDiskGetResponse200 extends \ArrayObject
      * @var DisksDiskGetResponse200Disk
      */
     protected $disk;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The disk details.
@@ -43,6 +47,25 @@ class DisksDiskGetResponse200 extends \ArrayObject
     {
         $this->initialized['disk'] = true;
         $this->disk = $disk;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

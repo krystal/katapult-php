@@ -15,7 +15,9 @@ class PostOrganizationLoadBalancers extends \Krystal\Katapult\KatapultAPI\Runtim
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new load balancer for a given organization.
+     * Create a new load balancer for a given organization
+     * ## Scopes
+     * - `load_balancers`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null)
     {

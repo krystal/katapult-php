@@ -16,6 +16,8 @@ class DeleteDiskBackupPolicySchedule extends \Krystal\Katapult\KatapultAPI\Runti
 
     /**
      * Schedules a disk backup policy to be moved to the trash at a specific time. The backup policy will continue to function as normal until this time is reached.
+     * ## Scopes
+     * - `disk_backup_policies`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null)
     {

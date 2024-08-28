@@ -21,6 +21,9 @@ class GetOrganizationUsersWithAccess extends \Krystal\Katapult\KatapultAPI\Runti
      * combined with other API actions that require the ID of a fellow user (such as when
      * determining which users to assign a virtual machine).
      *
+     * ## Scopes
+     * - `organizations:read`
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided

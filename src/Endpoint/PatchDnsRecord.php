@@ -15,7 +15,9 @@ class PatchDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Update a DNS record properties.
+     * Update a DNS record properties
+     * ## Scopes
+     * - `dns`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsRecordsDnsRecordPatchBody $requestBody = null)
     {

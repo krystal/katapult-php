@@ -13,12 +13,17 @@ namespace Krystal\Katapult\KatapultAPI;
 class Client extends Runtime\Client\Client
 {
     /**
-     * Returns a list of all API tokens for an organization.
+     * Returns a list of all API tokens for an organization
+     * ## Scopes
+     * - `api_tokens`
+     * - `api_tokens:read`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var string $organization[sub_domain] The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -39,7 +44,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new API token for a given organization.
+     * Create a new API token for a given organization
+     * ## Scopes
+     * - `api_tokens`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -58,7 +65,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Delete an organization API token.
+     * Delete an organization API token
+     * ## Scopes
+     * - `api_tokens`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -77,7 +86,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates an organization API token with new properties.
+     * Updates an organization API token with new properties
+     * ## Scopes
+     * - `api_tokens`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -96,7 +107,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Regenerates the secret for an organization API token.
+     * Regenerates the secret for an organization API token
+     * ## Scopes
+     * - `api_tokens`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -116,6 +129,9 @@ class Client extends Runtime\Client\Client
 
     /**
      * Returns a list of all global address lists.
+     * ## Scopes
+     * - `address_lists`
+     * - `address_lists:read`.
      *
      * @param array $queryParameters {
      *
@@ -138,12 +154,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all address lists for a given organization.
+     * Returns a list of all address lists for a given organization
+     * ## Scopes
+     * - `address_lists`
+     * - `address_lists:read`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var string $organization[sub_domain] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -165,6 +186,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Create a new address list for a given organization.
+     * ## Scopes
+     * - `address_lists`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -184,6 +207,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Delete a address list.
+     * ## Scopes
+     * - `address_lists`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -202,6 +227,9 @@ class Client extends Runtime\Client\Client
 
     /**
      * Returns details for a address list.
+     * ## Scopes
+     * - `address_lists`
+     * - `address_lists:read`.
      *
      * @param array $queryParameters {
      *
@@ -225,6 +253,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Update a address list with new properties.
+     * ## Scopes
+     * - `address_lists`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -243,7 +273,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all address list entries for a given address list.
+     * Returns a list of all address list entries for a given address list
+     * ## Scopes
+     * - `address_lists`
+     * - `address_lists:read`.
      *
      * @param array $queryParameters {
      *
@@ -269,6 +302,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Create a new address list entry for a given address list.
+     * ## Scopes
+     * - `address_lists`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -288,6 +323,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Delete an address list entry.
+     * ## Scopes
+     * - `address_lists`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -306,6 +343,9 @@ class Client extends Runtime\Client\Client
 
     /**
      * Returns details for an address list entry.
+     * ## Scopes
+     * - `address_lists`
+     * - `address_lists:read`.
      *
      * @param array $queryParameters {
      *
@@ -329,6 +369,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Update an address list entry with new properties.
+     * ## Scopes
+     * - `address_lists`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -347,7 +389,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Provides a full list of certificates.
+     * Provides a full list of certificates
+     * ## Scopes
+     * - `certificates`
+     * - `certificates:read`.
      *
      * @param array $queryParameters {
      *
@@ -373,7 +418,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return details for a specific certificate.
+     * Return details for a specific certificate
+     * ## Scopes
+     * - `certificates`
+     * - `certificates:read`.
      *
      * @param array $queryParameters {
      *
@@ -542,7 +590,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of all DNS zones.
+     * Return a list of all DNS zones
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *
@@ -568,7 +619,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new DNS zone within an existing organization.
+     * Create a new DNS zone within an existing organization
+     * ## Scopes
+     * - `dns`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -587,7 +640,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of nameservers that should be used for DNS zones within a given organization.
+     * Return a list of nameservers that should be used for DNS zones within a given organization
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *
@@ -611,7 +667,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Delete a DNS zone.
+     * Delete a DNS zone
+     * ## Scopes
+     * - `dns`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -629,7 +687,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return details for a specific DNS zone.
+     * Return details for a specific DNS zone
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *
@@ -653,7 +714,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Update properties for a DNS zone.
+     * Update properties for a DNS zone
+     * ## Scopes
+     * - `dns`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -672,7 +735,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Attempt to verify the nameservers for a given DNS zone.
+     * Attempt to verify the nameservers for a given DNS zone
+     * ## Scopes
+     * - `dns`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -691,7 +756,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of all DNS records in a zone.
+     * Return a list of all DNS records in a zone
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *
@@ -715,7 +783,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new DNS record.
+     * Create a new DNS record
+     * ## Scopes
+     * - `dns`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -734,7 +804,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Delete a DNS record.
+     * Delete a DNS record
+     * ## Scopes
+     * - `dns`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -752,7 +824,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return details for a specific DNS record.
+     * Return details for a specific DNS record
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *
@@ -775,7 +850,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Update a DNS record properties.
+     * Update a DNS record properties
+     * ## Scopes
+     * - `dns`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -883,7 +960,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all disk backup policies for a given organization.
+     * Returns a list of all disk backup policies for a given organization
+     * ## Scopes
+     * - `disk_backup_policies`
+     * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
      *
@@ -909,7 +989,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all disk backup policies for a given virtual machine.
+     * Returns a list of all disk backup policies for a given virtual machine
+     * ## Scopes
+     * - `disk_backup_policies`
+     * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
      *
@@ -937,7 +1020,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Creates a new disk backup policy for a virtual machine.
+     * Creates a new disk backup policy for a virtual machine
+     * ## Scopes
+     * - `disk_backup_policies`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -957,7 +1042,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all disk backup policies for a given disk.
+     * Returns a list of all disk backup policies for a given disk
+     * ## Scopes
+     * - `disk_backup_policies`
+     * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
      *
@@ -983,7 +1071,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Creates a new disk backup policy for a disk.
+     * Creates a new disk backup policy for a disk
+     * ## Scopes
+     * - `disk_backup_policies`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1003,7 +1093,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Deletes a disk backup policy and moves it to the trash.
+     * Deletes a disk backup policy and moves it to the trash
+     * ## Scopes
+     * - `disk_backup_policies`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1022,7 +1114,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns information about a specific disk backup policy.
+     * Returns information about a specific disk backup policy
+     * ## Scopes
+     * - `disk_backup_policies`
+     * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
      *
@@ -1046,7 +1141,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates the disk backup policy with the provided details.
+     * Updates the disk backup policy with the provided details
+     * ## Scopes
+     * - `disk_backup_policies`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1067,6 +1164,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Schedules a disk backup policy to be moved to the trash at a specific time. The backup policy will continue to function as normal until this time is reached.
+     * ## Scopes
+     * - `disk_backup_policies`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1085,7 +1184,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of all disk template versions for a specific disk template.
+     * Return a list of all disk template versions for a specific disk template
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *
@@ -1111,7 +1213,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return details for a specific disk template version.
+     * Return details for a specific disk template version
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *
@@ -1134,7 +1239,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return details provided by this template's specification.
+     * Return details provided by this template's specification
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *
@@ -1157,7 +1265,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of all disk templates owned by an organization.
+     * Return a list of all disk templates owned by an organization
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *
@@ -1185,7 +1296,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return details for a specific disk template.
+     * Return details for a specific disk template
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *
@@ -1209,12 +1323,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of all disks owned by an organization.
+     * Return a list of all disks owned by an organization
+     * ## Scopes
+     * - `disks`
+     * - `disks:read`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var string $organization[sub_domain] The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -1236,6 +1355,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Create a new disk for a given organization.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1255,7 +1376,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Deletes a disk and moves it to the trash.
+     * Deletes a disk and moves it to the trash
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1275,7 +1398,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return details for a specific disk.
+     * Return details for a specific disk
+     * ## Scopes
+     * - `disks`
+     * - `disks:read`.
      *
      * @param array $queryParameters {
      *
@@ -1300,6 +1426,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Update a disk for a given organization.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1320,6 +1448,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Assign a disk to a virtual machine.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1340,6 +1470,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Unassign a disk from a virtual machine.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1360,6 +1492,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Attach a disk to its virtual machine.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1380,6 +1514,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Detach a disk from its virtual machine.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1400,6 +1536,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Resize a disk.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1420,6 +1558,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Change disk IO profile.
+     * ## Scopes
+     * - `disks`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1438,7 +1578,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of all disks for a given virtual machine.
+     * Return a list of all disks for a given virtual machine
+     * ## Scopes
+     * - `disks`
+     * - `disks:read`.
      *
      * @param array $queryParameters {
      *
@@ -1465,12 +1608,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all file storage volumes for a given organization.
+     * Returns a list of all file storage volumes for a given organization
+     * ## Scopes
+     * - `file_storage_volumes`
+     * - `file_storage_volumes:read`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return all file storage volumes for. All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var string $organization[sub_domain] The organization to return all file storage volumes for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -1492,6 +1640,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Create a new file storage volume for a given organization.
+     * ## Scopes
+     * - `file_storage_volumes`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1511,6 +1661,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Delete a file storage volume.
+     * ## Scopes
+     * - `file_storage_volumes`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1531,6 +1683,9 @@ class Client extends Runtime\Client\Client
 
     /**
      * Returns details for a file storage volume.
+     * ## Scopes
+     * - `file_storage_volumes`
+     * - `file_storage_volumes:read`.
      *
      * @param array $queryParameters {
      *
@@ -1555,6 +1710,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Update a file storage volume with new properties.
+     * ## Scopes
+     * - `file_storage_volumes`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1647,7 +1804,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all IP addresses belonging to an organization.
+     * Returns a list of all IP addresses belonging to an organization
+     * ## Scopes
+     * - `ip_addresses`
+     * - `ip_addresses:read`.
      *
      * @param array $queryParameters {
      *
@@ -1674,7 +1834,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Creates a new IP address on this organization.
+     * Creates a new IP address on this organization
+     * ## Scopes
+     * - `ip_addresses`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1693,7 +1855,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Release an IP address from its organization.
+     * Release an IP address from its organization
+     * ## Scopes
+     * - `ip_addresses`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1712,7 +1876,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns information about a specific IP address.
+     * Returns information about a specific IP address
+     * ## Scopes
+     * - `ip_addresses`
+     * - `ip_addresses:read`.
      *
      * @param array $queryParameters {
      *
@@ -1736,7 +1903,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates the details on an IP address.
+     * Updates the details on an IP address
+     * ## Scopes
+     * - `ip_addresses`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1755,7 +1924,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Unallocate an IP address from its resource.
+     * Unallocate an IP address from its resource
+     * ## Scopes
+     * - `ip_addresses`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1775,12 +1946,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all load balancers for a given organization.
+     * Returns a list of all load balancers for a given organization
+     * ## Scopes
+     * - `load_balancers`
+     * - `load_balancers:read`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var string $organization[sub_domain] The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -1801,7 +1977,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new load balancer for a given organization.
+     * Create a new load balancer for a given organization
+     * ## Scopes
+     * - `load_balancers`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1820,7 +1998,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Delete a load balancer.
+     * Delete a load balancer
+     * ## Scopes
+     * - `load_balancers`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1839,7 +2019,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns details about a load balancer.
+     * Returns details about a load balancer
+     * ## Scopes
+     * - `load_balancers`
+     * - `load_balancers:read`.
      *
      * @param array $queryParameters {
      *
@@ -1863,7 +2046,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates a load balancer with new properties.
+     * Updates a load balancer with new properties
+     * ## Scopes
+     * - `load_balancers`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1882,7 +2067,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all rules for a given load balancer.
+     * Returns a list of all rules for a given load balancer
+     * ## Scopes
+     * - `load_balancers`
+     * - `load_balancers:read`.
      *
      * @param array $queryParameters {
      *
@@ -1908,7 +2096,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new load balancer rule.
+     * Create a new load balancer rule
+     * ## Scopes
+     * - `load_balancers`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1927,7 +2117,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Delete a load balancer rule.
+     * Delete a load balancer rule
+     * ## Scopes
+     * - `load_balancers`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1946,7 +2138,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns details about a load balancer rule.
+     * Returns details about a load balancer rule
+     * ## Scopes
+     * - `load_balancers`
+     * - `load_balancers:read`.
      *
      * @param array $queryParameters {
      *
@@ -1969,7 +2164,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates a load balancer rule with new properties.
+     * Updates a load balancer rule with new properties
+     * ## Scopes
+     * - `load_balancers`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2123,7 +2320,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns information about a specific organization.
+     * Returns information about a specific organization
+     * ## Scopes
+     * - `organizations:read`.
      *
      * @param array $queryParameters {
      *
@@ -2147,7 +2346,35 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns the computed policy limits for a organization.
+     * Returns the computed policy limits for a organization
+     * ## Scopes
+     * - `organizations:read`.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationPolicyGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationPolicyBadRequestException
+     * @throws Exception\GetOrganizationPolicyForbiddenException
+     * @throws Exception\GetOrganizationPolicyNotFoundException
+     * @throws Exception\GetOrganizationPolicyTooManyRequestsException
+     * @throws Exception\GetOrganizationPolicyServiceUnavailableException
+     */
+    public function getOrganizationPolicy(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationPolicy($queryParameters), $fetch);
+    }
+
+    /**
+     * Returns the computed policy limits for a organization
+     * ## Scopes
+     * - `organizations:read`.
      *
      * @param array $queryParameters {
      *
@@ -2171,11 +2398,40 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns the active prices for an organization
+     * ## Scopes
+     * - `organizations:read`.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationPricesGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationPricesBadRequestException
+     * @throws Exception\GetOrganizationPricesForbiddenException
+     * @throws Exception\GetOrganizationPricesNotFoundException
+     * @throws Exception\GetOrganizationPricesTooManyRequestsException
+     * @throws Exception\GetOrganizationPricesServiceUnavailableException
+     */
+    public function getOrganizationPrices(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationPrices($queryParameters), $fetch);
+    }
+
+    /**
      * This will return a simple list of users with any access to this organization. This
      * endpoint is available to all users with access to the organization therefore allows
      * them to see a small amount of information about their peers. This is useful when
      * combined with other API actions that require the ID of a fellow user (such as when
      * determining which users to assign a virtual machine).
+     *
+     * ## Scopes
+     * - `organizations:read`
      *
      * @param array $queryParameters {
      *
@@ -2201,12 +2457,16 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * List all managed organizations owned by the given organization.
+     * List all managed organizations owned by the given organization
+     * ## Scopes
+     * - `managed_organizations`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -2227,7 +2487,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new managed organization within an existing organization.
+     * Create a new managed organization within an existing organization
+     * ## Scopes
+     * - `managed_organizations`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2310,12 +2572,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all security groups for a given organization.
+     * Returns a list of all security groups for a given organization
+     * ## Scopes
+     * - `security_groups`
+     * - `security_groups:read`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] The organization to return all security groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var string $organization[sub_domain] The organization to return all security groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -2336,7 +2603,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new security group for a given organization.
+     * Create a new security group for a given organization
+     * ## Scopes
+     * - `security_groups`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2355,7 +2624,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Delete a security group.
+     * Delete a security group
+     * ## Scopes
+     * - `security_group`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2375,7 +2646,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns details about a security group.
+     * Returns details about a security group
+     * ## Scopes
+     * - `security_groups`
+     * - `security_groups:read`.
      *
      * @param array $queryParameters {
      *
@@ -2398,7 +2672,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates a security group with new properties.
+     * Updates a security group with new properties
+     * ## Scopes
+     * - `security_groups`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2417,7 +2693,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all rules for a given security group.
+     * Returns a list of all rules for a given security group
+     * ## Scopes
+     * - `security_groups`
+     * - `security_groups:read`.
      *
      * @param array $queryParameters {
      *
@@ -2442,7 +2721,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new security group rule.
+     * Create a new security group rule
+     * ## Scopes
+     * - `security_groups`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2461,7 +2742,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Delete a security group rule.
+     * Delete a security group rule
+     * ## Scopes
+     * - `security_groups`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2480,7 +2763,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns details about a security group rule.
+     * Returns details about a security group rule
+     * ## Scopes
+     * - `security_groups`
+     * - `security_groups:read`.
      *
      * @param array $queryParameters {
      *
@@ -2503,7 +2789,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates a security group rule with new properties.
+     * Updates a security group rule with new properties
+     * ## Scopes
+     * - `security_groups`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2522,7 +2810,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all tags for an organization.
+     * Returns a list of all tags for an organization
+     * ## Scopes
+     * - `tags`
+     * - `tags:read`.
      *
      * @param array $queryParameters {
      *
@@ -2548,7 +2839,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Creates a new tag with the provided properties.
+     * Creates a new tag with the provided properties
+     * ## Scopes
+     * - `tags`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2567,7 +2860,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Deletes a tag.
+     * Deletes a tag
+     * ## Scopes
+     * - `tags`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2585,7 +2880,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns details about a specific tag.
+     * Returns details about a specific tag
+     * ## Scopes
+     * - `tags`
+     * - `tags:read`.
      *
      * @param array $queryParameters {
      *
@@ -2608,7 +2906,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Updates a tag with the provided properties.
+     * Updates a tag with the provided properties
+     * ## Scopes
+     * - `tags`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2627,7 +2927,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns details about a specific task.
+     * Returns details about a specific task
+     * ## Scopes
+     * - `tasks`
+     * - `tasks:read`.
      *
      * @param array $queryParameters {
      *
@@ -2650,7 +2953,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Provides a full list of all trash objects for a specific organization.
+     * Provides a full list of all trash objects for a specific organization
+     * ## Scopes
+     * - `trash_objects:read`.
      *
      * @param array $queryParameters {
      *
@@ -2676,7 +2981,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Purge all trash objects for an organization.
+     * Purge all trash objects for an organization
+     * ## Scopes
+     * - `trash_objects:purge`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2695,7 +3002,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Purge a specific trash object.
+     * Purge a specific trash object
+     * ## Scopes
+     * - `trash_objects:purge`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2714,7 +3023,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Provides information on a specific trash object.
+     * Provides information on a specific trash object
+     * ## Scopes
+     * - `trash_objects:read`.
      *
      * @param array $queryParameters {
      *
@@ -2738,7 +3049,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Restore a trashed object to its original location.
+     * Restore a trashed object to its original location
+     * ## Scopes
+     * - `trash_objects:restore`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2791,7 +3104,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return a list of all virtual machine groups for an organization.
+     * Return a list of all virtual machine groups for an organization
+     * ## Scopes
+     * - `virtual_machine_groups`
+     * - `virtual_machine_groups:read`.
      *
      * @param array $queryParameters {
      *
@@ -2815,7 +3131,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Create a new virtual machine group with the provided details.
+     * Create a new virtual machine group with the provided details
+     * ## Scopes
+     * - `virtual_machine_groups`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2834,6 +3152,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * ## Scopes
+     * - `virtual_machine_groups`.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineGroupsVirtualMachineGroupDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2851,7 +3172,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return detailed information about a virtual machine group.
+     * Return detailed information about a virtual machine group
+     * ## Scopes
+     * - `virtual_machine_groups`
+     * - `virtual_machine_groups:read`.
      *
      * @param array $queryParameters {
      *
@@ -2874,7 +3198,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Update a virtual machine group with the provided details.
+     * Update a virtual machine group with the provided details
+     * ## Scopes
+     * - `virtual_machine_groups`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2893,7 +3219,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of virtual machine network interfaces.
+     * Returns a list of virtual machine network interfaces
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *
@@ -2920,7 +3249,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return information about a virtual machine network interface for a specific network.
+     * Return information about a virtual machine network interface for a specific network
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *
@@ -2947,7 +3279,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return information about a given virtual machine network interface.
+     * Return information about a given virtual machine network interface
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *
@@ -2970,7 +3305,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of IP addresses that can be allocated to a specific network interface.
+     * Returns a list of IP addresses that can be allocated to a specific network interface
+     * ## Scopes
+     * - `ip_addresses`
+     * - `ip_addresses:read`.
      *
      * @param array $queryParameters {
      *
@@ -2994,7 +3332,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Allocate a specific IP address to a given network interface.
+     * Allocate a specific IP address to a given network interface
+     * ## Scopes
+     * - `ip_addresses`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3013,7 +3353,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Add a new IP address to this organization and allocate it to a virtual machine network interface.
+     * Add a new IP address to this organization and allocate it to a virtual machine network interface
+     * ## Scopes
+     * - `ip_addresses`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3031,6 +3373,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * ## Scopes
+     * - `virtual_machines`.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3049,7 +3394,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of virtual machine packages.
+     * Returns a list of virtual machine packages
+     * ## Scopes
+     * - `virtual_machine_packages:read`.
      *
      * @param array $queryParameters {
      *
@@ -3075,7 +3422,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return information about a given virtual machine package.
+     * Return information about a given virtual machine package
+     * ## Scopes
+     * - `virtual_machine_packages:read`.
      *
      * @param array $queryParameters {
      *
@@ -3099,12 +3448,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all virtual machines for a given organization.
+     * Returns a list of all virtual machines for a given organization
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -3125,7 +3479,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Moves an existing virtual machine to the trash.
+     * Moves an existing virtual machine to the trash
+     * ## Scopes
+     * - `virtual_machines`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3144,7 +3500,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return information about a virtual machine.
+     * Return information about a virtual machine
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *
@@ -3169,7 +3528,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Update the properties of a virtual machine.
+     * Update the properties of a virtual machine
+     * ## Scopes
+     * - `virtual_machines`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3188,7 +3549,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Change a package for a virtual machine.
+     * Change a package for a virtual machine
+     * ## Scopes
+     * - `virtual_machines`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3207,7 +3570,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Change the flexible resources assigned to a virtual machine.
+     * Change the flexible resources assigned to a virtual machine
+     * ## Scopes
+     * - `virtual_machines`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3226,7 +3591,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Allocate an IP address to a virtual machine, automatically determining the network interface.
+     * Allocate an IP address to a virtual machine, automatically determining the network interface
+     * ## Scopes
+     * - `ip_addresses`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3246,7 +3613,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return the authorized keys for the virtual machine associated with the provided API token.
+     * Return the authorized keys for the virtual machine associated with the provided API token
+     * ## Scopes
+     * - `virtual_machines:authorized_keys`.
      *
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      * @param array  $accept Accept content header text/plain|application/json
@@ -3266,6 +3635,8 @@ class Client extends Runtime\Client\Client
 
     /**
      * Builds a new virtual machine based on the arguments provided to this endpoint. Virtual machines will be built in the background. This task will return an task object that will allow you to monitor the build process using the appropriate API action. This action only offers a small subset of the full functionality needed when provisioning virtual machines - see the `build_from_spec` action for a full advanced virtual machine creation method.
+     * ## Scopes
+     * - `virtual_machines`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3284,7 +3655,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Builds a new virtual machine by receiving a virtual machine spec document.
+     * Builds a new virtual machine by receiving a virtual machine spec document
+     * ## Scopes
+     * - `virtual_machines`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3303,7 +3676,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return virtual machine build information.
+     * Return virtual machine build information
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *
@@ -3326,7 +3702,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Queues a task to start a virtual machine.
+     * Queues a task to start a virtual machine
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:power_actions`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3345,7 +3724,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Queues a task to stop a virtual machine.
+     * Queues a task to stop a virtual machine
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:power_actions`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3364,7 +3746,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Queues a task to shutdown a virtual machine.
+     * Queues a task to shutdown a virtual machine
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:power_actions`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3383,7 +3768,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Queues a task to reset a virtual machine.
+     * Queues a task to reset a virtual machine
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:power_actions`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3402,7 +3790,10 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Creates a new console session which can be opened in a browser.
+     * Creates a new console session which can be opened in a browser
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:console`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3465,7 +3856,7 @@ class Client extends Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('http://katapult-api.localhost/core/v1');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.katapult.io/core/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

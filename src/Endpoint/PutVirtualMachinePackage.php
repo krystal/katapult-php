@@ -15,7 +15,9 @@ class PutVirtualMachinePackage extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Change a package for a virtual machine.
+     * Change a package for a virtual machine
+     * ## Scopes
+     * - `virtual_machines`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachinePackagePutBody $requestBody = null)
     {

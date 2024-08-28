@@ -14,6 +14,10 @@ class DeleteVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * ## Scopes
+     * - `virtual_machine_groups`.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineGroupsVirtualMachineGroupDeleteBody $requestBody = null)
     {
         $this->body = $requestBody;

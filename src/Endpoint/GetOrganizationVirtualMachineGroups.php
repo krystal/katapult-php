@@ -15,7 +15,10 @@ class GetOrganizationVirtualMachineGroups extends \Krystal\Katapult\KatapultAPI\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return a list of all virtual machine groups for an organization.
+     * Return a list of all virtual machine groups for an organization
+     * ## Scopes
+     * - `virtual_machine_groups`
+     * - `virtual_machine_groups:read`.
      *
      * @param array $queryParameters {
      *

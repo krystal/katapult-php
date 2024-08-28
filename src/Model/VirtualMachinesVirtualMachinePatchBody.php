@@ -33,6 +33,10 @@ class VirtualMachinesVirtualMachinePatchBody extends \ArrayObject
      * @var VirtualMachineArguments
      */
     protected $properties;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -68,6 +72,25 @@ class VirtualMachinesVirtualMachinePatchBody extends \ArrayObject
     {
         $this->initialized['properties'] = true;
         $this->properties = $properties;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

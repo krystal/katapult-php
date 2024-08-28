@@ -15,7 +15,9 @@ class PatchApiToken extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Updates an organization API token with new properties.
+     * Updates an organization API token with new properties
+     * ## Scopes
+     * - `api_tokens`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\ApiTokensApiTokenPatchBody $requestBody = null)
     {

@@ -16,6 +16,8 @@ class PostDiskDetach extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
 
     /**
      * Detach a disk from its virtual machine.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskDetachPostBody $requestBody = null)
     {

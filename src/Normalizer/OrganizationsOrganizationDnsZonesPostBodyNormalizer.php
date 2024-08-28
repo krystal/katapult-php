@@ -59,6 +59,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setProperties($this->denormalizer->denormalize($data['properties'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSZoneArguments', 'json', $context));
                 unset($data['properties']);
             }
+            if (\array_key_exists('verified', $data)) {
+                $object->setVerified($data['verified']);
+                unset($data['verified']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -73,6 +77,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
             $data['properties'] = $this->normalizer->normalize($object->getProperties(), 'json', $context);
+            if ($object->isInitialized('verified') && null !== $object->getVerified()) {
+                $data['verified'] = $object->getVerified();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -105,7 +112,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationDnsZonesPostBody';
         }
 
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -125,6 +132,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setProperties($this->denormalizer->denormalize($data['properties'], 'Krystal\\Katapult\\KatapultAPI\\Model\\DNSZoneArguments', 'json', $context));
                 unset($data['properties']);
             }
+            if (\array_key_exists('verified', $data)) {
+                $object->setVerified($data['verified']);
+                unset($data['verified']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -134,11 +145,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
             $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
             $data['properties'] = $this->normalizer->normalize($object->getProperties(), 'json', $context);
+            if ($object->isInitialized('verified') && null !== $object->getVerified()) {
+                $data['verified'] = $object->getVerified();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;

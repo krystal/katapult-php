@@ -15,7 +15,10 @@ class GetOrganizationIpAddresses extends \Krystal\Katapult\KatapultAPI\Runtime\C
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of all IP addresses belonging to an organization.
+     * Returns a list of all IP addresses belonging to an organization
+     * ## Scopes
+     * - `ip_addresses`
+     * - `ip_addresses:read`.
      *
      * @param array $queryParameters {
      *

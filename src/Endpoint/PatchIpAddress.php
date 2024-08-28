@@ -15,7 +15,9 @@ class PatchIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Updates the details on an IP address.
+     * Updates the details on an IP address
+     * ## Scopes
+     * - `ip_addresses`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressPatchBody $requestBody = null)
     {

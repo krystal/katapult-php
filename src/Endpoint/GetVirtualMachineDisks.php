@@ -15,7 +15,10 @@ class GetVirtualMachineDisks extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return a list of all disks for a given virtual machine.
+     * Return a list of all disks for a given virtual machine
+     * ## Scopes
+     * - `disks`
+     * - `disks:read`.
      *
      * @param array $queryParameters {
      *

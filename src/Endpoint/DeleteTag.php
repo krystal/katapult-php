@@ -15,7 +15,9 @@ class DeleteTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoin
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Deletes a tag.
+     * Deletes a tag
+     * ## Scopes
+     * - `tags`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TagsTagDeleteBody $requestBody = null)
     {

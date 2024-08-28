@@ -15,7 +15,9 @@ class PostDiskDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\Runtime\C
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Creates a new disk backup policy for a disk.
+     * Creates a new disk backup policy for a disk
+     * ## Scopes
+     * - `disk_backup_policies`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskDiskBackupPoliciesPostBody $requestBody = null)
     {

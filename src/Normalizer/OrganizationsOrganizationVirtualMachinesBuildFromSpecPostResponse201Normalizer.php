@@ -67,9 +67,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setHostname($data['hostname']);
                 unset($data['hostname']);
             }
-            foreach ($data as $key => $value) {
+            if (\array_key_exists('annotations', $data)) {
+                $values = [];
+                foreach ($data['annotations'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\KeyValue', 'json', $context);
+                }
+                $object->setAnnotations($values);
+                unset($data['annotations']);
+            }
+            foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_1;
                 }
             }
 
@@ -83,9 +91,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data['build'] = $this->normalizer->normalize($object->getBuild(), 'json', $context);
             $data['virtual_machine_build'] = $this->normalizer->normalize($object->getVirtualMachineBuild(), 'json', $context);
             $data['hostname'] = $object->getHostname();
-            foreach ($object as $key => $value) {
+            $values = [];
+            foreach ($object->getAnnotations() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['annotations'] = $values;
+            foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_1;
                 }
             }
 
@@ -115,7 +128,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201';
         }
 
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -143,25 +156,41 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setHostname($data['hostname']);
                 unset($data['hostname']);
             }
-            foreach ($data as $key => $value) {
+            if (\array_key_exists('annotations', $data)) {
+                $values = [];
+                foreach ($data['annotations'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'Krystal\\Katapult\\KatapultAPI\\Model\\KeyValue', 'json', $context);
+                }
+                $object->setAnnotations($values);
+                unset($data['annotations']);
+            }
+            foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_1;
                 }
             }
 
             return $object;
         }
 
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
             $data['task'] = $this->normalizer->normalize($object->getTask(), 'json', $context);
             $data['build'] = $this->normalizer->normalize($object->getBuild(), 'json', $context);
             $data['virtual_machine_build'] = $this->normalizer->normalize($object->getVirtualMachineBuild(), 'json', $context);
             $data['hostname'] = $object->getHostname();
-            foreach ($object as $key => $value) {
+            $values = [];
+            foreach ($object->getAnnotations() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['annotations'] = $values;
+            foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_1;
                 }
             }
 

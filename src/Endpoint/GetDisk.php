@@ -15,7 +15,10 @@ class GetDisk extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return details for a specific disk.
+     * Return details for a specific disk
+     * ## Scopes
+     * - `disks`
+     * - `disks:read`.
      *
      * @param array $queryParameters {
      *

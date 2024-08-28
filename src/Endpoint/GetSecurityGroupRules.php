@@ -15,7 +15,10 @@ class GetSecurityGroupRules extends \Krystal\Katapult\KatapultAPI\Runtime\Client
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of all rules for a given security group.
+     * Returns a list of all rules for a given security group
+     * ## Scopes
+     * - `security_groups`
+     * - `security_groups:read`.
      *
      * @param array $queryParameters {
      *

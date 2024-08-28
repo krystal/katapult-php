@@ -16,6 +16,8 @@ class PostDiskUnassign extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Base
 
     /**
      * Unassign a disk from a virtual machine.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskUnassignPostBody $requestBody = null)
     {

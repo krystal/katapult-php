@@ -15,7 +15,10 @@ class GetDiskTemplateVersions extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return a list of all disk template versions for a specific disk template.
+     * Return a list of all disk template versions for a specific disk template
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *

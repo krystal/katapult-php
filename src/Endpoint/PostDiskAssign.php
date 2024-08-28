@@ -16,6 +16,8 @@ class PostDiskAssign extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
 
     /**
      * Assign a disk to a virtual machine.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskAssignPostBody $requestBody = null)
     {

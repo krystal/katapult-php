@@ -16,6 +16,8 @@ class PutDiskResize extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
 
     /**
      * Resize a disk.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskResizePutBody $requestBody = null)
     {

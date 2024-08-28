@@ -15,7 +15,10 @@ class GetDiskDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\Runtime\Cl
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of all disk backup policies for a given disk.
+     * Returns a list of all disk backup policies for a given disk
+     * ## Scopes
+     * - `disk_backup_policies`
+     * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
      *

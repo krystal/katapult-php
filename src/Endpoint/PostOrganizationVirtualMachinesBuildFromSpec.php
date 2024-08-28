@@ -15,7 +15,9 @@ class PostOrganizationVirtualMachinesBuildFromSpec extends \Krystal\Katapult\Kat
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Builds a new virtual machine by receiving a virtual machine spec document.
+     * Builds a new virtual machine by receiving a virtual machine spec document
+     * ## Scopes
+     * - `virtual_machines`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody $requestBody = null)
     {

@@ -15,7 +15,9 @@ class PostVirtualMachineNetworkInterfaceAllocateNewIp extends \Krystal\Katapult\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Add a new IP address to this organization and allocate it to a virtual machine network interface.
+     * Add a new IP address to this organization and allocate it to a virtual machine network interface
+     * ## Scopes
+     * - `ip_addresses`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostBody $requestBody = null)
     {

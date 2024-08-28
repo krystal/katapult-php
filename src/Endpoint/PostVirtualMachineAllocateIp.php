@@ -15,7 +15,9 @@ class PostVirtualMachineAllocateIp extends \Krystal\Katapult\KatapultAPI\Runtime
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Allocate an IP address to a virtual machine, automatically determining the network interface.
+     * Allocate an IP address to a virtual machine, automatically determining the network interface
+     * ## Scopes
+     * - `ip_addresses`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineAllocateIpPostBody $requestBody = null)
     {

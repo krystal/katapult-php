@@ -15,7 +15,9 @@ class DeleteVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Moves an existing virtual machine to the trash.
+     * Moves an existing virtual machine to the trash
+     * ## Scopes
+     * - `virtual_machines`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null)
     {

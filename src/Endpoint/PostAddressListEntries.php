@@ -16,6 +16,8 @@ class PostAddressListEntries extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     /**
      * Create a new address list entry for a given address list.
+     * ## Scopes
+     * - `address_lists`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\AddressListsAddressListEntriesPostBody $requestBody = null)
     {

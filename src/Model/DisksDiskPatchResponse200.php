@@ -27,6 +27,12 @@ class DisksDiskPatchResponse200 extends \ArrayObject
      * @var DisksDiskPatchResponse200Disk
      */
     protected $disk;
+    /**
+     * Annotations for this disk.
+     *
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The disk that has been updated.
@@ -43,6 +49,29 @@ class DisksDiskPatchResponse200 extends \ArrayObject
     {
         $this->initialized['disk'] = true;
         $this->disk = $disk;
+
+        return $this;
+    }
+
+    /**
+     * Annotations for this disk.
+     *
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * Annotations for this disk.
+     *
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

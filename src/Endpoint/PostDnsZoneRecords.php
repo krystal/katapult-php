@@ -15,7 +15,9 @@ class PostDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new DNS record.
+     * Create a new DNS record
+     * ## Scopes
+     * - `dns`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneRecordsPostBody $requestBody = null)
     {

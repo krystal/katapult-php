@@ -15,7 +15,9 @@ class PutVirtualMachineFlexibleResources extends \Krystal\Katapult\KatapultAPI\R
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Change the flexible resources assigned to a virtual machine.
+     * Change the flexible resources assigned to a virtual machine
+     * ## Scopes
+     * - `virtual_machines`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null)
     {

@@ -15,7 +15,9 @@ class GetOrganization extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns information about a specific organization.
+     * Returns information about a specific organization
+     * ## Scopes
+     * - `organizations:read`.
      *
      * @param array $queryParameters {
      *

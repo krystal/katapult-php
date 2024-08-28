@@ -15,7 +15,9 @@ class PostOrganizationVirtualMachineGroups extends \Krystal\Katapult\KatapultAPI
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new virtual machine group with the provided details.
+     * Create a new virtual machine group with the provided details
+     * ## Scopes
+     * - `virtual_machine_groups`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachineGroupsPostBody $requestBody = null)
     {

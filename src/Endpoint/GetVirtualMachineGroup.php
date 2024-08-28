@@ -15,7 +15,10 @@ class GetVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return detailed information about a virtual machine group.
+     * Return detailed information about a virtual machine group
+     * ## Scopes
+     * - `virtual_machine_groups`
+     * - `virtual_machine_groups:read`.
      *
      * @param array $queryParameters {
      *

@@ -15,7 +15,9 @@ class PostOrganizationDnsZones extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new DNS zone within an existing organization.
+     * Create a new DNS zone within an existing organization
+     * ## Scopes
+     * - `dns`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationDnsZonesPostBody $requestBody = null)
     {

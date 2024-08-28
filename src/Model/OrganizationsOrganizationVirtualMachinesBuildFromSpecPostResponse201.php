@@ -39,6 +39,10 @@ class OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201 exten
      * @var string
      */
     protected $hostname;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     public function getTask(): PostOrganizationVirtualMachinesBuildFromSpec201ResponseTask
     {
@@ -94,6 +98,25 @@ class OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201 exten
     {
         $this->initialized['hostname'] = true;
         $this->hostname = $hostname;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

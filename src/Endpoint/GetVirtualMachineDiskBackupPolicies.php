@@ -15,7 +15,10 @@ class GetVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of all disk backup policies for a given virtual machine.
+     * Returns a list of all disk backup policies for a given virtual machine
+     * ## Scopes
+     * - `disk_backup_policies`
+     * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
      *

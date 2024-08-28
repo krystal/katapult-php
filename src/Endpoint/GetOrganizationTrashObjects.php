@@ -15,7 +15,9 @@ class GetOrganizationTrashObjects extends \Krystal\Katapult\KatapultAPI\Runtime\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Provides a full list of all trash objects for a specific organization.
+     * Provides a full list of all trash objects for a specific organization
+     * ## Scopes
+     * - `trash_objects:read`.
      *
      * @param array $queryParameters {
      *

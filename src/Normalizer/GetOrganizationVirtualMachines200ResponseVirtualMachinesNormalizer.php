@@ -95,6 +95,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setIpAddresses($values);
                 unset($data['ip_addresses']);
             }
+            if (\array_key_exists('hypervisor', $data) && $data['hypervisor'] !== null) {
+                $object->setHypervisor($this->denormalizer->denormalize($data['hypervisor'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor', 'json', $context));
+                unset($data['hypervisor']);
+            } elseif (\array_key_exists('hypervisor', $data) && $data['hypervisor'] === null) {
+                $object->setHypervisor(null);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -138,6 +144,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 }
                 $data['ip_addresses'] = $values;
             }
+            if ($object->isInitialized('hypervisor') && null !== $object->getHypervisor()) {
+                $data['hypervisor'] = $this->normalizer->normalize($object->getHypervisor(), 'json', $context);
+            }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value_1;
@@ -170,7 +179,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines';
         }
 
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -226,6 +235,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setIpAddresses($values);
                 unset($data['ip_addresses']);
             }
+            if (\array_key_exists('hypervisor', $data) && $data['hypervisor'] !== null) {
+                $object->setHypervisor($this->denormalizer->denormalize($data['hypervisor'], 'Krystal\\Katapult\\KatapultAPI\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor', 'json', $context));
+                unset($data['hypervisor']);
+            } elseif (\array_key_exists('hypervisor', $data) && $data['hypervisor'] === null) {
+                $object->setHypervisor(null);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -235,7 +250,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
             if ($object->isInitialized('id') && null !== $object->getId()) {
@@ -268,6 +286,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                     $values[] = $this->normalizer->normalize($value, 'json', $context);
                 }
                 $data['ip_addresses'] = $values;
+            }
+            if ($object->isInitialized('hypervisor') && null !== $object->getHypervisor()) {
+                $data['hypervisor'] = $this->normalizer->normalize($object->getHypervisor(), 'json', $context);
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {

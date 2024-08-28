@@ -227,7 +227,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             return is_object($data) && get_class($data) === 'Krystal\\Katapult\\KatapultAPI\\Model\\PatchLoadBalancer200ResponseLoadBalancer';
         }
 
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -322,7 +322,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
             if ($object->isInitialized('id') && null !== $object->getId()) {

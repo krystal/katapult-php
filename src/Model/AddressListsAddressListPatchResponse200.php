@@ -27,6 +27,10 @@ class AddressListsAddressListPatchResponse200 extends \ArrayObject
      * @var AddressListsAddressListPatchResponse200AddressList
      */
     protected $addressList;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The address list.
@@ -43,6 +47,25 @@ class AddressListsAddressListPatchResponse200 extends \ArrayObject
     {
         $this->initialized['addressList'] = true;
         $this->addressList = $addressList;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

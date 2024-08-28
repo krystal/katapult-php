@@ -27,6 +27,10 @@ class FileStorageVolumesFileStorageVolumePatchResponse200 extends \ArrayObject
      * @var FileStorageVolumesFileStorageVolumePatchResponse200FileStorageVolume
      */
     protected $fileStorageVolume;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The file storage volume.
@@ -43,6 +47,25 @@ class FileStorageVolumesFileStorageVolumePatchResponse200 extends \ArrayObject
     {
         $this->initialized['fileStorageVolume'] = true;
         $this->fileStorageVolume = $fileStorageVolume;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

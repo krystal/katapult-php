@@ -16,6 +16,8 @@ class PutDiskIoProfile extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Base
 
     /**
      * Change disk IO profile.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskIoProfilePutBody $requestBody = null)
     {

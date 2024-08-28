@@ -15,7 +15,10 @@ class GetLoadBalancersRulesLoadBalancerRule extends \Krystal\Katapult\KatapultAP
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns details about a load balancer rule.
+     * Returns details about a load balancer rule
+     * ## Scopes
+     * - `load_balancers`
+     * - `load_balancers:read`.
      *
      * @param array $queryParameters {
      *

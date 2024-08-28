@@ -16,6 +16,9 @@ class GetFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
 
     /**
      * Returns details for a file storage volume.
+     * ## Scopes
+     * - `file_storage_volumes`
+     * - `file_storage_volumes:read`.
      *
      * @param array $queryParameters {
      *

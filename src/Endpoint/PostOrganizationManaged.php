@@ -15,7 +15,9 @@ class PostOrganizationManaged extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new managed organization within an existing organization.
+     * Create a new managed organization within an existing organization
+     * ## Scopes
+     * - `managed_organizations`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationManagedPostBody $requestBody = null)
     {

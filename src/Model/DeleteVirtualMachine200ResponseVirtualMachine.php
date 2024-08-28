@@ -105,6 +105,10 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      * @var list<IPAddress>
      */
     protected $ipAddresses;
+    /**
+     * @var DeleteVirtualMachine200ResponseVirtualMachineHypervisor|null
+     */
+    protected $hypervisor;
 
     public function getId(): string
     {
@@ -399,6 +403,19 @@ class DeleteVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     {
         $this->initialized['ipAddresses'] = true;
         $this->ipAddresses = $ipAddresses;
+
+        return $this;
+    }
+
+    public function getHypervisor(): ?DeleteVirtualMachine200ResponseVirtualMachineHypervisor
+    {
+        return $this->hypervisor;
+    }
+
+    public function setHypervisor(?DeleteVirtualMachine200ResponseVirtualMachineHypervisor $hypervisor): self
+    {
+        $this->initialized['hypervisor'] = true;
+        $this->hypervisor = $hypervisor;
 
         return $this;
     }

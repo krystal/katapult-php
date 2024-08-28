@@ -15,7 +15,10 @@ class GetTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint i
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns details about a specific tag.
+     * Returns details about a specific tag
+     * ## Scopes
+     * - `tags`
+     * - `tags:read`.
      *
      * @param array $queryParameters {
      *

@@ -15,7 +15,10 @@ class GetDiskTemplateVersionSpec extends \Krystal\Katapult\KatapultAPI\Runtime\C
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return details provided by this template's specification.
+     * Return details provided by this template's specification
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *

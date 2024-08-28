@@ -15,7 +15,9 @@ class PostSecurityGroupRules extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new security group rule.
+     * Create a new security group rule
+     * ## Scopes
+     * - `security_groups`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null)
     {

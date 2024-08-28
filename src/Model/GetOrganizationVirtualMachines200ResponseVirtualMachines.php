@@ -57,6 +57,10 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
      * @var list<GetOrganizationVirtualMachinesPartIPAddresses>
      */
     protected $ipAddresses;
+    /**
+     * @var GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor|null
+     */
+    protected $hypervisor;
 
     public function getId(): string
     {
@@ -177,6 +181,19 @@ class GetOrganizationVirtualMachines200ResponseVirtualMachines extends \ArrayObj
     {
         $this->initialized['ipAddresses'] = true;
         $this->ipAddresses = $ipAddresses;
+
+        return $this;
+    }
+
+    public function getHypervisor(): ?GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor
+    {
+        return $this->hypervisor;
+    }
+
+    public function setHypervisor(?GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor $hypervisor): self
+    {
+        $this->initialized['hypervisor'] = true;
+        $this->hypervisor = $hypervisor;
 
         return $this;
     }

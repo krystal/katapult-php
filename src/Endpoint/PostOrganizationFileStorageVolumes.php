@@ -16,6 +16,8 @@ class PostOrganizationFileStorageVolumes extends \Krystal\Katapult\KatapultAPI\R
 
     /**
      * Create a new file storage volume for a given organization.
+     * ## Scopes
+     * - `file_storage_volumes`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationFileStorageVolumesPostBody $requestBody = null)
     {

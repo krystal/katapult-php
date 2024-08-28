@@ -15,12 +15,16 @@ class GetOrganizationManaged extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * List all managed organizations owned by the given organization.
+     * List all managed organizations owned by the given organization
+     * ## Scopes
+     * - `managed_organizations`.
      *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
      * @var int    $page
      * @var int    $per_page
      *             }
@@ -53,11 +57,13 @@ class GetOrganizationManaged extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'page', 'per_page']);
+        $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'annotations[key]', 'annotations[value]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('organization[id]', ['string']);
         $optionsResolver->addAllowedTypes('organization[sub_domain]', ['string']);
+        $optionsResolver->addAllowedTypes('annotations[key]', ['string']);
+        $optionsResolver->addAllowedTypes('annotations[value]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
         $optionsResolver->addAllowedTypes('per_page', ['int']);
 

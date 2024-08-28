@@ -15,7 +15,9 @@ class DeleteLoadBalancer extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Ba
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Delete a load balancer.
+     * Delete a load balancer
+     * ## Scopes
+     * - `load_balancers`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\LoadBalancersLoadBalancerDeleteBody $requestBody = null)
     {

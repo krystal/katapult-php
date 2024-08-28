@@ -15,7 +15,10 @@ class GetIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns information about a specific IP address.
+     * Returns information about a specific IP address
+     * ## Scopes
+     * - `ip_addresses`
+     * - `ip_addresses:read`.
      *
      * @param array $queryParameters {
      *

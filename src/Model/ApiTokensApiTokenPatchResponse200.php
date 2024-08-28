@@ -27,6 +27,12 @@ class ApiTokensApiTokenPatchResponse200 extends \ArrayObject
      * @var ApiTokensApiTokenPatchResponse200ApiToken
      */
     protected $apiToken;
+    /**
+     * Annotations for this API token.
+     *
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The API token that has been updated.
@@ -43,6 +49,29 @@ class ApiTokensApiTokenPatchResponse200 extends \ArrayObject
     {
         $this->initialized['apiToken'] = true;
         $this->apiToken = $apiToken;
+
+        return $this;
+    }
+
+    /**
+     * Annotations for this API token.
+     *
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * Annotations for this API token.
+     *
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

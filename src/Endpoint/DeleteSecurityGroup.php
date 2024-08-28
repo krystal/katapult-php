@@ -15,7 +15,9 @@ class DeleteSecurityGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Delete a security group.
+     * Delete a security group
+     * ## Scopes
+     * - `security_group`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsSecurityGroupDeleteBody $requestBody = null)
     {

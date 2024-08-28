@@ -15,7 +15,9 @@ class GetTrashObject extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Provides information on a specific trash object.
+     * Provides information on a specific trash object
+     * ## Scopes
+     * - `trash_objects:read`.
      *
      * @param array $queryParameters {
      *

@@ -16,6 +16,8 @@ class PatchAddressListEntry extends \Krystal\Katapult\KatapultAPI\Runtime\Client
 
     /**
      * Update an address list entry with new properties.
+     * ## Scopes
+     * - `address_lists`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null)
     {

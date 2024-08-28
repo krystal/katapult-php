@@ -15,7 +15,9 @@ class DeleteDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEnd
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Delete a DNS zone.
+     * Delete a DNS zone
+     * ## Scopes
+     * - `dns`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneDeleteBody $requestBody = null)
     {

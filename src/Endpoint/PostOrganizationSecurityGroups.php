@@ -15,7 +15,9 @@ class PostOrganizationSecurityGroups extends \Krystal\Katapult\KatapultAPI\Runti
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Create a new security group for a given organization.
+     * Create a new security group for a given organization
+     * ## Scopes
+     * - `security_groups`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationSecurityGroupsPostBody $requestBody = null)
     {

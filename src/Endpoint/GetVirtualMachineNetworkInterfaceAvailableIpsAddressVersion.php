@@ -15,7 +15,10 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Kryst
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of IP addresses that can be allocated to a specific network interface.
+     * Returns a list of IP addresses that can be allocated to a specific network interface
+     * ## Scopes
+     * - `ip_addresses`
+     * - `ip_addresses:read`.
      *
      * @param array $queryParameters {
      *

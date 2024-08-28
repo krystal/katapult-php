@@ -15,7 +15,9 @@ class PatchDiskBackupPolicy extends \Krystal\Katapult\KatapultAPI\Runtime\Client
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Updates the disk backup policy with the provided details.
+     * Updates the disk backup policy with the provided details
+     * ## Scopes
+     * - `disk_backup_policies`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DiskBackupPoliciesDiskBackupPolicyPatchBody $requestBody = null)
     {

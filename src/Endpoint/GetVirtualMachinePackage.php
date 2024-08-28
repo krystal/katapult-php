@@ -15,7 +15,9 @@ class GetVirtualMachinePackage extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return information about a given virtual machine package.
+     * Return information about a given virtual machine package
+     * ## Scopes
+     * - `virtual_machine_packages:read`.
      *
      * @param array $queryParameters {
      *

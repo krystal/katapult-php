@@ -33,6 +33,13 @@ class OrganizationsOrganizationDnsZonesPostBody extends \ArrayObject
      * @var DNSZoneArguments
      */
     protected $properties;
+    /**
+     * Creates a zone without requiring any verification to be performed. Internal use only (this
+     * requires the 'dns_zones:create:verified' capability).
+     *
+     * @var bool
+     */
+    protected $verified;
 
     /**
      * All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -68,6 +75,27 @@ class OrganizationsOrganizationDnsZonesPostBody extends \ArrayObject
     {
         $this->initialized['properties'] = true;
         $this->properties = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Creates a zone without requiring any verification to be performed. Internal use only (this
+     * requires the 'dns_zones:create:verified' capability).
+     */
+    public function getVerified(): bool
+    {
+        return $this->verified;
+    }
+
+    /**
+     * Creates a zone without requiring any verification to be performed. Internal use only (this
+     * requires the 'dns_zones:create:verified' capability).
+     */
+    public function setVerified(bool $verified): self
+    {
+        $this->initialized['verified'] = true;
+        $this->verified = $verified;
 
         return $this;
     }

@@ -15,7 +15,10 @@ class GetOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of all tags for an organization.
+     * Returns a list of all tags for an organization
+     * ## Scopes
+     * - `tags`
+     * - `tags:read`.
      *
      * @param array $queryParameters {
      *

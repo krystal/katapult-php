@@ -25,6 +25,10 @@ class VirtualMachinesVirtualMachineGetResponse200 extends \ArrayObject
      * @var GetVirtualMachine200ResponseVirtualMachine
      */
     protected $virtualMachine;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     public function getVirtualMachine(): GetVirtualMachine200ResponseVirtualMachine
     {
@@ -35,6 +39,25 @@ class VirtualMachinesVirtualMachineGetResponse200 extends \ArrayObject
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

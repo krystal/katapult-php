@@ -15,7 +15,9 @@ class PostIpAddressUnallocate extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Unallocate an IP address from its resource.
+     * Unallocate an IP address from its resource
+     * ## Scopes
+     * - `ip_addresses`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressUnallocatePostBody $requestBody = null)
     {

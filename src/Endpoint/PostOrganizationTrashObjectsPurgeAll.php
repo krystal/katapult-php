@@ -15,7 +15,9 @@ class PostOrganizationTrashObjectsPurgeAll extends \Krystal\Katapult\KatapultAPI
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Purge all trash objects for an organization.
+     * Purge all trash objects for an organization
+     * ## Scopes
+     * - `trash_objects:purge`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null)
     {

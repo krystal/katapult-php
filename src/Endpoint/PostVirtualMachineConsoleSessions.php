@@ -15,7 +15,10 @@ class PostVirtualMachineConsoleSessions extends \Krystal\Katapult\KatapultAPI\Ru
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Creates a new console session which can be opened in a browser.
+     * Creates a new console session which can be opened in a browser
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:console`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null)
     {

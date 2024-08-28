@@ -14,6 +14,10 @@ class PatchVirtualMachineNetworkInterfaceUpdateSpeedProfile extends \Krystal\Kat
 {
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
+    /**
+     * ## Scopes
+     * - `virtual_machines`.
+     */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody $requestBody = null)
     {
         $this->body = $requestBody;

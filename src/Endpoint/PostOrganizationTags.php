@@ -15,7 +15,9 @@ class PostOrganizationTags extends \Krystal\Katapult\KatapultAPI\Runtime\Client\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Creates a new tag with the provided properties.
+     * Creates a new tag with the provided properties
+     * ## Scopes
+     * - `tags`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationTagsPostBody $requestBody = null)
     {

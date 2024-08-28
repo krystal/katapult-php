@@ -15,7 +15,9 @@ class PatchVirtualMachineGroup extends \Krystal\Katapult\KatapultAPI\Runtime\Cli
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Update a virtual machine group with the provided details.
+     * Update a virtual machine group with the provided details
+     * ## Scopes
+     * - `virtual_machine_groups`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachineGroupsVirtualMachineGroupPatchBody $requestBody = null)
     {

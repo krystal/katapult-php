@@ -31,6 +31,12 @@ class OrganizationsOrganizationDisksPostResponse201 extends \ArrayObject
      * @var Task
      */
     protected $task;
+    /**
+     * Annotations for this disk.
+     *
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The disk that has been created.
@@ -60,6 +66,29 @@ class OrganizationsOrganizationDisksPostResponse201 extends \ArrayObject
     {
         $this->initialized['task'] = true;
         $this->task = $task;
+
+        return $this;
+    }
+
+    /**
+     * Annotations for this disk.
+     *
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * Annotations for this disk.
+     *
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

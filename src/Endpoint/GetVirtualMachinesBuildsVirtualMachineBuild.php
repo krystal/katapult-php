@@ -15,7 +15,10 @@ class GetVirtualMachinesBuildsVirtualMachineBuild extends \Krystal\Katapult\Kata
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return virtual machine build information.
+     * Return virtual machine build information
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
      *

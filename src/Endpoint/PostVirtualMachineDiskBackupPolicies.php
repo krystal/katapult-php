@@ -15,7 +15,9 @@ class PostVirtualMachineDiskBackupPolicies extends \Krystal\Katapult\KatapultAPI
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Creates a new disk backup policy for a virtual machine.
+     * Creates a new disk backup policy for a virtual machine
+     * ## Scopes
+     * - `disk_backup_policies`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody $requestBody = null)
     {

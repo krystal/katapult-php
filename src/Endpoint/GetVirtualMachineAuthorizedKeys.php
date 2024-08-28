@@ -16,7 +16,9 @@ class GetVirtualMachineAuthorizedKeys extends \Krystal\Katapult\KatapultAPI\Runt
     protected $accept;
 
     /**
-     * Return the authorized keys for the virtual machine associated with the provided API token.
+     * Return the authorized keys for the virtual machine associated with the provided API token
+     * ## Scopes
+     * - `virtual_machines:authorized_keys`.
      *
      * @param array $accept Accept content header text/plain|application/json
      */

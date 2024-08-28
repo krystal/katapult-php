@@ -15,7 +15,10 @@ class GetDnsZoneRecords extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return a list of all DNS records in a zone.
+     * Return a list of all DNS records in a zone
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *

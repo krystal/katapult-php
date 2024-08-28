@@ -15,7 +15,10 @@ class GetOrganizationDiskTemplates extends \Krystal\Katapult\KatapultAPI\Runtime
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return a list of all disk templates owned by an organization.
+     * Return a list of all disk templates owned by an organization
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *

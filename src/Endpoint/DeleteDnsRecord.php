@@ -15,7 +15,9 @@ class DeleteDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Delete a DNS record.
+     * Delete a DNS record
+     * ## Scopes
+     * - `dns`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsRecordsDnsRecordDeleteBody $requestBody = null)
     {

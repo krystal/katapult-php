@@ -15,7 +15,9 @@ class PostDnsZoneVerify extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Attempt to verify the nameservers for a given DNS zone.
+     * Attempt to verify the nameservers for a given DNS zone
+     * ## Scopes
+     * - `dns`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null)
     {

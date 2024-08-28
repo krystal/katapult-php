@@ -15,7 +15,10 @@ class GetOrganizationDnsZonesNameservers extends \Krystal\Katapult\KatapultAPI\R
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return a list of nameservers that should be used for DNS zones within a given organization.
+     * Return a list of nameservers that should be used for DNS zones within a given organization
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *

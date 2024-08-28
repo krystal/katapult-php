@@ -15,7 +15,10 @@ class GetDnsRecord extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return details for a specific DNS record.
+     * Return details for a specific DNS record
+     * ## Scopes
+     * - `dns`
+     * - `dns:read`.
      *
      * @param array $queryParameters {
      *

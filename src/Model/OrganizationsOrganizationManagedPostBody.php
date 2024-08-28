@@ -35,6 +35,10 @@ class OrganizationsOrganizationManagedPostBody extends \ArrayObject
      * @var string
      */
     protected $subDomain;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -77,6 +81,25 @@ class OrganizationsOrganizationManagedPostBody extends \ArrayObject
     {
         $this->initialized['subDomain'] = true;
         $this->subDomain = $subDomain;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

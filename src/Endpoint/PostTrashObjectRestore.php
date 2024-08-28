@@ -15,7 +15,9 @@ class PostTrashObjectRestore extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Restore a trashed object to its original location.
+     * Restore a trashed object to its original location
+     * ## Scopes
+     * - `trash_objects:restore`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TrashObjectsTrashObjectRestorePostBody $requestBody = null)
     {

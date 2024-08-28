@@ -16,6 +16,8 @@ class PatchDisk extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoin
 
     /**
      * Update a disk for a given organization.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskPatchBody $requestBody = null)
     {

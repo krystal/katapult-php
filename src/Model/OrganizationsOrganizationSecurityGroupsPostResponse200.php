@@ -27,6 +27,10 @@ class OrganizationsOrganizationSecurityGroupsPostResponse200 extends \ArrayObjec
      * @var OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup
      */
     protected $securityGroup;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The security group that has been created.
@@ -43,6 +47,25 @@ class OrganizationsOrganizationSecurityGroupsPostResponse200 extends \ArrayObjec
     {
         $this->initialized['securityGroup'] = true;
         $this->securityGroup = $securityGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

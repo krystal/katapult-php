@@ -16,6 +16,9 @@ class GetAddressListEntry extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
 
     /**
      * Returns details for an address list entry.
+     * ## Scopes
+     * - `address_lists`
+     * - `address_lists:read`.
      *
      * @param array $queryParameters {
      *

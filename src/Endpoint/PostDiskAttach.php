@@ -16,6 +16,8 @@ class PostDiskAttach extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
 
     /**
      * Attach a disk to its virtual machine.
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskAttachPostBody $requestBody = null)
     {

@@ -27,6 +27,10 @@ class LoadBalancersLoadBalancerGetResponse200 extends \ArrayObject
      * @var LoadBalancersLoadBalancerGetResponse200LoadBalancer
      */
     protected $loadBalancer;
+    /**
+     * @var list<KeyValue>
+     */
+    protected $annotations;
 
     /**
      * The load balancer.
@@ -43,6 +47,25 @@ class LoadBalancersLoadBalancerGetResponse200 extends \ArrayObject
     {
         $this->initialized['loadBalancer'] = true;
         $this->loadBalancer = $loadBalancer;
+
+        return $this;
+    }
+
+    /**
+     * @return list<KeyValue>
+     */
+    public function getAnnotations(): array
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * @param list<KeyValue> $annotations
+     */
+    public function setAnnotations(array $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

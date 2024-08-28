@@ -15,7 +15,9 @@ class PostApiTokenRegenerateSecret extends \Krystal\Katapult\KatapultAPI\Runtime
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Regenerates the secret for an organization API token.
+     * Regenerates the secret for an organization API token
+     * ## Scopes
+     * - `api_tokens`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\ApiTokensApiTokenRegenerateSecretPostBody $requestBody = null)
     {

@@ -15,7 +15,10 @@ class GetTask extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint 
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns details about a specific task.
+     * Returns details about a specific task
+     * ## Scopes
+     * - `tasks`
+     * - `tasks:read`.
      *
      * @param array $queryParameters {
      *

@@ -16,6 +16,8 @@ class PatchFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     /**
      * Update a file storage volume with new properties.
+     * ## Scopes
+     * - `file_storage_volumes`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumePatchBody $requestBody = null)
     {

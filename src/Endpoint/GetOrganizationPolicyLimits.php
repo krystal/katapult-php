@@ -15,7 +15,9 @@ class GetOrganizationPolicyLimits extends \Krystal\Katapult\KatapultAPI\Runtime\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns the computed policy limits for a organization.
+     * Returns the computed policy limits for a organization
+     * ## Scopes
+     * - `organizations:read`.
      *
      * @param array $queryParameters {
      *

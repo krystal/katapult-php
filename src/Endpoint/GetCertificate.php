@@ -15,7 +15,10 @@ class GetCertificate extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return details for a specific certificate.
+     * Return details for a specific certificate
+     * ## Scopes
+     * - `certificates`
+     * - `certificates:read`.
      *
      * @param array $queryParameters {
      *

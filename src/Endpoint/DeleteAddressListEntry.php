@@ -16,6 +16,8 @@ class DeleteAddressListEntry extends \Krystal\Katapult\KatapultAPI\Runtime\Clien
 
     /**
      * Delete an address list entry.
+     * ## Scopes
+     * - `address_lists`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\AddressListEntriesAddressListEntryDeleteBody $requestBody = null)
     {

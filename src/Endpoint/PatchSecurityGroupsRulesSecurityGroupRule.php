@@ -15,7 +15,9 @@ class PatchSecurityGroupsRulesSecurityGroupRule extends \Krystal\Katapult\Katapu
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Updates a security group rule with new properties.
+     * Updates a security group rule with new properties
+     * ## Scopes
+     * - `security_groups`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\SecurityGroupsRulesSecurityGroupRulePatchBody $requestBody = null)
     {

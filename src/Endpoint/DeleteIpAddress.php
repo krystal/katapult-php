@@ -15,7 +15,9 @@ class DeleteIpAddress extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Release an IP address from its organization.
+     * Release an IP address from its organization
+     * ## Scopes
+     * - `ip_addresses`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\IpAddressesIpAddressDeleteBody $requestBody = null)
     {

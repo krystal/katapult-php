@@ -15,7 +15,9 @@ class PatchVirtualMachine extends \Krystal\Katapult\KatapultAPI\Runtime\Client\B
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Update the properties of a virtual machine.
+     * Update the properties of a virtual machine
+     * ## Scopes
+     * - `virtual_machines`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\VirtualMachinesVirtualMachinePatchBody $requestBody = null)
     {

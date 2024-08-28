@@ -15,7 +15,9 @@ class PatchDnsZone extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndp
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Update properties for a DNS zone.
+     * Update properties for a DNS zone
+     * ## Scopes
+     * - `dns`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DnsZonesDnsZonePatchBody $requestBody = null)
     {

@@ -15,7 +15,10 @@ class GetOrganizationCertificates extends \Krystal\Katapult\KatapultAPI\Runtime\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Provides a full list of certificates.
+     * Provides a full list of certificates
+     * ## Scopes
+     * - `certificates`
+     * - `certificates:read`.
      *
      * @param array $queryParameters {
      *

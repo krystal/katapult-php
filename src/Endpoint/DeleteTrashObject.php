@@ -15,7 +15,9 @@ class DeleteTrashObject extends \Krystal\Katapult\KatapultAPI\Runtime\Client\Bas
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Purge a specific trash object.
+     * Purge a specific trash object
+     * ## Scopes
+     * - `trash_objects:purge`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TrashObjectsTrashObjectDeleteBody $requestBody = null)
     {

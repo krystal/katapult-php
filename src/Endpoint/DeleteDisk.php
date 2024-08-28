@@ -15,7 +15,9 @@ class DeleteDisk extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoi
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Deletes a disk and moves it to the trash.
+     * Deletes a disk and moves it to the trash
+     * ## Scopes
+     * - `disks`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\DisksDiskDeleteBody $requestBody = null)
     {

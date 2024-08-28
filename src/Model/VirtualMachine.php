@@ -105,6 +105,10 @@ class VirtualMachine extends \ArrayObject
      * @var list<IPAddress>
      */
     protected $ipAddresses;
+    /**
+     * @var VirtualMachineHypervisor|null
+     */
+    protected $hypervisor;
 
     public function getId(): string
     {
@@ -399,6 +403,19 @@ class VirtualMachine extends \ArrayObject
     {
         $this->initialized['ipAddresses'] = true;
         $this->ipAddresses = $ipAddresses;
+
+        return $this;
+    }
+
+    public function getHypervisor(): ?VirtualMachineHypervisor
+    {
+        return $this->hypervisor;
+    }
+
+    public function setHypervisor(?VirtualMachineHypervisor $hypervisor): self
+    {
+        $this->initialized['hypervisor'] = true;
+        $this->hypervisor = $hypervisor;
 
         return $this;
     }

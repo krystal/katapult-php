@@ -15,7 +15,10 @@ class GetDiskTemplate extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseE
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Return details for a specific disk template.
+     * Return details for a specific disk template
+     * ## Scopes
+     * - `disk_templates`
+     * - `disk_templates:read`.
      *
      * @param array $queryParameters {
      *

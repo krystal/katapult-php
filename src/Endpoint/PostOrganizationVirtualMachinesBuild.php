@@ -16,6 +16,8 @@ class PostOrganizationVirtualMachinesBuild extends \Krystal\Katapult\KatapultAPI
 
     /**
      * Builds a new virtual machine based on the arguments provided to this endpoint. Virtual machines will be built in the background. This task will return an task object that will allow you to monitor the build process using the appropriate API action. This action only offers a small subset of the full functionality needed when provisioning virtual machines - see the `build_from_spec` action for a full advanced virtual machine creation method.
+     * ## Scopes
+     * - `virtual_machines`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody $requestBody = null)
     {

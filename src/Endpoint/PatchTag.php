@@ -15,7 +15,9 @@ class PatchTag extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEndpoint
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Updates a tag with the provided properties.
+     * Updates a tag with the provided properties
+     * ## Scopes
+     * - `tags`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\TagsTagPatchBody $requestBody = null)
     {

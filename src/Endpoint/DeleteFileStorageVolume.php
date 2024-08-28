@@ -16,6 +16,8 @@ class DeleteFileStorageVolume extends \Krystal\Katapult\KatapultAPI\Runtime\Clie
 
     /**
      * Delete a file storage volume.
+     * ## Scopes
+     * - `file_storage_volumes`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\FileStorageVolumesFileStorageVolumeDeleteBody $requestBody = null)
     {

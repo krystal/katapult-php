@@ -15,7 +15,9 @@ class DeleteApiToken extends \Krystal\Katapult\KatapultAPI\Runtime\Client\BaseEn
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Delete an organization API token.
+     * Delete an organization API token
+     * ## Scopes
+     * - `api_tokens`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\ApiTokensApiTokenDeleteBody $requestBody = null)
     {

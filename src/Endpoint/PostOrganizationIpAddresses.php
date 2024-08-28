@@ -15,7 +15,9 @@ class PostOrganizationIpAddresses extends \Krystal\Katapult\KatapultAPI\Runtime\
     use \Krystal\Katapult\KatapultAPI\Runtime\Client\EndpointTrait;
 
     /**
-     * Creates a new IP address on this organization.
+     * Creates a new IP address on this organization
+     * ## Scopes
+     * - `ip_addresses`.
      */
     public function __construct(?\Krystal\Katapult\KatapultAPI\Model\OrganizationsOrganizationIpAddressesPostBody $requestBody = null)
     {
