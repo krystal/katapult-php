@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Krystal\Katapult\KatapultAPI;
+namespace KatapultAPI\Core;
 
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;

@@ -39,18 +39,27 @@ docker run \
 composer:2 \
 composer install -q
 
-# Run the generator
+# Run the generator for Core
 docker run \
 -u "${USER}" \
 -v "${VOLUME}" \
 -w /app/generator \
 "php:8.2-cli" \
-php -d memory_limit=1G vendor/bin/jane-openapi generate -c jane-openapi.php
+php -d memory_limit=1G vendor/bin/jane-openapi generate -c jane-openapi-core.php
+
+print_color "${YELLOW}" "✅ New core client successfully generated"
+
+# Run the generator for Public
+docker run \
+-u "${USER}" \
+-v "${VOLUME}" \
+-w /app/generator \
+"php:8.2-cli" \
+php -d memory_limit=1G vendor/bin/jane-openapi generate -c jane-openapi-public.php
+
+print_color "${YELLOW}" "✅ New public client successfully generated"
 
 # Copy over our non-generated files
 cp -r ./generator/manual/** ./
 
-# Cleanup
-print_color "${GREY}" "🧹 Cleaning up generated files..."
-
-print_color "${GREEN}" "✅ New client successfully generated}"
+print_color "${GREEN}" "✅ New clients successfully generated"

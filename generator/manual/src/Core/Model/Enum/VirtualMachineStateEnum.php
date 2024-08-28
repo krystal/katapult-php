@@ -1,6 +1,6 @@
 <?php
 
-namespace Krystal\Katapult\KatapultAPI\Model\Enum;
+namespace KatapultAPI\Core\Model\Enum;
 
 enum VirtualMachineStateEnum: string
 {
