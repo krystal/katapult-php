@@ -36,7 +36,7 @@ class ClientFactory
     public function __construct(string $token)
     {
         $this->token = $token;
-        $this->version = trim(file_get_contents(__DIR__ . '/../VERSION'));
+        $this->version = trim(file_get_contents(__DIR__ . '/../../VERSION'));
     }
 
     /**
