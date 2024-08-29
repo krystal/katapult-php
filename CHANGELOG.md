@@ -1,5 +1,26 @@
 # Changelog
 
+## [5.0.0](https://github.com/krystal/katapult-php/compare/v4.0.3...v5.0.0) (2024-08-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* see PR #23
+
+### Features
+
+* see PR [#23](https://github.com/krystal/katapult-php/issues/23) ([93df047](https://github.com/krystal/katapult-php/commit/93df0474166df0f4bb811cf55d75c525ff8abb49))
+
+
+### Bug Fixes
+
+* **docs:** update namespace in README example ([a75046c](https://github.com/krystal/katapult-php/commit/a75046c426a9b6eb833ee9e97aebf9c88d08d065))
+
+
+### Miscellaneous Chores
+
+* **CI:** don't run builds or diffs on release-please PRs ([c221c37](https://github.com/krystal/katapult-php/commit/c221c379f0c9b8ef260d352df7873ffa7211aa7e))
+
 ## [4.0.3](https://github.com/krystal/katapult-php/compare/v4.0.2...v4.0.3) (2024-08-29)
 
 
