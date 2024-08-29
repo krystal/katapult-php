@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Krystal\\Katapult\\KatapultAPI\\": "src/"
+      "KatapultAPI\\": "src/"
     }
   },
   "prefer-stable": true
