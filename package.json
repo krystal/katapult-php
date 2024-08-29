@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@pb33f/openapi-changes": "^0.0.67"
+  }
+}

@@ -1,0 +1,111 @@
+name: Build PHP client
+
+on:
+  pull_request:
+concurrency:
+  # On the main branch we want all builds to complete, even if new commits are merged.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !contains(github.ref, 'main')}}
+
+jobs:
+  build-php:
+    if: "!contains(github.head_ref, 'release-please')"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache generator dependencies
+        uses: actions/cache@v4
+        with:
+          path: generator/vendor
+          key: ${{ runner.os }}-generator-vendor-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-generator-vendor-
+
+      - name: Generate our client
+        run: make build
+
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "feat(generator): new client automatically generated in GitHub Actions"
+
+  openapi:
+    if: "!contains(github.head_ref, 'release-please')"
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out the base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: Copy the spec files to /tmp for comparison
+        run: |
+          cp katapult-core-openapi.json /tmp/katapult-core-openapi.json
+          cp katapult-public-openapi.json /tmp/katapult-public-openapi.json
+
+      - name: Check out the current branch
+        uses: actions/checkout@v4
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node_modules-
+
+      - name: Install openapi-changes
+        run: npm install
+
+      - name: Katapult Core API Spec Changes
+        id: core-changes
+        run: |
+          set +e
+          echo "core_changes<<EOF" >> $GITHUB_OUTPUT
+          npx openapi-changes summary --no-logo --no-color --markdown /tmp/katapult-core-openapi.json katapult-core-openapi.json >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          npx openapi-changes html-report /tmp/katapult-core-openapi.json katapult-core-openapi.json
+          if [ -f report.html ]; then mv report.html openapi-core-report.html; fi
+
+      - name: Katapult Public API Spec Changes
+        id: public-changes
+        run: |
+          set +e
+          echo "public_changes<<EOF" >> $GITHUB_OUTPUT
+          npx openapi-changes summary --no-logo --no-color --markdown /tmp/katapult-public-openapi.json katapult-public-openapi.json >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          npx openapi-changes html-report /tmp/katapult-public-openapi.json katapult-public-openapi.json
+          if [ -f report.html ]; then mv report.html openapi-public-report.html; fi
+
+      - name: Emit changes in GHA runs
+        run: echo ${{ steps.core-changes.outputs.core_changes }}
+        continue-on-error: true
+
+      - name: Emit changes in GHA runs
+        run: echo ${{ steps.public-changes.outputs.public_changes }}
+        continue-on-error: true
+
+      - name: Upload HTML reports as artefacts
+        id: upload-report
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-changes
+          path: openapi-*-report.html
+          if-no-files-found: ignore
+
+      - name: Add/update a comment on the PR with the changes for the two APIs
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ## Download Reports
+            [Download the OpenAPI Changes Report](${{ steps.upload-report.outputs.artifact-url }})
+
+            ## Core API Changes
+            ${{ steps.core-changes.outputs.core_changes || 'No changes.' }}
+
+            ## Public API Changes
+            ${{ steps.public-changes.outputs.public_changes || 'No changes.'  }}

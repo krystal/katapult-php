@@ -5,7 +5,9 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
 [![Total Downloads](https://img.shields.io/packagist/dt/krystal/katapult.svg?style=flat-square)](https://packagist.org/packages/krystal/katapult)
 
-A PHP library for integrating with [Katapult](https://katapult.io/)
+A PHP library for integrating with [Katapult](https://katapult.io/).
+
+You can find all the Katapult Developer Docs [here](https://developers.katapult.io/).
 
 ## Version constraints
 * [v1.x](https://github.com/krystal/katapult-php/tree/1.x) supports PHP 5.6
@@ -34,7 +36,7 @@ If you need control over this, you can call `setHttpClient` in `ClientFactory`.
 The usage sample below emits the IPv4 and IPv6 addresses for each VM in your Organization.
 
 ```php
-use Krystal\Katapult\KatapultAPI\ClientFactory;
+use KatapultAPI\Core\ClientFactory;
 
 $katapult = (new ClientFactory('your-katapult-api-token'))->create();
 
