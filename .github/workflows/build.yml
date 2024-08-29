@@ -9,6 +9,7 @@ concurrency:
 
 jobs:
   build-php:
+    if: "!contains(github.head_ref, 'release-please')"
     runs-on: ubuntu-latest
 
     permissions:
@@ -33,6 +34,7 @@ jobs:
           commit_message: "feat(generator): new client automatically generated in GitHub Actions"
 
   openapi:
+    if: "!contains(github.head_ref, 'release-please')"
     runs-on: ubuntu-latest
     steps:
 
