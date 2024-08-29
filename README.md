@@ -36,7 +36,7 @@ If you need control over this, you can call `setHttpClient` in `ClientFactory`.
 The usage sample below emits the IPv4 and IPv6 addresses for each VM in your Organization.
 
 ```php
-use Krystal\Katapult\KatapultAPI\ClientFactory;
+use KatapultAPI\Core\ClientFactory;
 
 $katapult = (new ClientFactory('your-katapult-api-token'))->create();
 
