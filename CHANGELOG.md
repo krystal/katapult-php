@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.3](https://github.com/krystal/katapult-php/compare/v4.0.2...v4.0.3) (2024-08-29)
+
+
+### Miscellaneous Chores
+
+* add openapi spec files ([2b1b5af](https://github.com/krystal/katapult-php/commit/2b1b5afb7e392e295fc10553549602f1d8471560))
+
 ## [4.0.2](https://github.com/krystal/katapult-php/compare/v4.0.1...v4.0.2) (2024-07-04)
 
 
