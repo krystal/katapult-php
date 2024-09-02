@@ -1217,6 +1217,77 @@
         }
       }
     },
+    "/address_lists/address_list/entries/bulk": {
+      "post": {
+        "operationId": "post:address_list_entries_bulk",
+        "summary": "Bulk change address list entries",
+        "description": "Create or delete multiple address list entries for a given address list.\n## Scopes\n- `address_lists`\n",
+        "tags": [
+          "Address lists",
+          "Address list entries"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "address_list": {
+                    "$ref": "#/components/schemas/AddressListLookup"
+                  },
+                  "add": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AddressListEntryArguments"
+                    }
+                  },
+                  "remove": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AddressListEntryArguments"
+                    }
+                  }
+                },
+                "required": [
+                  "address_list"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Create or delete multiple address list entries for a given address list.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/AddressListNotFoundResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
     "/organizations/organization/certificates": {
       "get": {
         "operationId": "get:organization_certificates",
@@ -10342,7 +10413,7 @@
                     "virtual_machine_packages": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/GetVirtualMachinePackages200ResponseVirtualMachinePackages"
+                        "$ref": "#/components/schemas/VirtualMachinePackage"
                       }
                     }
                   },
@@ -11034,6 +11105,12 @@
                       "$ref": "#/components/schemas/KeyValue"
                     }
                   },
+                  "disks": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/VirtualMachineBuildDiskArguments"
+                    }
+                  },
                   "network": {
                     "$ref": "#/components/schemas/NetworkLookup"
                   },
@@ -11107,7 +11184,7 @@
             "$ref": "#/components/responses/DataCenterNotFoundVirtualMachinePackageNotFoundZoneNotFound404Res"
           },
           "422": {
-            "$ref": "#/components/responses/LocationRequiredValidationError422Res"
+            "$ref": "#/components/responses/LocationRequiredOneSystemDiskRequiredValidationError422Res"
           },
           "429": {
             "$ref": "#/components/responses/APIAuthenticator429Response"
@@ -13076,6 +13153,10 @@
           "universal": {
             "type": "boolean"
           },
+          "size_in_gb": {
+            "type": "integer",
+            "nullable": true
+          },
           "latest_version": {
             "allOf": [
               {
@@ -14508,6 +14589,10 @@
           "universal": {
             "type": "boolean"
           },
+          "size_in_gb": {
+            "type": "integer",
+            "nullable": true
+          },
           "latest_version": {
             "allOf": [
               {
@@ -14612,6 +14697,10 @@
           },
           "universal": {
             "type": "boolean"
+          },
+          "size_in_gb": {
+            "type": "integer",
+            "nullable": true
           },
           "latest_version": {
             "allOf": [
@@ -15243,6 +15332,9 @@
           },
           "use_dedicated_cpus": {
             "type": "boolean"
+          },
+          "group": {
+            "$ref": "#/components/schemas/VirtualMachinePackageGroup"
           }
         }
       },
@@ -15252,6 +15344,17 @@
           "public",
           "private"
         ]
+      },
+      "VirtualMachinePackageGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
       },
       "ISO": {
         "type": "object",
@@ -16045,6 +16148,34 @@
           }
         }
       },
+      "VirtualMachineBuildDiskArguments": {
+        "description": "All 'disks[]' params are mutually exclusive, only one can be provided.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "size_in_gb": {
+            "type": "integer"
+          },
+          "initial_file_system": {
+            "$ref": "#/components/schemas/FileSystemEnum"
+          },
+          "system": {
+            "type": "boolean",
+            "description": "Default false. Exactly one disk must be marked as the system disk"
+          },
+          "io_profile": {
+            "$ref": "#/components/schemas/DiskIOProfileLookup"
+          },
+          "storage_speed": {
+            "$ref": "#/components/schemas/StorageSpeedEnum"
+          }
+        },
+        "required": [
+          "size_in_gb"
+        ]
+      },
       "NetworkLookup": {
         "description": "All 'network[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
@@ -16278,13 +16409,37 @@
           }
         }
       },
-      "OneOfLocationRequiredValidationError422Res": {
+      "OneSystemDiskRequiredEnum": {
+        "type": "string",
+        "enum": [
+          "one_system_disk_required"
+        ]
+      },
+      "OneSystemDiskRequiredSchema": {
+        "type": "object",
+        "description": "Exactly one disk must be marked as the system disk",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/OneSystemDiskRequiredEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfLocationRequiredOneSystemDiskRequiredValidationError422Res": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/ValidationErrorSchema"
           },
           {
             "$ref": "#/components/schemas/LocationRequiredSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OneSystemDiskRequiredSchema"
           }
         ]
       },
@@ -16546,51 +16701,6 @@
             "$ref": "#/components/schemas/VirtualMachineMustBeStartedSchema"
           }
         ]
-      },
-      "GetVirtualMachinePackages200ResponseVirtualMachinePackages": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "permalink": {
-            "type": "string"
-          },
-          "cpu_cores": {
-            "type": "integer"
-          },
-          "ipv4_addresses": {
-            "type": "integer"
-          },
-          "memory_in_gb": {
-            "type": "integer"
-          },
-          "storage_in_gb": {
-            "type": "integer"
-          },
-          "privacy": {
-            "$ref": "#/components/schemas/PrivacyTypesEnum"
-          },
-          "icon": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/GetVirtualMachinePackagesPartIcon"
-              }
-            ],
-            "nullable": true
-          }
-        }
-      },
-      "GetVirtualMachinePackagesPartIcon": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string"
-          }
-        }
       },
       "AuthSSHKey": {
         "type": "object",
@@ -20902,12 +21012,12 @@
           }
         }
       },
-      "LocationRequiredValidationError422Res": {
+      "LocationRequiredOneSystemDiskRequiredValidationError422Res": {
         "description": "422 error response",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/OneOfLocationRequiredValidationError422Res"
+              "$ref": "#/components/schemas/OneOfLocationRequiredOneSystemDiskRequiredValidationError422Res"
             }
           }
         }

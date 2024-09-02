@@ -56,6 +56,10 @@ class OrganizationsOrganizationVirtualMachinesBuildPostBody extends \ArrayObject
      */
     protected $diskTemplateOptions;
     /**
+     * @var list<VirtualMachineBuildDiskArguments>
+     */
+    protected $disks;
+    /**
      * All 'network[]' params are mutually exclusive, only one can be provided.
      *
      * @var NetworkLookup
@@ -180,6 +184,25 @@ class OrganizationsOrganizationVirtualMachinesBuildPostBody extends \ArrayObject
     {
         $this->initialized['diskTemplateOptions'] = true;
         $this->diskTemplateOptions = $diskTemplateOptions;
+
+        return $this;
+    }
+
+    /**
+     * @return list<VirtualMachineBuildDiskArguments>
+     */
+    public function getDisks(): array
+    {
+        return $this->disks;
+    }
+
+    /**
+     * @param list<VirtualMachineBuildDiskArguments> $disks
+     */
+    public function setDisks(array $disks): self
+    {
+        $this->initialized['disks'] = true;
+        $this->disks = $disks;
 
         return $this;
     }

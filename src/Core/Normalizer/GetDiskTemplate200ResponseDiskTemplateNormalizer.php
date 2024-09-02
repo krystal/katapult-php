@@ -73,6 +73,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUniversal($data['universal']);
                 unset($data['universal']);
             }
+            if (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] !== null) {
+                $object->setSizeInGb($data['size_in_gb']);
+                unset($data['size_in_gb']);
+            } elseif (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] === null) {
+                $object->setSizeInGb(null);
+            }
             if (\array_key_exists('latest_version', $data) && $data['latest_version'] !== null) {
                 $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], 'KatapultAPI\\Core\\Model\\GetDiskTemplate200ResponseDiskTemplateLatestVersion', 'json', $context));
                 unset($data['latest_version']);
@@ -111,6 +117,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('universal') && null !== $object->getUniversal()) {
                 $data['universal'] = $object->getUniversal();
+            }
+            if ($object->isInitialized('sizeInGb') && null !== $object->getSizeInGb()) {
+                $data['size_in_gb'] = $object->getSizeInGb();
             }
             if ($object->isInitialized('latestVersion') && null !== $object->getLatestVersion()) {
                 $data['latest_version'] = $this->normalizer->normalize($object->getLatestVersion(), 'json', $context);
@@ -184,6 +193,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUniversal($data['universal']);
                 unset($data['universal']);
             }
+            if (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] !== null) {
+                $object->setSizeInGb($data['size_in_gb']);
+                unset($data['size_in_gb']);
+            } elseif (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] === null) {
+                $object->setSizeInGb(null);
+            }
             if (\array_key_exists('latest_version', $data) && $data['latest_version'] !== null) {
                 $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], 'KatapultAPI\\Core\\Model\\GetDiskTemplate200ResponseDiskTemplateLatestVersion', 'json', $context));
                 unset($data['latest_version']);
@@ -225,6 +240,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('universal') && null !== $object->getUniversal()) {
                 $data['universal'] = $object->getUniversal();
+            }
+            if ($object->isInitialized('sizeInGb') && null !== $object->getSizeInGb()) {
+                $data['size_in_gb'] = $object->getSizeInGb();
             }
             if ($object->isInitialized('latestVersion') && null !== $object->getLatestVersion()) {
                 $data['latest_version'] = $this->normalizer->normalize($object->getLatestVersion(), 'json', $context);

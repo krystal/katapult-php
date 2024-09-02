@@ -79,6 +79,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setDiskTemplateOptions($values);
                 unset($data['disk_template_options']);
             }
+            if (\array_key_exists('disks', $data)) {
+                $values_1 = [];
+                foreach ($data['disks'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\VirtualMachineBuildDiskArguments', 'json', $context);
+                }
+                $object->setDisks($values_1);
+                unset($data['disks']);
+            }
             if (\array_key_exists('network', $data)) {
                 $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\NetworkLookup', 'json', $context));
                 unset($data['network']);
@@ -88,16 +96,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['hostname']);
             }
             if (\array_key_exists('annotations', $data)) {
-                $values_1 = [];
-                foreach ($data['annotations'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                $values_2 = [];
+                foreach ($data['annotations'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
                 }
-                $object->setAnnotations($values_1);
+                $object->setAnnotations($values_2);
                 unset($data['annotations']);
             }
-            foreach ($data as $key => $value_2) {
+            foreach ($data as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_2;
+                    $object[$key] = $value_3;
                 }
             }
 
@@ -125,6 +133,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 }
                 $data['disk_template_options'] = $values;
             }
+            if ($object->isInitialized('disks') && null !== $object->getDisks()) {
+                $values_1 = [];
+                foreach ($object->getDisks() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['disks'] = $values_1;
+            }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
             }
@@ -132,15 +147,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $data['hostname'] = $object->getHostname();
             }
             if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
-                $values_1 = [];
-                foreach ($object->getAnnotations() as $value_1) {
-                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_2 = [];
+                foreach ($object->getAnnotations() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
-                $data['annotations'] = $values_1;
+                $data['annotations'] = $values_2;
             }
-            foreach ($object as $key => $value_2) {
+            foreach ($object as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_2;
+                    $data[$key] = $value_3;
                 }
             }
 
@@ -210,6 +225,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setDiskTemplateOptions($values);
                 unset($data['disk_template_options']);
             }
+            if (\array_key_exists('disks', $data)) {
+                $values_1 = [];
+                foreach ($data['disks'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\VirtualMachineBuildDiskArguments', 'json', $context);
+                }
+                $object->setDisks($values_1);
+                unset($data['disks']);
+            }
             if (\array_key_exists('network', $data)) {
                 $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\NetworkLookup', 'json', $context));
                 unset($data['network']);
@@ -219,16 +242,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['hostname']);
             }
             if (\array_key_exists('annotations', $data)) {
-                $values_1 = [];
-                foreach ($data['annotations'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                $values_2 = [];
+                foreach ($data['annotations'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
                 }
-                $object->setAnnotations($values_1);
+                $object->setAnnotations($values_2);
                 unset($data['annotations']);
             }
-            foreach ($data as $key => $value_2) {
+            foreach ($data as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_2;
+                    $object[$key] = $value_3;
                 }
             }
 
@@ -259,6 +282,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 }
                 $data['disk_template_options'] = $values;
             }
+            if ($object->isInitialized('disks') && null !== $object->getDisks()) {
+                $values_1 = [];
+                foreach ($object->getDisks() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['disks'] = $values_1;
+            }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
             }
@@ -266,15 +296,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $data['hostname'] = $object->getHostname();
             }
             if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
-                $values_1 = [];
-                foreach ($object->getAnnotations() as $value_1) {
-                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_2 = [];
+                foreach ($object->getAnnotations() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
-                $data['annotations'] = $values_1;
+                $data['annotations'] = $values_2;
             }
-            foreach ($object as $key => $value_2) {
+            foreach ($object as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_2;
+                    $data[$key] = $value_3;
                 }
             }
 

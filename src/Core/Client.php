@@ -389,6 +389,27 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create or delete multiple address list entries for a given address list.
+     * ## Scopes
+     * - `address_lists`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\AddressListsAddressListEntriesBulkPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostAddressListEntriesBulkBadRequestException
+     * @throws Exception\PostAddressListEntriesBulkForbiddenException
+     * @throws Exception\PostAddressListEntriesBulkNotFoundException
+     * @throws Exception\PostAddressListEntriesBulkUnprocessableEntityException
+     * @throws Exception\PostAddressListEntriesBulkTooManyRequestsException
+     * @throws Exception\PostAddressListEntriesBulkServiceUnavailableException
+     */
+    public function postAddressListEntriesBulk(?Model\AddressListsAddressListEntriesBulkPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostAddressListEntriesBulk($requestBody), $fetch);
+    }
+
+    /**
      * Provides a full list of certificates
      * ## Scopes
      * - `certificates`

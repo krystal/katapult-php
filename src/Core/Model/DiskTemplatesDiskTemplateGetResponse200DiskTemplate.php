@@ -42,6 +42,10 @@ class DiskTemplatesDiskTemplateGetResponse200DiskTemplate extends \ArrayObject
      */
     protected $universal;
     /**
+     * @var int|null
+     */
+    protected $sizeInGb;
+    /**
      * @var GetDiskTemplate200ResponseDiskTemplateLatestVersion|null
      */
     protected $latestVersion;
@@ -111,6 +115,19 @@ class DiskTemplatesDiskTemplateGetResponse200DiskTemplate extends \ArrayObject
     {
         $this->initialized['universal'] = true;
         $this->universal = $universal;
+
+        return $this;
+    }
+
+    public function getSizeInGb(): ?int
+    {
+        return $this->sizeInGb;
+    }
+
+    public function setSizeInGb(?int $sizeInGb): self
+    {
+        $this->initialized['sizeInGb'] = true;
+        $this->sizeInGb = $sizeInGb;
 
         return $this;
     }

@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class VirtualMachinePackagesGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    class AddressListsAddressListEntriesBulkPostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
         use DenormalizerAwareTrait;
         use NormalizerAwareTrait;
@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachinePackagesGetResponse200';
+            return $type === 'KatapultAPI\\Core\\Model\\AddressListsAddressListEntriesBulkPostResponse200';
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachinePackagesGetResponse200';
+            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\AddressListsAddressListEntriesBulkPostResponse200';
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -47,25 +47,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (isset($data['$recursiveRef'])) {
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
-            $object = new \KatapultAPI\Core\Model\VirtualMachinePackagesGetResponse200();
+            $object = new \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostResponse200();
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
-            if (\array_key_exists('pagination', $data)) {
-                $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'KatapultAPI\\Core\\Model\\PaginationObject', 'json', $context));
-                unset($data['pagination']);
-            }
-            if (\array_key_exists('virtual_machine_packages', $data)) {
-                $values = [];
-                foreach ($data['virtual_machine_packages'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\VirtualMachinePackage', 'json', $context);
-                }
-                $object->setVirtualMachinePackages($values);
-                unset($data['virtual_machine_packages']);
-            }
-            foreach ($data as $key => $value_1) {
+            foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
+                    $object[$key] = $value;
                 }
             }
 
@@ -75,15 +63,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
-            $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
-            $values = [];
-            foreach ($object->getVirtualMachinePackages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['virtual_machine_packages'] = $values;
-            foreach ($object as $key => $value_1) {
+            foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
+                    $data[$key] = $value;
                 }
             }
 
@@ -92,11 +74,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachinePackagesGetResponse200' => false];
+            return ['KatapultAPI\\Core\\Model\\AddressListsAddressListEntriesBulkPostResponse200' => false];
         }
     }
 } else {
-    class VirtualMachinePackagesGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    class AddressListsAddressListEntriesBulkPostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
         use DenormalizerAwareTrait;
         use NormalizerAwareTrait;
@@ -105,12 +87,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachinePackagesGetResponse200';
+            return $type === 'KatapultAPI\\Core\\Model\\AddressListsAddressListEntriesBulkPostResponse200';
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachinePackagesGetResponse200';
+            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\AddressListsAddressListEntriesBulkPostResponse200';
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -121,25 +103,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (isset($data['$recursiveRef'])) {
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
-            $object = new \KatapultAPI\Core\Model\VirtualMachinePackagesGetResponse200();
+            $object = new \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostResponse200();
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
-            if (\array_key_exists('pagination', $data)) {
-                $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'KatapultAPI\\Core\\Model\\PaginationObject', 'json', $context));
-                unset($data['pagination']);
-            }
-            if (\array_key_exists('virtual_machine_packages', $data)) {
-                $values = [];
-                foreach ($data['virtual_machine_packages'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\VirtualMachinePackage', 'json', $context);
-                }
-                $object->setVirtualMachinePackages($values);
-                unset($data['virtual_machine_packages']);
-            }
-            foreach ($data as $key => $value_1) {
+            foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
+                    $object[$key] = $value;
                 }
             }
 
@@ -152,15 +122,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
-            $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
-            $values = [];
-            foreach ($object->getVirtualMachinePackages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['virtual_machine_packages'] = $values;
-            foreach ($object as $key => $value_1) {
+            foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
+                    $data[$key] = $value;
                 }
             }
 
@@ -169,7 +133,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachinePackagesGetResponse200' => false];
+            return ['KatapultAPI\\Core\\Model\\AddressListsAddressListEntriesBulkPostResponse200' => false];
         }
     }
 }

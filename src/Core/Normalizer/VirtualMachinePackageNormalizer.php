@@ -99,6 +99,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUseDedicatedCpus($data['use_dedicated_cpus']);
                 unset($data['use_dedicated_cpus']);
             }
+            if (\array_key_exists('group', $data)) {
+                $object->setGroup($this->denormalizer->denormalize($data['group'], 'KatapultAPI\\Core\\Model\\VirtualMachinePackageGroup', 'json', $context));
+                unset($data['group']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -143,6 +147,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('useDedicatedCpus') && null !== $object->getUseDedicatedCpus()) {
                 $data['use_dedicated_cpus'] = $object->getUseDedicatedCpus();
+            }
+            if ($object->isInitialized('group') && null !== $object->getGroup()) {
+                $data['group'] = $this->normalizer->normalize($object->getGroup(), 'json', $context);
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -236,6 +243,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUseDedicatedCpus($data['use_dedicated_cpus']);
                 unset($data['use_dedicated_cpus']);
             }
+            if (\array_key_exists('group', $data)) {
+                $object->setGroup($this->denormalizer->denormalize($data['group'], 'KatapultAPI\\Core\\Model\\VirtualMachinePackageGroup', 'json', $context));
+                unset($data['group']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -283,6 +294,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('useDedicatedCpus') && null !== $object->getUseDedicatedCpus()) {
                 $data['use_dedicated_cpus'] = $object->getUseDedicatedCpus();
+            }
+            if ($object->isInitialized('group') && null !== $object->getGroup()) {
+                $data['group'] = $this->normalizer->normalize($object->getGroup(), 'json', $context);
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
