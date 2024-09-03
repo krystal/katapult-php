@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\ISO';
+            return $type === \KatapultAPI\Core\Model\ISO::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\ISO';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\ISO::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['name']);
             }
             if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
-                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'KatapultAPI\\Core\\Model\\ISOOperatingSystem', 'json', $context));
+                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], \KatapultAPI\Core\Model\ISOOperatingSystem::class, 'json', $context));
                 unset($data['operating_system']);
             } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
                 $object->setOperatingSystem(null);
@@ -97,7 +97,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\ISO' => false];
+            return [\KatapultAPI\Core\Model\ISO::class => false];
         }
     }
 } else {
@@ -110,12 +110,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\ISO';
+            return $type === \KatapultAPI\Core\Model\ISO::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\ISO';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\ISO::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -139,7 +139,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['name']);
             }
             if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
-                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'KatapultAPI\\Core\\Model\\ISOOperatingSystem', 'json', $context));
+                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], \KatapultAPI\Core\Model\ISOOperatingSystem::class, 'json', $context));
                 unset($data['operating_system']);
             } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
                 $object->setOperatingSystem(null);
@@ -179,7 +179,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\ISO' => false];
+            return [\KatapultAPI\Core\Model\ISO::class => false];
         }
     }
 }

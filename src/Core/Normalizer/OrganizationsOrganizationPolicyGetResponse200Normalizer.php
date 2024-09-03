@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationPolicyGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationPolicyGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -62,11 +62,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setPolicyName(null);
             }
             if (\array_key_exists('limits', $data)) {
-                $object->setLimits($this->denormalizer->denormalize($data['limits'], 'KatapultAPI\\Core\\Model\\PolicyLimits', 'json', $context));
+                $object->setLimits($this->denormalizer->denormalize($data['limits'], \KatapultAPI\Core\Model\PolicyLimits::class, 'json', $context));
                 unset($data['limits']);
             }
             if (\array_key_exists('features', $data)) {
-                $object->setFeatures($this->denormalizer->denormalize($data['features'], 'KatapultAPI\\Core\\Model\\PolicyFeatures', 'json', $context));
+                $object->setFeatures($this->denormalizer->denormalize($data['features'], \KatapultAPI\Core\Model\PolicyFeatures::class, 'json', $context));
                 unset($data['features']);
             }
             if (\array_key_exists('reasons_for_disallowing_resource_creation', $data)) {
@@ -109,7 +109,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationPolicyGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class => false];
         }
     }
 } else {
@@ -122,12 +122,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationPolicyGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationPolicyGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -153,11 +153,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setPolicyName(null);
             }
             if (\array_key_exists('limits', $data)) {
-                $object->setLimits($this->denormalizer->denormalize($data['limits'], 'KatapultAPI\\Core\\Model\\PolicyLimits', 'json', $context));
+                $object->setLimits($this->denormalizer->denormalize($data['limits'], \KatapultAPI\Core\Model\PolicyLimits::class, 'json', $context));
                 unset($data['limits']);
             }
             if (\array_key_exists('features', $data)) {
-                $object->setFeatures($this->denormalizer->denormalize($data['features'], 'KatapultAPI\\Core\\Model\\PolicyFeatures', 'json', $context));
+                $object->setFeatures($this->denormalizer->denormalize($data['features'], \KatapultAPI\Core\Model\PolicyFeatures::class, 'json', $context));
                 unset($data['features']);
             }
             if (\array_key_exists('reasons_for_disallowing_resource_creation', $data)) {
@@ -203,7 +203,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationPolicyGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class => false];
         }
     }
 }

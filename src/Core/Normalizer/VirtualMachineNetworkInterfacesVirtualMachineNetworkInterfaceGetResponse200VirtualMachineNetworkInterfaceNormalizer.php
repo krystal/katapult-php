@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface';
+            return $type === \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -56,7 +56,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['id']);
             }
             if (\array_key_exists('virtual_machine', $data)) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualMachine::class, 'json', $context));
                 unset($data['virtual_machine']);
             }
             if (\array_key_exists('name', $data)) {
@@ -64,7 +64,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['name']);
             }
             if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartNetwork', 'json', $context));
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\GetVMNIVMNIPartNetwork::class, 'json', $context));
                 unset($data['network']);
             }
             if (\array_key_exists('mac_address', $data)) {
@@ -78,13 +78,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('ip_addresses', $data)) {
                 $values = [];
                 foreach ($data['ip_addresses'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartIPAddresses', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetVMNIVMNIPartIPAddresses::class, 'json', $context);
                 }
                 $object->setIpAddresses($values);
                 unset($data['ip_addresses']);
             }
             if (\array_key_exists('speed_profile', $data)) {
-                $object->setSpeedProfile($this->denormalizer->denormalize($data['speed_profile'], 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartSpeedProfile', 'json', $context));
+                $object->setSpeedProfile($this->denormalizer->denormalize($data['speed_profile'], \KatapultAPI\Core\Model\GetVMNIVMNIPartSpeedProfile::class, 'json', $context));
                 unset($data['speed_profile']);
             }
             foreach ($data as $key => $value_1) {
@@ -138,7 +138,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface' => false];
+            return [\KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => false];
         }
     }
 } else {
@@ -151,12 +151,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface';
+            return $type === \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -176,7 +176,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['id']);
             }
             if (\array_key_exists('virtual_machine', $data)) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualMachine::class, 'json', $context));
                 unset($data['virtual_machine']);
             }
             if (\array_key_exists('name', $data)) {
@@ -184,7 +184,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['name']);
             }
             if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartNetwork', 'json', $context));
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\GetVMNIVMNIPartNetwork::class, 'json', $context));
                 unset($data['network']);
             }
             if (\array_key_exists('mac_address', $data)) {
@@ -198,13 +198,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('ip_addresses', $data)) {
                 $values = [];
                 foreach ($data['ip_addresses'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartIPAddresses', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetVMNIVMNIPartIPAddresses::class, 'json', $context);
                 }
                 $object->setIpAddresses($values);
                 unset($data['ip_addresses']);
             }
             if (\array_key_exists('speed_profile', $data)) {
-                $object->setSpeedProfile($this->denormalizer->denormalize($data['speed_profile'], 'KatapultAPI\\Core\\Model\\GetVMNIVMNIPartSpeedProfile', 'json', $context));
+                $object->setSpeedProfile($this->denormalizer->denormalize($data['speed_profile'], \KatapultAPI\Core\Model\GetVMNIVMNIPartSpeedProfile::class, 'json', $context));
                 unset($data['speed_profile']);
             }
             foreach ($data as $key => $value_1) {
@@ -261,7 +261,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface' => false];
+            return [\KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => false];
         }
     }
 }

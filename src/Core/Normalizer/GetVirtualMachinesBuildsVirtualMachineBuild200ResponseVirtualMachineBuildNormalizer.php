@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild';
+            return $type === \KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -64,7 +64,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['state']);
             }
             if (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] !== null) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine::class, 'json', $context));
                 unset($data['virtual_machine']);
             } elseif (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] === null) {
                 $object->setVirtualMachine(null);
@@ -111,7 +111,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild' => false];
+            return [\KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild::class => false];
         }
     }
 } else {
@@ -124,12 +124,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild';
+            return $type === \KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -157,7 +157,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['state']);
             }
             if (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] !== null) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuildVirtualMachine::class, 'json', $context));
                 unset($data['virtual_machine']);
             } elseif (\array_key_exists('virtual_machine', $data) && $data['virtual_machine'] === null) {
                 $object->setVirtualMachine(null);
@@ -207,7 +207,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild' => false];
+            return [\KatapultAPI\Core\Model\GetVirtualMachinesBuildsVirtualMachineBuild200ResponseVirtualMachineBuild::class => false];
         }
     }
 }

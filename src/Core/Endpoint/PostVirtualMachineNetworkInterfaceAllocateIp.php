@@ -63,10 +63,10 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \KatapultAPI\Core\Run
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateIpPostResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpBadRequestException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator400Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpBadRequestException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpForbiddenException($response);
@@ -78,10 +78,10 @@ class PostVirtualMachineNetworkInterfaceAllocateIp extends \KatapultAPI\Core\Run
             throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpUnprocessableEntityException($response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateIpServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

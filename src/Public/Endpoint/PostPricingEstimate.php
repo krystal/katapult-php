@@ -59,19 +59,19 @@ class PostPricingEstimate extends \KatapultAPI\Public\Runtime\Client\BaseEndpoin
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Public\Model\PricingEstimatePostResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Public\Exception\PostPricingEstimateBadRequestException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\PostPricingEstimateForbiddenException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator403Response', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\PostPricingEstimateForbiddenException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Public\Exception\PostPricingEstimateNotFoundException($response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\PostPricingEstimateTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\PostPricingEstimateTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
     }
 

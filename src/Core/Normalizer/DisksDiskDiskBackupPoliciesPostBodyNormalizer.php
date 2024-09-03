@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DisksDiskDiskBackupPoliciesPostBody';
+            return $type === \KatapultAPI\Core\Model\DisksDiskDiskBackupPoliciesPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DisksDiskDiskBackupPoliciesPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DisksDiskDiskBackupPoliciesPostBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,11 +52,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk', $data)) {
-                $object->setDisk($this->denormalizer->denormalize($data['disk'], 'KatapultAPI\\Core\\Model\\DiskLookup', 'json', $context));
+                $object->setDisk($this->denormalizer->denormalize($data['disk'], \KatapultAPI\Core\Model\DiskLookup::class, 'json', $context));
                 unset($data['disk']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\DiskBackupPolicyArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             foreach ($data as $key => $value) {
@@ -84,7 +84,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DisksDiskDiskBackupPoliciesPostBody' => false];
+            return [\KatapultAPI\Core\Model\DisksDiskDiskBackupPoliciesPostBody::class => false];
         }
     }
 } else {
@@ -97,12 +97,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DisksDiskDiskBackupPoliciesPostBody';
+            return $type === \KatapultAPI\Core\Model\DisksDiskDiskBackupPoliciesPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DisksDiskDiskBackupPoliciesPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DisksDiskDiskBackupPoliciesPostBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -118,11 +118,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk', $data)) {
-                $object->setDisk($this->denormalizer->denormalize($data['disk'], 'KatapultAPI\\Core\\Model\\DiskLookup', 'json', $context));
+                $object->setDisk($this->denormalizer->denormalize($data['disk'], \KatapultAPI\Core\Model\DiskLookup::class, 'json', $context));
                 unset($data['disk']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\DiskBackupPolicyArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             foreach ($data as $key => $value) {
@@ -153,7 +153,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DisksDiskDiskBackupPoliciesPostBody' => false];
+            return [\KatapultAPI\Core\Model\DisksDiskDiskBackupPoliciesPostBody::class => false];
         }
     }
 }

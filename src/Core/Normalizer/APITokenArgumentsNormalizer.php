@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\APITokenArguments';
+            return $type === \KatapultAPI\Core\Model\APITokenArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\APITokenArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\APITokenArguments::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -118,7 +118,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\APITokenArguments' => false];
+            return [\KatapultAPI\Core\Model\APITokenArguments::class => false];
         }
     }
 } else {
@@ -131,12 +131,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\APITokenArguments';
+            return $type === \KatapultAPI\Core\Model\APITokenArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\APITokenArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\APITokenArguments::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -221,7 +221,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\APITokenArguments' => false];
+            return [\KatapultAPI\Core\Model\APITokenArguments::class => false];
         }
     }
 }

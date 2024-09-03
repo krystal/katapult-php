@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200';
+            return $type === \KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,11 +52,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk_template_version', $data)) {
-                $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], 'KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200DiskTemplateVersion', 'json', $context));
+                $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], \KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200DiskTemplateVersion::class, 'json', $context));
                 unset($data['disk_template_version']);
             }
             if (\array_key_exists('spec', $data)) {
-                $object->setSpec($this->denormalizer->denormalize($data['spec'], 'KatapultAPI\\Core\\Model\\TemplateSpec', 'json', $context));
+                $object->setSpec($this->denormalizer->denormalize($data['spec'], \KatapultAPI\Core\Model\TemplateSpec::class, 'json', $context));
                 unset($data['spec']);
             }
             foreach ($data as $key => $value) {
@@ -84,7 +84,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200::class => false];
         }
     }
 } else {
@@ -97,12 +97,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200';
+            return $type === \KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -118,11 +118,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk_template_version', $data)) {
-                $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], 'KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200DiskTemplateVersion', 'json', $context));
+                $object->setDiskTemplateVersion($this->denormalizer->denormalize($data['disk_template_version'], \KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200DiskTemplateVersion::class, 'json', $context));
                 unset($data['disk_template_version']);
             }
             if (\array_key_exists('spec', $data)) {
-                $object->setSpec($this->denormalizer->denormalize($data['spec'], 'KatapultAPI\\Core\\Model\\TemplateSpec', 'json', $context));
+                $object->setSpec($this->denormalizer->denormalize($data['spec'], \KatapultAPI\Core\Model\TemplateSpec::class, 'json', $context));
                 unset($data['spec']);
             }
             foreach ($data as $key => $value) {
@@ -153,7 +153,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200::class => false];
         }
     }
 }

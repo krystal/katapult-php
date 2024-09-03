@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributes';
+            return $type === \KatapultAPI\Core\Model\DNSRecordContentAttributes::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributes';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DNSRecordContentAttributes::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,55 +52,55 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('A', $data) && $data['A'] !== null) {
-                $object->setA($this->denormalizer->denormalize($data['A'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesA', 'json', $context));
+                $object->setA($this->denormalizer->denormalize($data['A'], \KatapultAPI\Core\Model\DNSRecordContentAttributesA::class, 'json', $context));
                 unset($data['A']);
             } elseif (\array_key_exists('A', $data) && $data['A'] === null) {
                 $object->setA(null);
             }
             if (\array_key_exists('AAAA', $data) && $data['AAAA'] !== null) {
-                $object->setAAAA($this->denormalizer->denormalize($data['AAAA'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesAAAA', 'json', $context));
+                $object->setAAAA($this->denormalizer->denormalize($data['AAAA'], \KatapultAPI\Core\Model\DNSRecordContentAttributesAAAA::class, 'json', $context));
                 unset($data['AAAA']);
             } elseif (\array_key_exists('AAAA', $data) && $data['AAAA'] === null) {
                 $object->setAAAA(null);
             }
             if (\array_key_exists('ALIAS', $data) && $data['ALIAS'] !== null) {
-                $object->setALIAS($this->denormalizer->denormalize($data['ALIAS'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesALIAS', 'json', $context));
+                $object->setALIAS($this->denormalizer->denormalize($data['ALIAS'], \KatapultAPI\Core\Model\DNSRecordContentAttributesALIAS::class, 'json', $context));
                 unset($data['ALIAS']);
             } elseif (\array_key_exists('ALIAS', $data) && $data['ALIAS'] === null) {
                 $object->setALIAS(null);
             }
             if (\array_key_exists('CAA', $data) && $data['CAA'] !== null) {
-                $object->setCAA($this->denormalizer->denormalize($data['CAA'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesCAA', 'json', $context));
+                $object->setCAA($this->denormalizer->denormalize($data['CAA'], \KatapultAPI\Core\Model\DNSRecordContentAttributesCAA::class, 'json', $context));
                 unset($data['CAA']);
             } elseif (\array_key_exists('CAA', $data) && $data['CAA'] === null) {
                 $object->setCAA(null);
             }
             if (\array_key_exists('CNAME', $data) && $data['CNAME'] !== null) {
-                $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesCNAME', 'json', $context));
+                $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], \KatapultAPI\Core\Model\DNSRecordContentAttributesCNAME::class, 'json', $context));
                 unset($data['CNAME']);
             } elseif (\array_key_exists('CNAME', $data) && $data['CNAME'] === null) {
                 $object->setCNAME(null);
             }
             if (\array_key_exists('IPS', $data) && $data['IPS'] !== null) {
-                $object->setIPS($this->denormalizer->denormalize($data['IPS'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesIPS', 'json', $context));
+                $object->setIPS($this->denormalizer->denormalize($data['IPS'], \KatapultAPI\Core\Model\DNSRecordContentAttributesIPS::class, 'json', $context));
                 unset($data['IPS']);
             } elseif (\array_key_exists('IPS', $data) && $data['IPS'] === null) {
                 $object->setIPS(null);
             }
             if (\array_key_exists('MX', $data) && $data['MX'] !== null) {
-                $object->setMX($this->denormalizer->denormalize($data['MX'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesMX', 'json', $context));
+                $object->setMX($this->denormalizer->denormalize($data['MX'], \KatapultAPI\Core\Model\DNSRecordContentAttributesMX::class, 'json', $context));
                 unset($data['MX']);
             } elseif (\array_key_exists('MX', $data) && $data['MX'] === null) {
                 $object->setMX(null);
             }
             if (\array_key_exists('NS', $data) && $data['NS'] !== null) {
-                $object->setNS($this->denormalizer->denormalize($data['NS'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesNS', 'json', $context));
+                $object->setNS($this->denormalizer->denormalize($data['NS'], \KatapultAPI\Core\Model\DNSRecordContentAttributesNS::class, 'json', $context));
                 unset($data['NS']);
             } elseif (\array_key_exists('NS', $data) && $data['NS'] === null) {
                 $object->setNS(null);
             }
             if (\array_key_exists('PTR', $data) && $data['PTR'] !== null) {
-                $object->setPTR($this->denormalizer->denormalize($data['PTR'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesPTR', 'json', $context));
+                $object->setPTR($this->denormalizer->denormalize($data['PTR'], \KatapultAPI\Core\Model\DNSRecordContentAttributesPTR::class, 'json', $context));
                 unset($data['PTR']);
             } elseif (\array_key_exists('PTR', $data) && $data['PTR'] === null) {
                 $object->setPTR(null);
@@ -116,25 +116,25 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setSOA(null);
             }
             if (\array_key_exists('SRV', $data) && $data['SRV'] !== null) {
-                $object->setSRV($this->denormalizer->denormalize($data['SRV'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesSRV', 'json', $context));
+                $object->setSRV($this->denormalizer->denormalize($data['SRV'], \KatapultAPI\Core\Model\DNSRecordContentAttributesSRV::class, 'json', $context));
                 unset($data['SRV']);
             } elseif (\array_key_exists('SRV', $data) && $data['SRV'] === null) {
                 $object->setSRV(null);
             }
             if (\array_key_exists('SSHFP', $data) && $data['SSHFP'] !== null) {
-                $object->setSSHFP($this->denormalizer->denormalize($data['SSHFP'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesSSHFP', 'json', $context));
+                $object->setSSHFP($this->denormalizer->denormalize($data['SSHFP'], \KatapultAPI\Core\Model\DNSRecordContentAttributesSSHFP::class, 'json', $context));
                 unset($data['SSHFP']);
             } elseif (\array_key_exists('SSHFP', $data) && $data['SSHFP'] === null) {
                 $object->setSSHFP(null);
             }
             if (\array_key_exists('TXT', $data) && $data['TXT'] !== null) {
-                $object->setTXT($this->denormalizer->denormalize($data['TXT'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesTXT', 'json', $context));
+                $object->setTXT($this->denormalizer->denormalize($data['TXT'], \KatapultAPI\Core\Model\DNSRecordContentAttributesTXT::class, 'json', $context));
                 unset($data['TXT']);
             } elseif (\array_key_exists('TXT', $data) && $data['TXT'] === null) {
                 $object->setTXT(null);
             }
             if (\array_key_exists('VirtualMachine', $data) && $data['VirtualMachine'] !== null) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], \KatapultAPI\Core\Model\DNSRecordContentAttributesVirtualMachine::class, 'json', $context));
                 unset($data['VirtualMachine']);
             } elseif (\array_key_exists('VirtualMachine', $data) && $data['VirtualMachine'] === null) {
                 $object->setVirtualMachine(null);
@@ -208,7 +208,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DNSRecordContentAttributes' => false];
+            return [\KatapultAPI\Core\Model\DNSRecordContentAttributes::class => false];
         }
     }
 } else {
@@ -221,12 +221,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributes';
+            return $type === \KatapultAPI\Core\Model\DNSRecordContentAttributes::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributes';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DNSRecordContentAttributes::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -242,55 +242,55 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('A', $data) && $data['A'] !== null) {
-                $object->setA($this->denormalizer->denormalize($data['A'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesA', 'json', $context));
+                $object->setA($this->denormalizer->denormalize($data['A'], \KatapultAPI\Core\Model\DNSRecordContentAttributesA::class, 'json', $context));
                 unset($data['A']);
             } elseif (\array_key_exists('A', $data) && $data['A'] === null) {
                 $object->setA(null);
             }
             if (\array_key_exists('AAAA', $data) && $data['AAAA'] !== null) {
-                $object->setAAAA($this->denormalizer->denormalize($data['AAAA'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesAAAA', 'json', $context));
+                $object->setAAAA($this->denormalizer->denormalize($data['AAAA'], \KatapultAPI\Core\Model\DNSRecordContentAttributesAAAA::class, 'json', $context));
                 unset($data['AAAA']);
             } elseif (\array_key_exists('AAAA', $data) && $data['AAAA'] === null) {
                 $object->setAAAA(null);
             }
             if (\array_key_exists('ALIAS', $data) && $data['ALIAS'] !== null) {
-                $object->setALIAS($this->denormalizer->denormalize($data['ALIAS'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesALIAS', 'json', $context));
+                $object->setALIAS($this->denormalizer->denormalize($data['ALIAS'], \KatapultAPI\Core\Model\DNSRecordContentAttributesALIAS::class, 'json', $context));
                 unset($data['ALIAS']);
             } elseif (\array_key_exists('ALIAS', $data) && $data['ALIAS'] === null) {
                 $object->setALIAS(null);
             }
             if (\array_key_exists('CAA', $data) && $data['CAA'] !== null) {
-                $object->setCAA($this->denormalizer->denormalize($data['CAA'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesCAA', 'json', $context));
+                $object->setCAA($this->denormalizer->denormalize($data['CAA'], \KatapultAPI\Core\Model\DNSRecordContentAttributesCAA::class, 'json', $context));
                 unset($data['CAA']);
             } elseif (\array_key_exists('CAA', $data) && $data['CAA'] === null) {
                 $object->setCAA(null);
             }
             if (\array_key_exists('CNAME', $data) && $data['CNAME'] !== null) {
-                $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesCNAME', 'json', $context));
+                $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], \KatapultAPI\Core\Model\DNSRecordContentAttributesCNAME::class, 'json', $context));
                 unset($data['CNAME']);
             } elseif (\array_key_exists('CNAME', $data) && $data['CNAME'] === null) {
                 $object->setCNAME(null);
             }
             if (\array_key_exists('IPS', $data) && $data['IPS'] !== null) {
-                $object->setIPS($this->denormalizer->denormalize($data['IPS'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesIPS', 'json', $context));
+                $object->setIPS($this->denormalizer->denormalize($data['IPS'], \KatapultAPI\Core\Model\DNSRecordContentAttributesIPS::class, 'json', $context));
                 unset($data['IPS']);
             } elseif (\array_key_exists('IPS', $data) && $data['IPS'] === null) {
                 $object->setIPS(null);
             }
             if (\array_key_exists('MX', $data) && $data['MX'] !== null) {
-                $object->setMX($this->denormalizer->denormalize($data['MX'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesMX', 'json', $context));
+                $object->setMX($this->denormalizer->denormalize($data['MX'], \KatapultAPI\Core\Model\DNSRecordContentAttributesMX::class, 'json', $context));
                 unset($data['MX']);
             } elseif (\array_key_exists('MX', $data) && $data['MX'] === null) {
                 $object->setMX(null);
             }
             if (\array_key_exists('NS', $data) && $data['NS'] !== null) {
-                $object->setNS($this->denormalizer->denormalize($data['NS'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesNS', 'json', $context));
+                $object->setNS($this->denormalizer->denormalize($data['NS'], \KatapultAPI\Core\Model\DNSRecordContentAttributesNS::class, 'json', $context));
                 unset($data['NS']);
             } elseif (\array_key_exists('NS', $data) && $data['NS'] === null) {
                 $object->setNS(null);
             }
             if (\array_key_exists('PTR', $data) && $data['PTR'] !== null) {
-                $object->setPTR($this->denormalizer->denormalize($data['PTR'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesPTR', 'json', $context));
+                $object->setPTR($this->denormalizer->denormalize($data['PTR'], \KatapultAPI\Core\Model\DNSRecordContentAttributesPTR::class, 'json', $context));
                 unset($data['PTR']);
             } elseif (\array_key_exists('PTR', $data) && $data['PTR'] === null) {
                 $object->setPTR(null);
@@ -306,25 +306,25 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setSOA(null);
             }
             if (\array_key_exists('SRV', $data) && $data['SRV'] !== null) {
-                $object->setSRV($this->denormalizer->denormalize($data['SRV'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesSRV', 'json', $context));
+                $object->setSRV($this->denormalizer->denormalize($data['SRV'], \KatapultAPI\Core\Model\DNSRecordContentAttributesSRV::class, 'json', $context));
                 unset($data['SRV']);
             } elseif (\array_key_exists('SRV', $data) && $data['SRV'] === null) {
                 $object->setSRV(null);
             }
             if (\array_key_exists('SSHFP', $data) && $data['SSHFP'] !== null) {
-                $object->setSSHFP($this->denormalizer->denormalize($data['SSHFP'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesSSHFP', 'json', $context));
+                $object->setSSHFP($this->denormalizer->denormalize($data['SSHFP'], \KatapultAPI\Core\Model\DNSRecordContentAttributesSSHFP::class, 'json', $context));
                 unset($data['SSHFP']);
             } elseif (\array_key_exists('SSHFP', $data) && $data['SSHFP'] === null) {
                 $object->setSSHFP(null);
             }
             if (\array_key_exists('TXT', $data) && $data['TXT'] !== null) {
-                $object->setTXT($this->denormalizer->denormalize($data['TXT'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesTXT', 'json', $context));
+                $object->setTXT($this->denormalizer->denormalize($data['TXT'], \KatapultAPI\Core\Model\DNSRecordContentAttributesTXT::class, 'json', $context));
                 unset($data['TXT']);
             } elseif (\array_key_exists('TXT', $data) && $data['TXT'] === null) {
                 $object->setTXT(null);
             }
             if (\array_key_exists('VirtualMachine', $data) && $data['VirtualMachine'] !== null) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], 'KatapultAPI\\Core\\Model\\DNSRecordContentAttributesVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], \KatapultAPI\Core\Model\DNSRecordContentAttributesVirtualMachine::class, 'json', $context));
                 unset($data['VirtualMachine']);
             } elseif (\array_key_exists('VirtualMachine', $data) && $data['VirtualMachine'] === null) {
                 $object->setVirtualMachine(null);
@@ -401,7 +401,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DNSRecordContentAttributes' => false];
+            return [\KatapultAPI\Core\Model\DNSRecordContentAttributes::class => false];
         }
     }
 }

@@ -76,7 +76,7 @@ class GetOrganizationPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationPolicyGetResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyBadRequestException($response);
@@ -85,13 +85,13 @@ class GetOrganizationPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
             throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyNotFoundException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseOrganizationNotFoundResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyNotFoundException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\GetOrganizationPolicyServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

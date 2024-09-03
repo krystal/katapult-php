@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupDeleteBody';
+            return $type === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupDeleteBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,7 +52,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('security_group', $data)) {
-                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'KatapultAPI\\Core\\Model\\SecurityGroupLookup', 'json', $context));
+                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], \KatapultAPI\Core\Model\SecurityGroupLookup::class, 'json', $context));
                 unset($data['security_group']);
             }
             foreach ($data as $key => $value) {
@@ -79,7 +79,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupDeleteBody' => false];
+            return [\KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => false];
         }
     }
 } else {
@@ -92,12 +92,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupDeleteBody';
+            return $type === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupDeleteBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -113,7 +113,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('security_group', $data)) {
-                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'KatapultAPI\\Core\\Model\\SecurityGroupLookup', 'json', $context));
+                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], \KatapultAPI\Core\Model\SecurityGroupLookup::class, 'json', $context));
                 unset($data['security_group']);
             }
             foreach ($data as $key => $value) {
@@ -143,7 +143,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupDeleteBody' => false];
+            return [\KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => false];
         }
     }
 }

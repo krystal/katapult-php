@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -72,17 +72,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['created_at']);
             }
             if (\array_key_exists('zone', $data)) {
-                $object->setZone($this->denormalizer->denormalize($data['zone'], 'KatapultAPI\\Core\\Model\\Zone', 'json', $context));
+                $object->setZone($this->denormalizer->denormalize($data['zone'], \KatapultAPI\Core\Model\Zone::class, 'json', $context));
                 unset($data['zone']);
             }
             if (\array_key_exists('package', $data) && $data['package'] !== null) {
-                $object->setPackage($this->denormalizer->denormalize($data['package'], 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage', 'json', $context));
+                $object->setPackage($this->denormalizer->denormalize($data['package'], \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage::class, 'json', $context));
                 unset($data['package']);
             } elseif (\array_key_exists('package', $data) && $data['package'] === null) {
                 $object->setPackage(null);
             }
             if (\array_key_exists('gpu_type', $data) && $data['gpu_type'] !== null) {
-                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType', 'json', $context));
+                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType::class, 'json', $context));
                 unset($data['gpu_type']);
             } elseif (\array_key_exists('gpu_type', $data) && $data['gpu_type'] === null) {
                 $object->setGpuType(null);
@@ -90,13 +90,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('ip_addresses', $data)) {
                 $values = [];
                 foreach ($data['ip_addresses'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachinesPartIPAddresses', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationVirtualMachinesPartIPAddresses::class, 'json', $context);
                 }
                 $object->setIpAddresses($values);
                 unset($data['ip_addresses']);
             }
             if (\array_key_exists('hypervisor', $data) && $data['hypervisor'] !== null) {
-                $object->setHypervisor($this->denormalizer->denormalize($data['hypervisor'], 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor', 'json', $context));
+                $object->setHypervisor($this->denormalizer->denormalize($data['hypervisor'], \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor::class, 'json', $context));
                 unset($data['hypervisor']);
             } elseif (\array_key_exists('hypervisor', $data) && $data['hypervisor'] === null) {
                 $object->setHypervisor(null);
@@ -158,7 +158,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class => false];
         }
     }
 } else {
@@ -171,12 +171,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -212,17 +212,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['created_at']);
             }
             if (\array_key_exists('zone', $data)) {
-                $object->setZone($this->denormalizer->denormalize($data['zone'], 'KatapultAPI\\Core\\Model\\Zone', 'json', $context));
+                $object->setZone($this->denormalizer->denormalize($data['zone'], \KatapultAPI\Core\Model\Zone::class, 'json', $context));
                 unset($data['zone']);
             }
             if (\array_key_exists('package', $data) && $data['package'] !== null) {
-                $object->setPackage($this->denormalizer->denormalize($data['package'], 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage', 'json', $context));
+                $object->setPackage($this->denormalizer->denormalize($data['package'], \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachinesPackage::class, 'json', $context));
                 unset($data['package']);
             } elseif (\array_key_exists('package', $data) && $data['package'] === null) {
                 $object->setPackage(null);
             }
             if (\array_key_exists('gpu_type', $data) && $data['gpu_type'] !== null) {
-                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType', 'json', $context));
+                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachinesGpuType::class, 'json', $context));
                 unset($data['gpu_type']);
             } elseif (\array_key_exists('gpu_type', $data) && $data['gpu_type'] === null) {
                 $object->setGpuType(null);
@@ -230,13 +230,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('ip_addresses', $data)) {
                 $values = [];
                 foreach ($data['ip_addresses'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachinesPartIPAddresses', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationVirtualMachinesPartIPAddresses::class, 'json', $context);
                 }
                 $object->setIpAddresses($values);
                 unset($data['ip_addresses']);
             }
             if (\array_key_exists('hypervisor', $data) && $data['hypervisor'] !== null) {
-                $object->setHypervisor($this->denormalizer->denormalize($data['hypervisor'], 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor', 'json', $context));
+                $object->setHypervisor($this->denormalizer->denormalize($data['hypervisor'], \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachinesHypervisor::class, 'json', $context));
                 unset($data['hypervisor']);
             } elseif (\array_key_exists('hypervisor', $data) && $data['hypervisor'] === null) {
                 $object->setHypervisor(null);
@@ -301,7 +301,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class => false];
         }
     }
 }
