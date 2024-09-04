@@ -104,6 +104,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\PricesNotAvailableForManagedOrganizationsSchema::class => PricesNotAvailableForManagedOrganizationsSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationDeletionSteps::class => OrganizationDeletionStepsNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationDeletionStep::class => OrganizationDeletionStepNormalizer::class,
+
+            \KatapultAPI\Core\Model\PermissionDenied::class => PermissionDeniedNormalizer::class,
+
+            \KatapultAPI\Core\Model\PermissionDeniedSchema::class => PermissionDeniedSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\PaginationObject::class => PaginationObjectNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class => GetOrganizationUsersWithAccess200ResponseUsersNormalizer::class,
@@ -123,6 +131,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ValidationError::class => ValidationErrorNormalizer::class,
 
             \KatapultAPI\Core\Model\ValidationErrorSchema::class => ValidationErrorSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeletionStepsNotSatisfied::class => DeletionStepsNotSatisfiedNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeletionStepsNotSatisfiedSchema::class => DeletionStepsNotSatisfiedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationRequiredSchema::class => ManagedOrganizationRequiredSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class => GetOrganizationDisks200ResponseDiskNormalizer::class,
 
@@ -177,10 +191,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DiskInstallationAttribute::class => DiskInstallationAttributeNormalizer::class,
 
             \KatapultAPI\Core\Model\Task::class => TaskNormalizer::class,
-
-            \KatapultAPI\Core\Model\PermissionDenied::class => PermissionDeniedNormalizer::class,
-
-            \KatapultAPI\Core\Model\PermissionDeniedSchema::class => PermissionDeniedSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\TaskQueueingError::class => TaskQueueingErrorNormalizer::class,
 
@@ -958,6 +968,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => ResponseOrganizationNotFoundResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => ResponseDeletionFailedResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => ResponseTaskQueueingErrorResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
@@ -1458,6 +1470,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationPricesGetResponse200::class => OrganizationsOrganizationPricesGetResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => OrganizationsOrganizationDeletionStepsGetResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => OrganizationsOrganizationUsersWithAccessGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => OrganizationsOrganizationManagedGetResponse200Normalizer::class,
@@ -1465,6 +1479,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => OrganizationsOrganizationManagedPostBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => OrganizationsOrganizationManagedPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => ManagedOrganizationsOrganizationDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => OrganizationsOrganizationSshKeysGetResponse200Normalizer::class,
 
@@ -1788,6 +1806,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PriceResourceWithSinglePriceVariant::class => false,
                 \KatapultAPI\Core\Model\SinglePriceVariant::class => false,
                 \KatapultAPI\Core\Model\PricesNotAvailableForManagedOrganizationsSchema::class => false,
+                \KatapultAPI\Core\Model\OrganizationDeletionSteps::class => false,
+                \KatapultAPI\Core\Model\OrganizationDeletionStep::class => false,
+                \KatapultAPI\Core\Model\PermissionDenied::class => false,
+                \KatapultAPI\Core\Model\PermissionDeniedSchema::class => false,
                 \KatapultAPI\Core\Model\PaginationObject::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsersUser::class => false,
@@ -1798,6 +1820,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationLimitReachedSchema::class => false,
                 \KatapultAPI\Core\Model\ValidationError::class => false,
                 \KatapultAPI\Core\Model\ValidationErrorSchema::class => false,
+                \KatapultAPI\Core\Model\DeletionStepsNotSatisfied::class => false,
+                \KatapultAPI\Core\Model\DeletionStepsNotSatisfiedSchema::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationRequiredSchema::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDiskVirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDisksPartVirtualMachineDisk::class => false,
@@ -1825,8 +1850,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\Attachment::class => false,
                 \KatapultAPI\Core\Model\DiskInstallationAttribute::class => false,
                 \KatapultAPI\Core\Model\Task::class => false,
-                \KatapultAPI\Core\Model\PermissionDenied::class => false,
-                \KatapultAPI\Core\Model\PermissionDeniedSchema::class => false,
                 \KatapultAPI\Core\Model\TaskQueueingError::class => false,
                 \KatapultAPI\Core\Model\GetDisk200ResponseDisk::class => false,
                 \KatapultAPI\Core\Model\GetDisk200ResponseDiskIoProfile::class => false,
@@ -2215,6 +2238,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
                 \KatapultAPI\Core\Model\ResponseDataCenterNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseDiskNotFoundResponse::class => false,
@@ -2465,10 +2489,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyLimitsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPricesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostResponse201::class => false,
@@ -2675,6 +2702,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\PricesNotAvailableForManagedOrganizationsSchema::class => PricesNotAvailableForManagedOrganizationsSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationDeletionSteps::class => OrganizationDeletionStepsNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationDeletionStep::class => OrganizationDeletionStepNormalizer::class,
+
+            \KatapultAPI\Core\Model\PermissionDenied::class => PermissionDeniedNormalizer::class,
+
+            \KatapultAPI\Core\Model\PermissionDeniedSchema::class => PermissionDeniedSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\PaginationObject::class => PaginationObjectNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class => GetOrganizationUsersWithAccess200ResponseUsersNormalizer::class,
@@ -2694,6 +2729,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ValidationError::class => ValidationErrorNormalizer::class,
 
             \KatapultAPI\Core\Model\ValidationErrorSchema::class => ValidationErrorSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeletionStepsNotSatisfied::class => DeletionStepsNotSatisfiedNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeletionStepsNotSatisfiedSchema::class => DeletionStepsNotSatisfiedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationRequiredSchema::class => ManagedOrganizationRequiredSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class => GetOrganizationDisks200ResponseDiskNormalizer::class,
 
@@ -2748,10 +2789,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DiskInstallationAttribute::class => DiskInstallationAttributeNormalizer::class,
 
             \KatapultAPI\Core\Model\Task::class => TaskNormalizer::class,
-
-            \KatapultAPI\Core\Model\PermissionDenied::class => PermissionDeniedNormalizer::class,
-
-            \KatapultAPI\Core\Model\PermissionDeniedSchema::class => PermissionDeniedSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\TaskQueueingError::class => TaskQueueingErrorNormalizer::class,
 
@@ -3529,6 +3566,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => ResponseOrganizationNotFoundResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => ResponseDeletionFailedResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => ResponseTaskQueueingErrorResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
@@ -4029,6 +4068,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationPricesGetResponse200::class => OrganizationsOrganizationPricesGetResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => OrganizationsOrganizationDeletionStepsGetResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => OrganizationsOrganizationUsersWithAccessGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => OrganizationsOrganizationManagedGetResponse200Normalizer::class,
@@ -4036,6 +4077,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => OrganizationsOrganizationManagedPostBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => OrganizationsOrganizationManagedPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => ManagedOrganizationsOrganizationDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => OrganizationsOrganizationSshKeysGetResponse200Normalizer::class,
 
@@ -4362,6 +4407,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PriceResourceWithSinglePriceVariant::class => false,
                 \KatapultAPI\Core\Model\SinglePriceVariant::class => false,
                 \KatapultAPI\Core\Model\PricesNotAvailableForManagedOrganizationsSchema::class => false,
+                \KatapultAPI\Core\Model\OrganizationDeletionSteps::class => false,
+                \KatapultAPI\Core\Model\OrganizationDeletionStep::class => false,
+                \KatapultAPI\Core\Model\PermissionDenied::class => false,
+                \KatapultAPI\Core\Model\PermissionDeniedSchema::class => false,
                 \KatapultAPI\Core\Model\PaginationObject::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsersUser::class => false,
@@ -4372,6 +4421,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationLimitReachedSchema::class => false,
                 \KatapultAPI\Core\Model\ValidationError::class => false,
                 \KatapultAPI\Core\Model\ValidationErrorSchema::class => false,
+                \KatapultAPI\Core\Model\DeletionStepsNotSatisfied::class => false,
+                \KatapultAPI\Core\Model\DeletionStepsNotSatisfiedSchema::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationRequiredSchema::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDiskVirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDisksPartVirtualMachineDisk::class => false,
@@ -4399,8 +4451,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\Attachment::class => false,
                 \KatapultAPI\Core\Model\DiskInstallationAttribute::class => false,
                 \KatapultAPI\Core\Model\Task::class => false,
-                \KatapultAPI\Core\Model\PermissionDenied::class => false,
-                \KatapultAPI\Core\Model\PermissionDeniedSchema::class => false,
                 \KatapultAPI\Core\Model\TaskQueueingError::class => false,
                 \KatapultAPI\Core\Model\GetDisk200ResponseDisk::class => false,
                 \KatapultAPI\Core\Model\GetDisk200ResponseDiskIoProfile::class => false,
@@ -4789,6 +4839,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
                 \KatapultAPI\Core\Model\ResponseDataCenterNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseDiskNotFoundResponse::class => false,
@@ -5039,10 +5090,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyLimitsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPricesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostResponse201::class => false,
