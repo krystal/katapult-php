@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,15 +52,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('task', $data)) {
-                $object->setTask($this->denormalizer->denormalize($data['task'], 'KatapultAPI\\Core\\Model\\PostOrganizationVirtualMachinesBuild201ResponseTask', 'json', $context));
+                $object->setTask($this->denormalizer->denormalize($data['task'], \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseTask::class, 'json', $context));
                 unset($data['task']);
             }
             if (\array_key_exists('build', $data)) {
-                $object->setBuild($this->denormalizer->denormalize($data['build'], 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build', 'json', $context));
+                $object->setBuild($this->denormalizer->denormalize($data['build'], \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class, 'json', $context));
                 unset($data['build']);
             }
             if (\array_key_exists('virtual_machine_build', $data)) {
-                $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'KatapultAPI\\Core\\Model\\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild', 'json', $context));
+                $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild::class, 'json', $context));
                 unset($data['virtual_machine_build']);
             }
             if (\array_key_exists('hostname', $data)) {
@@ -70,7 +70,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -107,7 +107,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => false];
         }
     }
 } else {
@@ -120,12 +120,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -141,15 +141,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('task', $data)) {
-                $object->setTask($this->denormalizer->denormalize($data['task'], 'KatapultAPI\\Core\\Model\\PostOrganizationVirtualMachinesBuild201ResponseTask', 'json', $context));
+                $object->setTask($this->denormalizer->denormalize($data['task'], \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseTask::class, 'json', $context));
                 unset($data['task']);
             }
             if (\array_key_exists('build', $data)) {
-                $object->setBuild($this->denormalizer->denormalize($data['build'], 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build', 'json', $context));
+                $object->setBuild($this->denormalizer->denormalize($data['build'], \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class, 'json', $context));
                 unset($data['build']);
             }
             if (\array_key_exists('virtual_machine_build', $data)) {
-                $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], 'KatapultAPI\\Core\\Model\\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild', 'json', $context));
+                $object->setVirtualMachineBuild($this->denormalizer->denormalize($data['virtual_machine_build'], \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild::class, 'json', $context));
                 unset($data['virtual_machine_build']);
             }
             if (\array_key_exists('hostname', $data)) {
@@ -159,7 +159,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -199,7 +199,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostResponse201' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => false];
         }
     }
 }

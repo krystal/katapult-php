@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PolicyFeatures';
+            return $type === \KatapultAPI\Core\Model\PolicyFeatures::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PolicyFeatures';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PolicyFeatures::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,23 +52,23 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk_bus_configuration', $data)) {
-                $object->setDiskBusConfiguration($this->denormalizer->denormalize($data['disk_bus_configuration'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setDiskBusConfiguration($this->denormalizer->denormalize($data['disk_bus_configuration'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['disk_bus_configuration']);
             }
             if (\array_key_exists('zone_selection', $data)) {
-                $object->setZoneSelection($this->denormalizer->denormalize($data['zone_selection'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setZoneSelection($this->denormalizer->denormalize($data['zone_selection'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['zone_selection']);
             }
             if (\array_key_exists('restricted_traffic_types', $data)) {
-                $object->setRestrictedTrafficTypes($this->denormalizer->denormalize($data['restricted_traffic_types'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setRestrictedTrafficTypes($this->denormalizer->denormalize($data['restricted_traffic_types'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['restricted_traffic_types']);
             }
             if (\array_key_exists('suspension', $data)) {
-                $object->setSuspension($this->denormalizer->denormalize($data['suspension'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setSuspension($this->denormalizer->denormalize($data['suspension'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['suspension']);
             }
             if (\array_key_exists('flexible_virtual_machine_resources', $data)) {
-                $object->setFlexibleVirtualMachineResources($this->denormalizer->denormalize($data['flexible_virtual_machine_resources'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setFlexibleVirtualMachineResources($this->denormalizer->denormalize($data['flexible_virtual_machine_resources'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['flexible_virtual_machine_resources']);
             }
             foreach ($data as $key => $value) {
@@ -109,7 +109,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PolicyFeatures' => false];
+            return [\KatapultAPI\Core\Model\PolicyFeatures::class => false];
         }
     }
 } else {
@@ -122,12 +122,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PolicyFeatures';
+            return $type === \KatapultAPI\Core\Model\PolicyFeatures::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PolicyFeatures';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PolicyFeatures::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -143,23 +143,23 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk_bus_configuration', $data)) {
-                $object->setDiskBusConfiguration($this->denormalizer->denormalize($data['disk_bus_configuration'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setDiskBusConfiguration($this->denormalizer->denormalize($data['disk_bus_configuration'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['disk_bus_configuration']);
             }
             if (\array_key_exists('zone_selection', $data)) {
-                $object->setZoneSelection($this->denormalizer->denormalize($data['zone_selection'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setZoneSelection($this->denormalizer->denormalize($data['zone_selection'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['zone_selection']);
             }
             if (\array_key_exists('restricted_traffic_types', $data)) {
-                $object->setRestrictedTrafficTypes($this->denormalizer->denormalize($data['restricted_traffic_types'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setRestrictedTrafficTypes($this->denormalizer->denormalize($data['restricted_traffic_types'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['restricted_traffic_types']);
             }
             if (\array_key_exists('suspension', $data)) {
-                $object->setSuspension($this->denormalizer->denormalize($data['suspension'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setSuspension($this->denormalizer->denormalize($data['suspension'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['suspension']);
             }
             if (\array_key_exists('flexible_virtual_machine_resources', $data)) {
-                $object->setFlexibleVirtualMachineResources($this->denormalizer->denormalize($data['flexible_virtual_machine_resources'], 'KatapultAPI\\Core\\Model\\PolicyFeature', 'json', $context));
+                $object->setFlexibleVirtualMachineResources($this->denormalizer->denormalize($data['flexible_virtual_machine_resources'], \KatapultAPI\Core\Model\PolicyFeature::class, 'json', $context));
                 unset($data['flexible_virtual_machine_resources']);
             }
             foreach ($data as $key => $value) {
@@ -203,7 +203,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PolicyFeatures' => false];
+            return [\KatapultAPI\Core\Model\PolicyFeatures::class => false];
         }
     }
 }

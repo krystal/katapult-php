@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\AddressListEntriesAddressListEntryPatchBody';
+            return $type === \KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\AddressListEntriesAddressListEntryPatchBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,11 +52,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('address_list_entry', $data)) {
-                $object->setAddressListEntry($this->denormalizer->denormalize($data['address_list_entry'], 'KatapultAPI\\Core\\Model\\AddressListEntryLookup', 'json', $context));
+                $object->setAddressListEntry($this->denormalizer->denormalize($data['address_list_entry'], \KatapultAPI\Core\Model\AddressListEntryLookup::class, 'json', $context));
                 unset($data['address_list_entry']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\AddressListEntryArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\AddressListEntryArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             foreach ($data as $key => $value) {
@@ -84,7 +84,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\AddressListEntriesAddressListEntryPatchBody' => false];
+            return [\KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchBody::class => false];
         }
     }
 } else {
@@ -97,12 +97,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\AddressListEntriesAddressListEntryPatchBody';
+            return $type === \KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\AddressListEntriesAddressListEntryPatchBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -118,11 +118,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('address_list_entry', $data)) {
-                $object->setAddressListEntry($this->denormalizer->denormalize($data['address_list_entry'], 'KatapultAPI\\Core\\Model\\AddressListEntryLookup', 'json', $context));
+                $object->setAddressListEntry($this->denormalizer->denormalize($data['address_list_entry'], \KatapultAPI\Core\Model\AddressListEntryLookup::class, 'json', $context));
                 unset($data['address_list_entry']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\AddressListEntryArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\AddressListEntryArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             foreach ($data as $key => $value) {
@@ -153,7 +153,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\AddressListEntriesAddressListEntryPatchBody' => false];
+            return [\KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchBody::class => false];
         }
     }
 }

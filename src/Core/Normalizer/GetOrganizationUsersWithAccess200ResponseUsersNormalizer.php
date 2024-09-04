@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsers';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsers';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,7 +52,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('user', $data) && $data['user'] !== null) {
-                $object->setUser($this->denormalizer->denormalize($data['user'], 'KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsersUser', 'json', $context));
+                $object->setUser($this->denormalizer->denormalize($data['user'], \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsersUser::class, 'json', $context));
                 unset($data['user']);
             } elseif (\array_key_exists('user', $data) && $data['user'] === null) {
                 $object->setUser(null);
@@ -83,7 +83,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsers' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class => false];
         }
     }
 } else {
@@ -96,12 +96,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsers';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsers';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -117,7 +117,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('user', $data) && $data['user'] !== null) {
-                $object->setUser($this->denormalizer->denormalize($data['user'], 'KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsersUser', 'json', $context));
+                $object->setUser($this->denormalizer->denormalize($data['user'], \KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsersUser::class, 'json', $context));
                 unset($data['user']);
             } elseif (\array_key_exists('user', $data) && $data['user'] === null) {
                 $object->setUser(null);
@@ -151,7 +151,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationUsersWithAccess200ResponseUsers' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationUsersWithAccess200ResponseUsers::class => false];
         }
     }
 }

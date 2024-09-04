@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachineDisk';
+            return $type === \KatapultAPI\Core\Model\GetDiskPartVirtualMachineDisk::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachineDisk';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetDiskPartVirtualMachineDisk::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,7 +52,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('virtual_machine', $data)) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\GetDiskPartVirtualMachine::class, 'json', $context));
                 unset($data['virtual_machine']);
             }
             if (\array_key_exists('attach_on_boot', $data)) {
@@ -102,7 +102,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachineDisk' => false];
+            return [\KatapultAPI\Core\Model\GetDiskPartVirtualMachineDisk::class => false];
         }
     }
 } else {
@@ -115,12 +115,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachineDisk';
+            return $type === \KatapultAPI\Core\Model\GetDiskPartVirtualMachineDisk::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachineDisk';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetDiskPartVirtualMachineDisk::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -136,7 +136,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('virtual_machine', $data)) {
-                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], 'KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachine', 'json', $context));
+                $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\GetDiskPartVirtualMachine::class, 'json', $context));
                 unset($data['virtual_machine']);
             }
             if (\array_key_exists('attach_on_boot', $data)) {
@@ -189,7 +189,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetDiskPartVirtualMachineDisk' => false];
+            return [\KatapultAPI\Core\Model\GetDiskPartVirtualMachineDisk::class => false];
         }
     }
 }

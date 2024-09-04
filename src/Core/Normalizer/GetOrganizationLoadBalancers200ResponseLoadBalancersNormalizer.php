@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancers';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancers';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -72,7 +72,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('resources', $data)) {
                 $values = [];
                 foreach ($data['resources'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\LoadBalancerResource', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\LoadBalancerResource::class, 'json', $context);
                 }
                 $object->setResources($values);
                 unset($data['resources']);
@@ -86,11 +86,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['resource_ids']);
             }
             if (\array_key_exists('ip_address', $data)) {
-                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancersPartIPAddress', 'json', $context));
+                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], \KatapultAPI\Core\Model\GetOrganizationLoadBalancersPartIPAddress::class, 'json', $context));
                 unset($data['ip_address']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancersPartDataCenter', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\GetOrganizationLoadBalancersPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
             }
             foreach ($data as $key => $value_2) {
@@ -148,7 +148,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancers' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class => false];
         }
     }
 } else {
@@ -161,12 +161,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancers';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancers';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -202,7 +202,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('resources', $data)) {
                 $values = [];
                 foreach ($data['resources'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\LoadBalancerResource', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\LoadBalancerResource::class, 'json', $context);
                 }
                 $object->setResources($values);
                 unset($data['resources']);
@@ -216,11 +216,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['resource_ids']);
             }
             if (\array_key_exists('ip_address', $data)) {
-                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancersPartIPAddress', 'json', $context));
+                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], \KatapultAPI\Core\Model\GetOrganizationLoadBalancersPartIPAddress::class, 'json', $context));
                 unset($data['ip_address']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancersPartDataCenter', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\GetOrganizationLoadBalancersPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
             }
             foreach ($data as $key => $value_2) {
@@ -281,7 +281,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationLoadBalancers200ResponseLoadBalancers' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class => false];
         }
     }
 }

@@ -59,19 +59,19 @@ class PostSignups extends \KatapultAPI\Public\Runtime\Client\BaseEndpoint implem
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\SignupsPostResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Public\Model\SignupsPostResponse200', 'json');
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\PostSignupsForbiddenException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator403Response', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\PostSignupsForbiddenException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\PostSignupsNotFoundException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseInvalidCouponCodeResponse', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\PostSignupsNotFoundException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\PostSignupsUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseValidationErrorResponse', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\PostSignupsUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseValidationErrorResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\PostSignupsTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\PostSignupsTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
     }
 

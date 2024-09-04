@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PostLoadBalancerRules200ResponseLoadBalancerRule';
+            return $type === \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PostLoadBalancerRules200ResponseLoadBalancerRule';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -78,7 +78,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('certificates', $data)) {
                 $values = [];
                 foreach ($data['certificates'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\PostLoadBalancerRulesPartCertificates', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\PostLoadBalancerRulesPartCertificates::class, 'json', $context);
                 }
                 $object->setCertificates($values);
                 unset($data['certificates']);
@@ -128,7 +128,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setCheckHttpStatuses(null);
             }
             if (\array_key_exists('load_balancer', $data)) {
-                $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], 'KatapultAPI\\Core\\Model\\PostLoadBalancerRulesPartLoadBalancer', 'json', $context));
+                $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], \KatapultAPI\Core\Model\PostLoadBalancerRulesPartLoadBalancer::class, 'json', $context));
                 unset($data['load_balancer']);
             }
             foreach ($data as $key => $value_1) {
@@ -212,7 +212,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PostLoadBalancerRules200ResponseLoadBalancerRule' => false];
+            return [\KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class => false];
         }
     }
 } else {
@@ -225,12 +225,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PostLoadBalancerRules200ResponseLoadBalancerRule';
+            return $type === \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PostLoadBalancerRules200ResponseLoadBalancerRule';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -272,7 +272,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('certificates', $data)) {
                 $values = [];
                 foreach ($data['certificates'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\PostLoadBalancerRulesPartCertificates', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\PostLoadBalancerRulesPartCertificates::class, 'json', $context);
                 }
                 $object->setCertificates($values);
                 unset($data['certificates']);
@@ -322,7 +322,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setCheckHttpStatuses(null);
             }
             if (\array_key_exists('load_balancer', $data)) {
-                $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], 'KatapultAPI\\Core\\Model\\PostLoadBalancerRulesPartLoadBalancer', 'json', $context));
+                $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], \KatapultAPI\Core\Model\PostLoadBalancerRulesPartLoadBalancer::class, 'json', $context));
                 unset($data['load_balancer']);
             }
             foreach ($data as $key => $value_1) {
@@ -409,7 +409,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PostLoadBalancerRules200ResponseLoadBalancerRule' => false];
+            return [\KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class => false];
         }
     }
 }

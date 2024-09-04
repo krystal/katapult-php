@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationFileStorageVolumesGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationFileStorageVolumesGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationFileStorageVolumesGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationFileStorageVolumesGetResponse200::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,13 +52,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('pagination', $data)) {
-                $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'KatapultAPI\\Core\\Model\\PaginationObject', 'json', $context));
+                $object->setPagination($this->denormalizer->denormalize($data['pagination'], \KatapultAPI\Core\Model\PaginationObject::class, 'json', $context));
                 unset($data['pagination']);
             }
             if (\array_key_exists('file_storage_volumes', $data)) {
                 $values = [];
                 foreach ($data['file_storage_volumes'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes::class, 'json', $context);
                 }
                 $object->setFileStorageVolumes($values);
                 unset($data['file_storage_volumes']);
@@ -92,7 +92,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationFileStorageVolumesGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationFileStorageVolumesGetResponse200::class => false];
         }
     }
 } else {
@@ -105,12 +105,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationFileStorageVolumesGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationFileStorageVolumesGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationFileStorageVolumesGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationFileStorageVolumesGetResponse200::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -126,13 +126,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('pagination', $data)) {
-                $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'KatapultAPI\\Core\\Model\\PaginationObject', 'json', $context));
+                $object->setPagination($this->denormalizer->denormalize($data['pagination'], \KatapultAPI\Core\Model\PaginationObject::class, 'json', $context));
                 unset($data['pagination']);
             }
             if (\array_key_exists('file_storage_volumes', $data)) {
                 $values = [];
                 foreach ($data['file_storage_volumes'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationFileStorageVolumes200ResponseFileStorageVolumes::class, 'json', $context);
                 }
                 $object->setFileStorageVolumes($values);
                 unset($data['file_storage_volumes']);
@@ -169,7 +169,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationFileStorageVolumesGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationFileStorageVolumesGetResponse200::class => false];
         }
     }
 }

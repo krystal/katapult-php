@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DiskArguments';
+            return $type === \KatapultAPI\Core\Model\DiskArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DiskArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DiskArguments::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['bus_type']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\DataCenterLookup', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\DataCenterLookup::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('size_in_gb', $data)) {
@@ -68,7 +68,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['size_in_gb']);
             }
             if (\array_key_exists('io_profile', $data)) {
-                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'KatapultAPI\\Core\\Model\\DiskIOProfileLookup', 'json', $context));
+                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], \KatapultAPI\Core\Model\DiskIOProfileLookup::class, 'json', $context));
                 unset($data['io_profile']);
             }
             if (\array_key_exists('initial_file_system', $data)) {
@@ -80,7 +80,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['storage_speed']);
             }
             if (\array_key_exists('virtual_machine_disk', $data)) {
-                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'KatapultAPI\\Core\\Model\\VirtualMachineDiskArguments', 'json', $context));
+                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], \KatapultAPI\Core\Model\VirtualMachineDiskArguments::class, 'json', $context));
                 unset($data['virtual_machine_disk']);
             }
             foreach ($data as $key => $value) {
@@ -130,7 +130,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DiskArguments' => false];
+            return [\KatapultAPI\Core\Model\DiskArguments::class => false];
         }
     }
 } else {
@@ -143,12 +143,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DiskArguments';
+            return $type === \KatapultAPI\Core\Model\DiskArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DiskArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DiskArguments::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -172,7 +172,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['bus_type']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\DataCenterLookup', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\DataCenterLookup::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('size_in_gb', $data)) {
@@ -180,7 +180,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['size_in_gb']);
             }
             if (\array_key_exists('io_profile', $data)) {
-                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'KatapultAPI\\Core\\Model\\DiskIOProfileLookup', 'json', $context));
+                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], \KatapultAPI\Core\Model\DiskIOProfileLookup::class, 'json', $context));
                 unset($data['io_profile']);
             }
             if (\array_key_exists('initial_file_system', $data)) {
@@ -192,7 +192,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['storage_speed']);
             }
             if (\array_key_exists('virtual_machine_disk', $data)) {
-                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'KatapultAPI\\Core\\Model\\VirtualMachineDiskArguments', 'json', $context));
+                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], \KatapultAPI\Core\Model\VirtualMachineDiskArguments::class, 'json', $context));
                 unset($data['virtual_machine_disk']);
             }
             foreach ($data as $key => $value) {
@@ -245,7 +245,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DiskArguments' => false];
+            return [\KatapultAPI\Core\Model\DiskArguments::class => false];
         }
     }
 }

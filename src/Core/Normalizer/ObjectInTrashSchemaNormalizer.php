@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\ObjectInTrashSchema';
+            return $type === \KatapultAPI\Core\Model\ObjectInTrashSchema::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\ObjectInTrashSchema';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\ObjectInTrashSchema::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['description']);
             }
             if (\array_key_exists('detail', $data)) {
-                $object->setDetail($this->denormalizer->denormalize($data['detail'], 'KatapultAPI\\Core\\Model\\ObjectInTrash', 'json', $context));
+                $object->setDetail($this->denormalizer->denormalize($data['detail'], \KatapultAPI\Core\Model\ObjectInTrash::class, 'json', $context));
                 unset($data['detail']);
             }
             foreach ($data as $key => $value) {
@@ -95,7 +95,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\ObjectInTrashSchema' => false];
+            return [\KatapultAPI\Core\Model\ObjectInTrashSchema::class => false];
         }
     }
 } else {
@@ -108,12 +108,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\ObjectInTrashSchema';
+            return $type === \KatapultAPI\Core\Model\ObjectInTrashSchema::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\ObjectInTrashSchema';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\ObjectInTrashSchema::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -137,7 +137,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['description']);
             }
             if (\array_key_exists('detail', $data)) {
-                $object->setDetail($this->denormalizer->denormalize($data['detail'], 'KatapultAPI\\Core\\Model\\ObjectInTrash', 'json', $context));
+                $object->setDetail($this->denormalizer->denormalize($data['detail'], \KatapultAPI\Core\Model\ObjectInTrash::class, 'json', $context));
                 unset($data['detail']);
             }
             foreach ($data as $key => $value) {
@@ -175,7 +175,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\ObjectInTrashSchema' => false];
+            return [\KatapultAPI\Core\Model\ObjectInTrashSchema::class => false];
         }
     }
 }

@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody';
+            return $type === \KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,7 +52,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk_backup_policy', $data)) {
-                $object->setDiskBackupPolicy($this->denormalizer->denormalize($data['disk_backup_policy'], 'KatapultAPI\\Core\\Model\\DiskBackupPolicyLookup', 'json', $context));
+                $object->setDiskBackupPolicy($this->denormalizer->denormalize($data['disk_backup_policy'], \KatapultAPI\Core\Model\DiskBackupPolicyLookup::class, 'json', $context));
                 unset($data['disk_backup_policy']);
             }
             if (\array_key_exists('timestamp', $data)) {
@@ -84,7 +84,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody' => false];
+            return [\KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody::class => false];
         }
     }
 } else {
@@ -97,12 +97,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody';
+            return $type === \KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -118,7 +118,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('disk_backup_policy', $data)) {
-                $object->setDiskBackupPolicy($this->denormalizer->denormalize($data['disk_backup_policy'], 'KatapultAPI\\Core\\Model\\DiskBackupPolicyLookup', 'json', $context));
+                $object->setDiskBackupPolicy($this->denormalizer->denormalize($data['disk_backup_policy'], \KatapultAPI\Core\Model\DiskBackupPolicyLookup::class, 'json', $context));
                 unset($data['disk_backup_policy']);
             }
             if (\array_key_exists('timestamp', $data)) {
@@ -153,7 +153,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody' => false];
+            return [\KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody::class => false];
         }
     }
 }

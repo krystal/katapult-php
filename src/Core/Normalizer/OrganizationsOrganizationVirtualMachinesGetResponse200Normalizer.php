@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,13 +52,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('pagination', $data)) {
-                $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'KatapultAPI\\Core\\Model\\PaginationObject', 'json', $context));
+                $object->setPagination($this->denormalizer->denormalize($data['pagination'], \KatapultAPI\Core\Model\PaginationObject::class, 'json', $context));
                 unset($data['pagination']);
             }
             if (\array_key_exists('virtual_machines', $data)) {
                 $values = [];
                 foreach ($data['virtual_machines'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class, 'json', $context);
                 }
                 $object->setVirtualMachines($values);
                 unset($data['virtual_machines']);
@@ -92,7 +92,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class => false];
         }
     }
 } else {
@@ -105,12 +105,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -126,13 +126,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('pagination', $data)) {
-                $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'KatapultAPI\\Core\\Model\\PaginationObject', 'json', $context));
+                $object->setPagination($this->denormalizer->denormalize($data['pagination'], \KatapultAPI\Core\Model\PaginationObject::class, 'json', $context));
                 unset($data['pagination']);
             }
             if (\array_key_exists('virtual_machines', $data)) {
                 $values = [];
                 foreach ($data['virtual_machines'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationVirtualMachines200ResponseVirtualMachines', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationVirtualMachines200ResponseVirtualMachines::class, 'json', $context);
                 }
                 $object->setVirtualMachines($values);
                 unset($data['virtual_machines']);
@@ -169,7 +169,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class => false];
         }
     }
 }

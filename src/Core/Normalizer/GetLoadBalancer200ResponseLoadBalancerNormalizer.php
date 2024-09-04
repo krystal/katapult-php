@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetLoadBalancer200ResponseLoadBalancer';
+            return $type === \KatapultAPI\Core\Model\GetLoadBalancer200ResponseLoadBalancer::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetLoadBalancer200ResponseLoadBalancer';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetLoadBalancer200ResponseLoadBalancer::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -72,7 +72,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('resources', $data)) {
                 $values = [];
                 foreach ($data['resources'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\LoadBalancerResource', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\LoadBalancerResource::class, 'json', $context);
                 }
                 $object->setResources($values);
                 unset($data['resources']);
@@ -86,7 +86,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['resource_ids']);
             }
             if (\array_key_exists('ip_address', $data)) {
-                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], 'KatapultAPI\\Core\\Model\\GetLoadBalancerPartIPAddress', 'json', $context));
+                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], \KatapultAPI\Core\Model\GetLoadBalancerPartIPAddress::class, 'json', $context));
                 unset($data['ip_address']);
             }
             if (\array_key_exists('https_redirect', $data)) {
@@ -102,7 +102,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['backend_certificate_key']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\GetLoadBalancerPartDataCenter', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\GetLoadBalancerPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('enable_weighting', $data)) {
@@ -112,7 +112,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('weights', $data)) {
                 $values_2 = [];
                 foreach ($data['weights'] as $value_2) {
-                    $values_2[] = $this->denormalizer->denormalize($value_2, 'KatapultAPI\\Core\\Model\\LoadBalancerWeight', 'json', $context);
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \KatapultAPI\Core\Model\LoadBalancerWeight::class, 'json', $context);
                 }
                 $object->setWeights($values_2);
                 unset($data['weights']);
@@ -206,7 +206,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetLoadBalancer200ResponseLoadBalancer' => false];
+            return [\KatapultAPI\Core\Model\GetLoadBalancer200ResponseLoadBalancer::class => false];
         }
     }
 } else {
@@ -219,12 +219,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetLoadBalancer200ResponseLoadBalancer';
+            return $type === \KatapultAPI\Core\Model\GetLoadBalancer200ResponseLoadBalancer::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetLoadBalancer200ResponseLoadBalancer';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetLoadBalancer200ResponseLoadBalancer::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -260,7 +260,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('resources', $data)) {
                 $values = [];
                 foreach ($data['resources'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\LoadBalancerResource', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\LoadBalancerResource::class, 'json', $context);
                 }
                 $object->setResources($values);
                 unset($data['resources']);
@@ -274,7 +274,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['resource_ids']);
             }
             if (\array_key_exists('ip_address', $data)) {
-                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], 'KatapultAPI\\Core\\Model\\GetLoadBalancerPartIPAddress', 'json', $context));
+                $object->setIpAddress($this->denormalizer->denormalize($data['ip_address'], \KatapultAPI\Core\Model\GetLoadBalancerPartIPAddress::class, 'json', $context));
                 unset($data['ip_address']);
             }
             if (\array_key_exists('https_redirect', $data)) {
@@ -290,7 +290,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['backend_certificate_key']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\GetLoadBalancerPartDataCenter', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\GetLoadBalancerPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('enable_weighting', $data)) {
@@ -300,7 +300,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('weights', $data)) {
                 $values_2 = [];
                 foreach ($data['weights'] as $value_2) {
-                    $values_2[] = $this->denormalizer->denormalize($value_2, 'KatapultAPI\\Core\\Model\\LoadBalancerWeight', 'json', $context);
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \KatapultAPI\Core\Model\LoadBalancerWeight::class, 'json', $context);
                 }
                 $object->setWeights($values_2);
                 unset($data['weights']);
@@ -397,7 +397,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetLoadBalancer200ResponseLoadBalancer' => false];
+            return [\KatapultAPI\Core\Model\GetLoadBalancer200ResponseLoadBalancer::class => false];
         }
     }
 }

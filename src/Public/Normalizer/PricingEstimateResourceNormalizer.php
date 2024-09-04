@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\PricingEstimateResource';
+            return $type === \KatapultAPI\Public\Model\PricingEstimateResource::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\PricingEstimateResource';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\PricingEstimateResource::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -106,7 +106,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['per_hour_each']);
             }
             if (\array_key_exists('package', $data) && $data['package'] !== null) {
-                $object->setPackage($this->denormalizer->denormalize($data['package'], 'KatapultAPI\\Public\\Model\\PricingEstimateResourcePackage', 'json', $context));
+                $object->setPackage($this->denormalizer->denormalize($data['package'], \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class, 'json', $context));
                 unset($data['package']);
             } elseif (\array_key_exists('package', $data) && $data['package'] === null) {
                 $object->setPackage(null);
@@ -164,7 +164,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\PricingEstimateResource' => false];
+            return [\KatapultAPI\Public\Model\PricingEstimateResource::class => false];
         }
     }
 } else {
@@ -177,12 +177,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\PricingEstimateResource';
+            return $type === \KatapultAPI\Public\Model\PricingEstimateResource::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\PricingEstimateResource';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\PricingEstimateResource::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -252,7 +252,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['per_hour_each']);
             }
             if (\array_key_exists('package', $data) && $data['package'] !== null) {
-                $object->setPackage($this->denormalizer->denormalize($data['package'], 'KatapultAPI\\Public\\Model\\PricingEstimateResourcePackage', 'json', $context));
+                $object->setPackage($this->denormalizer->denormalize($data['package'], \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class, 'json', $context));
                 unset($data['package']);
             } elseif (\array_key_exists('package', $data) && $data['package'] === null) {
                 $object->setPackage(null);
@@ -313,7 +313,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\PricingEstimateResource' => false];
+            return [\KatapultAPI\Public\Model\PricingEstimateResource::class => false];
         }
     }
 }

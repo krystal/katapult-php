@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachineGPU';
+            return $type === \KatapultAPI\Core\Model\VirtualMachineGPU::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachineGPU';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\VirtualMachineGPU::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -72,7 +72,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['available']);
             }
             if (\array_key_exists('type', $data)) {
-                $object->setType($this->denormalizer->denormalize($data['type'], 'KatapultAPI\\Core\\Model\\GPUType', 'json', $context));
+                $object->setType($this->denormalizer->denormalize($data['type'], \KatapultAPI\Core\Model\GPUType::class, 'json', $context));
                 unset($data['type']);
             }
             foreach ($data as $key => $value) {
@@ -113,7 +113,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachineGPU' => false];
+            return [\KatapultAPI\Core\Model\VirtualMachineGPU::class => false];
         }
     }
 } else {
@@ -126,12 +126,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachineGPU';
+            return $type === \KatapultAPI\Core\Model\VirtualMachineGPU::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachineGPU';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\VirtualMachineGPU::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -167,7 +167,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['available']);
             }
             if (\array_key_exists('type', $data)) {
-                $object->setType($this->denormalizer->denormalize($data['type'], 'KatapultAPI\\Core\\Model\\GPUType', 'json', $context));
+                $object->setType($this->denormalizer->denormalize($data['type'], \KatapultAPI\Core\Model\GPUType::class, 'json', $context));
                 unset($data['type']);
             }
             foreach ($data as $key => $value) {
@@ -211,7 +211,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachineGPU' => false];
+            return [\KatapultAPI\Core\Model\VirtualMachineGPU::class => false];
         }
     }
 }

@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetDataCenters200ResponseDataCenters';
+            return $type === \KatapultAPI\Core\Model\GetDataCenters200ResponseDataCenters::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetDataCenters200ResponseDataCenters';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetDataCenters200ResponseDataCenters::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -64,7 +64,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['permalink']);
             }
             if (\array_key_exists('country', $data)) {
-                $object->setCountry($this->denormalizer->denormalize($data['country'], 'KatapultAPI\\Core\\Model\\GetDataCentersPartCountry', 'json', $context));
+                $object->setCountry($this->denormalizer->denormalize($data['country'], \KatapultAPI\Core\Model\GetDataCentersPartCountry::class, 'json', $context));
                 unset($data['country']);
             }
             foreach ($data as $key => $value) {
@@ -102,7 +102,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetDataCenters200ResponseDataCenters' => false];
+            return [\KatapultAPI\Core\Model\GetDataCenters200ResponseDataCenters::class => false];
         }
     }
 } else {
@@ -115,12 +115,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetDataCenters200ResponseDataCenters';
+            return $type === \KatapultAPI\Core\Model\GetDataCenters200ResponseDataCenters::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetDataCenters200ResponseDataCenters';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetDataCenters200ResponseDataCenters::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -148,7 +148,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['permalink']);
             }
             if (\array_key_exists('country', $data)) {
-                $object->setCountry($this->denormalizer->denormalize($data['country'], 'KatapultAPI\\Core\\Model\\GetDataCentersPartCountry', 'json', $context));
+                $object->setCountry($this->denormalizer->denormalize($data['country'], \KatapultAPI\Core\Model\GetDataCentersPartCountry::class, 'json', $context));
                 unset($data['country']);
             }
             foreach ($data as $key => $value) {
@@ -189,7 +189,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetDataCenters200ResponseDataCenters' => false];
+            return [\KatapultAPI\Core\Model\GetDataCenters200ResponseDataCenters::class => false];
         }
     }
 }

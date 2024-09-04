@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -54,7 +54,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('networks', $data)) {
                 $values = [];
                 foreach ($data['networks'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationAvailableNetworks200ResponseNetworks', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationAvailableNetworks200ResponseNetworks::class, 'json', $context);
                 }
                 $object->setNetworks($values);
                 unset($data['networks']);
@@ -62,7 +62,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('virtual_networks', $data)) {
                 $values_1 = [];
                 foreach ($data['virtual_networks'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\GetOrganizationAvailableNetworks200ResponseVirtualNetworks', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \KatapultAPI\Core\Model\GetOrganizationAvailableNetworks200ResponseVirtualNetworks::class, 'json', $context);
                 }
                 $object->setVirtualNetworks($values_1);
                 unset($data['virtual_networks']);
@@ -100,7 +100,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false];
         }
     }
 } else {
@@ -113,12 +113,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -136,7 +136,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('networks', $data)) {
                 $values = [];
                 foreach ($data['networks'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\GetOrganizationAvailableNetworks200ResponseNetworks', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\GetOrganizationAvailableNetworks200ResponseNetworks::class, 'json', $context);
                 }
                 $object->setNetworks($values);
                 unset($data['networks']);
@@ -144,7 +144,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('virtual_networks', $data)) {
                 $values_1 = [];
                 foreach ($data['virtual_networks'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\GetOrganizationAvailableNetworks200ResponseVirtualNetworks', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \KatapultAPI\Core\Model\GetOrganizationAvailableNetworks200ResponseVirtualNetworks::class, 'json', $context);
                 }
                 $object->setVirtualNetworks($values_1);
                 unset($data['virtual_networks']);
@@ -185,7 +185,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationAvailableNetworksGetResponse200' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false];
         }
     }
 }

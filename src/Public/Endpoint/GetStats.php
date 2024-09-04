@@ -45,13 +45,13 @@ class GetStats extends \KatapultAPI\Public\Runtime\Client\BaseEndpoint implement
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\StatsGetResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Public\Model\StatsGetResponse200', 'json');
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\GetStatsForbiddenException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator403Response', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\GetStatsForbiddenException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Public\Exception\GetStatsTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Public\Exception\GetStatsTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
     }
 

@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\FileStorageVolumesFileStorageVolumePatchBody';
+            return $type === \KatapultAPI\Core\Model\FileStorageVolumesFileStorageVolumePatchBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\FileStorageVolumesFileStorageVolumePatchBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\FileStorageVolumesFileStorageVolumePatchBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,17 +52,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('file_storage_volume', $data)) {
-                $object->setFileStorageVolume($this->denormalizer->denormalize($data['file_storage_volume'], 'KatapultAPI\\Core\\Model\\FileStorageVolumeLookup', 'json', $context));
+                $object->setFileStorageVolume($this->denormalizer->denormalize($data['file_storage_volume'], \KatapultAPI\Core\Model\FileStorageVolumeLookup::class, 'json', $context));
                 unset($data['file_storage_volume']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\FileStorageVolumeArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\FileStorageVolumeArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -99,7 +99,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\FileStorageVolumesFileStorageVolumePatchBody' => false];
+            return [\KatapultAPI\Core\Model\FileStorageVolumesFileStorageVolumePatchBody::class => false];
         }
     }
 } else {
@@ -112,12 +112,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\FileStorageVolumesFileStorageVolumePatchBody';
+            return $type === \KatapultAPI\Core\Model\FileStorageVolumesFileStorageVolumePatchBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\FileStorageVolumesFileStorageVolumePatchBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\FileStorageVolumesFileStorageVolumePatchBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -133,17 +133,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('file_storage_volume', $data)) {
-                $object->setFileStorageVolume($this->denormalizer->denormalize($data['file_storage_volume'], 'KatapultAPI\\Core\\Model\\FileStorageVolumeLookup', 'json', $context));
+                $object->setFileStorageVolume($this->denormalizer->denormalize($data['file_storage_volume'], \KatapultAPI\Core\Model\FileStorageVolumeLookup::class, 'json', $context));
                 unset($data['file_storage_volume']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\FileStorageVolumeArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\FileStorageVolumeArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -183,7 +183,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\FileStorageVolumesFileStorageVolumePatchBody' => false];
+            return [\KatapultAPI\Core\Model\FileStorageVolumesFileStorageVolumePatchBody::class => false];
         }
     }
 }

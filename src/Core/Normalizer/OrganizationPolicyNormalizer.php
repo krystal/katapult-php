@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationPolicy';
+            return $type === \KatapultAPI\Core\Model\OrganizationPolicy::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationPolicy';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationPolicy::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,63 +52,63 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('maximum_uninvoiced_balance', $data)) {
-                $object->setMaximumUninvoicedBalance($this->denormalizer->denormalize($data['maximum_uninvoiced_balance'], 'KatapultAPI\\Core\\Model\\DecimalOrUnlimited', 'json', $context));
+                $object->setMaximumUninvoicedBalance($this->denormalizer->denormalize($data['maximum_uninvoiced_balance'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
                 unset($data['maximum_uninvoiced_balance']);
             }
             if (\array_key_exists('maximum_virtual_machines', $data)) {
-                $object->setMaximumVirtualMachines($this->denormalizer->denormalize($data['maximum_virtual_machines'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumVirtualMachines($this->denormalizer->denormalize($data['maximum_virtual_machines'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_machines']);
             }
             if (\array_key_exists('maximum_virtual_machine_memory', $data)) {
-                $object->setMaximumVirtualMachineMemory($this->denormalizer->denormalize($data['maximum_virtual_machine_memory'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumVirtualMachineMemory($this->denormalizer->denormalize($data['maximum_virtual_machine_memory'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_machine_memory']);
             }
             if (\array_key_exists('maximum_disk_space', $data)) {
-                $object->setMaximumDiskSpace($this->denormalizer->denormalize($data['maximum_disk_space'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumDiskSpace($this->denormalizer->denormalize($data['maximum_disk_space'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_disk_space']);
             }
             if (\array_key_exists('maximum_managed_organizations', $data)) {
-                $object->setMaximumManagedOrganizations($this->denormalizer->denormalize($data['maximum_managed_organizations'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumManagedOrganizations($this->denormalizer->denormalize($data['maximum_managed_organizations'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_managed_organizations']);
             }
             if (\array_key_exists('maximum_unallocated_ip_addresses', $data)) {
-                $object->setMaximumUnallocatedIpAddresses($this->denormalizer->denormalize($data['maximum_unallocated_ip_addresses'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumUnallocatedIpAddresses($this->denormalizer->denormalize($data['maximum_unallocated_ip_addresses'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_unallocated_ip_addresses']);
             }
             if (\array_key_exists('maximum_security_groups', $data)) {
-                $object->setMaximumSecurityGroups($this->denormalizer->denormalize($data['maximum_security_groups'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumSecurityGroups($this->denormalizer->denormalize($data['maximum_security_groups'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_security_groups']);
             }
             if (\array_key_exists('maximum_virtual_networks', $data)) {
-                $object->setMaximumVirtualNetworks($this->denormalizer->denormalize($data['maximum_virtual_networks'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumVirtualNetworks($this->denormalizer->denormalize($data['maximum_virtual_networks'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_networks']);
             }
             if (\array_key_exists('maximum_load_balancers', $data)) {
-                $object->setMaximumLoadBalancers($this->denormalizer->denormalize($data['maximum_load_balancers'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumLoadBalancers($this->denormalizer->denormalize($data['maximum_load_balancers'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_load_balancers']);
             }
             if (\array_key_exists('maximum_dns_zones', $data)) {
-                $object->setMaximumDnsZones($this->denormalizer->denormalize($data['maximum_dns_zones'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumDnsZones($this->denormalizer->denormalize($data['maximum_dns_zones'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_dns_zones']);
             }
             if (\array_key_exists('maximum_certificates', $data)) {
-                $object->setMaximumCertificates($this->denormalizer->denormalize($data['maximum_certificates'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumCertificates($this->denormalizer->denormalize($data['maximum_certificates'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_certificates']);
             }
             if (\array_key_exists('maximum_file_storage_volumes', $data)) {
-                $object->setMaximumFileStorageVolumes($this->denormalizer->denormalize($data['maximum_file_storage_volumes'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumFileStorageVolumes($this->denormalizer->denormalize($data['maximum_file_storage_volumes'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_file_storage_volumes']);
             }
             if (\array_key_exists('maximum_isos', $data)) {
-                $object->setMaximumIsos($this->denormalizer->denormalize($data['maximum_isos'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumIsos($this->denormalizer->denormalize($data['maximum_isos'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_isos']);
             }
             if (\array_key_exists('maximum_disk_size', $data)) {
-                $object->setMaximumDiskSize($this->denormalizer->denormalize($data['maximum_disk_size'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumDiskSize($this->denormalizer->denormalize($data['maximum_disk_size'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_disk_size']);
             }
             if (\array_key_exists('minimum_disk_size', $data)) {
-                $object->setMinimumDiskSize($this->denormalizer->denormalize($data['minimum_disk_size'], 'KatapultAPI\\Core\\Model\\IntegerValue', 'json', $context));
+                $object->setMinimumDiskSize($this->denormalizer->denormalize($data['minimum_disk_size'], \KatapultAPI\Core\Model\IntegerValue::class, 'json', $context));
                 unset($data['minimum_disk_size']);
             }
             if (\array_key_exists('flexible_virtual_machine_resources', $data)) {
@@ -200,7 +200,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationPolicy' => false];
+            return [\KatapultAPI\Core\Model\OrganizationPolicy::class => false];
         }
     }
 } else {
@@ -213,12 +213,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationPolicy';
+            return $type === \KatapultAPI\Core\Model\OrganizationPolicy::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationPolicy';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationPolicy::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -234,63 +234,63 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('maximum_uninvoiced_balance', $data)) {
-                $object->setMaximumUninvoicedBalance($this->denormalizer->denormalize($data['maximum_uninvoiced_balance'], 'KatapultAPI\\Core\\Model\\DecimalOrUnlimited', 'json', $context));
+                $object->setMaximumUninvoicedBalance($this->denormalizer->denormalize($data['maximum_uninvoiced_balance'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
                 unset($data['maximum_uninvoiced_balance']);
             }
             if (\array_key_exists('maximum_virtual_machines', $data)) {
-                $object->setMaximumVirtualMachines($this->denormalizer->denormalize($data['maximum_virtual_machines'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumVirtualMachines($this->denormalizer->denormalize($data['maximum_virtual_machines'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_machines']);
             }
             if (\array_key_exists('maximum_virtual_machine_memory', $data)) {
-                $object->setMaximumVirtualMachineMemory($this->denormalizer->denormalize($data['maximum_virtual_machine_memory'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumVirtualMachineMemory($this->denormalizer->denormalize($data['maximum_virtual_machine_memory'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_machine_memory']);
             }
             if (\array_key_exists('maximum_disk_space', $data)) {
-                $object->setMaximumDiskSpace($this->denormalizer->denormalize($data['maximum_disk_space'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumDiskSpace($this->denormalizer->denormalize($data['maximum_disk_space'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_disk_space']);
             }
             if (\array_key_exists('maximum_managed_organizations', $data)) {
-                $object->setMaximumManagedOrganizations($this->denormalizer->denormalize($data['maximum_managed_organizations'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumManagedOrganizations($this->denormalizer->denormalize($data['maximum_managed_organizations'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_managed_organizations']);
             }
             if (\array_key_exists('maximum_unallocated_ip_addresses', $data)) {
-                $object->setMaximumUnallocatedIpAddresses($this->denormalizer->denormalize($data['maximum_unallocated_ip_addresses'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumUnallocatedIpAddresses($this->denormalizer->denormalize($data['maximum_unallocated_ip_addresses'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_unallocated_ip_addresses']);
             }
             if (\array_key_exists('maximum_security_groups', $data)) {
-                $object->setMaximumSecurityGroups($this->denormalizer->denormalize($data['maximum_security_groups'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumSecurityGroups($this->denormalizer->denormalize($data['maximum_security_groups'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_security_groups']);
             }
             if (\array_key_exists('maximum_virtual_networks', $data)) {
-                $object->setMaximumVirtualNetworks($this->denormalizer->denormalize($data['maximum_virtual_networks'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumVirtualNetworks($this->denormalizer->denormalize($data['maximum_virtual_networks'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_networks']);
             }
             if (\array_key_exists('maximum_load_balancers', $data)) {
-                $object->setMaximumLoadBalancers($this->denormalizer->denormalize($data['maximum_load_balancers'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumLoadBalancers($this->denormalizer->denormalize($data['maximum_load_balancers'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_load_balancers']);
             }
             if (\array_key_exists('maximum_dns_zones', $data)) {
-                $object->setMaximumDnsZones($this->denormalizer->denormalize($data['maximum_dns_zones'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumDnsZones($this->denormalizer->denormalize($data['maximum_dns_zones'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_dns_zones']);
             }
             if (\array_key_exists('maximum_certificates', $data)) {
-                $object->setMaximumCertificates($this->denormalizer->denormalize($data['maximum_certificates'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumCertificates($this->denormalizer->denormalize($data['maximum_certificates'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_certificates']);
             }
             if (\array_key_exists('maximum_file_storage_volumes', $data)) {
-                $object->setMaximumFileStorageVolumes($this->denormalizer->denormalize($data['maximum_file_storage_volumes'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumFileStorageVolumes($this->denormalizer->denormalize($data['maximum_file_storage_volumes'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_file_storage_volumes']);
             }
             if (\array_key_exists('maximum_isos', $data)) {
-                $object->setMaximumIsos($this->denormalizer->denormalize($data['maximum_isos'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumIsos($this->denormalizer->denormalize($data['maximum_isos'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_isos']);
             }
             if (\array_key_exists('maximum_disk_size', $data)) {
-                $object->setMaximumDiskSize($this->denormalizer->denormalize($data['maximum_disk_size'], 'KatapultAPI\\Core\\Model\\IntegerOrUnlimited', 'json', $context));
+                $object->setMaximumDiskSize($this->denormalizer->denormalize($data['maximum_disk_size'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_disk_size']);
             }
             if (\array_key_exists('minimum_disk_size', $data)) {
-                $object->setMinimumDiskSize($this->denormalizer->denormalize($data['minimum_disk_size'], 'KatapultAPI\\Core\\Model\\IntegerValue', 'json', $context));
+                $object->setMinimumDiskSize($this->denormalizer->denormalize($data['minimum_disk_size'], \KatapultAPI\Core\Model\IntegerValue::class, 'json', $context));
                 unset($data['minimum_disk_size']);
             }
             if (\array_key_exists('flexible_virtual_machine_resources', $data)) {
@@ -385,7 +385,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationPolicy' => false];
+            return [\KatapultAPI\Core\Model\OrganizationPolicy::class => false];
         }
     }
 }

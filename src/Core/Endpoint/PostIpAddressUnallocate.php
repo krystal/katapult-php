@@ -64,28 +64,28 @@ class PostIpAddressUnallocate extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\IpAddressesIpAddressUnallocatePostResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\IpAddressesIpAddressUnallocatePostResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateBadRequestException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator400Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateBadRequestException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateNotFoundException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseIPAddressNotFoundResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateNotFoundException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseIPAddressNotFoundResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateConflictException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseResourceDoesNotSupportUnallocationResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateConflictException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseResourceDoesNotSupportUnallocationResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseNoAllocationResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseNoAllocationResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostIpAddressUnallocateServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 
