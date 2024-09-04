@@ -30,6 +30,9 @@ docker run \
 composer:2 \
 composer install -q
 
+# TMP - replace with our version
+cp "$(pwd)/generator/NonBodyParameterGenerator.php" "$(pwd)/generator/vendor/jane-php/open-api-3/Generator/Parameter/NonBodyParameterGenerator.php"
+
 print_color "${GREY}" "🔧 JanePHP dependencies installed"
 
 # Delete any existing client code
