@@ -21,9 +21,8 @@ class GetTag extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \K
      * - `tags:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $tag[id] The tag to load the details for. All 'tag[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'tag[id]': string, The tag to load the details for. All 'tag[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

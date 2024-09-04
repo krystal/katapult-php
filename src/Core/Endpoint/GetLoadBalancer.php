@@ -21,10 +21,9 @@ class GetLoadBalancer extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * - `load_balancers:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $load_balancer[id] The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var string $load_balancer[api_reference] The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'load_balancer[id]': string, The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                               'load_balancer[api_reference]': string, The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

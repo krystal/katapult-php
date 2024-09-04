@@ -21,9 +21,8 @@ class GetFileStorageVolume extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
      * - `file_storage_volumes:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $file_storage_volume[id] The file storage volume to return. All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'file_storage_volume[id]': string, The file storage volume to return. All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

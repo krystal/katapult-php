@@ -21,9 +21,8 @@ class GetDiskBackupPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
      * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $disk_backup_policy[id] The disk backup policy to get information for. All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'disk_backup_policy[id]': string, The disk backup policy to get information for. All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

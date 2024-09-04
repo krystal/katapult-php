@@ -20,12 +20,11 @@ class GetVirtualMachinePackages extends \KatapultAPI\Core\Runtime\Client\BaseEnd
      * - `virtual_machine_packages:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'organization[id]': string, Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'organization[sub_domain]': string, Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

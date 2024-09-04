@@ -21,10 +21,9 @@ class GetAddressLists extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * - `address_lists:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

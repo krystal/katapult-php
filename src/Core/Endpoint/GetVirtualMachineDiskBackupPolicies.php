@@ -21,13 +21,12 @@ class GetVirtualMachineDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Clie
      * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var bool   $include_disks If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'virtual_machine[id]': string, The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'virtual_machine[fqdn]': string, The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'include_disks': bool, If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

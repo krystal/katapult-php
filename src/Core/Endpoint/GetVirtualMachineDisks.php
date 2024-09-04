@@ -21,12 +21,11 @@ class GetVirtualMachineDisks extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * - `disks:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'virtual_machine[id]': string, The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'virtual_machine[fqdn]': string, The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

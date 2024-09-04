@@ -21,12 +21,11 @@ class GetLoadBalancerRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
      * - `load_balancers:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $load_balancer[id] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var string $load_balancer[api_reference] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'load_balancer[id]': string, The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                               'load_balancer[api_reference]': string, The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

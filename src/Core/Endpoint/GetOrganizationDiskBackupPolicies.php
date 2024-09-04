@@ -21,12 +21,11 @@ class GetOrganizationDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Client
      * - `disk_backup_policies:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'organization[id]': string, The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'organization[sub_domain]': string, The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

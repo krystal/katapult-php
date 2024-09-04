@@ -18,10 +18,9 @@ class GetCurrencies extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implem
      * Return a list of all currencies available in Katapult.
      *
      * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

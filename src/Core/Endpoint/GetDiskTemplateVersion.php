@@ -21,9 +21,8 @@ class GetDiskTemplateVersion extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * - `disk_templates:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $disk_template_version[id] The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'disk_template_version[id]': string, The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

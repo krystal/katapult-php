@@ -21,12 +21,11 @@ class GetVirtualMachineNetworkInterfaces extends \KatapultAPI\Core\Runtime\Clien
      * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'virtual_machine[id]': string, The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'virtual_machine[fqdn]': string, The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

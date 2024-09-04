@@ -21,11 +21,10 @@ class GetAddressListEntries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * - `address_lists:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'address_list[id]': string, The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

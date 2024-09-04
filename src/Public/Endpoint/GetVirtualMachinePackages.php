@@ -18,10 +18,9 @@ class GetVirtualMachinePackages extends \KatapultAPI\Public\Runtime\Client\BaseE
      * Return the currently available virtual machine packages.
      *
      * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

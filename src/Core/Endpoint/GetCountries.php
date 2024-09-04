@@ -18,10 +18,9 @@ class GetCountries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
      * Return a list of all countries available in Katapult.
      *
      * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

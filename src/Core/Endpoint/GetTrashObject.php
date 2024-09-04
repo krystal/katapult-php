@@ -20,10 +20,9 @@ class GetTrashObject extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * - `trash_objects:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $trash_object[id] The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
-     * @var string $trash_object[object_id] The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'trash_object[id]': string, The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
+     *                               'trash_object[object_id]': string, The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

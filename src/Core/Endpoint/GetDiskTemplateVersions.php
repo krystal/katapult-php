@@ -21,12 +21,11 @@ class GetDiskTemplateVersions extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
      * - `disk_templates:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $disk_template[id] The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     * @var string $disk_template[permalink] The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'disk_template[id]': string, The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *                               'disk_template[permalink]': string, The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

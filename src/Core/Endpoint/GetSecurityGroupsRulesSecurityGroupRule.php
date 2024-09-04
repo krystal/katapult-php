@@ -21,9 +21,8 @@ class GetSecurityGroupsRulesSecurityGroupRule extends \KatapultAPI\Core\Runtime\
      * - `security_groups:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $security_group_rule[id] The security group rule to return the details for. All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'security_group_rule[id]': string, The security group rule to return the details for. All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

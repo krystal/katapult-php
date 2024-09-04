@@ -21,10 +21,9 @@ class GetVirtualMachine extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] All 'virtual_machine[]' params are mutually exclusive, only one can be provided
-     * @var string $virtual_machine[fqdn] All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'virtual_machine[id]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'virtual_machine[fqdn]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -21,9 +21,8 @@ class GetVirtualMachineGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * - `virtual_machine_groups:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_group[id] The virtual machine group to retrieve. All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'virtual_machine_group[id]': string, The virtual machine group to retrieve. All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

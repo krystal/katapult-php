@@ -21,9 +21,8 @@ class GetTask extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
      * - `tasks:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $task[id] All 'task[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'task[id]': string, All 'task[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

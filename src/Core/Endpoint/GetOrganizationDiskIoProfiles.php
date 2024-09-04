@@ -18,12 +18,11 @@ class GetOrganizationDiskIoProfiles extends \KatapultAPI\Core\Runtime\Client\Bas
      * Return a list of all disk IO profiles available to this organization.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'organization[id]': string, The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'organization[sub_domain]': string, The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

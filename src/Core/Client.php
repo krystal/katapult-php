@@ -18,17 +18,15 @@ class Client extends Runtime\Client\Client
      * - `api_tokens`
      * - `api_tokens:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to list API tokens for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationApiTokensGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -133,13 +131,11 @@ class Client extends Runtime\Client\Client
      * - `address_lists`
      * - `address_lists:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -159,17 +155,15 @@ class Client extends Runtime\Client\Client
      * - `address_lists`
      * - `address_lists:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationAddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -231,12 +225,10 @@ class Client extends Runtime\Client\Client
      * - `address_lists`
      * - `address_lists:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $address_list[id] The address list to return. All 'address_list[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'address_list[id]': string, The address list to return. All 'address_list[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsAddressListGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -278,14 +270,12 @@ class Client extends Runtime\Client\Client
      * - `address_lists`
      * - `address_lists:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'address_list[id]': string, The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsAddressListEntriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -347,12 +337,10 @@ class Client extends Runtime\Client\Client
      * - `address_lists`
      * - `address_lists:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $address_list_entry[id] The address list entry to return. All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'address_list_entry[id]': string, The address list entry to return. All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListEntriesAddressListEntryGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -415,15 +403,13 @@ class Client extends Runtime\Client\Client
      * - `certificates`
      * - `certificates:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationCertificatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -444,12 +430,10 @@ class Client extends Runtime\Client\Client
      * - `certificates`
      * - `certificates:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $certificate[id] All 'certificate[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'certificate[id]': string, All 'certificate[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CertificatesCertificateGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -468,13 +452,11 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all countries available in Katapult.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -491,14 +473,12 @@ class Client extends Runtime\Client\Client
     /**
      * Return details for a specific country.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $country[id] The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code2] The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code3] The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'country[id]': string, The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                                'country[iso_code2]': string, The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                                'country[iso_code3]': string, The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountriesCountryGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -516,16 +496,14 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all country states for a specific country.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $country[id] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code2] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code3] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'country[id]': string, The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                                'country[iso_code2]': string, The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                                'country[iso_code3]': string, The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountriesCountryCountryStatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -543,12 +521,10 @@ class Client extends Runtime\Client\Client
     /**
      * Return details for a specific country state.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $country_state[id] The country state to return. All 'country_state[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'country_state[id]': string, The country state to return. All 'country_state[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountryStatesCountryStateGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -566,13 +542,11 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all currencies available in Katapult.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CurrenciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -589,13 +563,11 @@ class Client extends Runtime\Client\Client
     /**
      * Return details for a specific currency.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $currency[id] The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
-     * @var string $currency[iso_code] The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'currency[id]': string, The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
+     *                                'currency[iso_code]': string, The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CurrenciesCurrencyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -616,15 +588,13 @@ class Client extends Runtime\Client\Client
      * - `dns`
      * - `dns:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDnsZonesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -666,13 +636,11 @@ class Client extends Runtime\Client\Client
      * - `dns`
      * - `dns:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDnsZonesNameserversGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -713,13 +681,11 @@ class Client extends Runtime\Client\Client
      * - `dns`
      * - `dns:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
-     * @var string $dns_zone[name] All 'dns_zone[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'dns_zone[id]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *                                'dns_zone[name]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -782,13 +748,11 @@ class Client extends Runtime\Client\Client
      * - `dns`
      * - `dns:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
-     * @var string $dns_zone[name] All 'dns_zone[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'dns_zone[id]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *                                'dns_zone[name]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZoneRecordsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -850,12 +814,10 @@ class Client extends Runtime\Client\Client
      * - `dns`
      * - `dns:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'dns_record[id]': string, All 'dns_record[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsRecordsDnsRecordGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -909,13 +871,11 @@ class Client extends Runtime\Client\Client
     /**
      * Provide details for a specific data center.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
-     * @var string $data_center[permalink] All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'data_center[id]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                                'data_center[permalink]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DataCentersDataCenterGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -933,13 +893,11 @@ class Client extends Runtime\Client\Client
     /**
      * Provide details of default network for a data center.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
-     * @var string $data_center[permalink] All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'data_center[id]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                                'data_center[permalink]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DataCentersDataCenterDefaultNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -957,15 +915,13 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all disk IO profiles available to this organization.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to find disk IO profiles for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDiskIoProfilesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -986,15 +942,13 @@ class Client extends Runtime\Client\Client
      * - `disk_backup_policies`
      * - `disk_backup_policies:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to return disk backup policies for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1015,16 +969,14 @@ class Client extends Runtime\Client\Client
      * - `disk_backup_policies`
      * - `disk_backup_policies:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var bool   $include_disks If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine[id]': string, The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'virtual_machine[fqdn]': string, The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'include_disks': bool, If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1068,14 +1020,12 @@ class Client extends Runtime\Client\Client
      * - `disk_backup_policies`
      * - `disk_backup_policies:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $disk[id] The disk to return disk backup policies for. All 'disk[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'disk[id]': string, The disk to return disk backup policies for. All 'disk[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DisksDiskDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1140,12 +1090,10 @@ class Client extends Runtime\Client\Client
      * - `disk_backup_policies`
      * - `disk_backup_policies:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $disk_backup_policy[id] The disk backup policy to get information for. All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'disk_backup_policy[id]': string, The disk backup policy to get information for. All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskBackupPoliciesDiskBackupPolicyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1210,15 +1158,13 @@ class Client extends Runtime\Client\Client
      * - `disk_templates`
      * - `disk_templates:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $disk_template[id] The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     * @var string $disk_template[permalink] The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'disk_template[id]': string, The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *                                'disk_template[permalink]': string, The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplatesDiskTemplateVersionsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1239,12 +1185,10 @@ class Client extends Runtime\Client\Client
      * - `disk_templates`
      * - `disk_templates:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $disk_template_version[id] The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'disk_template_version[id]': string, The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplateVersionsDiskTemplateVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1265,12 +1209,10 @@ class Client extends Runtime\Client\Client
      * - `disk_templates`
      * - `disk_templates:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $disk_template_version[id] The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'disk_template_version[id]': string, The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1291,17 +1233,15 @@ class Client extends Runtime\Client\Client
      * - `disk_templates`
      * - `disk_templates:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to find disk templates for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to find disk templates for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var bool   $include_universal Whether or not to include universal templates
-     * @var string $operating_system[id] An operating system to use to filter disk templates. All 'operating_system[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to find disk templates for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to find disk templates for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'include_universal': bool, Whether or not to include universal templates
+     *                                'operating_system[id]': string, An operating system to use to filter disk templates. All 'operating_system[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDiskTemplatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1322,13 +1262,11 @@ class Client extends Runtime\Client\Client
      * - `disk_templates`
      * - `disk_templates:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $disk_template[id] The disk template to return. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     * @var string $disk_template[permalink] The disk template to return. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'disk_template[id]': string, The disk template to return. All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *                                'disk_template[permalink]': string, The disk template to return. All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplatesDiskTemplateGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1349,17 +1287,15 @@ class Client extends Runtime\Client\Client
      * - `disks`
      * - `disks:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to find disks for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1424,12 +1360,10 @@ class Client extends Runtime\Client\Client
      * - `disks`
      * - `disks:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $disk[id] The disk to return. All 'disk[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'disk[id]': string, The disk to return. All 'disk[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DisksDiskGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1604,15 +1538,13 @@ class Client extends Runtime\Client\Client
      * - `disks`
      * - `disks:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine[id]': string, The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'virtual_machine[fqdn]': string, The virtual machine to find disks for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1634,17 +1566,15 @@ class Client extends Runtime\Client\Client
      * - `file_storage_volumes`
      * - `file_storage_volumes:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return all file storage volumes for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return all file storage volumes for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to return all file storage volumes for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to return all file storage volumes for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationFileStorageVolumesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1708,12 +1638,10 @@ class Client extends Runtime\Client\Client
      * - `file_storage_volumes`
      * - `file_storage_volumes:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $file_storage_volume[id] The file storage volume to return. All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'file_storage_volume[id]': string, The file storage volume to return. All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\FileStorageVolumesFileStorageVolumeGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1754,13 +1682,11 @@ class Client extends Runtime\Client\Client
     /**
      * Provides a full list of all GPU types.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\GpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1777,13 +1703,11 @@ class Client extends Runtime\Client\Client
     /**
      * Provide details for a specific GPU type.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $gpu_type[id] All 'gpu_type[]' params are mutually exclusive, only one can be provided
-     * @var string $gpu_type[permalink] All 'gpu_type[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'gpu_type[id]': string, All 'gpu_type[]' params are mutually exclusive, only one can be provided.
+     *                                'gpu_type[permalink]': string, All 'gpu_type[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\GpuTypesGpuTypeGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1801,15 +1725,13 @@ class Client extends Runtime\Client\Client
     /**
      * Provides a list of all GPU types available in a given data center.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $data_center[id] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
-     * @var string $data_center[permalink] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'data_center[id]': string, The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                                'data_center[permalink]': string, The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DataCentersDataCenterGpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1830,16 +1752,14 @@ class Client extends Runtime\Client\Client
      * - `ip_addresses`
      * - `ip_addresses:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to use when looking up IP addresses. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to use when looking up IP addresses. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var bool   $allocated If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to use when looking up IP addresses. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to use when looking up IP addresses. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'allocated': bool, If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationIpAddressesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1902,13 +1822,11 @@ class Client extends Runtime\Client\Client
      * - `ip_addresses`
      * - `ip_addresses:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $ip_address[id] The IP address to find. All 'ip_address[]' params are mutually exclusive, only one can be provided.
-     * @var string $ip_address[address] The IP address to find. All 'ip_address[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'ip_address[id]': string, The IP address to find. All 'ip_address[]' params are mutually exclusive, only one can be provided.
+     *                                'ip_address[address]': string, The IP address to find. All 'ip_address[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\IpAddressesIpAddressGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1972,17 +1890,15 @@ class Client extends Runtime\Client\Client
      * - `load_balancers`
      * - `load_balancers:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationLoadBalancersGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2045,13 +1961,11 @@ class Client extends Runtime\Client\Client
      * - `load_balancers`
      * - `load_balancers:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $load_balancer[id] The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var string $load_balancer[api_reference] The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'load_balancer[id]': string, The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                                'load_balancer[api_reference]': string, The load balancer to return the details for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersLoadBalancerGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2093,15 +2007,13 @@ class Client extends Runtime\Client\Client
      * - `load_balancers`
      * - `load_balancers:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $load_balancer[id] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var string $load_balancer[api_reference] The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'load_balancer[id]': string, The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                                'load_balancer[api_reference]': string, The load balancer to return all load rules for. All 'load_balancer[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersLoadBalancerRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2164,12 +2076,10 @@ class Client extends Runtime\Client\Client
      * - `load_balancers`
      * - `load_balancers:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $load_balancer_rule[id] The load balancer rule to return the details for. All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'load_balancer_rule[id]': string, The load balancer rule to return the details for. All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersRulesLoadBalancerRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2208,15 +2118,13 @@ class Client extends Runtime\Client\Client
     /**
      * Returns a list of all network speed profiles available to an organization.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to use when looking up network speed profiles. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to use when looking up network speed profiles. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to use when looking up network speed profiles. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to use when looking up network speed profiles. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2234,13 +2142,11 @@ class Client extends Runtime\Client\Client
     /**
      * Returns a list of all networks available for an organization.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationAvailableNetworksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2258,13 +2164,11 @@ class Client extends Runtime\Client\Client
     /**
      * Returns details for a specific network.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $network[id] The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
-     * @var string $network[permalink] The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'network[id]': string, The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
+     *                                'network[permalink]': string, The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\NetworksNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2282,13 +2186,11 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all operating systems.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OperatingSystemsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2305,12 +2207,10 @@ class Client extends Runtime\Client\Client
     /**
      * Return details for a specific operating system.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $operating_system[id] The operating system to return. All 'operating_system[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'operating_system[id]': string, The operating system to return. All 'operating_system[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OperatingSystemsOperatingSystemGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2345,13 +2245,11 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `organizations:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2371,13 +2269,11 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `organizations:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationPolicyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2397,13 +2293,11 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `organizations:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationPolicyLimitsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2423,13 +2317,11 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `organizations:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationPricesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2445,6 +2337,31 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details of the steps which must be performed before an organization can be deleted
+     * ## Scopes
+     * - `organizations:delete`
+     * - `managed_organizations:delete`.
+     *
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationDeletionStepsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationDeletionStepsBadRequestException
+     * @throws Exception\GetOrganizationDeletionStepsForbiddenException
+     * @throws Exception\GetOrganizationDeletionStepsNotFoundException
+     * @throws Exception\GetOrganizationDeletionStepsTooManyRequestsException
+     * @throws Exception\GetOrganizationDeletionStepsServiceUnavailableException
+     */
+    public function getOrganizationDeletionSteps(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationDeletionSteps($queryParameters), $fetch);
+    }
+
+    /**
      * This will return a simple list of users with any access to this organization. This
      * endpoint is available to all users with access to the organization therefore allows
      * them to see a small amount of information about their peers. This is useful when
@@ -2454,15 +2371,13 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `organizations:read`
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationUsersWithAccessGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2482,17 +2397,15 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `managed_organizations`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationManagedGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2529,17 +2442,37 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Returns a list of all SSH keys for an organization.
-     *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to list SSH keys for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to list SSH keys for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * Delete a managed organization. All resources must be removed first.
+     * ## Scopes
+     * - `managed_organizations:delete`.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ManagedOrganizationsOrganizationDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteOrganizationBadRequestException
+     * @throws Exception\DeleteOrganizationForbiddenException
+     * @throws Exception\DeleteOrganizationNotFoundException
+     * @throws Exception\DeleteOrganizationConflictException
+     * @throws Exception\DeleteOrganizationTooManyRequestsException
+     * @throws Exception\DeleteOrganizationInternalServerErrorException
+     * @throws Exception\DeleteOrganizationServiceUnavailableException
+     */
+    public function deleteOrganization(?Model\ManagedOrganizationsOrganizationDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteOrganization($requestBody), $fetch);
+    }
+
+    /**
+     * Returns a list of all SSH keys for an organization.
+     *
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to list SSH keys for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to list SSH keys for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationSshKeysGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2598,17 +2531,15 @@ class Client extends Runtime\Client\Client
      * - `security_groups`
      * - `security_groups:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return all security groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return all security groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to return all security groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to return all security groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationSecurityGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2672,12 +2603,10 @@ class Client extends Runtime\Client\Client
      * - `security_groups`
      * - `security_groups:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $security_group[id] The security group to return the details for. All 'security_group[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'security_group[id]': string, The security group to return the details for. All 'security_group[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsSecurityGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2719,14 +2648,12 @@ class Client extends Runtime\Client\Client
      * - `security_groups`
      * - `security_groups:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $security_group[id] The security group to return all load rules for. All 'security_group[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'security_group[id]': string, The security group to return all load rules for. All 'security_group[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsSecurityGroupRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2789,12 +2716,10 @@ class Client extends Runtime\Client\Client
      * - `security_groups`
      * - `security_groups:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $security_group_rule[id] The security group rule to return the details for. All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'security_group_rule[id]': string, The security group rule to return the details for. All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsRulesSecurityGroupRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2836,15 +2761,13 @@ class Client extends Runtime\Client\Client
      * - `tags`
      * - `tags:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to list the tags for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to list the tags for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to list the tags for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to list the tags for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationTagsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2906,12 +2829,10 @@ class Client extends Runtime\Client\Client
      * - `tags`
      * - `tags:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $tag[id] The tag to load the details for. All 'tag[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'tag[id]': string, The tag to load the details for. All 'tag[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TagsTagGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2953,12 +2874,10 @@ class Client extends Runtime\Client\Client
      * - `tasks`
      * - `tasks:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $task[id] All 'task[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'task[id]': string, All 'task[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TasksTaskGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2978,15 +2897,13 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `trash_objects:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to find all trash objects for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to find all trash objects for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to find all trash objects for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to find all trash objects for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationTrashObjectsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3048,13 +2965,11 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `trash_objects:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $trash_object[id] The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
-     * @var string $trash_object[object_id] The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'trash_object[id]': string, The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
+     *                                'trash_object[object_id]': string, The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TrashObjectsTrashObjectGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3130,13 +3045,11 @@ class Client extends Runtime\Client\Client
      * - `virtual_machine_groups`
      * - `virtual_machine_groups:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3198,12 +3111,10 @@ class Client extends Runtime\Client\Client
      * - `virtual_machine_groups`
      * - `virtual_machine_groups:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_group[id] The virtual machine group to retrieve. All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine_group[id]': string, The virtual machine group to retrieve. All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineGroupsVirtualMachineGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3245,15 +3156,13 @@ class Client extends Runtime\Client\Client
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine[id]': string, The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'virtual_machine[fqdn]': string, The virtual machine to show network interfaces for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3275,15 +3184,13 @@ class Client extends Runtime\Client\Client
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $network[id] The network to find the network interface for. All 'network[]' params are mutually exclusive, only one can be provided.
-     * @var string $network[permalink] The network to find the network interface for. All 'network[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine[id]': string, The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'virtual_machine[fqdn]': string, The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'network[id]': string, The network to find the network interface for. All 'network[]' params are mutually exclusive, only one can be provided.
+     *                                'network[permalink]': string, The network to find the network interface for. All 'network[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3305,12 +3212,10 @@ class Client extends Runtime\Client\Client
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_network_interface[id] The network interface to show the information for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine_network_interface[id]': string, The network interface to show the information for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3331,13 +3236,11 @@ class Client extends Runtime\Client\Client
      * - `ip_addresses`
      * - `ip_addresses:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     * @var string $address_version The IP address version to return results for
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine_network_interface[id]': string, The network interface to get IP addresses for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
+     *                                'address_version': string, The IP address version to return results for
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsAddressVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3419,15 +3322,13 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `virtual_machine_packages:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinePackagesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3447,13 +3348,11 @@ class Client extends Runtime\Client\Client
      * ## Scopes
      * - `virtual_machine_packages:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_package[id] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided
-     * @var string $virtual_machine_package[permalink] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine_package[id]': string, All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
+     *                                'virtual_machine_package[permalink]': string, All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinePackagesVirtualMachinePackageGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3474,17 +3373,15 @@ class Client extends Runtime\Client\Client
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[key]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'annotations[value]': string, An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualMachinesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3526,13 +3423,11 @@ class Client extends Runtime\Client\Client
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] All 'virtual_machine[]' params are mutually exclusive, only one can be provided
-     * @var string $virtual_machine[fqdn] All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine[id]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                'virtual_machine[fqdn]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3702,12 +3597,10 @@ class Client extends Runtime\Client\Client
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_build[id] All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'virtual_machine_build[id]': string, All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3851,13 +3744,11 @@ class Client extends Runtime\Client\Client
     /**
      * Returns the details for a specific zone.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $zone[id] The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
-     * @var string $zone[permalink] The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
-     *             }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'zone[id]': string, The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
+     *                                'zone[permalink]': string, The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\ZonesZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *

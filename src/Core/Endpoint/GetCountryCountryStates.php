@@ -18,13 +18,12 @@ class GetCountryCountryStates extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
      * Return a list of all country states for a specific country.
      *
      * @param array $queryParameters {
-     *
-     * @var string $country[id] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code2] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code3] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'country[id]': string, The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                               'country[iso_code2]': string, The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                               'country[iso_code3]': string, The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

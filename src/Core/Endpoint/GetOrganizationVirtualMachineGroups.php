@@ -21,10 +21,9 @@ class GetOrganizationVirtualMachineGroups extends \KatapultAPI\Core\Runtime\Clie
      * - `virtual_machine_groups:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'organization[id]': string, The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'organization[sub_domain]': string, The organization to return groups for. All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

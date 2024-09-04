@@ -88,13 +88,11 @@ class Client extends Runtime\Client\Client
     /**
      * Return the currently available virtual machine packages.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'page': int,
+     *                                'per_page': int,
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinePackagesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *

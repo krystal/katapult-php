@@ -21,9 +21,8 @@ class GetSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
      * - `security_groups:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $security_group[id] The security group to return the details for. All 'security_group[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'security_group[id]': string, The security group to return the details for. All 'security_group[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -21,9 +21,8 @@ class GetVirtualMachinesBuildsVirtualMachineBuild extends \KatapultAPI\Core\Runt
      * - `virtual_machines:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_build[id] All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'virtual_machine_build[id]': string, All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

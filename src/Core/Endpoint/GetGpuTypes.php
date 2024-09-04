@@ -18,10 +18,9 @@ class GetGpuTypes extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implemen
      * Provides a full list of all GPU types.
      *
      * @param array $queryParameters {
-     *
-     * @var int $page
-     * @var int $per_page
-     *          }
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

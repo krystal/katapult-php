@@ -18,12 +18,11 @@ class GetDataCenterGpuTypes extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * Provides a list of all GPU types available in a given data center.
      *
      * @param array $queryParameters {
-     *
-     * @var string $data_center[id] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
-     * @var string $data_center[permalink] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     *                               'data_center[id]': string, The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                               'data_center[permalink]': string, The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                               'page': int,
+     *                               'per_page': int,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -20,10 +20,9 @@ class GetOrganizationPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * - `organizations:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

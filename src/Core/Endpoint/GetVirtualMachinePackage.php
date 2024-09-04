@@ -20,10 +20,9 @@ class GetVirtualMachinePackage extends \KatapultAPI\Core\Runtime\Client\BaseEndp
      * - `virtual_machine_packages:read`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_package[id] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided
-     * @var string $virtual_machine_package[permalink] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'virtual_machine_package[id]': string, All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
+     *                               'virtual_machine_package[permalink]': string, All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {
