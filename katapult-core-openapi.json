@@ -7438,6 +7438,68 @@
         }
       }
     },
+    "/organizations/organization/deletion_steps": {
+      "get": {
+        "operationId": "get:organization_deletion_steps",
+        "summary": "Deletion steps",
+        "description": "Returns details of the steps which must be performed before an organization can be deleted\n## Scopes\n- `organizations:delete`\n- `managed_organizations:delete`\n",
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "name": "organization[id]",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "All 'organization[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "name": "organization[sub_domain]",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "All 'organization[]' params are mutually exclusive, only one can be provided."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns details of the steps which must be performed before an organization can be deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "steps": {
+                      "$ref": "#/components/schemas/OrganizationDeletionSteps"
+                    }
+                  },
+                  "required": [
+                    "steps"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizationNotFoundResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
     "/organizations/organization/users_with_access": {
       "get": {
         "operationId": "get:organization_users_with_access",
@@ -7698,6 +7760,73 @@
           },
           "429": {
             "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/managed_organizations/organization": {
+      "delete": {
+        "operationId": "delete:organization",
+        "summary": "Delete managed organization",
+        "description": "Delete a managed organization. All resources must be removed first.\n## Scopes\n- `managed_organizations:delete`\n",
+        "tags": [
+          "Organizations",
+          "Managed organizations"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "organization": {
+                    "$ref": "#/components/schemas/OrganizationLookup"
+                  }
+                },
+                "required": [
+                  "organization"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete a managed organization. All resources must be removed first.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "success"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizationNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/components/responses/DeletionStepsNotSatisfiedManagedOrganizationRequired409Res"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/DeletionFailedResponse"
           },
           "503": {
             "$ref": "#/components/responses/APIAuthenticator503Response"
@@ -12623,6 +12752,123 @@
           }
         ]
       },
+      "OrganizationDeletionSteps": {
+        "type": "object",
+        "properties": {
+          "managed_organizations": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "virtual_machines": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "disks": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "file_storage_volumes": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "disk_backup_policies": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "isos": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "disk_templates": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "load_balancers": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "dns_zones": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "empty_trash": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "virtual_networks": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "ip_addresses": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "object_storage": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "ensure_zero_balance": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "ensure_no_outstanding_invoices": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          }
+        }
+      },
+      "OrganizationDeletionStep": {
+        "type": "object",
+        "properties": {
+          "satisfied": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "PermissionDenied": {
+        "type": "object",
+        "properties": {
+          "details": {
+            "type": "string",
+            "description": "Additional information regarding the reason why permission was denied",
+            "nullable": true
+          }
+        }
+      },
+      "PermissionDeniedEnum": {
+        "type": "string",
+        "enum": [
+          "permission_denied"
+        ]
+      },
+      "PermissionDeniedSchema": {
+        "type": "object",
+        "description": "The authenticated identity is not permitted to perform this action",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/PermissionDeniedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "$ref": "#/components/schemas/PermissionDenied"
+          }
+        }
+      },
+      "OneOfOrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationNotActivatedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/PermissionDeniedSchema"
+          }
+        ]
+      },
       "PaginationObject": {
         "type": "object",
         "properties": {
@@ -12790,6 +13036,72 @@
           {
             "$ref": "#/components/schemas/ValidationErrorSchema"
           }
+        ]
+      },
+      "DeletionStepsNotSatisfied": {
+        "type": "object",
+        "properties": {
+          "steps": {
+            "$ref": "#/components/schemas/OrganizationDeletionSteps"
+          }
+        }
+      },
+      "DeletionStepsNotSatisfiedEnum": {
+        "type": "string",
+        "enum": [
+          "deletion_steps_not_satisfied"
+        ]
+      },
+      "DeletionStepsNotSatisfiedSchema": {
+        "type": "object",
+        "description": "Not all deletion steps have been satisfied, ensure all steps are satisfied before attempting deletion",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DeletionStepsNotSatisfiedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "$ref": "#/components/schemas/DeletionStepsNotSatisfied"
+          }
+        }
+      },
+      "ManagedOrganizationRequiredEnum": {
+        "type": "string",
+        "enum": [
+          "managed_organization_required"
+        ]
+      },
+      "ManagedOrganizationRequiredSchema": {
+        "type": "object",
+        "description": "Only managed organizations can be deleted using this endpoint",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ManagedOrganizationRequiredEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfDeletionStepsNotSatisfiedManagedOrganizationRequired409Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DeletionStepsNotSatisfiedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ManagedOrganizationRequiredSchema"
+          }
+        ]
+      },
+      "DeletionFailedEnum": {
+        "type": "string",
+        "enum": [
+          "deletion_failed"
         ]
       },
       "GetOrganizationDisks200ResponseDisk": {
@@ -13274,62 +13586,6 @@
           "running",
           "completed",
           "failed"
-        ]
-      },
-      "PermissionDenied": {
-        "type": "object",
-        "properties": {
-          "details": {
-            "type": "string",
-            "description": "Additional information regarding the reason why permission was denied",
-            "nullable": true
-          }
-        }
-      },
-      "PermissionDeniedEnum": {
-        "type": "string",
-        "enum": [
-          "permission_denied"
-        ]
-      },
-      "PermissionDeniedSchema": {
-        "type": "object",
-        "description": "The authenticated identity is not permitted to perform this action",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/PermissionDeniedEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "$ref": "#/components/schemas/PermissionDenied"
-          }
-        }
-      },
-      "OneOfOrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/InvalidAPITokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
-          },
-          {
-            "$ref": "#/components/schemas/OrganizationSuspendedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/OrganizationNotActivatedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/PermissionDeniedSchema"
-          }
         ]
       },
       "TaskQueueingError": {
@@ -20632,6 +20888,16 @@
           }
         }
       },
+      "OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res": {
+        "description": "403 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfOrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+            }
+          }
+        }
+      },
       "OrganizationLimitReachedValidationError422Res": {
         "description": "422 error response",
         "content": {
@@ -20642,12 +20908,32 @@
           }
         }
       },
-      "OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res": {
-        "description": "403 error response",
+      "DeletionStepsNotSatisfiedManagedOrganizationRequired409Res": {
+        "description": "409 error response",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/OneOfOrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+              "$ref": "#/components/schemas/OneOfDeletionStepsNotSatisfiedManagedOrganizationRequired409Res"
+            }
+          }
+        }
+      },
+      "DeletionFailedResponse": {
+        "description": "An error occurred while deleting the organization. Check all deletion steps are satisfied.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/DeletionFailedEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "object"
+                }
+              }
             }
           }
         }
