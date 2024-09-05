@@ -1,5 +1,23 @@
 # Changelog
 
+## [5.1.0](https://github.com/krystal/katapult-php/compare/v5.0.0...v5.1.0) (2024-09-05)
+
+
+### Features
+
+* don't get deps beyond php 8.1 ([b867b18](https://github.com/krystal/katapult-php/commit/b867b1820d13ad1af6f3dd1b589f6e604e8f88b4))
+* download up to date spec files for KP 2.54.0 ([63c7c24](https://github.com/krystal/katapult-php/commit/63c7c242851b3a559bb230e9219b23d23b08b83d))
+* **generator:** new client automatically generated in GitHub Actions ([43fb66a](https://github.com/krystal/katapult-php/commit/43fb66ae35285732bbc370726d832aff9cdbaf54))
+* **generator:** new client automatically generated in GitHub Actions ([011d669](https://github.com/krystal/katapult-php/commit/011d669f126c4cb552cb6773104dfc2f0bef8aaf))
+* **generator:** new client automatically generated in GitHub Actions ([437bd97](https://github.com/krystal/katapult-php/commit/437bd97b92af9253245bb11827b967b06f9d59b5))
+* update spec to latest 2.54 ([c114de3](https://github.com/krystal/katapult-php/commit/c114de34850d4d5d8db0648e584dc48cbd6357f7))
+* update to kp 2.54.0 ([255aad2](https://github.com/krystal/katapult-php/commit/255aad26e4260f77775143a4ce3f661fed6d826d))
+
+
+### Miscellaneous Chores
+
+* update deps and specify multicore for cs fixer ([0959645](https://github.com/krystal/katapult-php/commit/0959645edde70a4aa840af11114de5504c4662b1))
+
 ## [5.0.0](https://github.com/krystal/katapult-php/compare/v4.0.3...v5.0.0) (2024-08-29)
 
 
