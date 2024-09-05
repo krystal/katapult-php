@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\Organization';
+            return $type === \KatapultAPI\Core\Model\Organization::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\Organization';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\Organization::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -134,17 +134,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setPhoneNumber(null);
             }
             if (\array_key_exists('currency', $data)) {
-                $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'KatapultAPI\\Core\\Model\\Currency', 'json', $context));
+                $object->setCurrency($this->denormalizer->denormalize($data['currency'], \KatapultAPI\Core\Model\Currency::class, 'json', $context));
                 unset($data['currency']);
             }
             if (\array_key_exists('country', $data) && $data['country'] !== null) {
-                $object->setCountry($this->denormalizer->denormalize($data['country'], 'KatapultAPI\\Core\\Model\\OrganizationCountry', 'json', $context));
+                $object->setCountry($this->denormalizer->denormalize($data['country'], \KatapultAPI\Core\Model\OrganizationCountry::class, 'json', $context));
                 unset($data['country']);
             } elseif (\array_key_exists('country', $data) && $data['country'] === null) {
                 $object->setCountry(null);
             }
             if (\array_key_exists('country_state', $data) && $data['country_state'] !== null) {
-                $object->setCountryState($this->denormalizer->denormalize($data['country_state'], 'KatapultAPI\\Core\\Model\\OrganizationCountryState', 'json', $context));
+                $object->setCountryState($this->denormalizer->denormalize($data['country_state'], \KatapultAPI\Core\Model\OrganizationCountryState::class, 'json', $context));
                 unset($data['country_state']);
             } elseif (\array_key_exists('country_state', $data) && $data['country_state'] === null) {
                 $object->setCountryState(null);
@@ -229,7 +229,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\Organization' => false];
+            return [\KatapultAPI\Core\Model\Organization::class => false];
         }
     }
 } else {
@@ -242,12 +242,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\Organization';
+            return $type === \KatapultAPI\Core\Model\Organization::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\Organization';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\Organization::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -345,17 +345,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setPhoneNumber(null);
             }
             if (\array_key_exists('currency', $data)) {
-                $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'KatapultAPI\\Core\\Model\\Currency', 'json', $context));
+                $object->setCurrency($this->denormalizer->denormalize($data['currency'], \KatapultAPI\Core\Model\Currency::class, 'json', $context));
                 unset($data['currency']);
             }
             if (\array_key_exists('country', $data) && $data['country'] !== null) {
-                $object->setCountry($this->denormalizer->denormalize($data['country'], 'KatapultAPI\\Core\\Model\\OrganizationCountry', 'json', $context));
+                $object->setCountry($this->denormalizer->denormalize($data['country'], \KatapultAPI\Core\Model\OrganizationCountry::class, 'json', $context));
                 unset($data['country']);
             } elseif (\array_key_exists('country', $data) && $data['country'] === null) {
                 $object->setCountry(null);
             }
             if (\array_key_exists('country_state', $data) && $data['country_state'] !== null) {
-                $object->setCountryState($this->denormalizer->denormalize($data['country_state'], 'KatapultAPI\\Core\\Model\\OrganizationCountryState', 'json', $context));
+                $object->setCountryState($this->denormalizer->denormalize($data['country_state'], \KatapultAPI\Core\Model\OrganizationCountryState::class, 'json', $context));
                 unset($data['country_state']);
             } elseif (\array_key_exists('country_state', $data) && $data['country_state'] === null) {
                 $object->setCountryState(null);
@@ -443,7 +443,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\Organization' => false];
+            return [\KatapultAPI\Core\Model\Organization::class => false];
         }
     }
 }

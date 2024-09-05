@@ -73,19 +73,19 @@ class GetCurrencies extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implem
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\CurrenciesGetResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\CurrenciesGetResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\GetCurrenciesBadRequestException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator400Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\GetCurrenciesBadRequestException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\GetCurrenciesForbiddenException($response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\GetCurrenciesTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\GetCurrenciesTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\GetCurrenciesServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\GetCurrenciesServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

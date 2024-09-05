@@ -63,25 +63,25 @@ class PostDnsZoneVerify extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\DnsZonesDnsZoneVerifyPostResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyBadRequestException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator400Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyBadRequestException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyNotFoundException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseDNSZoneNotFoundResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyNotFoundException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseDNSZoneNotFoundResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseDNSZoneNotVerifiedResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseDNSZoneNotVerifiedResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostDnsZoneVerifyServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

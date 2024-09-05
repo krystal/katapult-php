@@ -63,25 +63,25 @@ class DeleteApiToken extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ApiTokensApiTokenDeleteResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\ApiTokensApiTokenDeleteResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\DeleteApiTokenBadRequestException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator400Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\DeleteApiTokenBadRequestException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\DeleteApiTokenForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\DeleteApiTokenNotFoundException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPITokenNotFoundResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\DeleteApiTokenNotFoundException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPITokenNotFoundResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\DeleteApiTokenUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseValidationErrorResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\DeleteApiTokenUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseValidationErrorResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\DeleteApiTokenTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\DeleteApiTokenTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\DeleteApiTokenServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\DeleteApiTokenServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

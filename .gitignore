@@ -6,3 +6,4 @@ coverage
 .phpunit.result.cache
 generator/.php-cs-fixer.cache
 node_modules
+composer.lock

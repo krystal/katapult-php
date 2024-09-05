@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDisk';
+            return $type === \KatapultAPI\Core\Model\PatchDisk200ResponseDisk::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDisk';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PatchDisk200ResponseDisk::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -80,7 +80,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['storage_speed']);
             }
             if (\array_key_exists('io_profile', $data) && $data['io_profile'] !== null) {
-                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDiskIoProfile', 'json', $context));
+                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], \KatapultAPI\Core\Model\PatchDisk200ResponseDiskIoProfile::class, 'json', $context));
                 unset($data['io_profile']);
             } elseif (\array_key_exists('io_profile', $data) && $data['io_profile'] === null) {
                 $object->setIoProfile(null);
@@ -92,17 +92,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setBusType(null);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\PatchDiskPartDataCenter', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\PatchDiskPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
-                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDiskVirtualMachineDisk', 'json', $context));
+                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], \KatapultAPI\Core\Model\PatchDisk200ResponseDiskVirtualMachineDisk::class, 'json', $context));
                 unset($data['virtual_machine_disk']);
             } elseif (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] === null) {
                 $object->setVirtualMachineDisk(null);
             }
             if (\array_key_exists('installation', $data) && $data['installation'] !== null) {
-                $object->setInstallation($this->denormalizer->denormalize($data['installation'], 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDiskInstallation', 'json', $context));
+                $object->setInstallation($this->denormalizer->denormalize($data['installation'], \KatapultAPI\Core\Model\PatchDisk200ResponseDiskInstallation::class, 'json', $context));
                 unset($data['installation']);
             } elseif (\array_key_exists('installation', $data) && $data['installation'] === null) {
                 $object->setInstallation(null);
@@ -166,7 +166,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PatchDisk200ResponseDisk' => false];
+            return [\KatapultAPI\Core\Model\PatchDisk200ResponseDisk::class => false];
         }
     }
 } else {
@@ -179,12 +179,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDisk';
+            return $type === \KatapultAPI\Core\Model\PatchDisk200ResponseDisk::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDisk';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PatchDisk200ResponseDisk::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -228,7 +228,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['storage_speed']);
             }
             if (\array_key_exists('io_profile', $data) && $data['io_profile'] !== null) {
-                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDiskIoProfile', 'json', $context));
+                $object->setIoProfile($this->denormalizer->denormalize($data['io_profile'], \KatapultAPI\Core\Model\PatchDisk200ResponseDiskIoProfile::class, 'json', $context));
                 unset($data['io_profile']);
             } elseif (\array_key_exists('io_profile', $data) && $data['io_profile'] === null) {
                 $object->setIoProfile(null);
@@ -240,17 +240,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setBusType(null);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\PatchDiskPartDataCenter', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\PatchDiskPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
-                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDiskVirtualMachineDisk', 'json', $context));
+                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], \KatapultAPI\Core\Model\PatchDisk200ResponseDiskVirtualMachineDisk::class, 'json', $context));
                 unset($data['virtual_machine_disk']);
             } elseif (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] === null) {
                 $object->setVirtualMachineDisk(null);
             }
             if (\array_key_exists('installation', $data) && $data['installation'] !== null) {
-                $object->setInstallation($this->denormalizer->denormalize($data['installation'], 'KatapultAPI\\Core\\Model\\PatchDisk200ResponseDiskInstallation', 'json', $context));
+                $object->setInstallation($this->denormalizer->denormalize($data['installation'], \KatapultAPI\Core\Model\PatchDisk200ResponseDiskInstallation::class, 'json', $context));
                 unset($data['installation']);
             } elseif (\array_key_exists('installation', $data) && $data['installation'] === null) {
                 $object->setInstallation(null);
@@ -317,7 +317,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PatchDisk200ResponseDisk' => false];
+            return [\KatapultAPI\Core\Model\PatchDisk200ResponseDisk::class => false];
         }
     }
 }

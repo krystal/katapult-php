@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupPatchBody';
+            return $type === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupPatchBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,17 +52,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('security_group', $data)) {
-                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'KatapultAPI\\Core\\Model\\SecurityGroupLookup', 'json', $context));
+                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], \KatapultAPI\Core\Model\SecurityGroupLookup::class, 'json', $context));
                 unset($data['security_group']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\SecurityGroupArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\SecurityGroupArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -99,7 +99,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupPatchBody' => false];
+            return [\KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => false];
         }
     }
 } else {
@@ -112,12 +112,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupPatchBody';
+            return $type === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupPatchBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -133,17 +133,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('security_group', $data)) {
-                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'KatapultAPI\\Core\\Model\\SecurityGroupLookup', 'json', $context));
+                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], \KatapultAPI\Core\Model\SecurityGroupLookup::class, 'json', $context));
                 unset($data['security_group']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\SecurityGroupArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\SecurityGroupArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -183,7 +183,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\SecurityGroupsSecurityGroupPatchBody' => false];
+            return [\KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => false];
         }
     }
 }

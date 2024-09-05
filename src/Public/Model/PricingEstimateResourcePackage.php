@@ -65,6 +65,10 @@ class PricingEstimateResourcePackage extends \ArrayObject
      * @var bool
      */
     protected $useDedicatedCpus;
+    /**
+     * @var VirtualMachinePackageGroup
+     */
+    protected $group;
 
     public function getId(): string
     {
@@ -205,6 +209,19 @@ class PricingEstimateResourcePackage extends \ArrayObject
     {
         $this->initialized['useDedicatedCpus'] = true;
         $this->useDedicatedCpus = $useDedicatedCpus;
+
+        return $this;
+    }
+
+    public function getGroup(): VirtualMachinePackageGroup
+    {
+        return $this->group;
+    }
+
+    public function setGroup(VirtualMachinePackageGroup $group): self
+    {
+        $this->initialized['group'] = true;
+        $this->group = $group;
 
         return $this;
     }

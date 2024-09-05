@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationLoadBalancersPostBody';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationLoadBalancersPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,17 +52,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('organization', $data)) {
-                $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'KatapultAPI\\Core\\Model\\OrganizationLookup', 'json', $context));
+                $object->setOrganization($this->denormalizer->denormalize($data['organization'], \KatapultAPI\Core\Model\OrganizationLookup::class, 'json', $context));
                 unset($data['organization']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\LoadBalancerArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\LoadBalancerArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -99,7 +99,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationLoadBalancersPostBody' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => false];
         }
     }
 } else {
@@ -112,12 +112,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationLoadBalancersPostBody';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationLoadBalancersPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -133,17 +133,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('organization', $data)) {
-                $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'KatapultAPI\\Core\\Model\\OrganizationLookup', 'json', $context));
+                $object->setOrganization($this->denormalizer->denormalize($data['organization'], \KatapultAPI\Core\Model\OrganizationLookup::class, 'json', $context));
                 unset($data['organization']);
             }
             if (\array_key_exists('properties', $data)) {
-                $object->setProperties($this->denormalizer->denormalize($data['properties'], 'KatapultAPI\\Core\\Model\\LoadBalancerArguments', 'json', $context));
+                $object->setProperties($this->denormalizer->denormalize($data['properties'], \KatapultAPI\Core\Model\LoadBalancerArguments::class, 'json', $context));
                 unset($data['properties']);
             }
             if (\array_key_exists('annotations', $data)) {
                 $values = [];
                 foreach ($data['annotations'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setAnnotations($values);
                 unset($data['annotations']);
@@ -183,7 +183,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationLoadBalancersPostBody' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => false];
         }
     }
 }

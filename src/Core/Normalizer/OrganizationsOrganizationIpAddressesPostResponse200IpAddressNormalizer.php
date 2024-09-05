@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationIpAddressesPostResponse200IpAddress';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationIpAddressesPostResponse200IpAddress::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationIpAddressesPostResponse200IpAddress';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationIpAddressesPostResponse200IpAddress::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -78,7 +78,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['address_with_mask']);
             }
             if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\Network', 'json', $context));
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\Network::class, 'json', $context));
                 unset($data['network']);
             }
             if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {
@@ -143,7 +143,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationIpAddressesPostResponse200IpAddress' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationIpAddressesPostResponse200IpAddress::class => false];
         }
     }
 } else {
@@ -156,12 +156,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationIpAddressesPostResponse200IpAddress';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationIpAddressesPostResponse200IpAddress::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationIpAddressesPostResponse200IpAddress';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationIpAddressesPostResponse200IpAddress::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -203,7 +203,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['address_with_mask']);
             }
             if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\Network', 'json', $context));
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\Network::class, 'json', $context));
                 unset($data['network']);
             }
             if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {
@@ -271,7 +271,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationIpAddressesPostResponse200IpAddress' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationIpAddressesPostResponse200IpAddress::class => false];
         }
     }
 }

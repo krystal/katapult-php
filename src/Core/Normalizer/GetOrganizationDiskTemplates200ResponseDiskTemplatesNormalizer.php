@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplates';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplates::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplates';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplates::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -73,14 +73,20 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUniversal($data['universal']);
                 unset($data['universal']);
             }
+            if (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] !== null) {
+                $object->setSizeInGb($data['size_in_gb']);
+                unset($data['size_in_gb']);
+            } elseif (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] === null) {
+                $object->setSizeInGb(null);
+            }
             if (\array_key_exists('latest_version', $data) && $data['latest_version'] !== null) {
-                $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion', 'json', $context));
+                $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion::class, 'json', $context));
                 unset($data['latest_version']);
             } elseif (\array_key_exists('latest_version', $data) && $data['latest_version'] === null) {
                 $object->setLatestVersion(null);
             }
             if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
-                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem', 'json', $context));
+                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem::class, 'json', $context));
                 unset($data['operating_system']);
             } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
                 $object->setOperatingSystem(null);
@@ -112,6 +118,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('universal') && null !== $object->getUniversal()) {
                 $data['universal'] = $object->getUniversal();
             }
+            if ($object->isInitialized('sizeInGb') && null !== $object->getSizeInGb()) {
+                $data['size_in_gb'] = $object->getSizeInGb();
+            }
             if ($object->isInitialized('latestVersion') && null !== $object->getLatestVersion()) {
                 $data['latest_version'] = $this->normalizer->normalize($object->getLatestVersion(), 'json', $context);
             }
@@ -129,7 +138,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplates' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplates::class => false];
         }
     }
 } else {
@@ -142,12 +151,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplates';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplates::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplates';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplates::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -184,14 +193,20 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUniversal($data['universal']);
                 unset($data['universal']);
             }
+            if (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] !== null) {
+                $object->setSizeInGb($data['size_in_gb']);
+                unset($data['size_in_gb']);
+            } elseif (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] === null) {
+                $object->setSizeInGb(null);
+            }
             if (\array_key_exists('latest_version', $data) && $data['latest_version'] !== null) {
-                $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion', 'json', $context));
+                $object->setLatestVersion($this->denormalizer->denormalize($data['latest_version'], \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplatesLatestVersion::class, 'json', $context));
                 unset($data['latest_version']);
             } elseif (\array_key_exists('latest_version', $data) && $data['latest_version'] === null) {
                 $object->setLatestVersion(null);
             }
             if (\array_key_exists('operating_system', $data) && $data['operating_system'] !== null) {
-                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], 'KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem', 'json', $context));
+                $object->setOperatingSystem($this->denormalizer->denormalize($data['operating_system'], \KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplatesOperatingSystem::class, 'json', $context));
                 unset($data['operating_system']);
             } elseif (\array_key_exists('operating_system', $data) && $data['operating_system'] === null) {
                 $object->setOperatingSystem(null);
@@ -226,6 +241,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('universal') && null !== $object->getUniversal()) {
                 $data['universal'] = $object->getUniversal();
             }
+            if ($object->isInitialized('sizeInGb') && null !== $object->getSizeInGb()) {
+                $data['size_in_gb'] = $object->getSizeInGb();
+            }
             if ($object->isInitialized('latestVersion') && null !== $object->getLatestVersion()) {
                 $data['latest_version'] = $this->normalizer->normalize($object->getLatestVersion(), 'json', $context);
             }
@@ -243,7 +261,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationDiskTemplates200ResponseDiskTemplates' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationDiskTemplates200ResponseDiskTemplates::class => false];
         }
     }
 }

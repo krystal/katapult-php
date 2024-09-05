@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace KatapultAPI\Core\Model;
 
-class GetVirtualMachinePackagesPartIcon extends \ArrayObject
+class DeletionStepsNotSatisfied extends \ArrayObject
 {
     /**
      * @var array
@@ -22,19 +22,19 @@ class GetVirtualMachinePackagesPartIcon extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var OrganizationDeletionSteps
      */
-    protected $url;
+    protected $steps;
 
-    public function getUrl(): string
+    public function getSteps(): OrganizationDeletionSteps
     {
-        return $this->url;
+        return $this->steps;
     }
 
-    public function setUrl(string $url): self
+    public function setSteps(OrganizationDeletionSteps $steps): self
     {
-        $this->initialized['url'] = true;
-        $this->url = $url;
+        $this->initialized['steps'] = true;
+        $this->steps = $steps;
 
         return $this;
     }

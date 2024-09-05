@@ -16,15 +16,6 @@ print_color() {
   printf "%b%s%b\n" "$1" "$2" "$ENDCOLOR"
 }
 
-# Generate the new client code
-generating_log="⚙️  Generating new client..."
-
-# Delete any existing client code
-print_color "${GREY}" "🗑️  Deleting existing client code... "
-rm -rf "$(pwd)/src"
-
-print_color "${LIGHT_MAGENTA}" "${generating_log}"
-
 # Setup the user for docker permissions
 USER="$(id -u):$(id -g)"
 
@@ -38,6 +29,14 @@ docker run \
 -w /app/generator \
 composer:2 \
 composer install -q
+
+print_color "${GREY}" "🔧 JanePHP dependencies installed"
+
+# Delete any existing client code
+print_color "${GREY}" "🗑️  Deleting existing client code... "
+rm -rf "$(pwd)/src"
+
+print_color "${LIGHT_MAGENTA}" "⚙️  Generating new client..."
 
 # Run the generator for Core
 docker run \

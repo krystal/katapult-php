@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDisk';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDisk';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -72,7 +72,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['state']);
             }
             if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
-                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDiskVirtualMachineDisk', 'json', $context));
+                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDiskVirtualMachineDisk::class, 'json', $context));
                 unset($data['virtual_machine_disk']);
             } elseif (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] === null) {
                 $object->setVirtualMachineDisk(null);
@@ -118,7 +118,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDisk' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class => false];
         }
     }
 } else {
@@ -131,12 +131,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDisk';
+            return $type === \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDisk';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -172,7 +172,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['state']);
             }
             if (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] !== null) {
-                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], 'KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDiskVirtualMachineDisk', 'json', $context));
+                $object->setVirtualMachineDisk($this->denormalizer->denormalize($data['virtual_machine_disk'], \KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDiskVirtualMachineDisk::class, 'json', $context));
                 unset($data['virtual_machine_disk']);
             } elseif (\array_key_exists('virtual_machine_disk', $data) && $data['virtual_machine_disk'] === null) {
                 $object->setVirtualMachineDisk(null);
@@ -221,7 +221,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetOrganizationDisks200ResponseDisk' => false];
+            return [\KatapultAPI\Core\Model\GetOrganizationDisks200ResponseDisk::class => false];
         }
     }
 }

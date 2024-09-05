@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule';
+            return $type === \KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -56,7 +56,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['id']);
             }
             if (\array_key_exists('security_group', $data)) {
-                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup', 'json', $context));
+                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], \KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup::class, 'json', $context));
                 unset($data['security_group']);
             }
             if (\array_key_exists('direction', $data)) {
@@ -142,7 +142,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule' => false];
+            return [\KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule::class => false];
         }
     }
 } else {
@@ -155,12 +155,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule';
+            return $type === \KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -180,7 +180,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['id']);
             }
             if (\array_key_exists('security_group', $data)) {
-                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], 'KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup', 'json', $context));
+                $object->setSecurityGroup($this->denormalizer->denormalize($data['security_group'], \KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRulePartSecurityGroup::class, 'json', $context));
                 unset($data['security_group']);
             }
             if (\array_key_exists('direction', $data)) {
@@ -269,7 +269,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule' => false];
+            return [\KatapultAPI\Core\Model\GetSecurityGroupsRulesSecurityGroupRule200ResponseSecurityGroupRule::class => false];
         }
     }
 }

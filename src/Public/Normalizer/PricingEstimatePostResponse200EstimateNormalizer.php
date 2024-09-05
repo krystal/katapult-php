@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate';
+            return $type === \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -69,7 +69,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('resources', $data)) {
                 $values = [];
                 foreach ($data['resources'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Public\\Model\\PricingEstimateResource', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Public\Model\PricingEstimateResource::class, 'json', $context);
                 }
                 $object->setResources($values);
                 unset($data['resources']);
@@ -91,7 +91,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['per_hour_inc_tax']);
             }
             if (\array_key_exists('currency', $data)) {
-                $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'KatapultAPI\\Public\\Model\\Currency', 'json', $context));
+                $object->setCurrency($this->denormalizer->denormalize($data['currency'], \KatapultAPI\Public\Model\Currency::class, 'json', $context));
                 unset($data['currency']);
             }
             if (\array_key_exists('tax_rate', $data)) {
@@ -153,7 +153,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate' => false];
+            return [\KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => false];
         }
     }
 } else {
@@ -166,12 +166,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate';
+            return $type === \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -204,7 +204,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('resources', $data)) {
                 $values = [];
                 foreach ($data['resources'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Public\\Model\\PricingEstimateResource', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Public\Model\PricingEstimateResource::class, 'json', $context);
                 }
                 $object->setResources($values);
                 unset($data['resources']);
@@ -226,7 +226,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['per_hour_inc_tax']);
             }
             if (\array_key_exists('currency', $data)) {
-                $object->setCurrency($this->denormalizer->denormalize($data['currency'], 'KatapultAPI\\Public\\Model\\Currency', 'json', $context));
+                $object->setCurrency($this->denormalizer->denormalize($data['currency'], \KatapultAPI\Public\Model\Currency::class, 'json', $context));
                 unset($data['currency']);
             }
             if (\array_key_exists('tax_rate', $data)) {
@@ -291,7 +291,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate' => false];
+            return [\KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => false];
         }
     }
 }

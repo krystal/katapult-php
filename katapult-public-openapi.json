@@ -703,6 +703,9 @@
           },
           "use_dedicated_cpus": {
             "type": "boolean"
+          },
+          "group": {
+            "$ref": "#/components/schemas/VirtualMachinePackageGroup"
           }
         }
       },
@@ -732,6 +735,17 @@
             "type": "string"
           },
           "token": {
+            "type": "string"
+          }
+        }
+      },
+      "VirtualMachinePackageGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
             "type": "string"
           }
         }

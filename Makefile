@@ -13,3 +13,8 @@ build:
 download-spec:
 	wget -O katapult-core-openapi.json https://api.katapult.io/core/v1/schema/openapi.json
 	wget -O katapult-public-openapi.json https://api.katapult.io/public/v1/schema/openapi.json
+
+.PHONY: download-staging-spec
+download-staging-spec:
+	wget -O katapult-core-openapi.json https://api.staging.katapult.dev/core/v1/schema/openapi.json
+	wget -O katapult-public-openapi.json https://api.staging.katapult.dev/public/v1/schema/openapi.json

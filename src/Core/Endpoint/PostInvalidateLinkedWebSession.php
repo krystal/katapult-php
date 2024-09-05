@@ -61,7 +61,7 @@ class PostInvalidateLinkedWebSession extends \KatapultAPI\Core\Runtime\Client\Ba
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\InvalidateLinkedWebSessionPostResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PostInvalidateLinkedWebSessionBadRequestException($response);
@@ -70,10 +70,10 @@ class PostInvalidateLinkedWebSession extends \KatapultAPI\Core\Runtime\Client\Ba
             throw new \KatapultAPI\Core\Exception\PostInvalidateLinkedWebSessionForbiddenException($response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostInvalidateLinkedWebSessionTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostInvalidateLinkedWebSessionTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostInvalidateLinkedWebSessionServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostInvalidateLinkedWebSessionServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
         }
     }
 

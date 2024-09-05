@@ -389,6 +389,27 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create or delete multiple address list entries for a given address list.
+     * ## Scopes
+     * - `address_lists`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\AddressListsAddressListEntriesBulkPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostAddressListEntriesBulkBadRequestException
+     * @throws Exception\PostAddressListEntriesBulkForbiddenException
+     * @throws Exception\PostAddressListEntriesBulkNotFoundException
+     * @throws Exception\PostAddressListEntriesBulkUnprocessableEntityException
+     * @throws Exception\PostAddressListEntriesBulkTooManyRequestsException
+     * @throws Exception\PostAddressListEntriesBulkServiceUnavailableException
+     */
+    public function postAddressListEntriesBulk(?Model\AddressListsAddressListEntriesBulkPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostAddressListEntriesBulk($requestBody), $fetch);
+    }
+
+    /**
      * Provides a full list of certificates
      * ## Scopes
      * - `certificates`
@@ -2424,6 +2445,33 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Returns details of the steps which must be performed before an organization can be deleted
+     * ## Scopes
+     * - `organizations:delete`
+     * - `managed_organizations:delete`.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationDeletionStepsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationDeletionStepsBadRequestException
+     * @throws Exception\GetOrganizationDeletionStepsForbiddenException
+     * @throws Exception\GetOrganizationDeletionStepsNotFoundException
+     * @throws Exception\GetOrganizationDeletionStepsTooManyRequestsException
+     * @throws Exception\GetOrganizationDeletionStepsServiceUnavailableException
+     */
+    public function getOrganizationDeletionSteps(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationDeletionSteps($queryParameters), $fetch);
+    }
+
+    /**
      * This will return a simple list of users with any access to this organization. This
      * endpoint is available to all users with access to the organization therefore allows
      * them to see a small amount of information about their peers. This is useful when
@@ -2505,6 +2553,28 @@ class Client extends Runtime\Client\Client
     public function postOrganizationManaged(?Model\OrganizationsOrganizationManagedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\PostOrganizationManaged($requestBody), $fetch);
+    }
+
+    /**
+     * Delete a managed organization. All resources must be removed first.
+     * ## Scopes
+     * - `managed_organizations:delete`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ManagedOrganizationsOrganizationDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteOrganizationBadRequestException
+     * @throws Exception\DeleteOrganizationForbiddenException
+     * @throws Exception\DeleteOrganizationNotFoundException
+     * @throws Exception\DeleteOrganizationConflictException
+     * @throws Exception\DeleteOrganizationTooManyRequestsException
+     * @throws Exception\DeleteOrganizationInternalServerErrorException
+     * @throws Exception\DeleteOrganizationServiceUnavailableException
+     */
+    public function deleteOrganization(?Model\ManagedOrganizationsOrganizationDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteOrganization($requestBody), $fetch);
     }
 
     /**

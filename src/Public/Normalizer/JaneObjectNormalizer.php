@@ -28,47 +28,89 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = [
-            'KatapultAPI\\Public\\Model\\SignupCampaignArguments' => 'KatapultAPI\\Public\\Normalizer\\SignupCampaignArgumentsNormalizer',
-            'KatapultAPI\\Public\\Model\\InternalAuthError' => 'KatapultAPI\\Public\\Normalizer\\InternalAuthErrorNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidCouponCode' => 'KatapultAPI\\Public\\Normalizer\\InvalidCouponCodeNormalizer',
-            'KatapultAPI\\Public\\Model\\ValidationError' => 'KatapultAPI\\Public\\Normalizer\\ValidationErrorNormalizer',
-            'KatapultAPI\\Public\\Model\\RateLimitReached' => 'KatapultAPI\\Public\\Normalizer\\RateLimitReachedNormalizer',
-            'KatapultAPI\\Public\\Model\\GetPricingPrices200ResponsePrices' => 'KatapultAPI\\Public\\Normalizer\\GetPricingPrices200ResponsePricesNormalizer',
-            'KatapultAPI\\Public\\Model\\PriceVariant' => 'KatapultAPI\\Public\\Normalizer\\PriceVariantNormalizer',
-            'KatapultAPI\\Public\\Model\\Price' => 'KatapultAPI\\Public\\Normalizer\\PriceNormalizer',
-            'KatapultAPI\\Public\\Model\\Currency' => 'KatapultAPI\\Public\\Normalizer\\CurrencyNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimateResourceArguments' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateResourceArgumentsNormalizer',
-            'KatapultAPI\\Public\\Model\\CurrencyLookup' => 'KatapultAPI\\Public\\Normalizer\\CurrencyLookupNormalizer',
-            'KatapultAPI\\Public\\Model\\CountryLookup' => 'KatapultAPI\\Public\\Normalizer\\CountryLookupNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimate' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimateResource' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateResourceNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimateResourcePackage' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateResourcePackageNormalizer',
-            'KatapultAPI\\Public\\Model\\VirtualMachinePackage' => 'KatapultAPI\\Public\\Normalizer\\VirtualMachinePackageNormalizer',
-            'KatapultAPI\\Public\\Model\\VirtualMachinePackageIcon' => 'KatapultAPI\\Public\\Normalizer\\VirtualMachinePackageIconNormalizer',
-            'KatapultAPI\\Public\\Model\\Attachment' => 'KatapultAPI\\Public\\Normalizer\\AttachmentNormalizer',
-            'KatapultAPI\\Public\\Model\\MissingResourcesSchema' => 'KatapultAPI\\Public\\Normalizer\\MissingResourcesSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateResource' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateResourceNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateResourceSchema' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateResourceSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateQuantity' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateQuantityNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateQuantitySchema' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateQuantitySchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\CurrencyNotFoundSchema' => 'KatapultAPI\\Public\\Normalizer\\CurrencyNotFoundSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\CountryNotFoundSchema' => 'KatapultAPI\\Public\\Normalizer\\CountryNotFoundSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\PaginationObject' => 'KatapultAPI\\Public\\Normalizer\\PaginationObjectNormalizer',
-            'KatapultAPI\\Public\\Model\\DataCenter' => 'KatapultAPI\\Public\\Normalizer\\DataCenterNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator403Response' => 'KatapultAPI\\Public\\Normalizer\\ResponseAPIAuthenticator403ResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseInvalidCouponCodeResponse' => 'KatapultAPI\\Public\\Normalizer\\ResponseInvalidCouponCodeResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseValidationErrorResponse' => 'KatapultAPI\\Public\\Normalizer\\ResponseValidationErrorResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator429Response' => 'KatapultAPI\\Public\\Normalizer\\ResponseAPIAuthenticator429ResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\DataCentersGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\DataCentersGetResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\PricingPricesGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\PricingPricesGetResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimatePostBody' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimatePostBodyNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimatePostResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimatePostResponse200EstimateNormalizer',
-            'KatapultAPI\\Public\\Model\\SignupsPostBody' => 'KatapultAPI\\Public\\Normalizer\\SignupsPostBodyNormalizer',
-            'KatapultAPI\\Public\\Model\\SignupsPostResponse200' => 'KatapultAPI\\Public\\Normalizer\\SignupsPostResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\StatsGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\StatsGetResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\VirtualMachinePackagesGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\VirtualMachinePackagesGetResponse200Normalizer',
-            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\KatapultAPI\\Public\\Runtime\\Normalizer\\ReferenceNormalizer',
+            \KatapultAPI\Public\Model\SignupCampaignArguments::class => SignupCampaignArgumentsNormalizer::class,
+
+            \KatapultAPI\Public\Model\InternalAuthError::class => InternalAuthErrorNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidCouponCode::class => InvalidCouponCodeNormalizer::class,
+
+            \KatapultAPI\Public\Model\ValidationError::class => ValidationErrorNormalizer::class,
+
+            \KatapultAPI\Public\Model\RateLimitReached::class => RateLimitReachedNormalizer::class,
+
+            \KatapultAPI\Public\Model\GetPricingPrices200ResponsePrices::class => GetPricingPrices200ResponsePricesNormalizer::class,
+
+            \KatapultAPI\Public\Model\PriceVariant::class => PriceVariantNormalizer::class,
+
+            \KatapultAPI\Public\Model\Price::class => PriceNormalizer::class,
+
+            \KatapultAPI\Public\Model\Currency::class => CurrencyNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => PricingEstimateResourceArgumentsNormalizer::class,
+
+            \KatapultAPI\Public\Model\CurrencyLookup::class => CurrencyLookupNormalizer::class,
+
+            \KatapultAPI\Public\Model\CountryLookup::class => CountryLookupNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimate::class => PricingEstimateNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimateResource::class => PricingEstimateResourceNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => PricingEstimateResourcePackageNormalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackage::class => VirtualMachinePackageNormalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackageIcon::class => VirtualMachinePackageIconNormalizer::class,
+
+            \KatapultAPI\Public\Model\Attachment::class => AttachmentNormalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => VirtualMachinePackageGroupNormalizer::class,
+
+            \KatapultAPI\Public\Model\MissingResourcesSchema::class => MissingResourcesSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateResource::class => InvalidEstimateResourceNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => InvalidEstimateResourceSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => InvalidEstimateQuantityNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => InvalidEstimateQuantitySchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => CurrencyNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\CountryNotFoundSchema::class => CountryNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\PaginationObject::class => PaginationObjectNormalizer::class,
+
+            \KatapultAPI\Public\Model\DataCenter::class => DataCenterNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => ResponseAPIAuthenticator403ResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => ResponseInvalidCouponCodeResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\DataCentersGetResponse200::class => DataCentersGetResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => PricingPricesGetResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimatePostBody::class => PricingEstimatePostBodyNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => PricingEstimatePostResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => PricingEstimatePostResponse200EstimateNormalizer::class,
+
+            \KatapultAPI\Public\Model\SignupsPostBody::class => SignupsPostBodyNormalizer::class,
+
+            \KatapultAPI\Public\Model\SignupsPostResponse200::class => SignupsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\StatsGetResponse200::class => StatsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackagesGetResponse200::class => VirtualMachinePackagesGetResponse200Normalizer::class,
+
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \KatapultAPI\Public\Runtime\Normalizer\ReferenceNormalizer::class,
         ];
         protected $normalizersCache = [];
 
@@ -115,7 +157,50 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\SignupCampaignArguments' => false, 'KatapultAPI\\Public\\Model\\InternalAuthError' => false, 'KatapultAPI\\Public\\Model\\InvalidCouponCode' => false, 'KatapultAPI\\Public\\Model\\ValidationError' => false, 'KatapultAPI\\Public\\Model\\RateLimitReached' => false, 'KatapultAPI\\Public\\Model\\GetPricingPrices200ResponsePrices' => false, 'KatapultAPI\\Public\\Model\\PriceVariant' => false, 'KatapultAPI\\Public\\Model\\Price' => false, 'KatapultAPI\\Public\\Model\\Currency' => false, 'KatapultAPI\\Public\\Model\\PricingEstimateResourceArguments' => false, 'KatapultAPI\\Public\\Model\\CurrencyLookup' => false, 'KatapultAPI\\Public\\Model\\CountryLookup' => false, 'KatapultAPI\\Public\\Model\\PricingEstimate' => false, 'KatapultAPI\\Public\\Model\\PricingEstimateResource' => false, 'KatapultAPI\\Public\\Model\\PricingEstimateResourcePackage' => false, 'KatapultAPI\\Public\\Model\\VirtualMachinePackage' => false, 'KatapultAPI\\Public\\Model\\VirtualMachinePackageIcon' => false, 'KatapultAPI\\Public\\Model\\Attachment' => false, 'KatapultAPI\\Public\\Model\\MissingResourcesSchema' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateResource' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateResourceSchema' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateQuantity' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateQuantitySchema' => false, 'KatapultAPI\\Public\\Model\\CurrencyNotFoundSchema' => false, 'KatapultAPI\\Public\\Model\\CountryNotFoundSchema' => false, 'KatapultAPI\\Public\\Model\\PaginationObject' => false, 'KatapultAPI\\Public\\Model\\DataCenter' => false, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator403Response' => false, 'KatapultAPI\\Public\\Model\\ResponseInvalidCouponCodeResponse' => false, 'KatapultAPI\\Public\\Model\\ResponseValidationErrorResponse' => false, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator429Response' => false, 'KatapultAPI\\Public\\Model\\DataCentersGetResponse200' => false, 'KatapultAPI\\Public\\Model\\PricingPricesGetResponse200' => false, 'KatapultAPI\\Public\\Model\\PricingEstimatePostBody' => false, 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200' => false, 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate' => false, 'KatapultAPI\\Public\\Model\\SignupsPostBody' => false, 'KatapultAPI\\Public\\Model\\SignupsPostResponse200' => false, 'KatapultAPI\\Public\\Model\\StatsGetResponse200' => false, 'KatapultAPI\\Public\\Model\\VirtualMachinePackagesGetResponse200' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [
+                \KatapultAPI\Public\Model\SignupCampaignArguments::class => false,
+                \KatapultAPI\Public\Model\InternalAuthError::class => false,
+                \KatapultAPI\Public\Model\InvalidCouponCode::class => false,
+                \KatapultAPI\Public\Model\ValidationError::class => false,
+                \KatapultAPI\Public\Model\RateLimitReached::class => false,
+                \KatapultAPI\Public\Model\GetPricingPrices200ResponsePrices::class => false,
+                \KatapultAPI\Public\Model\PriceVariant::class => false,
+                \KatapultAPI\Public\Model\Price::class => false,
+                \KatapultAPI\Public\Model\Currency::class => false,
+                \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => false,
+                \KatapultAPI\Public\Model\CurrencyLookup::class => false,
+                \KatapultAPI\Public\Model\CountryLookup::class => false,
+                \KatapultAPI\Public\Model\PricingEstimate::class => false,
+                \KatapultAPI\Public\Model\PricingEstimateResource::class => false,
+                \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackage::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackageIcon::class => false,
+                \KatapultAPI\Public\Model\Attachment::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => false,
+                \KatapultAPI\Public\Model\MissingResourcesSchema::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateResource::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => false,
+                \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => false,
+                \KatapultAPI\Public\Model\CountryNotFoundSchema::class => false,
+                \KatapultAPI\Public\Model\PaginationObject::class => false,
+                \KatapultAPI\Public\Model\DataCenter::class => false,
+                \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => false,
+                \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => false,
+                \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => false,
+                \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => false,
+                \KatapultAPI\Public\Model\DataCentersGetResponse200::class => false,
+                \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => false,
+                \KatapultAPI\Public\Model\PricingEstimatePostBody::class => false,
+                \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => false,
+                \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => false,
+                \KatapultAPI\Public\Model\SignupsPostBody::class => false,
+                \KatapultAPI\Public\Model\SignupsPostResponse200::class => false,
+                \KatapultAPI\Public\Model\StatsGetResponse200::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackagesGetResponse200::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
     }
 } else {
@@ -126,47 +211,89 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = [
-            'KatapultAPI\\Public\\Model\\SignupCampaignArguments' => 'KatapultAPI\\Public\\Normalizer\\SignupCampaignArgumentsNormalizer',
-            'KatapultAPI\\Public\\Model\\InternalAuthError' => 'KatapultAPI\\Public\\Normalizer\\InternalAuthErrorNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidCouponCode' => 'KatapultAPI\\Public\\Normalizer\\InvalidCouponCodeNormalizer',
-            'KatapultAPI\\Public\\Model\\ValidationError' => 'KatapultAPI\\Public\\Normalizer\\ValidationErrorNormalizer',
-            'KatapultAPI\\Public\\Model\\RateLimitReached' => 'KatapultAPI\\Public\\Normalizer\\RateLimitReachedNormalizer',
-            'KatapultAPI\\Public\\Model\\GetPricingPrices200ResponsePrices' => 'KatapultAPI\\Public\\Normalizer\\GetPricingPrices200ResponsePricesNormalizer',
-            'KatapultAPI\\Public\\Model\\PriceVariant' => 'KatapultAPI\\Public\\Normalizer\\PriceVariantNormalizer',
-            'KatapultAPI\\Public\\Model\\Price' => 'KatapultAPI\\Public\\Normalizer\\PriceNormalizer',
-            'KatapultAPI\\Public\\Model\\Currency' => 'KatapultAPI\\Public\\Normalizer\\CurrencyNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimateResourceArguments' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateResourceArgumentsNormalizer',
-            'KatapultAPI\\Public\\Model\\CurrencyLookup' => 'KatapultAPI\\Public\\Normalizer\\CurrencyLookupNormalizer',
-            'KatapultAPI\\Public\\Model\\CountryLookup' => 'KatapultAPI\\Public\\Normalizer\\CountryLookupNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimate' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimateResource' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateResourceNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimateResourcePackage' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimateResourcePackageNormalizer',
-            'KatapultAPI\\Public\\Model\\VirtualMachinePackage' => 'KatapultAPI\\Public\\Normalizer\\VirtualMachinePackageNormalizer',
-            'KatapultAPI\\Public\\Model\\VirtualMachinePackageIcon' => 'KatapultAPI\\Public\\Normalizer\\VirtualMachinePackageIconNormalizer',
-            'KatapultAPI\\Public\\Model\\Attachment' => 'KatapultAPI\\Public\\Normalizer\\AttachmentNormalizer',
-            'KatapultAPI\\Public\\Model\\MissingResourcesSchema' => 'KatapultAPI\\Public\\Normalizer\\MissingResourcesSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateResource' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateResourceNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateResourceSchema' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateResourceSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateQuantity' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateQuantityNormalizer',
-            'KatapultAPI\\Public\\Model\\InvalidEstimateQuantitySchema' => 'KatapultAPI\\Public\\Normalizer\\InvalidEstimateQuantitySchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\CurrencyNotFoundSchema' => 'KatapultAPI\\Public\\Normalizer\\CurrencyNotFoundSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\CountryNotFoundSchema' => 'KatapultAPI\\Public\\Normalizer\\CountryNotFoundSchemaNormalizer',
-            'KatapultAPI\\Public\\Model\\PaginationObject' => 'KatapultAPI\\Public\\Normalizer\\PaginationObjectNormalizer',
-            'KatapultAPI\\Public\\Model\\DataCenter' => 'KatapultAPI\\Public\\Normalizer\\DataCenterNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator403Response' => 'KatapultAPI\\Public\\Normalizer\\ResponseAPIAuthenticator403ResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseInvalidCouponCodeResponse' => 'KatapultAPI\\Public\\Normalizer\\ResponseInvalidCouponCodeResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseValidationErrorResponse' => 'KatapultAPI\\Public\\Normalizer\\ResponseValidationErrorResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator429Response' => 'KatapultAPI\\Public\\Normalizer\\ResponseAPIAuthenticator429ResponseNormalizer',
-            'KatapultAPI\\Public\\Model\\DataCentersGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\DataCentersGetResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\PricingPricesGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\PricingPricesGetResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimatePostBody' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimatePostBodyNormalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimatePostResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate' => 'KatapultAPI\\Public\\Normalizer\\PricingEstimatePostResponse200EstimateNormalizer',
-            'KatapultAPI\\Public\\Model\\SignupsPostBody' => 'KatapultAPI\\Public\\Normalizer\\SignupsPostBodyNormalizer',
-            'KatapultAPI\\Public\\Model\\SignupsPostResponse200' => 'KatapultAPI\\Public\\Normalizer\\SignupsPostResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\StatsGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\StatsGetResponse200Normalizer',
-            'KatapultAPI\\Public\\Model\\VirtualMachinePackagesGetResponse200' => 'KatapultAPI\\Public\\Normalizer\\VirtualMachinePackagesGetResponse200Normalizer',
-            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\KatapultAPI\\Public\\Runtime\\Normalizer\\ReferenceNormalizer',
+            \KatapultAPI\Public\Model\SignupCampaignArguments::class => SignupCampaignArgumentsNormalizer::class,
+
+            \KatapultAPI\Public\Model\InternalAuthError::class => InternalAuthErrorNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidCouponCode::class => InvalidCouponCodeNormalizer::class,
+
+            \KatapultAPI\Public\Model\ValidationError::class => ValidationErrorNormalizer::class,
+
+            \KatapultAPI\Public\Model\RateLimitReached::class => RateLimitReachedNormalizer::class,
+
+            \KatapultAPI\Public\Model\GetPricingPrices200ResponsePrices::class => GetPricingPrices200ResponsePricesNormalizer::class,
+
+            \KatapultAPI\Public\Model\PriceVariant::class => PriceVariantNormalizer::class,
+
+            \KatapultAPI\Public\Model\Price::class => PriceNormalizer::class,
+
+            \KatapultAPI\Public\Model\Currency::class => CurrencyNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => PricingEstimateResourceArgumentsNormalizer::class,
+
+            \KatapultAPI\Public\Model\CurrencyLookup::class => CurrencyLookupNormalizer::class,
+
+            \KatapultAPI\Public\Model\CountryLookup::class => CountryLookupNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimate::class => PricingEstimateNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimateResource::class => PricingEstimateResourceNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => PricingEstimateResourcePackageNormalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackage::class => VirtualMachinePackageNormalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackageIcon::class => VirtualMachinePackageIconNormalizer::class,
+
+            \KatapultAPI\Public\Model\Attachment::class => AttachmentNormalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => VirtualMachinePackageGroupNormalizer::class,
+
+            \KatapultAPI\Public\Model\MissingResourcesSchema::class => MissingResourcesSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateResource::class => InvalidEstimateResourceNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => InvalidEstimateResourceSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => InvalidEstimateQuantityNormalizer::class,
+
+            \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => InvalidEstimateQuantitySchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => CurrencyNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\CountryNotFoundSchema::class => CountryNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Public\Model\PaginationObject::class => PaginationObjectNormalizer::class,
+
+            \KatapultAPI\Public\Model\DataCenter::class => DataCenterNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => ResponseAPIAuthenticator403ResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => ResponseInvalidCouponCodeResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
+
+            \KatapultAPI\Public\Model\DataCentersGetResponse200::class => DataCentersGetResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => PricingPricesGetResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimatePostBody::class => PricingEstimatePostBodyNormalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => PricingEstimatePostResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => PricingEstimatePostResponse200EstimateNormalizer::class,
+
+            \KatapultAPI\Public\Model\SignupsPostBody::class => SignupsPostBodyNormalizer::class,
+
+            \KatapultAPI\Public\Model\SignupsPostResponse200::class => SignupsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\StatsGetResponse200::class => StatsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Public\Model\VirtualMachinePackagesGetResponse200::class => VirtualMachinePackagesGetResponse200Normalizer::class,
+
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \KatapultAPI\Public\Runtime\Normalizer\ReferenceNormalizer::class,
         ];
         protected $normalizersCache = [];
 
@@ -216,7 +343,50 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\SignupCampaignArguments' => false, 'KatapultAPI\\Public\\Model\\InternalAuthError' => false, 'KatapultAPI\\Public\\Model\\InvalidCouponCode' => false, 'KatapultAPI\\Public\\Model\\ValidationError' => false, 'KatapultAPI\\Public\\Model\\RateLimitReached' => false, 'KatapultAPI\\Public\\Model\\GetPricingPrices200ResponsePrices' => false, 'KatapultAPI\\Public\\Model\\PriceVariant' => false, 'KatapultAPI\\Public\\Model\\Price' => false, 'KatapultAPI\\Public\\Model\\Currency' => false, 'KatapultAPI\\Public\\Model\\PricingEstimateResourceArguments' => false, 'KatapultAPI\\Public\\Model\\CurrencyLookup' => false, 'KatapultAPI\\Public\\Model\\CountryLookup' => false, 'KatapultAPI\\Public\\Model\\PricingEstimate' => false, 'KatapultAPI\\Public\\Model\\PricingEstimateResource' => false, 'KatapultAPI\\Public\\Model\\PricingEstimateResourcePackage' => false, 'KatapultAPI\\Public\\Model\\VirtualMachinePackage' => false, 'KatapultAPI\\Public\\Model\\VirtualMachinePackageIcon' => false, 'KatapultAPI\\Public\\Model\\Attachment' => false, 'KatapultAPI\\Public\\Model\\MissingResourcesSchema' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateResource' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateResourceSchema' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateQuantity' => false, 'KatapultAPI\\Public\\Model\\InvalidEstimateQuantitySchema' => false, 'KatapultAPI\\Public\\Model\\CurrencyNotFoundSchema' => false, 'KatapultAPI\\Public\\Model\\CountryNotFoundSchema' => false, 'KatapultAPI\\Public\\Model\\PaginationObject' => false, 'KatapultAPI\\Public\\Model\\DataCenter' => false, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator403Response' => false, 'KatapultAPI\\Public\\Model\\ResponseInvalidCouponCodeResponse' => false, 'KatapultAPI\\Public\\Model\\ResponseValidationErrorResponse' => false, 'KatapultAPI\\Public\\Model\\ResponseAPIAuthenticator429Response' => false, 'KatapultAPI\\Public\\Model\\DataCentersGetResponse200' => false, 'KatapultAPI\\Public\\Model\\PricingPricesGetResponse200' => false, 'KatapultAPI\\Public\\Model\\PricingEstimatePostBody' => false, 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200' => false, 'KatapultAPI\\Public\\Model\\PricingEstimatePostResponse200Estimate' => false, 'KatapultAPI\\Public\\Model\\SignupsPostBody' => false, 'KatapultAPI\\Public\\Model\\SignupsPostResponse200' => false, 'KatapultAPI\\Public\\Model\\StatsGetResponse200' => false, 'KatapultAPI\\Public\\Model\\VirtualMachinePackagesGetResponse200' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [
+                \KatapultAPI\Public\Model\SignupCampaignArguments::class => false,
+                \KatapultAPI\Public\Model\InternalAuthError::class => false,
+                \KatapultAPI\Public\Model\InvalidCouponCode::class => false,
+                \KatapultAPI\Public\Model\ValidationError::class => false,
+                \KatapultAPI\Public\Model\RateLimitReached::class => false,
+                \KatapultAPI\Public\Model\GetPricingPrices200ResponsePrices::class => false,
+                \KatapultAPI\Public\Model\PriceVariant::class => false,
+                \KatapultAPI\Public\Model\Price::class => false,
+                \KatapultAPI\Public\Model\Currency::class => false,
+                \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => false,
+                \KatapultAPI\Public\Model\CurrencyLookup::class => false,
+                \KatapultAPI\Public\Model\CountryLookup::class => false,
+                \KatapultAPI\Public\Model\PricingEstimate::class => false,
+                \KatapultAPI\Public\Model\PricingEstimateResource::class => false,
+                \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackage::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackageIcon::class => false,
+                \KatapultAPI\Public\Model\Attachment::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => false,
+                \KatapultAPI\Public\Model\MissingResourcesSchema::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateResource::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => false,
+                \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => false,
+                \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => false,
+                \KatapultAPI\Public\Model\CountryNotFoundSchema::class => false,
+                \KatapultAPI\Public\Model\PaginationObject::class => false,
+                \KatapultAPI\Public\Model\DataCenter::class => false,
+                \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => false,
+                \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => false,
+                \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => false,
+                \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => false,
+                \KatapultAPI\Public\Model\DataCentersGetResponse200::class => false,
+                \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => false,
+                \KatapultAPI\Public\Model\PricingEstimatePostBody::class => false,
+                \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => false,
+                \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => false,
+                \KatapultAPI\Public\Model\SignupsPostBody::class => false,
+                \KatapultAPI\Public\Model\SignupsPostResponse200::class => false,
+                \KatapultAPI\Public\Model\StatsGetResponse200::class => false,
+                \KatapultAPI\Public\Model\VirtualMachinePackagesGetResponse200::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
     }
 }

@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\SignupCampaignArguments';
+            return $type === \KatapultAPI\Public\Model\SignupCampaignArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\SignupCampaignArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\SignupCampaignArguments::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -116,7 +116,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\SignupCampaignArguments' => false];
+            return [\KatapultAPI\Public\Model\SignupCampaignArguments::class => false];
         }
     }
 } else {
@@ -129,12 +129,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\SignupCampaignArguments';
+            return $type === \KatapultAPI\Public\Model\SignupCampaignArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\SignupCampaignArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\SignupCampaignArguments::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -217,7 +217,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\SignupCampaignArguments' => false];
+            return [\KatapultAPI\Public\Model\SignupCampaignArguments::class => false];
         }
     }
 }

@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,35 +52,43 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('organization', $data)) {
-                $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'KatapultAPI\\Core\\Model\\OrganizationLookup', 'json', $context));
+                $object->setOrganization($this->denormalizer->denormalize($data['organization'], \KatapultAPI\Core\Model\OrganizationLookup::class, 'json', $context));
                 unset($data['organization']);
             }
             if (\array_key_exists('zone', $data)) {
-                $object->setZone($this->denormalizer->denormalize($data['zone'], 'KatapultAPI\\Core\\Model\\ZoneLookup', 'json', $context));
+                $object->setZone($this->denormalizer->denormalize($data['zone'], \KatapultAPI\Core\Model\ZoneLookup::class, 'json', $context));
                 unset($data['zone']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\DataCenterLookup', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\DataCenterLookup::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('package', $data)) {
-                $object->setPackage($this->denormalizer->denormalize($data['package'], 'KatapultAPI\\Core\\Model\\VirtualMachinePackageLookup', 'json', $context));
+                $object->setPackage($this->denormalizer->denormalize($data['package'], \KatapultAPI\Core\Model\VirtualMachinePackageLookup::class, 'json', $context));
                 unset($data['package']);
             }
             if (\array_key_exists('disk_template', $data)) {
-                $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'KatapultAPI\\Core\\Model\\DiskTemplateLookup', 'json', $context));
+                $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], \KatapultAPI\Core\Model\DiskTemplateLookup::class, 'json', $context));
                 unset($data['disk_template']);
             }
             if (\array_key_exists('disk_template_options', $data)) {
                 $values = [];
                 foreach ($data['disk_template_options'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setDiskTemplateOptions($values);
                 unset($data['disk_template_options']);
             }
+            if (\array_key_exists('disks', $data)) {
+                $values_1 = [];
+                foreach ($data['disks'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \KatapultAPI\Core\Model\VirtualMachineBuildDiskArguments::class, 'json', $context);
+                }
+                $object->setDisks($values_1);
+                unset($data['disks']);
+            }
             if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\NetworkLookup', 'json', $context));
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\NetworkLookup::class, 'json', $context));
                 unset($data['network']);
             }
             if (\array_key_exists('hostname', $data)) {
@@ -88,16 +96,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['hostname']);
             }
             if (\array_key_exists('annotations', $data)) {
-                $values_1 = [];
-                foreach ($data['annotations'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                $values_2 = [];
+                foreach ($data['annotations'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
-                $object->setAnnotations($values_1);
+                $object->setAnnotations($values_2);
                 unset($data['annotations']);
             }
-            foreach ($data as $key => $value_2) {
+            foreach ($data as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_2;
+                    $object[$key] = $value_3;
                 }
             }
 
@@ -125,6 +133,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 }
                 $data['disk_template_options'] = $values;
             }
+            if ($object->isInitialized('disks') && null !== $object->getDisks()) {
+                $values_1 = [];
+                foreach ($object->getDisks() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['disks'] = $values_1;
+            }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
             }
@@ -132,15 +147,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $data['hostname'] = $object->getHostname();
             }
             if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
-                $values_1 = [];
-                foreach ($object->getAnnotations() as $value_1) {
-                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_2 = [];
+                foreach ($object->getAnnotations() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
-                $data['annotations'] = $values_1;
+                $data['annotations'] = $values_2;
             }
-            foreach ($object as $key => $value_2) {
+            foreach ($object as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_2;
+                    $data[$key] = $value_3;
                 }
             }
 
@@ -149,7 +164,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => false];
         }
     }
 } else {
@@ -162,12 +177,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
+            return $type === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -183,35 +198,43 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('organization', $data)) {
-                $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'KatapultAPI\\Core\\Model\\OrganizationLookup', 'json', $context));
+                $object->setOrganization($this->denormalizer->denormalize($data['organization'], \KatapultAPI\Core\Model\OrganizationLookup::class, 'json', $context));
                 unset($data['organization']);
             }
             if (\array_key_exists('zone', $data)) {
-                $object->setZone($this->denormalizer->denormalize($data['zone'], 'KatapultAPI\\Core\\Model\\ZoneLookup', 'json', $context));
+                $object->setZone($this->denormalizer->denormalize($data['zone'], \KatapultAPI\Core\Model\ZoneLookup::class, 'json', $context));
                 unset($data['zone']);
             }
             if (\array_key_exists('data_center', $data)) {
-                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], 'KatapultAPI\\Core\\Model\\DataCenterLookup', 'json', $context));
+                $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\DataCenterLookup::class, 'json', $context));
                 unset($data['data_center']);
             }
             if (\array_key_exists('package', $data)) {
-                $object->setPackage($this->denormalizer->denormalize($data['package'], 'KatapultAPI\\Core\\Model\\VirtualMachinePackageLookup', 'json', $context));
+                $object->setPackage($this->denormalizer->denormalize($data['package'], \KatapultAPI\Core\Model\VirtualMachinePackageLookup::class, 'json', $context));
                 unset($data['package']);
             }
             if (\array_key_exists('disk_template', $data)) {
-                $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], 'KatapultAPI\\Core\\Model\\DiskTemplateLookup', 'json', $context));
+                $object->setDiskTemplate($this->denormalizer->denormalize($data['disk_template'], \KatapultAPI\Core\Model\DiskTemplateLookup::class, 'json', $context));
                 unset($data['disk_template']);
             }
             if (\array_key_exists('disk_template_options', $data)) {
                 $values = [];
                 foreach ($data['disk_template_options'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
                 $object->setDiskTemplateOptions($values);
                 unset($data['disk_template_options']);
             }
+            if (\array_key_exists('disks', $data)) {
+                $values_1 = [];
+                foreach ($data['disks'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \KatapultAPI\Core\Model\VirtualMachineBuildDiskArguments::class, 'json', $context);
+                }
+                $object->setDisks($values_1);
+                unset($data['disks']);
+            }
             if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], 'KatapultAPI\\Core\\Model\\NetworkLookup', 'json', $context));
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\NetworkLookup::class, 'json', $context));
                 unset($data['network']);
             }
             if (\array_key_exists('hostname', $data)) {
@@ -219,16 +242,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['hostname']);
             }
             if (\array_key_exists('annotations', $data)) {
-                $values_1 = [];
-                foreach ($data['annotations'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'KatapultAPI\\Core\\Model\\KeyValue', 'json', $context);
+                $values_2 = [];
+                foreach ($data['annotations'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \KatapultAPI\Core\Model\KeyValue::class, 'json', $context);
                 }
-                $object->setAnnotations($values_1);
+                $object->setAnnotations($values_2);
                 unset($data['annotations']);
             }
-            foreach ($data as $key => $value_2) {
+            foreach ($data as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_2;
+                    $object[$key] = $value_3;
                 }
             }
 
@@ -259,6 +282,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 }
                 $data['disk_template_options'] = $values;
             }
+            if ($object->isInitialized('disks') && null !== $object->getDisks()) {
+                $values_1 = [];
+                foreach ($object->getDisks() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['disks'] = $values_1;
+            }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
             }
@@ -266,15 +296,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $data['hostname'] = $object->getHostname();
             }
             if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
-                $values_1 = [];
-                foreach ($object->getAnnotations() as $value_1) {
-                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_2 = [];
+                foreach ($object->getAnnotations() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
-                $data['annotations'] = $values_1;
+                $data['annotations'] = $values_2;
             }
-            foreach ($object as $key => $value_2) {
+            foreach ($object as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_2;
+                    $data[$key] = $value_3;
                 }
             }
 
@@ -283,7 +313,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\OrganizationsOrganizationVirtualMachinesBuildPostBody' => false];
+            return [\KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => false];
         }
     }
 }

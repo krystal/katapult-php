@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace KatapultAPI\Core\Model;
 
-class GetVirtualMachinePackages200ResponseVirtualMachinePackagesIcon extends \ArrayObject
+class ManagedOrganizationsOrganizationDeleteResponse200 extends \ArrayObject
 {
     /**
      * @var array
@@ -22,19 +22,19 @@ class GetVirtualMachinePackages200ResponseVirtualMachinePackagesIcon extends \Ar
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var bool
      */
-    protected $url;
+    protected $success;
 
-    public function getUrl(): string
+    public function getSuccess(): bool
     {
-        return $this->url;
+        return $this->success;
     }
 
-    public function setUrl(string $url): self
+    public function setSuccess(bool $success): self
     {
-        $this->initialized['url'] = true;
-        $this->url = $url;
+        $this->initialized['success'] = true;
+        $this->success = $success;
 
         return $this;
     }

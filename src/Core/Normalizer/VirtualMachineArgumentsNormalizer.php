@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachineArguments';
+            return $type === \KatapultAPI\Core\Model\VirtualMachineArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachineArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\VirtualMachineArguments::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -72,11 +72,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['tag_names']);
             }
             if (\array_key_exists('gpu_type', $data)) {
-                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'KatapultAPI\\Core\\Model\\GPUTypeLookup', 'json', $context));
+                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], \KatapultAPI\Core\Model\GPUTypeLookup::class, 'json', $context));
                 unset($data['gpu_type']);
             }
             if (\array_key_exists('group', $data)) {
-                $object->setGroup($this->denormalizer->denormalize($data['group'], 'KatapultAPI\\Core\\Model\\VirtualMachineGroupLookup', 'json', $context));
+                $object->setGroup($this->denormalizer->denormalize($data['group'], \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class, 'json', $context));
                 unset($data['group']);
             }
             foreach ($data as $key => $value_1) {
@@ -124,7 +124,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachineArguments' => false];
+            return [\KatapultAPI\Core\Model\VirtualMachineArguments::class => false];
         }
     }
 } else {
@@ -137,12 +137,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\VirtualMachineArguments';
+            return $type === \KatapultAPI\Core\Model\VirtualMachineArguments::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\VirtualMachineArguments';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\VirtualMachineArguments::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -178,11 +178,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['tag_names']);
             }
             if (\array_key_exists('gpu_type', $data)) {
-                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], 'KatapultAPI\\Core\\Model\\GPUTypeLookup', 'json', $context));
+                $object->setGpuType($this->denormalizer->denormalize($data['gpu_type'], \KatapultAPI\Core\Model\GPUTypeLookup::class, 'json', $context));
                 unset($data['gpu_type']);
             }
             if (\array_key_exists('group', $data)) {
-                $object->setGroup($this->denormalizer->denormalize($data['group'], 'KatapultAPI\\Core\\Model\\VirtualMachineGroupLookup', 'json', $context));
+                $object->setGroup($this->denormalizer->denormalize($data['group'], \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class, 'json', $context));
                 unset($data['group']);
             }
             foreach ($data as $key => $value_1) {
@@ -233,7 +233,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\VirtualMachineArguments' => false];
+            return [\KatapultAPI\Core\Model\VirtualMachineArguments::class => false];
         }
     }
 }

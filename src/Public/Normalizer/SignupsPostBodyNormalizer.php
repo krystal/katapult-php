@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\SignupsPostBody';
+            return $type === \KatapultAPI\Public\Model\SignupsPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\SignupsPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\SignupsPostBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['coupon']);
             }
             if (\array_key_exists('campaign', $data)) {
-                $object->setCampaign($this->denormalizer->denormalize($data['campaign'], 'KatapultAPI\\Public\\Model\\SignupCampaignArguments', 'json', $context));
+                $object->setCampaign($this->denormalizer->denormalize($data['campaign'], \KatapultAPI\Public\Model\SignupCampaignArguments::class, 'json', $context));
                 unset($data['campaign']);
             }
             foreach ($data as $key => $value) {
@@ -93,7 +93,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\SignupsPostBody' => false];
+            return [\KatapultAPI\Public\Model\SignupsPostBody::class => false];
         }
     }
 } else {
@@ -106,12 +106,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Public\\Model\\SignupsPostBody';
+            return $type === \KatapultAPI\Public\Model\SignupsPostBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Public\\Model\\SignupsPostBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Public\Model\SignupsPostBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -135,7 +135,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['coupon']);
             }
             if (\array_key_exists('campaign', $data)) {
-                $object->setCampaign($this->denormalizer->denormalize($data['campaign'], 'KatapultAPI\\Public\\Model\\SignupCampaignArguments', 'json', $context));
+                $object->setCampaign($this->denormalizer->denormalize($data['campaign'], \KatapultAPI\Public\Model\SignupCampaignArguments::class, 'json', $context));
                 unset($data['campaign']);
             }
             foreach ($data as $key => $value) {
@@ -171,7 +171,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Public\\Model\\SignupsPostBody' => false];
+            return [\KatapultAPI\Public\Model\SignupsPostBody::class => false];
         }
     }
 }

@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PatchDiskBackupPolicy200ResponseDiskBackupPolicy';
+            return $type === \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PatchDiskBackupPolicy200ResponseDiskBackupPolicy';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['retention']);
             }
             if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], 'KatapultAPI\\Core\\Model\\DiskBackupPolicyTarget', 'json', $context));
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
             }
             if (\array_key_exists('schedule', $data)) {
@@ -110,7 +110,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PatchDiskBackupPolicy200ResponseDiskBackupPolicy' => false];
+            return [\KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class => false];
         }
     }
 } else {
@@ -123,12 +123,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PatchDiskBackupPolicy200ResponseDiskBackupPolicy';
+            return $type === \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PatchDiskBackupPolicy200ResponseDiskBackupPolicy';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -152,7 +152,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['retention']);
             }
             if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], 'KatapultAPI\\Core\\Model\\DiskBackupPolicyTarget', 'json', $context));
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
             }
             if (\array_key_exists('schedule', $data)) {
@@ -205,7 +205,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PatchDiskBackupPolicy200ResponseDiskBackupPolicy' => false];
+            return [\KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class => false];
         }
     }
 }

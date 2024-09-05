@@ -62,19 +62,19 @@ class PostVirtualMachineNetworkInterfaceAllocateNewIp extends \KatapultAPI\Core\
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostResponse200', 'json');
+            return $serializer->deserialize($body, 'KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIpPostResponse200', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpBadRequestException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator400Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpBadRequestException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpNotFoundException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseVirtualMachineNetworkInterfaceNotFoundResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpNotFoundException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceNotFoundResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\\Core\\Model\\ResponseAPIAuthenticator429Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PostVirtualMachineNetworkInterfaceAllocateNewIpServiceUnavailableException($response);

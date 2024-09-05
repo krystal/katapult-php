@@ -26,7 +26,7 @@ class VirtualMachinePackagesGetResponse200 extends \ArrayObject
      */
     protected $pagination;
     /**
-     * @var list<GetVirtualMachinePackages200ResponseVirtualMachinePackages>
+     * @var list<VirtualMachinePackage>
      */
     protected $virtualMachinePackages;
 
@@ -44,7 +44,7 @@ class VirtualMachinePackagesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return list<GetVirtualMachinePackages200ResponseVirtualMachinePackages>
+     * @return list<VirtualMachinePackage>
      */
     public function getVirtualMachinePackages(): array
     {
@@ -52,7 +52,7 @@ class VirtualMachinePackagesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param list<GetVirtualMachinePackages200ResponseVirtualMachinePackages> $virtualMachinePackages
+     * @param list<VirtualMachinePackage> $virtualMachinePackages
      */
     public function setVirtualMachinePackages(array $virtualMachinePackages): self
     {

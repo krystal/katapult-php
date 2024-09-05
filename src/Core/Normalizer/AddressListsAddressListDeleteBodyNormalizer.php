@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\AddressListsAddressListDeleteBody';
+            return $type === \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\AddressListsAddressListDeleteBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,7 +52,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('address_list', $data)) {
-                $object->setAddressList($this->denormalizer->denormalize($data['address_list'], 'KatapultAPI\\Core\\Model\\AddressListLookup', 'json', $context));
+                $object->setAddressList($this->denormalizer->denormalize($data['address_list'], \KatapultAPI\Core\Model\AddressListLookup::class, 'json', $context));
                 unset($data['address_list']);
             }
             foreach ($data as $key => $value) {
@@ -79,7 +79,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\AddressListsAddressListDeleteBody' => false];
+            return [\KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => false];
         }
     }
 } else {
@@ -92,12 +92,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\AddressListsAddressListDeleteBody';
+            return $type === \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\AddressListsAddressListDeleteBody';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -113,7 +113,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('address_list', $data)) {
-                $object->setAddressList($this->denormalizer->denormalize($data['address_list'], 'KatapultAPI\\Core\\Model\\AddressListLookup', 'json', $context));
+                $object->setAddressList($this->denormalizer->denormalize($data['address_list'], \KatapultAPI\Core\Model\AddressListLookup::class, 'json', $context));
                 unset($data['address_list']);
             }
             foreach ($data as $key => $value) {
@@ -143,7 +143,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\AddressListsAddressListDeleteBody' => false];
+            return [\KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => false];
         }
     }
 }

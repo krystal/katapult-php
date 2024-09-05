@@ -31,12 +31,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PolicyLimits';
+            return $type === \KatapultAPI\Core\Model\PolicyLimits::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PolicyLimits';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PolicyLimits::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -52,63 +52,63 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('uninvoiced_balance', $data)) {
-                $object->setUninvoicedBalance($this->denormalizer->denormalize($data['uninvoiced_balance'], 'KatapultAPI\\Core\\Model\\FinancialPolicyLimit', 'json', $context));
+                $object->setUninvoicedBalance($this->denormalizer->denormalize($data['uninvoiced_balance'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
                 unset($data['uninvoiced_balance']);
             }
             if (\array_key_exists('virtual_machines', $data)) {
-                $object->setVirtualMachines($this->denormalizer->denormalize($data['virtual_machines'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setVirtualMachines($this->denormalizer->denormalize($data['virtual_machines'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_machines']);
             }
             if (\array_key_exists('virtual_machine_memory', $data)) {
-                $object->setVirtualMachineMemory($this->denormalizer->denormalize($data['virtual_machine_memory'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setVirtualMachineMemory($this->denormalizer->denormalize($data['virtual_machine_memory'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_machine_memory']);
             }
             if (\array_key_exists('managed_organizations', $data)) {
-                $object->setManagedOrganizations($this->denormalizer->denormalize($data['managed_organizations'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setManagedOrganizations($this->denormalizer->denormalize($data['managed_organizations'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['managed_organizations']);
             }
             if (\array_key_exists('unallocated_ip_addresses', $data)) {
-                $object->setUnallocatedIpAddresses($this->denormalizer->denormalize($data['unallocated_ip_addresses'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setUnallocatedIpAddresses($this->denormalizer->denormalize($data['unallocated_ip_addresses'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['unallocated_ip_addresses']);
             }
             if (\array_key_exists('disk_space', $data)) {
-                $object->setDiskSpace($this->denormalizer->denormalize($data['disk_space'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setDiskSpace($this->denormalizer->denormalize($data['disk_space'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['disk_space']);
             }
             if (\array_key_exists('security_groups', $data)) {
-                $object->setSecurityGroups($this->denormalizer->denormalize($data['security_groups'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setSecurityGroups($this->denormalizer->denormalize($data['security_groups'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['security_groups']);
             }
             if (\array_key_exists('virtual_networks', $data)) {
-                $object->setVirtualNetworks($this->denormalizer->denormalize($data['virtual_networks'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setVirtualNetworks($this->denormalizer->denormalize($data['virtual_networks'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_networks']);
             }
             if (\array_key_exists('load_balancers', $data)) {
-                $object->setLoadBalancers($this->denormalizer->denormalize($data['load_balancers'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setLoadBalancers($this->denormalizer->denormalize($data['load_balancers'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['load_balancers']);
             }
             if (\array_key_exists('dns_zones', $data)) {
-                $object->setDnsZones($this->denormalizer->denormalize($data['dns_zones'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setDnsZones($this->denormalizer->denormalize($data['dns_zones'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['dns_zones']);
             }
             if (\array_key_exists('certificates', $data)) {
-                $object->setCertificates($this->denormalizer->denormalize($data['certificates'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setCertificates($this->denormalizer->denormalize($data['certificates'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['certificates']);
             }
             if (\array_key_exists('file_storage_volumes', $data)) {
-                $object->setFileStorageVolumes($this->denormalizer->denormalize($data['file_storage_volumes'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setFileStorageVolumes($this->denormalizer->denormalize($data['file_storage_volumes'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['file_storage_volumes']);
             }
             if (\array_key_exists('isos', $data)) {
-                $object->setIsos($this->denormalizer->denormalize($data['isos'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setIsos($this->denormalizer->denormalize($data['isos'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['isos']);
             }
             if (\array_key_exists('disk_iops', $data)) {
-                $object->setDiskIops($this->denormalizer->denormalize($data['disk_iops'], 'KatapultAPI\\Core\\Model\\PolicyLimitWithoutCurrent', 'json', $context));
+                $object->setDiskIops($this->denormalizer->denormalize($data['disk_iops'], \KatapultAPI\Core\Model\PolicyLimitWithoutCurrent::class, 'json', $context));
                 unset($data['disk_iops']);
             }
             if (\array_key_exists('network_speed', $data)) {
-                $object->setNetworkSpeed($this->denormalizer->denormalize($data['network_speed'], 'KatapultAPI\\Core\\Model\\PolicyLimitWithoutCurrent', 'json', $context));
+                $object->setNetworkSpeed($this->denormalizer->denormalize($data['network_speed'], \KatapultAPI\Core\Model\PolicyLimitWithoutCurrent::class, 'json', $context));
                 unset($data['network_speed']);
             }
             foreach ($data as $key => $value) {
@@ -179,7 +179,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PolicyLimits' => false];
+            return [\KatapultAPI\Core\Model\PolicyLimits::class => false];
         }
     }
 } else {
@@ -192,12 +192,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return $type === 'KatapultAPI\\Core\\Model\\PolicyLimits';
+            return $type === \KatapultAPI\Core\Model\PolicyLimits::class;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === 'KatapultAPI\\Core\\Model\\PolicyLimits';
+            return is_object($data) && get_class($data) === \KatapultAPI\Core\Model\PolicyLimits::class;
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -213,63 +213,63 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('uninvoiced_balance', $data)) {
-                $object->setUninvoicedBalance($this->denormalizer->denormalize($data['uninvoiced_balance'], 'KatapultAPI\\Core\\Model\\FinancialPolicyLimit', 'json', $context));
+                $object->setUninvoicedBalance($this->denormalizer->denormalize($data['uninvoiced_balance'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
                 unset($data['uninvoiced_balance']);
             }
             if (\array_key_exists('virtual_machines', $data)) {
-                $object->setVirtualMachines($this->denormalizer->denormalize($data['virtual_machines'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setVirtualMachines($this->denormalizer->denormalize($data['virtual_machines'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_machines']);
             }
             if (\array_key_exists('virtual_machine_memory', $data)) {
-                $object->setVirtualMachineMemory($this->denormalizer->denormalize($data['virtual_machine_memory'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setVirtualMachineMemory($this->denormalizer->denormalize($data['virtual_machine_memory'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_machine_memory']);
             }
             if (\array_key_exists('managed_organizations', $data)) {
-                $object->setManagedOrganizations($this->denormalizer->denormalize($data['managed_organizations'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setManagedOrganizations($this->denormalizer->denormalize($data['managed_organizations'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['managed_organizations']);
             }
             if (\array_key_exists('unallocated_ip_addresses', $data)) {
-                $object->setUnallocatedIpAddresses($this->denormalizer->denormalize($data['unallocated_ip_addresses'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setUnallocatedIpAddresses($this->denormalizer->denormalize($data['unallocated_ip_addresses'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['unallocated_ip_addresses']);
             }
             if (\array_key_exists('disk_space', $data)) {
-                $object->setDiskSpace($this->denormalizer->denormalize($data['disk_space'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setDiskSpace($this->denormalizer->denormalize($data['disk_space'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['disk_space']);
             }
             if (\array_key_exists('security_groups', $data)) {
-                $object->setSecurityGroups($this->denormalizer->denormalize($data['security_groups'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setSecurityGroups($this->denormalizer->denormalize($data['security_groups'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['security_groups']);
             }
             if (\array_key_exists('virtual_networks', $data)) {
-                $object->setVirtualNetworks($this->denormalizer->denormalize($data['virtual_networks'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setVirtualNetworks($this->denormalizer->denormalize($data['virtual_networks'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_networks']);
             }
             if (\array_key_exists('load_balancers', $data)) {
-                $object->setLoadBalancers($this->denormalizer->denormalize($data['load_balancers'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setLoadBalancers($this->denormalizer->denormalize($data['load_balancers'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['load_balancers']);
             }
             if (\array_key_exists('dns_zones', $data)) {
-                $object->setDnsZones($this->denormalizer->denormalize($data['dns_zones'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setDnsZones($this->denormalizer->denormalize($data['dns_zones'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['dns_zones']);
             }
             if (\array_key_exists('certificates', $data)) {
-                $object->setCertificates($this->denormalizer->denormalize($data['certificates'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setCertificates($this->denormalizer->denormalize($data['certificates'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['certificates']);
             }
             if (\array_key_exists('file_storage_volumes', $data)) {
-                $object->setFileStorageVolumes($this->denormalizer->denormalize($data['file_storage_volumes'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setFileStorageVolumes($this->denormalizer->denormalize($data['file_storage_volumes'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['file_storage_volumes']);
             }
             if (\array_key_exists('isos', $data)) {
-                $object->setIsos($this->denormalizer->denormalize($data['isos'], 'KatapultAPI\\Core\\Model\\PolicyLimit', 'json', $context));
+                $object->setIsos($this->denormalizer->denormalize($data['isos'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['isos']);
             }
             if (\array_key_exists('disk_iops', $data)) {
-                $object->setDiskIops($this->denormalizer->denormalize($data['disk_iops'], 'KatapultAPI\\Core\\Model\\PolicyLimitWithoutCurrent', 'json', $context));
+                $object->setDiskIops($this->denormalizer->denormalize($data['disk_iops'], \KatapultAPI\Core\Model\PolicyLimitWithoutCurrent::class, 'json', $context));
                 unset($data['disk_iops']);
             }
             if (\array_key_exists('network_speed', $data)) {
-                $object->setNetworkSpeed($this->denormalizer->denormalize($data['network_speed'], 'KatapultAPI\\Core\\Model\\PolicyLimitWithoutCurrent', 'json', $context));
+                $object->setNetworkSpeed($this->denormalizer->denormalize($data['network_speed'], \KatapultAPI\Core\Model\PolicyLimitWithoutCurrent::class, 'json', $context));
                 unset($data['network_speed']);
             }
             foreach ($data as $key => $value) {
@@ -343,7 +343,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['KatapultAPI\\Core\\Model\\PolicyLimits' => false];
+            return [\KatapultAPI\Core\Model\PolicyLimits::class => false];
         }
     }
 }
