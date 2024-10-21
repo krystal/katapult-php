@@ -24,10 +24,11 @@ class GetLoadBalancer extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'load_balancer[id]': string, The load balancer to return the details for.
+     *
+     * @var string $load_balancer[id] The load balancer to return the details for.
      *
      * All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     *      'load_balancer[api_reference]': string, The load balancer to return the details for.
+     * @var string $load_balancer[api_reference] The load balancer to return the details for.
      *
      * All 'load_balancer[]' params are mutually exclusive, only one can be provided.
      * }

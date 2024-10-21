@@ -22,25 +22,27 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to list API tokens for.
+     *
+     * @var string $organization[id] The organization to list API tokens for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to list API tokens for.
+     * @var string $organization[sub_domain] The organization to list API tokens for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'annotations[][key]': array, An array of annotations to filter by.
+     * @var array $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationApiTokensGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -162,12 +164,14 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'address_list[id]': string, The address list for which the entries should be returned.
+     *
+     * @var string $address_list[id] The address list for which the entries should be returned.
      *
      * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsAddressListEntriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -240,10 +244,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'address_list_entry[id]': string, The address list entry to return.
+     *
+     * @var string $address_list_entry[id] The address list entry to return.
      *
      * All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListEntriesAddressListEntryGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -316,11 +322,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -344,25 +352,27 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization for which the address lists should be returned.
+     *
+     * @var string $organization[id] The organization for which the address lists should be returned.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization for which the address lists should be returned.
+     * @var string $organization[sub_domain] The organization for which the address lists should be returned.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'annotations[][key]': array, An array of annotations to filter by.
+     * @var array $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationAddressListsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -435,10 +445,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'address_list[id]': string, The address list to return.
+     *
+     * @var string $address_list[id] The address list to return.
      *
      * All 'address_list[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\AddressListsAddressListGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -538,13 +550,15 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'object_storage_cluster[region]': string, The object storage cluster region for the bucket.
+     *
+     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket.
      *
      * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     *      'bucket[name]': string, The name of the object storage bucket.
+     * @var string $bucket[name] The name of the object storage bucket.
      *
      * All 'bucket[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\ObjectStorageObjectStorageClusterBucketsBucketGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -623,14 +637,16 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'object_storage_cluster[region]': string, The object storage cluster region for the bucket.
+     *
+     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket.
      *
      * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     *      'bucket[name]': string, The name of the object storage bucket.
+     * @var string $bucket[name] The name of the object storage bucket.
      *
      * All 'bucket[]' params are mutually exclusive, only one can be provided.
-     *      'path': string, The name or path for the object
-     * }
+     * @var string $path The name or path for the object
+     *             }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\ObjectStorageObjectStorageClusterBucketsBucketObjectGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -733,10 +749,12 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'virtual_machine_build[id]': string, All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $virtual_machine_build[id] All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -760,13 +778,15 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationCertificatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -790,10 +810,12 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'certificate[id]': string, All 'certificate[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $certificate[id] All 'certificate[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CertificatesCertificateGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -838,11 +860,13 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all countries available in Katapult.
      *
-     * @param array  $queryParameters {
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountriesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -860,16 +884,18 @@ class Client extends Runtime\Client\Client
      * Return details for a specific country.
      *
      * @param array $queryParameters {
-     *                               'country[id]': string, The country to return.
+     *
+     * @var string $country[id] The country to return.
      *
      * All 'country[]' params are mutually exclusive, only one can be provided.
-     *      'country[iso_code2]': string, The country to return.
+     * @var string $country[iso_code2] The country to return.
      *
      * All 'country[]' params are mutually exclusive, only one can be provided.
-     *      'country[iso_code3]': string, The country to return.
+     * @var string $country[iso_code3] The country to return.
      *
      * All 'country[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountriesCountryGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -889,18 +915,20 @@ class Client extends Runtime\Client\Client
      * Return a list of all country states for a specific country.
      *
      * @param array $queryParameters {
-     *                               'country[id]': string, The country to return states for.
+     *
+     * @var string $country[id] The country to return states for.
      *
      * All 'country[]' params are mutually exclusive, only one can be provided.
-     *      'country[iso_code2]': string, The country to return states for.
+     * @var string $country[iso_code2] The country to return states for.
      *
      * All 'country[]' params are mutually exclusive, only one can be provided.
-     *      'country[iso_code3]': string, The country to return states for.
+     * @var string $country[iso_code3] The country to return states for.
      *
      * All 'country[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountriesCountryCountryStatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -920,10 +948,12 @@ class Client extends Runtime\Client\Client
      * Return details for a specific country state.
      *
      * @param array $queryParameters {
-     *                               'country_state[id]': string, The country state to return.
+     *
+     * @var string $country_state[id] The country state to return.
      *
      * All 'country_state[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CountryStatesCountryStateGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -942,11 +972,13 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all currencies available in Katapult.
      *
-     * @param array  $queryParameters {
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CurrenciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -964,13 +996,15 @@ class Client extends Runtime\Client\Client
      * Return details for a specific currency.
      *
      * @param array $queryParameters {
-     *                               'currency[id]': string, The currency to return.
+     *
+     * @var string $currency[id] The currency to return.
      *
      * All 'currency[]' params are mutually exclusive, only one can be provided.
-     *      'currency[iso_code]': string, The currency to return.
+     * @var string $currency[iso_code] The currency to return.
      *
      * All 'currency[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\CurrenciesCurrencyGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -995,13 +1029,15 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDnsZonesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1049,11 +1085,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDnsZonesNameserversGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1100,11 +1138,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'dns_zone[id]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
-     *                                'dns_zone[name]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
+     * @var string $dns_zone[name] All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1185,11 +1225,13 @@ class Client extends Runtime\Client\Client
     /**
      * Provide details for a specific data center.
      *
-     * @param array  $queryParameters {
-     *                                'data_center[id]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *                                'data_center[permalink]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
+     * @var string $data_center[permalink] All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DataCentersDataCenterGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1207,11 +1249,13 @@ class Client extends Runtime\Client\Client
     /**
      * Provide details of default network for a data center.
      *
-     * @param array  $queryParameters {
-     *                                'data_center[id]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *                                'data_center[permalink]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
+     * @var string $data_center[permalink] All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DataCentersDataCenterDefaultNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -1230,15 +1274,17 @@ class Client extends Runtime\Client\Client
      * Return a list of all disk IO profiles available to this organization.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to find disk IO profiles for.
+     *
+     * @var string $organization[id] The organization to find disk IO profiles for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to find disk IO profiles for.
+     * @var string $organization[sub_domain] The organization to find disk IO profiles for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDiskIoProfilesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1264,15 +1310,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to return disk backup policies for.
+     *
+     * @var string $organization[id] The organization to return disk backup policies for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to return disk backup policies for.
+     * @var string $organization[sub_domain] The organization to return disk backup policies for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1298,16 +1346,18 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_machine[id]': string, The virtual machine to return disk backup policies for.
+     *
+     * @var string $virtual_machine[id] The virtual machine to return disk backup policies for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'virtual_machine[fqdn]': string, The virtual machine to return disk backup policies for.
+     * @var string $virtual_machine[fqdn] The virtual machine to return disk backup policies for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'include_disks': bool, If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var bool $include_disks If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
+     * @var int  $page The page number to request. If not provided, the first page will be returned.
+     * @var int  $per_page The number of items to return per page. If not provided, the default value will be used.
+     *           }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1359,12 +1409,14 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk[id]': string, The disk to return disk backup policies for.
+     *
+     * @var string $disk[id] The disk to return disk backup policies for.
      *
      * All 'disk[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DisksDiskDiskBackupPoliciesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1440,10 +1492,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk_backup_policy[id]': string, The disk backup policy to get information for.
+     *
+     * @var string $disk_backup_policy[id] The disk backup policy to get information for.
      *
      * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskBackupPoliciesDiskBackupPolicyGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1519,15 +1573,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk_template[id]': string, The disk template to return the versions for.
+     *
+     * @var string $disk_template[id] The disk template to return the versions for.
      *
      * All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     *      'disk_template[permalink]': string, The disk template to return the versions for.
+     * @var string $disk_template[permalink] The disk template to return the versions for.
      *
      * All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplatesDiskTemplateVersionsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1553,10 +1609,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk_template_version[id]': string, The disk template version to return.
+     *
+     * @var string $disk_template_version[id] The disk template version to return.
      *
      * All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplateVersionsDiskTemplateVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1582,10 +1640,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk_template_version[id]': string, The disk template version to return.
+     *
+     * @var string $disk_template_version[id] The disk template version to return.
      *
      * All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplateVersionsDiskTemplateVersionSpecGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1611,19 +1671,21 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to find disk templates for.
+     *
+     * @var string $organization[id] The organization to find disk templates for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to find disk templates for.
+     * @var string $organization[sub_domain] The organization to find disk templates for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'include_universal': bool, Whether or not to include universal templates
-     *      'operating_system[id]': string, An operating system to use to filter disk templates.
+     * @var bool   $include_universal Whether or not to include universal templates
+     * @var string $operating_system[id] An operating system to use to filter disk templates.
      *
      * All 'operating_system[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDiskTemplatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1649,13 +1711,15 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk_template[id]': string, The disk template to return.
+     *
+     * @var string $disk_template[id] The disk template to return.
      *
      * All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     *      'disk_template[permalink]': string, The disk template to return.
+     * @var string $disk_template[permalink] The disk template to return.
      *
      * All 'disk_template[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DiskTemplatesDiskTemplateGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1681,25 +1745,27 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to find disks for.
+     *
+     * @var string $organization[id] The organization to find disks for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to find disks for.
+     * @var string $organization[sub_domain] The organization to find disks for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'annotations[][key]': array, An array of annotations to filter by.
+     * @var array $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1775,10 +1841,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk[id]': string, The disk to return.
+     *
+     * @var string $disk[id] The disk to return.
      *
      * All 'disk[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DisksDiskGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -1979,15 +2047,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_machine[id]': string, The virtual machine to find disks for.
+     *
+     * @var string $virtual_machine[id] The virtual machine to find disks for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'virtual_machine[fqdn]': string, The virtual machine to find disks for.
+     * @var string $virtual_machine[fqdn] The virtual machine to find disks for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineDisksGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2014,25 +2084,27 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to return all file storage volumes for.
+     *
+     * @var string $organization[id] The organization to return all file storage volumes for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to return all file storage volumes for.
+     * @var string $organization[sub_domain] The organization to return all file storage volumes for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'annotations[][key]': array, An array of annotations to filter by.
+     * @var array $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationFileStorageVolumesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2107,10 +2179,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'file_storage_volume[id]': string, The file storage volume to return.
+     *
+     * @var string $file_storage_volume[id] The file storage volume to return.
      *
      * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\FileStorageVolumesFileStorageVolumeGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2155,11 +2229,13 @@ class Client extends Runtime\Client\Client
     /**
      * Provides a full list of all GPU types.
      *
-     * @param array  $queryParameters {
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\GpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2176,11 +2252,13 @@ class Client extends Runtime\Client\Client
     /**
      * Provide details for a specific GPU type.
      *
-     * @param array  $queryParameters {
-     *                                'gpu_type[id]': string, All 'gpu_type[]' params are mutually exclusive, only one can be provided.
-     *                                'gpu_type[permalink]': string, All 'gpu_type[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $gpu_type[id] All 'gpu_type[]' params are mutually exclusive, only one can be provided
+     * @var string $gpu_type[permalink] All 'gpu_type[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\GpuTypesGpuTypeGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2199,15 +2277,17 @@ class Client extends Runtime\Client\Client
      * Provides a list of all GPU types available in a given data center.
      *
      * @param array $queryParameters {
-     *                               'data_center[id]': string, The data center to list GPU types for.
+     *
+     * @var string $data_center[id] The data center to list GPU types for.
      *
      * All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *      'data_center[permalink]': string, The data center to list GPU types for.
+     * @var string $data_center[permalink] The data center to list GPU types for.
      *
      * All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DataCentersDataCenterGpuTypesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2233,16 +2313,18 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to use when looking up IP addresses.
+     *
+     * @var string $organization[id] The organization to use when looking up IP addresses.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to use when looking up IP addresses.
+     * @var string $organization[sub_domain] The organization to use when looking up IP addresses.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'allocated': bool, If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var bool $allocated If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
+     * @var int  $page The page number to request. If not provided, the first page will be returned.
+     * @var int  $per_page The number of items to return per page. If not provided, the default value will be used.
+     *           }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationIpAddressesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2316,13 +2398,15 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'ip_address[id]': string, The IP address to find.
+     *
+     * @var string $ip_address[id] The IP address to find.
      *
      * All 'ip_address[]' params are mutually exclusive, only one can be provided.
-     *      'ip_address[address]': string, The IP address to find.
+     * @var string $ip_address[address] The IP address to find.
      *
      * All 'ip_address[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\IpAddressesIpAddressGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2397,15 +2481,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'load_balancer[id]': string, The load balancer to return all load rules for.
+     *
+     * @var string $load_balancer[id] The load balancer to return all load rules for.
      *
      * All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     *      'load_balancer[api_reference]': string, The load balancer to return all load rules for.
+     * @var string $load_balancer[api_reference] The load balancer to return all load rules for.
      *
      * All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersLoadBalancerRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2479,10 +2565,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'load_balancer_rule[id]': string, The load balancer rule to return the details for.
+     *
+     * @var string $load_balancer_rule[id] The load balancer rule to return the details for.
      *
      * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersRulesLoadBalancerRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2532,25 +2620,27 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to return all load balancers for.
+     *
+     * @var string $organization[id] The organization to return all load balancers for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to return all load balancers for.
+     * @var string $organization[sub_domain] The organization to return all load balancers for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'annotations[][key]': array, An array of annotations to filter by.
+     * @var array $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationLoadBalancersGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2624,13 +2714,15 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'load_balancer[id]': string, The load balancer to return the details for.
+     *
+     * @var string $load_balancer[id] The load balancer to return the details for.
      *
      * All 'load_balancer[]' params are mutually exclusive, only one can be provided.
-     *      'load_balancer[api_reference]': string, The load balancer to return the details for.
+     * @var string $load_balancer[api_reference] The load balancer to return the details for.
      *
      * All 'load_balancer[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\LoadBalancersLoadBalancerGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2679,21 +2771,23 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               'annotations[][key]': array, An array of annotations to filter by.
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var array  $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationManagedGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2762,15 +2856,17 @@ class Client extends Runtime\Client\Client
      * Returns a list of all network speed profiles available to an organization.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to use when looking up network speed profiles.
+     *
+     * @var string $organization[id] The organization to use when looking up network speed profiles.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to use when looking up network speed profiles.
+     * @var string $organization[sub_domain] The organization to use when looking up network speed profiles.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2789,11 +2885,13 @@ class Client extends Runtime\Client\Client
     /**
      * Returns a list of all networks available for an organization.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationAvailableNetworksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2812,13 +2910,15 @@ class Client extends Runtime\Client\Client
      * Returns details for a specific network.
      *
      * @param array $queryParameters {
-     *                               'network[id]': string, The network to return.
+     *
+     * @var string $network[id] The network to return.
      *
      * All 'network[]' params are mutually exclusive, only one can be provided.
-     *      'network[permalink]': string, The network to return.
+     * @var string $network[permalink] The network to return.
      *
      * All 'network[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\NetworksNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2837,11 +2937,13 @@ class Client extends Runtime\Client\Client
     /**
      * Return a list of all operating systems.
      *
-     * @param array  $queryParameters {
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OperatingSystemsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2859,10 +2961,12 @@ class Client extends Runtime\Client\Client
      * Return details for a specific operating system.
      *
      * @param array $queryParameters {
-     *                               'operating_system[id]': string, The operating system to return.
+     *
+     * @var string $operating_system[id] The operating system to return.
      *
      * All 'operating_system[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OperatingSystemsOperatingSystemGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -2891,13 +2995,15 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'page': int, The page number to request. If not provided, the first page will be returned.
-     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationUsersWithAccessGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2935,11 +3041,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2962,11 +3070,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationPolicyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -2989,11 +3099,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationPolicyLimitsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3016,11 +3128,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationPricesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3044,11 +3158,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationDeletionStepsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3172,11 +3288,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'dns_zone[id]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
-     *                                'dns_zone[name]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
+     * @var string $dns_zone[name] All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsZonesDnsZoneRecordsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3247,10 +3365,12 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'dns_record[id]': string, All 'dns_record[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\DnsRecordsDnsRecordGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3293,15 +3413,17 @@ class Client extends Runtime\Client\Client
      * Returns a list of all SSH keys for an organization.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to list SSH keys for.
+     *
+     * @var string $organization[id] The organization to list SSH keys for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to list SSH keys for.
+     * @var string $organization[sub_domain] The organization to list SSH keys for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationSshKeysGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3365,12 +3487,14 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'security_group[id]': string, The security group to return all load rules for.
+     *
+     * @var string $security_group[id] The security group to return all load rules for.
      *
      * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsSecurityGroupRulesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3444,10 +3568,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'security_group_rule[id]': string, The security group rule to return the details for.
+     *
+     * @var string $security_group_rule[id] The security group rule to return the details for.
      *
      * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsRulesSecurityGroupRuleGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3497,25 +3623,27 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to return all security groups for.
+     *
+     * @var string $organization[id] The organization to return all security groups for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to return all security groups for.
+     * @var string $organization[sub_domain] The organization to return all security groups for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'annotations[][key]': array, An array of annotations to filter by.
+     * @var array $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationSecurityGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3590,10 +3718,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'security_group[id]': string, The security group to return the details for.
+     *
+     * @var string $security_group[id] The security group to return the details for.
      *
      * All 'security_group[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\SecurityGroupsSecurityGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3643,15 +3773,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to list the tags for.
+     *
+     * @var string $organization[id] The organization to list the tags for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to list the tags for.
+     * @var string $organization[sub_domain] The organization to list the tags for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationTagsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3724,10 +3856,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'tag[id]': string, The tag to load the details for.
+     *
+     * @var string $tag[id] The tag to load the details for.
      *
      * All 'tag[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TagsTagGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3776,10 +3910,12 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'task[id]': string, All 'task[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $task[id] All 'task[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TasksTaskGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -3803,15 +3939,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to find all trash objects for.
+     *
+     * @var string $organization[id] The organization to find all trash objects for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to find all trash objects for.
+     * @var string $organization[sub_domain] The organization to find all trash objects for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationTrashObjectsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3884,13 +4022,15 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'trash_object[id]': string, The trash object to find.
+     *
+     * @var string $trash_object[id] The trash object to find.
      *
      * All 'trash_object[]' params are mutually exclusive, only one can be provided.
-     *      'trash_object[object_id]': string, The trash object to find.
+     * @var string $trash_object[object_id] The trash object to find.
      *
      * All 'trash_object[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\TrashObjectsTrashObjectGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -3974,15 +4114,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization for which to return virtual networks.
+     *
+     * @var string $organization[id] The organization for which to return virtual networks.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization for which to return virtual networks.
+     * @var string $organization[sub_domain] The organization for which to return virtual networks.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualNetworksGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4055,10 +4197,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_network[id]': string, The virtual network to retrieve.
+     *
+     * @var string $virtual_network[id] The virtual network to retrieve.
      *
      * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualNetworksVirtualNetworkGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4108,13 +4252,15 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to return groups for.
+     *
+     * @var string $organization[id] The organization to return groups for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to return groups for.
+     * @var string $organization[sub_domain] The organization to return groups for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4187,10 +4333,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_machine_group[id]': string, The virtual machine group to retrieve.
+     *
+     * @var string $virtual_machine_group[id] The virtual machine group to retrieve.
      *
      * All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineGroupsVirtualMachineGroupGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4240,15 +4388,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_machine[id]': string, The virtual machine to show network interfaces for.
+     *
+     * @var string $virtual_machine[id] The virtual machine to show network interfaces for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'virtual_machine[fqdn]': string, The virtual machine to show network interfaces for.
+     * @var string $virtual_machine[fqdn] The virtual machine to show network interfaces for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4275,19 +4425,21 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_machine[id]': string, The virtual machine to find the network interface for.
+     *
+     * @var string $virtual_machine[id] The virtual machine to find the network interface for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'virtual_machine[fqdn]': string, The virtual machine to find the network interface for.
+     * @var string $virtual_machine[fqdn] The virtual machine to find the network interface for.
      *
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *      'network[id]': string, The network to find the network interface for.
+     * @var string $network[id] The network to find the network interface for.
      *
      * All 'network[]' params are mutually exclusive, only one can be provided.
-     *      'network[permalink]': string, The network to find the network interface for.
+     * @var string $network[permalink] The network to find the network interface for.
      *
      * All 'network[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4314,10 +4466,12 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_machine_network_interface[id]': string, The network interface to show the information for.
+     *
+     * @var string $virtual_machine_network_interface[id] The network interface to show the information for.
      *
      * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4343,11 +4497,13 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'virtual_machine_network_interface[id]': string, The network interface to get IP addresses for.
+     *
+     * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for.
      *
      * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     *      'address_version': string, The IP address version to return results for
-     * }
+     * @var string $address_version The IP address version to return results for
+     *             }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsAddressVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4443,15 +4599,17 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed).
+     *
+     * @var string $organization[id] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed).
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed).
+     * @var string $organization[sub_domain] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed).
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinePackagesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4475,11 +4633,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'virtual_machine_package[id]': string, All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
-     *                                'virtual_machine_package[permalink]': string, All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $virtual_machine_package[id] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided
+     * @var string $virtual_machine_package[permalink] All 'virtual_machine_package[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinePackagesVirtualMachinePackageGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -4504,21 +4664,23 @@ class Client extends Runtime\Client\Client
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               'annotations[][key]': array, An array of annotations to filter by.
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var array  $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\OrganizationsOrganizationVirtualMachinesGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -4567,11 +4729,13 @@ class Client extends Runtime\Client\Client
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @param array  $queryParameters {
-     *                                'virtual_machine[id]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *                                'virtual_machine[fqdn]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *                                }
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $virtual_machine[id] All 'virtual_machine[]' params are mutually exclusive, only one can be provided
+     * @var string $virtual_machine[fqdn] All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinesVirtualMachineGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *
@@ -4727,13 +4891,15 @@ class Client extends Runtime\Client\Client
      * Returns the details for a specific zone.
      *
      * @param array $queryParameters {
-     *                               'zone[id]': string, The zone to find.
+     *
+     * @var string $zone[id] The zone to find.
      *
      * All 'zone[]' params are mutually exclusive, only one can be provided.
-     *      'zone[permalink]': string, The zone to find.
+     * @var string $zone[permalink] The zone to find.
      *
      * All 'zone[]' params are mutually exclusive, only one can be provided.
      * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\ZonesZoneGetResponse200|\Psr\Http\Message\ResponseInterface|null

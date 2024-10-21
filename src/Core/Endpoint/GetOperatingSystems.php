@@ -18,9 +18,10 @@ class GetOperatingSystems extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
      * Return a list of all operating systems.
      *
      * @param array $queryParameters {
-     *                               'page': int, The page number to request. If not provided, the first page will be returned.
-     *                               'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     *                               }
+     *
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
      */
     public function __construct(array $queryParameters = [])
     {

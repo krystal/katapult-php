@@ -24,8 +24,9 @@ class GetDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'dns_record[id]': string, All 'dns_record[]' params are mutually exclusive, only one can be provided.
-     *                               }
+     *
+     * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

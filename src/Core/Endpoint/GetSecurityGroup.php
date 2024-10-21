@@ -24,7 +24,8 @@ class GetSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'security_group[id]': string, The security group to return the details for.
+     *
+     * @var string $security_group[id] The security group to return the details for.
      *
      * All 'security_group[]' params are mutually exclusive, only one can be provided.
      * }

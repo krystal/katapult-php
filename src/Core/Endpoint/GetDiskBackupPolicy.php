@@ -24,7 +24,8 @@ class GetDiskBackupPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk_backup_policy[id]': string, The disk backup policy to get information for.
+     *
+     * @var string $disk_backup_policy[id] The disk backup policy to get information for.
      *
      * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
      * }

@@ -23,9 +23,10 @@ class GetOrganizationPolicyLimits extends \KatapultAPI\Core\Runtime\Client\BaseE
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               }
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

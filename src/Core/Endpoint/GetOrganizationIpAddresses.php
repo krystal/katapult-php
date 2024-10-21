@@ -24,16 +24,17 @@ class GetOrganizationIpAddresses extends \KatapultAPI\Core\Runtime\Client\BaseEn
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, The organization to use when looking up IP addresses.
+     *
+     * @var string $organization[id] The organization to use when looking up IP addresses.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'organization[sub_domain]': string, The organization to use when looking up IP addresses.
+     * @var string $organization[sub_domain] The organization to use when looking up IP addresses.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     *      'allocated': bool, If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var bool $allocated If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
+     * @var int  $page The page number to request. If not provided, the first page will be returned.
+     * @var int  $per_page The number of items to return per page. If not provided, the default value will be used.
+     *           }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -23,21 +23,22 @@ class GetOrganizationManaged extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
-     *                               'annotations[][key]': array, An array of annotations to filter by.
+     *
+     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
+     * @var array  $annotations[][key] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'annotations[][value]': array, An array of annotations to filter by.
+     * @var array $annotations[][value] An array of annotations to filter by.
      *
      * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
-     *      'page': int, The page number to request. If not provided, the first page will be returned.
-     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
-     * }
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
      */
     public function __construct(array $queryParameters = [])
     {

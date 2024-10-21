@@ -18,9 +18,10 @@ class GetGpuType extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
      * Provide details for a specific GPU type.
      *
      * @param array $queryParameters {
-     *                               'gpu_type[id]': string, All 'gpu_type[]' params are mutually exclusive, only one can be provided.
-     *                               'gpu_type[permalink]': string, All 'gpu_type[]' params are mutually exclusive, only one can be provided.
-     *                               }
+     *
+     * @var string $gpu_type[id] All 'gpu_type[]' params are mutually exclusive, only one can be provided
+     * @var string $gpu_type[permalink] All 'gpu_type[]' params are mutually exclusive, only one can be provided.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

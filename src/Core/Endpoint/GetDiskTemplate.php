@@ -24,10 +24,11 @@ class GetDiskTemplate extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'disk_template[id]': string, The disk template to return.
+     *
+     * @var string $disk_template[id] The disk template to return.
      *
      * All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     *      'disk_template[permalink]': string, The disk template to return.
+     * @var string $disk_template[permalink] The disk template to return.
      *
      * All 'disk_template[]' params are mutually exclusive, only one can be provided.
      * }

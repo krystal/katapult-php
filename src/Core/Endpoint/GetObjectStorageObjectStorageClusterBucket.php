@@ -23,10 +23,11 @@ class GetObjectStorageObjectStorageClusterBucket extends \KatapultAPI\Core\Runti
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *                               'object_storage_cluster[region]': string, The object storage cluster region for the bucket.
+     *
+     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket.
      *
      * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     *      'bucket[name]': string, The name of the object storage bucket.
+     * @var string $bucket[name] The name of the object storage bucket.
      *
      * All 'bucket[]' params are mutually exclusive, only one can be provided.
      * }
