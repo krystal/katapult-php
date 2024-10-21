@@ -18,6 +18,9 @@ class PostSecurityGroupRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * Create a new security group rule
      * ## Scopes
      * - `security_groups`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostSecurityGroupRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

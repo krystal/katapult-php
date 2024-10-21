@@ -18,6 +18,9 @@ class PutVirtualMachinePackage extends \KatapultAPI\Core\Runtime\Client\BaseEndp
      * Change a package for a virtual machine
      * ## Scopes
      * - `virtual_machines`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachinePackagePutBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PutVirtualMachinePackage extends \KatapultAPI\Core\Runtime\Client\BaseEndp
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

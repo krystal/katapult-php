@@ -19,11 +19,13 @@ class GetOrganization extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * ## Scopes
      * - `organizations:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @param array $queryParameters {
+     *                               'organization[id]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               'organization[sub_domain]': string, All 'organization[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -97,6 +99,6 @@ class GetOrganization extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

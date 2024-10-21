@@ -19,6 +19,9 @@ class PostVirtualMachineConsoleSessions extends \KatapultAPI\Core\Runtime\Client
      * ## Scopes
      * - `virtual_machines`
      * - `virtual_machines:console`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody $requestBody = null)
     {
@@ -92,6 +95,6 @@ class PostVirtualMachineConsoleSessions extends \KatapultAPI\Core\Runtime\Client
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

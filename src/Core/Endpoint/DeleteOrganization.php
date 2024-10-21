@@ -18,6 +18,9 @@ class DeleteOrganization extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
      * Delete a managed organization. All resources must be removed first.
      * ## Scopes
      * - `managed_organizations:delete`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody $requestBody = null)
     {
@@ -91,6 +94,6 @@ class DeleteOrganization extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

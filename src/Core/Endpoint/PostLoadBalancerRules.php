@@ -18,6 +18,9 @@ class PostLoadBalancerRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * Create a new load balancer rule
      * ## Scopes
      * - `load_balancers`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostLoadBalancerRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

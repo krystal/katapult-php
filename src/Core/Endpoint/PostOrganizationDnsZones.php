@@ -18,6 +18,9 @@ class PostOrganizationDnsZones extends \KatapultAPI\Core\Runtime\Client\BaseEndp
      * Create a new DNS zone within an existing organization
      * ## Scopes
      * - `dns`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationDnsZonesPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationDnsZones extends \KatapultAPI\Core\Runtime\Client\BaseEndp
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

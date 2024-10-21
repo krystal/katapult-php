@@ -18,6 +18,9 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \KatapultAPI\Core\Runti
      * Delete a security group rule
      * ## Scopes
      * - `security_groups`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRuleDeleteBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class DeleteSecurityGroupsRulesSecurityGroupRule extends \KatapultAPI\Core\Runti
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

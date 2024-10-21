@@ -18,6 +18,9 @@ class PostAddressListEntries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * Create a new address list entry for a given address list.
      * ## Scopes
      * - `address_lists`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\AddressListsAddressListEntriesPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostAddressListEntries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

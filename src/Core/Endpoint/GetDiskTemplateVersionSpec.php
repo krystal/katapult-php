@@ -20,10 +20,14 @@ class GetDiskTemplateVersionSpec extends \KatapultAPI\Core\Runtime\Client\BaseEn
      * - `disk_templates`
      * - `disk_templates:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $disk_template_version[id] The disk template version to return. All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @param array $queryParameters {
+     *                               'disk_template_version[id]': string, The disk template version to return.
+     *
+     * All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -96,6 +100,6 @@ class GetDiskTemplateVersionSpec extends \KatapultAPI\Core\Runtime\Client\BaseEn
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

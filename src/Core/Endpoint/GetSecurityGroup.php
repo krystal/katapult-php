@@ -20,10 +20,14 @@ class GetSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
      * - `security_groups`
      * - `security_groups:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $security_group[id] The security group to return the details for. All 'security_group[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @param array $queryParameters {
+     *                               'security_group[id]': string, The security group to return the details for.
+     *
+     * All 'security_group[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -96,6 +100,6 @@ class GetSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

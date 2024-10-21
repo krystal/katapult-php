@@ -18,6 +18,9 @@ class DeleteApiToken extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * Delete an organization API token
      * ## Scopes
      * - `api_tokens`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\ApiTokensApiTokenDeleteBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class DeleteApiToken extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

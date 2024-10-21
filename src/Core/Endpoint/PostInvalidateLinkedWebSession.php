@@ -79,6 +79,6 @@ class PostInvalidateLinkedWebSession extends \KatapultAPI\Core\Runtime\Client\Ba
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

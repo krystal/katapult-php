@@ -69,6 +69,6 @@ class GetUsersCurrent extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

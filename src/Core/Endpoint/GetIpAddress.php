@@ -20,11 +20,17 @@ class GetIpAddress extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
      * - `ip_addresses`
      * - `ip_addresses:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $ip_address[id] The IP address to find. All 'ip_address[]' params are mutually exclusive, only one can be provided.
-     * @var string $ip_address[address] The IP address to find. All 'ip_address[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @param array $queryParameters {
+     *                               'ip_address[id]': string, The IP address to find.
+     *
+     * All 'ip_address[]' params are mutually exclusive, only one can be provided.
+     *      'ip_address[address]': string, The IP address to find.
+     *
+     * All 'ip_address[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -98,6 +104,6 @@ class GetIpAddress extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -18,6 +18,9 @@ class DeleteDiskBackupPolicySchedule extends \KatapultAPI\Core\Runtime\Client\Ba
      * Schedules a disk backup policy to be moved to the trash at a specific time. The backup policy will continue to function as normal until this time is reached.
      * ## Scopes
      * - `disk_backup_policies`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class DeleteDiskBackupPolicySchedule extends \KatapultAPI\Core\Runtime\Client\Ba
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

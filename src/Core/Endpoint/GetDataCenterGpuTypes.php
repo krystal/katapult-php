@@ -18,12 +18,15 @@ class GetDataCenterGpuTypes extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * Provides a list of all GPU types available in a given data center.
      *
      * @param array $queryParameters {
+     *                               'data_center[id]': string, The data center to list GPU types for.
      *
-     * @var string $data_center[id] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
-     * @var string $data_center[permalink] The data center to list GPU types for. All 'data_center[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *      'data_center[permalink]': string, The data center to list GPU types for.
+     *
+     * All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -55,7 +58,7 @@ class GetDataCenterGpuTypes extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['data_center[id]', 'data_center[permalink]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('data_center[id]', ['string']);
         $optionsResolver->addAllowedTypes('data_center[permalink]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
@@ -99,6 +102,6 @@ class GetDataCenterGpuTypes extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

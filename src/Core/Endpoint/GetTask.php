@@ -20,10 +20,12 @@ class GetTask extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
      * - `tasks`
      * - `tasks:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $task[id] All 'task[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @param array $queryParameters {
+     *                               'task[id]': string, All 'task[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -96,6 +98,6 @@ class GetTask extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

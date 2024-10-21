@@ -18,6 +18,9 @@ class PutVirtualMachineFlexibleResources extends \KatapultAPI\Core\Runtime\Clien
      * Change the flexible resources assigned to a virtual machine
      * ## Scopes
      * - `virtual_machines`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachineFlexibleResourcesPutBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PutVirtualMachineFlexibleResources extends \KatapultAPI\Core\Runtime\Clien
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

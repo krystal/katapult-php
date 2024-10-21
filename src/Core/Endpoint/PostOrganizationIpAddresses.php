@@ -18,6 +18,9 @@ class PostOrganizationIpAddresses extends \KatapultAPI\Core\Runtime\Client\BaseE
      * Creates a new IP address on this organization
      * ## Scopes
      * - `ip_addresses`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationIpAddressesPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationIpAddresses extends \KatapultAPI\Core\Runtime\Client\BaseE
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

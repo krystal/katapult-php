@@ -18,6 +18,9 @@ class PostOrganizationLoadBalancers extends \KatapultAPI\Core\Runtime\Client\Bas
      * Create a new load balancer for a given organization
      * ## Scopes
      * - `load_balancers`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationLoadBalancers extends \KatapultAPI\Core\Runtime\Client\Bas
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

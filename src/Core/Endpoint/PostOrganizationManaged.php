@@ -18,6 +18,9 @@ class PostOrganizationManaged extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
      * Create a new managed organization within an existing organization
      * ## Scopes
      * - `managed_organizations`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationManaged extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

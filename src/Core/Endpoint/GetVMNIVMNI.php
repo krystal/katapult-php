@@ -20,10 +20,14 @@ class GetVMNIVMNI extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implemen
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $virtual_machine_network_interface[id] The network interface to show the information for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @param array $queryParameters {
+     *                               'virtual_machine_network_interface[id]': string, The network interface to show the information for.
+     *
+     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -96,6 +100,6 @@ class GetVMNIVMNI extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implemen
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

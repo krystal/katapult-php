@@ -18,13 +18,18 @@ class GetCountryCountryStates extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
      * Return a list of all country states for a specific country.
      *
      * @param array $queryParameters {
+     *                               'country[id]': string, The country to return states for.
      *
-     * @var string $country[id] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code2] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code3] The country to return states for. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * All 'country[]' params are mutually exclusive, only one can be provided.
+     *      'country[iso_code2]': string, The country to return states for.
+     *
+     * All 'country[]' params are mutually exclusive, only one can be provided.
+     *      'country[iso_code3]': string, The country to return states for.
+     *
+     * All 'country[]' params are mutually exclusive, only one can be provided.
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -56,7 +61,7 @@ class GetCountryCountryStates extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['country[id]', 'country[iso_code2]', 'country[iso_code3]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('country[id]', ['string']);
         $optionsResolver->addAllowedTypes('country[iso_code2]', ['string']);
         $optionsResolver->addAllowedTypes('country[iso_code3]', ['string']);
@@ -101,6 +106,6 @@ class GetCountryCountryStates extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -20,10 +20,14 @@ class GetVirtualMachineGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * - `virtual_machine_groups`
      * - `virtual_machine_groups:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $virtual_machine_group[id] The virtual machine group to retrieve. All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @param array $queryParameters {
+     *                               'virtual_machine_group[id]': string, The virtual machine group to retrieve.
+     *
+     * All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -96,6 +100,6 @@ class GetVirtualMachineGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

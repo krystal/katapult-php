@@ -18,6 +18,9 @@ class DeleteDnsZone extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implem
      * Delete a DNS zone
      * ## Scopes
      * - `dns`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DnsZonesDnsZoneDeleteBody $requestBody = null)
     {
@@ -83,6 +86,6 @@ class DeleteDnsZone extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implem
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

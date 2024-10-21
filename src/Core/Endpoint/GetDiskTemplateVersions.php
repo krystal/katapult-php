@@ -20,13 +20,19 @@ class GetDiskTemplateVersions extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
      * - `disk_templates`
      * - `disk_templates:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $disk_template[id] The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     * @var string $disk_template[permalink] The disk template to return the versions for. All 'disk_template[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @param array $queryParameters {
+     *                               'disk_template[id]': string, The disk template to return the versions for.
+     *
+     * All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *      'disk_template[permalink]': string, The disk template to return the versions for.
+     *
+     * All 'disk_template[]' params are mutually exclusive, only one can be provided.
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -58,7 +64,7 @@ class GetDiskTemplateVersions extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['disk_template[id]', 'disk_template[permalink]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('disk_template[id]', ['string']);
         $optionsResolver->addAllowedTypes('disk_template[permalink]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
@@ -102,6 +108,6 @@ class GetDiskTemplateVersions extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

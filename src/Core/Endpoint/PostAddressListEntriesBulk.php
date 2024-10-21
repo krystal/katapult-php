@@ -18,6 +18,9 @@ class PostAddressListEntriesBulk extends \KatapultAPI\Core\Runtime\Client\BaseEn
      * Create or delete multiple address list entries for a given address list.
      * ## Scopes
      * - `address_lists`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostAddressListEntriesBulk extends \KatapultAPI\Core\Runtime\Client\BaseEn
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

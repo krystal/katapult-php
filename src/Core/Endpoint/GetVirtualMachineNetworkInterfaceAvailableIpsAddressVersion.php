@@ -20,11 +20,15 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Katap
      * - `ip_addresses`
      * - `ip_addresses:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for. All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     * @var string $address_version The IP address version to return results for
-     *             }
+     * @param array $queryParameters {
+     *                               'virtual_machine_network_interface[id]': string, The network interface to get IP addresses for.
+     *
+     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
+     *      'address_version': string, The IP address version to return results for
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -98,6 +102,6 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Katap
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

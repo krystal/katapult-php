@@ -20,12 +20,16 @@ class GetAddressListEntries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * - `address_lists`
      * - `address_lists:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $address_list[id] The address list for which the entries should be returned. All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @param array $queryParameters {
+     *                               'address_list[id]': string, The address list for which the entries should be returned.
+     *
+     * All 'address_list[]' params are mutually exclusive, only one can be provided.
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -57,7 +61,7 @@ class GetAddressListEntries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['address_list[id]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('address_list[id]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
         $optionsResolver->addAllowedTypes('per_page', ['int']);
@@ -100,6 +104,6 @@ class GetAddressListEntries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

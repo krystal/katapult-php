@@ -18,11 +18,16 @@ class GetCountry extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
      * Return details for a specific country.
      *
      * @param array $queryParameters {
+     *                               'country[id]': string, The country to return.
      *
-     * @var string $country[id] The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code2] The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
-     * @var string $country[iso_code3] The country to return. All 'country[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * All 'country[]' params are mutually exclusive, only one can be provided.
+     *      'country[iso_code2]': string, The country to return.
+     *
+     * All 'country[]' params are mutually exclusive, only one can be provided.
+     *      'country[iso_code3]': string, The country to return.
+     *
+     * All 'country[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -97,6 +102,6 @@ class GetCountry extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

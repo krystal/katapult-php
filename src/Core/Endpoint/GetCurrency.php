@@ -18,10 +18,13 @@ class GetCurrency extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implemen
      * Return details for a specific currency.
      *
      * @param array $queryParameters {
+     *                               'currency[id]': string, The currency to return.
      *
-     * @var string $currency[id] The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
-     * @var string $currency[iso_code] The currency to return. All 'currency[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * All 'currency[]' params are mutually exclusive, only one can be provided.
+     *      'currency[iso_code]': string, The currency to return.
+     *
+     * All 'currency[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -95,6 +98,6 @@ class GetCurrency extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implemen
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

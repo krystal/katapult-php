@@ -20,15 +20,29 @@ class GetOrganizationLoadBalancers extends \KatapultAPI\Core\Runtime\Client\Base
      * - `load_balancers`
      * - `load_balancers:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $organization[id] The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return all load balancers for. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @param array $queryParameters {
+     *                               'organization[id]': string, The organization to return all load balancers for.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     *      'organization[sub_domain]': string, The organization to return all load balancers for.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     *      'annotations[][key]': array, An array of annotations to filter by.
+     *
+     * All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *
+     * All `annotations[]` params should have the same amount of elements.
+     *      'annotations[][value]': array, An array of annotations to filter by.
+     *
+     * All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *
+     * All `annotations[]` params should have the same amount of elements.
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -58,13 +72,13 @@ class GetOrganizationLoadBalancers extends \KatapultAPI\Core\Runtime\Client\Base
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'annotations[key]', 'annotations[value]', 'page', 'per_page']);
+        $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'annotations[][ke', 'annotations[][valu', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('organization[id]', ['string']);
         $optionsResolver->addAllowedTypes('organization[sub_domain]', ['string']);
-        $optionsResolver->addAllowedTypes('annotations[key]', ['string']);
-        $optionsResolver->addAllowedTypes('annotations[value]', ['string']);
+        $optionsResolver->addAllowedTypes('annotations[][ke', ['array']);
+        $optionsResolver->addAllowedTypes('annotations[][valu', ['array']);
         $optionsResolver->addAllowedTypes('page', ['int']);
         $optionsResolver->addAllowedTypes('per_page', ['int']);
 
@@ -106,6 +120,6 @@ class GetOrganizationLoadBalancers extends \KatapultAPI\Core\Runtime\Client\Base
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

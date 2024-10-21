@@ -18,6 +18,9 @@ class PatchAddressListEntry extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * Update an address list entry with new properties.
      * ## Scopes
      * - `address_lists`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PatchAddressListEntry extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

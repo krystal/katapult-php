@@ -20,6 +20,9 @@ class GetVirtualMachineAuthorizedKeys extends \KatapultAPI\Core\Runtime\Client\B
      * ## Scopes
      * - `virtual_machines:authorized_keys`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $accept Accept content header text/plain|application/json
      */
     public function __construct(array $accept = [])
@@ -85,6 +88,6 @@ class GetVirtualMachineAuthorizedKeys extends \KatapultAPI\Core\Runtime\Client\B
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

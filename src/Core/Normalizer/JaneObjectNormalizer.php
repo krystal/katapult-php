@@ -794,6 +794,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\NetworkSpeedProfile::class => NetworkSpeedProfileNormalizer::class,
 
+            \KatapultAPI\Core\Model\VirtualNetwork::class => VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworkArguments::class => VirtualNetworkArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworkLookup::class => VirtualNetworkLookupNormalizer::class,
+
             \KatapultAPI\Core\Model\GetAddressLists200ResponseAddressLists::class => GetAddressLists200ResponseAddressListsNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationAddressLists200ResponseAddressLists::class => GetOrganizationAddressLists200ResponseAddressListsNormalizer::class,
@@ -958,6 +964,38 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => IdentityNotLinkedToWebSessionSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => ObjectStorageClusterLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => ObjectStorageBucketArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => ObjectStorageBucketACLArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucket::class => ObjectStorageBucketNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => ObjectStorageBucketAccessControlListNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => ObjectStorageAccountNotProvisionedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => ObjectStorageAccountSuspendedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => ObjectStorageClusterNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => ObjectStorageAccountNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => ObjectStorageBucketLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketNotFoundSchema::class => ObjectStorageBucketNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketDeletionError::class => ObjectStorageBucketDeletionErrorNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketDeletionErrorSchema::class => ObjectStorageBucketDeletionErrorSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObject::class => ObjectStorageObjectNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => ObjectNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => ObjectStorageObjectPresignedURLArgumentsNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => ResponseAPIAuthenticator400ResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
@@ -1020,6 +1058,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseNetworkNotFoundResponse::class => ResponseNetworkNotFoundResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseVirtualNetworkNotFoundResponse::class => ResponseVirtualNetworkNotFoundResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseAddressListNotFoundResponse::class => ResponseAddressListNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => ResponseAddressListEntryNotFoundResponseNormalizer::class,
@@ -1060,6 +1100,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseNoUserAssociatedWithIdentityResponse::class => ResponseNoUserAssociatedWithIdentityResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => ResponseMultipleObjectStorageBucketsFoundResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => ResponseNetworkErrorResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => OrganizationsOrganizationApiTokensGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostBody::class => OrganizationsOrganizationApiTokensPostBodyNormalizer::class,
@@ -1085,32 +1129,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => ApiTokensApiTokenRegenerateSecretPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => ApiTokensApiTokenRegenerateSecretPostResponse200ApiTokenNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsGetResponse200::class => AddressListsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => OrganizationsOrganizationAddressListsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => OrganizationsOrganizationAddressListsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => OrganizationsOrganizationAddressListsPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => OrganizationsOrganizationAddressListsPostResponse201AddressListNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => AddressListsAddressListDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => AddressListsAddressListDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => AddressListsAddressListDeleteResponse200AddressListNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => AddressListsAddressListGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => AddressListsAddressListGetResponse200AddressListNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => AddressListsAddressListPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => AddressListsAddressListPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => AddressListsAddressListPatchResponse200AddressListNormalizer::class,
 
             \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => AddressListsAddressListEntriesGetResponse200Normalizer::class,
 
@@ -1140,9 +1158,77 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostResponse200::class => AddressListsAddressListEntriesBulkPostResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\AddressListsGetResponse200::class => AddressListsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => OrganizationsOrganizationAddressListsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => OrganizationsOrganizationAddressListsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => OrganizationsOrganizationAddressListsPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => OrganizationsOrganizationAddressListsPostResponse201AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => AddressListsAddressListDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => AddressListsAddressListDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => AddressListsAddressListDeleteResponse200AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => AddressListsAddressListGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => AddressListsAddressListGetResponse200AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => AddressListsAddressListPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => AddressListsAddressListPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => AddressListsAddressListPatchResponse200AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostResponse201::class => OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteBody::class => ObjectStorageObjectStorageClusterBucketsBucketDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketGetResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchBody::class => ObjectStorageObjectStorageClusterBucketsBucketPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostBody::class => ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketObjectGetResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketObjectGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostBody::class => ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => OrganizationsOrganizationVirtualMachinesBuildPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201BuildNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201BuildNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => VirtualMachinesBuildsVirtualMachineBuildGetResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => OrganizationsOrganizationCertificatesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => CertificatesCertificateGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => VirtualMachinesVirtualMachineConsoleSessionsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => VirtualMachinesVirtualMachineConsoleSessionsPostResponse201Normalizer::class,
 
             \KatapultAPI\Core\Model\CountriesGetResponse200::class => CountriesGetResponse200Normalizer::class,
 
@@ -1191,26 +1277,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200::class => DnsZonesDnsZoneVerifyPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200DnsZone::class => DnsZonesDnsZoneVerifyPostResponse200DnsZoneNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => DnsZonesDnsZoneRecordsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => DnsZonesDnsZoneRecordsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => DnsZonesDnsZoneRecordsPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => DnsRecordsDnsRecordDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => DnsRecordsDnsRecordDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => DnsRecordsDnsRecordGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => DnsRecordsDnsRecordGetResponse200DnsRecordNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => DnsRecordsDnsRecordPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => DnsRecordsDnsRecordPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => DnsRecordsDnsRecordPatchResponse200DnsRecordNormalizer::class,
 
             \KatapultAPI\Core\Model\DataCentersGetResponse200::class => DataCentersGetResponse200Normalizer::class,
 
@@ -1398,30 +1464,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\IpAddressesIpAddressUnallocatePostResponse200::class => IpAddressesIpAddressUnallocatePostResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => OrganizationsOrganizationLoadBalancersGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => OrganizationsOrganizationLoadBalancersPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => OrganizationsOrganizationLoadBalancersPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancerNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => LoadBalancersLoadBalancerDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => LoadBalancersLoadBalancerDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => LoadBalancersLoadBalancerDeleteResponse200LoadBalancerNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => LoadBalancersLoadBalancerGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => LoadBalancersLoadBalancerGetResponse200LoadBalancerNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => LoadBalancersLoadBalancerPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => LoadBalancersLoadBalancerPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer::class,
-
             \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesGetResponse200::class => LoadBalancersLoadBalancerRulesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesPostBody::class => LoadBalancersLoadBalancerRulesPostBodyNormalizer::class,
@@ -1446,6 +1488,40 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule::class => LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRuleNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => OrganizationsOrganizationLoadBalancersGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => OrganizationsOrganizationLoadBalancersPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => OrganizationsOrganizationLoadBalancersPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => LoadBalancersLoadBalancerDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => LoadBalancersLoadBalancerDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => LoadBalancersLoadBalancerDeleteResponse200LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => LoadBalancersLoadBalancerGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => LoadBalancersLoadBalancerGetResponse200LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => LoadBalancersLoadBalancerPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => LoadBalancersLoadBalancerPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => OrganizationsOrganizationManagedGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => OrganizationsOrganizationManagedPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => OrganizationsOrganizationManagedPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => ManagedOrganizationsOrganizationDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => OrganizationsOrganizationNetworkSpeedProfilesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => OrganizationsOrganizationAvailableNetworksGetResponse200Normalizer::class,
@@ -1460,6 +1536,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200OperatingSystem::class => OperatingSystemsOperatingSystemGetResponse200OperatingSystemNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => OrganizationsOrganizationUsersWithAccessGetResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsGetResponse200::class => OrganizationsGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationGetResponse200::class => OrganizationsOrganizationGetResponse200Normalizer::class,
@@ -1472,17 +1550,41 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => OrganizationsOrganizationDeletionStepsGetResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => OrganizationsOrganizationUsersWithAccessGetResponse200Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => VirtualMachinesVirtualMachineStartPostBodyNormalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => OrganizationsOrganizationManagedGetResponse200Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => VirtualMachinesVirtualMachineStartPostResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => OrganizationsOrganizationManagedPostBodyNormalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => VirtualMachinesVirtualMachineStopPostBodyNormalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => OrganizationsOrganizationManagedPostResponse201Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => VirtualMachinesVirtualMachineStopPostResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => ManagedOrganizationsOrganizationDeleteBodyNormalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => VirtualMachinesVirtualMachineShutdownPostBodyNormalizer::class,
 
-            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => VirtualMachinesVirtualMachineShutdownPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => VirtualMachinesVirtualMachineResetPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => VirtualMachinesVirtualMachineResetPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => DnsZonesDnsZoneRecordsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => DnsZonesDnsZoneRecordsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => DnsZonesDnsZoneRecordsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => DnsRecordsDnsRecordDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => DnsRecordsDnsRecordDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => DnsRecordsDnsRecordGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => DnsRecordsDnsRecordGetResponse200DnsRecordNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => DnsRecordsDnsRecordPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => DnsRecordsDnsRecordPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => DnsRecordsDnsRecordPatchResponse200DnsRecordNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => OrganizationsOrganizationSshKeysGetResponse200Normalizer::class,
 
@@ -1493,30 +1595,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\SshKeysSshKeyDeleteBody::class => SshKeysSshKeyDeleteBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\SshKeysSshKeyDeleteResponse200::class => SshKeysSshKeyDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => OrganizationsOrganizationSecurityGroupsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => OrganizationsOrganizationSecurityGroupsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => OrganizationsOrganizationSecurityGroupsPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroupNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => SecurityGroupsSecurityGroupDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => SecurityGroupsSecurityGroupDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => SecurityGroupsSecurityGroupDeleteResponse200SecurityGroupNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => SecurityGroupsSecurityGroupGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => SecurityGroupsSecurityGroupGetResponse200SecurityGroupNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => SecurityGroupsSecurityGroupPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => SecurityGroupsSecurityGroupPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => SecurityGroupsSecurityGroupPatchResponse200SecurityGroupNormalizer::class,
 
             \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesGetResponse200::class => SecurityGroupsSecurityGroupRulesGetResponse200Normalizer::class,
 
@@ -1541,6 +1619,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200::class => SecurityGroupsRulesSecurityGroupRulePatchResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRule::class => SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRuleNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => OrganizationsOrganizationSecurityGroupsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => OrganizationsOrganizationSecurityGroupsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => OrganizationsOrganizationSecurityGroupsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroupNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => SecurityGroupsSecurityGroupDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => SecurityGroupsSecurityGroupDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => SecurityGroupsSecurityGroupDeleteResponse200SecurityGroupNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => SecurityGroupsSecurityGroupGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => SecurityGroupsSecurityGroupGetResponse200SecurityGroupNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => SecurityGroupsSecurityGroupPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => SecurityGroupsSecurityGroupPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => SecurityGroupsSecurityGroupPatchResponse200SecurityGroupNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationTagsGetResponse200::class => OrganizationsOrganizationTagsGetResponse200Normalizer::class,
 
@@ -1593,6 +1695,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => InvalidateLinkedWebSessionPostBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => InvalidateLinkedWebSessionPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => OrganizationsOrganizationVirtualNetworksGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostBody::class => OrganizationsOrganizationVirtualNetworksPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200::class => OrganizationsOrganizationVirtualNetworksPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200VirtualNetwork::class => OrganizationsOrganizationVirtualNetworksPostResponse200VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteBody::class => VirtualNetworksVirtualNetworkDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200::class => VirtualNetworksVirtualNetworkDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200VirtualNetwork::class => VirtualNetworksVirtualNetworkDeleteResponse200VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200::class => VirtualNetworksVirtualNetworkGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200VirtualNetwork::class => VirtualNetworksVirtualNetworkGetResponse200VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchBody::class => VirtualNetworksVirtualNetworkPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200::class => VirtualNetworksVirtualNetworkPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200VirtualNetwork::class => VirtualNetworksVirtualNetworkPatchResponse200VirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200::class => OrganizationsOrganizationVirtualMachineGroupsGetResponse200Normalizer::class,
 
@@ -1679,40 +1805,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200::class => VirtualMachinesVirtualMachineAllocateIpPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200IpAddress::class => VirtualMachinesVirtualMachineAllocateIpPostResponse200IpAddressNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => OrganizationsOrganizationVirtualMachinesBuildPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201BuildNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201BuildNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => VirtualMachinesBuildsVirtualMachineBuildGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => VirtualMachinesVirtualMachineStartPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => VirtualMachinesVirtualMachineStartPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => VirtualMachinesVirtualMachineStopPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => VirtualMachinesVirtualMachineStopPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => VirtualMachinesVirtualMachineShutdownPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => VirtualMachinesVirtualMachineShutdownPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => VirtualMachinesVirtualMachineResetPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => VirtualMachinesVirtualMachineResetPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => VirtualMachinesVirtualMachineConsoleSessionsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => VirtualMachinesVirtualMachineConsoleSessionsPostResponse201Normalizer::class,
 
             \KatapultAPI\Core\Model\ZonesGetResponse200::class => ZonesGetResponse200Normalizer::class,
 
@@ -2151,6 +2243,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetOrganizationAvailableNetworksPartDataCenter::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationAvailableNetworks200ResponseVirtualNetworks::class => false,
                 \KatapultAPI\Core\Model\NetworkSpeedProfile::class => false,
+                \KatapultAPI\Core\Model\VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworkArguments::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworkLookup::class => false,
                 \KatapultAPI\Core\Model\GetAddressLists200ResponseAddressLists::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationAddressLists200ResponseAddressLists::class => false,
                 \KatapultAPI\Core\Model\AddressList::class => false,
@@ -2233,6 +2328,22 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetCurrencies200ResponseCurrencies::class => false,
                 \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => false,
                 \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucket::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketDeletionError::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketDeletionErrorSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObject::class => false,
+                \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
@@ -2264,6 +2375,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseSecurityGroupRuleNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseFileStorageVolumeNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNetworkNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseVirtualNetworkNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseAddressListNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseCertificateNotFoundResponse::class => false,
@@ -2284,6 +2396,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseCurrencyNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTaskNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNoUserAssociatedWithIdentityResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostResponse200::class => false,
@@ -2297,19 +2411,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostBody::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => false,
-                \KatapultAPI\Core\Model\AddressListsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostBody::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostResponse201::class => false,
@@ -2324,8 +2425,42 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchResponse200AddressListEntry::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostBody::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketObjectGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => false,
                 \KatapultAPI\Core\Model\CountriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200Country::class => false,
@@ -2350,16 +2485,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostBody::class => false,
                 \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200::class => false,
                 \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200DnsZone::class => false,
-                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => false,
-                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => false,
                 \KatapultAPI\Core\Model\DataCentersGetResponse200::class => false,
                 \KatapultAPI\Core\Model\DataCentersDataCenterGetResponse200::class => false,
                 \KatapultAPI\Core\Model\DataCentersDataCenterDefaultNetworkGetResponse200::class => false,
@@ -2453,18 +2578,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\IpAddressesIpAddressPatchResponse200IpAddress::class => false,
                 \KatapultAPI\Core\Model\IpAddressesIpAddressUnallocatePostBody::class => false,
                 \KatapultAPI\Core\Model\IpAddressesIpAddressUnallocatePostResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesPostBody::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesPostResponse200::class => false,
@@ -2477,6 +2590,23 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchBody::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchResponse200::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200::class => false,
@@ -2484,35 +2614,36 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OperatingSystemsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200OperatingSystem::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyLimitsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPricesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
-                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
-                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => false,
+                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostResponse201::class => false,
                 \KatapultAPI\Core\Model\SshKeysSshKeyDeleteBody::class => false,
                 \KatapultAPI\Core\Model\SshKeysSshKeyDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesPostBody::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesPostResponse200::class => false,
@@ -2525,6 +2656,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchBody::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRule::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationTagsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationTagsPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationTagsPostResponse200::class => false,
@@ -2551,6 +2694,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\UsersCurrentGetResponse200::class => false,
                 \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => false,
                 \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteBody::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchBody::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200VirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsPostResponse200::class => false,
@@ -2594,23 +2749,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200IpAddress::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => false,
                 \KatapultAPI\Core\Model\ZonesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\ZonesZoneGetResponse200::class => false,
                 \KatapultAPI\Core\Model\ZonesZoneGetResponse200Zone::class => false,
@@ -3392,6 +3530,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\NetworkSpeedProfile::class => NetworkSpeedProfileNormalizer::class,
 
+            \KatapultAPI\Core\Model\VirtualNetwork::class => VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworkArguments::class => VirtualNetworkArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworkLookup::class => VirtualNetworkLookupNormalizer::class,
+
             \KatapultAPI\Core\Model\GetAddressLists200ResponseAddressLists::class => GetAddressLists200ResponseAddressListsNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationAddressLists200ResponseAddressLists::class => GetOrganizationAddressLists200ResponseAddressListsNormalizer::class,
@@ -3556,6 +3700,38 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => IdentityNotLinkedToWebSessionSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => ObjectStorageClusterLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => ObjectStorageBucketArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => ObjectStorageBucketACLArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucket::class => ObjectStorageBucketNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => ObjectStorageBucketAccessControlListNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => ObjectStorageAccountNotProvisionedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => ObjectStorageAccountSuspendedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => ObjectStorageClusterNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => ObjectStorageAccountNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => ObjectStorageBucketLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketNotFoundSchema::class => ObjectStorageBucketNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketDeletionError::class => ObjectStorageBucketDeletionErrorNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageBucketDeletionErrorSchema::class => ObjectStorageBucketDeletionErrorSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObject::class => ObjectStorageObjectNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => ObjectNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => ObjectStorageObjectPresignedURLArgumentsNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => ResponseAPIAuthenticator400ResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
@@ -3618,6 +3794,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseNetworkNotFoundResponse::class => ResponseNetworkNotFoundResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseVirtualNetworkNotFoundResponse::class => ResponseVirtualNetworkNotFoundResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseAddressListNotFoundResponse::class => ResponseAddressListNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => ResponseAddressListEntryNotFoundResponseNormalizer::class,
@@ -3658,6 +3836,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseNoUserAssociatedWithIdentityResponse::class => ResponseNoUserAssociatedWithIdentityResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => ResponseMultipleObjectStorageBucketsFoundResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => ResponseNetworkErrorResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => OrganizationsOrganizationApiTokensGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostBody::class => OrganizationsOrganizationApiTokensPostBodyNormalizer::class,
@@ -3683,32 +3865,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => ApiTokensApiTokenRegenerateSecretPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => ApiTokensApiTokenRegenerateSecretPostResponse200ApiTokenNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsGetResponse200::class => AddressListsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => OrganizationsOrganizationAddressListsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => OrganizationsOrganizationAddressListsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => OrganizationsOrganizationAddressListsPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => OrganizationsOrganizationAddressListsPostResponse201AddressListNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => AddressListsAddressListDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => AddressListsAddressListDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => AddressListsAddressListDeleteResponse200AddressListNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => AddressListsAddressListGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => AddressListsAddressListGetResponse200AddressListNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => AddressListsAddressListPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => AddressListsAddressListPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => AddressListsAddressListPatchResponse200AddressListNormalizer::class,
 
             \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => AddressListsAddressListEntriesGetResponse200Normalizer::class,
 
@@ -3738,9 +3894,77 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostResponse200::class => AddressListsAddressListEntriesBulkPostResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\AddressListsGetResponse200::class => AddressListsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => OrganizationsOrganizationAddressListsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => OrganizationsOrganizationAddressListsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => OrganizationsOrganizationAddressListsPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => OrganizationsOrganizationAddressListsPostResponse201AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => AddressListsAddressListDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => AddressListsAddressListDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => AddressListsAddressListDeleteResponse200AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => AddressListsAddressListGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => AddressListsAddressListGetResponse200AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => AddressListsAddressListPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => AddressListsAddressListPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => AddressListsAddressListPatchResponse200AddressListNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostResponse201::class => OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteBody::class => ObjectStorageObjectStorageClusterBucketsBucketDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketGetResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchBody::class => ObjectStorageObjectStorageClusterBucketsBucketPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostBody::class => ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketObjectGetResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketObjectGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostBody::class => ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostResponse200::class => ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => OrganizationsOrganizationVirtualMachinesBuildPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201BuildNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201BuildNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => VirtualMachinesBuildsVirtualMachineBuildGetResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => OrganizationsOrganizationCertificatesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => CertificatesCertificateGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => VirtualMachinesVirtualMachineConsoleSessionsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => VirtualMachinesVirtualMachineConsoleSessionsPostResponse201Normalizer::class,
 
             \KatapultAPI\Core\Model\CountriesGetResponse200::class => CountriesGetResponse200Normalizer::class,
 
@@ -3789,26 +4013,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200::class => DnsZonesDnsZoneVerifyPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200DnsZone::class => DnsZonesDnsZoneVerifyPostResponse200DnsZoneNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => DnsZonesDnsZoneRecordsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => DnsZonesDnsZoneRecordsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => DnsZonesDnsZoneRecordsPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => DnsRecordsDnsRecordDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => DnsRecordsDnsRecordDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => DnsRecordsDnsRecordGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => DnsRecordsDnsRecordGetResponse200DnsRecordNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => DnsRecordsDnsRecordPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => DnsRecordsDnsRecordPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => DnsRecordsDnsRecordPatchResponse200DnsRecordNormalizer::class,
 
             \KatapultAPI\Core\Model\DataCentersGetResponse200::class => DataCentersGetResponse200Normalizer::class,
 
@@ -3996,30 +4200,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\IpAddressesIpAddressUnallocatePostResponse200::class => IpAddressesIpAddressUnallocatePostResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => OrganizationsOrganizationLoadBalancersGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => OrganizationsOrganizationLoadBalancersPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => OrganizationsOrganizationLoadBalancersPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancerNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => LoadBalancersLoadBalancerDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => LoadBalancersLoadBalancerDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => LoadBalancersLoadBalancerDeleteResponse200LoadBalancerNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => LoadBalancersLoadBalancerGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => LoadBalancersLoadBalancerGetResponse200LoadBalancerNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => LoadBalancersLoadBalancerPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => LoadBalancersLoadBalancerPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer::class,
-
             \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesGetResponse200::class => LoadBalancersLoadBalancerRulesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesPostBody::class => LoadBalancersLoadBalancerRulesPostBodyNormalizer::class,
@@ -4044,6 +4224,40 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule::class => LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRuleNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => OrganizationsOrganizationLoadBalancersGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => OrganizationsOrganizationLoadBalancersPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => OrganizationsOrganizationLoadBalancersPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => LoadBalancersLoadBalancerDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => LoadBalancersLoadBalancerDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => LoadBalancersLoadBalancerDeleteResponse200LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => LoadBalancersLoadBalancerGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => LoadBalancersLoadBalancerGetResponse200LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => LoadBalancersLoadBalancerPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => LoadBalancersLoadBalancerPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => LoadBalancersLoadBalancerPatchResponse200LoadBalancerNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => OrganizationsOrganizationManagedGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => OrganizationsOrganizationManagedPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => OrganizationsOrganizationManagedPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => ManagedOrganizationsOrganizationDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => OrganizationsOrganizationNetworkSpeedProfilesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => OrganizationsOrganizationAvailableNetworksGetResponse200Normalizer::class,
@@ -4058,6 +4272,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200OperatingSystem::class => OperatingSystemsOperatingSystemGetResponse200OperatingSystemNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => OrganizationsOrganizationUsersWithAccessGetResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsGetResponse200::class => OrganizationsGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationGetResponse200::class => OrganizationsOrganizationGetResponse200Normalizer::class,
@@ -4070,17 +4286,41 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => OrganizationsOrganizationDeletionStepsGetResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => OrganizationsOrganizationUsersWithAccessGetResponse200Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => VirtualMachinesVirtualMachineStartPostBodyNormalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => OrganizationsOrganizationManagedGetResponse200Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => VirtualMachinesVirtualMachineStartPostResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => OrganizationsOrganizationManagedPostBodyNormalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => VirtualMachinesVirtualMachineStopPostBodyNormalizer::class,
 
-            \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => OrganizationsOrganizationManagedPostResponse201Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => VirtualMachinesVirtualMachineStopPostResponse200Normalizer::class,
 
-            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => ManagedOrganizationsOrganizationDeleteBodyNormalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => VirtualMachinesVirtualMachineShutdownPostBodyNormalizer::class,
 
-            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => VirtualMachinesVirtualMachineShutdownPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => VirtualMachinesVirtualMachineResetPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => VirtualMachinesVirtualMachineResetPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => DnsZonesDnsZoneRecordsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => DnsZonesDnsZoneRecordsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => DnsZonesDnsZoneRecordsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => DnsRecordsDnsRecordDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => DnsRecordsDnsRecordDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => DnsRecordsDnsRecordGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => DnsRecordsDnsRecordGetResponse200DnsRecordNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => DnsRecordsDnsRecordPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => DnsRecordsDnsRecordPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => DnsRecordsDnsRecordPatchResponse200DnsRecordNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => OrganizationsOrganizationSshKeysGetResponse200Normalizer::class,
 
@@ -4091,30 +4331,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\SshKeysSshKeyDeleteBody::class => SshKeysSshKeyDeleteBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\SshKeysSshKeyDeleteResponse200::class => SshKeysSshKeyDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => OrganizationsOrganizationSecurityGroupsGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => OrganizationsOrganizationSecurityGroupsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => OrganizationsOrganizationSecurityGroupsPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroupNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => SecurityGroupsSecurityGroupDeleteBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => SecurityGroupsSecurityGroupDeleteResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => SecurityGroupsSecurityGroupDeleteResponse200SecurityGroupNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => SecurityGroupsSecurityGroupGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => SecurityGroupsSecurityGroupGetResponse200SecurityGroupNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => SecurityGroupsSecurityGroupPatchBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => SecurityGroupsSecurityGroupPatchResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => SecurityGroupsSecurityGroupPatchResponse200SecurityGroupNormalizer::class,
 
             \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesGetResponse200::class => SecurityGroupsSecurityGroupRulesGetResponse200Normalizer::class,
 
@@ -4139,6 +4355,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200::class => SecurityGroupsRulesSecurityGroupRulePatchResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRule::class => SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRuleNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => OrganizationsOrganizationSecurityGroupsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => OrganizationsOrganizationSecurityGroupsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => OrganizationsOrganizationSecurityGroupsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroupNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => SecurityGroupsSecurityGroupDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => SecurityGroupsSecurityGroupDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => SecurityGroupsSecurityGroupDeleteResponse200SecurityGroupNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => SecurityGroupsSecurityGroupGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => SecurityGroupsSecurityGroupGetResponse200SecurityGroupNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => SecurityGroupsSecurityGroupPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => SecurityGroupsSecurityGroupPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => SecurityGroupsSecurityGroupPatchResponse200SecurityGroupNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationTagsGetResponse200::class => OrganizationsOrganizationTagsGetResponse200Normalizer::class,
 
@@ -4191,6 +4431,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => InvalidateLinkedWebSessionPostBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => InvalidateLinkedWebSessionPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => OrganizationsOrganizationVirtualNetworksGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostBody::class => OrganizationsOrganizationVirtualNetworksPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200::class => OrganizationsOrganizationVirtualNetworksPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200VirtualNetwork::class => OrganizationsOrganizationVirtualNetworksPostResponse200VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteBody::class => VirtualNetworksVirtualNetworkDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200::class => VirtualNetworksVirtualNetworkDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200VirtualNetwork::class => VirtualNetworksVirtualNetworkDeleteResponse200VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200::class => VirtualNetworksVirtualNetworkGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200VirtualNetwork::class => VirtualNetworksVirtualNetworkGetResponse200VirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchBody::class => VirtualNetworksVirtualNetworkPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200::class => VirtualNetworksVirtualNetworkPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200VirtualNetwork::class => VirtualNetworksVirtualNetworkPatchResponse200VirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200::class => OrganizationsOrganizationVirtualMachineGroupsGetResponse200Normalizer::class,
 
@@ -4277,40 +4541,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200::class => VirtualMachinesVirtualMachineAllocateIpPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200IpAddress::class => VirtualMachinesVirtualMachineAllocateIpPostResponse200IpAddressNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => OrganizationsOrganizationVirtualMachinesBuildPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildPostResponse201BuildNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Normalizer::class,
-
-            \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201BuildNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => VirtualMachinesBuildsVirtualMachineBuildGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => VirtualMachinesVirtualMachineStartPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => VirtualMachinesVirtualMachineStartPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => VirtualMachinesVirtualMachineStopPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => VirtualMachinesVirtualMachineStopPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => VirtualMachinesVirtualMachineShutdownPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => VirtualMachinesVirtualMachineShutdownPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => VirtualMachinesVirtualMachineResetPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => VirtualMachinesVirtualMachineResetPostResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => VirtualMachinesVirtualMachineConsoleSessionsPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => VirtualMachinesVirtualMachineConsoleSessionsPostResponse201Normalizer::class,
 
             \KatapultAPI\Core\Model\ZonesGetResponse200::class => ZonesGetResponse200Normalizer::class,
 
@@ -4752,6 +4982,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetOrganizationAvailableNetworksPartDataCenter::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationAvailableNetworks200ResponseVirtualNetworks::class => false,
                 \KatapultAPI\Core\Model\NetworkSpeedProfile::class => false,
+                \KatapultAPI\Core\Model\VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworkArguments::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworkLookup::class => false,
                 \KatapultAPI\Core\Model\GetAddressLists200ResponseAddressLists::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationAddressLists200ResponseAddressLists::class => false,
                 \KatapultAPI\Core\Model\AddressList::class => false,
@@ -4834,6 +5067,22 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetCurrencies200ResponseCurrencies::class => false,
                 \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => false,
                 \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucket::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketDeletionError::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageBucketDeletionErrorSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObject::class => false,
+                \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
@@ -4865,6 +5114,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseSecurityGroupRuleNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseFileStorageVolumeNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNetworkNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseVirtualNetworkNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseAddressListNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseCertificateNotFoundResponse::class => false,
@@ -4885,6 +5135,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseCurrencyNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTaskNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNoUserAssociatedWithIdentityResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostResponse200::class => false,
@@ -4898,19 +5150,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostBody::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => false,
-                \KatapultAPI\Core\Model\AddressListsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostBody::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostResponse201::class => false,
@@ -4925,8 +5164,42 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\AddressListEntriesAddressListEntryPatchResponse200AddressListEntry::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostBody::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesBulkPostResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationAddressListsPostResponse201AddressList::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListDeleteBody::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListDeleteResponse200AddressList::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListGetResponse200AddressList::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListPatchBody::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\AddressListsAddressListPatchResponse200AddressList::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketRevokePresignedUrlsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketObjectGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageObjectStorageClusterBucketsBucketPresignedUrlPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => false,
                 \KatapultAPI\Core\Model\CountriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200Country::class => false,
@@ -4951,16 +5224,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostBody::class => false,
                 \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200::class => false,
                 \KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostResponse200DnsZone::class => false,
-                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => false,
-                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => false,
                 \KatapultAPI\Core\Model\DataCentersGetResponse200::class => false,
                 \KatapultAPI\Core\Model\DataCentersDataCenterGetResponse200::class => false,
                 \KatapultAPI\Core\Model\DataCentersDataCenterDefaultNetworkGetResponse200::class => false,
@@ -5054,18 +5317,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\IpAddressesIpAddressPatchResponse200IpAddress::class => false,
                 \KatapultAPI\Core\Model\IpAddressesIpAddressUnallocatePostBody::class => false,
                 \KatapultAPI\Core\Model\IpAddressesIpAddressUnallocatePostResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesPostBody::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersLoadBalancerRulesPostResponse200::class => false,
@@ -5078,6 +5329,23 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchBody::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchResponse200::class => false,
                 \KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchResponse200LoadBalancerRule::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationLoadBalancersPostResponse201LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteResponse200LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerGetResponse200LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchResponse200LoadBalancer::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200::class => false,
@@ -5085,35 +5353,36 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OperatingSystemsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200OperatingSystem::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPolicyLimitsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationPricesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationDeletionStepsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationUsersWithAccessGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
-                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
-                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostBody::class => false,
+                \KatapultAPI\Core\Model\DnsZonesDnsZoneRecordsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordGetResponse200DnsRecord::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchResponse200DnsRecord::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostResponse201::class => false,
                 \KatapultAPI\Core\Model\SshKeysSshKeyDeleteBody::class => false,
                 \KatapultAPI\Core\Model\SshKeysSshKeyDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => false,
-                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesPostBody::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupRulesPostResponse200::class => false,
@@ -5126,6 +5395,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchBody::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200::class => false,
                 \KatapultAPI\Core\Model\SecurityGroupsRulesSecurityGroupRulePatchResponse200SecurityGroupRule::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostResponse200SecurityGroup::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteResponse200SecurityGroup::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupGetResponse200SecurityGroup::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchResponse200SecurityGroup::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationTagsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationTagsPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationTagsPostResponse200::class => false,
@@ -5152,6 +5433,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\UsersCurrentGetResponse200::class => false,
                 \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => false,
                 \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteBody::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkDeleteResponse200VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkGetResponse200VirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchBody::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworksVirtualNetworkPatchResponse200VirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachineGroupsPostResponse200::class => false,
@@ -5195,23 +5488,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostResponse200IpAddress::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostResponse201Build::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostBody::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201::class => false,
-                \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStopPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineResetPostResponse200::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => false,
-                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => false,
                 \KatapultAPI\Core\Model\ZonesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\ZonesZoneGetResponse200::class => false,
                 \KatapultAPI\Core\Model\ZonesZoneGetResponse200Zone::class => false,

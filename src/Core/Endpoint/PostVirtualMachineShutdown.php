@@ -19,6 +19,9 @@ class PostVirtualMachineShutdown extends \KatapultAPI\Core\Runtime\Client\BaseEn
      * ## Scopes
      * - `virtual_machines`
      * - `virtual_machines:power_actions`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachineShutdownPostBody $requestBody = null)
     {
@@ -88,6 +91,6 @@ class PostVirtualMachineShutdown extends \KatapultAPI\Core\Runtime\Client\BaseEn
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

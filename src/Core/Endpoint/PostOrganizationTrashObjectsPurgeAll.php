@@ -18,6 +18,9 @@ class PostOrganizationTrashObjectsPurgeAll extends \KatapultAPI\Core\Runtime\Cli
      * Purge all trash objects for an organization
      * ## Scopes
      * - `trash_objects:purge`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationTrashObjectsPurgeAllPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationTrashObjectsPurgeAll extends \KatapultAPI\Core\Runtime\Cli
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -18,6 +18,9 @@ class DeleteSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
      * Delete a security group
      * ## Scopes
      * - `security_group`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\SecurityGroupsSecurityGroupDeleteBody $requestBody = null)
     {
@@ -91,6 +94,6 @@ class DeleteSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

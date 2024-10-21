@@ -18,6 +18,9 @@ class DeleteLoadBalancer extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
      * Delete a load balancer
      * ## Scopes
      * - `load_balancers`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\LoadBalancersLoadBalancerDeleteBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class DeleteLoadBalancer extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

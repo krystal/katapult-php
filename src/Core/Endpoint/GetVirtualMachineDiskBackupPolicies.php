@@ -20,14 +20,20 @@ class GetVirtualMachineDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Clie
      * - `disk_backup_policies`
      * - `disk_backup_policies:read`.
      *
-     * @param array $queryParameters {
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
-     * @var string $virtual_machine[id] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to return disk backup policies for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var bool   $include_disks If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @param array $queryParameters {
+     *                               'virtual_machine[id]': string, The virtual machine to return disk backup policies for.
+     *
+     * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *      'virtual_machine[fqdn]': string, The virtual machine to return disk backup policies for.
+     *
+     * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *      'include_disks': bool, If true, the returned list will include backup policies owned by disks assigned to this virtual machine in addition to those that belong to the whole virtual machine
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -59,7 +65,7 @@ class GetVirtualMachineDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Clie
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['virtual_machine[id]', 'virtual_machine[fqdn]', 'include_disks', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('virtual_machine[id]', ['string']);
         $optionsResolver->addAllowedTypes('virtual_machine[fqdn]', ['string']);
         $optionsResolver->addAllowedTypes('include_disks', ['bool']);
@@ -108,6 +114,6 @@ class GetVirtualMachineDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Clie
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

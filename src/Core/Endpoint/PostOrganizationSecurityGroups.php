@@ -18,6 +18,9 @@ class PostOrganizationSecurityGroups extends \KatapultAPI\Core\Runtime\Client\Ba
      * Create a new security group for a given organization
      * ## Scopes
      * - `security_groups`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationSecurityGroupsPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationSecurityGroups extends \KatapultAPI\Core\Runtime\Client\Ba
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -18,10 +18,9 @@ class GetDataCenter extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implem
      * Provide details for a specific data center.
      *
      * @param array $queryParameters {
-     *
-     * @var string $data_center[id] All 'data_center[]' params are mutually exclusive, only one can be provided
-     * @var string $data_center[permalink] All 'data_center[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'data_center[id]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                               'data_center[permalink]': string, All 'data_center[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -95,6 +94,6 @@ class GetDataCenter extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implem
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

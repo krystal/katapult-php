@@ -18,6 +18,9 @@ class PatchIpAddress extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * Updates the details on an IP address
      * ## Scopes
      * - `ip_addresses`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\IpAddressesIpAddressPatchBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PatchIpAddress extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

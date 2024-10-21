@@ -18,6 +18,9 @@ class PostApiTokenRegenerateSecret extends \KatapultAPI\Core\Runtime\Client\Base
      * Regenerates the secret for an organization API token
      * ## Scopes
      * - `api_tokens`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostApiTokenRegenerateSecret extends \KatapultAPI\Core\Runtime\Client\Base
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

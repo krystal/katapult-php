@@ -18,6 +18,9 @@ class DeleteFileStorageVolume extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
      * Delete a file storage volume.
      * ## Scopes
      * - `file_storage_volumes`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\FileStorageVolumesFileStorageVolumeDeleteBody $requestBody = null)
     {
@@ -91,6 +94,6 @@ class DeleteFileStorageVolume extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

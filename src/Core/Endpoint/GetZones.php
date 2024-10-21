@@ -65,6 +65,6 @@ class GetZones extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements 
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }
