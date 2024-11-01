@@ -20,9 +20,7 @@ class GetCountryState extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * @param array $queryParameters {
      *
      * @var string $country_state[id] The country state to return.
-     *
-     * All 'country_state[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

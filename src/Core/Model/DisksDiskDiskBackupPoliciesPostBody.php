@@ -22,29 +22,19 @@ class DisksDiskDiskBackupPoliciesPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskLookup
      */
     protected $disk;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskBackupPolicyArguments
      */
     protected $properties;
 
-    /**
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     */
     public function getDisk(): DiskLookup
     {
         return $this->disk;
     }
 
-    /**
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     */
     public function setDisk(DiskLookup $disk): self
     {
         $this->initialized['disk'] = true;
@@ -53,17 +43,11 @@ class DisksDiskDiskBackupPoliciesPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): DiskBackupPolicyArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(DiskBackupPolicyArguments $properties): self
     {
         $this->initialized['properties'] = true;

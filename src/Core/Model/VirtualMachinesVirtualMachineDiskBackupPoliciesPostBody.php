@@ -28,8 +28,6 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody extends \ArrayObje
      */
     protected $virtualMachine;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskBackupPolicyArguments
      */
     protected $properties;
@@ -53,17 +51,11 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody extends \ArrayObje
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): DiskBackupPolicyArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(DiskBackupPolicyArguments $properties): self
     {
         $this->initialized['properties'] = true;

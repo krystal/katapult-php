@@ -55,9 +55,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
-            if (\array_key_exists('email_address', $data)) {
+            if (\array_key_exists('email_address', $data) && $data['email_address'] !== null) {
                 $object->setEmailAddress($data['email_address']);
                 unset($data['email_address']);
+            } elseif (\array_key_exists('email_address', $data) && $data['email_address'] === null) {
+                $object->setEmailAddress(null);
+            }
+            if (\array_key_exists('url', $data) && $data['url'] !== null) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+                $object->setUrl(null);
             }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -73,6 +81,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             $data['id'] = $object->getId();
             $data['email_address'] = $object->getEmailAddress();
+            $data['url'] = $object->getUrl();
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -121,9 +130,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
-            if (\array_key_exists('email_address', $data)) {
+            if (\array_key_exists('email_address', $data) && $data['email_address'] !== null) {
                 $object->setEmailAddress($data['email_address']);
                 unset($data['email_address']);
+            } elseif (\array_key_exists('email_address', $data) && $data['email_address'] === null) {
+                $object->setEmailAddress(null);
+            }
+            if (\array_key_exists('url', $data) && $data['url'] !== null) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+                $object->setUrl(null);
             }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -142,6 +159,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             $data['id'] = $object->getId();
             $data['email_address'] = $object->getEmailAddress();
+            $data['url'] = $object->getUrl();
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;

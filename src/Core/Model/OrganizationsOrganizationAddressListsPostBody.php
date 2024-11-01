@@ -28,8 +28,6 @@ class OrganizationsOrganizationAddressListsPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var AddressListArguments
      */
     protected $properties;
@@ -57,17 +55,11 @@ class OrganizationsOrganizationAddressListsPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): AddressListArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(AddressListArguments $properties): self
     {
         $this->initialized['properties'] = true;

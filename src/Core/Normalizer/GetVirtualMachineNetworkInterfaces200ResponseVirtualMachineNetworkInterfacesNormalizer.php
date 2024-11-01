@@ -59,9 +59,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
-            if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartNetwork::class, 'json', $context));
+            if (\array_key_exists('network', $data) && $data['network'] !== null) {
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork::class, 'json', $context));
                 unset($data['network']);
+            } elseif (\array_key_exists('network', $data) && $data['network'] === null) {
+                $object->setNetwork(null);
+            }
+            if (\array_key_exists('virtual_network', $data) && $data['virtual_network'] !== null) {
+                $object->setVirtualNetwork($this->denormalizer->denormalize($data['virtual_network'], \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetwork::class, 'json', $context));
+                unset($data['virtual_network']);
+            } elseif (\array_key_exists('virtual_network', $data) && $data['virtual_network'] === null) {
+                $object->setVirtualNetwork(null);
             }
             if (\array_key_exists('ip_addresses', $data)) {
                 $values = [];
@@ -91,6 +99,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
+            }
+            if ($object->isInitialized('virtualNetwork') && null !== $object->getVirtualNetwork()) {
+                $data['virtual_network'] = $this->normalizer->normalize($object->getVirtualNetwork(), 'json', $context);
             }
             if ($object->isInitialized('ipAddresses') && null !== $object->getIpAddresses()) {
                 $values = [];
@@ -151,9 +162,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
-            if (\array_key_exists('network', $data)) {
-                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartNetwork::class, 'json', $context));
+            if (\array_key_exists('network', $data) && $data['network'] !== null) {
+                $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork::class, 'json', $context));
                 unset($data['network']);
+            } elseif (\array_key_exists('network', $data) && $data['network'] === null) {
+                $object->setNetwork(null);
+            }
+            if (\array_key_exists('virtual_network', $data) && $data['virtual_network'] !== null) {
+                $object->setVirtualNetwork($this->denormalizer->denormalize($data['virtual_network'], \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetwork::class, 'json', $context));
+                unset($data['virtual_network']);
+            } elseif (\array_key_exists('virtual_network', $data) && $data['virtual_network'] === null) {
+                $object->setVirtualNetwork(null);
             }
             if (\array_key_exists('ip_addresses', $data)) {
                 $values = [];
@@ -186,6 +205,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
+            }
+            if ($object->isInitialized('virtualNetwork') && null !== $object->getVirtualNetwork()) {
+                $data['virtual_network'] = $this->normalizer->normalize($object->getVirtualNetwork(), 'json', $context);
             }
             if ($object->isInitialized('ipAddresses') && null !== $object->getIpAddresses()) {
                 $values = [];

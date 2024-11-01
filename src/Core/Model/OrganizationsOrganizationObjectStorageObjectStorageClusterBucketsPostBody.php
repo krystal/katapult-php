@@ -28,14 +28,10 @@ class OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBody 
      */
     protected $organization;
     /**
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     *
      * @var ObjectStorageClusterLookup
      */
     protected $objectStorageCluster;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var ObjectStorageBucketArguments
      */
     protected $properties;
@@ -59,17 +55,11 @@ class OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBody 
         return $this;
     }
 
-    /**
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     */
     public function getObjectStorageCluster(): ObjectStorageClusterLookup
     {
         return $this->objectStorageCluster;
     }
 
-    /**
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     */
     public function setObjectStorageCluster(ObjectStorageClusterLookup $objectStorageCluster): self
     {
         $this->initialized['objectStorageCluster'] = true;
@@ -78,17 +68,11 @@ class OrganizationsOrganizationObjectStorageObjectStorageClusterBucketsPostBody 
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): ObjectStorageBucketArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(ObjectStorageBucketArguments $properties): self
     {
         $this->initialized['properties'] = true;

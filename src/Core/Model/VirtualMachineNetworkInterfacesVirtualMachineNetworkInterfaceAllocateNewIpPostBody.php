@@ -22,8 +22,6 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineNetworkInterfaceLookup
      */
     protected $virtualMachineNetworkInterface;
@@ -32,17 +30,11 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAllocateNewIp
      */
     protected $addressVersion;
 
-    /**
-     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     */
     public function getVirtualMachineNetworkInterface(): VirtualMachineNetworkInterfaceLookup
     {
         return $this->virtualMachineNetworkInterface;
     }
 
-    /**
-     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     */
     public function setVirtualMachineNetworkInterface(VirtualMachineNetworkInterfaceLookup $virtualMachineNetworkInterface): self
     {
         $this->initialized['virtualMachineNetworkInterface'] = true;

@@ -28,8 +28,6 @@ class OrganizationsOrganizationDisksPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskArguments
      */
     protected $properties;
@@ -57,17 +55,11 @@ class OrganizationsOrganizationDisksPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): DiskArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(DiskArguments $properties): self
     {
         $this->initialized['properties'] = true;

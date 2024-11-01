@@ -22,8 +22,6 @@ class DisksDiskResizePutBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskLookup
      */
     protected $disk;
@@ -36,17 +34,11 @@ class DisksDiskResizePutBody extends \ArrayObject
      */
     protected $resizeMethod;
 
-    /**
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     */
     public function getDisk(): DiskLookup
     {
         return $this->disk;
     }
 
-    /**
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     */
     public function setDisk(DiskLookup $disk): self
     {
         $this->initialized['disk'] = true;

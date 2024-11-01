@@ -51,6 +51,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('verify_with_email', $data)) {
+                $object->setVerifyWithEmail($data['verify_with_email']);
+                unset($data['verify_with_email']);
+            }
             if (\array_key_exists('email_address', $data)) {
                 $object->setEmailAddress($data['email_address']);
                 unset($data['email_address']);
@@ -75,7 +79,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
-            $data['email_address'] = $object->getEmailAddress();
+            if ($object->isInitialized('verifyWithEmail') && null !== $object->getVerifyWithEmail()) {
+                $data['verify_with_email'] = $object->getVerifyWithEmail();
+            }
+            if ($object->isInitialized('emailAddress') && null !== $object->getEmailAddress()) {
+                $data['email_address'] = $object->getEmailAddress();
+            }
             if ($object->isInitialized('coupon') && null !== $object->getCoupon()) {
                 $data['coupon'] = $object->getCoupon();
             }
@@ -126,6 +135,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('verify_with_email', $data)) {
+                $object->setVerifyWithEmail($data['verify_with_email']);
+                unset($data['verify_with_email']);
+            }
             if (\array_key_exists('email_address', $data)) {
                 $object->setEmailAddress($data['email_address']);
                 unset($data['email_address']);
@@ -153,7 +166,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
-            $data['email_address'] = $object->getEmailAddress();
+            if ($object->isInitialized('verifyWithEmail') && null !== $object->getVerifyWithEmail()) {
+                $data['verify_with_email'] = $object->getVerifyWithEmail();
+            }
+            if ($object->isInitialized('emailAddress') && null !== $object->getEmailAddress()) {
+                $data['email_address'] = $object->getEmailAddress();
+            }
             if ($object->isInitialized('coupon') && null !== $object->getCoupon()) {
                 $data['coupon'] = $object->getCoupon();
             }

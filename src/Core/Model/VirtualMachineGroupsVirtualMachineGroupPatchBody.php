@@ -22,29 +22,19 @@ class VirtualMachineGroupsVirtualMachineGroupPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineGroupLookup
      */
     protected $virtualMachineGroup;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineGroupArguments
      */
     protected $properties;
 
-    /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     */
     public function getVirtualMachineGroup(): VirtualMachineGroupLookup
     {
         return $this->virtualMachineGroup;
     }
 
-    /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     */
     public function setVirtualMachineGroup(VirtualMachineGroupLookup $virtualMachineGroup): self
     {
         $this->initialized['virtualMachineGroup'] = true;
@@ -53,17 +43,11 @@ class VirtualMachineGroupsVirtualMachineGroupPatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): VirtualMachineGroupArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(VirtualMachineGroupArguments $properties): self
     {
         $this->initialized['properties'] = true;

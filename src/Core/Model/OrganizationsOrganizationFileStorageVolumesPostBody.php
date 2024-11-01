@@ -28,8 +28,6 @@ class OrganizationsOrganizationFileStorageVolumesPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var FileStorageVolumeArguments
      */
     protected $properties;
@@ -57,17 +55,11 @@ class OrganizationsOrganizationFileStorageVolumesPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): FileStorageVolumeArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(FileStorageVolumeArguments $properties): self
     {
         $this->initialized['properties'] = true;

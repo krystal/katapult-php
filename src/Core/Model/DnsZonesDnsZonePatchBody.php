@@ -28,8 +28,6 @@ class DnsZonesDnsZonePatchBody extends \ArrayObject
      */
     protected $dnsZone;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSZoneArguments
      */
     protected $properties;
@@ -53,17 +51,11 @@ class DnsZonesDnsZonePatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): DNSZoneArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(DNSZoneArguments $properties): self
     {
         $this->initialized['properties'] = true;

@@ -22,23 +22,15 @@ class SecurityGroupsRulesSecurityGroupRuleDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SecurityGroupRuleLookup
      */
     protected $securityGroupRule;
 
-    /**
-     * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSecurityGroupRule(): SecurityGroupRuleLookup
     {
         return $this->securityGroupRule;
     }
 
-    /**
-     * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSecurityGroupRule(SecurityGroupRuleLookup $securityGroupRule): self
     {
         $this->initialized['securityGroupRule'] = true;

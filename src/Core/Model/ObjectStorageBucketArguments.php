@@ -52,8 +52,6 @@ class ObjectStorageBucketArguments extends \ArrayObject
      */
     protected $staticSiteError;
     /**
-     * All 'access_control_list[]' params are mutually exclusive, only one can be provided.
-     *
      * @var ObjectStorageBucketACLArguments
      */
     protected $accessControlList;
@@ -153,17 +151,11 @@ class ObjectStorageBucketArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'access_control_list[]' params are mutually exclusive, only one can be provided.
-     */
     public function getAccessControlList(): ObjectStorageBucketACLArguments
     {
         return $this->accessControlList;
     }
 
-    /**
-     * All 'access_control_list[]' params are mutually exclusive, only one can be provided.
-     */
     public function setAccessControlList(ObjectStorageBucketACLArguments $accessControlList): self
     {
         $this->initialized['accessControlList'] = true;

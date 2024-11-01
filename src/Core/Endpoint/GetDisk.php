@@ -26,9 +26,7 @@ class GetDisk extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
      * @param array $queryParameters {
      *
      * @var string $disk[id] The disk to return.
-     *
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

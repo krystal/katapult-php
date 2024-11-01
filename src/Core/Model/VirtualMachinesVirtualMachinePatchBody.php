@@ -28,8 +28,6 @@ class VirtualMachinesVirtualMachinePatchBody extends \ArrayObject
      */
     protected $virtualMachine;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineArguments
      */
     protected $properties;
@@ -57,17 +55,11 @@ class VirtualMachinesVirtualMachinePatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): VirtualMachineArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(VirtualMachineArguments $properties): self
     {
         $this->initialized['properties'] = true;

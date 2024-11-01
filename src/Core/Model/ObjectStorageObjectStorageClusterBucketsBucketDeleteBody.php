@@ -22,29 +22,19 @@ class ObjectStorageObjectStorageClusterBucketsBucketDeleteBody extends \ArrayObj
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     *
      * @var ObjectStorageClusterLookup
      */
     protected $objectStorageCluster;
     /**
-     * All 'bucket[]' params are mutually exclusive, only one can be provided.
-     *
      * @var ObjectStorageBucketLookup
      */
     protected $bucket;
 
-    /**
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     */
     public function getObjectStorageCluster(): ObjectStorageClusterLookup
     {
         return $this->objectStorageCluster;
     }
 
-    /**
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     */
     public function setObjectStorageCluster(ObjectStorageClusterLookup $objectStorageCluster): self
     {
         $this->initialized['objectStorageCluster'] = true;
@@ -53,17 +43,11 @@ class ObjectStorageObjectStorageClusterBucketsBucketDeleteBody extends \ArrayObj
         return $this;
     }
 
-    /**
-     * All 'bucket[]' params are mutually exclusive, only one can be provided.
-     */
     public function getBucket(): ObjectStorageBucketLookup
     {
         return $this->bucket;
     }
 
-    /**
-     * All 'bucket[]' params are mutually exclusive, only one can be provided.
-     */
     public function setBucket(ObjectStorageBucketLookup $bucket): self
     {
         $this->initialized['bucket'] = true;

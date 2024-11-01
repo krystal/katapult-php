@@ -22,23 +22,15 @@ class FileStorageVolumesFileStorageVolumeDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     *
      * @var FileStorageVolumeLookup
      */
     protected $fileStorageVolume;
 
-    /**
-     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     */
     public function getFileStorageVolume(): FileStorageVolumeLookup
     {
         return $this->fileStorageVolume;
     }
 
-    /**
-     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     */
     public function setFileStorageVolume(FileStorageVolumeLookup $fileStorageVolume): self
     {
         $this->initialized['fileStorageVolume'] = true;

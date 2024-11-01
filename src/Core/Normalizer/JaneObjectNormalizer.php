@@ -896,15 +896,49 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces::class => GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork::class => GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetwork::class => GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetworkNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartNetwork::class => GetVirtualMachineNetworkInterfacesPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartVirtualNetwork::class => GetVirtualMachineNetworkInterfacesPartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartIPAddresses::class => GetVirtualMachineNetworkInterfacesPartIPAddressesNormalizer::class,
 
+            \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => NetworkSpeedProfileLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualMachine::class => PostVirtualMachineNetworkInterfacesPartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartNetwork::class => PostVirtualMachineNetworkInterfacesPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualNetwork::class => PostVirtualMachineNetworkInterfacesPartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartIPAddresses::class => PostVirtualMachineNetworkInterfacesPartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartSpeedProfile::class => PostVirtualMachineNetworkInterfacesPartSpeedProfileNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworkNotFoundSchema::class => VirtualNetworkNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => NetworkSpeedProfileNotFoundSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualMachine::class => GetVirtualMachineNetworkInterfacePartVirtualMachineNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartNetwork::class => GetVirtualMachineNetworkInterfacePartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualNetwork::class => GetVirtualMachineNetworkInterfacePartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartIPAddresses::class => GetVirtualMachineNetworkInterfacePartIPAddressesNormalizer::class,
 
@@ -912,9 +946,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterface::class => GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork::class => GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualMachine::class => GetVMNIVMNIPartVirtualMachineNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVMNIVMNIPartNetwork::class => GetVMNIVMNIPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualNetwork::class => GetVMNIVMNIPartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVMNIVMNIPartIPAddresses::class => GetVMNIVMNIPartIPAddressesNormalizer::class,
 
@@ -922,11 +962,33 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfaceLookup::class => VirtualMachineNetworkInterfaceLookupNormalizer::class,
 
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualMachine::class => DeleteVirtualMachineNetworkInterfacePartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartNetwork::class => DeleteVirtualMachineNetworkInterfacePartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualNetwork::class => DeleteVirtualMachineNetworkInterfacePartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartIPAddresses::class => DeleteVirtualMachineNetworkInterfacePartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartSpeedProfile::class => DeleteVirtualMachineNetworkInterfacePartSpeedProfileNormalizer::class,
+
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine::class => PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachineNormalizer::class,
 
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIPPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses::class => PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddressesNormalizer::class,
 
@@ -934,9 +996,37 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\InvalidIPSchema::class => InvalidIPSchemaNormalizer::class,
 
-            \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => NetworkSpeedProfileLookupNormalizer::class,
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
 
-            \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => NetworkSpeedProfileNotFoundSchemaNormalizer::class,
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualMachine::class => PostVirtualMachineNetworkInterfaceAttachPartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartNetwork::class => PostVirtualMachineNetworkInterfaceAttachPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAttachPartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartIPAddresses::class => PostVirtualMachineNetworkInterfaceAttachPartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartSpeedProfile::class => PostVirtualMachineNetworkInterfaceAttachPartSpeedProfileNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualMachine::class => PostVirtualMachineNetworkInterfaceDetachPartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartNetwork::class => PostVirtualMachineNetworkInterfaceDetachPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualNetwork::class => PostVirtualMachineNetworkInterfaceDetachPartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartIPAddresses::class => PostVirtualMachineNetworkInterfaceDetachPartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartSpeedProfile::class => PostVirtualMachineNetworkInterfaceDetachPartSpeedProfileNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationTags200ResponseTags::class => GetOrganizationTags200ResponseTagsNormalizer::class,
 
@@ -966,6 +1056,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => ObjectStorageClusterLookupNormalizer::class,
 
+            \KatapultAPI\Core\Model\ObjectStorageAccount::class => ObjectStorageAccountNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => ObjectStorageClusterNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => ObjectStorageAccountNotProvisionedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => ObjectStorageAccountSuspendedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => ObjectStorageAccountNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObject::class => DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObjectNormalizer::class,
+
             \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => ObjectStorageBucketArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => ObjectStorageBucketACLArgumentsNormalizer::class,
@@ -973,14 +1075,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ObjectStorageBucket::class => ObjectStorageBucketNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => ObjectStorageBucketAccessControlListNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => ObjectStorageAccountNotProvisionedSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => ObjectStorageAccountSuspendedSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => ObjectStorageClusterNotFoundSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => ObjectStorageAccountNotFoundSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => ObjectStorageBucketLookupNormalizer::class,
 
@@ -995,6 +1089,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => ObjectNotFoundSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => ObjectStorageObjectPresignedURLArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeyArguments::class => ObjectStorageAccessKeyArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKey::class => ObjectStorageAccessKeyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeyLookup::class => ObjectStorageAccessKeyLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => ObjectStorageProvisioningErrorSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => ResponseAPIAuthenticator400ResponseNormalizer::class,
 
@@ -1080,6 +1182,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseSpeedProfileAlreadyAssignedResponse::class => ResponseSpeedProfileAlreadyAssignedResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyAttachedResponse::class => ResponseVirtualMachineNetworkInterfaceAlreadyAttachedResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyDetachedResponse::class => ResponseVirtualMachineNetworkInterfaceAlreadyDetachedResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseTagNotFoundResponse::class => ResponseTagNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseVirtualMachineGroupNotFoundResponse::class => ResponseVirtualMachineGroupNotFoundResponseNormalizer::class,
@@ -1103,6 +1209,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => ResponseMultipleObjectStorageBucketsFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => ResponseNetworkErrorResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseObjectStorageAccessKeyNotFoundResponse::class => ResponseObjectStorageAccessKeyNotFoundResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseObjectStorageProvisioningErrorResponse::class => ResponseObjectStorageProvisioningErrorResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => OrganizationsOrganizationApiTokensGetResponse200Normalizer::class,
 
@@ -1129,6 +1239,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => ApiTokensApiTokenRegenerateSecretPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => ApiTokensApiTokenRegenerateSecretPostResponse200ApiTokenNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostResponse201::class => OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageAccessKeysGetResponse200::class => OrganizationsOrganizationObjectStorageAccessKeysGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostBody::class => ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200::class => ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200ObjectStorageAccessKey::class => ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200ObjectStorageAccessKeyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteBody::class => ObjectStorageAccessKeysAccessKeyDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteResponse200::class => ObjectStorageAccessKeysAccessKeyDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGetResponse200::class => ObjectStorageAccessKeysAccessKeyGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchBody::class => ObjectStorageAccessKeysAccessKeyPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200::class => ObjectStorageAccessKeysAccessKeyPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200ObjectStorageAccessKey::class => ObjectStorageAccessKeysAccessKeyPatchResponse200ObjectStorageAccessKeyNormalizer::class,
 
             \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => AddressListsAddressListEntriesGetResponse200Normalizer::class,
 
@@ -1530,6 +1664,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\NetworksNetworkGetResponse200Network::class => NetworksNetworkGetResponse200NetworkNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteResponse200::class => OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterGetResponse200::class => OrganizationsOrganizationObjectStorageObjectStorageClusterGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201::class => OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201ObjectStorageAccount::class => OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201ObjectStorageAccountNormalizer::class,
+
             \KatapultAPI\Core\Model\OperatingSystemsGetResponse200::class => OperatingSystemsGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200::class => OperatingSystemsOperatingSystemGetResponse200Normalizer::class,
@@ -1746,9 +1892,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200::class => VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostBody::class => VirtualMachinesVirtualMachineNetworkInterfacesPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200::class => VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200VirtualMachineNetworkInterface::class => VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200VirtualMachineNetworkInterfaceNormalizer::class,
+
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200::class => VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200VirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteBody::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200VirtualMachineNetworkInterface::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200VirtualMachineNetworkInterfaceNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200Normalizer::class,
 
@@ -1773,6 +1931,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200Task::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200TaskNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostBody::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200VirtualMachineNetworkInterface::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200VirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostBody::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200VirtualMachineNetworkInterface::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200VirtualMachineNetworkInterfaceNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinePackagesGetResponse200::class => VirtualMachinePackagesGetResponse200Normalizer::class,
 
@@ -2294,27 +2464,72 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\NoAvailableAddressesSchema::class => false,
                 \KatapultAPI\Core\Model\GetIPAddress200ResponseAllocation::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartSpeedProfile::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworkNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartIPAddresses::class => false,
                 \KatapultAPI\Core\Model\InterfaceNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartIPAddresses::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartSpeedProfile::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfaceLookup::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartSpeedProfile::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfaceNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\InvalidIPSchema::class => false,
-                \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => false,
-                \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartSpeedProfile::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartSpeedProfile::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationTags200ResponseTags::class => false,
                 \KatapultAPI\Core\Model\TagArguments::class => false,
                 \KatapultAPI\Core\Model\TagLookup::class => false,
@@ -2329,14 +2544,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => false,
                 \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccount::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObject::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucket::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketDeletionError::class => false,
@@ -2344,6 +2561,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ObjectStorageObject::class => false,
                 \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeyArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKey::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeyLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
@@ -2386,6 +2607,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseNoAllocationResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseSpeedProfileAlreadyAssignedResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyAttachedResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyDetachedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTagNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachineGroupNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseOperatingSystemNotFoundResponse::class => false,
@@ -2398,6 +2621,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseNoUserAssociatedWithIdentityResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseObjectStorageAccessKeyNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseObjectStorageProvisioningErrorResponse::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostResponse200::class => false,
@@ -2411,6 +2636,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostBody::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageAccessKeysGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200ObjectStorageAccessKey::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200ObjectStorageAccessKey::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostBody::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostResponse201::class => false,
@@ -2611,6 +2848,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200Network::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201ObjectStorageAccount::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200OperatingSystem::class => false,
@@ -2719,8 +2962,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\VirtualMachineGroupsVirtualMachineGroupPatchResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroupsVirtualMachineGroupPatchResponse200VirtualMachineGroup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsAddressVersionGetResponse200::class => false,
@@ -2733,6 +2982,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200Task::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200VirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackagesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackagesVirtualMachinePackageGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class => false,
@@ -3632,15 +3887,49 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces::class => GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork::class => GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetwork::class => GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetworkNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartNetwork::class => GetVirtualMachineNetworkInterfacesPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartVirtualNetwork::class => GetVirtualMachineNetworkInterfacesPartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartIPAddresses::class => GetVirtualMachineNetworkInterfacesPartIPAddressesNormalizer::class,
 
+            \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => NetworkSpeedProfileLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualMachine::class => PostVirtualMachineNetworkInterfacesPartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartNetwork::class => PostVirtualMachineNetworkInterfacesPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualNetwork::class => PostVirtualMachineNetworkInterfacesPartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartIPAddresses::class => PostVirtualMachineNetworkInterfacesPartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartSpeedProfile::class => PostVirtualMachineNetworkInterfacesPartSpeedProfileNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualNetworkNotFoundSchema::class => VirtualNetworkNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => NetworkSpeedProfileNotFoundSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualMachine::class => GetVirtualMachineNetworkInterfacePartVirtualMachineNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartNetwork::class => GetVirtualMachineNetworkInterfacePartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualNetwork::class => GetVirtualMachineNetworkInterfacePartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartIPAddresses::class => GetVirtualMachineNetworkInterfacePartIPAddressesNormalizer::class,
 
@@ -3648,9 +3937,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterface::class => GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork::class => GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualMachine::class => GetVMNIVMNIPartVirtualMachineNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVMNIVMNIPartNetwork::class => GetVMNIVMNIPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualNetwork::class => GetVMNIVMNIPartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVMNIVMNIPartIPAddresses::class => GetVMNIVMNIPartIPAddressesNormalizer::class,
 
@@ -3658,11 +3953,33 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfaceLookup::class => VirtualMachineNetworkInterfaceLookupNormalizer::class,
 
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualMachine::class => DeleteVirtualMachineNetworkInterfacePartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartNetwork::class => DeleteVirtualMachineNetworkInterfacePartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualNetwork::class => DeleteVirtualMachineNetworkInterfacePartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartIPAddresses::class => DeleteVirtualMachineNetworkInterfacePartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartSpeedProfile::class => DeleteVirtualMachineNetworkInterfacePartSpeedProfileNormalizer::class,
+
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine::class => PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachineNormalizer::class,
 
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIPPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetworkNormalizer::class,
 
             \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses::class => PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddressesNormalizer::class,
 
@@ -3670,9 +3987,37 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\InvalidIPSchema::class => InvalidIPSchemaNormalizer::class,
 
-            \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => NetworkSpeedProfileLookupNormalizer::class,
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
 
-            \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => NetworkSpeedProfileNotFoundSchemaNormalizer::class,
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualMachine::class => PostVirtualMachineNetworkInterfaceAttachPartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartNetwork::class => PostVirtualMachineNetworkInterfaceAttachPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualNetwork::class => PostVirtualMachineNetworkInterfaceAttachPartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartIPAddresses::class => PostVirtualMachineNetworkInterfaceAttachPartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartSpeedProfile::class => PostVirtualMachineNetworkInterfaceAttachPartSpeedProfileNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterface::class => PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNetwork::class => PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualMachine::class => PostVirtualMachineNetworkInterfaceDetachPartVirtualMachineNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartNetwork::class => PostVirtualMachineNetworkInterfaceDetachPartNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualNetwork::class => PostVirtualMachineNetworkInterfaceDetachPartVirtualNetworkNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartIPAddresses::class => PostVirtualMachineNetworkInterfaceDetachPartIPAddressesNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartSpeedProfile::class => PostVirtualMachineNetworkInterfaceDetachPartSpeedProfileNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationTags200ResponseTags::class => GetOrganizationTags200ResponseTagsNormalizer::class,
 
@@ -3702,6 +4047,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => ObjectStorageClusterLookupNormalizer::class,
 
+            \KatapultAPI\Core\Model\ObjectStorageAccount::class => ObjectStorageAccountNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => ObjectStorageClusterNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => ObjectStorageAccountNotProvisionedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => ObjectStorageAccountSuspendedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => ObjectStorageAccountNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObject::class => DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObjectNormalizer::class,
+
             \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => ObjectStorageBucketArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => ObjectStorageBucketACLArgumentsNormalizer::class,
@@ -3709,14 +4066,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ObjectStorageBucket::class => ObjectStorageBucketNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => ObjectStorageBucketAccessControlListNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => ObjectStorageAccountNotProvisionedSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => ObjectStorageAccountSuspendedSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => ObjectStorageClusterNotFoundSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => ObjectStorageAccountNotFoundSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => ObjectStorageBucketLookupNormalizer::class,
 
@@ -3731,6 +4080,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => ObjectNotFoundSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => ObjectStorageObjectPresignedURLArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeyArguments::class => ObjectStorageAccessKeyArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKey::class => ObjectStorageAccessKeyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeyLookup::class => ObjectStorageAccessKeyLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => ObjectStorageProvisioningErrorSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => ResponseAPIAuthenticator400ResponseNormalizer::class,
 
@@ -3816,6 +4173,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseSpeedProfileAlreadyAssignedResponse::class => ResponseSpeedProfileAlreadyAssignedResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyAttachedResponse::class => ResponseVirtualMachineNetworkInterfaceAlreadyAttachedResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyDetachedResponse::class => ResponseVirtualMachineNetworkInterfaceAlreadyDetachedResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseTagNotFoundResponse::class => ResponseTagNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseVirtualMachineGroupNotFoundResponse::class => ResponseVirtualMachineGroupNotFoundResponseNormalizer::class,
@@ -3839,6 +4200,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => ResponseMultipleObjectStorageBucketsFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => ResponseNetworkErrorResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseObjectStorageAccessKeyNotFoundResponse::class => ResponseObjectStorageAccessKeyNotFoundResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseObjectStorageProvisioningErrorResponse::class => ResponseObjectStorageProvisioningErrorResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => OrganizationsOrganizationApiTokensGetResponse200Normalizer::class,
 
@@ -3865,6 +4230,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => ApiTokensApiTokenRegenerateSecretPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => ApiTokensApiTokenRegenerateSecretPostResponse200ApiTokenNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostResponse201::class => OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageAccessKeysGetResponse200::class => OrganizationsOrganizationObjectStorageAccessKeysGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostBody::class => ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200::class => ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200ObjectStorageAccessKey::class => ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200ObjectStorageAccessKeyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteBody::class => ObjectStorageAccessKeysAccessKeyDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteResponse200::class => ObjectStorageAccessKeysAccessKeyDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGetResponse200::class => ObjectStorageAccessKeysAccessKeyGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchBody::class => ObjectStorageAccessKeysAccessKeyPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200::class => ObjectStorageAccessKeysAccessKeyPatchResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200ObjectStorageAccessKey::class => ObjectStorageAccessKeysAccessKeyPatchResponse200ObjectStorageAccessKeyNormalizer::class,
 
             \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => AddressListsAddressListEntriesGetResponse200Normalizer::class,
 
@@ -4266,6 +4655,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\NetworksNetworkGetResponse200Network::class => NetworksNetworkGetResponse200NetworkNormalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteResponse200::class => OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterGetResponse200::class => OrganizationsOrganizationObjectStorageObjectStorageClusterGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostBody::class => OrganizationsOrganizationObjectStorageObjectStorageClusterPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201::class => OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201ObjectStorageAccount::class => OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201ObjectStorageAccountNormalizer::class,
+
             \KatapultAPI\Core\Model\OperatingSystemsGetResponse200::class => OperatingSystemsGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200::class => OperatingSystemsOperatingSystemGetResponse200Normalizer::class,
@@ -4482,9 +4883,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200::class => VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostBody::class => VirtualMachinesVirtualMachineNetworkInterfacesPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200::class => VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200VirtualMachineNetworkInterface::class => VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200VirtualMachineNetworkInterfaceNormalizer::class,
+
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200::class => VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200VirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteBody::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200VirtualMachineNetworkInterface::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200VirtualMachineNetworkInterfaceNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200Normalizer::class,
 
@@ -4509,6 +4922,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200Task::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200TaskNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostBody::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200VirtualMachineNetworkInterface::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200VirtualMachineNetworkInterfaceNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostBody::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200VirtualMachineNetworkInterface::class => VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200VirtualMachineNetworkInterfaceNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinePackagesGetResponse200::class => VirtualMachinePackagesGetResponse200Normalizer::class,
 
@@ -5033,27 +5458,72 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\NoAvailableAddressesSchema::class => false,
                 \KatapultAPI\Core\Model\GetIPAddress200ResponseAllocation::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfacesVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacesPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfacesPartSpeedProfile::class => false,
+                \KatapultAPI\Core\Model\VirtualNetworkNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfacePartIPAddresses::class => false,
                 \KatapultAPI\Core\Model\InterfaceNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartNetwork::class => false,
+                \KatapultAPI\Core\Model\GetVMNIVMNIPartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartIPAddresses::class => false,
                 \KatapultAPI\Core\Model\GetVMNIVMNIPartSpeedProfile::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfaceLookup::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachineNetworkInterfacePartSpeedProfile::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIP200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetwork::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAllocateIPPartIPAddresses::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfaceNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\InvalidIPSchema::class => false,
-                \KatapultAPI\Core\Model\NetworkSpeedProfileLookup::class => false,
-                \KatapultAPI\Core\Model\NetworkSpeedProfileNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceAttachPartSpeedProfile::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterfaceVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartVirtualNetwork::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartIPAddresses::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineNetworkInterfaceDetachPartSpeedProfile::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationTags200ResponseTags::class => false,
                 \KatapultAPI\Core\Model\TagArguments::class => false,
                 \KatapultAPI\Core\Model\TagLookup::class => false,
@@ -5068,14 +5538,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => false,
                 \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccount::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObject::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketArguments::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucket::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageAccountNotProvisionedSchema::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageAccountSuspendedSchema::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
-                \KatapultAPI\Core\Model\ObjectStorageAccountNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketLookup::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageBucketDeletionError::class => false,
@@ -5083,6 +5555,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ObjectStorageObject::class => false,
                 \KatapultAPI\Core\Model\ObjectNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageObjectPresignedURLArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeyArguments::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKey::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeyLookup::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
@@ -5125,6 +5601,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseNoAllocationResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseSpeedProfileAlreadyAssignedResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyAttachedResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseVirtualMachineNetworkInterfaceAlreadyDetachedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTagNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachineGroupNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseOperatingSystemNotFoundResponse::class => false,
@@ -5137,6 +5615,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseNoUserAssociatedWithIdentityResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseMultipleObjectStorageBucketsFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNetworkErrorResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseObjectStorageAccessKeyNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseObjectStorageProvisioningErrorResponse::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostResponse200::class => false,
@@ -5150,6 +5630,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostBody::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200::class => false,
                 \KatapultAPI\Core\Model\ApiTokensApiTokenRegenerateSecretPostResponse200ApiToken::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageAccessKeysGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200ObjectStorageAccessKey::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchBody::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200::class => false,
+                \KatapultAPI\Core\Model\ObjectStorageAccessKeysAccessKeyPatchResponse200ObjectStorageAccessKey::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostBody::class => false,
                 \KatapultAPI\Core\Model\AddressListsAddressListEntriesPostResponse201::class => false,
@@ -5350,6 +5842,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200Network::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201ObjectStorageAccount::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OperatingSystemsOperatingSystemGetResponse200OperatingSystem::class => false,
@@ -5458,8 +5956,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\VirtualMachineGroupsVirtualMachineGroupPatchResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroupsVirtualMachineGroupPatchResponse200VirtualMachineGroup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineNetworksNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAvailableIpsAddressVersionGetResponse200::class => false,
@@ -5472,6 +5976,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceUpdateSpeedProfilePatchResponse200Task::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200VirtualMachineNetworkInterface::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostBody::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200VirtualMachineNetworkInterface::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackagesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackagesVirtualMachinePackageGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesGetResponse200::class => false,

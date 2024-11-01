@@ -22,23 +22,15 @@ class LoadBalancersRulesLoadBalancerRuleDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     *
      * @var LoadBalancerRuleLookup
      */
     protected $loadBalancerRule;
 
-    /**
-     * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function getLoadBalancerRule(): LoadBalancerRuleLookup
     {
         return $this->loadBalancerRule;
     }
 
-    /**
-     * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function setLoadBalancerRule(LoadBalancerRuleLookup $loadBalancerRule): self
     {
         $this->initialized['loadBalancerRule'] = true;

@@ -28,8 +28,6 @@ class OrganizationsOrganizationLoadBalancersPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var LoadBalancerArguments
      */
     protected $properties;
@@ -57,17 +55,11 @@ class OrganizationsOrganizationLoadBalancersPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): LoadBalancerArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(LoadBalancerArguments $properties): self
     {
         $this->initialized['properties'] = true;

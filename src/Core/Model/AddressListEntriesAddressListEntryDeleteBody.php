@@ -22,23 +22,15 @@ class AddressListEntriesAddressListEntryDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
-     *
      * @var AddressListEntryLookup
      */
     protected $addressListEntry;
 
-    /**
-     * All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
-     */
     public function getAddressListEntry(): AddressListEntryLookup
     {
         return $this->addressListEntry;
     }
 
-    /**
-     * All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
-     */
     public function setAddressListEntry(AddressListEntryLookup $addressListEntry): self
     {
         $this->initialized['addressListEntry'] = true;

@@ -28,8 +28,6 @@ class OrganizationsOrganizationSecurityGroupsPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SecurityGroupArguments
      */
     protected $properties;
@@ -57,17 +55,11 @@ class OrganizationsOrganizationSecurityGroupsPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): SecurityGroupArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(SecurityGroupArguments $properties): self
     {
         $this->initialized['properties'] = true;

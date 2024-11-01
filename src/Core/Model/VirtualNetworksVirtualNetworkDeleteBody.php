@@ -22,23 +22,15 @@ class VirtualNetworksVirtualNetworkDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualNetworkLookup
      */
     protected $virtualNetwork;
 
-    /**
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     */
     public function getVirtualNetwork(): VirtualNetworkLookup
     {
         return $this->virtualNetwork;
     }
 
-    /**
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     */
     public function setVirtualNetwork(VirtualNetworkLookup $virtualNetwork): self
     {
         $this->initialized['virtualNetwork'] = true;

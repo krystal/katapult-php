@@ -24,12 +24,8 @@ class GetObjectStorageObjectStorageClusterBucketObject extends \KatapultAPI\Core
      *
      * @param array $queryParameters {
      *
-     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket.
-     *
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     * @var string $bucket[name] The name of the object storage bucket.
-     *
-     * All 'bucket[]' params are mutually exclusive, only one can be provided.
+     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket
+     * @var string $bucket[name] The name of the object storage bucket
      * @var string $path The name or path for the object
      *             }
      */

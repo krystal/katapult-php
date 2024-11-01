@@ -34,9 +34,13 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
      */
     protected $name;
     /**
-     * @var GetVMNIVMNIPartNetwork
+     * @var GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork|null
      */
     protected $network;
+    /**
+     * @var GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetwork|null
+     */
+    protected $virtualNetwork;
     /**
      * @var string
      */
@@ -93,15 +97,28 @@ class VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceGetResponse20
         return $this;
     }
 
-    public function getNetwork(): GetVMNIVMNIPartNetwork
+    public function getNetwork(): ?GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork
     {
         return $this->network;
     }
 
-    public function setNetwork(GetVMNIVMNIPartNetwork $network): self
+    public function setNetwork(?GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceNetwork $network): self
     {
         $this->initialized['network'] = true;
         $this->network = $network;
+
+        return $this;
+    }
+
+    public function getVirtualNetwork(): ?GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetwork
+    {
+        return $this->virtualNetwork;
+    }
+
+    public function setVirtualNetwork(?GetVMNIVMNI200ResponseVirtualMachineNetworkInterfaceVirtualNetwork $virtualNetwork): self
+    {
+        $this->initialized['virtualNetwork'] = true;
+        $this->virtualNetwork = $virtualNetwork;
 
         return $this;
     }

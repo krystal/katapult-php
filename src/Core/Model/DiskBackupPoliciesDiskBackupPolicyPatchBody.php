@@ -22,29 +22,19 @@ class DiskBackupPoliciesDiskBackupPolicyPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskBackupPolicyLookup
      */
     protected $diskBackupPolicy;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskBackupPolicyArguments
      */
     protected $properties;
 
-    /**
-     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     */
     public function getDiskBackupPolicy(): DiskBackupPolicyLookup
     {
         return $this->diskBackupPolicy;
     }
 
-    /**
-     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     */
     public function setDiskBackupPolicy(DiskBackupPolicyLookup $diskBackupPolicy): self
     {
         $this->initialized['diskBackupPolicy'] = true;
@@ -53,17 +43,11 @@ class DiskBackupPoliciesDiskBackupPolicyPatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): DiskBackupPolicyArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(DiskBackupPolicyArguments $properties): self
     {
         $this->initialized['properties'] = true;

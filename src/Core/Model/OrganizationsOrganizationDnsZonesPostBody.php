@@ -28,8 +28,6 @@ class OrganizationsOrganizationDnsZonesPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSZoneArguments
      */
     protected $properties;
@@ -60,17 +58,11 @@ class OrganizationsOrganizationDnsZonesPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): DNSZoneArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(DNSZoneArguments $properties): self
     {
         $this->initialized['properties'] = true;

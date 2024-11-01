@@ -22,99 +22,67 @@ class DNSRecordContentArguments extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'A[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForA
      */
     protected $a;
     /**
-     * All 'AAAA[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForAAAA
      */
     protected $aAAA;
     /**
-     * All 'ALIAS[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForALIAS
      */
     protected $aLIAS;
     /**
-     * All 'CAA[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForCAA
      */
     protected $cAA;
     /**
-     * All 'CNAME[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForCNAME
      */
     protected $cNAME;
     /**
-     * All 'IPS[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForIPS
      */
     protected $iPS;
     /**
-     * All 'MX[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForMX
      */
     protected $mX;
     /**
-     * All 'NS[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForNS
      */
     protected $nS;
     /**
-     * All 'PTR[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForPTR
      */
     protected $pTR;
     /**
-     * All 'SOA[]' params are mutually exclusive, only one can be provided.
+     * @var array<string, mixed>
      */
     protected $sOA;
     /**
-     * All 'SRV[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForSRV
      */
     protected $sRV;
     /**
-     * All 'SSHFP[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForSSHFP
      */
     protected $sSHFP;
     /**
-     * All 'TXT[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForTXT
      */
     protected $tXT;
     /**
-     * All 'VirtualMachine[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArgumentsForVirtualMachine
      */
     protected $virtualMachine;
 
-    /**
-     * All 'A[]' params are mutually exclusive, only one can be provided.
-     */
     public function getA(): DNSRecordContentArgumentsForA
     {
         return $this->a;
     }
 
-    /**
-     * All 'A[]' params are mutually exclusive, only one can be provided.
-     */
     public function setA(DNSRecordContentArgumentsForA $a): self
     {
         $this->initialized['a'] = true;
@@ -123,17 +91,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'AAAA[]' params are mutually exclusive, only one can be provided.
-     */
     public function getAAAA(): DNSRecordContentArgumentsForAAAA
     {
         return $this->aAAA;
     }
 
-    /**
-     * All 'AAAA[]' params are mutually exclusive, only one can be provided.
-     */
     public function setAAAA(DNSRecordContentArgumentsForAAAA $aAAA): self
     {
         $this->initialized['aAAA'] = true;
@@ -142,17 +104,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'ALIAS[]' params are mutually exclusive, only one can be provided.
-     */
     public function getALIAS(): DNSRecordContentArgumentsForALIAS
     {
         return $this->aLIAS;
     }
 
-    /**
-     * All 'ALIAS[]' params are mutually exclusive, only one can be provided.
-     */
     public function setALIAS(DNSRecordContentArgumentsForALIAS $aLIAS): self
     {
         $this->initialized['aLIAS'] = true;
@@ -161,17 +117,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'CAA[]' params are mutually exclusive, only one can be provided.
-     */
     public function getCAA(): DNSRecordContentArgumentsForCAA
     {
         return $this->cAA;
     }
 
-    /**
-     * All 'CAA[]' params are mutually exclusive, only one can be provided.
-     */
     public function setCAA(DNSRecordContentArgumentsForCAA $cAA): self
     {
         $this->initialized['cAA'] = true;
@@ -180,17 +130,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'CNAME[]' params are mutually exclusive, only one can be provided.
-     */
     public function getCNAME(): DNSRecordContentArgumentsForCNAME
     {
         return $this->cNAME;
     }
 
-    /**
-     * All 'CNAME[]' params are mutually exclusive, only one can be provided.
-     */
     public function setCNAME(DNSRecordContentArgumentsForCNAME $cNAME): self
     {
         $this->initialized['cNAME'] = true;
@@ -199,17 +143,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'IPS[]' params are mutually exclusive, only one can be provided.
-     */
     public function getIPS(): DNSRecordContentArgumentsForIPS
     {
         return $this->iPS;
     }
 
-    /**
-     * All 'IPS[]' params are mutually exclusive, only one can be provided.
-     */
     public function setIPS(DNSRecordContentArgumentsForIPS $iPS): self
     {
         $this->initialized['iPS'] = true;
@@ -218,17 +156,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'MX[]' params are mutually exclusive, only one can be provided.
-     */
     public function getMX(): DNSRecordContentArgumentsForMX
     {
         return $this->mX;
     }
 
-    /**
-     * All 'MX[]' params are mutually exclusive, only one can be provided.
-     */
     public function setMX(DNSRecordContentArgumentsForMX $mX): self
     {
         $this->initialized['mX'] = true;
@@ -237,17 +169,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'NS[]' params are mutually exclusive, only one can be provided.
-     */
     public function getNS(): DNSRecordContentArgumentsForNS
     {
         return $this->nS;
     }
 
-    /**
-     * All 'NS[]' params are mutually exclusive, only one can be provided.
-     */
     public function setNS(DNSRecordContentArgumentsForNS $nS): self
     {
         $this->initialized['nS'] = true;
@@ -256,17 +182,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'PTR[]' params are mutually exclusive, only one can be provided.
-     */
     public function getPTR(): DNSRecordContentArgumentsForPTR
     {
         return $this->pTR;
     }
 
-    /**
-     * All 'PTR[]' params are mutually exclusive, only one can be provided.
-     */
     public function setPTR(DNSRecordContentArgumentsForPTR $pTR): self
     {
         $this->initialized['pTR'] = true;
@@ -276,17 +196,17 @@ class DNSRecordContentArguments extends \ArrayObject
     }
 
     /**
-     * All 'SOA[]' params are mutually exclusive, only one can be provided.
+     * @return array<string, mixed>
      */
-    public function getSOA()
+    public function getSOA(): iterable
     {
         return $this->sOA;
     }
 
     /**
-     * All 'SOA[]' params are mutually exclusive, only one can be provided.
+     * @param array<string, mixed> $sOA
      */
-    public function setSOA($sOA): self
+    public function setSOA(iterable $sOA): self
     {
         $this->initialized['sOA'] = true;
         $this->sOA = $sOA;
@@ -294,17 +214,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'SRV[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSRV(): DNSRecordContentArgumentsForSRV
     {
         return $this->sRV;
     }
 
-    /**
-     * All 'SRV[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSRV(DNSRecordContentArgumentsForSRV $sRV): self
     {
         $this->initialized['sRV'] = true;
@@ -313,17 +227,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'SSHFP[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSSHFP(): DNSRecordContentArgumentsForSSHFP
     {
         return $this->sSHFP;
     }
 
-    /**
-     * All 'SSHFP[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSSHFP(DNSRecordContentArgumentsForSSHFP $sSHFP): self
     {
         $this->initialized['sSHFP'] = true;
@@ -332,17 +240,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'TXT[]' params are mutually exclusive, only one can be provided.
-     */
     public function getTXT(): DNSRecordContentArgumentsForTXT
     {
         return $this->tXT;
     }
 
-    /**
-     * All 'TXT[]' params are mutually exclusive, only one can be provided.
-     */
     public function setTXT(DNSRecordContentArgumentsForTXT $tXT): self
     {
         $this->initialized['tXT'] = true;
@@ -351,17 +253,11 @@ class DNSRecordContentArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'VirtualMachine[]' params are mutually exclusive, only one can be provided.
-     */
     public function getVirtualMachine(): DNSRecordContentArgumentsForVirtualMachine
     {
         return $this->virtualMachine;
     }
 
-    /**
-     * All 'VirtualMachine[]' params are mutually exclusive, only one can be provided.
-     */
     public function setVirtualMachine(DNSRecordContentArgumentsForVirtualMachine $virtualMachine): self
     {
         $this->initialized['virtualMachine'] = true;

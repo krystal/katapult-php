@@ -22,14 +22,10 @@ class FileStorageVolumesFileStorageVolumePatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     *
      * @var FileStorageVolumeLookup
      */
     protected $fileStorageVolume;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var FileStorageVolumeArguments
      */
     protected $properties;
@@ -38,17 +34,11 @@ class FileStorageVolumesFileStorageVolumePatchBody extends \ArrayObject
      */
     protected $annotations;
 
-    /**
-     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     */
     public function getFileStorageVolume(): FileStorageVolumeLookup
     {
         return $this->fileStorageVolume;
     }
 
-    /**
-     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     */
     public function setFileStorageVolume(FileStorageVolumeLookup $fileStorageVolume): self
     {
         $this->initialized['fileStorageVolume'] = true;
@@ -57,17 +47,11 @@ class FileStorageVolumesFileStorageVolumePatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): FileStorageVolumeArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(FileStorageVolumeArguments $properties): self
     {
         $this->initialized['properties'] = true;

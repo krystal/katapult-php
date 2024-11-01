@@ -22,8 +22,6 @@ class DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DiskBackupPolicyLookup
      */
     protected $diskBackupPolicy;
@@ -34,17 +32,11 @@ class DiskBackupPoliciesDiskBackupPolicyScheduleDeleteBody extends \ArrayObject
      */
     protected $timestamp;
 
-    /**
-     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     */
     public function getDiskBackupPolicy(): DiskBackupPolicyLookup
     {
         return $this->diskBackupPolicy;
     }
 
-    /**
-     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     */
     public function setDiskBackupPolicy(DiskBackupPolicyLookup $diskBackupPolicy): self
     {
         $this->initialized['diskBackupPolicy'] = true;

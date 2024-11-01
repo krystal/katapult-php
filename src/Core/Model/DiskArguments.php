@@ -56,8 +56,6 @@ class DiskArguments extends \ArrayObject
      */
     protected $storageSpeed;
     /**
-     * All 'virtual_machine_disk[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineDiskArguments
      */
     protected $virtualMachineDisk;
@@ -171,17 +169,11 @@ class DiskArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'virtual_machine_disk[]' params are mutually exclusive, only one can be provided.
-     */
     public function getVirtualMachineDisk(): VirtualMachineDiskArguments
     {
         return $this->virtualMachineDisk;
     }
 
-    /**
-     * All 'virtual_machine_disk[]' params are mutually exclusive, only one can be provided.
-     */
     public function setVirtualMachineDisk(VirtualMachineDiskArguments $virtualMachineDisk): self
     {
         $this->initialized['virtualMachineDisk'] = true;

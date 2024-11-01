@@ -28,8 +28,6 @@ class VirtualMachinesVirtualMachineFlexibleResourcesPutBody extends \ArrayObject
      */
     protected $virtualMachine;
     /**
-     * All 'resources[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineFlexibleResources
      */
     protected $resources;
@@ -53,17 +51,11 @@ class VirtualMachinesVirtualMachineFlexibleResourcesPutBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'resources[]' params are mutually exclusive, only one can be provided.
-     */
     public function getResources(): VirtualMachineFlexibleResources
     {
         return $this->resources;
     }
 
-    /**
-     * All 'resources[]' params are mutually exclusive, only one can be provided.
-     */
     public function setResources(VirtualMachineFlexibleResources $resources): self
     {
         $this->initialized['resources'] = true;

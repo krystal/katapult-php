@@ -22,14 +22,10 @@ class ApiTokensApiTokenPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'api_token[]' params are mutually exclusive, only one can be provided.
-     *
      * @var APITokenLookup
      */
     protected $apiToken;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var APITokenArguments
      */
     protected $properties;
@@ -38,17 +34,11 @@ class ApiTokensApiTokenPatchBody extends \ArrayObject
      */
     protected $annotations;
 
-    /**
-     * All 'api_token[]' params are mutually exclusive, only one can be provided.
-     */
     public function getApiToken(): APITokenLookup
     {
         return $this->apiToken;
     }
 
-    /**
-     * All 'api_token[]' params are mutually exclusive, only one can be provided.
-     */
     public function setApiToken(APITokenLookup $apiToken): self
     {
         $this->initialized['apiToken'] = true;
@@ -57,17 +47,11 @@ class ApiTokensApiTokenPatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): APITokenArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(APITokenArguments $properties): self
     {
         $this->initialized['properties'] = true;

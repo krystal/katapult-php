@@ -22,29 +22,19 @@ class AddressListsAddressListEntriesPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     *
      * @var AddressListLookup
      */
     protected $addressList;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var AddressListEntryArguments
      */
     protected $properties;
 
-    /**
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     */
     public function getAddressList(): AddressListLookup
     {
         return $this->addressList;
     }
 
-    /**
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     */
     public function setAddressList(AddressListLookup $addressList): self
     {
         $this->initialized['addressList'] = true;
@@ -53,17 +43,11 @@ class AddressListsAddressListEntriesPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): AddressListEntryArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(AddressListEntryArguments $properties): self
     {
         $this->initialized['properties'] = true;

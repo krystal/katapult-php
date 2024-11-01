@@ -25,7 +25,7 @@ class GetDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
      *
      * @param array $queryParameters {
      *
-     * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
+     * @var string $dns_record[id]
      *             }
      */
     public function __construct(array $queryParameters = [])

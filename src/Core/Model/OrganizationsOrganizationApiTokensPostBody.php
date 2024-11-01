@@ -28,8 +28,6 @@ class OrganizationsOrganizationApiTokensPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var APITokenArguments
      */
     protected $properties;
@@ -57,17 +55,11 @@ class OrganizationsOrganizationApiTokensPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): APITokenArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(APITokenArguments $properties): self
     {
         $this->initialized['properties'] = true;

@@ -22,6 +22,12 @@ class SignupsPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * If true, the user will be sent an email to verify their e-mail address, and if false, the user will need to verify their e-mail address when they create an account in Identity.
+     *
+     * @var bool
+     */
+    protected $verifyWithEmail;
+    /**
      * The e-mail address that should receive the welcome e-mail.
      *
      * @var string
@@ -34,11 +40,28 @@ class SignupsPostBody extends \ArrayObject
      */
     protected $coupon;
     /**
-     * All 'campaign[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SignupCampaignArguments
      */
     protected $campaign;
+
+    /**
+     * If true, the user will be sent an email to verify their e-mail address, and if false, the user will need to verify their e-mail address when they create an account in Identity.
+     */
+    public function getVerifyWithEmail(): bool
+    {
+        return $this->verifyWithEmail;
+    }
+
+    /**
+     * If true, the user will be sent an email to verify their e-mail address, and if false, the user will need to verify their e-mail address when they create an account in Identity.
+     */
+    public function setVerifyWithEmail(bool $verifyWithEmail): self
+    {
+        $this->initialized['verifyWithEmail'] = true;
+        $this->verifyWithEmail = $verifyWithEmail;
+
+        return $this;
+    }
 
     /**
      * The e-mail address that should receive the welcome e-mail.
@@ -78,17 +101,11 @@ class SignupsPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'campaign[]' params are mutually exclusive, only one can be provided.
-     */
     public function getCampaign(): SignupCampaignArguments
     {
         return $this->campaign;
     }
 
-    /**
-     * All 'campaign[]' params are mutually exclusive, only one can be provided.
-     */
     public function setCampaign(SignupCampaignArguments $campaign): self
     {
         $this->initialized['campaign'] = true;
