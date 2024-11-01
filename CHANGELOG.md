@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.0](https://github.com/krystal/katapult-php/compare/v5.2.0...v5.3.0) (2024-11-01)
+
+
+### Features
+
+* **generator:** new client automatically generated in GitHub Actions ([8e13e4a](https://github.com/krystal/katapult-php/commit/8e13e4a31fa411ae5ff337cd4cf75b529a33fa00))
+
 ## [5.2.0](https://github.com/krystal/katapult-php/compare/v5.1.0...v5.2.0) (2024-11-01)
 
 
