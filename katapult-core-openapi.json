@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "x-katapult-version": "2.60.0",
+    "x-katapult-version": "2.62.1",
     "version": "1.0.0",
     "title": "Katapult Core API",
     "description": "Welcome to the documentation for the Katapult Core API"
@@ -64,7 +64,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -75,7 +75,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -493,6 +493,501 @@
         }
       }
     },
+    "/organizations/organization/object_storage/object_storage_cluster/access_keys": {
+      "post": {
+        "operationId": "post:organization_object_storage_object_storage_cluster_access_keys",
+        "summary": "Create object storage access key",
+        "description": "Create a new access key in an object storage account\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Access keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "organization": {
+                    "$ref": "#/components/schemas/OrganizationLookup"
+                  },
+                  "object_storage_cluster": {
+                    "$ref": "#/components/schemas/ObjectStorageClusterLookup"
+                  },
+                  "properties": {
+                    "$ref": "#/components/schemas/ObjectStorageAccessKeyArguments"
+                  }
+                },
+                "required": [
+                  "organization",
+                  "object_storage_cluster",
+                  "properties"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create a new access key in an object storage account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "object_storage_access_key": {
+                      "$ref": "#/components/schemas/ObjectStorageAccessKey"
+                    }
+                  },
+                  "required": [
+                    "object_storage_access_key"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/ObjectStorageAccountNotProvisionedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageAccountNotFoundObjectStorageClusterNotFoundOrganizationNotFound404Res"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/organizations/organization/object_storage/access_keys": {
+      "get": {
+        "operationId": "get:organization_object_storage_access_keys",
+        "summary": "List object storage access keys",
+        "description": "Returns a list of all object storage access keys for a given organization\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Access keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The organization to return access keys for. \n\n All 'organization[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "organization[sub_domain]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The organization to return access keys for. \n\n All 'organization[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number to request. If not provided, the first page will be returned."
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 1
+            },
+            "description": "The number of items to return per page. If not provided, the default value will be used."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of all object storage access keys for a given organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "pagination": {
+                      "$ref": "#/components/schemas/PaginationObject"
+                    },
+                    "object_storage_access_keys": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ObjectStorageAccessKey"
+                      },
+                      "description": "The object storage access keys for the organization"
+                    }
+                  },
+                  "required": [
+                    "pagination",
+                    "object_storage_access_keys"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizationNotFoundResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/object_storage/access_keys/access_key/generate_credentials": {
+      "post": {
+        "operationId": "post:object_storage_access_key_generate_credentials",
+        "summary": "Generate object storage S3 access key credentials",
+        "description": "Returns new S3 credentials for an object storage access key. Existing credentials cannot be retrieved. Credentials may take a few minutes to become active.\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Access keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "access_key": {
+                    "$ref": "#/components/schemas/ObjectStorageAccessKeyLookup"
+                  }
+                },
+                "required": [
+                  "access_key"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns new S3 credentials for an object storage access key. Existing credentials cannot be retrieved. Credentials may take a few minutes to become active.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "object_storage_access_key": {
+                      "description": "The object storage access key with newly generated credentials",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ObjectStorageAccessKey"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "object_storage_access_key"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageAccessKeyNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/TaskQueueingErrorResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ObjectStorageProvisioningErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/object_storage/access_keys/access_key": {
+      "get": {
+        "operationId": "get:object_storage_access_key",
+        "summary": "Get object storage access key details",
+        "description": "Returns object storage access key details.\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Access keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The object storage access key to find."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns object storage access key details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "object_storage_access_key": {
+                      "$ref": "#/components/schemas/ObjectStorageAccessKey"
+                    }
+                  },
+                  "required": [
+                    "object_storage_access_key"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageAccessKeyNotFoundResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch:object_storage_access_key",
+        "summary": "Update object storage access key",
+        "description": "Updates an object storage access key with new properties\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Access keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "access_key": {
+                    "$ref": "#/components/schemas/ObjectStorageAccessKeyLookup"
+                  },
+                  "properties": {
+                    "$ref": "#/components/schemas/ObjectStorageAccessKeyArguments"
+                  }
+                },
+                "required": [
+                  "access_key",
+                  "properties"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updates an object storage access key with new properties",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "object_storage_access_key": {
+                      "description": "The new properties for the object storage access key",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ObjectStorageAccessKey"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "object_storage_access_key"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageAccessKeyNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/TaskQueueingErrorResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ObjectStorageProvisioningErrorValidationError422Res"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete:object_storage_access_key",
+        "summary": "Delete object storage access key",
+        "description": "Delete an object storage access key\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Access keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "access_key": {
+                    "$ref": "#/components/schemas/ObjectStorageAccessKeyLookup"
+                  }
+                },
+                "required": [
+                  "access_key"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete an object storage access key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "success"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageAccessKeyNotFoundResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          },
+          "504": {
+            "$ref": "#/components/responses/NetworkErrorResponse"
+          }
+        }
+      }
+    },
     "/address_lists/address_list/entries": {
       "get": {
         "operationId": "get:address_list_entries",
@@ -522,7 +1017,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The address list for which the entries should be returned. \n\n All 'address_list[]' params are mutually exclusive, only one can be provided."
+            "description": "The address list for which the entries should be returned."
           },
           {
             "name": "page",
@@ -700,7 +1195,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The address list entry to return. \n\n All 'address_list_entry[]' params are mutually exclusive, only one can be provided."
+            "description": "The address list entry to return."
           }
         ],
         "responses": {
@@ -1116,7 +1611,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -1127,7 +1622,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -1318,7 +1813,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The address list to return. \n\n All 'address_list[]' params are mutually exclusive, only one can be provided."
+            "description": "The address list to return."
           }
         ],
         "responses": {
@@ -1822,7 +2317,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The object storage cluster region for the bucket. \n\n All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided."
+            "description": "The object storage cluster region for the bucket."
           },
           {
             "in": "query",
@@ -1830,7 +2325,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The name of the object storage bucket. \n\n All 'bucket[]' params are mutually exclusive, only one can be provided."
+            "description": "The name of the object storage bucket."
           }
         ],
         "responses": {
@@ -1987,7 +2482,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The object storage cluster region for the bucket. \n\n All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided."
+            "description": "The object storage cluster region for the bucket."
           },
           {
             "in": "query",
@@ -1995,7 +2490,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The name of the object storage bucket. \n\n All 'bucket[]' params are mutually exclusive, only one can be provided."
+            "description": "The name of the object storage bucket."
           },
           {
             "name": "path",
@@ -2424,7 +2919,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided."
+            "description": ""
           }
         ],
         "responses": {
@@ -2602,7 +3097,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "All 'certificate[]' params are mutually exclusive, only one can be provided."
+            "description": ""
           }
         ],
         "responses": {
@@ -2986,7 +3481,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The country state to return. \n\n All 'country_state[]' params are mutually exclusive, only one can be provided."
+            "description": "The country state to return."
           }
         ],
         "responses": {
@@ -4350,7 +4845,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The disk to return disk backup policies for. \n\n All 'disk[]' params are mutually exclusive, only one can be provided."
+            "description": "The disk to return disk backup policies for."
           },
           {
             "name": "page",
@@ -4534,7 +5029,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The disk backup policy to get information for. \n\n All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided."
+            "description": "The disk backup policy to get information for."
           }
         ],
         "responses": {
@@ -4966,7 +5461,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The disk template version to return. \n\n All 'disk_template_version[]' params are mutually exclusive, only one can be provided."
+            "description": "The disk template version to return."
           }
         ],
         "responses": {
@@ -5039,7 +5534,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The disk template version to return. \n\n All 'disk_template_version[]' params are mutually exclusive, only one can be provided."
+            "description": "The disk template version to return."
           }
         ],
         "responses": {
@@ -5141,7 +5636,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "An operating system to use to filter disk templates. \n\n All 'operating_system[]' params are mutually exclusive, only one can be provided."
+            "description": "An operating system to use to filter disk templates."
           },
           {
             "name": "page",
@@ -5337,7 +5832,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -5348,7 +5843,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -5547,7 +6042,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The disk to return. \n\n All 'disk[]' params are mutually exclusive, only one can be provided."
+            "description": "The disk to return."
           }
         ],
         "responses": {
@@ -6466,7 +6961,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -6477,7 +6972,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -6668,7 +7163,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The file storage volume to return. \n\n All 'file_storage_volume[]' params are mutually exclusive, only one can be provided."
+            "description": "The file storage volume to return."
           }
         ],
         "responses": {
@@ -7870,7 +8365,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The load balancer rule to return the details for. \n\n All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided."
+            "description": "The load balancer rule to return the details for."
           }
         ],
         "responses": {
@@ -8122,7 +8617,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -8133,7 +8628,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -8602,7 +9097,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -8613,7 +9108,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -9080,6 +9575,260 @@
         }
       }
     },
+    "/organizations/organization/object_storage/object_storage_cluster": {
+      "post": {
+        "operationId": "post:organization_object_storage_object_storage_cluster",
+        "summary": "Create object storage account",
+        "description": "Create a new object storage account for an organization. Provisioning will be started in the background and can be monitored via the GET account endpoint.\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Object storage"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "organization": {
+                    "$ref": "#/components/schemas/OrganizationLookup"
+                  },
+                  "object_storage_cluster": {
+                    "$ref": "#/components/schemas/ObjectStorageClusterLookup"
+                  }
+                },
+                "required": [
+                  "organization",
+                  "object_storage_cluster"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create a new object storage account for an organization. Provisioning will be started in the background and can be monitored via the GET account endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "object_storage_account": {
+                      "description": "The object storage account that was created",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ObjectStorageAccount"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "object_storage_account"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageClusterNotFoundOrganizationNotFound404Res"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashTaskQueueingError406Res"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      },
+      "get": {
+        "operationId": "get:organization_object_storage_object_storage_cluster",
+        "summary": "Get object storage account details",
+        "description": "Returns object storage account details\n## Scopes\n- `object_storage:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Object storage"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage:read"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage:read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The organization that owns the object storage account. \n\n All 'organization[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "organization[sub_domain]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The organization that owns the object storage account. \n\n All 'organization[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "object_storage_cluster[region]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The object storage cluster region."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns object storage account details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "object_storage_account": {
+                      "$ref": "#/components/schemas/ObjectStorageAccount"
+                    }
+                  },
+                  "required": [
+                    "object_storage_account"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/ObjectStorageAccountNotProvisionedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageAccountNotFoundObjectStorageClusterNotFoundOrganizationNotFound404Res"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete:organization_object_storage_object_storage_cluster",
+        "summary": "Move object storage to trash",
+        "description": "Move object storage into the trash\n## Scopes\n- `object_storage`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Object storage"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/object_storage"
+            ]
+          },
+          {
+            "Authenticator": [
+              "object_storage"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "organization": {
+                    "$ref": "#/components/schemas/OrganizationLookup"
+                  },
+                  "object_storage_cluster": {
+                    "$ref": "#/components/schemas/ObjectStorageClusterLookup"
+                  }
+                },
+                "required": [
+                  "organization",
+                  "object_storage_cluster"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Move object storage into the trash",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "trash_object": {
+                      "$ref": "#/components/schemas/DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObject"
+                    },
+                    "object_storage_account": {
+                      "$ref": "#/components/schemas/ObjectStorageAccount"
+                    }
+                  },
+                  "required": [
+                    "trash_object",
+                    "object_storage_account"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/ObjectStorageAccountNotProvisionedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ObjectStorageAccountNotFoundObjectStorageClusterNotFoundOrganizationNotFound404Res"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
     "/operating_systems": {
       "get": {
         "operationId": "get:operating_systems",
@@ -9166,7 +9915,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The operating system to return. \n\n All 'operating_system[]' params are mutually exclusive, only one can be provided."
+            "description": "The operating system to return."
           }
         ],
         "responses": {
@@ -10264,7 +11013,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "All 'dns_record[]' params are mutually exclusive, only one can be provided."
+            "description": ""
           }
         ],
         "responses": {
@@ -10706,7 +11455,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The security group to return all load rules for. \n\n All 'security_group[]' params are mutually exclusive, only one can be provided."
+            "description": "The security group to return all load rules for."
           },
           {
             "name": "page",
@@ -10884,7 +11633,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The security group rule to return the details for. \n\n All 'security_group_rule[]' params are mutually exclusive, only one can be provided."
+            "description": "The security group rule to return the details for."
           }
         ],
         "responses": {
@@ -11136,7 +11885,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -11147,7 +11896,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -11338,7 +12087,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The security group to return the details for. \n\n All 'security_group[]' params are mutually exclusive, only one can be provided."
+            "description": "The security group to return the details for."
           }
         ],
         "responses": {
@@ -11780,7 +12529,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The tag to load the details for. \n\n All 'tag[]' params are mutually exclusive, only one can be provided."
+            "description": "The tag to load the details for."
           }
         ],
         "responses": {
@@ -12010,7 +12759,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "All 'task[]' params are mutually exclusive, only one can be provided."
+            "description": ""
           }
         ],
         "responses": {
@@ -12785,7 +13534,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The virtual network to retrieve. \n\n All 'virtual_network[]' params are mutually exclusive, only one can be provided."
+            "description": "The virtual network to retrieve."
           }
         ],
         "responses": {
@@ -13180,7 +13929,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The virtual machine group to retrieve. \n\n All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided."
+            "description": "The virtual machine group to retrieve."
           }
         ],
         "responses": {
@@ -13489,6 +14238,99 @@
             "$ref": "#/components/responses/APIAuthenticator503Response"
           }
         }
+      },
+      "post": {
+        "operationId": "post:virtual_machine_network_interfaces",
+        "summary": "Create a virtual network interface",
+        "description": "Create a new virtual machine network interface with the provided details\n## Scopes\n- `virtual_machines`\n- `virtual_machines:network_interfaces`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Virtual machine network interfaces"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/virtual_machines",
+              "api.katapult.io/core/v1/virtual_machines:network_interfaces"
+            ]
+          },
+          {
+            "Authenticator": [
+              "virtual_machines",
+              "virtual_machines:network_interfaces"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "virtual_machine": {
+                    "$ref": "#/components/schemas/VirtualMachineLookup"
+                  },
+                  "network": {
+                    "$ref": "#/components/schemas/NetworkLookup"
+                  },
+                  "virtual_network": {
+                    "$ref": "#/components/schemas/VirtualNetworkLookup"
+                  },
+                  "speed_profile": {
+                    "$ref": "#/components/schemas/NetworkSpeedProfileLookup"
+                  }
+                },
+                "required": [
+                  "virtual_machine",
+                  "speed_profile"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Create a new virtual machine network interface with the provided details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "virtual_machine_network_interface": {
+                      "description": "The network interface details",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterface"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "virtual_machine_network_interface"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/APIAuthenticator403Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/NetworkNotFoundVirtualMachineNotFoundVirtualNetworkNotFound404Res"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
       }
     },
     "/virtual_machines/virtual_machine/networks/network/interface": {
@@ -13620,7 +14462,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The network interface to show the information for. \n\n All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided."
+            "description": "The network interface to show the information for."
           }
         ],
         "responses": {
@@ -13662,6 +14504,89 @@
             "$ref": "#/components/responses/APIAuthenticator503Response"
           }
         }
+      },
+      "delete": {
+        "operationId": "delete:virtual_machine_network_interface",
+        "summary": "Delete a virtual machine network interface",
+        "description": "\n## Scopes\n- `virtual_machines`\n- `virtual_machines:network_interfaces`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Virtual machine network interfaces"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/virtual_machines",
+              "api.katapult.io/core/v1/virtual_machines:network_interfaces"
+            ]
+          },
+          {
+            "Authenticator": [
+              "virtual_machines",
+              "virtual_machines:network_interfaces"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "virtual_machine_network_interface": {
+                    "$ref": "#/components/schemas/VirtualMachineNetworkInterfaceLookup"
+                  }
+                },
+                "required": [
+                  "virtual_machine_network_interface"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "virtual_machine_network_interface": {
+                      "description": "The deleted network interface details",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "virtual_machine_network_interface"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/APIAuthenticator403Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/VirtualMachineNetworkInterfaceNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/components/responses/DeletionRestrictedResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
       }
     },
     "/virtual_machine_network_interfaces/virtual_machine_network_interface/available_ips/address_version": {
@@ -13693,7 +14618,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The network interface to get IP addresses for. \n\n All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided."
+            "description": "The network interface to get IP addresses for."
           },
           {
             "name": "address_version",
@@ -13997,6 +14922,184 @@
         }
       }
     },
+    "/virtual_machine_network_interfaces/virtual_machine_network_interface/attach": {
+      "post": {
+        "operationId": "post:virtual_machine_network_interface_attach",
+        "summary": "Attach to virtual machine",
+        "description": "Attach a network interface to a virtual machine.\n## Scopes\n- `virtual_machines`\n- `virtual_machines:network_interfaces`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Virtual machine network interfaces"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/virtual_machines",
+              "api.katapult.io/core/v1/virtual_machines:network_interfaces"
+            ]
+          },
+          {
+            "Authenticator": [
+              "virtual_machines",
+              "virtual_machines:network_interfaces"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "virtual_machine_network_interface": {
+                    "$ref": "#/components/schemas/VirtualMachineNetworkInterfaceLookup"
+                  }
+                },
+                "required": [
+                  "virtual_machine_network_interface"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Attach a network interface to a virtual machine.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "virtual_machine_network_interface": {
+                      "description": "The network interface details",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterface"
+                        }
+                      ]
+                    },
+                    "task": {
+                      "$ref": "#/components/schemas/Task"
+                    }
+                  },
+                  "required": [
+                    "virtual_machine_network_interface",
+                    "task"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/VirtualMachineNetworkInterfaceNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/TaskQueueingErrorResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/VirtualMachineNetworkInterfaceAlreadyAttachedResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/virtual_machine_network_interfaces/virtual_machine_network_interface/detach": {
+      "post": {
+        "operationId": "post:virtual_machine_network_interface_detach",
+        "summary": "Detach from virtual machine",
+        "description": "Detach a network interface from its virtual machine.\n## Scopes\n- `virtual_machines`\n- `virtual_machines:network_interfaces`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Virtual machine network interfaces"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/virtual_machines",
+              "api.katapult.io/core/v1/virtual_machines:network_interfaces"
+            ]
+          },
+          {
+            "Authenticator": [
+              "virtual_machines",
+              "virtual_machines:network_interfaces"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "virtual_machine_network_interface": {
+                    "$ref": "#/components/schemas/VirtualMachineNetworkInterfaceLookup"
+                  }
+                },
+                "required": [
+                  "virtual_machine_network_interface"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Detach a network interface from its virtual machine.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "virtual_machine_network_interface": {
+                      "description": "The network interface details",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterface"
+                        }
+                      ]
+                    },
+                    "task": {
+                      "$ref": "#/components/schemas/Task"
+                    }
+                  },
+                  "required": [
+                    "virtual_machine_network_interface",
+                    "task"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/VirtualMachineNetworkInterfaceNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/TaskQueueingErrorResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/VirtualMachineNetworkInterfaceAlreadyDetachedResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
     "/virtual_machine_packages": {
       "get": {
         "operationId": "get:virtual_machine_packages",
@@ -14220,7 +15323,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "in": "query",
@@ -14231,7 +15334,7 @@
                 "type": "string"
               }
             },
-            "description": "An array of annotations to filter by. \n\n All 'annotations[]' params are mutually exclusive, only one can be provided. \n\n All `annotations[]` params should have the same amount of elements."
+            "description": "An array of annotations to filter by. \n\n All `annotations[]` params should have the same amount of elements."
           },
           {
             "name": "page",
@@ -16004,7 +17107,6 @@
         }
       },
       "KeyValue": {
-        "description": "All 'annotations[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "key": {
@@ -16209,7 +17311,6 @@
         }
       },
       "DiskArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -16285,7 +17386,6 @@
         ]
       },
       "VirtualMachineDiskArguments": {
-        "description": "All 'virtual_machine_disk[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "boot": {
@@ -16790,7 +17890,6 @@
         ]
       },
       "DiskLookup": {
-        "description": "All 'disk[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -18897,7 +19996,6 @@
         }
       },
       "VirtualMachineArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "hostname": {
@@ -18936,7 +20034,6 @@
         }
       },
       "VirtualMachineGroupLookup": {
-        "description": "All 'group[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -19260,7 +20357,6 @@
         ]
       },
       "VirtualMachineFlexibleResources": {
-        "description": "All 'resources[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "cpu_cores": {
@@ -19447,7 +20543,6 @@
         }
       },
       "VirtualMachineBuildDiskArguments": {
-        "description": "All 'disks[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -20015,7 +21110,6 @@
         }
       },
       "AuthSSHKeyProperties": {
-        "description": "All 'ssh_key[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -20027,7 +21121,6 @@
         }
       },
       "AuthSSHKeyLookup": {
-        "description": "All 'ssh_key[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -20098,7 +21191,6 @@
         }
       },
       "APITokenArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -20122,7 +21214,6 @@
         }
       },
       "APITokenLookup": {
-        "description": "All 'api_token[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -20513,7 +21604,6 @@
         ]
       },
       "DiskBackupPolicyLookup": {
-        "description": "All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -20576,7 +21666,6 @@
         ]
       },
       "DiskBackupPolicyArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "retention": {
@@ -20588,7 +21677,6 @@
         }
       },
       "ScheduleArguments": {
-        "description": "All 'schedule[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "frequency": {
@@ -20690,7 +21778,6 @@
         }
       },
       "DNSZoneArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -21032,7 +22119,6 @@
         }
       },
       "DNSRecordArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -21054,7 +22140,6 @@
         }
       },
       "DNSRecordContentArguments": {
-        "description": "All 'content[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "A": {
@@ -21085,7 +22170,7 @@
             "$ref": "#/components/schemas/DNSRecordContentArgumentsForPTR"
           },
           "SOA": {
-            "$ref": "#/components/schemas/DNSRecordContentArgumentsForSOA"
+            "type": "object"
           },
           "SRV": {
             "$ref": "#/components/schemas/DNSRecordContentArgumentsForSRV"
@@ -21102,7 +22187,6 @@
         }
       },
       "DNSRecordContentArgumentsForA": {
-        "description": "All 'A[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "ip_address": {
@@ -21111,7 +22195,6 @@
         }
       },
       "DNSRecordContentArgumentsForAAAA": {
-        "description": "All 'AAAA[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "ip_address": {
@@ -21120,7 +22203,6 @@
         }
       },
       "DNSRecordContentArgumentsForALIAS": {
-        "description": "All 'ALIAS[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "hostname": {
@@ -21129,7 +22211,6 @@
         }
       },
       "DNSRecordContentArgumentsForCAA": {
-        "description": "All 'CAA[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "flag": {
@@ -21144,7 +22225,6 @@
         }
       },
       "DNSRecordContentArgumentsForCNAME": {
-        "description": "All 'CNAME[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "hostname": {
@@ -21153,7 +22233,6 @@
         }
       },
       "DNSRecordContentArgumentsForIPS": {
-        "description": "All 'IPS[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "ip_addresses": {
@@ -21162,7 +22241,6 @@
         }
       },
       "DNSRecordContentArgumentsForMX": {
-        "description": "All 'MX[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "hostname": {
@@ -21171,7 +22249,6 @@
         }
       },
       "DNSRecordContentArgumentsForNS": {
-        "description": "All 'NS[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "hostname": {
@@ -21180,7 +22257,6 @@
         }
       },
       "DNSRecordContentArgumentsForPTR": {
-        "description": "All 'PTR[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "hostname": {
@@ -21188,11 +22264,7 @@
           }
         }
       },
-      "DNSRecordContentArgumentsForSOA": {
-        "description": "All 'SOA[]' params are mutually exclusive, only one can be provided."
-      },
       "DNSRecordContentArgumentsForSRV": {
-        "description": "All 'SRV[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "weight": {
@@ -21207,7 +22279,6 @@
         }
       },
       "DNSRecordContentArgumentsForSSHFP": {
-        "description": "All 'SSHFP[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "algorithm": {
@@ -21222,7 +22293,6 @@
         }
       },
       "DNSRecordContentArgumentsForTXT": {
-        "description": "All 'TXT[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "content": {
@@ -21231,7 +22301,6 @@
         }
       },
       "DNSRecordContentArgumentsForVirtualMachine": {
-        "description": "All 'VirtualMachine[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "virtual_machine": {
@@ -21246,7 +22315,6 @@
         ]
       },
       "DNSRecordLookup": {
-        "description": "All 'dns_record[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -21278,7 +22346,6 @@
         }
       },
       "SecurityGroupArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -21306,7 +22373,6 @@
         ]
       },
       "SecurityGroupLookup": {
-        "description": "All 'security_group[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -21379,7 +22445,6 @@
         ]
       },
       "SecurityGroupRuleArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "direction": {
@@ -21504,7 +22569,6 @@
         ]
       },
       "SecurityGroupRuleLookup": {
-        "description": "All 'security_group_rule[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -21675,7 +22739,6 @@
         ]
       },
       "FileStorageVolumeArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -21742,7 +22805,6 @@
         }
       },
       "FileStorageVolumeLookup": {
-        "description": "All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -21933,7 +22995,6 @@
         ]
       },
       "VirtualNetworkArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -21955,7 +23016,6 @@
         ]
       },
       "VirtualNetworkLookup": {
-        "description": "All 'virtual_network[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -22040,7 +23100,6 @@
         ]
       },
       "AddressListArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -22050,7 +23109,6 @@
         }
       },
       "AddressListLookup": {
-        "description": "All 'address_list[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -22065,7 +23123,6 @@
         ]
       },
       "AddressListEntryArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "address": {
@@ -22079,7 +23136,6 @@
         }
       },
       "AddressListEntryLookup": {
-        "description": "All 'address_list_entry[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -22276,7 +23332,6 @@
         }
       },
       "LoadBalancerArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -22319,7 +23374,6 @@
         }
       },
       "LoadBalancerWeightsArguments": {
-        "description": "All 'weights[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "virtual_machine_id": {
@@ -22686,7 +23740,6 @@
         }
       },
       "LoadBalancerRuleArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "algorithm": {
@@ -22743,7 +23796,6 @@
         }
       },
       "CertificateLookup": {
-        "description": "All 'certificates[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -22979,7 +24031,6 @@
         ]
       },
       "LoadBalancerRuleLookup": {
-        "description": "All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -23219,7 +24270,20 @@
             "type": "string"
           },
           "network": {
-            "$ref": "#/components/schemas/GetVirtualMachineNetworkInterfacesPartNetwork"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GetVirtualMachineNetworkInterfacesPartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GetVirtualMachineNetworkInterfacesPartVirtualNetwork"
+              }
+            ],
+            "nullable": true
           },
           "ip_addresses": {
             "type": "array",
@@ -23230,6 +24294,17 @@
         }
       },
       "GetVirtualMachineNetworkInterfacesPartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "GetVirtualMachineNetworkInterfacesPartVirtualNetwork": {
         "type": "object",
         "properties": {
           "id": {
@@ -23251,6 +24326,173 @@
           }
         }
       },
+      "NetworkSpeedProfileLookup": {
+        "description": "All 'speed_profile[]' params are mutually exclusive, only one can be provided.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterface": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "virtual_machine": {
+            "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfacesPartVirtualMachine"
+          },
+          "name": {
+            "type": "string"
+          },
+          "network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfacesPartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfacesPartVirtualNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "ip_addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfacesPartIPAddresses"
+            }
+          },
+          "speed_profile": {
+            "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfacesPartSpeedProfile"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfacesPartVirtualMachine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfacesPartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfacesPartVirtualNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfacesPartIPAddresses": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfacesPartSpeedProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "VirtualNetworkNotFoundSchema": {
+        "type": "object",
+        "description": "No virtual network was found matching any of the criteria provided in the arguments",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/VirtualNetworkNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "NetworkSpeedProfileNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "network_speed_profile_not_found"
+        ]
+      },
+      "NetworkSpeedProfileNotFoundSchema": {
+        "type": "object",
+        "description": "No network speed profile was found matching any of the criteria provided in the arguments",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/NetworkSpeedProfileNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfNetworkNotFoundVirtualMachineNotFoundVirtualNetworkNotFound404Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/VirtualMachineNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/NetworkNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/VirtualNetworkNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/NetworkSpeedProfileNotFoundSchema"
+          }
+        ]
+      },
       "GetVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface": {
         "type": "object",
         "properties": {
@@ -23264,7 +24506,20 @@
             "type": "string"
           },
           "network": {
-            "$ref": "#/components/schemas/GetVirtualMachineNetworkInterfacePartNetwork"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GetVirtualMachineNetworkInterfacePartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GetVirtualMachineNetworkInterfacePartVirtualNetwork"
+              }
+            ],
+            "nullable": true
           },
           "mac_address": {
             "type": "string"
@@ -23292,6 +24547,17 @@
         }
       },
       "GetVirtualMachineNetworkInterfacePartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "GetVirtualMachineNetworkInterfacePartVirtualNetwork": {
         "type": "object",
         "properties": {
           "id": {
@@ -23360,7 +24626,20 @@
             "type": "string"
           },
           "network": {
-            "$ref": "#/components/schemas/GetVMNIVMNIPartNetwork"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GetVMNIVMNIPartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GetVMNIVMNIPartVirtualNetwork"
+              }
+            ],
+            "nullable": true
           },
           "mac_address": {
             "type": "string"
@@ -23391,6 +24670,17 @@
         }
       },
       "GetVMNIVMNIPartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "GetVMNIVMNIPartVirtualNetwork": {
         "type": "object",
         "properties": {
           "id": {
@@ -23433,10 +24723,112 @@
         ]
       },
       "VirtualMachineNetworkInterfaceLookup": {
-        "description": "All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteVirtualMachineNetworkInterface200ResponseVirtualMachineNetworkInterface": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "virtual_machine": {
+            "$ref": "#/components/schemas/DeleteVirtualMachineNetworkInterfacePartVirtualMachine"
+          },
+          "name": {
+            "type": "string"
+          },
+          "network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DeleteVirtualMachineNetworkInterfacePartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DeleteVirtualMachineNetworkInterfacePartVirtualNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "ip_addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeleteVirtualMachineNetworkInterfacePartIPAddresses"
+            }
+          },
+          "speed_profile": {
+            "$ref": "#/components/schemas/DeleteVirtualMachineNetworkInterfacePartSpeedProfile"
+          }
+        }
+      },
+      "DeleteVirtualMachineNetworkInterfacePartVirtualMachine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteVirtualMachineNetworkInterfacePartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteVirtualMachineNetworkInterfacePartVirtualNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteVirtualMachineNetworkInterfacePartIPAddresses": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteVirtualMachineNetworkInterfacePartSpeedProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
             "type": "string"
           }
         }
@@ -23454,7 +24846,20 @@
             "type": "string"
           },
           "network": {
-            "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetwork"
+              }
+            ],
+            "nullable": true
           },
           "mac_address": {
             "type": "string"
@@ -23482,6 +24887,17 @@
         }
       },
       "PostVirtualMachineNetworkInterfaceAllocateIPPartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceAllocateIPPartVirtualNetwork": {
         "type": "object",
         "properties": {
           "id": {
@@ -23559,39 +24975,6 @@
           }
         ]
       },
-      "NetworkSpeedProfileLookup": {
-        "description": "All 'speed_profile[]' params are mutually exclusive, only one can be provided.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "permalink": {
-            "type": "string"
-          }
-        }
-      },
-      "NetworkSpeedProfileNotFoundEnum": {
-        "type": "string",
-        "enum": [
-          "network_speed_profile_not_found"
-        ]
-      },
-      "NetworkSpeedProfileNotFoundSchema": {
-        "type": "object",
-        "description": "No network speed profile was found matching any of the criteria provided in the arguments",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/NetworkSpeedProfileNotFoundEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        }
-      },
       "OneOfNetworkSpeedProfileNotFoundVirtualMachineNetworkInterfaceNotFound404Res": {
         "oneOf": [
           {
@@ -23606,6 +24989,224 @@
         "type": "string",
         "enum": [
           "speed_profile_already_assigned"
+        ]
+      },
+      "PostVirtualMachineNetworkInterfaceAttach200ResponseVirtualMachineNetworkInterface": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "virtual_machine": {
+            "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAttachPartVirtualMachine"
+          },
+          "name": {
+            "type": "string"
+          },
+          "network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAttachPartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAttachPartVirtualNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "ip_addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAttachPartIPAddresses"
+            }
+          },
+          "speed_profile": {
+            "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceAttachPartSpeedProfile"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceAttachPartVirtualMachine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceAttachPartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceAttachPartVirtualNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceAttachPartIPAddresses": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceAttachPartSpeedProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "VirtualMachineNetworkInterfaceAlreadyAttachedEnum": {
+        "type": "string",
+        "enum": [
+          "virtual_machine_network_interface_already_attached"
+        ]
+      },
+      "PostVirtualMachineNetworkInterfaceDetach200ResponseVirtualMachineNetworkInterface": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "virtual_machine": {
+            "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceDetachPartVirtualMachine"
+          },
+          "name": {
+            "type": "string"
+          },
+          "network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceDetachPartNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "virtual_network": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceDetachPartVirtualNetwork"
+              }
+            ],
+            "nullable": true
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "ip_addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceDetachPartIPAddresses"
+            }
+          },
+          "speed_profile": {
+            "$ref": "#/components/schemas/PostVirtualMachineNetworkInterfaceDetachPartSpeedProfile"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceDetachPartVirtualMachine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceDetachPartNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceDetachPartVirtualNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceDetachPartIPAddresses": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        }
+      },
+      "PostVirtualMachineNetworkInterfaceDetachPartSpeedProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "VirtualMachineNetworkInterfaceAlreadyDetachedEnum": {
+        "type": "string",
+        "enum": [
+          "virtual_machine_network_interface_already_detached"
         ]
       },
       "GetOrganizationTags200ResponseTags": {
@@ -23623,7 +25224,6 @@
         }
       },
       "TagArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -23641,7 +25241,6 @@
         ]
       },
       "TagLookup": {
-        "description": "All 'tag[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "id": {
@@ -23650,7 +25249,6 @@
         }
       },
       "VirtualMachineGroupArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -23840,7 +25438,6 @@
         ]
       },
       "ObjectStorageClusterLookup": {
-        "description": "All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "region": {
@@ -23848,8 +25445,191 @@
           }
         }
       },
+      "ObjectStorageAccount": {
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer"
+          },
+          "provisioning_state": {
+            "$ref": "#/components/schemas/ObjectStorageAccountProvisioningStateEnum"
+          },
+          "size": {
+            "type": "integer",
+            "description": "The total storage used in bytes (updated periodically)"
+          },
+          "bucket_count": {
+            "type": "integer"
+          },
+          "data_center": {
+            "$ref": "#/components/schemas/DataCenter"
+          }
+        }
+      },
+      "ObjectStorageAccountProvisioningStateEnum": {
+        "type": "string",
+        "enum": [
+          "provisioning",
+          "provisioned",
+          "failed"
+        ]
+      },
+      "ObjectStorageClusterNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "object_storage_cluster_not_found"
+        ]
+      },
+      "ObjectStorageClusterNotFoundSchema": {
+        "type": "object",
+        "description": "No object storage cluster was found matching any of the criteria provided in the arguments",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ObjectStorageClusterNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfObjectStorageClusterNotFoundOrganizationNotFound404Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/OrganizationNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ObjectStorageClusterNotFoundSchema"
+          }
+        ]
+      },
+      "ObjectStorageAccountNotProvisionedEnum": {
+        "type": "string",
+        "enum": [
+          "object_storage_account_not_provisioned"
+        ]
+      },
+      "ObjectStorageAccountNotProvisionedSchema": {
+        "type": "object",
+        "description": "An object storage account was found but it is not provisioned. If the problem persists, try re-creating the account.",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ObjectStorageAccountNotProvisionedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "ObjectStorageAccountSuspendedEnum": {
+        "type": "string",
+        "enum": [
+          "object_storage_account_suspended"
+        ]
+      },
+      "ObjectStorageAccountSuspendedSchema": {
+        "type": "object",
+        "description": "An object storage account was found from the arguments provided but it is suspended",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ObjectStorageAccountSuspendedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfObjectStorageAccountNotProvisionedOrganizationSuspendedPermissionDenied403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationNotActivatedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/PermissionDeniedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ObjectStorageAccountNotProvisionedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ObjectStorageAccountSuspendedSchema"
+          }
+        ]
+      },
+      "ObjectStorageAccountNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "object_storage_account_not_found"
+        ]
+      },
+      "ObjectStorageAccountNotFoundSchema": {
+        "type": "object",
+        "description": "No object storage account was found matching any of the criteria provided in the arguments",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ObjectStorageAccountNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfObjectStorageAccountNotFoundObjectStorageClusterNotFoundOrganizationNotFound404Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/OrganizationNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ObjectStorageClusterNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ObjectStorageAccountNotFoundSchema"
+          }
+        ]
+      },
+      "DeleteOrganizationObjectStorageObjectStorageCluster200ResponseTrashObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "keep_until": {
+            "type": "integer"
+          },
+          "object_type": {
+            "type": "string"
+          }
+        }
+      },
       "ObjectStorageBucketArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -23878,7 +25658,6 @@
         }
       },
       "ObjectStorageBucketACLArguments": {
-        "description": "All 'access_control_list[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "public_read": {
@@ -23996,136 +25775,7 @@
           }
         }
       },
-      "ObjectStorageAccountNotProvisionedEnum": {
-        "type": "string",
-        "enum": [
-          "object_storage_account_not_provisioned"
-        ]
-      },
-      "ObjectStorageAccountNotProvisionedSchema": {
-        "type": "object",
-        "description": "An object storage account was found from the arguments provided but it is not provisioned",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ObjectStorageAccountNotProvisionedEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        }
-      },
-      "ObjectStorageAccountSuspendedEnum": {
-        "type": "string",
-        "enum": [
-          "object_storage_account_suspended"
-        ]
-      },
-      "ObjectStorageAccountSuspendedSchema": {
-        "type": "object",
-        "description": "An object storage account was found from the arguments provided but it is suspended",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ObjectStorageAccountSuspendedEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        }
-      },
-      "OneOfObjectStorageAccountNotProvisionedOrganizationSuspendedPermissionDenied403Res": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/InvalidAPITokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
-          },
-          {
-            "$ref": "#/components/schemas/OrganizationSuspendedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/OrganizationNotActivatedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ObjectStorageAccountNotProvisionedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ObjectStorageAccountSuspendedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/PermissionDeniedSchema"
-          }
-        ]
-      },
-      "ObjectStorageClusterNotFoundEnum": {
-        "type": "string",
-        "enum": [
-          "object_storage_cluster_not_found"
-        ]
-      },
-      "ObjectStorageClusterNotFoundSchema": {
-        "type": "object",
-        "description": "No object storage cluster was found matching any of the criteria provided in the arguments",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ObjectStorageClusterNotFoundEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        }
-      },
-      "ObjectStorageAccountNotFoundEnum": {
-        "type": "string",
-        "enum": [
-          "object_storage_account_not_found"
-        ]
-      },
-      "ObjectStorageAccountNotFoundSchema": {
-        "type": "object",
-        "description": "No object storage account was found matching any of the criteria provided in the arguments",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ObjectStorageAccountNotFoundEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        }
-      },
-      "OneOfObjectStorageAccountNotFoundObjectStorageClusterNotFoundOrganizationNotFound404Res": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/OrganizationNotFoundSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ObjectStorageClusterNotFoundSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ObjectStorageAccountNotFoundSchema"
-          }
-        ]
-      },
       "ObjectStorageBucketLookup": {
-        "description": "All 'bucket[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "name": {
@@ -24288,7 +25938,6 @@
         ]
       },
       "ObjectStorageObjectPresignedURLArguments": {
-        "description": "All 'properties[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
         "properties": {
           "expiry_seconds": {
@@ -24296,6 +25945,143 @@
             "description": "The number of seconds the url should be valid for"
           }
         }
+      },
+      "ObjectStorageAccessKeyArguments": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the access key"
+          },
+          "all_buckets_read": {
+            "type": "boolean",
+            "description": "Some S3 clients require this permission to successfully connect to your account."
+          },
+          "all_objects_read": {
+            "type": "boolean",
+            "description": "Global read access for objects in all buckets"
+          },
+          "all_objects_write": {
+            "type": "boolean",
+            "description": "Global write access to create and delete objects in all buckets"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "ObjectStorageAccessKey": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer"
+          },
+          "region": {
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/ObjectStorageAccessKeyStateEnum"
+          },
+          "all_buckets_read": {
+            "type": "boolean",
+            "description": "Global access to list all buckets"
+          },
+          "all_objects_read": {
+            "type": "boolean",
+            "description": "Global read access for objects in all buckets"
+          },
+          "all_objects_write": {
+            "type": "boolean",
+            "description": "Global write access to create and delete objects in all buckets"
+          },
+          "read_buckets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The names of specific buckets that this key has read access to, empty if all_objects_read is true"
+            }
+          },
+          "write_buckets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The names of specific buckets that this key has write access to, empty if all_objects_write is true"
+            }
+          },
+          "server_url": {
+            "type": "string",
+            "description": "The server URL for the S3 credentials",
+            "nullable": true
+          },
+          "s3_access_key_id": {
+            "type": "string",
+            "description": "The S3 access key ID",
+            "nullable": true
+          },
+          "s3_secret_access_key": {
+            "type": "string",
+            "description": "Only available when using the generate credentials endpoint",
+            "nullable": true
+          }
+        }
+      },
+      "ObjectStorageAccessKeyStateEnum": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "configured"
+        ]
+      },
+      "ObjectStorageAccessKeyLookup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "ObjectStorageAccessKeyNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "object_storage_access_key_not_found"
+        ]
+      },
+      "ObjectStorageProvisioningErrorEnum": {
+        "type": "string",
+        "enum": [
+          "object_storage_provisioning_error"
+        ]
+      },
+      "ObjectStorageProvisioningErrorSchema": {
+        "type": "object",
+        "description": "Provisioning is in progress. Please try again later.",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ObjectStorageProvisioningErrorEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfObjectStorageProvisioningErrorValidationError422Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ValidationErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ObjectStorageProvisioningErrorSchema"
+          }
+        ]
       }
     },
     "securitySchemes": {
@@ -24346,6 +26132,7 @@
               "api.katapult.io/core/v1/virtual_machines:power_actions": "Start & stop virtual machines",
               "api.katapult.io/core/v1/virtual_machines:console": "Access virtual machine consoles",
               "api.katapult.io/core/v1/virtual_machines:authorized_keys": "Access virtual machine authorized keys",
+              "api.katapult.io/core/v1/virtual_machines:network_interfaces": "Access virtual machine network interfaces",
               "api.katapult.io/core/v1/virtual_machine_groups": "Manage virtual machine groups",
               "api.katapult.io/core/v1/virtual_machine_groups:read": "Read-only access to virtual machine groups",
               "api.katapult.io/core/v1/virtual_networks": "Manage virtual networks",
@@ -25420,6 +27207,16 @@
           }
         }
       },
+      "NetworkNotFoundVirtualMachineNotFoundVirtualNetworkNotFound404Res": {
+        "description": "404 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfNetworkNotFoundVirtualMachineNotFoundVirtualNetworkNotFound404Res"
+            }
+          }
+        }
+      },
       "InterfaceNotFoundNetworkNotFoundVirtualMachineNotFound404Res": {
         "description": "404 error response",
         "content": {
@@ -25488,6 +27285,46 @@
               "properties": {
                 "code": {
                   "$ref": "#/components/schemas/SpeedProfileAlreadyAssignedEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "VirtualMachineNetworkInterfaceAlreadyAttachedResponse": {
+        "description": "The virtual machine network interface is already attached to the virtual machine",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/VirtualMachineNetworkInterfaceAlreadyAttachedEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "VirtualMachineNetworkInterfaceAlreadyDetachedResponse": {
+        "description": "The virtual machine network interface is already detached from the virtual machine",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/VirtualMachineNetworkInterfaceAlreadyDetachedEnum"
                 },
                 "description": {
                   "type": "string"
@@ -25710,6 +27547,16 @@
           }
         }
       },
+      "ObjectStorageClusterNotFoundOrganizationNotFound404Res": {
+        "description": "404 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfObjectStorageClusterNotFoundOrganizationNotFound404Res"
+            }
+          }
+        }
+      },
       "ObjectStorageAccountNotProvisionedOrganizationSuspendedPermissionDenied403Res": {
         "description": "403 error response",
         "content": {
@@ -25796,6 +27643,56 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/OneOfObjectNotFoundObjectStorageBucketNotFoundObjectStorageClusterNotFound404Res"
+            }
+          }
+        }
+      },
+      "ObjectStorageAccessKeyNotFoundResponse": {
+        "description": "No object storage access key was found matching any of the criteria provided in the arguments.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/ObjectStorageAccessKeyNotFoundEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ObjectStorageProvisioningErrorResponse": {
+        "description": "Provisioning is in progress. Please try again later.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/ObjectStorageProvisioningErrorEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ObjectStorageProvisioningErrorValidationError422Res": {
+        "description": "422 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfObjectStorageProvisioningErrorValidationError422Res"
             }
           }
         }
@@ -25950,10 +27847,13 @@
       "name": "Users"
     },
     {
+      "name": "Object storage"
+    },
+    {
       "name": "Buckets"
     },
     {
-      "name": "Object storage"
+      "name": "Access keys"
     }
   ],
   "x-tagGroups": [
@@ -26077,6 +27977,7 @@
     {
       "name": "Object storage",
       "tags": [
+        "Access keys",
         "Buckets",
         "Object storage"
       ]
