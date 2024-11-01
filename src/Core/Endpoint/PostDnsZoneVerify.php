@@ -18,6 +18,9 @@ class PostDnsZoneVerify extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * Attempt to verify the nameservers for a given DNS zone
      * ## Scopes
      * - `dns`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DnsZonesDnsZoneVerifyPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostDnsZoneVerify extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

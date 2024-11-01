@@ -20,12 +20,17 @@ class GetDiskDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Client\BaseEnd
      * - `disk_backup_policies`
      * - `disk_backup_policies:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $disk[id] The disk to return disk backup policies for. All 'disk[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @var string $disk[id] The disk to return disk backup policies for.
+     *
+     * All 'disk[]' params are mutually exclusive, only one can be provided.
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -57,7 +62,7 @@ class GetDiskDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Client\BaseEnd
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['disk[id]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('disk[id]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
         $optionsResolver->addAllowedTypes('per_page', ['int']);
@@ -104,6 +109,6 @@ class GetDiskDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Client\BaseEnd
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -18,6 +18,9 @@ class DeleteIpAddress extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * Release an IP address from its organization
      * ## Scopes
      * - `ip_addresses`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\IpAddressesIpAddressDeleteBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class DeleteIpAddress extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

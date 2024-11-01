@@ -85,6 +85,6 @@ class PostOrganizationSshKeys extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

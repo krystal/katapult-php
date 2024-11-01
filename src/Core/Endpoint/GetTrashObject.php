@@ -19,11 +19,18 @@ class GetTrashObject extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * ## Scopes
      * - `trash_objects:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $trash_object[id] The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
-     * @var string $trash_object[object_id] The trash object to find. All 'trash_object[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @var string $trash_object[id] The trash object to find.
+     *
+     * All 'trash_object[]' params are mutually exclusive, only one can be provided.
+     * @var string $trash_object[object_id] The trash object to find.
+     *
+     * All 'trash_object[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -97,6 +104,6 @@ class GetTrashObject extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -18,6 +18,9 @@ class DeleteDisk extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
      * Deletes a disk and moves it to the trash
      * ## Scopes
      * - `disks`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DisksDiskDeleteBody $requestBody = null)
     {
@@ -91,6 +94,6 @@ class DeleteDisk extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

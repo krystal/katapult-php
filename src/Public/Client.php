@@ -90,8 +90,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var int $page
-     * @var int $per_page
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
      *          }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

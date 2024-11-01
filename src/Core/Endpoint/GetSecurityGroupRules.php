@@ -20,12 +20,17 @@ class GetSecurityGroupRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * - `security_groups`
      * - `security_groups:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $security_group[id] The security group to return all load rules for. All 'security_group[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @var string $security_group[id] The security group to return all load rules for.
+     *
+     * All 'security_group[]' params are mutually exclusive, only one can be provided.
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -57,7 +62,7 @@ class GetSecurityGroupRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['security_group[id]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('security_group[id]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
         $optionsResolver->addAllowedTypes('per_page', ['int']);
@@ -100,6 +105,6 @@ class GetSecurityGroupRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

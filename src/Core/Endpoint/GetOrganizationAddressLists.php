@@ -20,15 +20,30 @@ class GetOrganizationAddressLists extends \KatapultAPI\Core\Runtime\Client\BaseE
      * - `address_lists`
      * - `address_lists:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $organization[id] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization for which the address lists should be returned. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[key] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var string $annotations[value] An array of annotations to filter by. All 'annotations[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @var string $organization[id] The organization for which the address lists should be returned.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] The organization for which the address lists should be returned.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var array $annotations[][key] An array of annotations to filter by.
+     *
+     * All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *
+     * All `annotations[]` params should have the same amount of elements.
+     * @var array $annotations[][value] An array of annotations to filter by.
+     *
+     * All 'annotations[]' params are mutually exclusive, only one can be provided.
+     *
+     * All `annotations[]` params should have the same amount of elements.
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -58,13 +73,13 @@ class GetOrganizationAddressLists extends \KatapultAPI\Core\Runtime\Client\BaseE
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'annotations[key]', 'annotations[value]', 'page', 'per_page']);
+        $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'annotations[][ke', 'annotations[][valu', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('organization[id]', ['string']);
         $optionsResolver->addAllowedTypes('organization[sub_domain]', ['string']);
-        $optionsResolver->addAllowedTypes('annotations[key]', ['string']);
-        $optionsResolver->addAllowedTypes('annotations[value]', ['string']);
+        $optionsResolver->addAllowedTypes('annotations[][ke', ['array']);
+        $optionsResolver->addAllowedTypes('annotations[][valu', ['array']);
         $optionsResolver->addAllowedTypes('page', ['int']);
         $optionsResolver->addAllowedTypes('per_page', ['int']);
 
@@ -106,6 +121,6 @@ class GetOrganizationAddressLists extends \KatapultAPI\Core\Runtime\Client\BaseE
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

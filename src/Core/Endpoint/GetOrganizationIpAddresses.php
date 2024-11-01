@@ -20,14 +20,21 @@ class GetOrganizationIpAddresses extends \KatapultAPI\Core\Runtime\Client\BaseEn
      * - `ip_addresses`
      * - `ip_addresses:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $organization[id] The organization to use when looking up IP addresses. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to use when looking up IP addresses. All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var bool   $allocated If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @var string $organization[id] The organization to use when looking up IP addresses.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] The organization to use when looking up IP addresses.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var bool $allocated If true, only return allocated IP addresss. If false, only return unallocated IP addresses.
+     * @var int  $page The page number to request. If not provided, the first page will be returned.
+     * @var int  $per_page The number of items to return per page. If not provided, the default value will be used.
+     *           }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -59,7 +66,7 @@ class GetOrganizationIpAddresses extends \KatapultAPI\Core\Runtime\Client\BaseEn
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'allocated', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('organization[id]', ['string']);
         $optionsResolver->addAllowedTypes('organization[sub_domain]', ['string']);
         $optionsResolver->addAllowedTypes('allocated', ['bool']);
@@ -104,6 +111,6 @@ class GetOrganizationIpAddresses extends \KatapultAPI\Core\Runtime\Client\BaseEn
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

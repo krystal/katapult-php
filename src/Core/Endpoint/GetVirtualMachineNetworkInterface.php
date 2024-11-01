@@ -20,13 +20,24 @@ class GetVirtualMachineNetworkInterface extends \KatapultAPI\Core\Runtime\Client
      * - `virtual_machines`
      * - `virtual_machines:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $virtual_machine[id] The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $virtual_machine[fqdn] The virtual machine to find the network interface for. All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     * @var string $network[id] The network to find the network interface for. All 'network[]' params are mutually exclusive, only one can be provided.
-     * @var string $network[permalink] The network to find the network interface for. All 'network[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @var string $virtual_machine[id] The virtual machine to find the network interface for.
+     *
+     * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     * @var string $virtual_machine[fqdn] The virtual machine to find the network interface for.
+     *
+     * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     * @var string $network[id] The network to find the network interface for.
+     *
+     * All 'network[]' params are mutually exclusive, only one can be provided.
+     * @var string $network[permalink] The network to find the network interface for.
+     *
+     * All 'network[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -106,6 +117,6 @@ class GetVirtualMachineNetworkInterface extends \KatapultAPI\Core\Runtime\Client
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

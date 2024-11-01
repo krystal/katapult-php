@@ -95,6 +95,6 @@ class GetDataCenter extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implem
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -95,6 +95,6 @@ class GetDataCenterDefaultNetwork extends \KatapultAPI\Core\Runtime\Client\BaseE
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

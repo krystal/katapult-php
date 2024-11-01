@@ -18,6 +18,9 @@ class PutDiskIoProfile extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
      * Change disk IO profile.
      * ## Scopes
      * - `disks`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DisksDiskIoProfilePutBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PutDiskIoProfile extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

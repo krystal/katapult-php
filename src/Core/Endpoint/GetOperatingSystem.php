@@ -19,8 +19,10 @@ class GetOperatingSystem extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
      *
      * @param array $queryParameters {
      *
-     * @var string $operating_system[id] The operating system to return. All 'operating_system[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @var string $operating_system[id] The operating system to return.
+     *
+     * All 'operating_system[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -93,6 +95,6 @@ class GetOperatingSystem extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

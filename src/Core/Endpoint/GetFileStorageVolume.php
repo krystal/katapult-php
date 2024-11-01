@@ -20,10 +20,15 @@ class GetFileStorageVolume extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
      * - `file_storage_volumes`
      * - `file_storage_volumes:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $file_storage_volume[id] The file storage volume to return. All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @var string $file_storage_volume[id] The file storage volume to return.
+     *
+     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -100,6 +105,6 @@ class GetFileStorageVolume extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

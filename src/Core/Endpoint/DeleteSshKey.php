@@ -85,6 +85,6 @@ class DeleteSshKey extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

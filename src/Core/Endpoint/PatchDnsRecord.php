@@ -18,6 +18,9 @@ class PatchDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * Update a DNS record properties
      * ## Scopes
      * - `dns`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DnsRecordsDnsRecordPatchBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PatchDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

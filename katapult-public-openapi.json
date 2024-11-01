@@ -1,9 +1,14 @@
 {
   "openapi": "3.0.0",
   "info": {
+    "x-katapult-version": "2.60.0",
     "version": "1.0.0",
     "title": "Katapult Public API",
     "description": "Welcome to the documentation for the Katapult Public API"
+  },
+  "externalDocs": {
+    "description": "Katapult API Documentation",
+    "url": "https://developers.katapult.io/docs/category/public-api"
   },
   "servers": [
     {
@@ -324,15 +329,21 @@
             "name": "page",
             "in": "query",
             "schema": {
-              "type": "integer"
-            }
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number to request. If not provided, the first page will be returned."
           },
           {
             "name": "per_page",
             "in": "query",
             "schema": {
-              "type": "integer"
-            }
+              "type": "integer",
+              "default": 30,
+              "minimum": 1
+            },
+            "description": "The number of items to return per page. If not provided, the default value will be used."
           }
         ],
         "responses": {

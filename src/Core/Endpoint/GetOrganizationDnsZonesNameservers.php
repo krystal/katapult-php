@@ -20,6 +20,9 @@ class GetOrganizationDnsZonesNameservers extends \KatapultAPI\Core\Runtime\Clien
      * - `dns`
      * - `dns:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -98,6 +101,6 @@ class GetOrganizationDnsZonesNameservers extends \KatapultAPI\Core\Runtime\Clien
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

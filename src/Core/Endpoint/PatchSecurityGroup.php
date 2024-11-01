@@ -18,6 +18,9 @@ class PatchSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
      * Updates a security group with new properties
      * ## Scopes
      * - `security_groups`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\SecurityGroupsSecurityGroupPatchBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PatchSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

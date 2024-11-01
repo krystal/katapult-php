@@ -18,6 +18,9 @@ class DeleteAddressList extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * Delete a address list.
      * ## Scopes
      * - `address_lists`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\AddressListsAddressListDeleteBody $requestBody = null)
     {
@@ -83,6 +86,6 @@ class DeleteAddressList extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

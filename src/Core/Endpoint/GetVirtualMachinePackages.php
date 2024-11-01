@@ -19,13 +19,20 @@ class GetVirtualMachinePackages extends \KatapultAPI\Core\Runtime\Client\BaseEnd
      * ## Scopes
      * - `virtual_machine_packages:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $organization[id] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed). All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int    $page
-     * @var int    $per_page
-     *             }
+     * @var string $organization[id] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed).
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] Provide an organization to only show packages available to the given organization (otherwise only public packages will be displayed).
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -57,7 +64,7 @@ class GetVirtualMachinePackages extends \KatapultAPI\Core\Runtime\Client\BaseEnd
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('organization[id]', ['string']);
         $optionsResolver->addAllowedTypes('organization[sub_domain]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
@@ -101,6 +108,6 @@ class GetVirtualMachinePackages extends \KatapultAPI\Core\Runtime\Client\BaseEnd
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

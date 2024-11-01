@@ -19,8 +19,8 @@ class GetCountries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
      *
      * @param array $queryParameters {
      *
-     * @var int $page
-     * @var int $per_page
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
      *          }
      */
     public function __construct(array $queryParameters = [])
@@ -53,7 +53,7 @@ class GetCountries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('page', ['int']);
         $optionsResolver->addAllowedTypes('per_page', ['int']);
 
@@ -91,6 +91,6 @@ class GetCountries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

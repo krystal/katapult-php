@@ -95,6 +95,6 @@ class GetOrganizationAvailableNetworks extends \KatapultAPI\Core\Runtime\Client\
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

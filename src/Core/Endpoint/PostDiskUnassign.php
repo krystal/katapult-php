@@ -18,6 +18,9 @@ class PostDiskUnassign extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
      * Unassign a disk from a virtual machine.
      * ## Scopes
      * - `disks`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DisksDiskUnassignPostBody $requestBody = null)
     {
@@ -91,6 +94,6 @@ class PostDiskUnassign extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

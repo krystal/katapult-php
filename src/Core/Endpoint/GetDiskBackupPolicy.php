@@ -20,10 +20,15 @@ class GetDiskBackupPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
      * - `disk_backup_policies`
      * - `disk_backup_policies:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
-     * @var string $disk_backup_policy[id] The disk backup policy to get information for. All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @var string $disk_backup_policy[id] The disk backup policy to get information for.
+     *
+     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -100,6 +105,6 @@ class GetDiskBackupPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

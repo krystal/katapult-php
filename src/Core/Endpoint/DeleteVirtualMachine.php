@@ -18,6 +18,9 @@ class DeleteVirtualMachine extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
      * Moves an existing virtual machine to the trash
      * ## Scopes
      * - `virtual_machines`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDeleteBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class DeleteVirtualMachine extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

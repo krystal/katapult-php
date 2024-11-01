@@ -18,6 +18,9 @@ class PostOrganizationApiTokens extends \KatapultAPI\Core\Runtime\Client\BaseEnd
      * Create a new API token for a given organization
      * ## Scopes
      * - `api_tokens`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationApiTokensPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationApiTokens extends \KatapultAPI\Core\Runtime\Client\BaseEnd
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

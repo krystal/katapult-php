@@ -18,6 +18,9 @@ class DeleteDiskBackupPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * Deletes a disk backup policy and moves it to the trash
      * ## Scopes
      * - `disk_backup_policies`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DiskBackupPoliciesDiskBackupPolicyDeleteBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class DeleteDiskBackupPolicy extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

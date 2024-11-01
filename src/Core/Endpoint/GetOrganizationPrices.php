@@ -19,6 +19,9 @@ class GetOrganizationPrices extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      * ## Scopes
      * - `organizations:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -97,6 +100,6 @@ class GetOrganizationPrices extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

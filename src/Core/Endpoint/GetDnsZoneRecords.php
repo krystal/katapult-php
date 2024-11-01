@@ -20,6 +20,9 @@ class GetDnsZoneRecords extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * - `dns`
      * - `dns:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
      * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
@@ -98,6 +101,6 @@ class GetDnsZoneRecords extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

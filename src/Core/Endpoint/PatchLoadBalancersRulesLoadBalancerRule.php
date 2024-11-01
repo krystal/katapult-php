@@ -18,6 +18,9 @@ class PatchLoadBalancersRulesLoadBalancerRule extends \KatapultAPI\Core\Runtime\
      * Updates a load balancer rule with new properties
      * ## Scopes
      * - `load_balancers`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\LoadBalancersRulesLoadBalancerRulePatchBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PatchLoadBalancersRulesLoadBalancerRule extends \KatapultAPI\Core\Runtime\
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -19,9 +19,13 @@ class GetNetwork extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
      *
      * @param array $queryParameters {
      *
-     * @var string $network[id] The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
-     * @var string $network[permalink] The network to return. All 'network[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @var string $network[id] The network to return.
+     *
+     * All 'network[]' params are mutually exclusive, only one can be provided.
+     * @var string $network[permalink] The network to return.
+     *
+     * All 'network[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -95,6 +99,6 @@ class GetNetwork extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

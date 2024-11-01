@@ -65,6 +65,6 @@ class GetOrganizations extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

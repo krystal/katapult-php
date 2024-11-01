@@ -20,6 +20,9 @@ class GetOrganizationDeletionSteps extends \KatapultAPI\Core\Runtime\Client\Base
      * - `organizations:delete`
      * - `managed_organizations:delete`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
@@ -98,6 +101,6 @@ class GetOrganizationDeletionSteps extends \KatapultAPI\Core\Runtime\Client\Base
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

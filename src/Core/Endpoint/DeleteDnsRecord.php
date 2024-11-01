@@ -18,6 +18,9 @@ class DeleteDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
      * Delete a DNS record
      * ## Scopes
      * - `dns`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\DnsRecordsDnsRecordDeleteBody $requestBody = null)
     {
@@ -83,6 +86,6 @@ class DeleteDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

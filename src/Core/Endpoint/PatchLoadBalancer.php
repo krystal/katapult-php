@@ -18,6 +18,9 @@ class PatchLoadBalancer extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * Updates a load balancer with new properties
      * ## Scopes
      * - `load_balancers`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\LoadBalancersLoadBalancerPatchBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PatchLoadBalancer extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

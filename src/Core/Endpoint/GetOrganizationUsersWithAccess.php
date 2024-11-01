@@ -24,12 +24,15 @@ class GetOrganizationUsersWithAccess extends \KatapultAPI\Core\Runtime\Client\Ba
      * ## Scopes
      * - `organizations:read`
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
      * @var string $organization[id] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
-     * @var int    $page
-     * @var int    $per_page
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
      *             }
      */
     public function __construct(array $queryParameters = [])
@@ -62,7 +65,7 @@ class GetOrganizationUsersWithAccess extends \KatapultAPI\Core\Runtime\Client\Ba
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['organization[id]', 'organization[sub_domain]', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
+        $optionsResolver->setDefaults(['page' => 1, 'per_page' => 30]);
         $optionsResolver->addAllowedTypes('organization[id]', ['string']);
         $optionsResolver->addAllowedTypes('organization[sub_domain]', ['string']);
         $optionsResolver->addAllowedTypes('page', ['int']);
@@ -106,6 +109,6 @@ class GetOrganizationUsersWithAccess extends \KatapultAPI\Core\Runtime\Client\Ba
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

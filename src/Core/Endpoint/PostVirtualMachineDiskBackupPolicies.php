@@ -18,6 +18,9 @@ class PostVirtualMachineDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Cli
      * Creates a new disk backup policy for a virtual machine
      * ## Scopes
      * - `disk_backup_policies`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody $requestBody = null)
     {
@@ -91,6 +94,6 @@ class PostVirtualMachineDiskBackupPolicies extends \KatapultAPI\Core\Runtime\Cli
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

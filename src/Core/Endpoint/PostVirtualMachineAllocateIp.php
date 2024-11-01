@@ -18,6 +18,9 @@ class PostVirtualMachineAllocateIp extends \KatapultAPI\Core\Runtime\Client\Base
      * Allocate an IP address to a virtual machine, automatically determining the network interface
      * ## Scopes
      * - `ip_addresses`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachineAllocateIpPostBody $requestBody = null)
     {
@@ -91,6 +94,6 @@ class PostVirtualMachineAllocateIp extends \KatapultAPI\Core\Runtime\Client\Base
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

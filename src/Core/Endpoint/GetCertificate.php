@@ -20,6 +20,9 @@ class GetCertificate extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * - `certificates`
      * - `certificates:read`.
      *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
      * @param array $queryParameters {
      *
      * @var string $certificate[id] All 'certificate[]' params are mutually exclusive, only one can be provided.
@@ -100,6 +103,6 @@ class GetCertificate extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

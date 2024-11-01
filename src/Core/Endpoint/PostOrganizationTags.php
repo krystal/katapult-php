@@ -18,6 +18,9 @@ class PostOrganizationTags extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
      * Creates a new tag with the provided properties
      * ## Scopes
      * - `tags`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationTagsPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationTags extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

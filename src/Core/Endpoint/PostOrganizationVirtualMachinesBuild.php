@@ -18,6 +18,9 @@ class PostOrganizationVirtualMachinesBuild extends \KatapultAPI\Core\Runtime\Cli
      * Builds a new virtual machine based on the arguments provided to this endpoint. Virtual machines will be built in the background. This task will return an task object that will allow you to monitor the build process using the appropriate API action. This action only offers a small subset of the full functionality needed when provisioning virtual machines - see the `build_from_spec` action for a full advanced virtual machine creation method.
      * ## Scopes
      * - `virtual_machines`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildPostBody $requestBody = null)
     {
@@ -87,6 +90,6 @@ class PostOrganizationVirtualMachinesBuild extends \KatapultAPI\Core\Runtime\Cli
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -19,9 +19,13 @@ class GetZone extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
      *
      * @param array $queryParameters {
      *
-     * @var string $zone[id] The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
-     * @var string $zone[permalink] The zone to find. All 'zone[]' params are mutually exclusive, only one can be provided.
-     *             }
+     * @var string $zone[id] The zone to find.
+     *
+     * All 'zone[]' params are mutually exclusive, only one can be provided.
+     * @var string $zone[permalink] The zone to find.
+     *
+     * All 'zone[]' params are mutually exclusive, only one can be provided.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -95,6 +99,6 @@ class GetZone extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }

@@ -19,6 +19,9 @@ class PostVirtualMachineStart extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
      * ## Scopes
      * - `virtual_machines`
      * - `virtual_machines:power_actions`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\VirtualMachinesVirtualMachineStartPostBody $requestBody = null)
     {
@@ -88,6 +91,6 @@ class PostVirtualMachineStart extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
 
     public function getAuthenticationScopes(): array
     {
-        return ['Authenticator'];
+        return ['OAuth2', 'Authenticator'];
     }
 }
