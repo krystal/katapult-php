@@ -44,8 +44,6 @@ class VirtualMachineArguments extends \ArrayObject
      */
     protected $gpuType;
     /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineGroupLookup
      */
     protected $group;
@@ -127,17 +125,11 @@ class VirtualMachineArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     */
     public function getGroup(): VirtualMachineGroupLookup
     {
         return $this->group;
     }
 
-    /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     */
     public function setGroup(VirtualMachineGroupLookup $group): self
     {
         $this->initialized['group'] = true;

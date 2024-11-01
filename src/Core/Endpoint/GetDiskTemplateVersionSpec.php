@@ -26,9 +26,7 @@ class GetDiskTemplateVersionSpec extends \KatapultAPI\Core\Runtime\Client\BaseEn
      * @param array $queryParameters {
      *
      * @var string $disk_template_version[id] The disk template version to return.
-     *
-     * All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

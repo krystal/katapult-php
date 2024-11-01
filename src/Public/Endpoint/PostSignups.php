@@ -15,7 +15,7 @@ class PostSignups extends \KatapultAPI\Public\Runtime\Client\BaseEndpoint implem
     use \KatapultAPI\Public\Runtime\Client\EndpointTrait;
 
     /**
-     * This will create a new signup object and e-mail the appropriate welcome e-mail to the given email address.
+     * This will create a new signup object, which can be either verified by e-mail or by the user creating an account in Identity.
      */
     public function __construct(?\KatapultAPI\Public\Model\SignupsPostBody $requestBody = null)
     {

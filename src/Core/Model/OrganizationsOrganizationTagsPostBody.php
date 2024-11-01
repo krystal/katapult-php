@@ -28,8 +28,6 @@ class OrganizationsOrganizationTagsPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var TagArguments
      */
     protected $properties;
@@ -53,17 +51,11 @@ class OrganizationsOrganizationTagsPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): TagArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(TagArguments $properties): self
     {
         $this->initialized['properties'] = true;

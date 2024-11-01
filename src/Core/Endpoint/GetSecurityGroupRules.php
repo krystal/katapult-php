@@ -25,12 +25,10 @@ class GetSecurityGroupRules extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      *
      * @param array $queryParameters {
      *
-     * @var string $security_group[id] The security group to return all load rules for.
-     *
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     * @var string $security_group[id] The security group to return all load rules for
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

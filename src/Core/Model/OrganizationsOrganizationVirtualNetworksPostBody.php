@@ -34,8 +34,6 @@ class OrganizationsOrganizationVirtualNetworksPostBody extends \ArrayObject
      */
     protected $dataCenter;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualNetworkArguments
      */
     protected $properties;
@@ -78,17 +76,11 @@ class OrganizationsOrganizationVirtualNetworksPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): VirtualNetworkArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(VirtualNetworkArguments $properties): self
     {
         $this->initialized['properties'] = true;

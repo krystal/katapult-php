@@ -22,23 +22,15 @@ class DnsRecordsDnsRecordDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'dns_record[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordLookup
      */
     protected $dnsRecord;
 
-    /**
-     * All 'dns_record[]' params are mutually exclusive, only one can be provided.
-     */
     public function getDnsRecord(): DNSRecordLookup
     {
         return $this->dnsRecord;
     }
 
-    /**
-     * All 'dns_record[]' params are mutually exclusive, only one can be provided.
-     */
     public function setDnsRecord(DNSRecordLookup $dnsRecord): self
     {
         $this->initialized['dnsRecord'] = true;

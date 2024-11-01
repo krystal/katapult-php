@@ -22,23 +22,15 @@ class VirtualMachineGroupsVirtualMachineGroupDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualMachineGroupLookup
      */
     protected $virtualMachineGroup;
 
-    /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     */
     public function getVirtualMachineGroup(): VirtualMachineGroupLookup
     {
         return $this->virtualMachineGroup;
     }
 
-    /**
-     * All 'group[]' params are mutually exclusive, only one can be provided.
-     */
     public function setVirtualMachineGroup(VirtualMachineGroupLookup $virtualMachineGroup): self
     {
         $this->initialized['virtualMachineGroup'] = true;

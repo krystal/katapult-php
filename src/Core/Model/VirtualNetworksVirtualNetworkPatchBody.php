@@ -22,29 +22,19 @@ class VirtualNetworksVirtualNetworkPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualNetworkLookup
      */
     protected $virtualNetwork;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var VirtualNetworkArguments
      */
     protected $properties;
 
-    /**
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     */
     public function getVirtualNetwork(): VirtualNetworkLookup
     {
         return $this->virtualNetwork;
     }
 
-    /**
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     */
     public function setVirtualNetwork(VirtualNetworkLookup $virtualNetwork): self
     {
         $this->initialized['virtualNetwork'] = true;
@@ -53,17 +43,11 @@ class VirtualNetworksVirtualNetworkPatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): VirtualNetworkArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(VirtualNetworkArguments $properties): self
     {
         $this->initialized['properties'] = true;

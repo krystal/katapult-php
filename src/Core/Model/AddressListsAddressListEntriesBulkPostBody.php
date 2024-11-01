@@ -22,8 +22,6 @@ class AddressListsAddressListEntriesBulkPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     *
      * @var AddressListLookup
      */
     protected $addressList;
@@ -36,17 +34,11 @@ class AddressListsAddressListEntriesBulkPostBody extends \ArrayObject
      */
     protected $remove;
 
-    /**
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     */
     public function getAddressList(): AddressListLookup
     {
         return $this->addressList;
     }
 
-    /**
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     */
     public function setAddressList(AddressListLookup $addressList): self
     {
         $this->initialized['addressList'] = true;

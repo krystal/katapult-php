@@ -40,8 +40,6 @@ class DNSRecordArguments extends \ArrayObject
      */
     protected $priority;
     /**
-     * All 'content[]' params are mutually exclusive, only one can be provided.
-     *
      * @var DNSRecordContentArguments
      */
     protected $content;
@@ -104,17 +102,11 @@ class DNSRecordArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'content[]' params are mutually exclusive, only one can be provided.
-     */
     public function getContent(): DNSRecordContentArguments
     {
         return $this->content;
     }
 
-    /**
-     * All 'content[]' params are mutually exclusive, only one can be provided.
-     */
     public function setContent(DNSRecordContentArguments $content): self
     {
         $this->initialized['content'] = true;

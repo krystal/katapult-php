@@ -31,12 +31,8 @@ class Client extends Runtime\Client\Client
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var array $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.
@@ -155,6 +151,168 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new access key in an object storage account
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterAccessKeysBadRequestException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterAccessKeysForbiddenException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterAccessKeysNotFoundException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterAccessKeysNotAcceptableException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterAccessKeysUnprocessableEntityException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterAccessKeysTooManyRequestsException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterAccessKeysServiceUnavailableException
+     */
+    public function postOrganizationObjectStorageObjectStorageClusterAccessKeys(?Model\OrganizationsOrganizationObjectStorageObjectStorageClusterAccessKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostOrganizationObjectStorageObjectStorageClusterAccessKeys($requestBody), $fetch);
+    }
+
+    /**
+     * Returns a list of all object storage access keys for a given organization
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] The organization to return access keys for.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] The organization to return access keys for.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var int $page The page number to request. If not provided, the first page will be returned.
+     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
+     *          }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationObjectStorageAccessKeysGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationObjectStorageAccessKeysBadRequestException
+     * @throws Exception\GetOrganizationObjectStorageAccessKeysForbiddenException
+     * @throws Exception\GetOrganizationObjectStorageAccessKeysNotFoundException
+     * @throws Exception\GetOrganizationObjectStorageAccessKeysTooManyRequestsException
+     * @throws Exception\GetOrganizationObjectStorageAccessKeysServiceUnavailableException
+     */
+    public function getOrganizationObjectStorageAccessKeys(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationObjectStorageAccessKeys($queryParameters), $fetch);
+    }
+
+    /**
+     * Returns new S3 credentials for an object storage access key. Existing credentials cannot be retrieved. Credentials may take a few minutes to become active.
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostObjectStorageAccessKeyGenerateCredentialsBadRequestException
+     * @throws Exception\PostObjectStorageAccessKeyGenerateCredentialsForbiddenException
+     * @throws Exception\PostObjectStorageAccessKeyGenerateCredentialsNotFoundException
+     * @throws Exception\PostObjectStorageAccessKeyGenerateCredentialsNotAcceptableException
+     * @throws Exception\PostObjectStorageAccessKeyGenerateCredentialsUnprocessableEntityException
+     * @throws Exception\PostObjectStorageAccessKeyGenerateCredentialsTooManyRequestsException
+     * @throws Exception\PostObjectStorageAccessKeyGenerateCredentialsServiceUnavailableException
+     */
+    public function postObjectStorageAccessKeyGenerateCredentials(?Model\ObjectStorageAccessKeysAccessKeyGenerateCredentialsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostObjectStorageAccessKeyGenerateCredentials($requestBody), $fetch);
+    }
+
+    /**
+     * Delete an object storage access key
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ObjectStorageAccessKeysAccessKeyDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteObjectStorageAccessKeyBadRequestException
+     * @throws Exception\DeleteObjectStorageAccessKeyForbiddenException
+     * @throws Exception\DeleteObjectStorageAccessKeyNotFoundException
+     * @throws Exception\DeleteObjectStorageAccessKeyTooManyRequestsException
+     * @throws Exception\DeleteObjectStorageAccessKeyServiceUnavailableException
+     * @throws Exception\DeleteObjectStorageAccessKeyGatewayTimeoutException
+     */
+    public function deleteObjectStorageAccessKey(?Model\ObjectStorageAccessKeysAccessKeyDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteObjectStorageAccessKey($requestBody), $fetch);
+    }
+
+    /**
+     * Returns object storage access key details.
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $access_key[id] The object storage access key to find.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ObjectStorageAccessKeysAccessKeyGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetObjectStorageAccessKeyBadRequestException
+     * @throws Exception\GetObjectStorageAccessKeyForbiddenException
+     * @throws Exception\GetObjectStorageAccessKeyNotFoundException
+     * @throws Exception\GetObjectStorageAccessKeyTooManyRequestsException
+     * @throws Exception\GetObjectStorageAccessKeyServiceUnavailableException
+     */
+    public function getObjectStorageAccessKey(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetObjectStorageAccessKey($queryParameters), $fetch);
+    }
+
+    /**
+     * Updates an object storage access key with new properties
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ObjectStorageAccessKeysAccessKeyPatchResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PatchObjectStorageAccessKeyBadRequestException
+     * @throws Exception\PatchObjectStorageAccessKeyForbiddenException
+     * @throws Exception\PatchObjectStorageAccessKeyNotFoundException
+     * @throws Exception\PatchObjectStorageAccessKeyNotAcceptableException
+     * @throws Exception\PatchObjectStorageAccessKeyUnprocessableEntityException
+     * @throws Exception\PatchObjectStorageAccessKeyTooManyRequestsException
+     * @throws Exception\PatchObjectStorageAccessKeyServiceUnavailableException
+     */
+    public function patchObjectStorageAccessKey(?Model\ObjectStorageAccessKeysAccessKeyPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PatchObjectStorageAccessKey($requestBody), $fetch);
+    }
+
+    /**
      * Returns a list of all address list entries for a given address list
      * ## Scopes
      * - `address_lists`
@@ -165,12 +323,10 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $address_list[id] The address list for which the entries should be returned.
-     *
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     * @var string $address_list[id] The address list for which the entries should be returned
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -246,9 +402,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $address_list_entry[id] The address list entry to return.
-     *
-     * All 'address_list_entry[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -361,12 +515,8 @@ class Client extends Runtime\Client\Client
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var array $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.
@@ -447,9 +597,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $address_list[id] The address list to return.
-     *
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -551,13 +699,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket.
-     *
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
+     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket
      * @var string $bucket[name] The name of the object storage bucket.
-     *
-     * All 'bucket[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -638,12 +782,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket.
-     *
-     * All 'object_storage_cluster[]' params are mutually exclusive, only one can be provided.
-     * @var string $bucket[name] The name of the object storage bucket.
-     *
-     * All 'bucket[]' params are mutually exclusive, only one can be provided.
+     * @var string $object_storage_cluster[region] The object storage cluster region for the bucket
+     * @var string $bucket[name] The name of the object storage bucket
      * @var string $path The name or path for the object
      *             }
      *
@@ -751,7 +891,7 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $virtual_machine_build[id] All 'virtual_machine_build[]' params are mutually exclusive, only one can be provided.
+     * @var string $virtual_machine_build[id]
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -812,7 +952,7 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $certificate[id] All 'certificate[]' params are mutually exclusive, only one can be provided.
+     * @var string $certificate[id]
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -950,9 +1090,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $country_state[id] The country state to return.
-     *
-     * All 'country_state[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1410,12 +1548,10 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $disk[id] The disk to return disk backup policies for.
-     *
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     * @var string $disk[id] The disk to return disk backup policies for
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1494,9 +1630,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $disk_backup_policy[id] The disk backup policy to get information for.
-     *
-     * All 'disk_backup_policy[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1611,9 +1745,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $disk_template_version[id] The disk template version to return.
-     *
-     * All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1642,9 +1774,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $disk_template_version[id] The disk template version to return.
-     *
-     * All 'disk_template_version[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1679,12 +1809,10 @@ class Client extends Runtime\Client\Client
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var bool   $include_universal Whether or not to include universal templates
-     * @var string $operating_system[id] An operating system to use to filter disk templates.
-     *
-     * All 'operating_system[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     * @var string $operating_system[id] An operating system to use to filter disk templates
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1754,12 +1882,8 @@ class Client extends Runtime\Client\Client
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var array $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.
@@ -1843,9 +1967,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $disk[id] The disk to return.
-     *
-     * All 'disk[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2093,12 +2215,8 @@ class Client extends Runtime\Client\Client
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var array $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.
@@ -2181,9 +2299,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $file_storage_volume[id] The file storage volume to return.
-     *
-     * All 'file_storage_volume[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2567,9 +2683,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $load_balancer_rule[id] The load balancer rule to return the details for.
-     *
-     * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -2629,12 +2743,8 @@ class Client extends Runtime\Client\Client
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var array $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.
@@ -2776,12 +2886,8 @@ class Client extends Runtime\Client\Client
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var array  $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.
@@ -2935,6 +3041,91 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Move object storage into the trash
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteOrganizationObjectStorageObjectStorageClusterBadRequestException
+     * @throws Exception\DeleteOrganizationObjectStorageObjectStorageClusterForbiddenException
+     * @throws Exception\DeleteOrganizationObjectStorageObjectStorageClusterNotFoundException
+     * @throws Exception\DeleteOrganizationObjectStorageObjectStorageClusterNotAcceptableException
+     * @throws Exception\DeleteOrganizationObjectStorageObjectStorageClusterUnprocessableEntityException
+     * @throws Exception\DeleteOrganizationObjectStorageObjectStorageClusterTooManyRequestsException
+     * @throws Exception\DeleteOrganizationObjectStorageObjectStorageClusterServiceUnavailableException
+     */
+    public function deleteOrganizationObjectStorageObjectStorageCluster(?Model\OrganizationsOrganizationObjectStorageObjectStorageClusterDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteOrganizationObjectStorageObjectStorageCluster($requestBody), $fetch);
+    }
+
+    /**
+     * Returns object storage account details
+     * ## Scopes
+     * - `object_storage:read`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $organization[id] The organization that owns the object storage account.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $organization[sub_domain] The organization that owns the object storage account.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     * @var string $object_storage_cluster[region] The object storage cluster region.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationObjectStorageObjectStorageClusterGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\GetOrganizationObjectStorageObjectStorageClusterBadRequestException
+     * @throws Exception\GetOrganizationObjectStorageObjectStorageClusterForbiddenException
+     * @throws Exception\GetOrganizationObjectStorageObjectStorageClusterNotFoundException
+     * @throws Exception\GetOrganizationObjectStorageObjectStorageClusterNotAcceptableException
+     * @throws Exception\GetOrganizationObjectStorageObjectStorageClusterTooManyRequestsException
+     * @throws Exception\GetOrganizationObjectStorageObjectStorageClusterServiceUnavailableException
+     */
+    public function getOrganizationObjectStorageObjectStorageCluster(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetOrganizationObjectStorageObjectStorageCluster($queryParameters), $fetch);
+    }
+
+    /**
+     * Create a new object storage account for an organization. Provisioning will be started in the background and can be monitored via the GET account endpoint.
+     * ## Scopes
+     * - `object_storage`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostResponse201|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterBadRequestException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterForbiddenException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterNotFoundException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterNotAcceptableException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterUnprocessableEntityException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterTooManyRequestsException
+     * @throws Exception\PostOrganizationObjectStorageObjectStorageClusterServiceUnavailableException
+     */
+    public function postOrganizationObjectStorageObjectStorageCluster(?Model\OrganizationsOrganizationObjectStorageObjectStorageClusterPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostOrganizationObjectStorageObjectStorageCluster($requestBody), $fetch);
+    }
+
+    /**
      * Return a list of all operating systems.
      *
      * @param array $queryParameters {
@@ -2963,9 +3154,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $operating_system[id] The operating system to return.
-     *
-     * All 'operating_system[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3367,7 +3556,7 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $dns_record[id] All 'dns_record[]' params are mutually exclusive, only one can be provided.
+     * @var string $dns_record[id]
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -3488,12 +3677,10 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $security_group[id] The security group to return all load rules for.
-     *
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     * @var string $security_group[id] The security group to return all load rules for
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3570,9 +3757,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $security_group_rule[id] The security group rule to return the details for.
-     *
-     * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3632,12 +3817,8 @@ class Client extends Runtime\Client\Client
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var array $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.
@@ -3720,9 +3901,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $security_group[id] The security group to return the details for.
-     *
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3858,9 +4037,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $tag[id] The tag to load the details for.
-     *
-     * All 'tag[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3912,7 +4089,7 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $task[id] All 'task[]' params are mutually exclusive, only one can be provided.
+     * @var string $task[id]
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -4199,9 +4376,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $virtual_network[id] The virtual network to retrieve.
-     *
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -4335,9 +4510,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_group[id] The virtual machine group to retrieve.
-     *
-     * All 'virtual_machine_group[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -4416,6 +4589,32 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Create a new virtual machine network interface with the provided details
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:network_interfaces`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachinesVirtualMachineNetworkInterfacesPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineNetworkInterfacesBadRequestException
+     * @throws Exception\PostVirtualMachineNetworkInterfacesForbiddenException
+     * @throws Exception\PostVirtualMachineNetworkInterfacesNotFoundException
+     * @throws Exception\PostVirtualMachineNetworkInterfacesNotAcceptableException
+     * @throws Exception\PostVirtualMachineNetworkInterfacesUnprocessableEntityException
+     * @throws Exception\PostVirtualMachineNetworkInterfacesTooManyRequestsException
+     * @throws Exception\PostVirtualMachineNetworkInterfacesServiceUnavailableException
+     */
+    public function postVirtualMachineNetworkInterfaces(?Model\VirtualMachinesVirtualMachineNetworkInterfacesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineNetworkInterfaces($requestBody), $fetch);
+    }
+
+    /**
      * Return information about a virtual machine network interface for a specific network
      * ## Scopes
      * - `virtual_machines`
@@ -4457,6 +4656,31 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:network_interfaces`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\DeleteVirtualMachineNetworkInterfaceBadRequestException
+     * @throws Exception\DeleteVirtualMachineNetworkInterfaceForbiddenException
+     * @throws Exception\DeleteVirtualMachineNetworkInterfaceNotFoundException
+     * @throws Exception\DeleteVirtualMachineNetworkInterfaceConflictException
+     * @throws Exception\DeleteVirtualMachineNetworkInterfaceUnprocessableEntityException
+     * @throws Exception\DeleteVirtualMachineNetworkInterfaceTooManyRequestsException
+     * @throws Exception\DeleteVirtualMachineNetworkInterfaceServiceUnavailableException
+     */
+    public function deleteVirtualMachineNetworkInterface(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\DeleteVirtualMachineNetworkInterface($requestBody), $fetch);
+    }
+
+    /**
      * Return information about a given virtual machine network interface
      * ## Scopes
      * - `virtual_machines`
@@ -4468,9 +4692,7 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_network_interface[id] The network interface to show the information for.
-     *
-     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -4498,9 +4720,7 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for.
-     *
-     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
+     * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for
      * @var string $address_version The IP address version to return results for
      *             }
      *
@@ -4591,6 +4811,58 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Attach a network interface to a virtual machine.
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:network_interfaces`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAttachBadRequestException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAttachForbiddenException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAttachNotFoundException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAttachNotAcceptableException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAttachUnprocessableEntityException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAttachTooManyRequestsException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceAttachServiceUnavailableException
+     */
+    public function postVirtualMachineNetworkInterfaceAttach(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceAttachPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineNetworkInterfaceAttach($requestBody), $fetch);
+    }
+
+    /**
+     * Detach a network interface from its virtual machine.
+     * ## Scopes
+     * - `virtual_machines`
+     * - `virtual_machines:network_interfaces`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     *
+     * @throws Exception\PostVirtualMachineNetworkInterfaceDetachBadRequestException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceDetachForbiddenException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceDetachNotFoundException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceDetachNotAcceptableException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceDetachUnprocessableEntityException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceDetachTooManyRequestsException
+     * @throws Exception\PostVirtualMachineNetworkInterfaceDetachServiceUnavailableException
+     */
+    public function postVirtualMachineNetworkInterfaceDetach(?Model\VirtualMachineNetworkInterfacesVirtualMachineNetworkInterfaceDetachPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostVirtualMachineNetworkInterfaceDetach($requestBody), $fetch);
+    }
+
+    /**
      * Returns a list of virtual machine packages
      * ## Scopes
      * - `virtual_machine_packages:read`.
@@ -4669,12 +4941,8 @@ class Client extends Runtime\Client\Client
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var array  $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.

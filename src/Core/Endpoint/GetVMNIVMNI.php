@@ -26,9 +26,7 @@ class GetVMNIVMNI extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implemen
      * @param array $queryParameters {
      *
      * @var string $virtual_machine_network_interface[id] The network interface to show the information for.
-     *
-     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

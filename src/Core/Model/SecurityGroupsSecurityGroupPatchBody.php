@@ -22,14 +22,10 @@ class SecurityGroupsSecurityGroupPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SecurityGroupLookup
      */
     protected $securityGroup;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SecurityGroupArguments
      */
     protected $properties;
@@ -38,17 +34,11 @@ class SecurityGroupsSecurityGroupPatchBody extends \ArrayObject
      */
     protected $annotations;
 
-    /**
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSecurityGroup(): SecurityGroupLookup
     {
         return $this->securityGroup;
     }
 
-    /**
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSecurityGroup(SecurityGroupLookup $securityGroup): self
     {
         $this->initialized['securityGroup'] = true;
@@ -57,17 +47,11 @@ class SecurityGroupsSecurityGroupPatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): SecurityGroupArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(SecurityGroupArguments $properties): self
     {
         $this->initialized['properties'] = true;

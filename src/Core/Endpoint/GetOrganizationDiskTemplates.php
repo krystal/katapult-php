@@ -32,12 +32,10 @@ class GetOrganizationDiskTemplates extends \KatapultAPI\Core\Runtime\Client\Base
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * @var bool   $include_universal Whether or not to include universal templates
-     * @var string $operating_system[id] An operating system to use to filter disk templates.
-     *
-     * All 'operating_system[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     * @var string $operating_system[id] An operating system to use to filter disk templates
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

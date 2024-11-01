@@ -25,7 +25,7 @@ class GetCertificate extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      *
      * @param array $queryParameters {
      *
-     * @var string $certificate[id] All 'certificate[]' params are mutually exclusive, only one can be provided.
+     * @var string $certificate[id]
      *             }
      */
     public function __construct(array $queryParameters = [])

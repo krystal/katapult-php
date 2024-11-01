@@ -22,29 +22,19 @@ class LoadBalancersRulesLoadBalancerRulePatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     *
      * @var LoadBalancerRuleLookup
      */
     protected $loadBalancerRule;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var LoadBalancerRuleArguments
      */
     protected $properties;
 
-    /**
-     * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function getLoadBalancerRule(): LoadBalancerRuleLookup
     {
         return $this->loadBalancerRule;
     }
 
-    /**
-     * All 'load_balancer_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function setLoadBalancerRule(LoadBalancerRuleLookup $loadBalancerRule): self
     {
         $this->initialized['loadBalancerRule'] = true;
@@ -53,17 +43,11 @@ class LoadBalancersRulesLoadBalancerRulePatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): LoadBalancerRuleArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(LoadBalancerRuleArguments $properties): self
     {
         $this->initialized['properties'] = true;

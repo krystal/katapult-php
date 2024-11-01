@@ -22,23 +22,15 @@ class SecurityGroupsSecurityGroupDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SecurityGroupLookup
      */
     protected $securityGroup;
 
-    /**
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSecurityGroup(): SecurityGroupLookup
     {
         return $this->securityGroup;
     }
 
-    /**
-     * All 'security_group[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSecurityGroup(SecurityGroupLookup $securityGroup): self
     {
         $this->initialized['securityGroup'] = true;

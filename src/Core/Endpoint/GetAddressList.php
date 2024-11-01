@@ -26,9 +26,7 @@ class GetAddressList extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * @param array $queryParameters {
      *
      * @var string $address_list[id] The address list to return.
-     *
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -25,9 +25,7 @@ class GetVirtualMachineNetworkInterfaceAvailableIpsAddressVersion extends \Katap
      *
      * @param array $queryParameters {
      *
-     * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for.
-     *
-     * All 'virtual_machine_network_interface[]' params are mutually exclusive, only one can be provided.
+     * @var string $virtual_machine_network_interface[id] The network interface to get IP addresses for
      * @var string $address_version The IP address version to return results for
      *             }
      */

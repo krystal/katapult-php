@@ -26,9 +26,7 @@ class GetVirtualNetwork extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * @param array $queryParameters {
      *
      * @var string $virtual_network[id] The virtual network to retrieve.
-     *
-     * All 'virtual_network[]' params are mutually exclusive, only one can be provided.
-     * }
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

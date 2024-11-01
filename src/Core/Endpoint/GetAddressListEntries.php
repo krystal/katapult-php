@@ -25,12 +25,10 @@ class GetAddressListEntries extends \KatapultAPI\Core\Runtime\Client\BaseEndpoin
      *
      * @param array $queryParameters {
      *
-     * @var string $address_list[id] The address list for which the entries should be returned.
-     *
-     * All 'address_list[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     * @var string $address_list[id] The address list for which the entries should be returned
+     * @var int    $page The page number to request. If not provided, the first page will be returned.
+     * @var int    $per_page The number of items to return per page. If not provided, the default value will be used.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

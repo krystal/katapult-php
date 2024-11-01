@@ -26,8 +26,6 @@ class DiskBackupPolicyArguments extends \ArrayObject
      */
     protected $retention;
     /**
-     * All 'schedule[]' params are mutually exclusive, only one can be provided.
-     *
      * @var ScheduleArguments
      */
     protected $schedule;
@@ -45,17 +43,11 @@ class DiskBackupPolicyArguments extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'schedule[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSchedule(): ScheduleArguments
     {
         return $this->schedule;
     }
 
-    /**
-     * All 'schedule[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSchedule(ScheduleArguments $schedule): self
     {
         $this->initialized['schedule'] = true;

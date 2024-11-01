@@ -56,7 +56,7 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * This will create a new signup object and e-mail the appropriate welcome e-mail to the given email address.
+     * This will create a new signup object, which can be either verified by e-mail or by the user creating an account in Identity.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *

@@ -22,23 +22,15 @@ class SshKeysSshKeyDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'ssh_key[]' params are mutually exclusive, only one can be provided.
-     *
      * @var AuthSSHKeyLookup
      */
     protected $sshKey;
 
-    /**
-     * All 'ssh_key[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSshKey(): AuthSSHKeyLookup
     {
         return $this->sshKey;
     }
 
-    /**
-     * All 'ssh_key[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSshKey(AuthSSHKeyLookup $sshKey): self
     {
         $this->initialized['sshKey'] = true;

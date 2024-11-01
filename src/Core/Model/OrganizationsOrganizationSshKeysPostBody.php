@@ -28,8 +28,6 @@ class OrganizationsOrganizationSshKeysPostBody extends \ArrayObject
      */
     protected $organization;
     /**
-     * All 'ssh_key[]' params are mutually exclusive, only one can be provided.
-     *
      * @var AuthSSHKeyProperties
      */
     protected $sshKey;
@@ -53,17 +51,11 @@ class OrganizationsOrganizationSshKeysPostBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'ssh_key[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSshKey(): AuthSSHKeyProperties
     {
         return $this->sshKey;
     }
 
-    /**
-     * All 'ssh_key[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSshKey(AuthSSHKeyProperties $sshKey): self
     {
         $this->initialized['sshKey'] = true;

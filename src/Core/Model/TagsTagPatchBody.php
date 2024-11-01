@@ -22,29 +22,19 @@ class TagsTagPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'tag[]' params are mutually exclusive, only one can be provided.
-     *
      * @var TagLookup
      */
     protected $tag;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var TagArguments
      */
     protected $properties;
 
-    /**
-     * All 'tag[]' params are mutually exclusive, only one can be provided.
-     */
     public function getTag(): TagLookup
     {
         return $this->tag;
     }
 
-    /**
-     * All 'tag[]' params are mutually exclusive, only one can be provided.
-     */
     public function setTag(TagLookup $tag): self
     {
         $this->initialized['tag'] = true;
@@ -53,17 +43,11 @@ class TagsTagPatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): TagArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(TagArguments $properties): self
     {
         $this->initialized['properties'] = true;

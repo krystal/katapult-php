@@ -30,9 +30,15 @@ class SignupsPostResponse200 extends \ArrayObject
     /**
      * The e-mail address that was sent the welcome email.
      *
-     * @var string
+     * @var string|null
      */
     protected $emailAddress;
+    /**
+     * The URL for the user to continue their signup process, only available if verify_with_email is false.
+     *
+     * @var string|null
+     */
+    protected $url;
 
     /**
      * The ID of the signup.
@@ -56,7 +62,7 @@ class SignupsPostResponse200 extends \ArrayObject
     /**
      * The e-mail address that was sent the welcome email.
      */
-    public function getEmailAddress(): string
+    public function getEmailAddress(): ?string
     {
         return $this->emailAddress;
     }
@@ -64,10 +70,29 @@ class SignupsPostResponse200 extends \ArrayObject
     /**
      * The e-mail address that was sent the welcome email.
      */
-    public function setEmailAddress(string $emailAddress): self
+    public function setEmailAddress(?string $emailAddress): self
     {
         $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
+
+        return $this;
+    }
+
+    /**
+     * The URL for the user to continue their signup process, only available if verify_with_email is false.
+     */
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    /**
+     * The URL for the user to continue their signup process, only available if verify_with_email is false.
+     */
+    public function setUrl(?string $url): self
+    {
+        $this->initialized['url'] = true;
+        $this->url = $url;
 
         return $this;
     }

@@ -28,12 +28,8 @@ class GetOrganizationManaged extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * @var string $organization[sub_domain] All 'organization[]' params are mutually exclusive, only one can be provided
      * @var array  $annotations[][key] An array of annotations to filter by.
      *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
-     *
      * All `annotations[]` params should have the same amount of elements.
      * @var array $annotations[][value] An array of annotations to filter by.
-     *
-     * All 'annotations[]' params are mutually exclusive, only one can be provided.
      *
      * All `annotations[]` params should have the same amount of elements.
      * @var int $page The page number to request. If not provided, the first page will be returned.

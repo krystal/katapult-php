@@ -88,7 +88,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['PTR']);
             }
             if (\array_key_exists('SOA', $data)) {
-                $object->setSOA($data['SOA']);
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['SOA'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setSOA($values);
                 unset($data['SOA']);
             }
             if (\array_key_exists('SRV', $data)) {
@@ -107,9 +111,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForVirtualMachine::class, 'json', $context));
                 unset($data['VirtualMachine']);
             }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+            foreach ($data as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_1;
                 }
             }
 
@@ -147,7 +151,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $data['PTR'] = $this->normalizer->normalize($object->getPTR(), 'json', $context);
             }
             if ($object->isInitialized('sOA') && null !== $object->getSOA()) {
-                $data['SOA'] = $object->getSOA();
+                $values = [];
+                foreach ($object->getSOA() as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $data['SOA'] = $values;
             }
             if ($object->isInitialized('sRV') && null !== $object->getSRV()) {
                 $data['SRV'] = $this->normalizer->normalize($object->getSRV(), 'json', $context);
@@ -161,9 +169,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('virtualMachine') && null !== $object->getVirtualMachine()) {
                 $data['VirtualMachine'] = $this->normalizer->normalize($object->getVirtualMachine(), 'json', $context);
             }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+            foreach ($object as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_1;
                 }
             }
 
@@ -242,7 +250,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 unset($data['PTR']);
             }
             if (\array_key_exists('SOA', $data)) {
-                $object->setSOA($data['SOA']);
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['SOA'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setSOA($values);
                 unset($data['SOA']);
             }
             if (\array_key_exists('SRV', $data)) {
@@ -261,9 +273,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setVirtualMachine($this->denormalizer->denormalize($data['VirtualMachine'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForVirtualMachine::class, 'json', $context));
                 unset($data['VirtualMachine']);
             }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+            foreach ($data as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $object[$key_1] = $value_1;
                 }
             }
 
@@ -304,7 +316,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $data['PTR'] = $this->normalizer->normalize($object->getPTR(), 'json', $context);
             }
             if ($object->isInitialized('sOA') && null !== $object->getSOA()) {
-                $data['SOA'] = $object->getSOA();
+                $values = [];
+                foreach ($object->getSOA() as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $data['SOA'] = $values;
             }
             if ($object->isInitialized('sRV') && null !== $object->getSRV()) {
                 $data['SRV'] = $this->normalizer->normalize($object->getSRV(), 'json', $context);
@@ -318,9 +334,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('virtualMachine') && null !== $object->getVirtualMachine()) {
                 $data['VirtualMachine'] = $this->normalizer->normalize($object->getVirtualMachine(), 'json', $context);
             }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+            foreach ($object as $key_1 => $value_1) {
+                if (preg_match('/.*/', (string) $key_1)) {
+                    $data[$key_1] = $value_1;
                 }
             }
 

@@ -22,23 +22,15 @@ class ApiTokensApiTokenDeleteBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'api_token[]' params are mutually exclusive, only one can be provided.
-     *
      * @var APITokenLookup
      */
     protected $apiToken;
 
-    /**
-     * All 'api_token[]' params are mutually exclusive, only one can be provided.
-     */
     public function getApiToken(): APITokenLookup
     {
         return $this->apiToken;
     }
 
-    /**
-     * All 'api_token[]' params are mutually exclusive, only one can be provided.
-     */
     public function setApiToken(APITokenLookup $apiToken): self
     {
         $this->initialized['apiToken'] = true;

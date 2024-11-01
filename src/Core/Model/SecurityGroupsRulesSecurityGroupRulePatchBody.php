@@ -22,29 +22,19 @@ class SecurityGroupsRulesSecurityGroupRulePatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SecurityGroupRuleLookup
      */
     protected $securityGroupRule;
     /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     *
      * @var SecurityGroupRuleArguments
      */
     protected $properties;
 
-    /**
-     * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function getSecurityGroupRule(): SecurityGroupRuleLookup
     {
         return $this->securityGroupRule;
     }
 
-    /**
-     * All 'security_group_rule[]' params are mutually exclusive, only one can be provided.
-     */
     public function setSecurityGroupRule(SecurityGroupRuleLookup $securityGroupRule): self
     {
         $this->initialized['securityGroupRule'] = true;
@@ -53,17 +43,11 @@ class SecurityGroupsRulesSecurityGroupRulePatchBody extends \ArrayObject
         return $this;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function getProperties(): SecurityGroupRuleArguments
     {
         return $this->properties;
     }
 
-    /**
-     * All 'properties[]' params are mutually exclusive, only one can be provided.
-     */
     public function setProperties(SecurityGroupRuleArguments $properties): self
     {
         $this->initialized['properties'] = true;
