@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.4.0](https://github.com/krystal/katapult-php/compare/v5.3.2...v5.4.0) (2025-02-03)
+
+
+### Features
+
+* **generator:** new client automatically generated in GitHub Actions ([d4c1c00](https://github.com/krystal/katapult-php/commit/d4c1c00a88e7dfdf22ca5bd13153ea56a89c04f0))
+
+
+### Miscellaneous Chores
+
+* update Jane deps ([947b8a4](https://github.com/krystal/katapult-php/commit/947b8a47a01fec7ef81edf061b1655b41989011b))
+
 ## [5.3.2](https://github.com/krystal/katapult-php/compare/v5.3.1...v5.3.2) (2025-02-03)
 
 

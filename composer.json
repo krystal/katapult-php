@@ -14,12 +14,12 @@
       "*": "dist"
     },
     "sort-packages": true,
-      "platform": {
-          "php": "8.1"
-      },
-      "allow-plugins": {
-        "php-http/discovery": false
-      }
+    "platform": {
+      "php": "8.1"
+    },
+    "allow-plugins": {
+      "php-http/discovery": false
+    }
   },
   "autoload": {
     "psr-4": {
