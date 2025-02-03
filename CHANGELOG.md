@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.3.2](https://github.com/krystal/katapult-php/compare/v5.3.1...v5.3.2) (2025-02-03)
+
+
+### Bug Fixes
+
+* don't auto include a psr lib ([aa1a990](https://github.com/krystal/katapult-php/commit/aa1a99022878ccb5c24d95ab4e6a7242e66c7e6d))
+* remove relaese please full output ([f4c8472](https://github.com/krystal/katapult-php/commit/f4c8472d3e0bd444b2a3b6af2c2a822c19bfb93c))
+
 ## [5.3.1](https://github.com/krystal/katapult-php/compare/v5.3.0...v5.3.1) (2025-02-03)
 
 
