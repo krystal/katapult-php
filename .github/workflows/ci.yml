@@ -25,12 +25,12 @@ jobs:
       version: ${{ steps.release-please.outputs.version }}
       all: ${{ toJSON(steps.release-please.outputs) }}
     steps:
-      - uses: tibdex/github-app-token@v1
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         id: generate-github-token
         with:
-          app_id: ${{ vars.RELEASE_PLEASE_GITHUB_APP_ID }}
-          private_key: ${{ secrets.RELEASE_PLEASE_GITHUB_APP_PRIVATE_KEY }}
-      - uses: googleapis/release-please-action@v4
+          app-id: ${{ vars.RELEASE_PLEASE_GITHUB_APP_ID }}
+          private-key: ${{ secrets.RELEASE_PLEASE_GITHUB_APP_PRIVATE_KEY }}
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         id: release-please
         with:
           token: ${{ steps.generate-github-token.outputs.token }}

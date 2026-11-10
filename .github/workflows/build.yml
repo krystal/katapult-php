@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Cache generator dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: generator/vendor
           key: ${{ runner.os }}-generator-vendor-${{ hashFiles('**/composer.lock') }}
@@ -28,10 +28,8 @@ jobs:
       - name: Generate our client
         run: make build
 
-      # Commit all changed files back to the repository
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "feat(generator): new client automatically generated in GitHub Actions"
+      - name: Fail if the committed client is out of date
+        run: git diff --exit-code
 
   openapi:
     if: "!contains(github.head_ref, 'release-please')"
@@ -39,7 +37,7 @@ jobs:
     steps:
 
       - name: Check out the base branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.base.ref }}
 
@@ -49,10 +47,10 @@ jobs:
           cp katapult-public-openapi.json /tmp/katapult-public-openapi.json
 
       - name: Check out the current branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Cache node modules
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
@@ -91,14 +89,15 @@ jobs:
 
       - name: Upload HTML reports as artefacts
         id: upload-report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: openapi-changes
           path: openapi-*-report.html
           if-no-files-found: ignore
 
       - name: Add/update a comment on the PR with the changes for the two APIs
-        uses: mshick/add-pr-comment@v2
+        if: github.actor != 'dependabot[bot]'
+        uses: mshick/add-pr-comment@ec328af66588ab8f77cdeb2c264f14aba45bbf59 # v3.12.0
         with:
           message: |
             ## Download Reports
