@@ -23,7 +23,7 @@ class PostDnsZoneVerifyUnprocessableEntityException extends UnprocessableEntityE
 
     public function __construct(\KatapultAPI\Core\Model\ResponseDNSZoneNotVerifiedResponse $responseDNSZoneNotVerifiedResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('The DNS zone could not be verified, check the nameservers are set correctly');
+        parent::__construct('The DNS zone could not be verified, check the nameservers or root TXT record are set correctly');
         $this->responseDNSZoneNotVerifiedResponse = $responseDNSZoneNotVerifiedResponse;
         $this->response = $response;
     }

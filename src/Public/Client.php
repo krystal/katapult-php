@@ -39,40 +39,6 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return an estimate and breakdown of the cost of a configuration.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\PricingEstimatePostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostPricingEstimateBadRequestException
-     * @throws Exception\PostPricingEstimateForbiddenException
-     * @throws Exception\PostPricingEstimateNotFoundException
-     * @throws Exception\PostPricingEstimateTooManyRequestsException
-     */
-    public function postPricingEstimate(?Model\PricingEstimatePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostPricingEstimate($requestBody), $fetch);
-    }
-
-    /**
-     * This will create a new signup object, which can be either verified by e-mail or by the user creating an account in Identity.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\SignupsPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     *
-     * @throws Exception\PostSignupsForbiddenException
-     * @throws Exception\PostSignupsNotFoundException
-     * @throws Exception\PostSignupsUnprocessableEntityException
-     * @throws Exception\PostSignupsTooManyRequestsException
-     */
-    public function postSignups(?Model\SignupsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostSignups($requestBody), $fetch);
-    }
-
-    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\StatsGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -88,13 +54,11 @@ class Client extends Runtime\Client\Client
     /**
      * Return the currently available virtual machine packages.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $queryParameters {
+     *                                'page': int, The page number to request. If not provided, the first page will be returned.
+     *                                'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     *                                }
+     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\VirtualMachinePackagesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      *

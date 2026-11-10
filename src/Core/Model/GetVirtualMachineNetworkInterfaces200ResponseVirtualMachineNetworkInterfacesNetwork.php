@@ -29,6 +29,12 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
      * @var string
      */
     protected $name;
+    /**
+     * The underlying VLAN ID given to this network. Internal use only.
+     *
+     * @var int|null
+     */
+    protected $vlan;
 
     public function getId(): string
     {
@@ -52,6 +58,25 @@ class GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfac
     {
         $this->initialized['name'] = true;
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * The underlying VLAN ID given to this network. Internal use only.
+     */
+    public function getVlan(): ?int
+    {
+        return $this->vlan;
+    }
+
+    /**
+     * The underlying VLAN ID given to this network. Internal use only.
+     */
+    public function setVlan(?int $vlan): self
+    {
+        $this->initialized['vlan'] = true;
+        $this->vlan = $vlan;
 
         return $this;
     }

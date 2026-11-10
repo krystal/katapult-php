@@ -69,11 +69,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setState($data['state']);
                 unset($data['state']);
             }
-            if (\array_key_exists('custom_domain', $data) && $data['custom_domain'] !== null) {
-                $object->setCustomDomain($data['custom_domain']);
-                unset($data['custom_domain']);
-            } elseif (\array_key_exists('custom_domain', $data) && $data['custom_domain'] === null) {
-                $object->setCustomDomain(null);
+            if (\array_key_exists('custom_domains', $data)) {
+                $values = [];
+                foreach ($data['custom_domains'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setCustomDomains($values);
+                unset($data['custom_domains']);
             }
             if (\array_key_exists('object_count', $data) && $data['object_count'] !== null) {
                 $object->setObjectCount($data['object_count']);
@@ -103,6 +105,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('static_site_error', $data) && $data['static_site_error'] === null) {
                 $object->setStaticSiteError(null);
             }
+            if (\array_key_exists('cors_origins', $data)) {
+                $values_1 = [];
+                foreach ($data['cors_origins'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setCorsOrigins($values_1);
+                unset($data['cors_origins']);
+            }
             if (\array_key_exists('public_url', $data)) {
                 $object->setPublicUrl($data['public_url']);
                 unset($data['public_url']);
@@ -111,9 +121,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAccessControlList($this->denormalizer->denormalize($data['access_control_list'], \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class, 'json', $context));
                 unset($data['access_control_list']);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_2;
                 }
             }
 
@@ -135,8 +145,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('state') && null !== $object->getState()) {
                 $data['state'] = $object->getState();
             }
-            if ($object->isInitialized('customDomain') && null !== $object->getCustomDomain()) {
-                $data['custom_domain'] = $object->getCustomDomain();
+            if ($object->isInitialized('customDomains') && null !== $object->getCustomDomains()) {
+                $values = [];
+                foreach ($object->getCustomDomains() as $value) {
+                    $values[] = $value;
+                }
+                $data['custom_domains'] = $values;
             }
             if ($object->isInitialized('objectCount') && null !== $object->getObjectCount()) {
                 $data['object_count'] = $object->getObjectCount();
@@ -153,15 +167,22 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('staticSiteError') && null !== $object->getStaticSiteError()) {
                 $data['static_site_error'] = $object->getStaticSiteError();
             }
+            if ($object->isInitialized('corsOrigins') && null !== $object->getCorsOrigins()) {
+                $values_1 = [];
+                foreach ($object->getCorsOrigins() as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $data['cors_origins'] = $values_1;
+            }
             if ($object->isInitialized('publicUrl') && null !== $object->getPublicUrl()) {
                 $data['public_url'] = $object->getPublicUrl();
             }
             if ($object->isInitialized('accessControlList') && null !== $object->getAccessControlList()) {
                 $data['access_control_list'] = $this->normalizer->normalize($object->getAccessControlList(), 'json', $context);
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_2;
                 }
             }
 
@@ -221,11 +242,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setState($data['state']);
                 unset($data['state']);
             }
-            if (\array_key_exists('custom_domain', $data) && $data['custom_domain'] !== null) {
-                $object->setCustomDomain($data['custom_domain']);
-                unset($data['custom_domain']);
-            } elseif (\array_key_exists('custom_domain', $data) && $data['custom_domain'] === null) {
-                $object->setCustomDomain(null);
+            if (\array_key_exists('custom_domains', $data)) {
+                $values = [];
+                foreach ($data['custom_domains'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setCustomDomains($values);
+                unset($data['custom_domains']);
             }
             if (\array_key_exists('object_count', $data) && $data['object_count'] !== null) {
                 $object->setObjectCount($data['object_count']);
@@ -255,6 +278,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('static_site_error', $data) && $data['static_site_error'] === null) {
                 $object->setStaticSiteError(null);
             }
+            if (\array_key_exists('cors_origins', $data)) {
+                $values_1 = [];
+                foreach ($data['cors_origins'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setCorsOrigins($values_1);
+                unset($data['cors_origins']);
+            }
             if (\array_key_exists('public_url', $data)) {
                 $object->setPublicUrl($data['public_url']);
                 unset($data['public_url']);
@@ -263,9 +294,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAccessControlList($this->denormalizer->denormalize($data['access_control_list'], \KatapultAPI\Core\Model\ObjectStorageBucketAccessControlList::class, 'json', $context));
                 unset($data['access_control_list']);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_2;
                 }
             }
 
@@ -290,8 +321,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('state') && null !== $object->getState()) {
                 $data['state'] = $object->getState();
             }
-            if ($object->isInitialized('customDomain') && null !== $object->getCustomDomain()) {
-                $data['custom_domain'] = $object->getCustomDomain();
+            if ($object->isInitialized('customDomains') && null !== $object->getCustomDomains()) {
+                $values = [];
+                foreach ($object->getCustomDomains() as $value) {
+                    $values[] = $value;
+                }
+                $data['custom_domains'] = $values;
             }
             if ($object->isInitialized('objectCount') && null !== $object->getObjectCount()) {
                 $data['object_count'] = $object->getObjectCount();
@@ -308,15 +343,22 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('staticSiteError') && null !== $object->getStaticSiteError()) {
                 $data['static_site_error'] = $object->getStaticSiteError();
             }
+            if ($object->isInitialized('corsOrigins') && null !== $object->getCorsOrigins()) {
+                $values_1 = [];
+                foreach ($object->getCorsOrigins() as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $data['cors_origins'] = $values_1;
+            }
             if ($object->isInitialized('publicUrl') && null !== $object->getPublicUrl()) {
                 $data['public_url'] = $object->getPublicUrl();
             }
             if ($object->isInitialized('accessControlList') && null !== $object->getAccessControlList()) {
                 $data['access_control_list'] = $this->normalizer->normalize($object->getAccessControlList(), 'json', $context);
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_2;
                 }
             }
 

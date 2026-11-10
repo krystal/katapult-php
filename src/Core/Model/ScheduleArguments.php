@@ -22,6 +22,8 @@ class ScheduleArguments extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * How often the schedule repeats within the given interval (e.g. every 2 hours for hourly).
+     *
      * @var int
      */
     protected $frequency;
@@ -30,19 +32,29 @@ class ScheduleArguments extends \ArrayObject
      */
     protected $interval;
     /**
+     * The minute within the hour at which the schedule triggers (0–59). When omitted the server assigns a random value to spread load; read the value back from the response to avoid state drift.
+     *
      * @var int
      */
     protected $minute;
     /**
+     * The sub-interval offset whose meaning depends on the chosen interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly.
+     *
      * @var int
      */
     protected $time;
 
+    /**
+     * How often the schedule repeats within the given interval (e.g. every 2 hours for hourly).
+     */
     public function getFrequency(): int
     {
         return $this->frequency;
     }
 
+    /**
+     * How often the schedule repeats within the given interval (e.g. every 2 hours for hourly).
+     */
     public function setFrequency(int $frequency): self
     {
         $this->initialized['frequency'] = true;
@@ -64,11 +76,17 @@ class ScheduleArguments extends \ArrayObject
         return $this;
     }
 
+    /**
+     * The minute within the hour at which the schedule triggers (0–59). When omitted the server assigns a random value to spread load; read the value back from the response to avoid state drift.
+     */
     public function getMinute(): int
     {
         return $this->minute;
     }
 
+    /**
+     * The minute within the hour at which the schedule triggers (0–59). When omitted the server assigns a random value to spread load; read the value back from the response to avoid state drift.
+     */
     public function setMinute(int $minute): self
     {
         $this->initialized['minute'] = true;
@@ -77,11 +95,17 @@ class ScheduleArguments extends \ArrayObject
         return $this;
     }
 
+    /**
+     * The sub-interval offset whose meaning depends on the chosen interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly.
+     */
     public function getTime(): int
     {
         return $this->time;
     }
 
+    /**
+     * The sub-interval offset whose meaning depends on the chosen interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly.
+     */
     public function setTime(int $time): self
     {
         $this->initialized['time'] = true;

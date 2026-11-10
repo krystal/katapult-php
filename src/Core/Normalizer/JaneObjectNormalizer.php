@@ -40,6 +40,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\InvalidAPITokenSchema::class => InvalidAPITokenSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\TokenOwnerSuspendedSchema::class => TokenOwnerSuspendedSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\InvalidCapabilitiesTokenSchema::class => InvalidCapabilitiesTokenSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ScopeNotGrantedError::class => ScopeNotGrantedErrorNormalizer::class,
@@ -125,6 +127,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\OrganizationLookup::class => OrganizationLookupNormalizer::class,
 
             \KatapultAPI\Core\Model\KeyValue::class => KeyValueNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResourceCreationRestricted::class => ResourceCreationRestrictedNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => ResourceCreationRestrictedSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationLimitReachedSchema::class => OrganizationLimitReachedSchemaNormalizer::class,
 
@@ -296,6 +302,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\PostDiskAttachPartVirtualMachine::class => PostDiskAttachPartVirtualMachineNormalizer::class,
 
+            \KatapultAPI\Core\Model\VirtualMachineSuspendedSchema::class => VirtualMachineSuspendedSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\ObjectInTrashSchema::class => ObjectInTrashSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\TaskQueueingErrorSchema::class => TaskQueueingErrorSchemaNormalizer::class,
@@ -432,6 +440,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineHypervisor::class => GetVirtualMachine200ResponseVirtualMachineHypervisorNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineCloudInit::class => GetVirtualMachine200ResponseVirtualMachineCloudInitNormalizer::class,
+
             \KatapultAPI\Core\Model\VirtualMachineGroup::class => VirtualMachineGroupNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinePackage::class => VirtualMachinePackageNormalizer::class,
@@ -458,13 +468,19 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\Network::class => NetworkNormalizer::class,
 
+            \KatapultAPI\Core\Model\Subnet::class => SubnetNormalizer::class,
+
             \KatapultAPI\Core\Model\Hypervisor::class => HypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\CloudInit::class => CloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineArguments::class => VirtualMachineArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\GPUTypeLookup::class => GPUTypeLookupNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class => VirtualMachineGroupLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\CloudInitArguments::class => CloudInitArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachine::class => PatchVirtualMachine200ResponseVirtualMachineNormalizer::class,
 
@@ -477,6 +493,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineGpuType::class => PatchVirtualMachine200ResponseVirtualMachineGpuTypeNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineHypervisor::class => PatchVirtualMachine200ResponseVirtualMachineHypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineCloudInit::class => PatchVirtualMachine200ResponseVirtualMachineCloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchVirtualMachinePartGPUType::class => PatchVirtualMachinePartGPUTypeNormalizer::class,
 
@@ -491,6 +509,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineGpuType::class => DeleteVirtualMachine200ResponseVirtualMachineGpuTypeNormalizer::class,
 
             \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineHypervisor::class => DeleteVirtualMachine200ResponseVirtualMachineHypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineCloudInit::class => DeleteVirtualMachine200ResponseVirtualMachineCloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\DeleteVirtualMachinePartGPUType::class => DeleteVirtualMachinePartGPUTypeNormalizer::class,
 
@@ -523,10 +543,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseBuild::class => PostOrganizationVirtualMachinesBuild201ResponseBuildNormalizer::class,
 
             \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild::class => PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuildNormalizer::class,
-
-            \KatapultAPI\Core\Model\ResourceCreationRestricted::class => ResourceCreationRestrictedNormalizer::class,
-
-            \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => ResourceCreationRestrictedSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ZoneNotFoundSchema::class => ZoneNotFoundSchemaNormalizer::class,
 
@@ -568,9 +584,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\PostVirtualMachineConsoleSessionsPartVirtualMachine::class => PostVirtualMachineConsoleSessionsPartVirtualMachineNormalizer::class,
 
+            \KatapultAPI\Core\Model\UserSuspendedSchema::class => UserSuspendedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\UserNotFoundSchema::class => UserNotFoundSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\VirtualMachineMustBeStarted::class => VirtualMachineMustBeStartedNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineMustBeStartedSchema::class => VirtualMachineMustBeStartedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => APIAuthenticator503SchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\IdentityUnavailableSchema::class => IdentityUnavailableSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\AuthSSHKey::class => AuthSSHKeyNormalizer::class,
 
@@ -590,6 +614,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies::class => GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class => DiskBackupPolicyTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachine::class => VirtualMachineNormalizer::class,
@@ -599,6 +625,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\VirtualMachineGpuType::class => VirtualMachineGpuTypeNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineHypervisor::class => VirtualMachineHypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineCloudInit::class => VirtualMachineCloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\Disk::class => DiskNormalizer::class,
 
@@ -610,17 +638,33 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetOrganizationDiskBackupPoliciesPartSchedule::class => GetOrganizationDiskBackupPoliciesPartScheduleNormalizer::class,
 
+            \KatapultAPI\Core\Model\DiskBackupPolicyTargetArguments::class => DiskBackupPolicyTargetArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => DiskBackupPolicyArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ScheduleArguments::class => ScheduleArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicy::class => PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyTargetNormalizer::class,
+
+            \KatapultAPI\Core\Model\Schedule::class => ScheduleNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies::class => GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPoliciesPartSchedule::class => GetVirtualMachineDiskBackupPoliciesPartScheduleNormalizer::class,
 
             \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPolicies::class => GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\GetDiskDiskBackupPoliciesPartSchedule::class => GetDiskDiskBackupPoliciesPartScheduleNormalizer::class,
 
             \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicy::class => GetDiskBackupPolicy200ResponseDiskBackupPolicyNormalizer::class,
 
-            \KatapultAPI\Core\Model\Schedule::class => ScheduleNormalizer::class,
+            \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => GetDiskBackupPolicy200ResponseDiskBackupPolicyTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\DiskBackupPolicyLookup::class => DiskBackupPolicyLookupNormalizer::class,
 
@@ -628,17 +672,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicy::class => DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyNormalizer::class,
 
+            \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget::class => DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\InvalidTimestampSchema::class => InvalidTimestampSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => DiskBackupPolicyArgumentsNormalizer::class,
-
-            \KatapultAPI\Core\Model\ScheduleArguments::class => ScheduleArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class => PatchDiskBackupPolicy200ResponseDiskBackupPolicyNormalizer::class,
 
+            \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => PatchDiskBackupPolicy200ResponseDiskBackupPolicyTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicy::class => PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyNormalizer::class,
 
+            \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicy::class => PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\DNSZone::class => DNSZoneNormalizer::class,
 
@@ -659,6 +707,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DNSRecordContentAttributesCAA::class => DNSRecordContentAttributesCAANormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentAttributesCNAME::class => DNSRecordContentAttributesCNAMENormalizer::class,
+
+            \KatapultAPI\Core\Model\DNSRecordContentAttributesHTTPRedirect::class => DNSRecordContentAttributesHTTPRedirectNormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentAttributesIPS::class => DNSRecordContentAttributesIPSNormalizer::class,
 
@@ -685,6 +735,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\RecordContentAttributesForCAA::class => RecordContentAttributesForCAANormalizer::class,
 
             \KatapultAPI\Core\Model\RecordContentAttributesForCNAME::class => RecordContentAttributesForCNAMENormalizer::class,
+
+            \KatapultAPI\Core\Model\RecordContentAttributesForHTTPRedirect::class => RecordContentAttributesForHTTPRedirectNormalizer::class,
 
             \KatapultAPI\Core\Model\RecordContentAttributesForIPS::class => RecordContentAttributesForIPSNormalizer::class,
 
@@ -715,6 +767,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCAA::class => DNSRecordContentArgumentsForCAANormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCNAME::class => DNSRecordContentArgumentsForCNAMENormalizer::class,
+
+            \KatapultAPI\Core\Model\DNSRecordContentArgumentsForHTTPRedirect::class => DNSRecordContentArgumentsForHTTPRedirectNormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentArgumentsForIPS::class => DNSRecordContentArgumentsForIPSNormalizer::class,
 
@@ -820,6 +874,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\Certificate::class => CertificateNormalizer::class,
 
+            \KatapultAPI\Core\Model\CertificateArguments::class => CertificateArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificateLookup::class => CertificateLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\OperationNotSupported::class => OperationNotSupportedNormalizer::class,
+
             \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class => GetOrganizationLoadBalancers200ResponseLoadBalancersNormalizer::class,
 
             \KatapultAPI\Core\Model\LoadBalancerResource::class => LoadBalancerResourceNormalizer::class,
@@ -862,8 +922,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\LoadBalancerRuleArguments::class => LoadBalancerRuleArgumentsNormalizer::class,
 
-            \KatapultAPI\Core\Model\CertificateLookup::class => CertificateLookupNormalizer::class,
-
             \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class => PostLoadBalancerRules200ResponseLoadBalancerRuleNormalizer::class,
 
             \KatapultAPI\Core\Model\PostLoadBalancerRulesPartCertificates::class => PostLoadBalancerRulesPartCertificatesNormalizer::class,
@@ -887,8 +945,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DeleteLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule::class => DeleteLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationIPAddresses200ResponseIPAddresses::class => GetOrganizationIPAddresses200ResponseIPAddressesNormalizer::class,
-
-            \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => APIAuthenticator503SchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\NoAvailableAddressesSchema::class => NoAvailableAddressesSchemaNormalizer::class,
 
@@ -1038,6 +1094,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetOperatingSystems200ResponseOperatingSystems::class => GetOperatingSystems200ResponseOperatingSystemsNormalizer::class,
 
+            \KatapultAPI\Core\Model\TrashPurgingDisabledSchema::class => TrashPurgingDisabledSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\TrashObjectLookup::class => TrashObjectLookupNormalizer::class,
 
             \KatapultAPI\Core\Model\GetZones200ResponseZones::class => GetZones200ResponseZonesNormalizer::class,
@@ -1051,8 +1109,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\GetCurrencies200ResponseCurrencies::class => GetCurrencies200ResponseCurrenciesNormalizer::class,
 
             \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => GetUsersCurrent200ResponseOrganizationsNormalizer::class,
-
-            \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => IdentityNotLinkedToWebSessionSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => ObjectStorageClusterLookupNormalizer::class,
 
@@ -1098,6 +1154,38 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => ObjectStorageProvisioningErrorSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetContainerRegistryRegions200ResponseRegions::class => GetContainerRegistryRegions200ResponseRegionsNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetContainerRegistryRegionsPartDataCenter::class => GetContainerRegistryRegionsPartDataCenterNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositories200ResponseRepositories::class => GetOrganizationContainerRegistryRepositories200ResponseRepositoriesNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositoriesPartRegion::class => GetOrganizationContainerRegistryRepositoriesPartRegionNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRegionNotFoundSchema::class => ContainerRegistryRegionNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifact::class => ContainerRegistryArtifactNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactAnnotationsItem::class => ContainerRegistryArtifactAnnotationsItemNormalizer::class,
+
+            \KatapultAPI\Core\Model\RepositoryNotFoundSchema::class => RepositoryNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryBlob::class => ContainerRegistryBlobNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryTag::class => ContainerRegistryTagNormalizer::class,
+
+            \KatapultAPI\Core\Model\ArtifactNotFoundSchema::class => ArtifactNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRegionLookup::class => ContainerRegistryRegionLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoryLookup::class => ContainerRegistryRepositoryLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactLookup::class => ContainerRegistryArtifactLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteContainerRegistryRepository200ResponseRepository::class => DeleteContainerRegistryRepository200ResponseRepositoryNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteContainerRegistryRepositoryPartRegion::class => DeleteContainerRegistryRepositoryPartRegionNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => ResponseAPIAuthenticator400ResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
@@ -1108,11 +1196,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => ResponseOrganizationNotFoundResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseManagedOrganizationRequiredResponse::class => ResponseManagedOrganizationRequiredResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => ResponseDeletionFailedResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => ResponseTaskQueueingErrorResponseNormalizer::class,
-
-            \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseDiskNotFoundResponse::class => ResponseDiskNotFoundResponseNormalizer::class,
 
@@ -1133,6 +1223,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ResponseGPUTypeNotFoundResponse::class => ResponseGPUTypeNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseNoVirtualMachineForAPITokenResponse::class => ResponseNoVirtualMachineForAPITokenResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseContinuousManagementDisabledResponse::class => ResponseContinuousManagementDisabledResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseVirtualMachineBuildNotFoundResponse::class => ResponseVirtualMachineBuildNotFoundResponseNormalizer::class,
 
@@ -1167,6 +1259,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => ResponseAddressListEntryNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseCertificateNotFoundResponse::class => ResponseCertificateNotFoundResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseOperationNotSupportedResponse::class => ResponseOperationNotSupportedResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseLoadBalancerNotFoundResponse::class => ResponseLoadBalancerNotFoundResponseNormalizer::class,
 
@@ -1358,11 +1452,51 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => OrganizationsOrganizationCertificatesGetResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostBody::class => OrganizationsOrganizationCertificatesPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201::class => OrganizationsOrganizationCertificatesPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201Task::class => OrganizationsOrganizationCertificatesPostResponse201TaskNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateDeleteBody::class => CertificatesCertificateDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateDeleteResponse200::class => CertificatesCertificateDeleteResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => CertificatesCertificateGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateIssuePostBody::class => CertificatesCertificateIssuePostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateIssuePostResponse200::class => CertificatesCertificateIssuePostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostBody::class => CertificatesCertificateResetTokenPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostResponse200::class => CertificatesCertificateResetTokenPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => VirtualMachinesVirtualMachineConsoleSessionsPostBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => VirtualMachinesVirtualMachineConsoleSessionsPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRegionsGetResponse200::class => ContainerRegistryRegionsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationContainerRegistryRepositoriesGetResponse200::class => OrganizationsOrganizationContainerRegistryRepositoriesGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryArtifactsGetResponse200::class => ContainerRegistryRepositoriesRepositoryArtifactsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteBody::class => ContainerRegistryArtifactsArtifactDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200::class => ContainerRegistryArtifactsArtifactDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200Artifact::class => ContainerRegistryArtifactsArtifactDeleteResponse200ArtifactNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200::class => ContainerRegistryArtifactsArtifactGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200Artifact::class => ContainerRegistryArtifactsArtifactGetResponse200ArtifactNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteBody::class => ContainerRegistryRepositoriesRepositoryDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200::class => ContainerRegistryRepositoriesRepositoryDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200Repository::class => ContainerRegistryRepositoriesRepositoryDeleteResponse200RepositoryNormalizer::class,
 
             \KatapultAPI\Core\Model\CountriesGetResponse200::class => CountriesGetResponse200Normalizer::class,
 
@@ -1423,6 +1557,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\OrganizationsOrganizationDiskIoProfilesGetResponse200::class => OrganizationsOrganizationDiskIoProfilesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200::class => OrganizationsOrganizationDiskBackupPoliciesGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostBody::class => OrganizationsOrganizationDiskBackupPoliciesPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200::class => OrganizationsOrganizationDiskBackupPoliciesPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200DiskBackupPolicy::class => OrganizationsOrganizationDiskBackupPoliciesPostResponse200DiskBackupPolicyNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200::class => VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200Normalizer::class,
 
@@ -1656,6 +1796,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchBody::class => ManagedOrganizationsOrganizationPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchResponse200::class => ManagedOrganizationsOrganizationPatchResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => OrganizationsOrganizationNetworkSpeedProfilesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => OrganizationsOrganizationAvailableNetworksGetResponse200Normalizer::class,
@@ -1837,10 +1981,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\TrashObjectsTrashObjectRestorePostResponse200TrashObject::class => TrashObjectsTrashObjectRestorePostResponse200TrashObjectNormalizer::class,
 
             \KatapultAPI\Core\Model\UsersCurrentGetResponse200::class => UsersCurrentGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => InvalidateLinkedWebSessionPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => InvalidateLinkedWebSessionPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => OrganizationsOrganizationVirtualNetworksGetResponse200Normalizer::class,
 
@@ -2036,6 +2176,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\UnauthorizedNetworkForAPITokenSchema::class => false,
                 \KatapultAPI\Core\Model\InvalidAPIToken::class => false,
                 \KatapultAPI\Core\Model\InvalidAPITokenSchema::class => false,
+                \KatapultAPI\Core\Model\TokenOwnerSuspendedSchema::class => false,
                 \KatapultAPI\Core\Model\InvalidCapabilitiesTokenSchema::class => false,
                 \KatapultAPI\Core\Model\ScopeNotGrantedError::class => false,
                 \KatapultAPI\Core\Model\ScopeNotGrantedErrorSchema::class => false,
@@ -2079,6 +2220,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetOrganizationManaged200ResponseOrganizations::class => false,
                 \KatapultAPI\Core\Model\OrganizationLookup::class => false,
                 \KatapultAPI\Core\Model\KeyValue::class => false,
+                \KatapultAPI\Core\Model\ResourceCreationRestricted::class => false,
+                \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => false,
                 \KatapultAPI\Core\Model\OrganizationLimitReachedSchema::class => false,
                 \KatapultAPI\Core\Model\ValidationError::class => false,
                 \KatapultAPI\Core\Model\ValidationErrorSchema::class => false,
@@ -2164,6 +2307,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PostDiskAttachPartDataCenter::class => false,
                 \KatapultAPI\Core\Model\PostDiskAttachPartVirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\PostDiskAttachPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineSuspendedSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectInTrashSchema::class => false,
                 \KatapultAPI\Core\Model\TaskQueueingErrorSchema::class => false,
                 \KatapultAPI\Core\Model\PostDiskDetach200ResponseDisk::class => false,
@@ -2232,6 +2376,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackage::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackageIcon::class => false,
@@ -2245,16 +2390,20 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\Tag::class => false,
                 \KatapultAPI\Core\Model\IPAddress::class => false,
                 \KatapultAPI\Core\Model\Network::class => false,
+                \KatapultAPI\Core\Model\Subnet::class => false,
                 \KatapultAPI\Core\Model\Hypervisor::class => false,
+                \KatapultAPI\Core\Model\CloudInit::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineArguments::class => false,
                 \KatapultAPI\Core\Model\GPUTypeLookup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class => false,
+                \KatapultAPI\Core\Model\CloudInitArguments::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineGroup::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachinePackage::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachinePartGPUType::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineGroup::class => false,
@@ -2262,6 +2411,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachinePartGPUType::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackageLookup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackageNotFoundSchema::class => false,
@@ -2278,8 +2428,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseTask::class => false,
                 \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseBuild::class => false,
                 \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild::class => false,
-                \KatapultAPI\Core\Model\ResourceCreationRestricted::class => false,
-                \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => false,
                 \KatapultAPI\Core\Model\ZoneNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\DataCenterNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\DiskTemplateNotFoundSchema::class => false,
@@ -2300,8 +2448,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PostVirtualMachineReset200ResponseTask::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineConsoleSessions201ResponseConsoleSession::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineConsoleSessionsPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\UserSuspendedSchema::class => false,
+                \KatapultAPI\Core\Model\UserNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineMustBeStarted::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineMustBeStartedSchema::class => false,
+                \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => false,
+                \KatapultAPI\Core\Model\IdentityUnavailableSchema::class => false,
                 \KatapultAPI\Core\Model\AuthSSHKey::class => false,
                 \KatapultAPI\Core\Model\AuthSSHKeyProperties::class => false,
                 \KatapultAPI\Core\Model\AuthSSHKeyLookup::class => false,
@@ -2311,31 +2463,43 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\APITokenLookup::class => false,
                 \KatapultAPI\Core\Model\DeleteAPIToken200ResponseAPIToken::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies::class => false,
+                \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => false,
                 \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\VirtualMachine::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\Disk::class => false,
                 \KatapultAPI\Core\Model\DiskIoProfile::class => false,
                 \KatapultAPI\Core\Model\DiskVirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDiskBackupPoliciesPartSchedule::class => false,
+                \KatapultAPI\Core\Model\DiskBackupPolicyTargetArguments::class => false,
+                \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => false,
+                \KatapultAPI\Core\Model\ScheduleArguments::class => false,
+                \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => false,
+                \KatapultAPI\Core\Model\Schedule::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPoliciesPartSchedule::class => false,
                 \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPolicies::class => false,
+                \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => false,
                 \KatapultAPI\Core\Model\GetDiskDiskBackupPoliciesPartSchedule::class => false,
                 \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicy::class => false,
-                \KatapultAPI\Core\Model\Schedule::class => false,
+                \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\DiskBackupPolicyLookup::class => false,
                 \KatapultAPI\Core\Model\DeleteDiskBackupPolicy200ResponseDiskBackupPolicy::class => false,
                 \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\InvalidTimestampSchema::class => false,
-                \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => false,
-                \KatapultAPI\Core\Model\ScheduleArguments::class => false,
                 \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\DNSZone::class => false,
                 \KatapultAPI\Core\Model\DNSZoneArguments::class => false,
                 \KatapultAPI\Core\Model\DNSZoneLookup::class => false,
@@ -2346,6 +2510,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesALIAS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesCAA::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesCNAME::class => false,
+                \KatapultAPI\Core\Model\DNSRecordContentAttributesHTTPRedirect::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesIPS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesMX::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesNS::class => false,
@@ -2359,6 +2524,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\RecordContentAttributesForALIAS::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForCAA::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForCNAME::class => false,
+                \KatapultAPI\Core\Model\RecordContentAttributesForHTTPRedirect::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForIPS::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForMX::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForNS::class => false,
@@ -2374,6 +2540,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForALIAS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCAA::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCNAME::class => false,
+                \KatapultAPI\Core\Model\DNSRecordContentArgumentsForHTTPRedirect::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForIPS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForMX::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForNS::class => false,
@@ -2426,6 +2593,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\AddressListEntryLookup::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationCertificates200ResponseCertificates::class => false,
                 \KatapultAPI\Core\Model\Certificate::class => false,
+                \KatapultAPI\Core\Model\CertificateArguments::class => false,
+                \KatapultAPI\Core\Model\CertificateLookup::class => false,
+                \KatapultAPI\Core\Model\OperationNotSupported::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class => false,
                 \KatapultAPI\Core\Model\LoadBalancerResource::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationLoadBalancersPartIPAddress::class => false,
@@ -2447,7 +2617,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetLoadBalancerRules200ResponseLoadBalancerRules::class => false,
                 \KatapultAPI\Core\Model\GetLoadBalancerRulesPartCertificates::class => false,
                 \KatapultAPI\Core\Model\LoadBalancerRuleArguments::class => false,
-                \KatapultAPI\Core\Model\CertificateLookup::class => false,
                 \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class => false,
                 \KatapultAPI\Core\Model\PostLoadBalancerRulesPartCertificates::class => false,
                 \KatapultAPI\Core\Model\PostLoadBalancerRulesPartLoadBalancer::class => false,
@@ -2460,7 +2629,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer::class => false,
                 \KatapultAPI\Core\Model\DeleteLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationIPAddresses200ResponseIPAddresses::class => false,
-                \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => false,
                 \KatapultAPI\Core\Model\NoAvailableAddressesSchema::class => false,
                 \KatapultAPI\Core\Model\GetIPAddress200ResponseAllocation::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces::class => false,
@@ -2535,6 +2703,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\TagLookup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroupArguments::class => false,
                 \KatapultAPI\Core\Model\GetOperatingSystems200ResponseOperatingSystems::class => false,
+                \KatapultAPI\Core\Model\TrashPurgingDisabledSchema::class => false,
                 \KatapultAPI\Core\Model\TrashObjectLookup::class => false,
                 \KatapultAPI\Core\Model\GetZones200ResponseZones::class => false,
                 \KatapultAPI\Core\Model\GetZonesPartDataCenter::class => false,
@@ -2542,7 +2711,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetCountryCountryStates200ResponseCountryStates::class => false,
                 \KatapultAPI\Core\Model\GetCurrencies200ResponseCurrencies::class => false,
                 \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => false,
-                \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageAccount::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
@@ -2565,14 +2733,31 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ObjectStorageAccessKey::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageAccessKeyLookup::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => false,
+                \KatapultAPI\Core\Model\GetContainerRegistryRegions200ResponseRegions::class => false,
+                \KatapultAPI\Core\Model\GetContainerRegistryRegionsPartDataCenter::class => false,
+                \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositories200ResponseRepositories::class => false,
+                \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositoriesPartRegion::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRegionNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifact::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactAnnotationsItem::class => false,
+                \KatapultAPI\Core\Model\RepositoryNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryBlob::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryTag::class => false,
+                \KatapultAPI\Core\Model\ArtifactNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRegionLookup::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoryLookup::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactLookup::class => false,
+                \KatapultAPI\Core\Model\DeleteContainerRegistryRepository200ResponseRepository::class => false,
+                \KatapultAPI\Core\Model\DeleteContainerRegistryRepositoryPartRegion::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
                 \KatapultAPI\Core\Model\ResponseDataCenterNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseManagedOrganizationRequiredResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => false,
-                \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseDiskNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseObjectInTrashResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseUnableToAssignResponse::class => false,
@@ -2583,6 +2768,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseDiskTemplateVersionNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseGPUTypeNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNoVirtualMachineForAPITokenResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseContinuousManagementDisabledResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachineBuildNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachinePackageNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseSSHKeyNotFoundResponse::class => false,
@@ -2600,6 +2786,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseAddressListNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseCertificateNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseOperationNotSupportedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseLoadBalancerNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseLoadBalancerRuleNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseIPAddressNotFoundResponse::class => false,
@@ -2695,9 +2882,29 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201Task::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateDeleteBody::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateDeleteResponse200::class => false,
                 \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateIssuePostBody::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateIssuePostResponse200::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostBody::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRegionsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationContainerRegistryRepositoriesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryArtifactsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200Artifact::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200Artifact::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200Repository::class => false,
                 \KatapultAPI\Core\Model\CountriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200Country::class => false,
@@ -2728,6 +2935,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DataCentersDataCenterDefaultNetworkGetResponse200Network::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationDiskIoProfilesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200DiskBackupPolicy::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200::class => false,
@@ -2844,6 +3054,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
                 \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
                 \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchBody::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200::class => false,
@@ -2935,8 +3147,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\TrashObjectsTrashObjectRestorePostResponse200::class => false,
                 \KatapultAPI\Core\Model\TrashObjectsTrashObjectRestorePostResponse200TrashObject::class => false,
                 \KatapultAPI\Core\Model\UsersCurrentGetResponse200::class => false,
-                \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => false,
-                \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200::class => false,
@@ -3031,6 +3241,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\InvalidAPITokenSchema::class => InvalidAPITokenSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\TokenOwnerSuspendedSchema::class => TokenOwnerSuspendedSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\InvalidCapabilitiesTokenSchema::class => InvalidCapabilitiesTokenSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ScopeNotGrantedError::class => ScopeNotGrantedErrorNormalizer::class,
@@ -3116,6 +3328,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\OrganizationLookup::class => OrganizationLookupNormalizer::class,
 
             \KatapultAPI\Core\Model\KeyValue::class => KeyValueNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResourceCreationRestricted::class => ResourceCreationRestrictedNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => ResourceCreationRestrictedSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationLimitReachedSchema::class => OrganizationLimitReachedSchemaNormalizer::class,
 
@@ -3287,6 +3503,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\PostDiskAttachPartVirtualMachine::class => PostDiskAttachPartVirtualMachineNormalizer::class,
 
+            \KatapultAPI\Core\Model\VirtualMachineSuspendedSchema::class => VirtualMachineSuspendedSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\ObjectInTrashSchema::class => ObjectInTrashSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\TaskQueueingErrorSchema::class => TaskQueueingErrorSchemaNormalizer::class,
@@ -3423,6 +3641,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineHypervisor::class => GetVirtualMachine200ResponseVirtualMachineHypervisorNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineCloudInit::class => GetVirtualMachine200ResponseVirtualMachineCloudInitNormalizer::class,
+
             \KatapultAPI\Core\Model\VirtualMachineGroup::class => VirtualMachineGroupNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinePackage::class => VirtualMachinePackageNormalizer::class,
@@ -3449,13 +3669,19 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\Network::class => NetworkNormalizer::class,
 
+            \KatapultAPI\Core\Model\Subnet::class => SubnetNormalizer::class,
+
             \KatapultAPI\Core\Model\Hypervisor::class => HypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\CloudInit::class => CloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineArguments::class => VirtualMachineArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\GPUTypeLookup::class => GPUTypeLookupNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class => VirtualMachineGroupLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\CloudInitArguments::class => CloudInitArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachine::class => PatchVirtualMachine200ResponseVirtualMachineNormalizer::class,
 
@@ -3468,6 +3694,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineGpuType::class => PatchVirtualMachine200ResponseVirtualMachineGpuTypeNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineHypervisor::class => PatchVirtualMachine200ResponseVirtualMachineHypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineCloudInit::class => PatchVirtualMachine200ResponseVirtualMachineCloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchVirtualMachinePartGPUType::class => PatchVirtualMachinePartGPUTypeNormalizer::class,
 
@@ -3482,6 +3710,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineGpuType::class => DeleteVirtualMachine200ResponseVirtualMachineGpuTypeNormalizer::class,
 
             \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineHypervisor::class => DeleteVirtualMachine200ResponseVirtualMachineHypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineCloudInit::class => DeleteVirtualMachine200ResponseVirtualMachineCloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\DeleteVirtualMachinePartGPUType::class => DeleteVirtualMachinePartGPUTypeNormalizer::class,
 
@@ -3514,10 +3744,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseBuild::class => PostOrganizationVirtualMachinesBuild201ResponseBuildNormalizer::class,
 
             \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild::class => PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuildNormalizer::class,
-
-            \KatapultAPI\Core\Model\ResourceCreationRestricted::class => ResourceCreationRestrictedNormalizer::class,
-
-            \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => ResourceCreationRestrictedSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ZoneNotFoundSchema::class => ZoneNotFoundSchemaNormalizer::class,
 
@@ -3559,9 +3785,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\PostVirtualMachineConsoleSessionsPartVirtualMachine::class => PostVirtualMachineConsoleSessionsPartVirtualMachineNormalizer::class,
 
+            \KatapultAPI\Core\Model\UserSuspendedSchema::class => UserSuspendedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\UserNotFoundSchema::class => UserNotFoundSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\VirtualMachineMustBeStarted::class => VirtualMachineMustBeStartedNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineMustBeStartedSchema::class => VirtualMachineMustBeStartedSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => APIAuthenticator503SchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\IdentityUnavailableSchema::class => IdentityUnavailableSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\AuthSSHKey::class => AuthSSHKeyNormalizer::class,
 
@@ -3581,6 +3815,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies::class => GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class => DiskBackupPolicyTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachine::class => VirtualMachineNormalizer::class,
@@ -3590,6 +3826,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\VirtualMachineGpuType::class => VirtualMachineGpuTypeNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachineHypervisor::class => VirtualMachineHypervisorNormalizer::class,
+
+            \KatapultAPI\Core\Model\VirtualMachineCloudInit::class => VirtualMachineCloudInitNormalizer::class,
 
             \KatapultAPI\Core\Model\Disk::class => DiskNormalizer::class,
 
@@ -3601,17 +3839,33 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetOrganizationDiskBackupPoliciesPartSchedule::class => GetOrganizationDiskBackupPoliciesPartScheduleNormalizer::class,
 
+            \KatapultAPI\Core\Model\DiskBackupPolicyTargetArguments::class => DiskBackupPolicyTargetArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => DiskBackupPolicyArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\ScheduleArguments::class => ScheduleArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicy::class => PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyTargetNormalizer::class,
+
+            \KatapultAPI\Core\Model\Schedule::class => ScheduleNormalizer::class,
+
             \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies::class => GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPoliciesPartSchedule::class => GetVirtualMachineDiskBackupPoliciesPartScheduleNormalizer::class,
 
             \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPolicies::class => GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\GetDiskDiskBackupPoliciesPartSchedule::class => GetDiskDiskBackupPoliciesPartScheduleNormalizer::class,
 
             \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicy::class => GetDiskBackupPolicy200ResponseDiskBackupPolicyNormalizer::class,
 
-            \KatapultAPI\Core\Model\Schedule::class => ScheduleNormalizer::class,
+            \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => GetDiskBackupPolicy200ResponseDiskBackupPolicyTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\DiskBackupPolicyLookup::class => DiskBackupPolicyLookupNormalizer::class,
 
@@ -3619,17 +3873,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicy::class => DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyNormalizer::class,
 
+            \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget::class => DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\InvalidTimestampSchema::class => InvalidTimestampSchemaNormalizer::class,
-
-            \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => DiskBackupPolicyArgumentsNormalizer::class,
-
-            \KatapultAPI\Core\Model\ScheduleArguments::class => ScheduleArgumentsNormalizer::class,
 
             \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class => PatchDiskBackupPolicy200ResponseDiskBackupPolicyNormalizer::class,
 
+            \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => PatchDiskBackupPolicy200ResponseDiskBackupPolicyTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicy::class => PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyNormalizer::class,
 
+            \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTargetNormalizer::class,
+
             \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicy::class => PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyNormalizer::class,
+
+            \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTargetNormalizer::class,
 
             \KatapultAPI\Core\Model\DNSZone::class => DNSZoneNormalizer::class,
 
@@ -3650,6 +3908,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DNSRecordContentAttributesCAA::class => DNSRecordContentAttributesCAANormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentAttributesCNAME::class => DNSRecordContentAttributesCNAMENormalizer::class,
+
+            \KatapultAPI\Core\Model\DNSRecordContentAttributesHTTPRedirect::class => DNSRecordContentAttributesHTTPRedirectNormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentAttributesIPS::class => DNSRecordContentAttributesIPSNormalizer::class,
 
@@ -3676,6 +3936,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\RecordContentAttributesForCAA::class => RecordContentAttributesForCAANormalizer::class,
 
             \KatapultAPI\Core\Model\RecordContentAttributesForCNAME::class => RecordContentAttributesForCNAMENormalizer::class,
+
+            \KatapultAPI\Core\Model\RecordContentAttributesForHTTPRedirect::class => RecordContentAttributesForHTTPRedirectNormalizer::class,
 
             \KatapultAPI\Core\Model\RecordContentAttributesForIPS::class => RecordContentAttributesForIPSNormalizer::class,
 
@@ -3706,6 +3968,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCAA::class => DNSRecordContentArgumentsForCAANormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCNAME::class => DNSRecordContentArgumentsForCNAMENormalizer::class,
+
+            \KatapultAPI\Core\Model\DNSRecordContentArgumentsForHTTPRedirect::class => DNSRecordContentArgumentsForHTTPRedirectNormalizer::class,
 
             \KatapultAPI\Core\Model\DNSRecordContentArgumentsForIPS::class => DNSRecordContentArgumentsForIPSNormalizer::class,
 
@@ -3811,6 +4075,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\Certificate::class => CertificateNormalizer::class,
 
+            \KatapultAPI\Core\Model\CertificateArguments::class => CertificateArgumentsNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificateLookup::class => CertificateLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\OperationNotSupported::class => OperationNotSupportedNormalizer::class,
+
             \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class => GetOrganizationLoadBalancers200ResponseLoadBalancersNormalizer::class,
 
             \KatapultAPI\Core\Model\LoadBalancerResource::class => LoadBalancerResourceNormalizer::class,
@@ -3853,8 +4123,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\LoadBalancerRuleArguments::class => LoadBalancerRuleArgumentsNormalizer::class,
 
-            \KatapultAPI\Core\Model\CertificateLookup::class => CertificateLookupNormalizer::class,
-
             \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class => PostLoadBalancerRules200ResponseLoadBalancerRuleNormalizer::class,
 
             \KatapultAPI\Core\Model\PostLoadBalancerRulesPartCertificates::class => PostLoadBalancerRulesPartCertificatesNormalizer::class,
@@ -3878,8 +4146,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\DeleteLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule::class => DeleteLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRuleNormalizer::class,
 
             \KatapultAPI\Core\Model\GetOrganizationIPAddresses200ResponseIPAddresses::class => GetOrganizationIPAddresses200ResponseIPAddressesNormalizer::class,
-
-            \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => APIAuthenticator503SchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\NoAvailableAddressesSchema::class => NoAvailableAddressesSchemaNormalizer::class,
 
@@ -4029,6 +4295,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\GetOperatingSystems200ResponseOperatingSystems::class => GetOperatingSystems200ResponseOperatingSystemsNormalizer::class,
 
+            \KatapultAPI\Core\Model\TrashPurgingDisabledSchema::class => TrashPurgingDisabledSchemaNormalizer::class,
+
             \KatapultAPI\Core\Model\TrashObjectLookup::class => TrashObjectLookupNormalizer::class,
 
             \KatapultAPI\Core\Model\GetZones200ResponseZones::class => GetZones200ResponseZonesNormalizer::class,
@@ -4042,8 +4310,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\GetCurrencies200ResponseCurrencies::class => GetCurrencies200ResponseCurrenciesNormalizer::class,
 
             \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => GetUsersCurrent200ResponseOrganizationsNormalizer::class,
-
-            \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => IdentityNotLinkedToWebSessionSchemaNormalizer::class,
 
             \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => ObjectStorageClusterLookupNormalizer::class,
 
@@ -4089,6 +4355,38 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => ObjectStorageProvisioningErrorSchemaNormalizer::class,
 
+            \KatapultAPI\Core\Model\GetContainerRegistryRegions200ResponseRegions::class => GetContainerRegistryRegions200ResponseRegionsNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetContainerRegistryRegionsPartDataCenter::class => GetContainerRegistryRegionsPartDataCenterNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositories200ResponseRepositories::class => GetOrganizationContainerRegistryRepositories200ResponseRepositoriesNormalizer::class,
+
+            \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositoriesPartRegion::class => GetOrganizationContainerRegistryRepositoriesPartRegionNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRegionNotFoundSchema::class => ContainerRegistryRegionNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifact::class => ContainerRegistryArtifactNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactAnnotationsItem::class => ContainerRegistryArtifactAnnotationsItemNormalizer::class,
+
+            \KatapultAPI\Core\Model\RepositoryNotFoundSchema::class => RepositoryNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryBlob::class => ContainerRegistryBlobNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryTag::class => ContainerRegistryTagNormalizer::class,
+
+            \KatapultAPI\Core\Model\ArtifactNotFoundSchema::class => ArtifactNotFoundSchemaNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRegionLookup::class => ContainerRegistryRegionLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoryLookup::class => ContainerRegistryRepositoryLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactLookup::class => ContainerRegistryArtifactLookupNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteContainerRegistryRepository200ResponseRepository::class => DeleteContainerRegistryRepository200ResponseRepositoryNormalizer::class,
+
+            \KatapultAPI\Core\Model\DeleteContainerRegistryRepositoryPartRegion::class => DeleteContainerRegistryRepositoryPartRegionNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => ResponseAPIAuthenticator400ResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
@@ -4099,11 +4397,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => ResponseOrganizationNotFoundResponseNormalizer::class,
 
+            \KatapultAPI\Core\Model\ResponseManagedOrganizationRequiredResponse::class => ResponseManagedOrganizationRequiredResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
+
             \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => ResponseDeletionFailedResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => ResponseTaskQueueingErrorResponseNormalizer::class,
-
-            \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseDiskNotFoundResponse::class => ResponseDiskNotFoundResponseNormalizer::class,
 
@@ -4124,6 +4424,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ResponseGPUTypeNotFoundResponse::class => ResponseGPUTypeNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseNoVirtualMachineForAPITokenResponse::class => ResponseNoVirtualMachineForAPITokenResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseContinuousManagementDisabledResponse::class => ResponseContinuousManagementDisabledResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseVirtualMachineBuildNotFoundResponse::class => ResponseVirtualMachineBuildNotFoundResponseNormalizer::class,
 
@@ -4158,6 +4460,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => ResponseAddressListEntryNotFoundResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseCertificateNotFoundResponse::class => ResponseCertificateNotFoundResponseNormalizer::class,
+
+            \KatapultAPI\Core\Model\ResponseOperationNotSupportedResponse::class => ResponseOperationNotSupportedResponseNormalizer::class,
 
             \KatapultAPI\Core\Model\ResponseLoadBalancerNotFoundResponse::class => ResponseLoadBalancerNotFoundResponseNormalizer::class,
 
@@ -4349,11 +4653,51 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => OrganizationsOrganizationCertificatesGetResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostBody::class => OrganizationsOrganizationCertificatesPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201::class => OrganizationsOrganizationCertificatesPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201Task::class => OrganizationsOrganizationCertificatesPostResponse201TaskNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateDeleteBody::class => CertificatesCertificateDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateDeleteResponse200::class => CertificatesCertificateDeleteResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => CertificatesCertificateGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateIssuePostBody::class => CertificatesCertificateIssuePostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateIssuePostResponse200::class => CertificatesCertificateIssuePostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostBody::class => CertificatesCertificateResetTokenPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostResponse200::class => CertificatesCertificateResetTokenPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => VirtualMachinesVirtualMachineConsoleSessionsPostBodyNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => VirtualMachinesVirtualMachineConsoleSessionsPostResponse201Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRegionsGetResponse200::class => ContainerRegistryRegionsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationContainerRegistryRepositoriesGetResponse200::class => OrganizationsOrganizationContainerRegistryRepositoriesGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryArtifactsGetResponse200::class => ContainerRegistryRepositoriesRepositoryArtifactsGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteBody::class => ContainerRegistryArtifactsArtifactDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200::class => ContainerRegistryArtifactsArtifactDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200Artifact::class => ContainerRegistryArtifactsArtifactDeleteResponse200ArtifactNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200::class => ContainerRegistryArtifactsArtifactGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200Artifact::class => ContainerRegistryArtifactsArtifactGetResponse200ArtifactNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteBody::class => ContainerRegistryRepositoriesRepositoryDeleteBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200::class => ContainerRegistryRepositoriesRepositoryDeleteResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200Repository::class => ContainerRegistryRepositoriesRepositoryDeleteResponse200RepositoryNormalizer::class,
 
             \KatapultAPI\Core\Model\CountriesGetResponse200::class => CountriesGetResponse200Normalizer::class,
 
@@ -4414,6 +4758,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\OrganizationsOrganizationDiskIoProfilesGetResponse200::class => OrganizationsOrganizationDiskIoProfilesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200::class => OrganizationsOrganizationDiskBackupPoliciesGetResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostBody::class => OrganizationsOrganizationDiskBackupPoliciesPostBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200::class => OrganizationsOrganizationDiskBackupPoliciesPostResponse200Normalizer::class,
+
+            \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200DiskBackupPolicy::class => OrganizationsOrganizationDiskBackupPoliciesPostResponse200DiskBackupPolicyNormalizer::class,
 
             \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200::class => VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200Normalizer::class,
 
@@ -4647,6 +4997,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => ManagedOrganizationsOrganizationDeleteResponse200Normalizer::class,
 
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchBody::class => ManagedOrganizationsOrganizationPatchBodyNormalizer::class,
+
+            \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchResponse200::class => ManagedOrganizationsOrganizationPatchResponse200Normalizer::class,
+
             \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => OrganizationsOrganizationNetworkSpeedProfilesGetResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => OrganizationsOrganizationAvailableNetworksGetResponse200Normalizer::class,
@@ -4828,10 +5182,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             \KatapultAPI\Core\Model\TrashObjectsTrashObjectRestorePostResponse200TrashObject::class => TrashObjectsTrashObjectRestorePostResponse200TrashObjectNormalizer::class,
 
             \KatapultAPI\Core\Model\UsersCurrentGetResponse200::class => UsersCurrentGetResponse200Normalizer::class,
-
-            \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => InvalidateLinkedWebSessionPostBodyNormalizer::class,
-
-            \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => InvalidateLinkedWebSessionPostResponse200Normalizer::class,
 
             \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => OrganizationsOrganizationVirtualNetworksGetResponse200Normalizer::class,
 
@@ -5030,6 +5380,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\UnauthorizedNetworkForAPITokenSchema::class => false,
                 \KatapultAPI\Core\Model\InvalidAPIToken::class => false,
                 \KatapultAPI\Core\Model\InvalidAPITokenSchema::class => false,
+                \KatapultAPI\Core\Model\TokenOwnerSuspendedSchema::class => false,
                 \KatapultAPI\Core\Model\InvalidCapabilitiesTokenSchema::class => false,
                 \KatapultAPI\Core\Model\ScopeNotGrantedError::class => false,
                 \KatapultAPI\Core\Model\ScopeNotGrantedErrorSchema::class => false,
@@ -5073,6 +5424,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetOrganizationManaged200ResponseOrganizations::class => false,
                 \KatapultAPI\Core\Model\OrganizationLookup::class => false,
                 \KatapultAPI\Core\Model\KeyValue::class => false,
+                \KatapultAPI\Core\Model\ResourceCreationRestricted::class => false,
+                \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => false,
                 \KatapultAPI\Core\Model\OrganizationLimitReachedSchema::class => false,
                 \KatapultAPI\Core\Model\ValidationError::class => false,
                 \KatapultAPI\Core\Model\ValidationErrorSchema::class => false,
@@ -5158,6 +5511,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PostDiskAttachPartDataCenter::class => false,
                 \KatapultAPI\Core\Model\PostDiskAttachPartVirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\PostDiskAttachPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineSuspendedSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectInTrashSchema::class => false,
                 \KatapultAPI\Core\Model\TaskQueueingErrorSchema::class => false,
                 \KatapultAPI\Core\Model\PostDiskDetach200ResponseDisk::class => false,
@@ -5226,6 +5580,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackage::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackageIcon::class => false,
@@ -5239,16 +5594,20 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\Tag::class => false,
                 \KatapultAPI\Core\Model\IPAddress::class => false,
                 \KatapultAPI\Core\Model\Network::class => false,
+                \KatapultAPI\Core\Model\Subnet::class => false,
                 \KatapultAPI\Core\Model\Hypervisor::class => false,
+                \KatapultAPI\Core\Model\CloudInit::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineArguments::class => false,
                 \KatapultAPI\Core\Model\GPUTypeLookup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class => false,
+                \KatapultAPI\Core\Model\CloudInitArguments::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineGroup::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachinePackage::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\PatchVirtualMachine200ResponseVirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\PatchVirtualMachinePartGPUType::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachine::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineGroup::class => false,
@@ -5256,6 +5615,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\DeleteVirtualMachine200ResponseVirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\DeleteVirtualMachinePartGPUType::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackageLookup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinePackageNotFoundSchema::class => false,
@@ -5272,8 +5632,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseTask::class => false,
                 \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseBuild::class => false,
                 \KatapultAPI\Core\Model\PostOrganizationVirtualMachinesBuild201ResponseVirtualMachineBuild::class => false,
-                \KatapultAPI\Core\Model\ResourceCreationRestricted::class => false,
-                \KatapultAPI\Core\Model\ResourceCreationRestrictedSchema::class => false,
                 \KatapultAPI\Core\Model\ZoneNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\DataCenterNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\DiskTemplateNotFoundSchema::class => false,
@@ -5294,8 +5652,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PostVirtualMachineReset200ResponseTask::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineConsoleSessions201ResponseConsoleSession::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineConsoleSessionsPartVirtualMachine::class => false,
+                \KatapultAPI\Core\Model\UserSuspendedSchema::class => false,
+                \KatapultAPI\Core\Model\UserNotFoundSchema::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineMustBeStarted::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineMustBeStartedSchema::class => false,
+                \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => false,
+                \KatapultAPI\Core\Model\IdentityUnavailableSchema::class => false,
                 \KatapultAPI\Core\Model\AuthSSHKey::class => false,
                 \KatapultAPI\Core\Model\AuthSSHKeyProperties::class => false,
                 \KatapultAPI\Core\Model\AuthSSHKeyLookup::class => false,
@@ -5305,31 +5667,43 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\APITokenLookup::class => false,
                 \KatapultAPI\Core\Model\DeleteAPIToken200ResponseAPIToken::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPolicies::class => false,
+                \KatapultAPI\Core\Model\GetOrganizationDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => false,
                 \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\VirtualMachine::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineAttachedIso::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGpuType::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineHypervisor::class => false,
+                \KatapultAPI\Core\Model\VirtualMachineCloudInit::class => false,
                 \KatapultAPI\Core\Model\Disk::class => false,
                 \KatapultAPI\Core\Model\DiskIoProfile::class => false,
                 \KatapultAPI\Core\Model\DiskVirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineDisk::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationDiskBackupPoliciesPartSchedule::class => false,
+                \KatapultAPI\Core\Model\DiskBackupPolicyTargetArguments::class => false,
+                \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => false,
+                \KatapultAPI\Core\Model\ScheduleArguments::class => false,
+                \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => false,
+                \KatapultAPI\Core\Model\Schedule::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies::class => false,
+                \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPoliciesPartSchedule::class => false,
                 \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPolicies::class => false,
+                \KatapultAPI\Core\Model\GetDiskDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class => false,
                 \KatapultAPI\Core\Model\GetDiskDiskBackupPoliciesPartSchedule::class => false,
                 \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicy::class => false,
-                \KatapultAPI\Core\Model\Schedule::class => false,
+                \KatapultAPI\Core\Model\GetDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\DiskBackupPolicyLookup::class => false,
                 \KatapultAPI\Core\Model\DeleteDiskBackupPolicy200ResponseDiskBackupPolicy::class => false,
                 \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\InvalidTimestampSchema::class => false,
-                \KatapultAPI\Core\Model\DiskBackupPolicyArguments::class => false,
-                \KatapultAPI\Core\Model\ScheduleArguments::class => false,
                 \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicy::class => false,
+                \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class => false,
                 \KatapultAPI\Core\Model\DNSZone::class => false,
                 \KatapultAPI\Core\Model\DNSZoneArguments::class => false,
                 \KatapultAPI\Core\Model\DNSZoneLookup::class => false,
@@ -5340,6 +5714,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesALIAS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesCAA::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesCNAME::class => false,
+                \KatapultAPI\Core\Model\DNSRecordContentAttributesHTTPRedirect::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesIPS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesMX::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentAttributesNS::class => false,
@@ -5353,6 +5728,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\RecordContentAttributesForALIAS::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForCAA::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForCNAME::class => false,
+                \KatapultAPI\Core\Model\RecordContentAttributesForHTTPRedirect::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForIPS::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForMX::class => false,
                 \KatapultAPI\Core\Model\RecordContentAttributesForNS::class => false,
@@ -5368,6 +5744,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForALIAS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCAA::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCNAME::class => false,
+                \KatapultAPI\Core\Model\DNSRecordContentArgumentsForHTTPRedirect::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForIPS::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForMX::class => false,
                 \KatapultAPI\Core\Model\DNSRecordContentArgumentsForNS::class => false,
@@ -5420,6 +5797,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\AddressListEntryLookup::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationCertificates200ResponseCertificates::class => false,
                 \KatapultAPI\Core\Model\Certificate::class => false,
+                \KatapultAPI\Core\Model\CertificateArguments::class => false,
+                \KatapultAPI\Core\Model\CertificateLookup::class => false,
+                \KatapultAPI\Core\Model\OperationNotSupported::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationLoadBalancers200ResponseLoadBalancers::class => false,
                 \KatapultAPI\Core\Model\LoadBalancerResource::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationLoadBalancersPartIPAddress::class => false,
@@ -5441,7 +5821,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetLoadBalancerRules200ResponseLoadBalancerRules::class => false,
                 \KatapultAPI\Core\Model\GetLoadBalancerRulesPartCertificates::class => false,
                 \KatapultAPI\Core\Model\LoadBalancerRuleArguments::class => false,
-                \KatapultAPI\Core\Model\CertificateLookup::class => false,
                 \KatapultAPI\Core\Model\PostLoadBalancerRules200ResponseLoadBalancerRule::class => false,
                 \KatapultAPI\Core\Model\PostLoadBalancerRulesPartCertificates::class => false,
                 \KatapultAPI\Core\Model\PostLoadBalancerRulesPartLoadBalancer::class => false,
@@ -5454,7 +5833,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\PatchLoadBalancersRulesLoadBalancerRulePartLoadBalancer::class => false,
                 \KatapultAPI\Core\Model\DeleteLoadBalancersRulesLoadBalancerRule200ResponseLoadBalancerRule::class => false,
                 \KatapultAPI\Core\Model\GetOrganizationIPAddresses200ResponseIPAddresses::class => false,
-                \KatapultAPI\Core\Model\APIAuthenticator503Schema::class => false,
                 \KatapultAPI\Core\Model\NoAvailableAddressesSchema::class => false,
                 \KatapultAPI\Core\Model\GetIPAddress200ResponseAllocation::class => false,
                 \KatapultAPI\Core\Model\GetVirtualMachineNetworkInterfaces200ResponseVirtualMachineNetworkInterfaces::class => false,
@@ -5529,6 +5907,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\TagLookup::class => false,
                 \KatapultAPI\Core\Model\VirtualMachineGroupArguments::class => false,
                 \KatapultAPI\Core\Model\GetOperatingSystems200ResponseOperatingSystems::class => false,
+                \KatapultAPI\Core\Model\TrashPurgingDisabledSchema::class => false,
                 \KatapultAPI\Core\Model\TrashObjectLookup::class => false,
                 \KatapultAPI\Core\Model\GetZones200ResponseZones::class => false,
                 \KatapultAPI\Core\Model\GetZonesPartDataCenter::class => false,
@@ -5536,7 +5915,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\GetCountryCountryStates200ResponseCountryStates::class => false,
                 \KatapultAPI\Core\Model\GetCurrencies200ResponseCurrencies::class => false,
                 \KatapultAPI\Core\Model\GetUsersCurrent200ResponseOrganizations::class => false,
-                \KatapultAPI\Core\Model\IdentityNotLinkedToWebSessionSchema::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageClusterLookup::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageAccount::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageClusterNotFoundSchema::class => false,
@@ -5559,14 +5937,31 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ObjectStorageAccessKey::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageAccessKeyLookup::class => false,
                 \KatapultAPI\Core\Model\ObjectStorageProvisioningErrorSchema::class => false,
+                \KatapultAPI\Core\Model\GetContainerRegistryRegions200ResponseRegions::class => false,
+                \KatapultAPI\Core\Model\GetContainerRegistryRegionsPartDataCenter::class => false,
+                \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositories200ResponseRepositories::class => false,
+                \KatapultAPI\Core\Model\GetOrganizationContainerRegistryRepositoriesPartRegion::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRegionNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifact::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactAnnotationsItem::class => false,
+                \KatapultAPI\Core\Model\RepositoryNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryBlob::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryTag::class => false,
+                \KatapultAPI\Core\Model\ArtifactNotFoundSchema::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRegionLookup::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoryLookup::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactLookup::class => false,
+                \KatapultAPI\Core\Model\DeleteContainerRegistryRepository200ResponseRepository::class => false,
+                \KatapultAPI\Core\Model\DeleteContainerRegistryRepositoryPartRegion::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator400Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response::class => false,
                 \KatapultAPI\Core\Model\ResponseDataCenterNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseOrganizationNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseManagedOrganizationRequiredResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseDeletionFailedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseTaskQueueingErrorResponse::class => false,
-                \KatapultAPI\Core\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseDiskNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseObjectInTrashResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseUnableToAssignResponse::class => false,
@@ -5577,6 +5972,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseDiskTemplateVersionNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseGPUTypeNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseNoVirtualMachineForAPITokenResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseContinuousManagementDisabledResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachineBuildNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseVirtualMachinePackageNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseSSHKeyNotFoundResponse::class => false,
@@ -5594,6 +5990,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\ResponseAddressListNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseAddressListEntryNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseCertificateNotFoundResponse::class => false,
+                \KatapultAPI\Core\Model\ResponseOperationNotSupportedResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseLoadBalancerNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseLoadBalancerRuleNotFoundResponse::class => false,
                 \KatapultAPI\Core\Model\ResponseIPAddressNotFoundResponse::class => false,
@@ -5689,9 +6086,29 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualMachinesBuildFromSpecPostResponse201Build::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesBuildsVirtualMachineBuildGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationCertificatesPostResponse201Task::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateDeleteBody::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateDeleteResponse200::class => false,
                 \KatapultAPI\Core\Model\CertificatesCertificateGetResponse200::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateIssuePostBody::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateIssuePostResponse200::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostBody::class => false,
+                \KatapultAPI\Core\Model\CertificatesCertificateResetTokenPostResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineConsoleSessionsPostResponse201::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRegionsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationContainerRegistryRepositoriesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryArtifactsGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactDeleteResponse200Artifact::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryArtifactsArtifactGetResponse200Artifact::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteBody::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ContainerRegistryRepositoriesRepositoryDeleteResponse200Repository::class => false,
                 \KatapultAPI\Core\Model\CountriesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200::class => false,
                 \KatapultAPI\Core\Model\CountriesCountryGetResponse200Country::class => false,
@@ -5722,6 +6139,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\DataCentersDataCenterDefaultNetworkGetResponse200Network::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationDiskIoProfilesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesGetResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostBody::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200::class => false,
+                \KatapultAPI\Core\Model\OrganizationsOrganizationDiskBackupPoliciesPostResponse200DiskBackupPolicy::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostBody::class => false,
                 \KatapultAPI\Core\Model\VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200::class => false,
@@ -5838,6 +6258,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\OrganizationsOrganizationManagedPostResponse201::class => false,
                 \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteBody::class => false,
                 \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationDeleteResponse200::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchBody::class => false,
+                \KatapultAPI\Core\Model\ManagedOrganizationsOrganizationPatchResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationNetworkSpeedProfilesGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationAvailableNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\NetworksNetworkGetResponse200::class => false,
@@ -5929,8 +6351,6 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 \KatapultAPI\Core\Model\TrashObjectsTrashObjectRestorePostResponse200::class => false,
                 \KatapultAPI\Core\Model\TrashObjectsTrashObjectRestorePostResponse200TrashObject::class => false,
                 \KatapultAPI\Core\Model\UsersCurrentGetResponse200::class => false,
-                \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostBody::class => false,
-                \KatapultAPI\Core\Model\InvalidateLinkedWebSessionPostResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksGetResponse200::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostBody::class => false,
                 \KatapultAPI\Core\Model\OrganizationsOrganizationVirtualNetworksPostResponse200::class => false,

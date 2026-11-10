@@ -18,16 +18,16 @@ class GetDnsZoneRecords extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * Return a list of all DNS records in a zone
      * ## Scopes
      * - `dns`
-     * - `dns:read`.
+     * - `dns:read`
+     * - `dns:acme`.
      *
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $dns_zone[id] All 'dns_zone[]' params are mutually exclusive, only one can be provided
-     * @var string $dns_zone[name] All 'dns_zone[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'dns_zone[id]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *                               'dns_zone[name]': string, All 'dns_zone[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

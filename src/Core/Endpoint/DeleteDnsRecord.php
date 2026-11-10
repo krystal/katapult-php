@@ -17,7 +17,8 @@ class DeleteDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impl
     /**
      * Delete a DNS record
      * ## Scopes
-     * - `dns`.
+     * - `dns`
+     * - `dns:acme`.
      *
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.

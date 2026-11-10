@@ -24,11 +24,10 @@ class GetOrganizationVirtualMachineGroups extends \KatapultAPI\Core\Runtime\Clie
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return groups for.
+     *                               'organization[id]': string, The organization to return groups for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return groups for.
+     *      'organization[sub_domain]': string, The organization to return groups for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
      * }

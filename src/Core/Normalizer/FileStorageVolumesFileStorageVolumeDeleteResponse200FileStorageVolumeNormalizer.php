@@ -87,6 +87,40 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('size', $data) && $data['size'] === null) {
                 $object->setSize(null);
             }
+            if (\array_key_exists('technology_generation', $data)) {
+                $object->setTechnologyGeneration($data['technology_generation']);
+                unset($data['technology_generation']);
+            }
+            if (\array_key_exists('atime_update', $data) && $data['atime_update'] !== null) {
+                $object->setAtimeUpdate($data['atime_update']);
+                unset($data['atime_update']);
+            } elseif (\array_key_exists('atime_update', $data) && $data['atime_update'] === null) {
+                $object->setAtimeUpdate(null);
+            }
+            if (\array_key_exists('nfs_root_squash', $data) && $data['nfs_root_squash'] !== null) {
+                $object->setNfsRootSquash($data['nfs_root_squash']);
+                unset($data['nfs_root_squash']);
+            } elseif (\array_key_exists('nfs_root_squash', $data) && $data['nfs_root_squash'] === null) {
+                $object->setNfsRootSquash(null);
+            }
+            if (\array_key_exists('nfs_all_squash', $data) && $data['nfs_all_squash'] !== null) {
+                $object->setNfsAllSquash($data['nfs_all_squash']);
+                unset($data['nfs_all_squash']);
+            } elseif (\array_key_exists('nfs_all_squash', $data) && $data['nfs_all_squash'] === null) {
+                $object->setNfsAllSquash(null);
+            }
+            if (\array_key_exists('nfs_anon_uid', $data) && $data['nfs_anon_uid'] !== null) {
+                $object->setNfsAnonUid($data['nfs_anon_uid']);
+                unset($data['nfs_anon_uid']);
+            } elseif (\array_key_exists('nfs_anon_uid', $data) && $data['nfs_anon_uid'] === null) {
+                $object->setNfsAnonUid(null);
+            }
+            if (\array_key_exists('nfs_anon_gid', $data) && $data['nfs_anon_gid'] !== null) {
+                $object->setNfsAnonGid($data['nfs_anon_gid']);
+                unset($data['nfs_anon_gid']);
+            } elseif (\array_key_exists('nfs_anon_gid', $data) && $data['nfs_anon_gid'] === null) {
+                $object->setNfsAnonGid(null);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -123,6 +157,24 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('size') && null !== $object->getSize()) {
                 $data['size'] = $object->getSize();
+            }
+            if ($object->isInitialized('technologyGeneration') && null !== $object->getTechnologyGeneration()) {
+                $data['technology_generation'] = $object->getTechnologyGeneration();
+            }
+            if ($object->isInitialized('atimeUpdate') && null !== $object->getAtimeUpdate()) {
+                $data['atime_update'] = $object->getAtimeUpdate();
+            }
+            if ($object->isInitialized('nfsRootSquash') && null !== $object->getNfsRootSquash()) {
+                $data['nfs_root_squash'] = $object->getNfsRootSquash();
+            }
+            if ($object->isInitialized('nfsAllSquash') && null !== $object->getNfsAllSquash()) {
+                $data['nfs_all_squash'] = $object->getNfsAllSquash();
+            }
+            if ($object->isInitialized('nfsAnonUid') && null !== $object->getNfsAnonUid()) {
+                $data['nfs_anon_uid'] = $object->getNfsAnonUid();
+            }
+            if ($object->isInitialized('nfsAnonGid') && null !== $object->getNfsAnonGid()) {
+                $data['nfs_anon_gid'] = $object->getNfsAnonGid();
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -204,6 +256,40 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('size', $data) && $data['size'] === null) {
                 $object->setSize(null);
             }
+            if (\array_key_exists('technology_generation', $data)) {
+                $object->setTechnologyGeneration($data['technology_generation']);
+                unset($data['technology_generation']);
+            }
+            if (\array_key_exists('atime_update', $data) && $data['atime_update'] !== null) {
+                $object->setAtimeUpdate($data['atime_update']);
+                unset($data['atime_update']);
+            } elseif (\array_key_exists('atime_update', $data) && $data['atime_update'] === null) {
+                $object->setAtimeUpdate(null);
+            }
+            if (\array_key_exists('nfs_root_squash', $data) && $data['nfs_root_squash'] !== null) {
+                $object->setNfsRootSquash($data['nfs_root_squash']);
+                unset($data['nfs_root_squash']);
+            } elseif (\array_key_exists('nfs_root_squash', $data) && $data['nfs_root_squash'] === null) {
+                $object->setNfsRootSquash(null);
+            }
+            if (\array_key_exists('nfs_all_squash', $data) && $data['nfs_all_squash'] !== null) {
+                $object->setNfsAllSquash($data['nfs_all_squash']);
+                unset($data['nfs_all_squash']);
+            } elseif (\array_key_exists('nfs_all_squash', $data) && $data['nfs_all_squash'] === null) {
+                $object->setNfsAllSquash(null);
+            }
+            if (\array_key_exists('nfs_anon_uid', $data) && $data['nfs_anon_uid'] !== null) {
+                $object->setNfsAnonUid($data['nfs_anon_uid']);
+                unset($data['nfs_anon_uid']);
+            } elseif (\array_key_exists('nfs_anon_uid', $data) && $data['nfs_anon_uid'] === null) {
+                $object->setNfsAnonUid(null);
+            }
+            if (\array_key_exists('nfs_anon_gid', $data) && $data['nfs_anon_gid'] !== null) {
+                $object->setNfsAnonGid($data['nfs_anon_gid']);
+                unset($data['nfs_anon_gid']);
+            } elseif (\array_key_exists('nfs_anon_gid', $data) && $data['nfs_anon_gid'] === null) {
+                $object->setNfsAnonGid(null);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -243,6 +329,24 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('size') && null !== $object->getSize()) {
                 $data['size'] = $object->getSize();
+            }
+            if ($object->isInitialized('technologyGeneration') && null !== $object->getTechnologyGeneration()) {
+                $data['technology_generation'] = $object->getTechnologyGeneration();
+            }
+            if ($object->isInitialized('atimeUpdate') && null !== $object->getAtimeUpdate()) {
+                $data['atime_update'] = $object->getAtimeUpdate();
+            }
+            if ($object->isInitialized('nfsRootSquash') && null !== $object->getNfsRootSquash()) {
+                $data['nfs_root_squash'] = $object->getNfsRootSquash();
+            }
+            if ($object->isInitialized('nfsAllSquash') && null !== $object->getNfsAllSquash()) {
+                $data['nfs_all_squash'] = $object->getNfsAllSquash();
+            }
+            if ($object->isInitialized('nfsAnonUid') && null !== $object->getNfsAnonUid()) {
+                $data['nfs_anon_uid'] = $object->getNfsAnonUid();
+            }
+            if ($object->isInitialized('nfsAnonGid') && null !== $object->getNfsAnonGid()) {
+                $data['nfs_anon_gid'] = $object->getNfsAnonGid();
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {

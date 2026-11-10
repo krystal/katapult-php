@@ -38,9 +38,9 @@ class ObjectStorageBucket extends \ArrayObject
      */
     protected $state;
     /**
-     * @var string|null
+     * @var list<string>
      */
-    protected $customDomain;
+    protected $customDomains;
     /**
      * @var int|null
      */
@@ -61,6 +61,10 @@ class ObjectStorageBucket extends \ArrayObject
      * @var string|null
      */
     protected $staticSiteError;
+    /**
+     * @var list<string>
+     */
+    protected $corsOrigins;
     /**
      * @var string
      */
@@ -122,15 +126,21 @@ class ObjectStorageBucket extends \ArrayObject
         return $this;
     }
 
-    public function getCustomDomain(): ?string
+    /**
+     * @return list<string>
+     */
+    public function getCustomDomains(): array
     {
-        return $this->customDomain;
+        return $this->customDomains;
     }
 
-    public function setCustomDomain(?string $customDomain): self
+    /**
+     * @param list<string> $customDomains
+     */
+    public function setCustomDomains(array $customDomains): self
     {
-        $this->initialized['customDomain'] = true;
-        $this->customDomain = $customDomain;
+        $this->initialized['customDomains'] = true;
+        $this->customDomains = $customDomains;
 
         return $this;
     }
@@ -196,6 +206,25 @@ class ObjectStorageBucket extends \ArrayObject
     {
         $this->initialized['staticSiteError'] = true;
         $this->staticSiteError = $staticSiteError;
+
+        return $this;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function getCorsOrigins(): array
+    {
+        return $this->corsOrigins;
+    }
+
+    /**
+     * @param list<string> $corsOrigins
+     */
+    public function setCorsOrigins(array $corsOrigins): self
+    {
+        $this->initialized['corsOrigins'] = true;
+        $this->corsOrigins = $corsOrigins;
 
         return $this;
     }

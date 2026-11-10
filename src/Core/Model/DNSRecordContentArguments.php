@@ -42,6 +42,10 @@ class DNSRecordContentArguments extends \ArrayObject
      */
     protected $cNAME;
     /**
+     * @var DNSRecordContentArgumentsForHTTPRedirect
+     */
+    protected $hTTPRedirect;
+    /**
      * @var DNSRecordContentArgumentsForIPS
      */
     protected $iPS;
@@ -139,6 +143,19 @@ class DNSRecordContentArguments extends \ArrayObject
     {
         $this->initialized['cNAME'] = true;
         $this->cNAME = $cNAME;
+
+        return $this;
+    }
+
+    public function getHTTPRedirect(): DNSRecordContentArgumentsForHTTPRedirect
+    {
+        return $this->hTTPRedirect;
+    }
+
+    public function setHTTPRedirect(DNSRecordContentArgumentsForHTTPRedirect $hTTPRedirect): self
+    {
+        $this->initialized['hTTPRedirect'] = true;
+        $this->hTTPRedirect = $hTTPRedirect;
 
         return $this;
     }

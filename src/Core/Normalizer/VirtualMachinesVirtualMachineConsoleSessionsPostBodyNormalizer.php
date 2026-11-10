@@ -55,6 +55,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\VirtualMachineLookup::class, 'json', $context));
                 unset($data['virtual_machine']);
             }
+            if (\array_key_exists('user_uuid', $data)) {
+                $object->setUserUuid($data['user_uuid']);
+                unset($data['user_uuid']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -68,6 +72,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         {
             $data = [];
             $data['virtual_machine'] = $this->normalizer->normalize($object->getVirtualMachine(), 'json', $context);
+            if ($object->isInitialized('userUuid') && null !== $object->getUserUuid()) {
+                $data['user_uuid'] = $object->getUserUuid();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -116,6 +123,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setVirtualMachine($this->denormalizer->denormalize($data['virtual_machine'], \KatapultAPI\Core\Model\VirtualMachineLookup::class, 'json', $context));
                 unset($data['virtual_machine']);
             }
+            if (\array_key_exists('user_uuid', $data)) {
+                $object->setUserUuid($data['user_uuid']);
+                unset($data['user_uuid']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -132,6 +143,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         {
             $data = [];
             $data['virtual_machine'] = $this->normalizer->normalize($object->getVirtualMachine(), 'json', $context);
+            if ($object->isInitialized('userUuid') && null !== $object->getUserUuid()) {
+                $data['user_uuid'] = $object->getUserUuid();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;

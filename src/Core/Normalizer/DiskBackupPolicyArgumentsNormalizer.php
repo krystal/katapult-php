@@ -51,6 +51,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('description', $data)) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            }
+            if (\array_key_exists('global_policy', $data)) {
+                $object->setGlobalPolicy($data['global_policy']);
+                unset($data['global_policy']);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
@@ -71,6 +79,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
+            }
+            if ($object->isInitialized('globalPolicy') && null !== $object->getGlobalPolicy()) {
+                $data['global_policy'] = $object->getGlobalPolicy();
+            }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();
             }
@@ -121,6 +135,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('description', $data)) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            }
+            if (\array_key_exists('global_policy', $data)) {
+                $object->setGlobalPolicy($data['global_policy']);
+                unset($data['global_policy']);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
@@ -144,6 +166,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
+            }
+            if ($object->isInitialized('globalPolicy') && null !== $object->getGlobalPolicy()) {
+                $data['global_policy'] = $object->getGlobalPolicy();
+            }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();
             }

@@ -17,7 +17,8 @@ class PutDiskIoProfile extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imp
     /**
      * Change disk IO profile.
      * ## Scopes
-     * - `disks`.
+     * - `disks`
+     * - `disks:io_profile`.
      *
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.

@@ -58,6 +58,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
+            if (\array_key_exists('description', $data) && $data['description'] !== null) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+                $object->setDescription(null);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
@@ -66,9 +72,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setTotalSize($data['total_size']);
                 unset($data['total_size']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('global_policy', $data)) {
+                $object->setGlobalPolicy($data['global_policy']);
+                unset($data['global_policy']);
+            }
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('schedule', $data)) {
                 $object->setSchedule($this->denormalizer->denormalize($data['schedule'], \KatapultAPI\Core\Model\Schedule::class, 'json', $context));
@@ -95,11 +107,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
             }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
+            }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();
             }
             if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
                 $data['total_size'] = $object->getTotalSize();
+            }
+            if ($object->isInitialized('globalPolicy') && null !== $object->getGlobalPolicy()) {
+                $data['global_policy'] = $object->getGlobalPolicy();
             }
             if ($object->isInitialized('target') && null !== $object->getTarget()) {
                 $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);
@@ -161,6 +179,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
+            if (\array_key_exists('description', $data) && $data['description'] !== null) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+                $object->setDescription(null);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
@@ -169,9 +193,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setTotalSize($data['total_size']);
                 unset($data['total_size']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('global_policy', $data)) {
+                $object->setGlobalPolicy($data['global_policy']);
+                unset($data['global_policy']);
+            }
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\PostDiskDiskBackupPolicies200ResponseDiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('schedule', $data)) {
                 $object->setSchedule($this->denormalizer->denormalize($data['schedule'], \KatapultAPI\Core\Model\Schedule::class, 'json', $context));
@@ -201,11 +231,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
             }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
+            }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();
             }
             if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
                 $data['total_size'] = $object->getTotalSize();
+            }
+            if ($object->isInitialized('globalPolicy') && null !== $object->getGlobalPolicy()) {
+                $data['global_policy'] = $object->getGlobalPolicy();
             }
             if ($object->isInitialized('target') && null !== $object->getTarget()) {
                 $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);

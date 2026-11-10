@@ -58,6 +58,7 @@ class PatchVirtualMachine extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
      * @throws \KatapultAPI\Core\Exception\PatchVirtualMachineForbiddenException
      * @throws \KatapultAPI\Core\Exception\PatchVirtualMachineNotFoundException
      * @throws \KatapultAPI\Core\Exception\PatchVirtualMachineNotAcceptableException
+     * @throws \KatapultAPI\Core\Exception\PatchVirtualMachineUnprocessableEntityException
      * @throws \KatapultAPI\Core\Exception\PatchVirtualMachineTooManyRequestsException
      * @throws \KatapultAPI\Core\Exception\PatchVirtualMachineServiceUnavailableException
      */
@@ -79,6 +80,9 @@ class PatchVirtualMachine extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
         }
         if (is_null($contentType) === false && (406 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PatchVirtualMachineNotAcceptableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseObjectInTrashResponse', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \KatapultAPI\Core\Exception\PatchVirtualMachineUnprocessableEntityException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseValidationErrorResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PatchVirtualMachineTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);

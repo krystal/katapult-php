@@ -24,9 +24,8 @@ class GetVMNIVMNI extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implemen
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_network_interface[id] The network interface to show the information for.
-     *             }
+     *                               'virtual_machine_network_interface[id]': string, The network interface to show the information for.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

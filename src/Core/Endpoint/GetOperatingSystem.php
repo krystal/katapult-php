@@ -18,9 +18,8 @@ class GetOperatingSystem extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
      * Return details for a specific operating system.
      *
      * @param array $queryParameters {
-     *
-     * @var string $operating_system[id] The operating system to return.
-     *             }
+     *                               'operating_system[id]': string, The operating system to return.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

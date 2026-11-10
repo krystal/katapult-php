@@ -59,6 +59,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setKeepUntil($data['keep_until']);
                 unset($data['keep_until']);
             }
+            if (\array_key_exists('purge_after', $data)) {
+                $object->setPurgeAfter($data['purge_after']);
+                unset($data['purge_after']);
+            }
             if (\array_key_exists('object_id', $data)) {
                 $object->setObjectId($data['object_id']);
                 unset($data['object_id']);
@@ -84,6 +88,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('keepUntil') && null !== $object->getKeepUntil()) {
                 $data['keep_until'] = $object->getKeepUntil();
+            }
+            if ($object->isInitialized('purgeAfter') && null !== $object->getPurgeAfter()) {
+                $data['purge_after'] = $object->getPurgeAfter();
             }
             if ($object->isInitialized('objectId') && null !== $object->getObjectId()) {
                 $data['object_id'] = $object->getObjectId();
@@ -143,6 +150,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setKeepUntil($data['keep_until']);
                 unset($data['keep_until']);
             }
+            if (\array_key_exists('purge_after', $data)) {
+                $object->setPurgeAfter($data['purge_after']);
+                unset($data['purge_after']);
+            }
             if (\array_key_exists('object_id', $data)) {
                 $object->setObjectId($data['object_id']);
                 unset($data['object_id']);
@@ -171,6 +182,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('keepUntil') && null !== $object->getKeepUntil()) {
                 $data['keep_until'] = $object->getKeepUntil();
+            }
+            if ($object->isInitialized('purgeAfter') && null !== $object->getPurgeAfter()) {
+                $data['purge_after'] = $object->getPurgeAfter();
             }
             if ($object->isInitialized('objectId') && null !== $object->getObjectId()) {
                 $data['object_id'] = $object->getObjectId();

@@ -26,7 +26,7 @@ class DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicy extends \ArrayOb
      */
     protected $id;
     /**
-     * @var DiskBackupPolicyTarget
+     * @var DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget|null
      */
     protected $target;
     /**
@@ -47,12 +47,12 @@ class DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicy extends \ArrayOb
         return $this;
     }
 
-    public function getTarget(): DiskBackupPolicyTarget
+    public function getTarget(): ?DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget
     {
         return $this->target;
     }
 
-    public function setTarget(DiskBackupPolicyTarget $target): self
+    public function setTarget(?DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget $target): self
     {
         $this->initialized['target'] = true;
         $this->target = $target;

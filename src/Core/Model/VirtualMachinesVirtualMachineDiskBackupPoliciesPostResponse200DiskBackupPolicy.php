@@ -26,6 +26,10 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200DiskBackupPo
      */
     protected $id;
     /**
+     * @var string|null
+     */
+    protected $description;
+    /**
      * @var int
      */
     protected $retention;
@@ -34,7 +38,11 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200DiskBackupPo
      */
     protected $totalSize;
     /**
-     * @var DiskBackupPolicyTarget
+     * @var bool
+     */
+    protected $globalPolicy;
+    /**
+     * @var PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTarget|null
      */
     protected $target;
     /**
@@ -55,6 +63,19 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200DiskBackupPo
     {
         $this->initialized['id'] = true;
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->initialized['description'] = true;
+        $this->description = $description;
 
         return $this;
     }
@@ -85,12 +106,25 @@ class VirtualMachinesVirtualMachineDiskBackupPoliciesPostResponse200DiskBackupPo
         return $this;
     }
 
-    public function getTarget(): DiskBackupPolicyTarget
+    public function getGlobalPolicy(): bool
+    {
+        return $this->globalPolicy;
+    }
+
+    public function setGlobalPolicy(bool $globalPolicy): self
+    {
+        $this->initialized['globalPolicy'] = true;
+        $this->globalPolicy = $globalPolicy;
+
+        return $this;
+    }
+
+    public function getTarget(): ?PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTarget
     {
         return $this->target;
     }
 
-    public function setTarget(DiskBackupPolicyTarget $target): self
+    public function setTarget(?PostVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicyTarget $target): self
     {
         $this->initialized['target'] = true;
         $this->target = $target;

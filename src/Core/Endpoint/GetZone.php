@@ -18,11 +18,10 @@ class GetZone extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
      * Returns the details for a specific zone.
      *
      * @param array $queryParameters {
-     *
-     * @var string $zone[id] The zone to find.
+     *                               'zone[id]': string, The zone to find.
      *
      * All 'zone[]' params are mutually exclusive, only one can be provided.
-     * @var string $zone[permalink] The zone to find.
+     *      'zone[permalink]': string, The zone to find.
      *
      * All 'zone[]' params are mutually exclusive, only one can be provided.
      * }

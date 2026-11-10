@@ -47,6 +47,10 @@ class VirtualMachineArguments extends \ArrayObject
      * @var VirtualMachineGroupLookup
      */
     protected $group;
+    /**
+     * @var CloudInitArguments
+     */
+    protected $cloudInit;
 
     public function getHostname(): string
     {
@@ -134,6 +138,19 @@ class VirtualMachineArguments extends \ArrayObject
     {
         $this->initialized['group'] = true;
         $this->group = $group;
+
+        return $this;
+    }
+
+    public function getCloudInit(): CloudInitArguments
+    {
+        return $this->cloudInit;
+    }
+
+    public function setCloudInit(CloudInitArguments $cloudInit): self
+    {
+        $this->initialized['cloudInit'] = true;
+        $this->cloudInit = $cloudInit;
 
         return $this;
     }

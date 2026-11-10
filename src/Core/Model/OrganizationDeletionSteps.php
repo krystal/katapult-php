@@ -24,6 +24,10 @@ class OrganizationDeletionSteps extends \ArrayObject
     /**
      * @var OrganizationDeletionStep
      */
+    protected $billingEventsProcessed;
+    /**
+     * @var OrganizationDeletionStep
+     */
     protected $managedOrganizations;
     /**
      * @var OrganizationDeletionStep
@@ -76,11 +80,28 @@ class OrganizationDeletionSteps extends \ArrayObject
     /**
      * @var OrganizationDeletionStep
      */
+    protected $containerRegistry;
+    /**
+     * @var OrganizationDeletionStep
+     */
     protected $ensureZeroBalance;
     /**
      * @var OrganizationDeletionStep
      */
     protected $ensureNoOutstandingInvoices;
+
+    public function getBillingEventsProcessed(): OrganizationDeletionStep
+    {
+        return $this->billingEventsProcessed;
+    }
+
+    public function setBillingEventsProcessed(OrganizationDeletionStep $billingEventsProcessed): self
+    {
+        $this->initialized['billingEventsProcessed'] = true;
+        $this->billingEventsProcessed = $billingEventsProcessed;
+
+        return $this;
+    }
 
     public function getManagedOrganizations(): OrganizationDeletionStep
     {
@@ -247,6 +268,19 @@ class OrganizationDeletionSteps extends \ArrayObject
     {
         $this->initialized['objectStorage'] = true;
         $this->objectStorage = $objectStorage;
+
+        return $this;
+    }
+
+    public function getContainerRegistry(): OrganizationDeletionStep
+    {
+        return $this->containerRegistry;
+    }
+
+    public function setContainerRegistry(OrganizationDeletionStep $containerRegistry): self
+    {
+        $this->initialized['containerRegistry'] = true;
+        $this->containerRegistry = $containerRegistry;
 
         return $this;
     }

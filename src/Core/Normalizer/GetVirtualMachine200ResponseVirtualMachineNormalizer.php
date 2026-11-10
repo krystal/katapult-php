@@ -87,6 +87,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setState($data['state']);
                 unset($data['state']);
             }
+            if (\array_key_exists('suspended', $data)) {
+                $object->setSuspended($data['suspended']);
+                unset($data['suspended']);
+            }
+            if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
+                $object->setSuspendedAt($data['suspended_at']);
+                unset($data['suspended_at']);
+            } elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
+                $object->setSuspendedAt(null);
+            }
             if (\array_key_exists('zone', $data)) {
                 $object->setZone($this->denormalizer->denormalize($data['zone'], \KatapultAPI\Core\Model\Zone::class, 'json', $context));
                 unset($data['zone']);
@@ -175,6 +185,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('hypervisor', $data) && $data['hypervisor'] === null) {
                 $object->setHypervisor(null);
             }
+            if (\array_key_exists('cloud_init', $data) && $data['cloud_init'] !== null) {
+                $object->setCloudInit($this->denormalizer->denormalize($data['cloud_init'], \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineCloudInit::class, 'json', $context));
+                unset($data['cloud_init']);
+            } elseif (\array_key_exists('cloud_init', $data) && $data['cloud_init'] === null) {
+                $object->setCloudInit(null);
+            }
             foreach ($data as $key => $value_4) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_4;
@@ -210,6 +226,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('state') && null !== $object->getState()) {
                 $data['state'] = $object->getState();
+            }
+            if ($object->isInitialized('suspended') && null !== $object->getSuspended()) {
+                $data['suspended'] = $object->getSuspended();
+            }
+            if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
+                $data['suspended_at'] = $object->getSuspendedAt();
             }
             if ($object->isInitialized('zone') && null !== $object->getZone()) {
                 $data['zone'] = $this->normalizer->normalize($object->getZone(), 'json', $context);
@@ -268,6 +290,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('hypervisor') && null !== $object->getHypervisor()) {
                 $data['hypervisor'] = $this->normalizer->normalize($object->getHypervisor(), 'json', $context);
+            }
+            if ($object->isInitialized('cloudInit') && null !== $object->getCloudInit()) {
+                $data['cloud_init'] = $this->normalizer->normalize($object->getCloudInit(), 'json', $context);
             }
             foreach ($object as $key => $value_4) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -349,6 +374,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setState($data['state']);
                 unset($data['state']);
             }
+            if (\array_key_exists('suspended', $data)) {
+                $object->setSuspended($data['suspended']);
+                unset($data['suspended']);
+            }
+            if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
+                $object->setSuspendedAt($data['suspended_at']);
+                unset($data['suspended_at']);
+            } elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
+                $object->setSuspendedAt(null);
+            }
             if (\array_key_exists('zone', $data)) {
                 $object->setZone($this->denormalizer->denormalize($data['zone'], \KatapultAPI\Core\Model\Zone::class, 'json', $context));
                 unset($data['zone']);
@@ -437,6 +472,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('hypervisor', $data) && $data['hypervisor'] === null) {
                 $object->setHypervisor(null);
             }
+            if (\array_key_exists('cloud_init', $data) && $data['cloud_init'] !== null) {
+                $object->setCloudInit($this->denormalizer->denormalize($data['cloud_init'], \KatapultAPI\Core\Model\GetVirtualMachine200ResponseVirtualMachineCloudInit::class, 'json', $context));
+                unset($data['cloud_init']);
+            } elseif (\array_key_exists('cloud_init', $data) && $data['cloud_init'] === null) {
+                $object->setCloudInit(null);
+            }
             foreach ($data as $key => $value_4) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_4;
@@ -475,6 +516,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('state') && null !== $object->getState()) {
                 $data['state'] = $object->getState();
+            }
+            if ($object->isInitialized('suspended') && null !== $object->getSuspended()) {
+                $data['suspended'] = $object->getSuspended();
+            }
+            if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
+                $data['suspended_at'] = $object->getSuspendedAt();
             }
             if ($object->isInitialized('zone') && null !== $object->getZone()) {
                 $data['zone'] = $this->normalizer->normalize($object->getZone(), 'json', $context);
@@ -533,6 +580,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('hypervisor') && null !== $object->getHypervisor()) {
                 $data['hypervisor'] = $this->normalizer->normalize($object->getHypervisor(), 'json', $context);
+            }
+            if ($object->isInitialized('cloudInit') && null !== $object->getCloudInit()) {
+                $data['cloud_init'] = $this->normalizer->normalize($object->getCloudInit(), 'json', $context);
             }
             foreach ($object as $key => $value_4) {
                 if (preg_match('/.*/', (string) $key)) {

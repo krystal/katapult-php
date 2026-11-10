@@ -34,6 +34,12 @@ class DataCentersDataCenterDefaultNetworkGetResponse200Network extends \ArrayObj
      */
     protected $permalink;
     /**
+     * Indicates if this network is the default network for the data center.
+     *
+     * @var bool
+     */
+    protected $default;
+    /**
      * @var GetDataCenterDefaultNetworkPartDataCenter
      */
     protected $dataCenter;
@@ -73,6 +79,25 @@ class DataCentersDataCenterDefaultNetworkGetResponse200Network extends \ArrayObj
     {
         $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
+
+        return $this;
+    }
+
+    /**
+     * Indicates if this network is the default network for the data center.
+     */
+    public function getDefault(): bool
+    {
+        return $this->default;
+    }
+
+    /**
+     * Indicates if this network is the default network for the data center.
+     */
+    public function setDefault(bool $default): self
+    {
+        $this->initialized['default'] = true;
+        $this->default = $default;
 
         return $this;
     }

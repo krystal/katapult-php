@@ -46,6 +46,8 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      */
     protected $createdAt;
     /**
+     * Only returned for 24 hours after the boot disk's installation.
+     *
      * @var string|null
      */
     protected $initialRootPassword;
@@ -53,6 +55,14 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      * @var string
      */
     protected $state;
+    /**
+     * @var bool
+     */
+    protected $suspended;
+    /**
+     * @var int|null
+     */
+    protected $suspendedAt;
     /**
      * @var Zone
      */
@@ -109,6 +119,10 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
      * @var GetVirtualMachine200ResponseVirtualMachineHypervisor|null
      */
     protected $hypervisor;
+    /**
+     * @var GetVirtualMachine200ResponseVirtualMachineCloudInit|null
+     */
+    protected $cloudInit;
 
     public function getId(): string
     {
@@ -188,11 +202,17 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
         return $this;
     }
 
+    /**
+     * Only returned for 24 hours after the boot disk's installation.
+     */
     public function getInitialRootPassword(): ?string
     {
         return $this->initialRootPassword;
     }
 
+    /**
+     * Only returned for 24 hours after the boot disk's installation.
+     */
     public function setInitialRootPassword(?string $initialRootPassword): self
     {
         $this->initialized['initialRootPassword'] = true;
@@ -210,6 +230,32 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     {
         $this->initialized['state'] = true;
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getSuspended(): bool
+    {
+        return $this->suspended;
+    }
+
+    public function setSuspended(bool $suspended): self
+    {
+        $this->initialized['suspended'] = true;
+        $this->suspended = $suspended;
+
+        return $this;
+    }
+
+    public function getSuspendedAt(): ?int
+    {
+        return $this->suspendedAt;
+    }
+
+    public function setSuspendedAt(?int $suspendedAt): self
+    {
+        $this->initialized['suspendedAt'] = true;
+        $this->suspendedAt = $suspendedAt;
 
         return $this;
     }
@@ -416,6 +462,19 @@ class GetVirtualMachine200ResponseVirtualMachine extends \ArrayObject
     {
         $this->initialized['hypervisor'] = true;
         $this->hypervisor = $hypervisor;
+
+        return $this;
+    }
+
+    public function getCloudInit(): ?GetVirtualMachine200ResponseVirtualMachineCloudInit
+    {
+        return $this->cloudInit;
+    }
+
+    public function setCloudInit(?GetVirtualMachine200ResponseVirtualMachineCloudInit $cloudInit): self
+    {
+        $this->initialized['cloudInit'] = true;
+        $this->cloudInit = $cloudInit;
 
         return $this;
     }

@@ -30,6 +30,8 @@ class DiskInstallationAttribute extends \ArrayObject
      */
     protected $label;
     /**
+     * For a protected attribute, only returned for 24 hours after the installation.
+     *
      * @var string|null
      */
     protected $value;
@@ -68,11 +70,17 @@ class DiskInstallationAttribute extends \ArrayObject
         return $this;
     }
 
+    /**
+     * For a protected attribute, only returned for 24 hours after the installation.
+     */
     public function getValue(): ?string
     {
         return $this->value;
     }
 
+    /**
+     * For a protected attribute, only returned for 24 hours after the installation.
+     */
     public function setValue(?string $value): self
     {
         $this->initialized['value'] = true;

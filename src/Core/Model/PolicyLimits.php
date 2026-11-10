@@ -26,6 +26,14 @@ class PolicyLimits extends \ArrayObject
      */
     protected $uninvoicedBalance;
     /**
+     * @var FinancialPolicyLimit
+     */
+    protected $creditBalance;
+    /**
+     * @var FinancialPolicyLimit
+     */
+    protected $debtOnResourceCreation;
+    /**
      * @var PolicyLimit
      */
     protected $virtualMachines;
@@ -81,6 +89,10 @@ class PolicyLimits extends \ArrayObject
      * @var PolicyLimitWithoutCurrent
      */
     protected $networkSpeed;
+    /**
+     * @var PolicyLimit
+     */
+    protected $maximumContainerRegistrySpace;
 
     public function getUninvoicedBalance(): FinancialPolicyLimit
     {
@@ -91,6 +103,32 @@ class PolicyLimits extends \ArrayObject
     {
         $this->initialized['uninvoicedBalance'] = true;
         $this->uninvoicedBalance = $uninvoicedBalance;
+
+        return $this;
+    }
+
+    public function getCreditBalance(): FinancialPolicyLimit
+    {
+        return $this->creditBalance;
+    }
+
+    public function setCreditBalance(FinancialPolicyLimit $creditBalance): self
+    {
+        $this->initialized['creditBalance'] = true;
+        $this->creditBalance = $creditBalance;
+
+        return $this;
+    }
+
+    public function getDebtOnResourceCreation(): FinancialPolicyLimit
+    {
+        return $this->debtOnResourceCreation;
+    }
+
+    public function setDebtOnResourceCreation(FinancialPolicyLimit $debtOnResourceCreation): self
+    {
+        $this->initialized['debtOnResourceCreation'] = true;
+        $this->debtOnResourceCreation = $debtOnResourceCreation;
 
         return $this;
     }
@@ -273,6 +311,19 @@ class PolicyLimits extends \ArrayObject
     {
         $this->initialized['networkSpeed'] = true;
         $this->networkSpeed = $networkSpeed;
+
+        return $this;
+    }
+
+    public function getMaximumContainerRegistrySpace(): PolicyLimit
+    {
+        return $this->maximumContainerRegistrySpace;
+    }
+
+    public function setMaximumContainerRegistrySpace(PolicyLimit $maximumContainerRegistrySpace): self
+    {
+        $this->initialized['maximumContainerRegistrySpace'] = true;
+        $this->maximumContainerRegistrySpace = $maximumContainerRegistrySpace;
 
         return $this;
     }

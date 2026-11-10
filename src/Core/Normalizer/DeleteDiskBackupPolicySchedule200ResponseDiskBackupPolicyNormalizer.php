@@ -55,9 +55,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {
                 $object->setAutoMoveToTrashAt($data['auto_move_to_trash_at']);
@@ -134,9 +136,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DeleteDiskBackupPolicySchedule200ResponseDiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {
                 $object->setAutoMoveToTrashAt($data['auto_move_to_trash_at']);

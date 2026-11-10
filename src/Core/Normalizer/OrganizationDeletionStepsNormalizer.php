@@ -51,6 +51,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('billing_events_processed', $data)) {
+                $object->setBillingEventsProcessed($this->denormalizer->denormalize($data['billing_events_processed'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
+                unset($data['billing_events_processed']);
+            }
             if (\array_key_exists('managed_organizations', $data)) {
                 $object->setManagedOrganizations($this->denormalizer->denormalize($data['managed_organizations'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
                 unset($data['managed_organizations']);
@@ -103,6 +107,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setObjectStorage($this->denormalizer->denormalize($data['object_storage'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
                 unset($data['object_storage']);
             }
+            if (\array_key_exists('container_registry', $data)) {
+                $object->setContainerRegistry($this->denormalizer->denormalize($data['container_registry'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
+                unset($data['container_registry']);
+            }
             if (\array_key_exists('ensure_zero_balance', $data)) {
                 $object->setEnsureZeroBalance($this->denormalizer->denormalize($data['ensure_zero_balance'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
                 unset($data['ensure_zero_balance']);
@@ -123,6 +131,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
+            if ($object->isInitialized('billingEventsProcessed') && null !== $object->getBillingEventsProcessed()) {
+                $data['billing_events_processed'] = $this->normalizer->normalize($object->getBillingEventsProcessed(), 'json', $context);
+            }
             if ($object->isInitialized('managedOrganizations') && null !== $object->getManagedOrganizations()) {
                 $data['managed_organizations'] = $this->normalizer->normalize($object->getManagedOrganizations(), 'json', $context);
             }
@@ -161,6 +172,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('objectStorage') && null !== $object->getObjectStorage()) {
                 $data['object_storage'] = $this->normalizer->normalize($object->getObjectStorage(), 'json', $context);
+            }
+            if ($object->isInitialized('containerRegistry') && null !== $object->getContainerRegistry()) {
+                $data['container_registry'] = $this->normalizer->normalize($object->getContainerRegistry(), 'json', $context);
             }
             if ($object->isInitialized('ensureZeroBalance') && null !== $object->getEnsureZeroBalance()) {
                 $data['ensure_zero_balance'] = $this->normalizer->normalize($object->getEnsureZeroBalance(), 'json', $context);
@@ -212,6 +226,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('billing_events_processed', $data)) {
+                $object->setBillingEventsProcessed($this->denormalizer->denormalize($data['billing_events_processed'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
+                unset($data['billing_events_processed']);
+            }
             if (\array_key_exists('managed_organizations', $data)) {
                 $object->setManagedOrganizations($this->denormalizer->denormalize($data['managed_organizations'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
                 unset($data['managed_organizations']);
@@ -264,6 +282,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setObjectStorage($this->denormalizer->denormalize($data['object_storage'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
                 unset($data['object_storage']);
             }
+            if (\array_key_exists('container_registry', $data)) {
+                $object->setContainerRegistry($this->denormalizer->denormalize($data['container_registry'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
+                unset($data['container_registry']);
+            }
             if (\array_key_exists('ensure_zero_balance', $data)) {
                 $object->setEnsureZeroBalance($this->denormalizer->denormalize($data['ensure_zero_balance'], \KatapultAPI\Core\Model\OrganizationDeletionStep::class, 'json', $context));
                 unset($data['ensure_zero_balance']);
@@ -287,6 +309,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
+            if ($object->isInitialized('billingEventsProcessed') && null !== $object->getBillingEventsProcessed()) {
+                $data['billing_events_processed'] = $this->normalizer->normalize($object->getBillingEventsProcessed(), 'json', $context);
+            }
             if ($object->isInitialized('managedOrganizations') && null !== $object->getManagedOrganizations()) {
                 $data['managed_organizations'] = $this->normalizer->normalize($object->getManagedOrganizations(), 'json', $context);
             }
@@ -325,6 +350,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('objectStorage') && null !== $object->getObjectStorage()) {
                 $data['object_storage'] = $this->normalizer->normalize($object->getObjectStorage(), 'json', $context);
+            }
+            if ($object->isInitialized('containerRegistry') && null !== $object->getContainerRegistry()) {
+                $data['container_registry'] = $this->normalizer->normalize($object->getContainerRegistry(), 'json', $context);
             }
             if ($object->isInitialized('ensureZeroBalance') && null !== $object->getEnsureZeroBalance()) {
                 $data['ensure_zero_balance'] = $this->normalizer->normalize($object->getEnsureZeroBalance(), 'json', $context);

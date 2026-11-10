@@ -55,6 +55,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
+            if (\array_key_exists('uuid', $data)) {
+                $object->setUuid($data['uuid']);
+                unset($data['uuid']);
+            }
             if (\array_key_exists('name', $data)) {
                 $object->setName($data['name']);
                 unset($data['name']);
@@ -164,6 +168,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
             }
+            if ($object->isInitialized('uuid') && null !== $object->getUuid()) {
+                $data['uuid'] = $object->getUuid();
+            }
             if ($object->isInitialized('name') && null !== $object->getName()) {
                 $data['name'] = $object->getName();
             }
@@ -265,6 +272,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('id', $data)) {
                 $object->setId($data['id']);
                 unset($data['id']);
+            }
+            if (\array_key_exists('uuid', $data)) {
+                $object->setUuid($data['uuid']);
+                unset($data['uuid']);
             }
             if (\array_key_exists('name', $data)) {
                 $object->setName($data['name']);
@@ -377,6 +388,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
+            }
+            if ($object->isInitialized('uuid') && null !== $object->getUuid()) {
+                $data['uuid'] = $object->getUuid();
             }
             if ($object->isInitialized('name') && null !== $object->getName()) {
                 $data['name'] = $object->getName();

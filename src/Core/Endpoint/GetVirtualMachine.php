@@ -24,10 +24,9 @@ class GetVirtualMachine extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine[id] All 'virtual_machine[]' params are mutually exclusive, only one can be provided
-     * @var string $virtual_machine[fqdn] All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
-     *             }
+     *                               'virtual_machine[id]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               'virtual_machine[fqdn]': string, All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

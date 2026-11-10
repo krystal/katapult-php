@@ -23,15 +23,14 @@ class GetOrganizationObjectStorageObjectStorageCluster extends \KatapultAPI\Core
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization that owns the object storage account.
-     *
-     * All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization that owns the object storage account.
+     *                               'organization[id]': string, The organization that owns the object storage account.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $object_storage_cluster[region] The object storage cluster region.
-     *             }
+     *      'organization[sub_domain]': string, The organization that owns the object storage account.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     *      'object_storage_cluster[region]': string, The object storage cluster region.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {

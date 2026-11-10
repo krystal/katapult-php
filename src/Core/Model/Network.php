@@ -34,9 +34,21 @@ class Network extends \ArrayObject
      */
     protected $permalink;
     /**
+     * Indicates if this network is the default network for the data center.
+     *
+     * @var bool
+     */
+    protected $default;
+    /**
      * @var DataCenter
      */
     protected $dataCenter;
+    /**
+     * The underlying VLAN ID given to this network. Internal use only.
+     *
+     * @var int|null
+     */
+    protected $vlan;
 
     public function getId(): string
     {
@@ -77,6 +89,25 @@ class Network extends \ArrayObject
         return $this;
     }
 
+    /**
+     * Indicates if this network is the default network for the data center.
+     */
+    public function getDefault(): bool
+    {
+        return $this->default;
+    }
+
+    /**
+     * Indicates if this network is the default network for the data center.
+     */
+    public function setDefault(bool $default): self
+    {
+        $this->initialized['default'] = true;
+        $this->default = $default;
+
+        return $this;
+    }
+
     public function getDataCenter(): DataCenter
     {
         return $this->dataCenter;
@@ -86,6 +117,25 @@ class Network extends \ArrayObject
     {
         $this->initialized['dataCenter'] = true;
         $this->dataCenter = $dataCenter;
+
+        return $this;
+    }
+
+    /**
+     * The underlying VLAN ID given to this network. Internal use only.
+     */
+    public function getVlan(): ?int
+    {
+        return $this->vlan;
+    }
+
+    /**
+     * The underlying VLAN ID given to this network. Internal use only.
+     */
+    public function setVlan(?int $vlan): self
+    {
+        $this->initialized['vlan'] = true;
+        $this->vlan = $vlan;
 
         return $this;
     }

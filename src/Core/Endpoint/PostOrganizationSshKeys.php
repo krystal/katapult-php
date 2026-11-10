@@ -15,7 +15,12 @@ class PostOrganizationSshKeys extends \KatapultAPI\Core\Runtime\Client\BaseEndpo
     use \KatapultAPI\Core\Runtime\Client\EndpointTrait;
 
     /**
-     * Add an SSH key to an organization.
+     * Add an SSH key to an organization
+     * ## Scopes
+     * - `ssh_keys`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\OrganizationsOrganizationSshKeysPostBody $requestBody = null)
     {

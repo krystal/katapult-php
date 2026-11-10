@@ -1,14 +1,14 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "x-katapult-version": "2.62.1",
+    "x-katapult-version": "3.26.1",
     "version": "1.0.0",
-    "title": "Katapult Core API",
-    "description": "Welcome to the documentation for the Katapult Core API"
+    "title": "Krystal Cloud Core API",
+    "description": "Welcome to the documentation for the Krystal Cloud Core API"
   },
   "externalDocs": {
     "description": "Katapult API Documentation",
-    "url": "https://developers.katapult.io/docs/category/core-api"
+    "url": "https://docs.katapult.io/docs/category/core-api"
   },
   "servers": [
     {
@@ -2708,6 +2708,9 @@
                     "items": {
                       "$ref": "#/components/schemas/KeyValue"
                     }
+                  },
+                  "cloud_init": {
+                    "$ref": "#/components/schemas/CloudInitArguments"
                   }
                 },
                 "required": [
@@ -3066,6 +3069,95 @@
             "$ref": "#/components/responses/APIAuthenticator503Response"
           }
         }
+      },
+      "post": {
+        "operationId": "post:organization_certificates",
+        "summary": "Create certificate",
+        "description": "Create a new certificate for a given organization\n## Scopes\n- `certificates`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Certificates"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/certificates"
+            ]
+          },
+          {
+            "Authenticator": [
+              "certificates"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "organization": {
+                    "$ref": "#/components/schemas/OrganizationLookup"
+                  },
+                  "properties": {
+                    "$ref": "#/components/schemas/CertificateArguments"
+                  }
+                },
+                "required": [
+                  "organization",
+                  "properties"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create a new certificate for a given organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "certificate": {
+                      "$ref": "#/components/schemas/Certificate"
+                    },
+                    "task": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/Task"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "certificate",
+                    "task"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizationNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/TaskQueueingErrorResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
       }
     },
     "/certificates/certificate": {
@@ -3140,6 +3232,239 @@
             "$ref": "#/components/responses/APIAuthenticator503Response"
           }
         }
+      },
+      "delete": {
+        "operationId": "delete:certificate",
+        "summary": "Delete certificate",
+        "description": "Delete a certificate\n## Scopes\n- `certificates`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Certificates"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/certificates"
+            ]
+          },
+          {
+            "Authenticator": [
+              "certificates"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "certificate": {
+                    "$ref": "#/components/schemas/CertificateLookup"
+                  }
+                },
+                "required": [
+                  "certificate"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete a certificate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "certificate": {
+                      "$ref": "#/components/schemas/Certificate"
+                    }
+                  },
+                  "required": [
+                    "certificate"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/CertificateNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashResponse"
+          },
+          "409": {
+            "$ref": "#/components/responses/DeletionRestrictedResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/certificates/certificate/issue": {
+      "post": {
+        "operationId": "post:certificate_issue",
+        "summary": "Re-issue certificate",
+        "description": "Queue a background task to re-issue a certificate\n## Scopes\n- `certificates`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Certificates"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/certificates"
+            ]
+          },
+          {
+            "Authenticator": [
+              "certificates"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "certificate": {
+                    "$ref": "#/components/schemas/CertificateLookup"
+                  }
+                },
+                "required": [
+                  "certificate"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Queue a background task to re-issue a certificate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "certificate": {
+                      "$ref": "#/components/schemas/Certificate"
+                    },
+                    "task": {
+                      "$ref": "#/components/schemas/Task"
+                    }
+                  },
+                  "required": [
+                    "certificate",
+                    "task"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/CertificateNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashTaskQueueingError406Res"
+          },
+          "422": {
+            "$ref": "#/components/responses/OperationNotSupportedResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/certificates/certificate/reset_token": {
+      "post": {
+        "operationId": "post:certificate_reset_token",
+        "summary": "Reset certificate API token",
+        "description": "Regenerate the certificate API server token, invalidating the existing URL\n## Scopes\n- `certificates`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Certificates"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/certificates"
+            ]
+          },
+          {
+            "Authenticator": [
+              "certificates"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "certificate": {
+                    "$ref": "#/components/schemas/CertificateLookup"
+                  }
+                },
+                "required": [
+                  "certificate"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Regenerate the certificate API server token, invalidating the existing URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "certificate": {
+                      "$ref": "#/components/schemas/Certificate"
+                    }
+                  },
+                  "required": [
+                    "certificate"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/CertificateNotFoundResponse"
+          },
+          "406": {
+            "$ref": "#/components/responses/ObjectInTrashResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
       }
     },
     "/virtual_machines/virtual_machine/console_sessions": {
@@ -3171,6 +3496,10 @@
                 "properties": {
                   "virtual_machine": {
                     "$ref": "#/components/schemas/VirtualMachineLookup"
+                  },
+                  "user_uuid": {
+                    "type": "string",
+                    "description": "The lowercase UUID of the Identity user the console session is for, when that is not the user creating it. The session is refused if Identity has no such user or the user is suspended, and any console opened from it closes if the user is later suspended or deleted."
                   }
                 },
                 "required": [
@@ -3202,16 +3531,646 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedUserSuspendedVirtualMachineSuspended403Res"
           },
           "404": {
-            "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
+            "$ref": "#/components/responses/UserNotFoundVirtualMachineNotFound404Res"
           },
           "406": {
             "$ref": "#/components/responses/ObjectInTrashVirtualMachineMustBeStarted406Res"
           },
           "422": {
             "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/IdentityUnavailable503Res"
+          }
+        }
+      }
+    },
+    "/container_registry/regions": {
+      "get": {
+        "operationId": "get:container_registry_regions",
+        "summary": "List container registry regions",
+        "description": "Returns a list of all container registry regions\n## Scopes\n- `container_registry`\n- `container_registry:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Container registry"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/container_registry",
+              "api.katapult.io/core/v1/container_registry:read"
+            ]
+          },
+          {
+            "Authenticator": [
+              "container_registry",
+              "container_registry:read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number to request. If not provided, the first page will be returned."
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 1
+            },
+            "description": "The number of items to return per page. If not provided, the default value will be used."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of all container registry regions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "pagination": {
+                      "$ref": "#/components/schemas/PaginationObject"
+                    },
+                    "regions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GetContainerRegistryRegions200ResponseRegions"
+                      },
+                      "description": "The available container registry regions"
+                    }
+                  },
+                  "required": [
+                    "pagination",
+                    "regions"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/APIAuthenticator403Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/organizations/organization/container_registry/repositories": {
+      "get": {
+        "operationId": "get:organization_container_registry_repositories",
+        "summary": "List container registry repositories",
+        "description": "Returns a list of all container registry repositories for a given organization\n## Scopes\n- `container_registry`\n- `container_registry:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Container registry"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/container_registry",
+              "api.katapult.io/core/v1/container_registry:read"
+            ]
+          },
+          {
+            "Authenticator": [
+              "container_registry",
+              "container_registry:read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "region[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The region for which to return repositories. \n\n All 'region[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "region[permalink]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The region for which to return repositories. \n\n All 'region[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "organization[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The organization for which to return repositories. \n\n All 'organization[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "organization[sub_domain]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The organization for which to return repositories. \n\n All 'organization[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number to request. If not provided, the first page will be returned."
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 1
+            },
+            "description": "The number of items to return per page. If not provided, the default value will be used."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of all container registry repositories for a given organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "pagination": {
+                      "$ref": "#/components/schemas/PaginationObject"
+                    },
+                    "repositories": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GetOrganizationContainerRegistryRepositories200ResponseRepositories"
+                      },
+                      "description": "The container registry repositories for the organization"
+                    }
+                  },
+                  "required": [
+                    "pagination",
+                    "repositories"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ContainerRegistryRegionNotFoundOrganizationNotFound404Res"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/container_registry/repositories/repository/artifacts": {
+      "get": {
+        "operationId": "get:container_registry_repository_artifacts",
+        "summary": "List container registry artifacts",
+        "description": "Returns a list of all container registry artifacts for a given repository\n## Scopes\n- `container_registry`\n- `container_registry:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Container registry"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/container_registry",
+              "api.katapult.io/core/v1/container_registry:read"
+            ]
+          },
+          {
+            "Authenticator": [
+              "container_registry",
+              "container_registry:read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "region[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The region in which the artifacts exists. \n\n All 'region[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "region[permalink]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The region in which the artifacts exists. \n\n All 'region[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "repository[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The repository for which the artifacts should be returned. \n\n All 'repository[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "repository[name]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The repository for which the artifacts should be returned. \n\n All 'repository[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            },
+            "description": "The page number to request. If not provided, the first page will be returned."
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 1
+            },
+            "description": "The number of items to return per page. If not provided, the default value will be used."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of all container registry artifacts for a given repository",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "pagination": {
+                      "$ref": "#/components/schemas/PaginationObject"
+                    },
+                    "artifacts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ContainerRegistryArtifact"
+                      },
+                      "description": "The container registry artifacts for the repository"
+                    }
+                  },
+                  "required": [
+                    "pagination",
+                    "artifacts"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ContainerRegistryRegionNotFoundRepositoryNotFound404Res"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/container_registry/artifacts/artifact": {
+      "get": {
+        "operationId": "get:container_registry_artifact",
+        "summary": "Get container registry artifact details",
+        "description": "Returns full details for a given container registry artifact\n## Scopes\n- `container_registry`\n- `container_registry:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Container registry"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/container_registry",
+              "api.katapult.io/core/v1/container_registry:read"
+            ]
+          },
+          {
+            "Authenticator": [
+              "container_registry",
+              "container_registry:read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "region[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The region in which the artifact to be returned exists. \n\n All 'region[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "region[permalink]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The region in which the artifact to be returned exists. \n\n All 'region[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "repository[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The repository in which the artifact to be returned exists. \n\n All 'repository[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "repository[name]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The repository in which the artifact to be returned exists. \n\n All 'repository[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "artifact[id]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The artifact to be returned. \n\n All 'artifact[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "artifact[digest]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The artifact to be returned. \n\n All 'artifact[]' params are mutually exclusive, only one can be provided."
+          },
+          {
+            "in": "query",
+            "name": "artifact[tag]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The artifact to be returned. \n\n All 'artifact[]' params are mutually exclusive, only one can be provided."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns full details for a given container registry artifact",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "artifact": {
+                      "description": "The container registry artifact",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ContainerRegistryArtifact"
+                        }
+                      ]
+                    },
+                    "blobs": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ContainerRegistryBlob"
+                      },
+                      "description": "The blobs for the artifact"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ContainerRegistryTag"
+                      },
+                      "description": "The tags for the artifact"
+                    }
+                  },
+                  "required": [
+                    "artifact",
+                    "blobs",
+                    "tags"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ArtifactNotFoundContainerRegistryRegionNotFoundRepositoryNotFound404Res"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete:container_registry_artifact",
+        "summary": "Delete a container registry artifact",
+        "description": "Deletes a container registry artifact\n## Scopes\n- `container_registry`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Container registry"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/container_registry"
+            ]
+          },
+          {
+            "Authenticator": [
+              "container_registry"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "region": {
+                    "$ref": "#/components/schemas/ContainerRegistryRegionLookup"
+                  },
+                  "repository": {
+                    "$ref": "#/components/schemas/ContainerRegistryRepositoryLookup"
+                  },
+                  "artifact": {
+                    "$ref": "#/components/schemas/ContainerRegistryArtifactLookup"
+                  }
+                },
+                "required": [
+                  "region",
+                  "repository",
+                  "artifact"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletes a container registry artifact",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "artifact": {
+                      "description": "The deleted artifact",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ContainerRegistryArtifact"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "artifact"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ArtifactNotFoundContainerRegistryRegionNotFoundRepositoryNotFound404Res"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      }
+    },
+    "/container_registry/repositories/repository": {
+      "delete": {
+        "operationId": "delete:container_registry_repository",
+        "summary": "Delete container registry repository",
+        "description": "Deletes a container registry repository, along with all its artifacts\n## Scopes\n- `container_registry`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Container registry"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/container_registry"
+            ]
+          },
+          {
+            "Authenticator": [
+              "container_registry"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "region": {
+                    "$ref": "#/components/schemas/ContainerRegistryRegionLookup"
+                  },
+                  "repository": {
+                    "$ref": "#/components/schemas/ContainerRegistryRepositoryLookup"
+                  }
+                },
+                "required": [
+                  "region",
+                  "repository"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletes a container registry repository, along with all its artifacts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "repository": {
+                      "description": "The repository being deleted",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/DeleteContainerRegistryRepository200ResponseRepository"
+                        }
+                      ]
+                    },
+                    "task": {
+                      "$ref": "#/components/schemas/Task"
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "task"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/PermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/ContainerRegistryRegionNotFoundRepositoryNotFound404Res"
           },
           "429": {
             "$ref": "#/components/responses/APIAuthenticator429Response"
@@ -3226,7 +4185,7 @@
       "get": {
         "operationId": "get:countries",
         "summary": "List countries",
-        "description": "Return a list of all countries available in Katapult",
+        "description": "Return a list of all countries available in Krystal Cloud",
         "tags": [
           "Countries"
         ],
@@ -3254,7 +4213,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Return a list of all countries available in Katapult",
+            "description": "Return a list of all countries available in Krystal Cloud",
             "content": {
               "application/json": {
                 "schema": {
@@ -3529,7 +4488,7 @@
       "get": {
         "operationId": "get:currencies",
         "summary": "List currencies",
-        "description": "Return a list of all currencies available in Katapult",
+        "description": "Return a list of all currencies available in Krystal Cloud",
         "tags": [
           "Currencies"
         ],
@@ -3557,7 +4516,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Return a list of all currencies available in Katapult",
+            "description": "Return a list of all currencies available in Krystal Cloud",
             "content": {
               "application/json": {
                 "schema": {
@@ -4169,7 +5128,7 @@
       "post": {
         "operationId": "post:dns_zone_verify",
         "summary": "Verify DNS zone",
-        "description": "Attempt to verify the nameservers for a given DNS zone\n## Scopes\n- `dns`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Attempt to verify either the nameservers or root TXT record for a given DNS zone\n## Scopes\n- `dns`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "DNS zones"
         ],
@@ -4203,7 +5162,7 @@
         },
         "responses": {
           "200": {
-            "description": "Attempt to verify the nameservers for a given DNS zone",
+            "description": "Attempt to verify either the nameservers or root TXT record for a given DNS zone",
             "content": {
               "application/json": {
                 "schema": {
@@ -4605,6 +5564,91 @@
           },
           "404": {
             "$ref": "#/components/responses/OrganizationNotFoundResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      },
+      "post": {
+        "operationId": "post:organization_disk_backup_policies",
+        "summary": "Create disk backup policy for organization",
+        "description": "Creates a new disk backup policy for an organization. Provide a target (disk or virtual_machine) unless creating a global policy.\n## Scopes\n- `disk_backup_policies`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Disk backup policies"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/disk_backup_policies"
+            ]
+          },
+          {
+            "Authenticator": [
+              "disk_backup_policies"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "organization": {
+                    "$ref": "#/components/schemas/OrganizationLookup"
+                  },
+                  "target": {
+                    "$ref": "#/components/schemas/DiskBackupPolicyTargetArguments"
+                  },
+                  "properties": {
+                    "$ref": "#/components/schemas/DiskBackupPolicyArguments"
+                  }
+                },
+                "required": [
+                  "organization",
+                  "properties"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Creates a new disk backup policy for an organization. Provide a target (disk or virtual_machine) unless creating a global policy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "disk_backup_policy": {
+                      "description": "The new disk backup policy that has been created",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicy"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "disk_backup_policy"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizationNotFoundResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
           },
           "429": {
             "$ref": "#/components/responses/APIAuthenticator429Response"
@@ -5993,7 +7037,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+            "$ref": "#/components/responses/OrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res"
           },
           "404": {
             "$ref": "#/components/responses/OrganizationNotFoundResponse"
@@ -6517,7 +7561,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/DiskNotFoundResponse"
@@ -6604,7 +7648,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/DiskNotFoundResponse"
@@ -6722,19 +7766,21 @@
       "put": {
         "operationId": "put:disk_io_profile",
         "summary": "Change disk IO profile",
-        "description": "Change disk IO profile.\n## Scopes\n- `disks`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Change disk IO profile.\n## Scopes\n- `disks`\n- `disks:io_profile`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "Disks"
         ],
         "security": [
           {
             "OAuth2": [
-              "api.katapult.io/core/v1/disks"
+              "api.katapult.io/core/v1/disks",
+              "api.katapult.io/core/v1/disks:io_profile"
             ]
           },
           {
             "Authenticator": [
-              "disks"
+              "disks",
+              "disks:io_profile"
             ]
           }
         ],
@@ -7811,7 +8857,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+            "$ref": "#/components/responses/OrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res"
           },
           "404": {
             "$ref": "#/components/responses/NetworkNotFoundOrganizationNotFound404Res"
@@ -9251,7 +10297,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspended403Res"
+            "$ref": "#/components/responses/OrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res"
           },
           "404": {
             "$ref": "#/components/responses/OrganizationNotFoundResponse"
@@ -9269,6 +10315,88 @@
       }
     },
     "/managed_organizations/organization": {
+      "patch": {
+        "operationId": "patch:organization",
+        "summary": "Update managed organizations",
+        "description": "Update properties for a managed organization\n## Scopes\n- `managed_organizations:update`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "tags": [
+          "Managed organizations"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/managed_organizations:update"
+            ]
+          },
+          {
+            "Authenticator": [
+              "managed_organizations:update"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "organization": {
+                    "$ref": "#/components/schemas/OrganizationLookup"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "sub_domain": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "organization"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update properties for a managed organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "organization": {
+                      "$ref": "#/components/schemas/Organization"
+                    }
+                  },
+                  "required": [
+                    "organization"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/APIAuthenticator400Response"
+          },
+          "403": {
+            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizationNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/components/responses/ManagedOrganizationRequiredResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
+          },
+          "429": {
+            "$ref": "#/components/responses/APIAuthenticator429Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/APIAuthenticator503Response"
+          }
+        }
+      },
       "delete": {
         "operationId": "delete:organization",
         "summary": "Delete managed organization",
@@ -9483,8 +10611,7 @@
                     }
                   },
                   "required": [
-                    "networks",
-                    "virtual_networks"
+                    "networks"
                   ]
                 }
               }
@@ -9642,7 +10769,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+            "$ref": "#/components/responses/OrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res"
           },
           "404": {
             "$ref": "#/components/responses/ObjectStorageClusterNotFoundOrganizationNotFound404Res"
@@ -10579,7 +11706,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
@@ -10656,7 +11783,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
@@ -10733,7 +11860,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
@@ -10810,7 +11937,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
@@ -10831,7 +11958,7 @@
       "get": {
         "operationId": "get:dns_zone_records",
         "summary": "List DNS records",
-        "description": "Return a list of all DNS records in a zone\n## Scopes\n- `dns`\n- `dns:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Return a list of all DNS records in a zone\n## Scopes\n- `dns`\n- `dns:read`\n- `dns:acme`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "Records"
         ],
@@ -10839,13 +11966,15 @@
           {
             "OAuth2": [
               "api.katapult.io/core/v1/dns",
-              "api.katapult.io/core/v1/dns:read"
+              "api.katapult.io/core/v1/dns:read",
+              "api.katapult.io/core/v1/dns:acme"
             ]
           },
           {
             "Authenticator": [
               "dns",
-              "dns:read"
+              "dns:read",
+              "dns:acme"
             ]
           }
         ],
@@ -10909,19 +12038,21 @@
       "post": {
         "operationId": "post:dns_zone_records",
         "summary": "Create DNS record",
-        "description": "Create a new DNS record\n## Scopes\n- `dns`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Create a new DNS record\n## Scopes\n- `dns`\n- `dns:acme`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "Records"
         ],
         "security": [
           {
             "OAuth2": [
-              "api.katapult.io/core/v1/dns"
+              "api.katapult.io/core/v1/dns",
+              "api.katapult.io/core/v1/dns:acme"
             ]
           },
           {
             "Authenticator": [
-              "dns"
+              "dns",
+              "dns:acme"
             ]
           }
         ],
@@ -10988,7 +12119,7 @@
       "get": {
         "operationId": "get:dns_record",
         "summary": "Get DNS record",
-        "description": "Return details for a specific DNS record\n## Scopes\n- `dns`\n- `dns:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Return details for a specific DNS record\n## Scopes\n- `dns`\n- `dns:read`\n- `dns:acme`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "Records"
         ],
@@ -10996,13 +12127,15 @@
           {
             "OAuth2": [
               "api.katapult.io/core/v1/dns",
-              "api.katapult.io/core/v1/dns:read"
+              "api.katapult.io/core/v1/dns:read",
+              "api.katapult.io/core/v1/dns:acme"
             ]
           },
           {
             "Authenticator": [
               "dns",
-              "dns:read"
+              "dns:read",
+              "dns:acme"
             ]
           }
         ],
@@ -11141,19 +12274,21 @@
       "delete": {
         "operationId": "delete:dns_record",
         "summary": "Delete DNS record",
-        "description": "Delete a DNS record\n## Scopes\n- `dns`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Delete a DNS record\n## Scopes\n- `dns`\n- `dns:acme`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "Records"
         ],
         "security": [
           {
             "OAuth2": [
-              "api.katapult.io/core/v1/dns"
+              "api.katapult.io/core/v1/dns",
+              "api.katapult.io/core/v1/dns:acme"
             ]
           },
           {
             "Authenticator": [
-              "dns"
+              "dns",
+              "dns:acme"
             ]
           }
         ],
@@ -11213,9 +12348,23 @@
       "get": {
         "operationId": "get:organization_ssh_keys",
         "summary": "List organization SSH keys",
-        "description": "Returns a list of all SSH keys for an organization",
+        "description": "Returns a list of all SSH keys for an organization\n## Scopes\n- `ssh_keys`\n- `ssh_keys:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "SSH keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/ssh_keys",
+              "api.katapult.io/core/v1/ssh_keys:read"
+            ]
+          },
+          {
+            "Authenticator": [
+              "ssh_keys",
+              "ssh_keys:read"
+            ]
+          }
         ],
         "parameters": [
           {
@@ -11300,9 +12449,21 @@
       "post": {
         "operationId": "post:organization_ssh_keys",
         "summary": "Add organization SSH key",
-        "description": "Add an SSH key to an organization",
+        "description": "Add an SSH key to an organization\n## Scopes\n- `ssh_keys`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "SSH keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/ssh_keys"
+            ]
+          },
+          {
+            "Authenticator": [
+              "ssh_keys"
+            ]
+          }
         ],
         "requestBody": {
           "content": {
@@ -11367,9 +12528,21 @@
       "delete": {
         "operationId": "delete:ssh_key",
         "summary": "Delete SSH key",
-        "description": "Delete an SSH key",
+        "description": "Delete an SSH key\n## Scopes\n- `ssh_keys`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "SSH keys"
+        ],
+        "security": [
+          {
+            "OAuth2": [
+              "api.katapult.io/core/v1/ssh_keys"
+            ]
+          },
+          {
+            "Authenticator": [
+              "ssh_keys"
+            ]
+          }
         ],
         "requestBody": {
           "content": {
@@ -12235,19 +13408,19 @@
       "delete": {
         "operationId": "delete:security_group",
         "summary": "Delete security group",
-        "description": "Delete a security group\n## Scopes\n- `security_group`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Delete a security group\n## Scopes\n- `security_groups`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "Security groups"
         ],
         "security": [
           {
             "OAuth2": [
-              "api.katapult.io/core/v1/security_group"
+              "api.katapult.io/core/v1/security_groups"
             ]
           },
           {
             "Authenticator": [
-              "security_group"
+              "security_groups"
             ]
           }
         ],
@@ -12734,20 +13907,18 @@
       "get": {
         "operationId": "get:task",
         "summary": "Get Task",
-        "description": "Returns details about a specific task\n## Scopes\n- `tasks`\n- `tasks:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
+        "description": "Returns details about a specific task\n## Scopes\n- `tasks:read`\n\n### OAuth2 Scopes\nWhen using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.\n",
         "tags": [
           "Tasks"
         ],
         "security": [
           {
             "OAuth2": [
-              "api.katapult.io/core/v1/tasks",
               "api.katapult.io/core/v1/tasks:read"
             ]
           },
           {
             "Authenticator": [
-              "tasks",
               "tasks:read"
             ]
           }
@@ -12958,7 +14129,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/OrganizationNotActivatedOrganizationSuspendedPermissionDenied403Res"
+            "$ref": "#/components/responses/OrganizationNotActivatedPermissionDeniedTrashPurgingDisabled403Res"
           },
           "404": {
             "$ref": "#/components/responses/OrganizationNotFoundResponse"
@@ -13110,7 +14281,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedTrashPurgingDisabled403Res"
           },
           "404": {
             "$ref": "#/components/responses/TrashObjectNotFoundResponse"
@@ -13253,58 +14424,6 @@
           },
           "404": {
             "$ref": "#/components/responses/NoUserAssociatedWithIdentityResponse"
-          },
-          "429": {
-            "$ref": "#/components/responses/APIAuthenticator429Response"
-          },
-          "503": {
-            "$ref": "#/components/responses/APIAuthenticator503Response"
-          }
-        }
-      }
-    },
-    "/invalidate_linked_web_session": {
-      "post": {
-        "operationId": "post:invalidate_linked_web_session",
-        "summary": "Invalidate linked web session",
-        "description": "This endpoint allows you to invalidate the web session which is associated with your authenticated\nidentity. This will only work for API identities (most likely API tokens) that were generated using the first-party application\nlogin flow.\n",
-        "tags": [
-          "Users"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "This endpoint allows you to invalidate the web session which is associated with your authenticated\nidentity. This will only work for API identities (most likely API tokens) that were generated using the first-party application\nlogin flow.\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "status": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "status"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/IdentityNotLinkedToWebSession400Res"
-          },
-          "403": {
-            "$ref": "#/components/responses/APIAuthenticator403Response"
           },
           "429": {
             "$ref": "#/components/responses/APIAuthenticator429Response"
@@ -14313,7 +15432,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/APIAuthenticator403Response"
+            "$ref": "#/components/responses/VirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/NetworkNotFoundVirtualMachineNotFoundVirtualNetworkNotFound404Res"
@@ -14569,7 +15688,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/APIAuthenticator403Response"
+            "$ref": "#/components/responses/VirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNetworkInterfaceNotFoundResponse"
@@ -14737,7 +15856,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/APIAuthenticator403Response"
+            "$ref": "#/components/responses/VirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/IPAddressNotFoundVirtualMachineNetworkInterfaceNotFound404Res"
@@ -14821,7 +15940,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNetworkInterfaceNotFoundResponse"
@@ -14902,7 +16021,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/APIAuthenticator403Response"
+            "$ref": "#/components/responses/VirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/NetworkSpeedProfileNotFoundVirtualMachineNetworkInterfaceNotFound404Res"
@@ -14991,7 +16110,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNetworkInterfaceNotFoundResponse"
@@ -15080,7 +16199,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNetworkInterfaceNotFoundResponse"
@@ -15564,13 +16683,16 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/APIAuthenticator403Response"
+            "$ref": "#/components/responses/VirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
           },
           "406": {
             "$ref": "#/components/responses/ObjectInTrashResponse"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationErrorResponse"
           },
           "429": {
             "$ref": "#/components/responses/APIAuthenticator429Response"
@@ -15638,7 +16760,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
@@ -15717,7 +16839,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/PermissionDenied403Res"
+            "$ref": "#/components/responses/PermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundVirtualMachinePackageNotFound404Res"
@@ -15796,7 +16918,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/FlexibleResourcesUnavailableToOrganizationPermissionDenied403Res"
+            "$ref": "#/components/responses/FlexibleResourcesUnavailableToOrganizationPermissionDeniedVirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/VirtualMachineNotFoundResponse"
@@ -15880,7 +17002,7 @@
             "$ref": "#/components/responses/APIAuthenticator400Response"
           },
           "403": {
-            "$ref": "#/components/responses/APIAuthenticator403Response"
+            "$ref": "#/components/responses/VirtualMachineSuspended403Res"
           },
           "404": {
             "$ref": "#/components/responses/IPAddressNotFoundVirtualMachineNotFound404Res"
@@ -15942,6 +17064,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NoVirtualMachineForAPITokenResponse"
+          },
+          "409": {
+            "$ref": "#/components/responses/ContinuousManagementDisabledResponse"
           },
           "429": {
             "$ref": "#/components/responses/APIAuthenticator429Response"
@@ -16164,6 +17289,27 @@
           }
         }
       },
+      "TokenOwnerSuspendedEnum": {
+        "type": "string",
+        "enum": [
+          "token_owner_suspended"
+        ]
+      },
+      "TokenOwnerSuspendedSchema": {
+        "type": "object",
+        "description": "The user that owns the API token has been suspended",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
       "InvalidCapabilitiesTokenEnum": {
         "type": "string",
         "enum": [
@@ -16223,6 +17369,9 @@
           },
           {
             "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
           },
           {
             "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
@@ -16300,6 +17449,10 @@
             "type": "string",
             "nullable": true
           },
+          "default": {
+            "type": "boolean",
+            "description": "Indicates if this network is the default network for the data center."
+          },
           "data_center": {
             "$ref": "#/components/schemas/GetDataCenterDefaultNetworkPartDataCenter"
           }
@@ -16353,6 +17506,9 @@
         "type": "object",
         "properties": {
           "id": {
+            "type": "string"
+          },
+          "uuid": {
             "type": "string"
           },
           "name": {
@@ -16539,6 +17695,9 @@
             "$ref": "#/components/schemas/InvalidAPITokenSchema"
           },
           {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
             "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
           },
           {
@@ -16570,6 +17729,12 @@
         "type": "object",
         "properties": {
           "uninvoiced_balance": {
+            "$ref": "#/components/schemas/FinancialPolicyLimit"
+          },
+          "credit_balance": {
+            "$ref": "#/components/schemas/FinancialPolicyLimit"
+          },
+          "debt_on_resource_creation": {
             "$ref": "#/components/schemas/FinancialPolicyLimit"
           },
           "virtual_machines": {
@@ -16613,6 +17778,9 @@
           },
           "network_speed": {
             "$ref": "#/components/schemas/PolicyLimitWithoutCurrent"
+          },
+          "maximum_container_registry_space": {
+            "$ref": "#/components/schemas/PolicyLimit"
           }
         }
       },
@@ -16737,6 +17905,12 @@
         "type": "object",
         "properties": {
           "maximum_uninvoiced_balance": {
+            "$ref": "#/components/schemas/DecimalOrUnlimited"
+          },
+          "maximum_credit_balance": {
+            "$ref": "#/components/schemas/DecimalOrUnlimited"
+          },
+          "maximum_debt_on_resource_creation": {
             "$ref": "#/components/schemas/DecimalOrUnlimited"
           },
           "maximum_virtual_machines": {
@@ -16900,6 +18074,9 @@
       "OrganizationDeletionSteps": {
         "type": "object",
         "properties": {
+          "billing_events_processed": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
           "managed_organizations": {
             "$ref": "#/components/schemas/OrganizationDeletionStep"
           },
@@ -16937,6 +18114,9 @@
             "$ref": "#/components/schemas/OrganizationDeletionStep"
           },
           "object_storage": {
+            "$ref": "#/components/schemas/OrganizationDeletionStep"
+          },
+          "container_registry": {
             "$ref": "#/components/schemas/OrganizationDeletionStep"
           },
           "ensure_zero_balance": {
@@ -16996,6 +18176,9 @@
           },
           {
             "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
           },
           {
             "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
@@ -17120,6 +18303,69 @@
           "key"
         ]
       },
+      "ResourceCreationRestricted": {
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The specific details that are restricting this organization"
+            }
+          }
+        }
+      },
+      "ResourceCreationRestrictedEnum": {
+        "type": "string",
+        "enum": [
+          "resource_creation_restricted"
+        ]
+      },
+      "ResourceCreationRestrictedSchema": {
+        "type": "object",
+        "description": "The organization chosen is not permitted to create resources",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ResourceCreationRestrictedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "$ref": "#/components/schemas/ResourceCreationRestricted"
+          }
+        }
+      },
+      "OneOfOrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationNotActivatedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/PermissionDeniedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ResourceCreationRestrictedSchema"
+          }
+        ]
+      },
       "OrganizationLimitReachedEnum": {
         "type": "string",
         "enum": [
@@ -17182,6 +18428,12 @@
           }
         ]
       },
+      "ManagedOrganizationRequiredEnum": {
+        "type": "string",
+        "enum": [
+          "managed_organization_required"
+        ]
+      },
       "DeletionStepsNotSatisfied": {
         "type": "object",
         "properties": {
@@ -17211,15 +18463,9 @@
           }
         }
       },
-      "ManagedOrganizationRequiredEnum": {
-        "type": "string",
-        "enum": [
-          "managed_organization_required"
-        ]
-      },
       "ManagedOrganizationRequiredSchema": {
         "type": "object",
-        "description": "Only managed organizations can be deleted using this endpoint",
+        "description": "Only managed organizations can be updated using this endpoint",
         "properties": {
           "code": {
             "$ref": "#/components/schemas/ManagedOrganizationRequiredEnum"
@@ -17607,6 +18853,10 @@
           "universal": {
             "type": "boolean"
           },
+          "end_of_life": {
+            "type": "integer",
+            "nullable": true
+          },
           "size_in_gb": {
             "type": "integer",
             "nullable": true
@@ -17682,6 +18932,7 @@
           },
           "value": {
             "type": "string",
+            "description": "For a protected attribute, only returned for 24 hours after the installation.",
             "nullable": true
           },
           "description": {
@@ -17875,6 +19126,10 @@
           "keep_until": {
             "type": "integer"
           },
+          "purge_after": {
+            "type": "integer",
+            "description": "When the item becomes eligible for automatic purging under the current retention setting: the later of keep_until and the time it was trashed plus the retention period. Actual removal may be up to an hour later."
+          },
           "object_id": {
             "type": "string"
           },
@@ -18007,6 +19262,9 @@
           },
           {
             "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
           },
           {
             "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
@@ -18539,6 +19797,52 @@
             "type": "string"
           }
         }
+      },
+      "VirtualMachineSuspendedEnum": {
+        "type": "string",
+        "enum": [
+          "virtual_machine_suspended"
+        ]
+      },
+      "VirtualMachineSuspendedSchema": {
+        "type": "object",
+        "description": "A virtual machine was found from the arguments provided but it is suspended",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/VirtualMachineSuspendedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfPermissionDeniedVirtualMachineSuspended403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/VirtualMachineSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/PermissionDeniedSchema"
+          }
+        ]
       },
       "ObjectInTrashSchema": {
         "type": "object",
@@ -19095,6 +20399,10 @@
           "universal": {
             "type": "boolean"
           },
+          "end_of_life": {
+            "type": "integer",
+            "nullable": true
+          },
           "size_in_gb": {
             "type": "integer",
             "nullable": true
@@ -19562,10 +20870,18 @@
           },
           "initial_root_password": {
             "type": "string",
+            "description": "Only returned for 24 hours after the boot disk's installation.",
             "nullable": true
           },
           "state": {
             "$ref": "#/components/schemas/VirtualMachineStateEnum"
+          },
+          "suspended": {
+            "type": "boolean"
+          },
+          "suspended_at": {
+            "type": "integer",
+            "nullable": true
           },
           "zone": {
             "$ref": "#/components/schemas/Zone"
@@ -19645,6 +20961,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/Hypervisor"
+              }
+            ],
+            "nullable": true
+          },
+          "cloud_init": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CloudInit"
               }
             ],
             "nullable": true
@@ -19953,6 +21277,9 @@
           "network": {
             "$ref": "#/components/schemas/Network"
           },
+          "subnet": {
+            "$ref": "#/components/schemas/Subnet"
+          },
           "allocation_id": {
             "type": "string",
             "nullable": true
@@ -19976,8 +21303,40 @@
             "type": "string",
             "nullable": true
           },
+          "default": {
+            "type": "boolean",
+            "description": "Indicates if this network is the default network for the data center."
+          },
           "data_center": {
             "$ref": "#/components/schemas/DataCenter"
+          },
+          "vlan": {
+            "type": "integer",
+            "description": "The underlying VLAN ID given to this network. Internal use only.",
+            "nullable": true
+          }
+        }
+      },
+      "Subnet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "gateway": {
+            "type": "string"
+          },
+          "mask": {
+            "type": "integer"
+          },
+          "billable": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "integer"
           }
         }
       },
@@ -19992,6 +21351,15 @@
           },
           "ip_address": {
             "type": "string"
+          }
+        }
+      },
+      "CloudInit": {
+        "type": "object",
+        "properties": {
+          "user_data": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -20018,6 +21386,9 @@
           },
           "group": {
             "$ref": "#/components/schemas/VirtualMachineGroupLookup"
+          },
+          "cloud_init": {
+            "$ref": "#/components/schemas/CloudInitArguments"
           }
         }
       },
@@ -20038,6 +21409,15 @@
         "properties": {
           "id": {
             "type": "string"
+          }
+        }
+      },
+      "CloudInitArguments": {
+        "type": "object",
+        "properties": {
+          "user_data": {
+            "type": "string",
+            "description": "The configuration data provided to the instance by the user"
           }
         }
       },
@@ -20065,10 +21445,18 @@
           },
           "initial_root_password": {
             "type": "string",
+            "description": "Only returned for 24 hours after the boot disk's installation.",
             "nullable": true
           },
           "state": {
             "$ref": "#/components/schemas/VirtualMachineStateEnum"
+          },
+          "suspended": {
+            "type": "boolean"
+          },
+          "suspended_at": {
+            "type": "integer",
+            "nullable": true
           },
           "zone": {
             "$ref": "#/components/schemas/Zone"
@@ -20151,6 +21539,14 @@
               }
             ],
             "nullable": true
+          },
+          "cloud_init": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CloudInit"
+              }
+            ],
+            "nullable": true
           }
         }
       },
@@ -20177,6 +21573,28 @@
           }
         }
       },
+      "OneOfVirtualMachineSuspended403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/VirtualMachineSuspendedSchema"
+          }
+        ]
+      },
       "DeleteVirtualMachine200ResponseVirtualMachine": {
         "type": "object",
         "properties": {
@@ -20201,10 +21619,18 @@
           },
           "initial_root_password": {
             "type": "string",
+            "description": "Only returned for 24 hours after the boot disk's installation.",
             "nullable": true
           },
           "state": {
             "$ref": "#/components/schemas/VirtualMachineStateEnum"
+          },
+          "suspended": {
+            "type": "boolean"
+          },
+          "suspended_at": {
+            "type": "integer",
+            "nullable": true
           },
           "zone": {
             "$ref": "#/components/schemas/Zone"
@@ -20284,6 +21710,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/Hypervisor"
+              }
+            ],
+            "nullable": true
+          },
+          "cloud_init": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CloudInit"
               }
             ],
             "nullable": true
@@ -20395,7 +21829,7 @@
           }
         }
       },
-      "OneOfFlexibleResourcesUnavailableToOrganizationPermissionDenied403Res": {
+      "OneOfFlexibleResourcesUnavailableToOrganizationPermissionDeniedVirtualMachineSuspended403Res": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
@@ -20404,10 +21838,16 @@
             "$ref": "#/components/schemas/InvalidAPITokenSchema"
           },
           {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
             "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
           },
           {
             "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/VirtualMachineSuspendedSchema"
           },
           {
             "$ref": "#/components/schemas/PermissionDeniedSchema"
@@ -20518,6 +21958,12 @@
           "no_virtual_machine_for_api_token"
         ]
       },
+      "ContinuousManagementDisabledEnum": {
+        "type": "string",
+        "enum": [
+          "continuous_management_disabled"
+        ]
+      },
       "ZoneLookup": {
         "description": "All 'zone[]' params are mutually exclusive, only one can be provided.",
         "type": "object",
@@ -20626,66 +22072,6 @@
             "$ref": "#/components/schemas/VirtualMachineBuildStateEnum"
           }
         }
-      },
-      "ResourceCreationRestricted": {
-        "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "description": "The specific details that are restricting this organization"
-            }
-          }
-        }
-      },
-      "ResourceCreationRestrictedEnum": {
-        "type": "string",
-        "enum": [
-          "resource_creation_restricted"
-        ]
-      },
-      "ResourceCreationRestrictedSchema": {
-        "type": "object",
-        "description": "The organization chosen is not permitted to create resources",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ResourceCreationRestrictedEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "$ref": "#/components/schemas/ResourceCreationRestricted"
-          }
-        }
-      },
-      "OneOfOrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/InvalidAPITokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
-          },
-          {
-            "$ref": "#/components/schemas/OrganizationSuspendedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/OrganizationNotActivatedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/PermissionDeniedSchema"
-          },
-          {
-            "$ref": "#/components/schemas/ResourceCreationRestrictedSchema"
-          }
-        ]
       },
       "ZoneNotFoundEnum": {
         "type": "string",
@@ -21029,7 +22415,8 @@
             "type": "string"
           },
           "expires_at": {
-            "type": "integer"
+            "type": "integer",
+            "description": "The console session cannot be opened after this time, and any console opened from it is closed at this time."
           },
           "virtual_machine": {
             "$ref": "#/components/schemas/PostVirtualMachineConsoleSessionsPartVirtualMachine"
@@ -21055,6 +22442,86 @@
             "$ref": "#/components/schemas/VirtualMachineStateEnum"
           }
         }
+      },
+      "UserSuspendedEnum": {
+        "type": "string",
+        "enum": [
+          "user_suspended"
+        ]
+      },
+      "UserSuspendedSchema": {
+        "type": "object",
+        "description": "The user with the given user UUID is suspended",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/UserSuspendedEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfPermissionDeniedUserSuspendedVirtualMachineSuspended403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/VirtualMachineSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/PermissionDeniedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/UserSuspendedSchema"
+          }
+        ]
+      },
+      "UserNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "user_not_found"
+        ]
+      },
+      "UserNotFoundSchema": {
+        "type": "object",
+        "description": "No user exists in Identity with the given user UUID",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/UserNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfUserNotFoundVirtualMachineNotFound404Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/VirtualMachineNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/UserNotFoundSchema"
+          }
+        ]
       },
       "VirtualMachineMustBeStarted": {
         "type": "object",
@@ -21092,6 +22559,52 @@
           },
           {
             "$ref": "#/components/schemas/VirtualMachineMustBeStartedSchema"
+          }
+        ]
+      },
+      "APIAuthenticator503Schema": {
+        "type": "object",
+        "description": "The service is currently unavailable, please try again later",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ServiceUnavailableEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "IdentityUnavailableEnum": {
+        "type": "string",
+        "enum": [
+          "identity_unavailable"
+        ]
+      },
+      "IdentityUnavailableSchema": {
+        "type": "object",
+        "description": "Identity could not be reached to look up the user with the given user UUID",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/IdentityUnavailableEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfIdentityUnavailable503Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/APIAuthenticator503Schema"
+          },
+          {
+            "$ref": "#/components/schemas/IdentityUnavailableSchema"
           }
         ]
       },
@@ -21244,6 +22757,10 @@
           "id": {
             "type": "string"
           },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
           "retention": {
             "type": "integer"
           },
@@ -21252,7 +22769,12 @@
             "format": "float"
           },
           "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
           },
           "schedule": {
             "$ref": "#/components/schemas/GetOrganizationDiskBackupPoliciesPartSchedule"
@@ -21298,10 +22820,18 @@
           },
           "initial_root_password": {
             "type": "string",
+            "description": "Only returned for 24 hours after the boot disk's installation.",
             "nullable": true
           },
           "state": {
             "$ref": "#/components/schemas/VirtualMachineStateEnum"
+          },
+          "suspended": {
+            "type": "boolean"
+          },
+          "suspended_at": {
+            "type": "integer",
+            "nullable": true
           },
           "zone": {
             "$ref": "#/components/schemas/Zone"
@@ -21381,6 +22911,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/Hypervisor"
+              }
+            ],
+            "nullable": true
+          },
+          "cloud_init": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CloudInit"
               }
             ],
             "nullable": true
@@ -21475,7 +23013,8 @@
             "$ref": "#/components/schemas/ScheduleIntervalTypeEnum"
           },
           "next_invocation_at": {
-            "type": "integer"
+            "type": "integer",
+            "description": "When this schedule will next fire."
           }
         }
       },
@@ -21488,43 +23027,65 @@
           "monthly"
         ]
       },
-      "GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies": {
+      "DiskBackupPolicyTargetArguments": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string"
+          "virtual_machine": {
+            "$ref": "#/components/schemas/VirtualMachineLookup"
+          },
+          "disk": {
+            "$ref": "#/components/schemas/DiskLookup"
+          }
+        }
+      },
+      "DiskBackupPolicyArguments": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Optional description to help identify the backup policy."
+          },
+          "global_policy": {
+            "type": "boolean",
+            "description": "When true the policy applies to all disks in the organisation. The target argument becomes optional when this is set."
           },
           "retention": {
             "type": "integer"
           },
-          "total_size": {
-            "type": "number",
-            "format": "float"
-          },
-          "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
-          },
           "schedule": {
-            "$ref": "#/components/schemas/GetVirtualMachineDiskBackupPoliciesPartSchedule"
+            "$ref": "#/components/schemas/ScheduleArguments"
           }
         }
       },
-      "GetVirtualMachineDiskBackupPoliciesPartSchedule": {
+      "ScheduleArguments": {
         "type": "object",
         "properties": {
+          "frequency": {
+            "type": "integer",
+            "description": "How often the schedule repeats within the given interval (e.g. every 2 hours for hourly)."
+          },
           "interval": {
             "$ref": "#/components/schemas/ScheduleIntervalTypeEnum"
           },
-          "next_invocation_at": {
-            "type": "integer"
+          "minute": {
+            "type": "integer",
+            "description": "The minute within the hour at which the schedule triggers (0–59). When omitted the server assigns a random value to spread load; read the value back from the response to avoid state drift."
+          },
+          "time": {
+            "type": "integer",
+            "description": "The sub-interval offset whose meaning depends on the chosen interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly."
           }
         }
       },
-      "GetDiskDiskBackupPolicies200ResponseDiskBackupPolicies": {
+      "PostOrganizationDiskBackupPolicies200ResponseDiskBackupPolicy": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
           },
           "retention": {
             "type": "integer"
@@ -21533,40 +23094,16 @@
             "type": "number",
             "format": "float"
           },
-          "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
-          },
-          "schedule": {
-            "$ref": "#/components/schemas/GetDiskDiskBackupPoliciesPartSchedule"
-          }
-        }
-      },
-      "GetDiskDiskBackupPoliciesPartSchedule": {
-        "type": "object",
-        "properties": {
-          "interval": {
-            "$ref": "#/components/schemas/ScheduleIntervalTypeEnum"
-          },
-          "next_invocation_at": {
-            "type": "integer"
-          }
-        }
-      },
-      "GetDiskBackupPolicy200ResponseDiskBackupPolicy": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "retention": {
-            "type": "integer"
-          },
-          "total_size": {
-            "type": "number",
-            "format": "float"
+          "global_policy": {
+            "type": "boolean"
           },
           "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
           },
           "schedule": {
             "$ref": "#/components/schemas/Schedule"
@@ -21581,19 +23118,144 @@
         "type": "object",
         "properties": {
           "frequency": {
-            "type": "integer"
+            "type": "integer",
+            "description": "How often the schedule repeats within the given interval."
           },
           "interval": {
             "$ref": "#/components/schemas/ScheduleIntervalTypeEnum"
           },
           "minute": {
-            "type": "integer"
+            "type": "integer",
+            "description": "The minute within the hour at which the schedule triggers (0–59). This value is server-assigned when not provided at creation time."
           },
           "next_invocation_at": {
-            "type": "integer"
+            "type": "integer",
+            "description": "When this schedule will next fire."
           },
           "time": {
+            "type": "integer",
+            "description": "The sub-interval offset whose meaning depends on the interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly."
+          }
+        }
+      },
+      "GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "retention": {
             "type": "integer"
+          },
+          "total_size": {
+            "type": "number",
+            "format": "float"
+          },
+          "target": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/GetVirtualMachineDiskBackupPoliciesPartSchedule"
+          }
+        }
+      },
+      "GetVirtualMachineDiskBackupPoliciesPartSchedule": {
+        "type": "object",
+        "properties": {
+          "interval": {
+            "$ref": "#/components/schemas/ScheduleIntervalTypeEnum"
+          },
+          "next_invocation_at": {
+            "type": "integer",
+            "description": "When this schedule will next fire."
+          }
+        }
+      },
+      "GetDiskDiskBackupPolicies200ResponseDiskBackupPolicies": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "retention": {
+            "type": "integer"
+          },
+          "total_size": {
+            "type": "number",
+            "format": "float"
+          },
+          "target": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/GetDiskDiskBackupPoliciesPartSchedule"
+          }
+        }
+      },
+      "GetDiskDiskBackupPoliciesPartSchedule": {
+        "type": "object",
+        "properties": {
+          "interval": {
+            "$ref": "#/components/schemas/ScheduleIntervalTypeEnum"
+          },
+          "next_invocation_at": {
+            "type": "integer",
+            "description": "When this schedule will next fire."
+          }
+        }
+      },
+      "GetDiskBackupPolicy200ResponseDiskBackupPolicy": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "retention": {
+            "type": "integer"
+          },
+          "total_size": {
+            "type": "number",
+            "format": "float"
+          },
+          "global_policy": {
+            "type": "boolean"
+          },
+          "target": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/Schedule"
+          },
+          "auto_move_to_trash_at": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
@@ -21626,7 +23288,12 @@
             "type": "string"
           },
           "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
           },
           "auto_move_to_trash_at": {
             "type": "integer",
@@ -21665,48 +23332,40 @@
           }
         ]
       },
-      "DiskBackupPolicyArguments": {
-        "type": "object",
-        "properties": {
-          "retention": {
-            "type": "integer"
-          },
-          "schedule": {
-            "$ref": "#/components/schemas/ScheduleArguments"
-          }
-        }
-      },
-      "ScheduleArguments": {
-        "type": "object",
-        "properties": {
-          "frequency": {
-            "type": "integer"
-          },
-          "interval": {
-            "$ref": "#/components/schemas/ScheduleIntervalTypeEnum"
-          },
-          "minute": {
-            "type": "integer"
-          },
-          "time": {
-            "type": "integer"
-          }
-        }
-      },
       "PatchDiskBackupPolicy200ResponseDiskBackupPolicy": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string"
           },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
           "retention": {
             "type": "integer"
           },
+          "total_size": {
+            "type": "number",
+            "format": "float"
+          },
+          "global_policy": {
+            "type": "boolean"
+          },
           "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
           },
           "schedule": {
-            "type": "object"
+            "$ref": "#/components/schemas/Schedule"
+          },
+          "auto_move_to_trash_at": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
@@ -21716,6 +23375,10 @@
           "id": {
             "type": "string"
           },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
           "retention": {
             "type": "integer"
           },
@@ -21723,8 +23386,16 @@
             "type": "number",
             "format": "float"
           },
+          "global_policy": {
+            "type": "boolean"
+          },
           "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
           },
           "schedule": {
             "$ref": "#/components/schemas/Schedule"
@@ -21741,6 +23412,10 @@
           "id": {
             "type": "string"
           },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
           "retention": {
             "type": "integer"
           },
@@ -21748,8 +23423,16 @@
             "type": "number",
             "format": "float"
           },
+          "global_policy": {
+            "type": "boolean"
+          },
           "target": {
-            "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiskBackupPolicyTarget"
+              }
+            ],
+            "nullable": true
           },
           "schedule": {
             "$ref": "#/components/schemas/Schedule"
@@ -21853,6 +23536,7 @@
           "ALIAS",
           "CAA",
           "CNAME",
+          "HTTPRedirect",
           "IPS",
           "MX",
           "NS",
@@ -21903,6 +23587,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/RecordContentAttributesForCNAME"
+              }
+            ],
+            "nullable": true
+          },
+          "HTTPRedirect": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RecordContentAttributesForHTTPRedirect"
               }
             ],
             "nullable": true
@@ -22025,6 +23717,19 @@
         "type": "object",
         "properties": {
           "hostname": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "RecordContentAttributesForHTTPRedirect": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "http_status": {
             "type": "string",
             "nullable": true
           }
@@ -22157,6 +23862,9 @@
           "CNAME": {
             "$ref": "#/components/schemas/DNSRecordContentArgumentsForCNAME"
           },
+          "HTTPRedirect": {
+            "$ref": "#/components/schemas/DNSRecordContentArgumentsForHTTPRedirect"
+          },
           "IPS": {
             "$ref": "#/components/schemas/DNSRecordContentArgumentsForIPS"
           },
@@ -22228,6 +23936,17 @@
         "type": "object",
         "properties": {
           "hostname": {
+            "type": "string"
+          }
+        }
+      },
+      "DNSRecordContentArgumentsForHTTPRedirect": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "http_status": {
             "type": "string"
           }
         }
@@ -22659,6 +24378,35 @@
             "type": "integer",
             "description": "The size of the volume in bytes.",
             "nullable": true
+          },
+          "technology_generation": {
+            "type": "integer",
+            "description": "The file storage technology generation."
+          },
+          "atime_update": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether file access times are updated.",
+            "nullable": true
+          },
+          "nfs_root_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_all_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_anon_uid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS user ID.",
+            "nullable": true
+          },
+          "nfs_anon_gid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS group ID.",
+            "nullable": true
           }
         }
       },
@@ -22715,6 +24463,35 @@
             "type": "integer",
             "description": "The size of the volume in bytes.",
             "nullable": true
+          },
+          "technology_generation": {
+            "type": "integer",
+            "description": "The file storage technology generation."
+          },
+          "atime_update": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether file access times are updated.",
+            "nullable": true
+          },
+          "nfs_root_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_all_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_anon_uid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS user ID.",
+            "nullable": true
+          },
+          "nfs_anon_gid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS group ID.",
+            "nullable": true
           }
         }
       },
@@ -22754,6 +24531,26 @@
               "type": "string",
               "description": "The virtual machine IDs which can access this volume."
             }
+          },
+          "atime_update": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether file access times are updated."
+          },
+          "nfs_root_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users."
+          },
+          "nfs_all_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users."
+          },
+          "nfs_anon_uid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS user ID."
+          },
+          "nfs_anon_gid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS group ID."
           }
         }
       },
@@ -22786,6 +24583,35 @@
           "size": {
             "type": "integer",
             "description": "The size of the volume in bytes.",
+            "nullable": true
+          },
+          "technology_generation": {
+            "type": "integer",
+            "description": "The file storage technology generation."
+          },
+          "atime_update": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether file access times are updated.",
+            "nullable": true
+          },
+          "nfs_root_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_all_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_anon_uid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS user ID.",
+            "nullable": true
+          },
+          "nfs_anon_gid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS group ID.",
             "nullable": true
           }
         }
@@ -22842,6 +24668,35 @@
             "type": "integer",
             "description": "The size of the volume in bytes.",
             "nullable": true
+          },
+          "technology_generation": {
+            "type": "integer",
+            "description": "The file storage technology generation."
+          },
+          "atime_update": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether file access times are updated.",
+            "nullable": true
+          },
+          "nfs_root_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_all_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_anon_uid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS user ID.",
+            "nullable": true
+          },
+          "nfs_anon_gid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS group ID.",
+            "nullable": true
           }
         }
       },
@@ -22889,6 +24744,35 @@
             "type": "integer",
             "description": "The size of the volume in bytes.",
             "nullable": true
+          },
+          "technology_generation": {
+            "type": "integer",
+            "description": "The file storage technology generation."
+          },
+          "atime_update": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether file access times are updated.",
+            "nullable": true
+          },
+          "nfs_root_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_all_squash": {
+            "type": "boolean",
+            "description": "Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.",
+            "nullable": true
+          },
+          "nfs_anon_uid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS user ID.",
+            "nullable": true
+          },
+          "nfs_anon_gid": {
+            "type": "integer",
+            "description": "Only available on Generation 2 file storage volumes. The anonymous NFS group ID.",
+            "nullable": true
           }
         }
       },
@@ -22919,8 +24803,17 @@
             "type": "string",
             "nullable": true
           },
+          "default": {
+            "type": "boolean",
+            "description": "Indicates if this network is the default network for the data center."
+          },
           "data_center": {
             "$ref": "#/components/schemas/GetOrganizationAvailableNetworksPartDataCenter"
+          },
+          "vlan": {
+            "type": "integer",
+            "description": "The underlying VLAN ID given to this network. Internal use only.",
+            "nullable": true
           }
         }
       },
@@ -23248,6 +25141,61 @@
         "type": "string",
         "enum": [
           "certificate_not_found"
+        ]
+      },
+      "CertificateArguments": {
+        "type": "object",
+        "properties": {
+          "issuer": {
+            "$ref": "#/components/schemas/IssuerEnum"
+          },
+          "name": {
+            "type": "string"
+          },
+          "additional_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "authorization_method": {
+            "type": "string"
+          },
+          "certificate": {
+            "type": "string"
+          },
+          "chain": {
+            "type": "string"
+          },
+          "private_key": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "issuer"
+        ]
+      },
+      "CertificateLookup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "OperationNotSupported": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "OperationNotSupportedEnum": {
+        "type": "string",
+        "enum": [
+          "operation_not_supported"
         ]
       },
       "GetOrganizationLoadBalancers200ResponseLoadBalancers": {
@@ -23795,14 +25743,6 @@
           }
         }
       },
-      "CertificateLookup": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        }
-      },
       "LoadBalancerRuleCheckProtocolEnum": {
         "type": "string",
         "enum": [
@@ -24191,21 +26131,6 @@
           }
         ]
       },
-      "APIAuthenticator503Schema": {
-        "type": "object",
-        "description": "The service is currently unavailable, please try again later",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ServiceUnavailableEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        }
-      },
       "NoAvailableAddressesEnum": {
         "type": "string",
         "enum": [
@@ -24301,6 +26226,11 @@
           },
           "name": {
             "type": "string"
+          },
+          "vlan": {
+            "type": "integer",
+            "description": "The underlying VLAN ID given to this network. Internal use only.",
+            "nullable": true
           }
         }
       },
@@ -24322,6 +26252,12 @@
             "type": "string"
           },
           "address": {
+            "type": "string"
+          },
+          "reverse_dns": {
+            "type": "string"
+          },
+          "address_with_mask": {
             "type": "string"
           }
         }
@@ -24677,6 +26613,11 @@
           },
           "name": {
             "type": "string"
+          },
+          "vlan": {
+            "type": "integer",
+            "description": "The underlying VLAN ID given to this network. Internal use only.",
+            "nullable": true
           }
         }
       },
@@ -25279,6 +27220,58 @@
           }
         }
       },
+      "TrashPurgingDisabledEnum": {
+        "type": "string",
+        "enum": [
+          "trash_purging_disabled"
+        ]
+      },
+      "TrashPurgingDisabledSchema": {
+        "type": "object",
+        "description": "Manual purging of trash objects is currently disabled. Items are removed from the trash automatically once their retention period has passed.",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/TrashPurgingDisabledEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfOrganizationNotActivatedPermissionDeniedTrashPurgingDisabled403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationNotActivatedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/PermissionDeniedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TrashPurgingDisabledSchema"
+          }
+        ]
+      },
       "TrashObjectNotFoundEnum": {
         "type": "string",
         "enum": [
@@ -25296,6 +27289,31 @@
             "type": "string"
           }
         }
+      },
+      "OneOfPermissionDeniedTrashPurgingDisabled403Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UnauthorizedNetworkForAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ScopeNotGrantedErrorSchema"
+          },
+          {
+            "$ref": "#/components/schemas/PermissionDeniedSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TrashPurgingDisabledSchema"
+          }
+        ]
       },
       "GetZones200ResponseZones": {
         "type": "object",
@@ -25404,37 +27422,6 @@
         "type": "string",
         "enum": [
           "no_user_associated_with_identity"
-        ]
-      },
-      "IdentityNotLinkedToWebSessionEnum": {
-        "type": "string",
-        "enum": [
-          "identity_not_linked_to_web_session"
-        ]
-      },
-      "IdentityNotLinkedToWebSessionSchema": {
-        "type": "object",
-        "description": "The authenticated identity is not linked to a web session",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/IdentityNotLinkedToWebSessionEnum"
-          },
-          "description": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "object"
-          }
-        }
-      },
-      "OneOfIdentityNotLinkedToWebSession400Res": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/APIAuthenticator400Schema"
-          },
-          {
-            "$ref": "#/components/schemas/IdentityNotLinkedToWebSessionSchema"
-          }
         ]
       },
       "ObjectStorageClusterLookup": {
@@ -25559,6 +27546,9 @@
             "$ref": "#/components/schemas/InvalidAPITokenSchema"
           },
           {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
+          },
+          {
             "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
           },
           {
@@ -25624,6 +27614,10 @@
           "keep_until": {
             "type": "integer"
           },
+          "purge_after": {
+            "type": "integer",
+            "description": "When the item becomes eligible for automatic purging under the current retention setting: the later of keep_until and the time it was trashed plus the retention period. Actual removal may be up to an hour later."
+          },
           "object_type": {
             "type": "string"
           }
@@ -25651,6 +27645,13 @@
           "static_site_error": {
             "type": "string",
             "description": "Optional name of the error html page for a static website (requires public_read)."
+          },
+          "cors_origins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Optional list of origins (e.g. https://example.com), or \"*\" to allow any origin, allowed to make cross-origin requests to the bucket."
+            }
           },
           "access_control_list": {
             "$ref": "#/components/schemas/ObjectStorageBucketACLArguments"
@@ -25708,9 +27709,11 @@
           "state": {
             "$ref": "#/components/schemas/ObjectStorageBucketStateEnum"
           },
-          "custom_domain": {
-            "type": "string",
-            "nullable": true
+          "custom_domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "object_count": {
             "type": "integer",
@@ -25730,6 +27733,12 @@
           "static_site_error": {
             "type": "string",
             "nullable": true
+          },
+          "cors_origins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "public_url": {
             "type": "string"
@@ -25857,6 +27866,9 @@
           },
           {
             "$ref": "#/components/schemas/InvalidAPITokenSchema"
+          },
+          {
+            "$ref": "#/components/schemas/TokenOwnerSuspendedSchema"
           },
           {
             "$ref": "#/components/schemas/InvalidCapabilitiesTokenSchema"
@@ -26082,6 +28094,356 @@
             "$ref": "#/components/schemas/ObjectStorageProvisioningErrorSchema"
           }
         ]
+      },
+      "GetContainerRegistryRegions200ResponseRegions": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          },
+          "data_center": {
+            "$ref": "#/components/schemas/GetContainerRegistryRegionsPartDataCenter"
+          }
+        }
+      },
+      "GetContainerRegistryRegionsPartDataCenter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "GetOrganizationContainerRegistryRepositories200ResponseRepositories": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "region": {
+            "$ref": "#/components/schemas/GetOrganizationContainerRegistryRepositoriesPartRegion"
+          },
+          "total_size": {
+            "type": "integer",
+            "description": "Total size of the repository and all its artifacts and blobs in bytes",
+            "nullable": true
+          },
+          "last_reconciled_at": {
+            "type": "integer",
+            "nullable": true
+          },
+          "artifact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "GetOrganizationContainerRegistryRepositoriesPartRegion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "ContainerRegistryRegionNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "container_registry_region_not_found"
+        ]
+      },
+      "ContainerRegistryRegionNotFoundSchema": {
+        "type": "object",
+        "description": "No container registry region was found matching any of the criteria provided in the arguments",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ContainerRegistryRegionNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfContainerRegistryRegionNotFoundOrganizationNotFound404Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ContainerRegistryRegionNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/OrganizationNotFoundSchema"
+          }
+        ]
+      },
+      "ContainerRegistryArtifact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "digest": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Size of the artifact in bytes",
+            "nullable": true
+          },
+          "media_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "os": {
+            "type": "string",
+            "nullable": true
+          },
+          "architecture": {
+            "type": "string",
+            "nullable": true
+          },
+          "variant": {
+            "type": "string",
+            "nullable": true
+          },
+          "annotations": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/KeyValue"
+                }
+              ],
+              "nullable": true
+            }
+          },
+          "last_pushed_at": {
+            "type": "integer",
+            "nullable": true
+          },
+          "last_pulled_at": {
+            "type": "integer",
+            "nullable": true
+          },
+          "last_reconciled_at": {
+            "type": "integer",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "child_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RepositoryNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "repository_not_found"
+        ]
+      },
+      "RepositoryNotFoundSchema": {
+        "type": "object",
+        "description": "No container registry repository was found matching any of the criteria provided in the arguments.",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/RepositoryNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfContainerRegistryRegionNotFoundRepositoryNotFound404Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ContainerRegistryRegionNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/RepositoryNotFoundSchema"
+          }
+        ]
+      },
+      "ContainerRegistryBlob": {
+        "type": "object",
+        "properties": {
+          "digest": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Size of the blob in bytes"
+          },
+          "media_type": {
+            "type": "string"
+          }
+        }
+      },
+      "ContainerRegistryTag": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "last_pushed_at": {
+            "type": "integer",
+            "nullable": true
+          },
+          "last_pulled_at": {
+            "type": "integer",
+            "nullable": true
+          }
+        }
+      },
+      "ArtifactNotFoundEnum": {
+        "type": "string",
+        "enum": [
+          "artifact_not_found"
+        ]
+      },
+      "ArtifactNotFoundSchema": {
+        "type": "object",
+        "description": "No container registry artifact was found matching any of the criteria provided in the arguments.",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ArtifactNotFoundEnum"
+          },
+          "description": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object"
+          }
+        }
+      },
+      "OneOfArtifactNotFoundContainerRegistryRegionNotFoundRepositoryNotFound404Res": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ContainerRegistryRegionNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/RepositoryNotFoundSchema"
+          },
+          {
+            "$ref": "#/components/schemas/ArtifactNotFoundSchema"
+          }
+        ]
+      },
+      "ContainerRegistryRegionLookup": {
+        "description": "All 'region[]' params are mutually exclusive, only one can be provided.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "ContainerRegistryRepositoryLookup": {
+        "description": "All 'repository[]' params are mutually exclusive, only one can be provided.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "ContainerRegistryArtifactLookup": {
+        "description": "All 'artifact[]' params are mutually exclusive, only one can be provided.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "digest": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteContainerRegistryRepository200ResponseRepository": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "region": {
+            "$ref": "#/components/schemas/DeleteContainerRegistryRepositoryPartRegion"
+          },
+          "total_size": {
+            "type": "integer",
+            "description": "Total size of the repository and all its artifacts and blobs in bytes",
+            "nullable": true
+          },
+          "last_reconciled_at": {
+            "type": "integer",
+            "nullable": true
+          },
+          "artifact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DeleteContainerRegistryRepositoryPartRegion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -26098,11 +28460,15 @@
               "api.katapult.io/core/v1/address_lists:read": "Read-only access to address lists",
               "api.katapult.io/core/v1/api_tokens": "Manage API tokens",
               "api.katapult.io/core/v1/api_tokens:read": "Read-only access to API tokens",
+              "api.katapult.io/core/v1/container_registry": "Manage container registries",
+              "api.katapult.io/core/v1/container_registry:read": "Read-only access to container registries",
               "api.katapult.io/core/v1/disk_backup_policies": "Manage disk backup policies",
               "api.katapult.io/core/v1/disk_backup_policies:read": "Read-only access to disk backup policies",
+              "api.katapult.io/core/v1/certificates": "Manage certificates",
               "api.katapult.io/core/v1/certificates:read": "Read-only access to certificates",
               "api.katapult.io/core/v1/disks": "Manage disks",
               "api.katapult.io/core/v1/disks:read": "Read-only access to disks",
+              "api.katapult.io/core/v1/disks:io_profile": "Manage IO profile for disks",
               "api.katapult.io/core/v1/disk_templates": "Manage disk templates",
               "api.katapult.io/core/v1/disk_templates:read": "Read-only access to disk templates",
               "api.katapult.io/core/v1/file_storage_volumes": "Manage file storage volumes",
@@ -26114,9 +28480,12 @@
               "api.katapult.io/core/v1/organizations:read": "Read-only access to organizations",
               "api.katapult.io/core/v1/organizations:delete": "Delete organizations",
               "api.katapult.io/core/v1/managed_organizations": "Manage managed organizations",
+              "api.katapult.io/core/v1/managed_organizations:update": "Update managed organizations",
               "api.katapult.io/core/v1/managed_organizations:delete": "Delete managed organizations",
               "api.katapult.io/core/v1/security_groups": "Manage security groups",
               "api.katapult.io/core/v1/security_groups:read": "Read-only access to security groups",
+              "api.katapult.io/core/v1/ssh_keys": "Manage SSH keys",
+              "api.katapult.io/core/v1/ssh_keys:read": "Read-only access to SSH keys",
               "api.katapult.io/core/v1/tags": "Manage tags",
               "api.katapult.io/core/v1/tags:read": "Read-only access to tags",
               "api.katapult.io/core/v1/tasks:read": "Read-only access to tasks",
@@ -26125,6 +28494,7 @@
               "api.katapult.io/core/v1/trash_objects:restore": "Restore items from the trash",
               "api.katapult.io/core/v1/dns": "Manage DNS zones/records",
               "api.katapult.io/core/v1/dns:read": "Read-only access to DNS zones/records",
+              "api.katapult.io/core/v1/dns:acme": "Manage ACME challenge DNS records",
               "api.katapult.io/core/v1/load_balancers": "Manage load balancers",
               "api.katapult.io/core/v1/load_balancers:read": "Read-only access to load balancers",
               "api.katapult.io/core/v1/virtual_machines": "Manage virtual machines",
@@ -26135,6 +28505,7 @@
               "api.katapult.io/core/v1/virtual_machines:network_interfaces": "Access virtual machine network interfaces",
               "api.katapult.io/core/v1/virtual_machine_groups": "Manage virtual machine groups",
               "api.katapult.io/core/v1/virtual_machine_groups:read": "Read-only access to virtual machine groups",
+              "api.katapult.io/core/v1/virtual_machine_packages:read": "Read-only access to virtual machine packages",
               "api.katapult.io/core/v1/virtual_networks": "Manage virtual networks",
               "api.katapult.io/core/v1/virtual_networks:read": "Read-only access to virtual networks"
             }
@@ -26297,12 +28668,62 @@
           }
         }
       },
+      "OrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res": {
+        "description": "403 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfOrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res"
+            }
+          }
+        }
+      },
       "OrganizationLimitReachedValidationError422Res": {
         "description": "422 error response",
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/OneOfOrganizationLimitReachedValidationError422Res"
+            }
+          }
+        }
+      },
+      "ManagedOrganizationRequiredResponse": {
+        "description": "Only managed organizations can be updated using this endpoint",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/ManagedOrganizationRequiredEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ValidationErrorResponse": {
+        "description": "A validation error occurred with the object that was being created/updated/deleted",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/ValidationErrorEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "$ref": "#/components/schemas/ValidationError"
+                }
+              }
             }
           }
         }
@@ -26351,26 +28772,6 @@
                 },
                 "detail": {
                   "$ref": "#/components/schemas/TaskQueueingError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "ValidationErrorResponse": {
-        "description": "A validation error occurred with the object that was being created/updated/deleted",
-        "content": {
-          "application/json": {
-            "schema": {
-              "properties": {
-                "code": {
-                  "$ref": "#/components/schemas/ValidationErrorEnum"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "detail": {
-                  "$ref": "#/components/schemas/ValidationError"
                 }
               }
             }
@@ -26483,6 +28884,16 @@
                   "$ref": "#/components/schemas/UnableToUnassign"
                 }
               }
+            }
+          }
+        }
+      },
+      "PermissionDeniedVirtualMachineSuspended403Res": {
+        "description": "403 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfPermissionDeniedVirtualMachineSuspended403Res"
             }
           }
         }
@@ -26617,6 +29028,16 @@
           }
         }
       },
+      "VirtualMachineSuspended403Res": {
+        "description": "403 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfVirtualMachineSuspended403Res"
+            }
+          }
+        }
+      },
       "VirtualMachineNotFoundVirtualMachinePackageNotFound404Res": {
         "description": "404 error response",
         "content": {
@@ -26627,12 +29048,12 @@
           }
         }
       },
-      "FlexibleResourcesUnavailableToOrganizationPermissionDenied403Res": {
+      "FlexibleResourcesUnavailableToOrganizationPermissionDeniedVirtualMachineSuspended403Res": {
         "description": "403 error response",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/OneOfFlexibleResourcesUnavailableToOrganizationPermissionDenied403Res"
+              "$ref": "#/components/schemas/OneOfFlexibleResourcesUnavailableToOrganizationPermissionDeniedVirtualMachineSuspended403Res"
             }
           }
         }
@@ -26677,12 +29098,22 @@
           }
         }
       },
-      "OrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res": {
-        "description": "403 error response",
+      "ContinuousManagementDisabledResponse": {
+        "description": "SSH Key Continuous management is not enabled for this virtual machine",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/OneOfOrganizationNotActivatedPermissionDeniedResourceCreationRestricted403Res"
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/ContinuousManagementDisabledEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "object"
+                }
+              }
             }
           }
         }
@@ -26737,12 +29168,42 @@
           }
         }
       },
+      "PermissionDeniedUserSuspendedVirtualMachineSuspended403Res": {
+        "description": "403 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfPermissionDeniedUserSuspendedVirtualMachineSuspended403Res"
+            }
+          }
+        }
+      },
+      "UserNotFoundVirtualMachineNotFound404Res": {
+        "description": "404 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfUserNotFoundVirtualMachineNotFound404Res"
+            }
+          }
+        }
+      },
       "ObjectInTrashVirtualMachineMustBeStarted406Res": {
         "description": "406 error response",
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/OneOfObjectInTrashVirtualMachineMustBeStarted406Res"
+            }
+          }
+        }
+      },
+      "IdentityUnavailable503Res": {
+        "description": "503 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfIdentityUnavailable503Res"
             }
           }
         }
@@ -26878,7 +29339,7 @@
         }
       },
       "DNSZoneNotVerifiedResponse": {
-        "description": "The DNS zone could not be verified, check the nameservers are set correctly",
+        "description": "The DNS zone could not be verified, check the nameservers or root TXT record are set correctly",
         "content": {
           "application/json": {
             "schema": {
@@ -27081,6 +29542,26 @@
                 },
                 "detail": {
                   "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "OperationNotSupportedResponse": {
+        "description": "The requested operation is not supported for this resource",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "$ref": "#/components/schemas/OperationNotSupportedEnum"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "detail": {
+                  "$ref": "#/components/schemas/OperationNotSupported"
                 }
               }
             }
@@ -27397,6 +29878,16 @@
           }
         }
       },
+      "OrganizationNotActivatedPermissionDeniedTrashPurgingDisabled403Res": {
+        "description": "403 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfOrganizationNotActivatedPermissionDeniedTrashPurgingDisabled403Res"
+            }
+          }
+        }
+      },
       "TrashObjectNotFoundResponse": {
         "description": "No trash object was found matching any of the criteria provided in the arguments",
         "content": {
@@ -27413,6 +29904,16 @@
                   "type": "object"
                 }
               }
+            }
+          }
+        }
+      },
+      "PermissionDeniedTrashPurgingDisabled403Res": {
+        "description": "403 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfPermissionDeniedTrashPurgingDisabled403Res"
             }
           }
         }
@@ -27533,16 +30034,6 @@
                   "type": "object"
                 }
               }
-            }
-          }
-        }
-      },
-      "IdentityNotLinkedToWebSession400Res": {
-        "description": "400 error response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/OneOfIdentityNotLinkedToWebSession400Res"
             }
           }
         }
@@ -27693,6 +30184,36 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/OneOfObjectStorageProvisioningErrorValidationError422Res"
+            }
+          }
+        }
+      },
+      "ContainerRegistryRegionNotFoundOrganizationNotFound404Res": {
+        "description": "404 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfContainerRegistryRegionNotFoundOrganizationNotFound404Res"
+            }
+          }
+        }
+      },
+      "ContainerRegistryRegionNotFoundRepositoryNotFound404Res": {
+        "description": "404 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfContainerRegistryRegionNotFoundRepositoryNotFound404Res"
+            }
+          }
+        }
+      },
+      "ArtifactNotFoundContainerRegistryRegionNotFoundRepositoryNotFound404Res": {
+        "description": "404 error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OneOfArtifactNotFoundContainerRegistryRegionNotFoundRepositoryNotFound404Res"
             }
           }
         }
@@ -27854,6 +30375,9 @@
     },
     {
       "name": "Access keys"
+    },
+    {
+      "name": "Container registry"
     }
   ],
   "x-tagGroups": [
@@ -27874,6 +30398,12 @@
       "name": "Certificates",
       "tags": [
         "Certificates"
+      ]
+    },
+    {
+      "name": "Container registry",
+      "tags": [
+        "Container registry"
       ]
     },
     {

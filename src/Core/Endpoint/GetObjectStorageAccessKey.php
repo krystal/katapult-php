@@ -23,9 +23,8 @@ class GetObjectStorageAccessKey extends \KatapultAPI\Core\Runtime\Client\BaseEnd
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $access_key[id] The object storage access key to find.
-     *             }
+     *                               'access_key[id]': string, The object storage access key to find.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

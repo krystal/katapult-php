@@ -50,6 +50,10 @@ class OrganizationsOrganizationIpAddressesPostResponse200IpAddress extends \Arra
      */
     protected $network;
     /**
+     * @var Subnet
+     */
+    protected $subnet;
+    /**
      * @var string|null
      */
     protected $allocationId;
@@ -145,6 +149,19 @@ class OrganizationsOrganizationIpAddressesPostResponse200IpAddress extends \Arra
     {
         $this->initialized['network'] = true;
         $this->network = $network;
+
+        return $this;
+    }
+
+    public function getSubnet(): Subnet
+    {
+        return $this->subnet;
+    }
+
+    public function setSubnet(Subnet $subnet): self
+    {
+        $this->initialized['subnet'] = true;
+        $this->subnet = $subnet;
 
         return $this;
     }

@@ -18,15 +18,15 @@ class GetDnsRecord extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
      * Return details for a specific DNS record
      * ## Scopes
      * - `dns`
-     * - `dns:read`.
+     * - `dns:read`
+     * - `dns:acme`.
      *
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $dns_record[id]
-     *             }
+     *                               'dns_record[id]': string,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

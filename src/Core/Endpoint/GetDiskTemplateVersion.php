@@ -24,9 +24,8 @@ class GetDiskTemplateVersion extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $disk_template_version[id] The disk template version to return.
-     *             }
+     *                               'disk_template_version[id]': string, The disk template version to return.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

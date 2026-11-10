@@ -81,6 +81,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\Network::class, 'json', $context));
                 unset($data['network']);
             }
+            if (\array_key_exists('subnet', $data)) {
+                $object->setSubnet($this->denormalizer->denormalize($data['subnet'], \KatapultAPI\Core\Model\Subnet::class, 'json', $context));
+                unset($data['subnet']);
+            }
             if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {
                 $object->setAllocationId($data['allocation_id']);
                 unset($data['allocation_id']);
@@ -125,6 +129,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
+            }
+            if ($object->isInitialized('subnet') && null !== $object->getSubnet()) {
+                $data['subnet'] = $this->normalizer->normalize($object->getSubnet(), 'json', $context);
             }
             if ($object->isInitialized('allocationId') && null !== $object->getAllocationId()) {
                 $data['allocation_id'] = $object->getAllocationId();
@@ -206,6 +213,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setNetwork($this->denormalizer->denormalize($data['network'], \KatapultAPI\Core\Model\Network::class, 'json', $context));
                 unset($data['network']);
             }
+            if (\array_key_exists('subnet', $data)) {
+                $object->setSubnet($this->denormalizer->denormalize($data['subnet'], \KatapultAPI\Core\Model\Subnet::class, 'json', $context));
+                unset($data['subnet']);
+            }
             if (\array_key_exists('allocation_id', $data) && $data['allocation_id'] !== null) {
                 $object->setAllocationId($data['allocation_id']);
                 unset($data['allocation_id']);
@@ -253,6 +264,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('network') && null !== $object->getNetwork()) {
                 $data['network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
+            }
+            if ($object->isInitialized('subnet') && null !== $object->getSubnet()) {
+                $data['subnet'] = $this->normalizer->normalize($object->getSubnet(), 'json', $context);
             }
             if ($object->isInitialized('allocationId') && null !== $object->getAllocationId()) {
                 $data['allocation_id'] = $object->getAllocationId();

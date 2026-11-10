@@ -13,27 +13,17 @@ namespace KatapultAPI\Core\Exception;
 class PostVirtualMachineConsoleSessionsNotFoundException extends NotFoundException
 {
     /**
-     * @var \KatapultAPI\Core\Model\ResponseVirtualMachineNotFoundResponse
-     */
-    private $responseVirtualMachineNotFoundResponse;
-    /**
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
 
-    public function __construct(\KatapultAPI\Core\Model\ResponseVirtualMachineNotFoundResponse $responseVirtualMachineNotFoundResponse, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
-        parent::__construct('No virtual machine was found matching any of the criteria provided in the arguments');
-        $this->responseVirtualMachineNotFoundResponse = $responseVirtualMachineNotFoundResponse;
+        parent::__construct('404 error response');
         $this->response = $response;
     }
 
-    public function getResponseVirtualMachineNotFoundResponse(): \KatapultAPI\Core\Model\ResponseVirtualMachineNotFoundResponse
-    {
-        return $this->responseVirtualMachineNotFoundResponse;
-    }
-
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): ?\Psr\Http\Message\ResponseInterface
     {
         return $this->response;
     }

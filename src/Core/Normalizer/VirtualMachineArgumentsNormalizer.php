@@ -79,6 +79,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setGroup($this->denormalizer->denormalize($data['group'], \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class, 'json', $context));
                 unset($data['group']);
             }
+            if (\array_key_exists('cloud_init', $data)) {
+                $object->setCloudInit($this->denormalizer->denormalize($data['cloud_init'], \KatapultAPI\Core\Model\CloudInitArguments::class, 'json', $context));
+                unset($data['cloud_init']);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -112,6 +116,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('group') && null !== $object->getGroup()) {
                 $data['group'] = $this->normalizer->normalize($object->getGroup(), 'json', $context);
+            }
+            if ($object->isInitialized('cloudInit') && null !== $object->getCloudInit()) {
+                $data['cloud_init'] = $this->normalizer->normalize($object->getCloudInit(), 'json', $context);
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -185,6 +192,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setGroup($this->denormalizer->denormalize($data['group'], \KatapultAPI\Core\Model\VirtualMachineGroupLookup::class, 'json', $context));
                 unset($data['group']);
             }
+            if (\array_key_exists('cloud_init', $data)) {
+                $object->setCloudInit($this->denormalizer->denormalize($data['cloud_init'], \KatapultAPI\Core\Model\CloudInitArguments::class, 'json', $context));
+                unset($data['cloud_init']);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -221,6 +232,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('group') && null !== $object->getGroup()) {
                 $data['group'] = $this->normalizer->normalize($object->getGroup(), 'json', $context);
+            }
+            if ($object->isInitialized('cloudInit') && null !== $object->getCloudInit()) {
+                $data['cloud_init'] = $this->normalizer->normalize($object->getCloudInit(), 'json', $context);
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {

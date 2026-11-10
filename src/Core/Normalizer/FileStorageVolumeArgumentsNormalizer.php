@@ -67,6 +67,26 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAssociations($values);
                 unset($data['associations']);
             }
+            if (\array_key_exists('atime_update', $data)) {
+                $object->setAtimeUpdate($data['atime_update']);
+                unset($data['atime_update']);
+            }
+            if (\array_key_exists('nfs_root_squash', $data)) {
+                $object->setNfsRootSquash($data['nfs_root_squash']);
+                unset($data['nfs_root_squash']);
+            }
+            if (\array_key_exists('nfs_all_squash', $data)) {
+                $object->setNfsAllSquash($data['nfs_all_squash']);
+                unset($data['nfs_all_squash']);
+            }
+            if (\array_key_exists('nfs_anon_uid', $data)) {
+                $object->setNfsAnonUid($data['nfs_anon_uid']);
+                unset($data['nfs_anon_uid']);
+            }
+            if (\array_key_exists('nfs_anon_gid', $data)) {
+                $object->setNfsAnonGid($data['nfs_anon_gid']);
+                unset($data['nfs_anon_gid']);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -91,6 +111,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                     $values[] = $value;
                 }
                 $data['associations'] = $values;
+            }
+            if ($object->isInitialized('atimeUpdate') && null !== $object->getAtimeUpdate()) {
+                $data['atime_update'] = $object->getAtimeUpdate();
+            }
+            if ($object->isInitialized('nfsRootSquash') && null !== $object->getNfsRootSquash()) {
+                $data['nfs_root_squash'] = $object->getNfsRootSquash();
+            }
+            if ($object->isInitialized('nfsAllSquash') && null !== $object->getNfsAllSquash()) {
+                $data['nfs_all_squash'] = $object->getNfsAllSquash();
+            }
+            if ($object->isInitialized('nfsAnonUid') && null !== $object->getNfsAnonUid()) {
+                $data['nfs_anon_uid'] = $object->getNfsAnonUid();
+            }
+            if ($object->isInitialized('nfsAnonGid') && null !== $object->getNfsAnonGid()) {
+                $data['nfs_anon_gid'] = $object->getNfsAnonGid();
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -152,6 +187,26 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAssociations($values);
                 unset($data['associations']);
             }
+            if (\array_key_exists('atime_update', $data)) {
+                $object->setAtimeUpdate($data['atime_update']);
+                unset($data['atime_update']);
+            }
+            if (\array_key_exists('nfs_root_squash', $data)) {
+                $object->setNfsRootSquash($data['nfs_root_squash']);
+                unset($data['nfs_root_squash']);
+            }
+            if (\array_key_exists('nfs_all_squash', $data)) {
+                $object->setNfsAllSquash($data['nfs_all_squash']);
+                unset($data['nfs_all_squash']);
+            }
+            if (\array_key_exists('nfs_anon_uid', $data)) {
+                $object->setNfsAnonUid($data['nfs_anon_uid']);
+                unset($data['nfs_anon_uid']);
+            }
+            if (\array_key_exists('nfs_anon_gid', $data)) {
+                $object->setNfsAnonGid($data['nfs_anon_gid']);
+                unset($data['nfs_anon_gid']);
+            }
             foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_1;
@@ -179,6 +234,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                     $values[] = $value;
                 }
                 $data['associations'] = $values;
+            }
+            if ($object->isInitialized('atimeUpdate') && null !== $object->getAtimeUpdate()) {
+                $data['atime_update'] = $object->getAtimeUpdate();
+            }
+            if ($object->isInitialized('nfsRootSquash') && null !== $object->getNfsRootSquash()) {
+                $data['nfs_root_squash'] = $object->getNfsRootSquash();
+            }
+            if ($object->isInitialized('nfsAllSquash') && null !== $object->getNfsAllSquash()) {
+                $data['nfs_all_squash'] = $object->getNfsAllSquash();
+            }
+            if ($object->isInitialized('nfsAnonUid') && null !== $object->getNfsAnonUid()) {
+                $data['nfs_anon_uid'] = $object->getNfsAnonUid();
+            }
+            if ($object->isInitialized('nfsAnonGid') && null !== $object->getNfsAnonGid()) {
+                $data['nfs_anon_gid'] = $object->getNfsAnonGid();
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {

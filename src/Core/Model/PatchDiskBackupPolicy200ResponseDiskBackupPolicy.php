@@ -26,17 +26,33 @@ class PatchDiskBackupPolicy200ResponseDiskBackupPolicy extends \ArrayObject
      */
     protected $id;
     /**
+     * @var string|null
+     */
+    protected $description;
+    /**
      * @var int
      */
     protected $retention;
     /**
-     * @var DiskBackupPolicyTarget
+     * @var float
+     */
+    protected $totalSize;
+    /**
+     * @var bool
+     */
+    protected $globalPolicy;
+    /**
+     * @var PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget|null
      */
     protected $target;
     /**
-     * @var array<string, mixed>
+     * @var Schedule
      */
     protected $schedule;
+    /**
+     * @var int|null
+     */
+    protected $autoMoveToTrashAt;
 
     public function getId(): string
     {
@@ -47,6 +63,19 @@ class PatchDiskBackupPolicy200ResponseDiskBackupPolicy extends \ArrayObject
     {
         $this->initialized['id'] = true;
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->initialized['description'] = true;
+        $this->description = $description;
 
         return $this;
     }
@@ -64,12 +93,38 @@ class PatchDiskBackupPolicy200ResponseDiskBackupPolicy extends \ArrayObject
         return $this;
     }
 
-    public function getTarget(): DiskBackupPolicyTarget
+    public function getTotalSize(): float
+    {
+        return $this->totalSize;
+    }
+
+    public function setTotalSize(float $totalSize): self
+    {
+        $this->initialized['totalSize'] = true;
+        $this->totalSize = $totalSize;
+
+        return $this;
+    }
+
+    public function getGlobalPolicy(): bool
+    {
+        return $this->globalPolicy;
+    }
+
+    public function setGlobalPolicy(bool $globalPolicy): self
+    {
+        $this->initialized['globalPolicy'] = true;
+        $this->globalPolicy = $globalPolicy;
+
+        return $this;
+    }
+
+    public function getTarget(): ?PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget
     {
         return $this->target;
     }
 
-    public function setTarget(DiskBackupPolicyTarget $target): self
+    public function setTarget(?PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget $target): self
     {
         $this->initialized['target'] = true;
         $this->target = $target;
@@ -77,21 +132,28 @@ class PatchDiskBackupPolicy200ResponseDiskBackupPolicy extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function getSchedule(): iterable
+    public function getSchedule(): Schedule
     {
         return $this->schedule;
     }
 
-    /**
-     * @param array<string, mixed> $schedule
-     */
-    public function setSchedule(iterable $schedule): self
+    public function setSchedule(Schedule $schedule): self
     {
         $this->initialized['schedule'] = true;
         $this->schedule = $schedule;
+
+        return $this;
+    }
+
+    public function getAutoMoveToTrashAt(): ?int
+    {
+        return $this->autoMoveToTrashAt;
+    }
+
+    public function setAutoMoveToTrashAt(?int $autoMoveToTrashAt): self
+    {
+        $this->initialized['autoMoveToTrashAt'] = true;
+        $this->autoMoveToTrashAt = $autoMoveToTrashAt;
 
         return $this;
     }

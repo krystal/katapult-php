@@ -26,6 +26,14 @@ class OrganizationPolicy extends \ArrayObject
      */
     protected $maximumUninvoicedBalance;
     /**
+     * @var DecimalOrUnlimited
+     */
+    protected $maximumCreditBalance;
+    /**
+     * @var DecimalOrUnlimited
+     */
+    protected $maximumDebtOnResourceCreation;
+    /**
      * @var IntegerOrUnlimited
      */
     protected $maximumVirtualMachines;
@@ -103,6 +111,32 @@ class OrganizationPolicy extends \ArrayObject
     {
         $this->initialized['maximumUninvoicedBalance'] = true;
         $this->maximumUninvoicedBalance = $maximumUninvoicedBalance;
+
+        return $this;
+    }
+
+    public function getMaximumCreditBalance(): DecimalOrUnlimited
+    {
+        return $this->maximumCreditBalance;
+    }
+
+    public function setMaximumCreditBalance(DecimalOrUnlimited $maximumCreditBalance): self
+    {
+        $this->initialized['maximumCreditBalance'] = true;
+        $this->maximumCreditBalance = $maximumCreditBalance;
+
+        return $this;
+    }
+
+    public function getMaximumDebtOnResourceCreation(): DecimalOrUnlimited
+    {
+        return $this->maximumDebtOnResourceCreation;
+    }
+
+    public function setMaximumDebtOnResourceCreation(DecimalOrUnlimited $maximumDebtOnResourceCreation): self
+    {
+        $this->initialized['maximumDebtOnResourceCreation'] = true;
+        $this->maximumDebtOnResourceCreation = $maximumDebtOnResourceCreation;
 
         return $this;
     }

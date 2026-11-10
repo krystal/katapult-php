@@ -71,13 +71,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setStaticSiteError($data['static_site_error']);
                 unset($data['static_site_error']);
             }
+            if (\array_key_exists('cors_origins', $data)) {
+                $values = [];
+                foreach ($data['cors_origins'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setCorsOrigins($values);
+                unset($data['cors_origins']);
+            }
             if (\array_key_exists('access_control_list', $data)) {
                 $object->setAccessControlList($this->denormalizer->denormalize($data['access_control_list'], \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class, 'json', $context));
                 unset($data['access_control_list']);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_1;
                 }
             }
 
@@ -102,12 +110,19 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('staticSiteError') && null !== $object->getStaticSiteError()) {
                 $data['static_site_error'] = $object->getStaticSiteError();
             }
+            if ($object->isInitialized('corsOrigins') && null !== $object->getCorsOrigins()) {
+                $values = [];
+                foreach ($object->getCorsOrigins() as $value) {
+                    $values[] = $value;
+                }
+                $data['cors_origins'] = $values;
+            }
             if ($object->isInitialized('accessControlList') && null !== $object->getAccessControlList()) {
                 $data['access_control_list'] = $this->normalizer->normalize($object->getAccessControlList(), 'json', $context);
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_1;
                 }
             }
 
@@ -169,13 +184,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setStaticSiteError($data['static_site_error']);
                 unset($data['static_site_error']);
             }
+            if (\array_key_exists('cors_origins', $data)) {
+                $values = [];
+                foreach ($data['cors_origins'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setCorsOrigins($values);
+                unset($data['cors_origins']);
+            }
             if (\array_key_exists('access_control_list', $data)) {
                 $object->setAccessControlList($this->denormalizer->denormalize($data['access_control_list'], \KatapultAPI\Core\Model\ObjectStorageBucketACLArguments::class, 'json', $context));
                 unset($data['access_control_list']);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_1;
                 }
             }
 
@@ -203,12 +226,19 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('staticSiteError') && null !== $object->getStaticSiteError()) {
                 $data['static_site_error'] = $object->getStaticSiteError();
             }
+            if ($object->isInitialized('corsOrigins') && null !== $object->getCorsOrigins()) {
+                $values = [];
+                foreach ($object->getCorsOrigins() as $value) {
+                    $values[] = $value;
+                }
+                $data['cors_origins'] = $values;
+            }
             if ($object->isInitialized('accessControlList') && null !== $object->getAccessControlList()) {
                 $data['access_control_list'] = $this->normalizer->normalize($object->getAccessControlList(), 'json', $context);
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_1;
                 }
             }
 
