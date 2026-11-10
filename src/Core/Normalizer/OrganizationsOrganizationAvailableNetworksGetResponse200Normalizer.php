@@ -84,11 +84,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['networks'] = $values;
-            $values_1 = [];
-            foreach ($object->getVirtualNetworks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            if ($object->isInitialized('virtualNetworks') && null !== $object->getVirtualNetworks()) {
+                $values_1 = [];
+                foreach ($object->getVirtualNetworks() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['virtual_networks'] = $values_1;
             }
-            $data['virtual_networks'] = $values_1;
             foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value_2;
@@ -169,11 +171,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['networks'] = $values;
-            $values_1 = [];
-            foreach ($object->getVirtualNetworks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            if ($object->isInitialized('virtualNetworks') && null !== $object->getVirtualNetworks()) {
+                $values_1 = [];
+                foreach ($object->getVirtualNetworks() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['virtual_networks'] = $values_1;
             }
-            $data['virtual_networks'] = $values_1;
             foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value_2;

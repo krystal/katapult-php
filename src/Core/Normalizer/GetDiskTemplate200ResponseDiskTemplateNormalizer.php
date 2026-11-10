@@ -73,6 +73,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUniversal($data['universal']);
                 unset($data['universal']);
             }
+            if (\array_key_exists('end_of_life', $data) && $data['end_of_life'] !== null) {
+                $object->setEndOfLife($data['end_of_life']);
+                unset($data['end_of_life']);
+            } elseif (\array_key_exists('end_of_life', $data) && $data['end_of_life'] === null) {
+                $object->setEndOfLife(null);
+            }
             if (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] !== null) {
                 $object->setSizeInGb($data['size_in_gb']);
                 unset($data['size_in_gb']);
@@ -117,6 +123,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('universal') && null !== $object->getUniversal()) {
                 $data['universal'] = $object->getUniversal();
+            }
+            if ($object->isInitialized('endOfLife') && null !== $object->getEndOfLife()) {
+                $data['end_of_life'] = $object->getEndOfLife();
             }
             if ($object->isInitialized('sizeInGb') && null !== $object->getSizeInGb()) {
                 $data['size_in_gb'] = $object->getSizeInGb();
@@ -193,6 +202,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUniversal($data['universal']);
                 unset($data['universal']);
             }
+            if (\array_key_exists('end_of_life', $data) && $data['end_of_life'] !== null) {
+                $object->setEndOfLife($data['end_of_life']);
+                unset($data['end_of_life']);
+            } elseif (\array_key_exists('end_of_life', $data) && $data['end_of_life'] === null) {
+                $object->setEndOfLife(null);
+            }
             if (\array_key_exists('size_in_gb', $data) && $data['size_in_gb'] !== null) {
                 $object->setSizeInGb($data['size_in_gb']);
                 unset($data['size_in_gb']);
@@ -240,6 +255,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('universal') && null !== $object->getUniversal()) {
                 $data['universal'] = $object->getUniversal();
+            }
+            if ($object->isInitialized('endOfLife') && null !== $object->getEndOfLife()) {
+                $data['end_of_life'] = $object->getEndOfLife();
             }
             if ($object->isInitialized('sizeInGb') && null !== $object->getSizeInGb()) {
                 $data['size_in_gb'] = $object->getSizeInGb();

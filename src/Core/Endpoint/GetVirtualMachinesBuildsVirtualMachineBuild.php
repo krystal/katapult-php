@@ -24,9 +24,8 @@ class GetVirtualMachinesBuildsVirtualMachineBuild extends \KatapultAPI\Core\Runt
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_build[id]
-     *             }
+     *                               'virtual_machine_build[id]': string,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

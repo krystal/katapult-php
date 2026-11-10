@@ -55,6 +55,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUninvoicedBalance($this->denormalizer->denormalize($data['uninvoiced_balance'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
                 unset($data['uninvoiced_balance']);
             }
+            if (\array_key_exists('credit_balance', $data)) {
+                $object->setCreditBalance($this->denormalizer->denormalize($data['credit_balance'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
+                unset($data['credit_balance']);
+            }
+            if (\array_key_exists('debt_on_resource_creation', $data)) {
+                $object->setDebtOnResourceCreation($this->denormalizer->denormalize($data['debt_on_resource_creation'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
+                unset($data['debt_on_resource_creation']);
+            }
             if (\array_key_exists('virtual_machines', $data)) {
                 $object->setVirtualMachines($this->denormalizer->denormalize($data['virtual_machines'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_machines']);
@@ -111,6 +119,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setNetworkSpeed($this->denormalizer->denormalize($data['network_speed'], \KatapultAPI\Core\Model\PolicyLimitWithoutCurrent::class, 'json', $context));
                 unset($data['network_speed']);
             }
+            if (\array_key_exists('maximum_container_registry_space', $data)) {
+                $object->setMaximumContainerRegistrySpace($this->denormalizer->denormalize($data['maximum_container_registry_space'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
+                unset($data['maximum_container_registry_space']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -125,6 +137,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             if ($object->isInitialized('uninvoicedBalance') && null !== $object->getUninvoicedBalance()) {
                 $data['uninvoiced_balance'] = $this->normalizer->normalize($object->getUninvoicedBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('creditBalance') && null !== $object->getCreditBalance()) {
+                $data['credit_balance'] = $this->normalizer->normalize($object->getCreditBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('debtOnResourceCreation') && null !== $object->getDebtOnResourceCreation()) {
+                $data['debt_on_resource_creation'] = $this->normalizer->normalize($object->getDebtOnResourceCreation(), 'json', $context);
             }
             if ($object->isInitialized('virtualMachines') && null !== $object->getVirtualMachines()) {
                 $data['virtual_machines'] = $this->normalizer->normalize($object->getVirtualMachines(), 'json', $context);
@@ -167,6 +185,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('networkSpeed') && null !== $object->getNetworkSpeed()) {
                 $data['network_speed'] = $this->normalizer->normalize($object->getNetworkSpeed(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumContainerRegistrySpace') && null !== $object->getMaximumContainerRegistrySpace()) {
+                $data['maximum_container_registry_space'] = $this->normalizer->normalize($object->getMaximumContainerRegistrySpace(), 'json', $context);
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -216,6 +237,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setUninvoicedBalance($this->denormalizer->denormalize($data['uninvoiced_balance'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
                 unset($data['uninvoiced_balance']);
             }
+            if (\array_key_exists('credit_balance', $data)) {
+                $object->setCreditBalance($this->denormalizer->denormalize($data['credit_balance'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
+                unset($data['credit_balance']);
+            }
+            if (\array_key_exists('debt_on_resource_creation', $data)) {
+                $object->setDebtOnResourceCreation($this->denormalizer->denormalize($data['debt_on_resource_creation'], \KatapultAPI\Core\Model\FinancialPolicyLimit::class, 'json', $context));
+                unset($data['debt_on_resource_creation']);
+            }
             if (\array_key_exists('virtual_machines', $data)) {
                 $object->setVirtualMachines($this->denormalizer->denormalize($data['virtual_machines'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
                 unset($data['virtual_machines']);
@@ -272,6 +301,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setNetworkSpeed($this->denormalizer->denormalize($data['network_speed'], \KatapultAPI\Core\Model\PolicyLimitWithoutCurrent::class, 'json', $context));
                 unset($data['network_speed']);
             }
+            if (\array_key_exists('maximum_container_registry_space', $data)) {
+                $object->setMaximumContainerRegistrySpace($this->denormalizer->denormalize($data['maximum_container_registry_space'], \KatapultAPI\Core\Model\PolicyLimit::class, 'json', $context));
+                unset($data['maximum_container_registry_space']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -289,6 +322,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             if ($object->isInitialized('uninvoicedBalance') && null !== $object->getUninvoicedBalance()) {
                 $data['uninvoiced_balance'] = $this->normalizer->normalize($object->getUninvoicedBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('creditBalance') && null !== $object->getCreditBalance()) {
+                $data['credit_balance'] = $this->normalizer->normalize($object->getCreditBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('debtOnResourceCreation') && null !== $object->getDebtOnResourceCreation()) {
+                $data['debt_on_resource_creation'] = $this->normalizer->normalize($object->getDebtOnResourceCreation(), 'json', $context);
             }
             if ($object->isInitialized('virtualMachines') && null !== $object->getVirtualMachines()) {
                 $data['virtual_machines'] = $this->normalizer->normalize($object->getVirtualMachines(), 'json', $context);
@@ -331,6 +370,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('networkSpeed') && null !== $object->getNetworkSpeed()) {
                 $data['network_speed'] = $this->normalizer->normalize($object->getNetworkSpeed(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumContainerRegistrySpace') && null !== $object->getMaximumContainerRegistrySpace()) {
+                $data['maximum_container_registry_space'] = $this->normalizer->normalize($object->getMaximumContainerRegistrySpace(), 'json', $context);
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {

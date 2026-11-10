@@ -24,9 +24,8 @@ class GetTag extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \K
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $tag[id] The tag to load the details for.
-     *             }
+     *                               'tag[id]': string, The tag to load the details for.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

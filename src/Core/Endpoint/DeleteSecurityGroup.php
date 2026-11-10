@@ -17,7 +17,7 @@ class DeleteSecurityGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint 
     /**
      * Delete a security group
      * ## Scopes
-     * - `security_group`.
+     * - `security_groups`.
      *
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.

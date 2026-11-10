@@ -48,6 +48,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy();
+            if (\array_key_exists('total_size', $data) && \is_int($data['total_size'])) {
+                $data['total_size'] = (float) $data['total_size'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -55,25 +58,43 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
+            if (\array_key_exists('description', $data) && $data['description'] !== null) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+                $object->setDescription(null);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('total_size', $data)) {
+                $object->setTotalSize($data['total_size']);
+                unset($data['total_size']);
+            }
+            if (\array_key_exists('global_policy', $data)) {
+                $object->setGlobalPolicy($data['global_policy']);
+                unset($data['global_policy']);
+            }
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('schedule', $data)) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['schedule'] as $key => $value) {
-                    $values[$key] = $value;
-                }
-                $object->setSchedule($values);
+                $object->setSchedule($this->denormalizer->denormalize($data['schedule'], \KatapultAPI\Core\Model\Schedule::class, 'json', $context));
                 unset($data['schedule']);
             }
-            foreach ($data as $key_1 => $value_1) {
-                if (preg_match('/.*/', (string) $key_1)) {
-                    $object[$key_1] = $value_1;
+            if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {
+                $object->setAutoMoveToTrashAt($data['auto_move_to_trash_at']);
+                unset($data['auto_move_to_trash_at']);
+            } elseif (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] === null) {
+                $object->setAutoMoveToTrashAt(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
                 }
             }
 
@@ -86,22 +107,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
             }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
+            }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();
+            }
+            if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
+                $data['total_size'] = $object->getTotalSize();
+            }
+            if ($object->isInitialized('globalPolicy') && null !== $object->getGlobalPolicy()) {
+                $data['global_policy'] = $object->getGlobalPolicy();
             }
             if ($object->isInitialized('target') && null !== $object->getTarget()) {
                 $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);
             }
             if ($object->isInitialized('schedule') && null !== $object->getSchedule()) {
-                $values = [];
-                foreach ($object->getSchedule() as $key => $value) {
-                    $values[$key] = $value;
-                }
-                $data['schedule'] = $values;
+                $data['schedule'] = $this->normalizer->normalize($object->getSchedule(), 'json', $context);
             }
-            foreach ($object as $key_1 => $value_1) {
-                if (preg_match('/.*/', (string) $key_1)) {
-                    $data[$key_1] = $value_1;
+            if ($object->isInitialized('autoMoveToTrashAt') && null !== $object->getAutoMoveToTrashAt()) {
+                $data['auto_move_to_trash_at'] = $object->getAutoMoveToTrashAt();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
                 }
             }
 
@@ -140,6 +169,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicy();
+            if (\array_key_exists('total_size', $data) && \is_int($data['total_size'])) {
+                $data['total_size'] = (float) $data['total_size'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -147,25 +179,43 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
+            if (\array_key_exists('description', $data) && $data['description'] !== null) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+                $object->setDescription(null);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('total_size', $data)) {
+                $object->setTotalSize($data['total_size']);
+                unset($data['total_size']);
+            }
+            if (\array_key_exists('global_policy', $data)) {
+                $object->setGlobalPolicy($data['global_policy']);
+                unset($data['global_policy']);
+            }
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\PatchDiskBackupPolicy200ResponseDiskBackupPolicyTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('schedule', $data)) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['schedule'] as $key => $value) {
-                    $values[$key] = $value;
-                }
-                $object->setSchedule($values);
+                $object->setSchedule($this->denormalizer->denormalize($data['schedule'], \KatapultAPI\Core\Model\Schedule::class, 'json', $context));
                 unset($data['schedule']);
             }
-            foreach ($data as $key_1 => $value_1) {
-                if (preg_match('/.*/', (string) $key_1)) {
-                    $object[$key_1] = $value_1;
+            if (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] !== null) {
+                $object->setAutoMoveToTrashAt($data['auto_move_to_trash_at']);
+                unset($data['auto_move_to_trash_at']);
+            } elseif (\array_key_exists('auto_move_to_trash_at', $data) && $data['auto_move_to_trash_at'] === null) {
+                $object->setAutoMoveToTrashAt(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
                 }
             }
 
@@ -181,22 +231,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
             }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
+            }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();
+            }
+            if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
+                $data['total_size'] = $object->getTotalSize();
+            }
+            if ($object->isInitialized('globalPolicy') && null !== $object->getGlobalPolicy()) {
+                $data['global_policy'] = $object->getGlobalPolicy();
             }
             if ($object->isInitialized('target') && null !== $object->getTarget()) {
                 $data['target'] = $this->normalizer->normalize($object->getTarget(), 'json', $context);
             }
             if ($object->isInitialized('schedule') && null !== $object->getSchedule()) {
-                $values = [];
-                foreach ($object->getSchedule() as $key => $value) {
-                    $values[$key] = $value;
-                }
-                $data['schedule'] = $values;
+                $data['schedule'] = $this->normalizer->normalize($object->getSchedule(), 'json', $context);
             }
-            foreach ($object as $key_1 => $value_1) {
-                if (preg_match('/.*/', (string) $key_1)) {
-                    $data[$key_1] = $value_1;
+            if ($object->isInitialized('autoMoveToTrashAt') && null !== $object->getAutoMoveToTrashAt()) {
+                $data['auto_move_to_trash_at'] = $object->getAutoMoveToTrashAt();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
                 }
             }
 

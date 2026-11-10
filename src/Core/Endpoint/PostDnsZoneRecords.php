@@ -17,7 +17,8 @@ class PostDnsZoneRecords extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint i
     /**
      * Create a new DNS record
      * ## Scopes
-     * - `dns`.
+     * - `dns`
+     * - `dns:acme`.
      *
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.

@@ -28,6 +28,10 @@ class Organization extends \ArrayObject
     /**
      * @var string
      */
+    protected $uuid;
+    /**
+     * @var string
+     */
     protected $name;
     /**
      * @var string
@@ -107,6 +111,19 @@ class Organization extends \ArrayObject
     {
         $this->initialized['id'] = true;
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(string $uuid): self
+    {
+        $this->initialized['uuid'] = true;
+        $this->uuid = $uuid;
 
         return $this;
     }

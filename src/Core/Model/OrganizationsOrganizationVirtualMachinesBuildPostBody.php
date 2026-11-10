@@ -73,6 +73,10 @@ class OrganizationsOrganizationVirtualMachinesBuildPostBody extends \ArrayObject
      * @var list<KeyValue>
      */
     protected $annotations;
+    /**
+     * @var CloudInitArguments
+     */
+    protected $cloudInit;
 
     /**
      * All 'organization[]' params are mutually exclusive, only one can be provided.
@@ -254,6 +258,19 @@ class OrganizationsOrganizationVirtualMachinesBuildPostBody extends \ArrayObject
     {
         $this->initialized['annotations'] = true;
         $this->annotations = $annotations;
+
+        return $this;
+    }
+
+    public function getCloudInit(): CloudInitArguments
+    {
+        return $this->cloudInit;
+    }
+
+    public function setCloudInit(CloudInitArguments $cloudInit): self
+    {
+        $this->initialized['cloudInit'] = true;
+        $this->cloudInit = $cloudInit;
 
         return $this;
     }

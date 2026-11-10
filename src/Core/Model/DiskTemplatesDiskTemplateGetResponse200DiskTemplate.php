@@ -44,6 +44,10 @@ class DiskTemplatesDiskTemplateGetResponse200DiskTemplate extends \ArrayObject
     /**
      * @var int|null
      */
+    protected $endOfLife;
+    /**
+     * @var int|null
+     */
     protected $sizeInGb;
     /**
      * @var GetDiskTemplate200ResponseDiskTemplateLatestVersion|null
@@ -115,6 +119,19 @@ class DiskTemplatesDiskTemplateGetResponse200DiskTemplate extends \ArrayObject
     {
         $this->initialized['universal'] = true;
         $this->universal = $universal;
+
+        return $this;
+    }
+
+    public function getEndOfLife(): ?int
+    {
+        return $this->endOfLife;
+    }
+
+    public function setEndOfLife(?int $endOfLife): self
+    {
+        $this->initialized['endOfLife'] = true;
+        $this->endOfLife = $endOfLife;
 
         return $this;
     }

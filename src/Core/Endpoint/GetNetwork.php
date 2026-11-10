@@ -18,11 +18,10 @@ class GetNetwork extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implement
      * Returns details for a specific network.
      *
      * @param array $queryParameters {
-     *
-     * @var string $network[id] The network to return.
+     *                               'network[id]': string, The network to return.
      *
      * All 'network[]' params are mutually exclusive, only one can be provided.
-     * @var string $network[permalink] The network to return.
+     *      'network[permalink]': string, The network to return.
      *
      * All 'network[]' params are mutually exclusive, only one can be provided.
      * }

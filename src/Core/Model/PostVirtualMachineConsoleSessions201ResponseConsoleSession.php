@@ -30,6 +30,8 @@ class PostVirtualMachineConsoleSessions201ResponseConsoleSession extends \ArrayO
      */
     protected $url;
     /**
+     * The console session cannot be opened after this time, and any console opened from it is closed at this time.
+     *
      * @var int
      */
     protected $expiresAt;
@@ -64,11 +66,17 @@ class PostVirtualMachineConsoleSessions201ResponseConsoleSession extends \ArrayO
         return $this;
     }
 
+    /**
+     * The console session cannot be opened after this time, and any console opened from it is closed at this time.
+     */
     public function getExpiresAt(): int
     {
         return $this->expiresAt;
     }
 
+    /**
+     * The console session cannot be opened after this time, and any console opened from it is closed at this time.
+     */
     public function setExpiresAt(int $expiresAt): self
     {
         $this->initialized['expiresAt'] = true;

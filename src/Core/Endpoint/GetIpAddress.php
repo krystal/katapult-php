@@ -24,11 +24,10 @@ class GetIpAddress extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $ip_address[id] The IP address to find.
+     *                               'ip_address[id]': string, The IP address to find.
      *
      * All 'ip_address[]' params are mutually exclusive, only one can be provided.
-     * @var string $ip_address[address] The IP address to find.
+     *      'ip_address[address]': string, The IP address to find.
      *
      * All 'ip_address[]' params are mutually exclusive, only one can be provided.
      * }

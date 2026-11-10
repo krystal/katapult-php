@@ -65,9 +65,19 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
                 $object->setPermalink(null);
             }
+            if (\array_key_exists('default', $data)) {
+                $object->setDefault($data['default']);
+                unset($data['default']);
+            }
             if (\array_key_exists('data_center', $data)) {
                 $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\GetOrganizationAvailableNetworksPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
+            }
+            if (\array_key_exists('vlan', $data) && $data['vlan'] !== null) {
+                $object->setVlan($data['vlan']);
+                unset($data['vlan']);
+            } elseif (\array_key_exists('vlan', $data) && $data['vlan'] === null) {
+                $object->setVlan(null);
             }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -90,8 +100,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
                 $data['permalink'] = $object->getPermalink();
             }
+            if ($object->isInitialized('default') && null !== $object->getDefault()) {
+                $data['default'] = $object->getDefault();
+            }
             if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
                 $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
+            }
+            if ($object->isInitialized('vlan') && null !== $object->getVlan()) {
+                $data['vlan'] = $object->getVlan();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -151,9 +167,19 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             } elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
                 $object->setPermalink(null);
             }
+            if (\array_key_exists('default', $data)) {
+                $object->setDefault($data['default']);
+                unset($data['default']);
+            }
             if (\array_key_exists('data_center', $data)) {
                 $object->setDataCenter($this->denormalizer->denormalize($data['data_center'], \KatapultAPI\Core\Model\GetOrganizationAvailableNetworksPartDataCenter::class, 'json', $context));
                 unset($data['data_center']);
+            }
+            if (\array_key_exists('vlan', $data) && $data['vlan'] !== null) {
+                $object->setVlan($data['vlan']);
+                unset($data['vlan']);
+            } elseif (\array_key_exists('vlan', $data) && $data['vlan'] === null) {
+                $object->setVlan(null);
             }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -179,8 +205,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
                 $data['permalink'] = $object->getPermalink();
             }
+            if ($object->isInitialized('default') && null !== $object->getDefault()) {
+                $data['default'] = $object->getDefault();
+            }
             if ($object->isInitialized('dataCenter') && null !== $object->getDataCenter()) {
                 $data['data_center'] = $this->normalizer->normalize($object->getDataCenter(), 'json', $context);
+            }
+            if ($object->isInitialized('vlan') && null !== $object->getVlan()) {
+                $data['vlan'] = $object->getVlan();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {

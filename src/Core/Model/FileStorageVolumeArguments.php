@@ -37,6 +37,36 @@ class FileStorageVolumeArguments extends \ArrayObject
      * @var list<string>
      */
     protected $associations;
+    /**
+     * Only available on Generation 2 file storage volumes. Whether file access times are updated.
+     *
+     * @var bool
+     */
+    protected $atimeUpdate;
+    /**
+     * Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.
+     *
+     * @var bool
+     */
+    protected $nfsRootSquash;
+    /**
+     * Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.
+     *
+     * @var bool
+     */
+    protected $nfsAllSquash;
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS user ID.
+     *
+     * @var int
+     */
+    protected $nfsAnonUid;
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS group ID.
+     *
+     * @var int
+     */
+    protected $nfsAnonGid;
 
     /**
      * Unique name to help identify the volume.
@@ -91,6 +121,101 @@ class FileStorageVolumeArguments extends \ArrayObject
     {
         $this->initialized['associations'] = true;
         $this->associations = $associations;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether file access times are updated.
+     */
+    public function getAtimeUpdate(): bool
+    {
+        return $this->atimeUpdate;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether file access times are updated.
+     */
+    public function setAtimeUpdate(bool $atimeUpdate): self
+    {
+        $this->initialized['atimeUpdate'] = true;
+        $this->atimeUpdate = $atimeUpdate;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.
+     */
+    public function getNfsRootSquash(): bool
+    {
+        return $this->nfsRootSquash;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.
+     */
+    public function setNfsRootSquash(bool $nfsRootSquash): self
+    {
+        $this->initialized['nfsRootSquash'] = true;
+        $this->nfsRootSquash = $nfsRootSquash;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.
+     */
+    public function getNfsAllSquash(): bool
+    {
+        return $this->nfsAllSquash;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.
+     */
+    public function setNfsAllSquash(bool $nfsAllSquash): self
+    {
+        $this->initialized['nfsAllSquash'] = true;
+        $this->nfsAllSquash = $nfsAllSquash;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS user ID.
+     */
+    public function getNfsAnonUid(): int
+    {
+        return $this->nfsAnonUid;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS user ID.
+     */
+    public function setNfsAnonUid(int $nfsAnonUid): self
+    {
+        $this->initialized['nfsAnonUid'] = true;
+        $this->nfsAnonUid = $nfsAnonUid;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS group ID.
+     */
+    public function getNfsAnonGid(): int
+    {
+        return $this->nfsAnonGid;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS group ID.
+     */
+    public function setNfsAnonGid(int $nfsAnonGid): self
+    {
+        $this->initialized['nfsAnonGid'] = true;
+        $this->nfsAnonGid = $nfsAnonGid;
 
         return $this;
     }

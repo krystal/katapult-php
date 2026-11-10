@@ -24,9 +24,8 @@ class GetVirtualNetwork extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_network[id] The virtual network to retrieve.
-     *             }
+     *                               'virtual_network[id]': string, The virtual network to retrieve.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

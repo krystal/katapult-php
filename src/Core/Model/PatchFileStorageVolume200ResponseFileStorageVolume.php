@@ -53,6 +53,42 @@ class PatchFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
      * @var int|null
      */
     protected $size;
+    /**
+     * The file storage technology generation.
+     *
+     * @var int
+     */
+    protected $technologyGeneration;
+    /**
+     * Only available on Generation 2 file storage volumes. Whether file access times are updated.
+     *
+     * @var bool|null
+     */
+    protected $atimeUpdate;
+    /**
+     * Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.
+     *
+     * @var bool|null
+     */
+    protected $nfsRootSquash;
+    /**
+     * Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.
+     *
+     * @var bool|null
+     */
+    protected $nfsAllSquash;
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS user ID.
+     *
+     * @var int|null
+     */
+    protected $nfsAnonUid;
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS group ID.
+     *
+     * @var int|null
+     */
+    protected $nfsAnonGid;
 
     public function getId(): string
     {
@@ -159,6 +195,120 @@ class PatchFileStorageVolume200ResponseFileStorageVolume extends \ArrayObject
     {
         $this->initialized['size'] = true;
         $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * The file storage technology generation.
+     */
+    public function getTechnologyGeneration(): int
+    {
+        return $this->technologyGeneration;
+    }
+
+    /**
+     * The file storage technology generation.
+     */
+    public function setTechnologyGeneration(int $technologyGeneration): self
+    {
+        $this->initialized['technologyGeneration'] = true;
+        $this->technologyGeneration = $technologyGeneration;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether file access times are updated.
+     */
+    public function getAtimeUpdate(): ?bool
+    {
+        return $this->atimeUpdate;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether file access times are updated.
+     */
+    public function setAtimeUpdate(?bool $atimeUpdate): self
+    {
+        $this->initialized['atimeUpdate'] = true;
+        $this->atimeUpdate = $atimeUpdate;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.
+     */
+    public function getNfsRootSquash(): ?bool
+    {
+        return $this->nfsRootSquash;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether NFS root users are mapped to anonymous users.
+     */
+    public function setNfsRootSquash(?bool $nfsRootSquash): self
+    {
+        $this->initialized['nfsRootSquash'] = true;
+        $this->nfsRootSquash = $nfsRootSquash;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.
+     */
+    public function getNfsAllSquash(): ?bool
+    {
+        return $this->nfsAllSquash;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. Whether all NFS users are mapped to anonymous users.
+     */
+    public function setNfsAllSquash(?bool $nfsAllSquash): self
+    {
+        $this->initialized['nfsAllSquash'] = true;
+        $this->nfsAllSquash = $nfsAllSquash;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS user ID.
+     */
+    public function getNfsAnonUid(): ?int
+    {
+        return $this->nfsAnonUid;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS user ID.
+     */
+    public function setNfsAnonUid(?int $nfsAnonUid): self
+    {
+        $this->initialized['nfsAnonUid'] = true;
+        $this->nfsAnonUid = $nfsAnonUid;
+
+        return $this;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS group ID.
+     */
+    public function getNfsAnonGid(): ?int
+    {
+        return $this->nfsAnonGid;
+    }
+
+    /**
+     * Only available on Generation 2 file storage volumes. The anonymous NFS group ID.
+     */
+    public function setNfsAnonGid(?int $nfsAnonGid): self
+    {
+        $this->initialized['nfsAnonGid'] = true;
+        $this->nfsAnonGid = $nfsAnonGid;
 
         return $this;
     }

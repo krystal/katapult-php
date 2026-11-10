@@ -24,9 +24,8 @@ class GetAddressList extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $address_list[id] The address list to return.
-     *             }
+     *                               'address_list[id]': string, The address list to return.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

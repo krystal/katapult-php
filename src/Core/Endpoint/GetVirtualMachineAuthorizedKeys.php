@@ -60,6 +60,7 @@ class GetVirtualMachineAuthorizedKeys extends \KatapultAPI\Core\Runtime\Client\B
      * @throws \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysBadRequestException
      * @throws \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysForbiddenException
      * @throws \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysNotFoundException
+     * @throws \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysConflictException
      * @throws \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysTooManyRequestsException
      * @throws \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysServiceUnavailableException
      */
@@ -77,6 +78,9 @@ class GetVirtualMachineAuthorizedKeys extends \KatapultAPI\Core\Runtime\Client\B
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysNotFoundException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseNoVirtualMachineForAPITokenResponse', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysConflictException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseContinuousManagementDisabledResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\GetVirtualMachineAuthorizedKeysTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);

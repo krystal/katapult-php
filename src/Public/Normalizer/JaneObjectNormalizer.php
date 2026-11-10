@@ -28,13 +28,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = [
-            \KatapultAPI\Public\Model\SignupCampaignArguments::class => SignupCampaignArgumentsNormalizer::class,
-
             \KatapultAPI\Public\Model\InternalAuthError::class => InternalAuthErrorNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidCouponCode::class => InvalidCouponCodeNormalizer::class,
-
-            \KatapultAPI\Public\Model\ValidationError::class => ValidationErrorNormalizer::class,
 
             \KatapultAPI\Public\Model\RateLimitReached::class => RateLimitReachedNormalizer::class,
 
@@ -46,17 +40,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Public\Model\Currency::class => CurrencyNormalizer::class,
 
-            \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => PricingEstimateResourceArgumentsNormalizer::class,
-
-            \KatapultAPI\Public\Model\CurrencyLookup::class => CurrencyLookupNormalizer::class,
-
-            \KatapultAPI\Public\Model\CountryLookup::class => CountryLookupNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimate::class => PricingEstimateNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimateResource::class => PricingEstimateResourceNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => PricingEstimateResourcePackageNormalizer::class,
+            \KatapultAPI\Public\Model\PaginationObject::class => PaginationObjectNormalizer::class,
 
             \KatapultAPI\Public\Model\VirtualMachinePackage::class => VirtualMachinePackageNormalizer::class,
 
@@ -66,45 +50,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => VirtualMachinePackageGroupNormalizer::class,
 
-            \KatapultAPI\Public\Model\MissingResourcesSchema::class => MissingResourcesSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateResource::class => InvalidEstimateResourceNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => InvalidEstimateResourceSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => InvalidEstimateQuantityNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => InvalidEstimateQuantitySchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => CurrencyNotFoundSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\CountryNotFoundSchema::class => CountryNotFoundSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\PaginationObject::class => PaginationObjectNormalizer::class,
-
             \KatapultAPI\Public\Model\DataCenter::class => DataCenterNormalizer::class,
 
             \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => ResponseAPIAuthenticator403ResponseNormalizer::class,
-
-            \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => ResponseInvalidCouponCodeResponseNormalizer::class,
-
-            \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
 
             \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
 
             \KatapultAPI\Public\Model\DataCentersGetResponse200::class => DataCentersGetResponse200Normalizer::class,
 
             \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => PricingPricesGetResponse200Normalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimatePostBody::class => PricingEstimatePostBodyNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => PricingEstimatePostResponse200Normalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => PricingEstimatePostResponse200EstimateNormalizer::class,
-
-            \KatapultAPI\Public\Model\SignupsPostBody::class => SignupsPostBodyNormalizer::class,
-
-            \KatapultAPI\Public\Model\SignupsPostResponse200::class => SignupsPostResponse200Normalizer::class,
 
             \KatapultAPI\Public\Model\StatsGetResponse200::class => StatsGetResponse200Normalizer::class,
 
@@ -158,45 +112,22 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function getSupportedTypes(?string $format = null): array
         {
             return [
-                \KatapultAPI\Public\Model\SignupCampaignArguments::class => false,
                 \KatapultAPI\Public\Model\InternalAuthError::class => false,
-                \KatapultAPI\Public\Model\InvalidCouponCode::class => false,
-                \KatapultAPI\Public\Model\ValidationError::class => false,
                 \KatapultAPI\Public\Model\RateLimitReached::class => false,
                 \KatapultAPI\Public\Model\GetPricingPrices200ResponsePrices::class => false,
                 \KatapultAPI\Public\Model\PriceVariant::class => false,
                 \KatapultAPI\Public\Model\Price::class => false,
                 \KatapultAPI\Public\Model\Currency::class => false,
-                \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => false,
-                \KatapultAPI\Public\Model\CurrencyLookup::class => false,
-                \KatapultAPI\Public\Model\CountryLookup::class => false,
-                \KatapultAPI\Public\Model\PricingEstimate::class => false,
-                \KatapultAPI\Public\Model\PricingEstimateResource::class => false,
-                \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => false,
+                \KatapultAPI\Public\Model\PaginationObject::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackage::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackageIcon::class => false,
                 \KatapultAPI\Public\Model\Attachment::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => false,
-                \KatapultAPI\Public\Model\MissingResourcesSchema::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateResource::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => false,
-                \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => false,
-                \KatapultAPI\Public\Model\CountryNotFoundSchema::class => false,
-                \KatapultAPI\Public\Model\PaginationObject::class => false,
                 \KatapultAPI\Public\Model\DataCenter::class => false,
                 \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => false,
-                \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => false,
-                \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Public\Model\DataCentersGetResponse200::class => false,
                 \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => false,
-                \KatapultAPI\Public\Model\PricingEstimatePostBody::class => false,
-                \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => false,
-                \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => false,
-                \KatapultAPI\Public\Model\SignupsPostBody::class => false,
-                \KatapultAPI\Public\Model\SignupsPostResponse200::class => false,
                 \KatapultAPI\Public\Model\StatsGetResponse200::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackagesGetResponse200::class => false,
                 \Jane\Component\JsonSchemaRuntime\Reference::class => false,
@@ -211,13 +142,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = [
-            \KatapultAPI\Public\Model\SignupCampaignArguments::class => SignupCampaignArgumentsNormalizer::class,
-
             \KatapultAPI\Public\Model\InternalAuthError::class => InternalAuthErrorNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidCouponCode::class => InvalidCouponCodeNormalizer::class,
-
-            \KatapultAPI\Public\Model\ValidationError::class => ValidationErrorNormalizer::class,
 
             \KatapultAPI\Public\Model\RateLimitReached::class => RateLimitReachedNormalizer::class,
 
@@ -229,17 +154,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Public\Model\Currency::class => CurrencyNormalizer::class,
 
-            \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => PricingEstimateResourceArgumentsNormalizer::class,
-
-            \KatapultAPI\Public\Model\CurrencyLookup::class => CurrencyLookupNormalizer::class,
-
-            \KatapultAPI\Public\Model\CountryLookup::class => CountryLookupNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimate::class => PricingEstimateNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimateResource::class => PricingEstimateResourceNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => PricingEstimateResourcePackageNormalizer::class,
+            \KatapultAPI\Public\Model\PaginationObject::class => PaginationObjectNormalizer::class,
 
             \KatapultAPI\Public\Model\VirtualMachinePackage::class => VirtualMachinePackageNormalizer::class,
 
@@ -249,45 +164,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
 
             \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => VirtualMachinePackageGroupNormalizer::class,
 
-            \KatapultAPI\Public\Model\MissingResourcesSchema::class => MissingResourcesSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateResource::class => InvalidEstimateResourceNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => InvalidEstimateResourceSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => InvalidEstimateQuantityNormalizer::class,
-
-            \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => InvalidEstimateQuantitySchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => CurrencyNotFoundSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\CountryNotFoundSchema::class => CountryNotFoundSchemaNormalizer::class,
-
-            \KatapultAPI\Public\Model\PaginationObject::class => PaginationObjectNormalizer::class,
-
             \KatapultAPI\Public\Model\DataCenter::class => DataCenterNormalizer::class,
 
             \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => ResponseAPIAuthenticator403ResponseNormalizer::class,
-
-            \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => ResponseInvalidCouponCodeResponseNormalizer::class,
-
-            \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => ResponseValidationErrorResponseNormalizer::class,
 
             \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => ResponseAPIAuthenticator429ResponseNormalizer::class,
 
             \KatapultAPI\Public\Model\DataCentersGetResponse200::class => DataCentersGetResponse200Normalizer::class,
 
             \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => PricingPricesGetResponse200Normalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimatePostBody::class => PricingEstimatePostBodyNormalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => PricingEstimatePostResponse200Normalizer::class,
-
-            \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => PricingEstimatePostResponse200EstimateNormalizer::class,
-
-            \KatapultAPI\Public\Model\SignupsPostBody::class => SignupsPostBodyNormalizer::class,
-
-            \KatapultAPI\Public\Model\SignupsPostResponse200::class => SignupsPostResponse200Normalizer::class,
 
             \KatapultAPI\Public\Model\StatsGetResponse200::class => StatsGetResponse200Normalizer::class,
 
@@ -344,45 +229,22 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         public function getSupportedTypes(?string $format = null): array
         {
             return [
-                \KatapultAPI\Public\Model\SignupCampaignArguments::class => false,
                 \KatapultAPI\Public\Model\InternalAuthError::class => false,
-                \KatapultAPI\Public\Model\InvalidCouponCode::class => false,
-                \KatapultAPI\Public\Model\ValidationError::class => false,
                 \KatapultAPI\Public\Model\RateLimitReached::class => false,
                 \KatapultAPI\Public\Model\GetPricingPrices200ResponsePrices::class => false,
                 \KatapultAPI\Public\Model\PriceVariant::class => false,
                 \KatapultAPI\Public\Model\Price::class => false,
                 \KatapultAPI\Public\Model\Currency::class => false,
-                \KatapultAPI\Public\Model\PricingEstimateResourceArguments::class => false,
-                \KatapultAPI\Public\Model\CurrencyLookup::class => false,
-                \KatapultAPI\Public\Model\CountryLookup::class => false,
-                \KatapultAPI\Public\Model\PricingEstimate::class => false,
-                \KatapultAPI\Public\Model\PricingEstimateResource::class => false,
-                \KatapultAPI\Public\Model\PricingEstimateResourcePackage::class => false,
+                \KatapultAPI\Public\Model\PaginationObject::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackage::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackageIcon::class => false,
                 \KatapultAPI\Public\Model\Attachment::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackageGroup::class => false,
-                \KatapultAPI\Public\Model\MissingResourcesSchema::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateResource::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateResourceSchema::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateQuantity::class => false,
-                \KatapultAPI\Public\Model\InvalidEstimateQuantitySchema::class => false,
-                \KatapultAPI\Public\Model\CurrencyNotFoundSchema::class => false,
-                \KatapultAPI\Public\Model\CountryNotFoundSchema::class => false,
-                \KatapultAPI\Public\Model\PaginationObject::class => false,
                 \KatapultAPI\Public\Model\DataCenter::class => false,
                 \KatapultAPI\Public\Model\ResponseAPIAuthenticator403Response::class => false,
-                \KatapultAPI\Public\Model\ResponseInvalidCouponCodeResponse::class => false,
-                \KatapultAPI\Public\Model\ResponseValidationErrorResponse::class => false,
                 \KatapultAPI\Public\Model\ResponseAPIAuthenticator429Response::class => false,
                 \KatapultAPI\Public\Model\DataCentersGetResponse200::class => false,
                 \KatapultAPI\Public\Model\PricingPricesGetResponse200::class => false,
-                \KatapultAPI\Public\Model\PricingEstimatePostBody::class => false,
-                \KatapultAPI\Public\Model\PricingEstimatePostResponse200::class => false,
-                \KatapultAPI\Public\Model\PricingEstimatePostResponse200Estimate::class => false,
-                \KatapultAPI\Public\Model\SignupsPostBody::class => false,
-                \KatapultAPI\Public\Model\SignupsPostResponse200::class => false,
                 \KatapultAPI\Public\Model\StatsGetResponse200::class => false,
                 \KatapultAPI\Public\Model\VirtualMachinePackagesGetResponse200::class => false,
                 \Jane\Component\JsonSchemaRuntime\Reference::class => false,

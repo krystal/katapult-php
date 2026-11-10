@@ -22,6 +22,18 @@ class DiskBackupPolicyArguments extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * Optional description to help identify the backup policy.
+     *
+     * @var string
+     */
+    protected $description;
+    /**
+     * When true the policy applies to all disks in the organisation. The target argument becomes optional when this is set.
+     *
+     * @var bool
+     */
+    protected $globalPolicy;
+    /**
      * @var int
      */
     protected $retention;
@@ -29,6 +41,44 @@ class DiskBackupPolicyArguments extends \ArrayObject
      * @var ScheduleArguments
      */
     protected $schedule;
+
+    /**
+     * Optional description to help identify the backup policy.
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Optional description to help identify the backup policy.
+     */
+    public function setDescription(string $description): self
+    {
+        $this->initialized['description'] = true;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * When true the policy applies to all disks in the organisation. The target argument becomes optional when this is set.
+     */
+    public function getGlobalPolicy(): bool
+    {
+        return $this->globalPolicy;
+    }
+
+    /**
+     * When true the policy applies to all disks in the organisation. The target argument becomes optional when this is set.
+     */
+    public function setGlobalPolicy(bool $globalPolicy): self
+    {
+        $this->initialized['globalPolicy'] = true;
+        $this->globalPolicy = $globalPolicy;
+
+        return $this;
+    }
 
     public function getRetention(): int
     {

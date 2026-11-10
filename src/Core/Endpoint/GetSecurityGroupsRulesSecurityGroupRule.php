@@ -24,9 +24,8 @@ class GetSecurityGroupsRulesSecurityGroupRule extends \KatapultAPI\Core\Runtime\
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $security_group_rule[id] The security group rule to return the details for.
-     *             }
+     *                               'security_group_rule[id]': string, The security group rule to return the details for.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

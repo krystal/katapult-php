@@ -15,7 +15,7 @@ class PostDnsZoneVerify extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint im
     use \KatapultAPI\Core\Runtime\Client\EndpointTrait;
 
     /**
-     * Attempt to verify the nameservers for a given DNS zone
+     * Attempt to verify either the nameservers or root TXT record for a given DNS zone
      * ## Scopes
      * - `dns`.
      *

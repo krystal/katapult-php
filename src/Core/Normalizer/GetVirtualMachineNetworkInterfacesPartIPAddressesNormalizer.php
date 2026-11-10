@@ -59,6 +59,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAddress($data['address']);
                 unset($data['address']);
             }
+            if (\array_key_exists('reverse_dns', $data)) {
+                $object->setReverseDns($data['reverse_dns']);
+                unset($data['reverse_dns']);
+            }
+            if (\array_key_exists('address_with_mask', $data)) {
+                $object->setAddressWithMask($data['address_with_mask']);
+                unset($data['address_with_mask']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -76,6 +84,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('address') && null !== $object->getAddress()) {
                 $data['address'] = $object->getAddress();
+            }
+            if ($object->isInitialized('reverseDns') && null !== $object->getReverseDns()) {
+                $data['reverse_dns'] = $object->getReverseDns();
+            }
+            if ($object->isInitialized('addressWithMask') && null !== $object->getAddressWithMask()) {
+                $data['address_with_mask'] = $object->getAddressWithMask();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -129,6 +143,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAddress($data['address']);
                 unset($data['address']);
             }
+            if (\array_key_exists('reverse_dns', $data)) {
+                $object->setReverseDns($data['reverse_dns']);
+                unset($data['reverse_dns']);
+            }
+            if (\array_key_exists('address_with_mask', $data)) {
+                $object->setAddressWithMask($data['address_with_mask']);
+                unset($data['address_with_mask']);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -149,6 +171,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('address') && null !== $object->getAddress()) {
                 $data['address'] = $object->getAddress();
+            }
+            if ($object->isInitialized('reverseDns') && null !== $object->getReverseDns()) {
+                $data['reverse_dns'] = $object->getReverseDns();
+            }
+            if ($object->isInitialized('addressWithMask') && null !== $object->getAddressWithMask()) {
+                $data['address_with_mask'] = $object->getAddressWithMask();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {

@@ -15,7 +15,12 @@ class DeleteSshKey extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint impleme
     use \KatapultAPI\Core\Runtime\Client\EndpointTrait;
 
     /**
-     * Delete an SSH key.
+     * Delete an SSH key
+     * ## Scopes
+     * - `ssh_keys`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      */
     public function __construct(?\KatapultAPI\Core\Model\SshKeysSshKeyDeleteBody $requestBody = null)
     {

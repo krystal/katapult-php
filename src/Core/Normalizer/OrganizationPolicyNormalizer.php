@@ -55,6 +55,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setMaximumUninvoicedBalance($this->denormalizer->denormalize($data['maximum_uninvoiced_balance'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
                 unset($data['maximum_uninvoiced_balance']);
             }
+            if (\array_key_exists('maximum_credit_balance', $data)) {
+                $object->setMaximumCreditBalance($this->denormalizer->denormalize($data['maximum_credit_balance'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
+                unset($data['maximum_credit_balance']);
+            }
+            if (\array_key_exists('maximum_debt_on_resource_creation', $data)) {
+                $object->setMaximumDebtOnResourceCreation($this->denormalizer->denormalize($data['maximum_debt_on_resource_creation'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
+                unset($data['maximum_debt_on_resource_creation']);
+            }
             if (\array_key_exists('maximum_virtual_machines', $data)) {
                 $object->setMaximumVirtualMachines($this->denormalizer->denormalize($data['maximum_virtual_machines'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_machines']);
@@ -137,6 +145,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             if ($object->isInitialized('maximumUninvoicedBalance') && null !== $object->getMaximumUninvoicedBalance()) {
                 $data['maximum_uninvoiced_balance'] = $this->normalizer->normalize($object->getMaximumUninvoicedBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumCreditBalance') && null !== $object->getMaximumCreditBalance()) {
+                $data['maximum_credit_balance'] = $this->normalizer->normalize($object->getMaximumCreditBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumDebtOnResourceCreation') && null !== $object->getMaximumDebtOnResourceCreation()) {
+                $data['maximum_debt_on_resource_creation'] = $this->normalizer->normalize($object->getMaximumDebtOnResourceCreation(), 'json', $context);
             }
             if ($object->isInitialized('maximumVirtualMachines') && null !== $object->getMaximumVirtualMachines()) {
                 $data['maximum_virtual_machines'] = $this->normalizer->normalize($object->getMaximumVirtualMachines(), 'json', $context);
@@ -237,6 +251,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setMaximumUninvoicedBalance($this->denormalizer->denormalize($data['maximum_uninvoiced_balance'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
                 unset($data['maximum_uninvoiced_balance']);
             }
+            if (\array_key_exists('maximum_credit_balance', $data)) {
+                $object->setMaximumCreditBalance($this->denormalizer->denormalize($data['maximum_credit_balance'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
+                unset($data['maximum_credit_balance']);
+            }
+            if (\array_key_exists('maximum_debt_on_resource_creation', $data)) {
+                $object->setMaximumDebtOnResourceCreation($this->denormalizer->denormalize($data['maximum_debt_on_resource_creation'], \KatapultAPI\Core\Model\DecimalOrUnlimited::class, 'json', $context));
+                unset($data['maximum_debt_on_resource_creation']);
+            }
             if (\array_key_exists('maximum_virtual_machines', $data)) {
                 $object->setMaximumVirtualMachines($this->denormalizer->denormalize($data['maximum_virtual_machines'], \KatapultAPI\Core\Model\IntegerOrUnlimited::class, 'json', $context));
                 unset($data['maximum_virtual_machines']);
@@ -322,6 +344,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             if ($object->isInitialized('maximumUninvoicedBalance') && null !== $object->getMaximumUninvoicedBalance()) {
                 $data['maximum_uninvoiced_balance'] = $this->normalizer->normalize($object->getMaximumUninvoicedBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumCreditBalance') && null !== $object->getMaximumCreditBalance()) {
+                $data['maximum_credit_balance'] = $this->normalizer->normalize($object->getMaximumCreditBalance(), 'json', $context);
+            }
+            if ($object->isInitialized('maximumDebtOnResourceCreation') && null !== $object->getMaximumDebtOnResourceCreation()) {
+                $data['maximum_debt_on_resource_creation'] = $this->normalizer->normalize($object->getMaximumDebtOnResourceCreation(), 'json', $context);
             }
             if ($object->isInitialized('maximumVirtualMachines') && null !== $object->getMaximumVirtualMachines()) {
                 $data['maximum_virtual_machines'] = $this->normalizer->normalize($object->getMaximumVirtualMachines(), 'json', $context);

@@ -27,6 +27,12 @@ class VirtualMachinesVirtualMachineConsoleSessionsPostBody extends \ArrayObject
      * @var VirtualMachineLookup
      */
     protected $virtualMachine;
+    /**
+     * The lowercase UUID of the Identity user the console session is for, when that is not the user creating it. The session is refused if Identity has no such user or the user is suspended, and any console opened from it closes if the user is later suspended or deleted.
+     *
+     * @var string
+     */
+    protected $userUuid;
 
     /**
      * All 'virtual_machine[]' params are mutually exclusive, only one can be provided.
@@ -43,6 +49,25 @@ class VirtualMachinesVirtualMachineConsoleSessionsPostBody extends \ArrayObject
     {
         $this->initialized['virtualMachine'] = true;
         $this->virtualMachine = $virtualMachine;
+
+        return $this;
+    }
+
+    /**
+     * The lowercase UUID of the Identity user the console session is for, when that is not the user creating it. The session is refused if Identity has no such user or the user is suspended, and any console opened from it closes if the user is later suspended or deleted.
+     */
+    public function getUserUuid(): string
+    {
+        return $this->userUuid;
+    }
+
+    /**
+     * The lowercase UUID of the Identity user the console session is for, when that is not the user creating it. The session is refused if Identity has no such user or the user is suspended, and any console opened from it closes if the user is later suspended or deleted.
+     */
+    public function setUserUuid(string $userUuid): self
+    {
+        $this->initialized['userUuid'] = true;
+        $this->userUuid = $userUuid;
 
         return $this;
     }

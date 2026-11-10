@@ -26,6 +26,10 @@ class GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies extends \
      */
     protected $id;
     /**
+     * @var string|null
+     */
+    protected $description;
+    /**
      * @var int
      */
     protected $retention;
@@ -34,7 +38,7 @@ class GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies extends \
      */
     protected $totalSize;
     /**
-     * @var DiskBackupPolicyTarget
+     * @var GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget|null
      */
     protected $target;
     /**
@@ -51,6 +55,19 @@ class GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies extends \
     {
         $this->initialized['id'] = true;
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->initialized['description'] = true;
+        $this->description = $description;
 
         return $this;
     }
@@ -81,12 +98,12 @@ class GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPolicies extends \
         return $this;
     }
 
-    public function getTarget(): DiskBackupPolicyTarget
+    public function getTarget(): ?GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget
     {
         return $this->target;
     }
 
-    public function setTarget(DiskBackupPolicyTarget $target): self
+    public function setTarget(?GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget $target): self
     {
         $this->initialized['target'] = true;
         $this->target = $target;

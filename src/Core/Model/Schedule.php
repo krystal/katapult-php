@@ -22,6 +22,8 @@ class Schedule extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * How often the schedule repeats within the given interval.
+     *
      * @var int
      */
     protected $frequency;
@@ -30,23 +32,35 @@ class Schedule extends \ArrayObject
      */
     protected $interval;
     /**
+     * The minute within the hour at which the schedule triggers (0–59). This value is server-assigned when not provided at creation time.
+     *
      * @var int
      */
     protected $minute;
     /**
+     * When this schedule will next fire.
+     *
      * @var int
      */
     protected $nextInvocationAt;
     /**
+     * The sub-interval offset whose meaning depends on the interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly.
+     *
      * @var int
      */
     protected $time;
 
+    /**
+     * How often the schedule repeats within the given interval.
+     */
     public function getFrequency(): int
     {
         return $this->frequency;
     }
 
+    /**
+     * How often the schedule repeats within the given interval.
+     */
     public function setFrequency(int $frequency): self
     {
         $this->initialized['frequency'] = true;
@@ -68,11 +82,17 @@ class Schedule extends \ArrayObject
         return $this;
     }
 
+    /**
+     * The minute within the hour at which the schedule triggers (0–59). This value is server-assigned when not provided at creation time.
+     */
     public function getMinute(): int
     {
         return $this->minute;
     }
 
+    /**
+     * The minute within the hour at which the schedule triggers (0–59). This value is server-assigned when not provided at creation time.
+     */
     public function setMinute(int $minute): self
     {
         $this->initialized['minute'] = true;
@@ -81,11 +101,17 @@ class Schedule extends \ArrayObject
         return $this;
     }
 
+    /**
+     * When this schedule will next fire.
+     */
     public function getNextInvocationAt(): int
     {
         return $this->nextInvocationAt;
     }
 
+    /**
+     * When this schedule will next fire.
+     */
     public function setNextInvocationAt(int $nextInvocationAt): self
     {
         $this->initialized['nextInvocationAt'] = true;
@@ -94,11 +120,17 @@ class Schedule extends \ArrayObject
         return $this;
     }
 
+    /**
+     * The sub-interval offset whose meaning depends on the interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly.
+     */
     public function getTime(): int
     {
         return $this->time;
     }
 
+    /**
+     * The sub-interval offset whose meaning depends on the interval: unused for hourly; hour of day (0–23) for daily; day of week (0 = Sunday, 6 = Saturday) for weekly; day of month (1–28) for monthly.
+     */
     public function setTime(int $time): self
     {
         $this->initialized['time'] = true;

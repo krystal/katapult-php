@@ -24,9 +24,8 @@ class GetCertificate extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint imple
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $certificate[id]
-     *             }
+     *                               'certificate[id]': string,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

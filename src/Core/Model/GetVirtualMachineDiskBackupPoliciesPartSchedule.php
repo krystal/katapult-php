@@ -26,6 +26,8 @@ class GetVirtualMachineDiskBackupPoliciesPartSchedule extends \ArrayObject
      */
     protected $interval;
     /**
+     * When this schedule will next fire.
+     *
      * @var int
      */
     protected $nextInvocationAt;
@@ -43,11 +45,17 @@ class GetVirtualMachineDiskBackupPoliciesPartSchedule extends \ArrayObject
         return $this;
     }
 
+    /**
+     * When this schedule will next fire.
+     */
     public function getNextInvocationAt(): int
     {
         return $this->nextInvocationAt;
     }
 
+    /**
+     * When this schedule will next fire.
+     */
     public function setNextInvocationAt(int $nextInvocationAt): self
     {
         $this->initialized['nextInvocationAt'] = true;

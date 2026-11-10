@@ -59,6 +59,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
+            if (\array_key_exists('vlan', $data) && $data['vlan'] !== null) {
+                $object->setVlan($data['vlan']);
+                unset($data['vlan']);
+            } elseif (\array_key_exists('vlan', $data) && $data['vlan'] === null) {
+                $object->setVlan(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -76,6 +82,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('name') && null !== $object->getName()) {
                 $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('vlan') && null !== $object->getVlan()) {
+                $data['vlan'] = $object->getVlan();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -129,6 +138,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setName($data['name']);
                 unset($data['name']);
             }
+            if (\array_key_exists('vlan', $data) && $data['vlan'] !== null) {
+                $object->setVlan($data['vlan']);
+                unset($data['vlan']);
+            } elseif (\array_key_exists('vlan', $data) && $data['vlan'] === null) {
+                $object->setVlan(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -149,6 +164,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('name') && null !== $object->getName()) {
                 $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('vlan') && null !== $object->getVlan()) {
+                $data['vlan'] = $object->getVlan();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {

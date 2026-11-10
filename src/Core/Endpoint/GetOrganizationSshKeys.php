@@ -15,19 +15,24 @@ class GetOrganizationSshKeys extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
     use \KatapultAPI\Core\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns a list of all SSH keys for an organization.
+     * Returns a list of all SSH keys for an organization
+     * ## Scopes
+     * - `ssh_keys`
+     * - `ssh_keys:read`.
+     *
+     * ### OAuth2 Scopes
+     * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to list SSH keys for.
-     *
-     * All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to list SSH keys for.
+     *                               'organization[id]': string, The organization to list SSH keys for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     *      'organization[sub_domain]': string, The organization to list SSH keys for.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -24,9 +24,8 @@ class GetVirtualMachineGroup extends \KatapultAPI\Core\Runtime\Client\BaseEndpoi
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $virtual_machine_group[id] The virtual machine group to retrieve.
-     *             }
+     *                               'virtual_machine_group[id]': string, The virtual machine group to retrieve.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -29,6 +29,14 @@ class GetVirtualMachineNetworkInterfacesPartIPAddresses extends \ArrayObject
      * @var string
      */
     protected $address;
+    /**
+     * @var string
+     */
+    protected $reverseDns;
+    /**
+     * @var string
+     */
+    protected $addressWithMask;
 
     public function getId(): string
     {
@@ -52,6 +60,32 @@ class GetVirtualMachineNetworkInterfacesPartIPAddresses extends \ArrayObject
     {
         $this->initialized['address'] = true;
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getReverseDns(): string
+    {
+        return $this->reverseDns;
+    }
+
+    public function setReverseDns(string $reverseDns): self
+    {
+        $this->initialized['reverseDns'] = true;
+        $this->reverseDns = $reverseDns;
+
+        return $this;
+    }
+
+    public function getAddressWithMask(): string
+    {
+        return $this->addressWithMask;
+    }
+
+    public function setAddressWithMask(string $addressWithMask): self
+    {
+        $this->initialized['addressWithMask'] = true;
+        $this->addressWithMask = $addressWithMask;
 
         return $this;
     }

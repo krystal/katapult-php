@@ -24,9 +24,8 @@ class GetDisk extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $disk[id] The disk to return.
-     *             }
+     *                               'disk[id]': string, The disk to return.
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

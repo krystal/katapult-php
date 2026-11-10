@@ -77,7 +77,7 @@ class PostVirtualMachineConsoleSessions extends \KatapultAPI\Core\Runtime\Client
             throw new \KatapultAPI\Core\Exception\PostVirtualMachineConsoleSessionsForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineConsoleSessionsNotFoundException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseVirtualMachineNotFoundResponse', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineConsoleSessionsNotFoundException($response);
         }
         if (is_null($contentType) === false && (406 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \KatapultAPI\Core\Exception\PostVirtualMachineConsoleSessionsNotAcceptableException($response);
@@ -89,7 +89,7 @@ class PostVirtualMachineConsoleSessions extends \KatapultAPI\Core\Runtime\Client
             throw new \KatapultAPI\Core\Exception\PostVirtualMachineConsoleSessionsTooManyRequestsException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator429Response', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \KatapultAPI\Core\Exception\PostVirtualMachineConsoleSessionsServiceUnavailableException($serializer->deserialize($body, 'KatapultAPI\Core\Model\ResponseAPIAuthenticator503Response', 'json'), $response);
+            throw new \KatapultAPI\Core\Exception\PostVirtualMachineConsoleSessionsServiceUnavailableException($response);
         }
     }
 

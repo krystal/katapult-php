@@ -23,16 +23,15 @@ class GetOrganizationObjectStorageAccessKeys extends \KatapultAPI\Core\Runtime\C
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $organization[id] The organization to return access keys for.
-     *
-     * All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var string $organization[sub_domain] The organization to return access keys for.
+     *                               'organization[id]': string, The organization to return access keys for.
      *
      * All 'organization[]' params are mutually exclusive, only one can be provided.
-     * @var int $page The page number to request. If not provided, the first page will be returned.
-     * @var int $per_page The number of items to return per page. If not provided, the default value will be used.
-     *          }
+     *      'organization[sub_domain]': string, The organization to return access keys for.
+     *
+     * All 'organization[]' params are mutually exclusive, only one can be provided.
+     *      'page': int, The page number to request. If not provided, the first page will be returned.
+     *      'per_page': int, The number of items to return per page. If not provided, the default value will be used.
+     * }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -58,6 +58,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
+            if (\array_key_exists('description', $data) && $data['description'] !== null) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+                $object->setDescription(null);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
@@ -66,9 +72,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setTotalSize($data['total_size']);
                 unset($data['total_size']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('schedule', $data)) {
                 $object->setSchedule($this->denormalizer->denormalize($data['schedule'], \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPoliciesPartSchedule::class, 'json', $context));
@@ -88,6 +96,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
+            }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
             }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();
@@ -152,6 +163,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setId($data['id']);
                 unset($data['id']);
             }
+            if (\array_key_exists('description', $data) && $data['description'] !== null) {
+                $object->setDescription($data['description']);
+                unset($data['description']);
+            } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+                $object->setDescription(null);
+            }
             if (\array_key_exists('retention', $data)) {
                 $object->setRetention($data['retention']);
                 unset($data['retention']);
@@ -160,9 +177,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setTotalSize($data['total_size']);
                 unset($data['total_size']);
             }
-            if (\array_key_exists('target', $data)) {
-                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\DiskBackupPolicyTarget::class, 'json', $context));
+            if (\array_key_exists('target', $data) && $data['target'] !== null) {
+                $object->setTarget($this->denormalizer->denormalize($data['target'], \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPolicies200ResponseDiskBackupPoliciesTarget::class, 'json', $context));
                 unset($data['target']);
+            } elseif (\array_key_exists('target', $data) && $data['target'] === null) {
+                $object->setTarget(null);
             }
             if (\array_key_exists('schedule', $data)) {
                 $object->setSchedule($this->denormalizer->denormalize($data['schedule'], \KatapultAPI\Core\Model\GetVirtualMachineDiskBackupPoliciesPartSchedule::class, 'json', $context));
@@ -185,6 +204,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $data = [];
             if ($object->isInitialized('id') && null !== $object->getId()) {
                 $data['id'] = $object->getId();
+            }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['description'] = $object->getDescription();
             }
             if ($object->isInitialized('retention') && null !== $object->getRetention()) {
                 $data['retention'] = $object->getRetention();

@@ -17,16 +17,14 @@ class GetTask extends \KatapultAPI\Core\Runtime\Client\BaseEndpoint implements \
     /**
      * Returns details about a specific task
      * ## Scopes
-     * - `tasks`
      * - `tasks:read`.
      *
      * ### OAuth2 Scopes
      * When using OAuth2 authentication, scopes are prefixed with `api.katapult.io/core/v1/`.
      *
      * @param array $queryParameters {
-     *
-     * @var string $task[id]
-     *             }
+     *                               'task[id]': string,
+     *                               }
      */
     public function __construct(array $queryParameters = [])
     {

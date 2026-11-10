@@ -30,6 +30,12 @@ class TrashObject extends \ArrayObject
      */
     protected $keepUntil;
     /**
+     * When the item becomes eligible for automatic purging under the current retention setting: the later of keep_until and the time it was trashed plus the retention period. Actual removal may be up to an hour later.
+     *
+     * @var int
+     */
+    protected $purgeAfter;
+    /**
      * @var string
      */
     protected $objectId;
@@ -60,6 +66,25 @@ class TrashObject extends \ArrayObject
     {
         $this->initialized['keepUntil'] = true;
         $this->keepUntil = $keepUntil;
+
+        return $this;
+    }
+
+    /**
+     * When the item becomes eligible for automatic purging under the current retention setting: the later of keep_until and the time it was trashed plus the retention period. Actual removal may be up to an hour later.
+     */
+    public function getPurgeAfter(): int
+    {
+        return $this->purgeAfter;
+    }
+
+    /**
+     * When the item becomes eligible for automatic purging under the current retention setting: the later of keep_until and the time it was trashed plus the retention period. Actual removal may be up to an hour later.
+     */
+    public function setPurgeAfter(int $purgeAfter): self
+    {
+        $this->initialized['purgeAfter'] = true;
+        $this->purgeAfter = $purgeAfter;
 
         return $this;
     }

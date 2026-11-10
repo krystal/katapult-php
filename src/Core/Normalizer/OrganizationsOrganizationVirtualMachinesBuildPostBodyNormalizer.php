@@ -103,6 +103,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAnnotations($values_2);
                 unset($data['annotations']);
             }
+            if (\array_key_exists('cloud_init', $data)) {
+                $object->setCloudInit($this->denormalizer->denormalize($data['cloud_init'], \KatapultAPI\Core\Model\CloudInitArguments::class, 'json', $context));
+                unset($data['cloud_init']);
+            }
             foreach ($data as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_3;
@@ -152,6 +156,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                     $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
                 $data['annotations'] = $values_2;
+            }
+            if ($object->isInitialized('cloudInit') && null !== $object->getCloudInit()) {
+                $data['cloud_init'] = $this->normalizer->normalize($object->getCloudInit(), 'json', $context);
             }
             foreach ($object as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -249,6 +256,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setAnnotations($values_2);
                 unset($data['annotations']);
             }
+            if (\array_key_exists('cloud_init', $data)) {
+                $object->setCloudInit($this->denormalizer->denormalize($data['cloud_init'], \KatapultAPI\Core\Model\CloudInitArguments::class, 'json', $context));
+                unset($data['cloud_init']);
+            }
             foreach ($data as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value_3;
@@ -301,6 +312,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                     $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
                 $data['annotations'] = $values_2;
+            }
+            if ($object->isInitialized('cloudInit') && null !== $object->getCloudInit()) {
+                $data['cloud_init'] = $this->normalizer->normalize($object->getCloudInit(), 'json', $context);
             }
             foreach ($object as $key => $value_3) {
                 if (preg_match('/.*/', (string) $key)) {

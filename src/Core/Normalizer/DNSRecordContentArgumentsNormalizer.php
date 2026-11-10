@@ -71,6 +71,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCNAME::class, 'json', $context));
                 unset($data['CNAME']);
             }
+            if (\array_key_exists('HTTPRedirect', $data)) {
+                $object->setHTTPRedirect($this->denormalizer->denormalize($data['HTTPRedirect'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForHTTPRedirect::class, 'json', $context));
+                unset($data['HTTPRedirect']);
+            }
             if (\array_key_exists('IPS', $data)) {
                 $object->setIPS($this->denormalizer->denormalize($data['IPS'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForIPS::class, 'json', $context));
                 unset($data['IPS']);
@@ -137,6 +141,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('cNAME') && null !== $object->getCNAME()) {
                 $data['CNAME'] = $this->normalizer->normalize($object->getCNAME(), 'json', $context);
+            }
+            if ($object->isInitialized('hTTPRedirect') && null !== $object->getHTTPRedirect()) {
+                $data['HTTPRedirect'] = $this->normalizer->normalize($object->getHTTPRedirect(), 'json', $context);
             }
             if ($object->isInitialized('iPS') && null !== $object->getIPS()) {
                 $data['IPS'] = $this->normalizer->normalize($object->getIPS(), 'json', $context);
@@ -233,6 +240,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setCNAME($this->denormalizer->denormalize($data['CNAME'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForCNAME::class, 'json', $context));
                 unset($data['CNAME']);
             }
+            if (\array_key_exists('HTTPRedirect', $data)) {
+                $object->setHTTPRedirect($this->denormalizer->denormalize($data['HTTPRedirect'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForHTTPRedirect::class, 'json', $context));
+                unset($data['HTTPRedirect']);
+            }
             if (\array_key_exists('IPS', $data)) {
                 $object->setIPS($this->denormalizer->denormalize($data['IPS'], \KatapultAPI\Core\Model\DNSRecordContentArgumentsForIPS::class, 'json', $context));
                 unset($data['IPS']);
@@ -302,6 +313,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if ($object->isInitialized('cNAME') && null !== $object->getCNAME()) {
                 $data['CNAME'] = $this->normalizer->normalize($object->getCNAME(), 'json', $context);
+            }
+            if ($object->isInitialized('hTTPRedirect') && null !== $object->getHTTPRedirect()) {
+                $data['HTTPRedirect'] = $this->normalizer->normalize($object->getHTTPRedirect(), 'json', $context);
             }
             if ($object->isInitialized('iPS') && null !== $object->getIPS()) {
                 $data['IPS'] = $this->normalizer->normalize($object->getIPS(), 'json', $context);

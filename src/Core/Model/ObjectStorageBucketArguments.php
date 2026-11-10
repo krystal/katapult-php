@@ -52,6 +52,10 @@ class ObjectStorageBucketArguments extends \ArrayObject
      */
     protected $staticSiteError;
     /**
+     * @var list<string>
+     */
+    protected $corsOrigins;
+    /**
      * @var ObjectStorageBucketACLArguments
      */
     protected $accessControlList;
@@ -147,6 +151,25 @@ class ObjectStorageBucketArguments extends \ArrayObject
     {
         $this->initialized['staticSiteError'] = true;
         $this->staticSiteError = $staticSiteError;
+
+        return $this;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function getCorsOrigins(): array
+    {
+        return $this->corsOrigins;
+    }
+
+    /**
+     * @param list<string> $corsOrigins
+     */
+    public function setCorsOrigins(array $corsOrigins): self
+    {
+        $this->initialized['corsOrigins'] = true;
+        $this->corsOrigins = $corsOrigins;
 
         return $this;
     }
